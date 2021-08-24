@@ -68,9 +68,9 @@ TEST_F(DocumentPropertiesTests, TestGetDocumentProperties) {
 /// Test for getting document properties online.
 /// </summary>
 TEST_F(DocumentPropertiesTests, TestGetDocumentPropertiesOnline) {
-    auto requestDocumentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(localFile)), std::istream::binary));
+    auto requestDocument = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(localFile)), std::istream::binary));
     std::shared_ptr<requests::GetDocumentPropertiesOnlineRequest> request(new requests::GetDocumentPropertiesOnlineRequest(
-        requestDocumentStream,
+        requestDocument,
         nullptr,
         nullptr
     ));
@@ -108,9 +108,9 @@ TEST_F(DocumentPropertiesTests, TestGetDocumentProperty) {
 /// A test for GetDocumentProperty online.
 /// </summary>
 TEST_F(DocumentPropertiesTests, TestGetDocumentPropertyOnline) {
-    auto requestDocumentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(localFile)), std::istream::binary));
+    auto requestDocument = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(localFile)), std::istream::binary));
     std::shared_ptr<requests::GetDocumentPropertyOnlineRequest> request(new requests::GetDocumentPropertyOnlineRequest(
-        requestDocumentStream,
+        requestDocument,
         std::make_shared< std::wstring >(L"Author"),
         nullptr,
         nullptr
@@ -149,9 +149,9 @@ getApi()->deleteDocumentProperty(request);
 /// Test for deleting document property online.
 /// </summary>
 TEST_F(DocumentPropertiesTests, TestDeleteDocumentPropertyOnline) {
-    auto requestDocumentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(localFile)), std::istream::binary));
+    auto requestDocument = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(localFile)), std::istream::binary));
     std::shared_ptr<requests::DeleteDocumentPropertyOnlineRequest> request(new requests::DeleteDocumentPropertyOnlineRequest(
-        requestDocumentStream,
+        requestDocument,
         std::make_shared< std::wstring >(L"testProp"),
         nullptr,
         nullptr,
@@ -176,7 +176,6 @@ TEST_F(DocumentPropertiesTests, TestUpdateDocumentProperty) {
 
     auto requestProperty = std::make_shared< aspose::words::cloud::models::DocumentPropertyCreateOrUpdate >();
     requestProperty->setValue(std::make_shared< std::wstring >(L"Imran Anwar"));
-
     std::shared_ptr<requests::CreateOrUpdateDocumentPropertyRequest> request(new requests::CreateOrUpdateDocumentPropertyRequest(
         std::make_shared< std::wstring >(remoteFileName),
         std::make_shared< std::wstring >(L"AsposeAuthor"),
@@ -200,12 +199,11 @@ TEST_F(DocumentPropertiesTests, TestUpdateDocumentProperty) {
 /// Test for updating document property online.
 /// </summary>
 TEST_F(DocumentPropertiesTests, TestUpdateDocumentPropertyOnline) {
-    auto requestDocumentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(localFile)), std::istream::binary));
+    auto requestDocument = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(localFile)), std::istream::binary));
     auto requestProperty = std::make_shared< aspose::words::cloud::models::DocumentPropertyCreateOrUpdate >();
     requestProperty->setValue(std::make_shared< std::wstring >(L"Imran Anwar"));
-
     std::shared_ptr<requests::CreateOrUpdateDocumentPropertyOnlineRequest> request(new requests::CreateOrUpdateDocumentPropertyOnlineRequest(
-        requestDocumentStream,
+        requestDocument,
         std::make_shared< std::wstring >(L"AsposeAuthor"),
         requestProperty,
         nullptr,

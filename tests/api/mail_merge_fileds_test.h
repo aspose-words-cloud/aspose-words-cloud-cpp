@@ -42,9 +42,9 @@ protected:
 TEST_F(MailMergeFiledsTests, TestGetDocumentFieldNamesOnline) {
     std::wstring localDocumentFile = L"SampleExecuteTemplate.docx";
 
-    auto requestTemplateStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(mailMergeFolder + L"/" + localDocumentFile)), std::istream::binary));
+    auto requestTemplate = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(mailMergeFolder + L"/" + localDocumentFile)), std::istream::binary));
     std::shared_ptr<requests::GetDocumentFieldNamesOnlineRequest> request(new requests::GetDocumentFieldNamesOnlineRequest(
-        requestTemplateStream,
+        requestTemplate,
         nullptr,
         nullptr,
         std::make_shared< bool >(true)

@@ -49,7 +49,6 @@ TEST_F(CompatibilityTests, TestOptimizeDocument) {
 
     auto requestOptions = std::make_shared< aspose::words::cloud::models::OptimizationOptions >();
     requestOptions->setMsWordVersion(std::make_shared< aspose::words::cloud::models::OptimizationOptions::MsWordVersion >(aspose::words::cloud::models::OptimizationOptions::MsWordVersion::WORD2002));
-
     std::shared_ptr<requests::OptimizeDocumentRequest> request(new requests::OptimizeDocumentRequest(
         std::make_shared< std::wstring >(remoteFileName),
         requestOptions,
@@ -69,12 +68,11 @@ getApi()->optimizeDocument(request);
 /// Test for optimize document to specific MS Word version.
 /// </summary>
 TEST_F(CompatibilityTests, TestOptimizeDocumentOnline) {
-    auto requestDocumentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(localFile)), std::istream::binary));
+    auto requestDocument = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(localFile)), std::istream::binary));
     auto requestOptions = std::make_shared< aspose::words::cloud::models::OptimizationOptions >();
     requestOptions->setMsWordVersion(std::make_shared< aspose::words::cloud::models::OptimizationOptions::MsWordVersion >(aspose::words::cloud::models::OptimizationOptions::MsWordVersion::WORD2002));
-
     std::shared_ptr<requests::OptimizeDocumentOnlineRequest> request(new requests::OptimizeDocumentOnlineRequest(
-        requestDocumentStream,
+        requestDocument,
         requestOptions,
         nullptr,
         nullptr,

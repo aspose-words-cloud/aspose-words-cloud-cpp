@@ -34,22 +34,37 @@ protected:
 };
 
 TEST_F(ExamplesTest, TestExampleAcceptAllRevisions) {
+    std::wstring documentsDir = localTestExamplesFolder;
     auto wordsApi = getApi();
-    std::shared_ptr< requests::AcceptAllRevisionsRequest > acceptRequest(
-        new requests::AcceptAllRevisionsRequest(
-            std::make_shared< std::wstring >(L"Sample.docx")
+    std::wstring fileName  = L"test_doc.docx";
+
+    // Upload original document to cloud storage.
+    auto myVar1 = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + fileName), std::istream::binary));
+    auto myVar2 = std::make_shared< std::wstring >(fileName);
+    std::shared_ptr< requests::UploadFileRequest > uploadFileRequest(
+        new requests::UploadFileRequest(
+            myVar1, myVar2
         )
     );
-    wordsApi->acceptAllRevisions(acceptRequest);
+    wordsApi->uploadFile(uploadFileRequest);
+
+    // Calls AcceptAllRevisions method for document in cloud.
+    auto myVar3 = std::make_shared< std::wstring >(fileName);
+    std::shared_ptr< requests::AcceptAllRevisionsRequest > request(
+        new requests::AcceptAllRevisionsRequest(
+            myVar3
+        )
+    );
+    wordsApi->acceptAllRevisions(request);
 }
 
 TEST_F(ExamplesTest, TestExampleAcceptAllRevisionsOnline) {
     std::wstring documentsDir = localTestExamplesFolder;
     auto wordsApi = getApi();
-    auto requestDocumentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + L"Sample.docx"), std::istream::binary));
+    auto requestDocument = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + L"Sample.docx"), std::istream::binary));
     std::shared_ptr< requests::AcceptAllRevisionsOnlineRequest > acceptRequest(
         new requests::AcceptAllRevisionsOnlineRequest(
-            requestDocumentStream
+            requestDocument
         )
     );
     wordsApi->acceptAllRevisionsOnline(acceptRequest);
@@ -62,13 +77,10 @@ TEST_F(ExamplesTest, TestExampleAppendDocument) {
     auto requestDocumentListDocumentEntries0 = std::make_shared< aspose::words::cloud::models::DocumentEntry >();
     requestDocumentListDocumentEntries0->setHref(std::make_shared< std::wstring >(remoteFileName));
     requestDocumentListDocumentEntries0->setImportFormatMode(std::make_shared< std::wstring >(L"KeepSourceFormatting"));
-
     auto requestDocumentListDocumentEntries = std::make_shared< std::vector<std::shared_ptr<aspose::words::cloud::models::DocumentEntry>> >();
     requestDocumentListDocumentEntries->push_back(requestDocumentListDocumentEntries0);
-
     auto requestDocumentList = std::make_shared< aspose::words::cloud::models::DocumentEntryList >();
     requestDocumentList->setDocumentEntries(requestDocumentListDocumentEntries);
-
     std::shared_ptr< requests::AppendDocumentRequest > appendRequest(
         new requests::AppendDocumentRequest(
             std::make_shared< std::wstring >(remoteFileName), requestDocumentList
@@ -80,20 +92,17 @@ TEST_F(ExamplesTest, TestExampleAppendDocument) {
 TEST_F(ExamplesTest, TestExampleAppendDocumentOnline) {
     std::wstring documentsDir = localTestExamplesFolder;
     auto wordsApi = getApi();
-    auto requestDocumentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + L"Sample.docx"), std::istream::binary));
+    auto requestDocument = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + L"Sample.docx"), std::istream::binary));
     auto requestDocumentListDocumentEntries0 = std::make_shared< aspose::words::cloud::models::DocumentEntry >();
     requestDocumentListDocumentEntries0->setHref(std::make_shared< std::wstring >(L"Sample.docx"));
     requestDocumentListDocumentEntries0->setImportFormatMode(std::make_shared< std::wstring >(L"KeepSourceFormatting"));
-
     auto requestDocumentListDocumentEntries = std::make_shared< std::vector<std::shared_ptr<aspose::words::cloud::models::DocumentEntry>> >();
     requestDocumentListDocumentEntries->push_back(requestDocumentListDocumentEntries0);
-
     auto requestDocumentList = std::make_shared< aspose::words::cloud::models::DocumentEntryList >();
     requestDocumentList->setDocumentEntries(requestDocumentListDocumentEntries);
-
     std::shared_ptr< requests::AppendDocumentOnlineRequest > appendRequest(
         new requests::AppendDocumentOnlineRequest(
-            requestDocumentStream, requestDocumentList
+            requestDocument, requestDocumentList
         )
     );
     wordsApi->appendDocumentOnline(appendRequest);
@@ -103,7 +112,6 @@ TEST_F(ExamplesTest, TestExampleApplyStyleToDocumentElement) {
     auto wordsApi = getApi();
     auto requestStyleApply = std::make_shared< aspose::words::cloud::models::StyleApply >();
     requestStyleApply->setStyleName(std::make_shared< std::wstring >(L"Heading 1"));
-
     std::shared_ptr< requests::ApplyStyleToDocumentElementRequest > applyStyleRequest(
         new requests::ApplyStyleToDocumentElementRequest(
             std::make_shared< std::wstring >(L"Sample.docx"), std::make_shared< std::wstring >(L"paragraphs/1/paragraphFormat"), requestStyleApply
@@ -115,13 +123,12 @@ TEST_F(ExamplesTest, TestExampleApplyStyleToDocumentElement) {
 TEST_F(ExamplesTest, TestExampleApplyStyleToDocumentElementOnline) {
     std::wstring documentsDir = localTestExamplesFolder;
     auto wordsApi = getApi();
-    auto requestDocumentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + L"Sample.docx"), std::istream::binary));
+    auto requestDocument = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + L"Sample.docx"), std::istream::binary));
     auto requestStyleApply = std::make_shared< aspose::words::cloud::models::StyleApply >();
     requestStyleApply->setStyleName(std::make_shared< std::wstring >(L"Heading 1"));
-
     std::shared_ptr< requests::ApplyStyleToDocumentElementOnlineRequest > applyStyleRequest(
         new requests::ApplyStyleToDocumentElementOnlineRequest(
-            requestDocumentStream, std::make_shared< std::wstring >(L"paragraphs/1/paragraphFormat"), requestStyleApply
+            requestDocument, std::make_shared< std::wstring >(L"paragraphs/1/paragraphFormat"), requestStyleApply
         )
     );
     wordsApi->applyStyleToDocumentElementOnline(applyStyleRequest);
@@ -132,11 +139,9 @@ TEST_F(ExamplesTest, TestExampleBuildReport) {
     auto requestReportEngineSettingsReportBuildOptions = std::make_shared< std::vector<std::shared_ptr<aspose::words::cloud::models::ReportBuildOptions>> >();
     requestReportEngineSettingsReportBuildOptions->push_back(std::make_shared< aspose::words::cloud::models::ReportBuildOptions >(aspose::words::cloud::models::ReportBuildOptions::ALLOW_MISSING_MEMBERS));
     requestReportEngineSettingsReportBuildOptions->push_back(std::make_shared< aspose::words::cloud::models::ReportBuildOptions >(aspose::words::cloud::models::ReportBuildOptions::REMOVE_EMPTY_PARAGRAPHS));
-
     auto requestReportEngineSettings = std::make_shared< aspose::words::cloud::models::ReportEngineSettings >();
     requestReportEngineSettings->setDataSourceType(std::make_shared< aspose::words::cloud::models::ReportEngineSettings::DataSourceType >(aspose::words::cloud::models::ReportEngineSettings::DataSourceType::JSON));
     requestReportEngineSettings->setReportBuildOptions(requestReportEngineSettingsReportBuildOptions);
-
     std::shared_ptr< requests::BuildReportRequest > buildReportRequest(
         new requests::BuildReportRequest(
             std::make_shared< std::wstring >(L"Sample.docx"), std::make_shared< std::wstring >(L"Data.json"), requestReportEngineSettings
@@ -148,14 +153,13 @@ TEST_F(ExamplesTest, TestExampleBuildReport) {
 TEST_F(ExamplesTest, TestExampleBuildReportOnline) {
     std::wstring documentsDir = localTestExamplesFolder;
     auto wordsApi = getApi();
-    auto requestTemplateStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + L"Sample.docx"), std::istream::binary));
+    auto requestTemplate = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + L"Sample.docx"), std::istream::binary));
     auto requestReportEngineSettings = std::make_shared< aspose::words::cloud::models::ReportEngineSettings >();
     requestReportEngineSettings->setDataSourceType(std::make_shared< aspose::words::cloud::models::ReportEngineSettings::DataSourceType >(aspose::words::cloud::models::ReportEngineSettings::DataSourceType::JSON));
     requestReportEngineSettings->setDataSourceName(std::make_shared< std::wstring >(L"persons"));
-
     std::shared_ptr< requests::BuildReportOnlineRequest > buildReportRequest(
         new requests::BuildReportOnlineRequest(
-            requestTemplateStream, std::make_shared< std::wstring >(L"Data.json"), requestReportEngineSettings
+            requestTemplate, std::make_shared< std::wstring >(L"Data.json"), requestReportEngineSettings
         )
     );
     wordsApi->buildReportOnline(buildReportRequest);
@@ -184,10 +188,10 @@ TEST_F(ExamplesTest, TestExampleClassifyDocument) {
 TEST_F(ExamplesTest, TestExampleClassifyDocumentOnline) {
     std::wstring documentsDir = localTestExamplesFolder;
     auto wordsApi = getApi();
-    auto requestDocumentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + L"Sample.docx"), std::istream::binary));
+    auto requestDocument = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + L"Sample.docx"), std::istream::binary));
     std::shared_ptr< requests::ClassifyDocumentOnlineRequest > classifyRequest(
         new requests::ClassifyDocumentOnlineRequest(
-            requestDocumentStream, std::make_shared< std::wstring >(L"3")
+            requestDocument, std::make_shared< std::wstring >(L"3")
         )
     );
     wordsApi->classifyDocumentOnline(classifyRequest);
@@ -199,7 +203,6 @@ TEST_F(ExamplesTest, TestExampleCompareDocument) {
     requestCompareData->setAuthor(std::make_shared< std::wstring >(L"author"));
     requestCompareData->setComparingWithDocument(std::make_shared< std::wstring >(L"TestCompareDocument2.doc"));
     requestCompareData->setDateTime(std::make_shared< std::wstring >(L"2015-10-26T00:00:00.0000000Z"));
-
     std::shared_ptr< requests::CompareDocumentRequest > compareRequest(
         new requests::CompareDocumentRequest(
             std::make_shared< std::wstring >(L"TestCompareDocument1.doc"), requestCompareData, std::make_shared< std::wstring >(L"/TestCompareDocumentOut.doc")
@@ -211,16 +214,15 @@ TEST_F(ExamplesTest, TestExampleCompareDocument) {
 TEST_F(ExamplesTest, TestExampleCompareDocumentOnline) {
     std::wstring documentsDir = localTestExamplesFolder;
     auto wordsApi = getApi();
-    auto requestDocumentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + L"compareTestDoc1.doc"), std::istream::binary));
-    auto requestComparingDocumentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + L"compareTestDoc2.doc"), std::istream::binary));
+    auto requestDocument = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + L"compareTestDoc1.doc"), std::istream::binary));
     auto requestCompareData = std::make_shared< aspose::words::cloud::models::CompareData >();
     requestCompareData->setAuthor(std::make_shared< std::wstring >(L"author"));
     requestCompareData->setComparingWithDocument(std::make_shared< std::wstring >(L"TestCompareDocument2.doc"));
     requestCompareData->setDateTime(std::make_shared< std::wstring >(L"2015-10-26T00:00:00.0000000Z"));
-
+    auto requestComparingDocument = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + L"compareTestDoc2.doc"), std::istream::binary));
     std::shared_ptr< requests::CompareDocumentOnlineRequest > compareRequest(
         new requests::CompareDocumentOnlineRequest(
-            requestDocumentStream, requestCompareData, requestComparingDocumentStream, std::make_shared< std::wstring >(L"/TestCompareDocumentOut.doc")
+            requestDocument, requestCompareData, requestComparingDocument, std::make_shared< std::wstring >(L"/TestCompareDocumentOut.doc")
         )
     );
     wordsApi->compareDocumentOnline(compareRequest);
@@ -229,10 +231,10 @@ TEST_F(ExamplesTest, TestExampleCompareDocumentOnline) {
 TEST_F(ExamplesTest, TestExampleConvertDocument) {
     std::wstring documentsDir = localTestExamplesFolder;
     auto wordsApi = getApi();
-    auto requestDocumentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + L"Sample.docx"), std::istream::binary));
+    auto requestDocument = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + L"Sample.docx"), std::istream::binary));
     std::shared_ptr< requests::ConvertDocumentRequest > convertRequest(
         new requests::ConvertDocumentRequest(
-            requestDocumentStream, std::make_shared< std::wstring >(L"pdf")
+            requestDocument, std::make_shared< std::wstring >(L"pdf")
         )
     );
     wordsApi->convertDocument(convertRequest);
@@ -264,7 +266,6 @@ TEST_F(ExamplesTest, TestExampleCopyStyle) {
     auto wordsApi = getApi();
     auto requestStyleCopy = std::make_shared< aspose::words::cloud::models::StyleCopy >();
     requestStyleCopy->setStyleName(std::make_shared< std::wstring >(L"Heading 1"));
-
     std::shared_ptr< requests::CopyStyleRequest > copyRequest(
         new requests::CopyStyleRequest(
             std::make_shared< std::wstring >(L"Sample.docx"), requestStyleCopy
@@ -276,13 +277,12 @@ TEST_F(ExamplesTest, TestExampleCopyStyle) {
 TEST_F(ExamplesTest, TestExampleCopyStyleOnline) {
     std::wstring documentsDir = localTestExamplesFolder;
     auto wordsApi = getApi();
-    auto requestDocumentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + L"Sample.docx"), std::istream::binary));
+    auto requestDocument = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + L"Sample.docx"), std::istream::binary));
     auto requestStyleCopy = std::make_shared< aspose::words::cloud::models::StyleCopy >();
     requestStyleCopy->setStyleName(std::make_shared< std::wstring >(L"Heading 1"));
-
     std::shared_ptr< requests::CopyStyleOnlineRequest > copyRequest(
         new requests::CopyStyleOnlineRequest(
-            requestDocumentStream, requestStyleCopy
+            requestDocument, requestStyleCopy
         )
     );
     wordsApi->copyStyleOnline(copyRequest);
@@ -312,7 +312,6 @@ TEST_F(ExamplesTest, TestExampleCreateOrUpdateDocumentProperty) {
     auto wordsApi = getApi();
     auto requestProperty = std::make_shared< aspose::words::cloud::models::DocumentPropertyCreateOrUpdate >();
     requestProperty->setValue(std::make_shared< std::wstring >(L"Imran Anwar"));
-
     std::shared_ptr< requests::CreateOrUpdateDocumentPropertyRequest > createRequest(
         new requests::CreateOrUpdateDocumentPropertyRequest(
             std::make_shared< std::wstring >(L"Sample.docx"), std::make_shared< std::wstring >(L"AsposeAuthor"), requestProperty
@@ -324,13 +323,12 @@ TEST_F(ExamplesTest, TestExampleCreateOrUpdateDocumentProperty) {
 TEST_F(ExamplesTest, TestExampleCreateOrUpdateDocumentPropertyOnline) {
     std::wstring documentsDir = localTestExamplesFolder;
     auto wordsApi = getApi();
-    auto requestDocumentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + L"Sample.docx"), std::istream::binary));
+    auto requestDocument = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + L"Sample.docx"), std::istream::binary));
     auto requestProperty = std::make_shared< aspose::words::cloud::models::DocumentPropertyCreateOrUpdate >();
     requestProperty->setValue(std::make_shared< std::wstring >(L"Imran Anwar"));
-
     std::shared_ptr< requests::CreateOrUpdateDocumentPropertyOnlineRequest > createRequest(
         new requests::CreateOrUpdateDocumentPropertyOnlineRequest(
-            requestDocumentStream, std::make_shared< std::wstring >(L"AsposeAuthor"), requestProperty
+            requestDocument, std::make_shared< std::wstring >(L"AsposeAuthor"), requestProperty
         )
     );
     wordsApi->createOrUpdateDocumentPropertyOnline(createRequest);
@@ -349,10 +347,10 @@ TEST_F(ExamplesTest, TestExampleDeleteAllParagraphTabStops) {
 TEST_F(ExamplesTest, TestExampleDeleteAllParagraphTabStopsOnline) {
     std::wstring documentsDir = localTestExamplesFolder;
     auto wordsApi = getApi();
-    auto requestDocumentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + L"Sample.docx"), std::istream::binary));
+    auto requestDocument = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + L"Sample.docx"), std::istream::binary));
     std::shared_ptr< requests::DeleteAllParagraphTabStopsOnlineRequest > deleteRequest(
         new requests::DeleteAllParagraphTabStopsOnlineRequest(
-            requestDocumentStream, std::make_shared< int32_t >(0)
+            requestDocument, std::make_shared< int32_t >(0)
         )
     );
     wordsApi->deleteAllParagraphTabStopsOnline(deleteRequest);
@@ -371,10 +369,10 @@ TEST_F(ExamplesTest, TestExampleDeleteBorder) {
 TEST_F(ExamplesTest, TestExampleDeleteBorderOnline) {
     std::wstring documentsDir = localTestExamplesFolder;
     auto wordsApi = getApi();
-    auto requestDocumentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + L"Sample.docx"), std::istream::binary));
+    auto requestDocument = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + L"Sample.docx"), std::istream::binary));
     std::shared_ptr< requests::DeleteBorderOnlineRequest > deleteRequest(
         new requests::DeleteBorderOnlineRequest(
-            requestDocumentStream, std::make_shared< std::wstring >(L"left"), std::make_shared< std::wstring >(L"tables/1/rows/0/cells/0")
+            requestDocument, std::make_shared< std::wstring >(L"left"), std::make_shared< std::wstring >(L"tables/1/rows/0/cells/0")
         )
     );
     wordsApi->deleteBorderOnline(deleteRequest);
@@ -393,10 +391,10 @@ TEST_F(ExamplesTest, TestExampleDeleteBorders) {
 TEST_F(ExamplesTest, TestExampleDeleteBordersOnline) {
     std::wstring documentsDir = localTestExamplesFolder;
     auto wordsApi = getApi();
-    auto requestDocumentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + L"Sample.docx"), std::istream::binary));
+    auto requestDocument = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + L"Sample.docx"), std::istream::binary));
     std::shared_ptr< requests::DeleteBordersOnlineRequest > deleteRequest(
         new requests::DeleteBordersOnlineRequest(
-            requestDocumentStream, std::make_shared< std::wstring >(L"tables/1/rows/0/cells/0")
+            requestDocument, std::make_shared< std::wstring >(L"tables/1/rows/0/cells/0")
         )
     );
     wordsApi->deleteBordersOnline(deleteRequest);
@@ -415,10 +413,10 @@ TEST_F(ExamplesTest, TestExampleDeleteComment) {
 TEST_F(ExamplesTest, TestExampleDeleteCommentOnline) {
     std::wstring documentsDir = localTestExamplesFolder;
     auto wordsApi = getApi();
-    auto requestDocumentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + L"Sample.docx"), std::istream::binary));
+    auto requestDocument = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + L"Sample.docx"), std::istream::binary));
     std::shared_ptr< requests::DeleteCommentOnlineRequest > deleteRequest(
         new requests::DeleteCommentOnlineRequest(
-            requestDocumentStream, std::make_shared< int32_t >(0)
+            requestDocument, std::make_shared< int32_t >(0)
         )
     );
     wordsApi->deleteCommentOnline(deleteRequest);
@@ -437,10 +435,10 @@ TEST_F(ExamplesTest, TestExampleDeleteComments) {
 TEST_F(ExamplesTest, TestExampleDeleteCommentsOnline) {
     std::wstring documentsDir = localTestExamplesFolder;
     auto wordsApi = getApi();
-    auto requestDocumentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + L"Sample.docx"), std::istream::binary));
+    auto requestDocument = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + L"Sample.docx"), std::istream::binary));
     std::shared_ptr< requests::DeleteCommentsOnlineRequest > deleteRequest(
         new requests::DeleteCommentsOnlineRequest(
-            requestDocumentStream
+            requestDocument
         )
     );
     wordsApi->deleteCommentsOnline(deleteRequest);
@@ -459,10 +457,10 @@ TEST_F(ExamplesTest, TestExampleDeleteCustomXmlPart) {
 TEST_F(ExamplesTest, TestExampleDeleteCustomXmlPartOnline) {
     std::wstring documentsDir = localTestExamplesFolder;
     auto wordsApi = getApi();
-    auto requestDocumentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + L"Sample.docx"), std::istream::binary));
+    auto requestDocument = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + L"Sample.docx"), std::istream::binary));
     std::shared_ptr< requests::DeleteCustomXmlPartOnlineRequest > deleteRequest(
         new requests::DeleteCustomXmlPartOnlineRequest(
-            requestDocumentStream, std::make_shared< int32_t >(0)
+            requestDocument, std::make_shared< int32_t >(0)
         )
     );
     wordsApi->deleteCustomXmlPartOnline(deleteRequest);
@@ -481,10 +479,10 @@ TEST_F(ExamplesTest, TestExampleDeleteCustomXmlParts) {
 TEST_F(ExamplesTest, TestExampleDeleteCustomXmlPartsOnline) {
     std::wstring documentsDir = localTestExamplesFolder;
     auto wordsApi = getApi();
-    auto requestDocumentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + L"Sample.docx"), std::istream::binary));
+    auto requestDocument = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + L"Sample.docx"), std::istream::binary));
     std::shared_ptr< requests::DeleteCustomXmlPartsOnlineRequest > deleteRequest(
         new requests::DeleteCustomXmlPartsOnlineRequest(
-            requestDocumentStream
+            requestDocument
         )
     );
     wordsApi->deleteCustomXmlPartsOnline(deleteRequest);
@@ -503,10 +501,10 @@ TEST_F(ExamplesTest, TestExampleDeleteDocumentProperty) {
 TEST_F(ExamplesTest, TestExampleDeleteDocumentPropertyOnline) {
     std::wstring documentsDir = localTestExamplesFolder;
     auto wordsApi = getApi();
-    auto requestDocumentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + L"Sample.docx"), std::istream::binary));
+    auto requestDocument = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + L"Sample.docx"), std::istream::binary));
     std::shared_ptr< requests::DeleteDocumentPropertyOnlineRequest > deleteRequest(
         new requests::DeleteDocumentPropertyOnlineRequest(
-            requestDocumentStream, std::make_shared< std::wstring >(L"testProp")
+            requestDocument, std::make_shared< std::wstring >(L"testProp")
         )
     );
     wordsApi->deleteDocumentPropertyOnline(deleteRequest);
@@ -525,10 +523,10 @@ TEST_F(ExamplesTest, TestExampleDeleteDrawingObject) {
 TEST_F(ExamplesTest, TestExampleDeleteDrawingObjectOnline) {
     std::wstring documentsDir = localTestExamplesFolder;
     auto wordsApi = getApi();
-    auto requestDocumentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + L"Sample.docx"), std::istream::binary));
+    auto requestDocument = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + L"Sample.docx"), std::istream::binary));
     std::shared_ptr< requests::DeleteDrawingObjectOnlineRequest > deleteRequest(
         new requests::DeleteDrawingObjectOnlineRequest(
-            requestDocumentStream, std::make_shared< int32_t >(0)
+            requestDocument, std::make_shared< int32_t >(0)
         )
     );
     wordsApi->deleteDrawingObjectOnline(deleteRequest);
@@ -547,10 +545,10 @@ TEST_F(ExamplesTest, TestExampleDeleteField) {
 TEST_F(ExamplesTest, TestExampleDeleteFieldOnline) {
     std::wstring documentsDir = localTestExamplesFolder;
     auto wordsApi = getApi();
-    auto requestDocumentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + L"Sample.docx"), std::istream::binary));
+    auto requestDocument = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + L"Sample.docx"), std::istream::binary));
     std::shared_ptr< requests::DeleteFieldOnlineRequest > deleteRequest(
         new requests::DeleteFieldOnlineRequest(
-            requestDocumentStream, std::make_shared< int32_t >(0), std::make_shared< std::wstring >(L"sections/0/paragraphs/0")
+            requestDocument, std::make_shared< int32_t >(0), std::make_shared< std::wstring >(L"sections/0/paragraphs/0")
         )
     );
     wordsApi->deleteFieldOnline(deleteRequest);
@@ -569,10 +567,10 @@ TEST_F(ExamplesTest, TestExampleDeleteFields) {
 TEST_F(ExamplesTest, TestExampleDeleteFieldsOnline) {
     std::wstring documentsDir = localTestExamplesFolder;
     auto wordsApi = getApi();
-    auto requestDocumentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + L"Sample.docx"), std::istream::binary));
+    auto requestDocument = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + L"Sample.docx"), std::istream::binary));
     std::shared_ptr< requests::DeleteFieldsOnlineRequest > deleteRequest(
         new requests::DeleteFieldsOnlineRequest(
-            requestDocumentStream
+            requestDocument
         )
     );
     wordsApi->deleteFieldsOnline(deleteRequest);
@@ -611,10 +609,10 @@ TEST_F(ExamplesTest, TestExampleDeleteFootnote) {
 TEST_F(ExamplesTest, TestExampleDeleteFootnoteOnline) {
     std::wstring documentsDir = localTestExamplesFolder;
     auto wordsApi = getApi();
-    auto requestDocumentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + L"Sample.doc"), std::istream::binary));
+    auto requestDocument = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + L"Sample.doc"), std::istream::binary));
     std::shared_ptr< requests::DeleteFootnoteOnlineRequest > deleteRequest(
         new requests::DeleteFootnoteOnlineRequest(
-            requestDocumentStream, std::make_shared< int32_t >(0)
+            requestDocument, std::make_shared< int32_t >(0)
         )
     );
     wordsApi->deleteFootnoteOnline(deleteRequest);
@@ -633,10 +631,10 @@ TEST_F(ExamplesTest, TestExampleDeleteFormField) {
 TEST_F(ExamplesTest, TestExampleDeleteFormFieldOnline) {
     std::wstring documentsDir = localTestExamplesFolder;
     auto wordsApi = getApi();
-    auto requestDocumentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + L"Sample.docx"), std::istream::binary));
+    auto requestDocument = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + L"Sample.docx"), std::istream::binary));
     std::shared_ptr< requests::DeleteFormFieldOnlineRequest > deleteRequest(
         new requests::DeleteFormFieldOnlineRequest(
-            requestDocumentStream, std::make_shared< int32_t >(0), std::make_shared< std::wstring >(L"sections/0")
+            requestDocument, std::make_shared< int32_t >(0), std::make_shared< std::wstring >(L"sections/0")
         )
     );
     wordsApi->deleteFormFieldOnline(deleteRequest);
@@ -655,10 +653,10 @@ TEST_F(ExamplesTest, TestExampleDeleteHeaderFooter) {
 TEST_F(ExamplesTest, TestExampleDeleteHeaderFooterOnline) {
     std::wstring documentsDir = localTestExamplesFolder;
     auto wordsApi = getApi();
-    auto requestDocumentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + L"Sample.doc"), std::istream::binary));
+    auto requestDocument = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + L"Sample.doc"), std::istream::binary));
     std::shared_ptr< requests::DeleteHeaderFooterOnlineRequest > deleteRequest(
         new requests::DeleteHeaderFooterOnlineRequest(
-            requestDocumentStream, std::make_shared< std::wstring >(L""), std::make_shared< int32_t >(0)
+            requestDocument, std::make_shared< std::wstring >(L""), std::make_shared< int32_t >(0)
         )
     );
     wordsApi->deleteHeaderFooterOnline(deleteRequest);
@@ -677,10 +675,10 @@ TEST_F(ExamplesTest, TestExampleDeleteHeadersFooters) {
 TEST_F(ExamplesTest, TestExampleDeleteHeadersFootersOnline) {
     std::wstring documentsDir = localTestExamplesFolder;
     auto wordsApi = getApi();
-    auto requestDocumentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + L"Sample.doc"), std::istream::binary));
+    auto requestDocument = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + L"Sample.doc"), std::istream::binary));
     std::shared_ptr< requests::DeleteHeadersFootersOnlineRequest > deleteRequest(
         new requests::DeleteHeadersFootersOnlineRequest(
-            requestDocumentStream, std::make_shared< std::wstring >(L"")
+            requestDocument, std::make_shared< std::wstring >(L"")
         )
     );
     wordsApi->deleteHeadersFootersOnline(deleteRequest);
@@ -699,10 +697,10 @@ TEST_F(ExamplesTest, TestExampleDeleteMacros) {
 TEST_F(ExamplesTest, TestExampleDeleteMacrosOnline) {
     std::wstring documentsDir = localTestExamplesFolder;
     auto wordsApi = getApi();
-    auto requestDocumentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + L"Sample.docx"), std::istream::binary));
+    auto requestDocument = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + L"Sample.docx"), std::istream::binary));
     std::shared_ptr< requests::DeleteMacrosOnlineRequest > deleteRequest(
         new requests::DeleteMacrosOnlineRequest(
-            requestDocumentStream
+            requestDocument
         )
     );
     wordsApi->deleteMacrosOnline(deleteRequest);
@@ -721,10 +719,10 @@ TEST_F(ExamplesTest, TestExampleDeleteOfficeMathObject) {
 TEST_F(ExamplesTest, TestExampleDeleteOfficeMathObjectOnline) {
     std::wstring documentsDir = localTestExamplesFolder;
     auto wordsApi = getApi();
-    auto requestDocumentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + L"Sample.docx"), std::istream::binary));
+    auto requestDocument = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + L"Sample.docx"), std::istream::binary));
     std::shared_ptr< requests::DeleteOfficeMathObjectOnlineRequest > deleteRequest(
         new requests::DeleteOfficeMathObjectOnlineRequest(
-            requestDocumentStream, std::make_shared< int32_t >(0)
+            requestDocument, std::make_shared< int32_t >(0)
         )
     );
     wordsApi->deleteOfficeMathObjectOnline(deleteRequest);
@@ -753,10 +751,10 @@ TEST_F(ExamplesTest, TestExampleDeleteParagraphListFormat) {
 TEST_F(ExamplesTest, TestExampleDeleteParagraphListFormatOnline) {
     std::wstring documentsDir = localTestExamplesFolder;
     auto wordsApi = getApi();
-    auto requestDocumentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + L"Sample.doc"), std::istream::binary));
+    auto requestDocument = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + L"Sample.doc"), std::istream::binary));
     std::shared_ptr< requests::DeleteParagraphListFormatOnlineRequest > deleteRequest(
         new requests::DeleteParagraphListFormatOnlineRequest(
-            requestDocumentStream, std::make_shared< int32_t >(0)
+            requestDocument, std::make_shared< int32_t >(0)
         )
     );
     wordsApi->deleteParagraphListFormatOnline(deleteRequest);
@@ -765,10 +763,10 @@ TEST_F(ExamplesTest, TestExampleDeleteParagraphListFormatOnline) {
 TEST_F(ExamplesTest, TestExampleDeleteParagraphOnline) {
     std::wstring documentsDir = localTestExamplesFolder;
     auto wordsApi = getApi();
-    auto requestDocumentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + L"Sample.docx"), std::istream::binary));
+    auto requestDocument = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + L"Sample.docx"), std::istream::binary));
     std::shared_ptr< requests::DeleteParagraphOnlineRequest > deleteRequest(
         new requests::DeleteParagraphOnlineRequest(
-            requestDocumentStream, std::make_shared< int32_t >(0)
+            requestDocument, std::make_shared< int32_t >(0)
         )
     );
     wordsApi->deleteParagraphOnline(deleteRequest);
@@ -787,10 +785,10 @@ TEST_F(ExamplesTest, TestExampleDeleteParagraphTabStop) {
 TEST_F(ExamplesTest, TestExampleDeleteParagraphTabStopOnline) {
     std::wstring documentsDir = localTestExamplesFolder;
     auto wordsApi = getApi();
-    auto requestDocumentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + L"Sample.docx"), std::istream::binary));
+    auto requestDocument = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + L"Sample.docx"), std::istream::binary));
     std::shared_ptr< requests::DeleteParagraphTabStopOnlineRequest > deleteRequest(
         new requests::DeleteParagraphTabStopOnlineRequest(
-            requestDocumentStream, std::make_shared< double >(72.0), std::make_shared< int32_t >(0)
+            requestDocument, std::make_shared< double >(72.0), std::make_shared< int32_t >(0)
         )
     );
     wordsApi->deleteParagraphTabStopOnline(deleteRequest);
@@ -809,10 +807,10 @@ TEST_F(ExamplesTest, TestExampleDeleteRun) {
 TEST_F(ExamplesTest, TestExampleDeleteRunOnline) {
     std::wstring documentsDir = localTestExamplesFolder;
     auto wordsApi = getApi();
-    auto requestDocumentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + L"Sample.doc"), std::istream::binary));
+    auto requestDocument = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + L"Sample.doc"), std::istream::binary));
     std::shared_ptr< requests::DeleteRunOnlineRequest > deleteRequest(
         new requests::DeleteRunOnlineRequest(
-            requestDocumentStream, std::make_shared< std::wstring >(L"paragraphs/1"), std::make_shared< int32_t >(0)
+            requestDocument, std::make_shared< std::wstring >(L"paragraphs/1"), std::make_shared< int32_t >(0)
         )
     );
     wordsApi->deleteRunOnline(deleteRequest);
@@ -831,10 +829,10 @@ TEST_F(ExamplesTest, TestExampleDeleteSection) {
 TEST_F(ExamplesTest, TestExampleDeleteSectionOnline) {
     std::wstring documentsDir = localTestExamplesFolder;
     auto wordsApi = getApi();
-    auto requestDocumentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + L"Sample.docx"), std::istream::binary));
+    auto requestDocument = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + L"Sample.docx"), std::istream::binary));
     std::shared_ptr< requests::DeleteSectionOnlineRequest > deleteRequest(
         new requests::DeleteSectionOnlineRequest(
-            requestDocumentStream, std::make_shared< int32_t >(0)
+            requestDocument, std::make_shared< int32_t >(0)
         )
     );
     wordsApi->deleteSectionOnline(deleteRequest);
@@ -863,10 +861,10 @@ TEST_F(ExamplesTest, TestExampleDeleteTableCell) {
 TEST_F(ExamplesTest, TestExampleDeleteTableCellOnline) {
     std::wstring documentsDir = localTestExamplesFolder;
     auto wordsApi = getApi();
-    auto requestDocumentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + L"Sample.docx"), std::istream::binary));
+    auto requestDocument = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + L"Sample.docx"), std::istream::binary));
     std::shared_ptr< requests::DeleteTableCellOnlineRequest > deleteRequest(
         new requests::DeleteTableCellOnlineRequest(
-            requestDocumentStream, std::make_shared< std::wstring >(L"sections/0/tables/2/rows/0"), std::make_shared< int32_t >(0)
+            requestDocument, std::make_shared< std::wstring >(L"sections/0/tables/2/rows/0"), std::make_shared< int32_t >(0)
         )
     );
     wordsApi->deleteTableCellOnline(deleteRequest);
@@ -875,10 +873,10 @@ TEST_F(ExamplesTest, TestExampleDeleteTableCellOnline) {
 TEST_F(ExamplesTest, TestExampleDeleteTableOnline) {
     std::wstring documentsDir = localTestExamplesFolder;
     auto wordsApi = getApi();
-    auto requestDocumentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + L"Sample.docx"), std::istream::binary));
+    auto requestDocument = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + L"Sample.docx"), std::istream::binary));
     std::shared_ptr< requests::DeleteTableOnlineRequest > deleteRequest(
         new requests::DeleteTableOnlineRequest(
-            requestDocumentStream, std::make_shared< int32_t >(1)
+            requestDocument, std::make_shared< int32_t >(1)
         )
     );
     wordsApi->deleteTableOnline(deleteRequest);
@@ -897,10 +895,10 @@ TEST_F(ExamplesTest, TestExampleDeleteTableRow) {
 TEST_F(ExamplesTest, TestExampleDeleteTableRowOnline) {
     std::wstring documentsDir = localTestExamplesFolder;
     auto wordsApi = getApi();
-    auto requestDocumentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + L"Sample.docx"), std::istream::binary));
+    auto requestDocument = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + L"Sample.docx"), std::istream::binary));
     std::shared_ptr< requests::DeleteTableRowOnlineRequest > deleteRequest(
         new requests::DeleteTableRowOnlineRequest(
-            requestDocumentStream, std::make_shared< std::wstring >(L"tables/1"), std::make_shared< int32_t >(0)
+            requestDocument, std::make_shared< std::wstring >(L"tables/1"), std::make_shared< int32_t >(0)
         )
     );
     wordsApi->deleteTableRowOnline(deleteRequest);
@@ -919,10 +917,10 @@ TEST_F(ExamplesTest, TestExampleDeleteWatermark) {
 TEST_F(ExamplesTest, TestExampleDeleteWatermarkOnline) {
     std::wstring documentsDir = localTestExamplesFolder;
     auto wordsApi = getApi();
-    auto requestDocumentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + L"Sample.docx"), std::istream::binary));
+    auto requestDocument = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + L"Sample.docx"), std::istream::binary));
     std::shared_ptr< requests::DeleteWatermarkOnlineRequest > deleteRequest(
         new requests::DeleteWatermarkOnlineRequest(
-            requestDocumentStream
+            requestDocument
         )
     );
     wordsApi->deleteWatermarkOnline(deleteRequest);
@@ -951,11 +949,11 @@ TEST_F(ExamplesTest, TestExampleExecuteMailMerge) {
 TEST_F(ExamplesTest, TestExampleExecuteMailMergeOnline) {
     std::wstring documentsDir = localTestExamplesFolder;
     auto wordsApi = getApi();
-    auto requestTemplateStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + L"TestExecuteTemplate.doc"), std::istream::binary));
-    auto requestDataStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + L"TestExecuteTemplateData.txt"), std::istream::binary));
+    auto requestTemplate = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + L"TestExecuteTemplate.doc"), std::istream::binary));
+    auto requestData = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + L"TestExecuteTemplateData.txt"), std::istream::binary));
     std::shared_ptr< requests::ExecuteMailMergeOnlineRequest > mailMergeRequest(
         new requests::ExecuteMailMergeOnlineRequest(
-            requestTemplateStream, requestDataStream
+            requestTemplate, requestData
         )
     );
     wordsApi->executeMailMergeOnline(mailMergeRequest);
@@ -983,10 +981,10 @@ TEST_F(ExamplesTest, TestExampleGetBookmarkByName) {
 TEST_F(ExamplesTest, TestExampleGetBookmarkByNameOnline) {
     std::wstring documentsDir = localTestExamplesFolder;
     auto wordsApi = getApi();
-    auto requestDocumentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + L"Sample.docx"), std::istream::binary));
+    auto requestDocument = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + L"Sample.docx"), std::istream::binary));
     std::shared_ptr< requests::GetBookmarkByNameOnlineRequest > request(
         new requests::GetBookmarkByNameOnlineRequest(
-            requestDocumentStream, std::make_shared< std::wstring >(L"aspose")
+            requestDocument, std::make_shared< std::wstring >(L"aspose")
         )
     );
     wordsApi->getBookmarkByNameOnline(request);
@@ -1005,10 +1003,10 @@ TEST_F(ExamplesTest, TestExampleGetBookmarks) {
 TEST_F(ExamplesTest, TestExampleGetBookmarksOnline) {
     std::wstring documentsDir = localTestExamplesFolder;
     auto wordsApi = getApi();
-    auto requestDocumentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + L"Sample.docx"), std::istream::binary));
+    auto requestDocument = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + L"Sample.docx"), std::istream::binary));
     std::shared_ptr< requests::GetBookmarksOnlineRequest > request(
         new requests::GetBookmarksOnlineRequest(
-            requestDocumentStream
+            requestDocument
         )
     );
     wordsApi->getBookmarksOnline(request);
@@ -1027,10 +1025,10 @@ TEST_F(ExamplesTest, TestExampleGetBorder) {
 TEST_F(ExamplesTest, TestExampleGetBorderOnline) {
     std::wstring documentsDir = localTestExamplesFolder;
     auto wordsApi = getApi();
-    auto requestDocumentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + L"Sample.docx"), std::istream::binary));
+    auto requestDocument = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + L"Sample.docx"), std::istream::binary));
     std::shared_ptr< requests::GetBorderOnlineRequest > request(
         new requests::GetBorderOnlineRequest(
-            requestDocumentStream, std::make_shared< std::wstring >(L"left"), std::make_shared< std::wstring >(L"tables/1/rows/0/cells/0")
+            requestDocument, std::make_shared< std::wstring >(L"left"), std::make_shared< std::wstring >(L"tables/1/rows/0/cells/0")
         )
     );
     wordsApi->getBorderOnline(request);
@@ -1049,10 +1047,10 @@ TEST_F(ExamplesTest, TestExampleGetBorders) {
 TEST_F(ExamplesTest, TestExampleGetBordersOnline) {
     std::wstring documentsDir = localTestExamplesFolder;
     auto wordsApi = getApi();
-    auto requestDocumentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + L"Sample.docx"), std::istream::binary));
+    auto requestDocument = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + L"Sample.docx"), std::istream::binary));
     std::shared_ptr< requests::GetBordersOnlineRequest > request(
         new requests::GetBordersOnlineRequest(
-            requestDocumentStream, std::make_shared< std::wstring >(L"tables/1/rows/0/cells/0")
+            requestDocument, std::make_shared< std::wstring >(L"tables/1/rows/0/cells/0")
         )
     );
     wordsApi->getBordersOnline(request);
@@ -1071,10 +1069,10 @@ TEST_F(ExamplesTest, TestExampleGetComment) {
 TEST_F(ExamplesTest, TestExampleGetCommentOnline) {
     std::wstring documentsDir = localTestExamplesFolder;
     auto wordsApi = getApi();
-    auto requestDocumentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + L"Sample.docx"), std::istream::binary));
+    auto requestDocument = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + L"Sample.docx"), std::istream::binary));
     std::shared_ptr< requests::GetCommentOnlineRequest > request(
         new requests::GetCommentOnlineRequest(
-            requestDocumentStream, std::make_shared< int32_t >(0)
+            requestDocument, std::make_shared< int32_t >(0)
         )
     );
     wordsApi->getCommentOnline(request);
@@ -1093,10 +1091,10 @@ TEST_F(ExamplesTest, TestExampleGetComments) {
 TEST_F(ExamplesTest, TestExampleGetCommentsOnline) {
     std::wstring documentsDir = localTestExamplesFolder;
     auto wordsApi = getApi();
-    auto requestDocumentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + L"Sample.docx"), std::istream::binary));
+    auto requestDocument = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + L"Sample.docx"), std::istream::binary));
     std::shared_ptr< requests::GetCommentsOnlineRequest > request(
         new requests::GetCommentsOnlineRequest(
-            requestDocumentStream
+            requestDocument
         )
     );
     wordsApi->getCommentsOnline(request);
@@ -1115,10 +1113,10 @@ TEST_F(ExamplesTest, TestExampleGetCustomXmlPart) {
 TEST_F(ExamplesTest, TestExampleGetCustomXmlPartOnline) {
     std::wstring documentsDir = localTestExamplesFolder;
     auto wordsApi = getApi();
-    auto requestDocumentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + L"Sample.docx"), std::istream::binary));
+    auto requestDocument = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + L"Sample.docx"), std::istream::binary));
     std::shared_ptr< requests::GetCustomXmlPartOnlineRequest > request(
         new requests::GetCustomXmlPartOnlineRequest(
-            requestDocumentStream, std::make_shared< int32_t >(0)
+            requestDocument, std::make_shared< int32_t >(0)
         )
     );
     wordsApi->getCustomXmlPartOnline(request);
@@ -1137,10 +1135,10 @@ TEST_F(ExamplesTest, TestExampleGetCustomXmlParts) {
 TEST_F(ExamplesTest, TestExampleGetCustomXmlPartsOnline) {
     std::wstring documentsDir = localTestExamplesFolder;
     auto wordsApi = getApi();
-    auto requestDocumentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + L"Sample.docx"), std::istream::binary));
+    auto requestDocument = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + L"Sample.docx"), std::istream::binary));
     std::shared_ptr< requests::GetCustomXmlPartsOnlineRequest > request(
         new requests::GetCustomXmlPartsOnlineRequest(
-            requestDocumentStream
+            requestDocument
         )
     );
     wordsApi->getCustomXmlPartsOnline(request);
@@ -1169,10 +1167,10 @@ TEST_F(ExamplesTest, TestExampleGetDocumentDrawingObjectByIndex) {
 TEST_F(ExamplesTest, TestExampleGetDocumentDrawingObjectByIndexOnline) {
     std::wstring documentsDir = localTestExamplesFolder;
     auto wordsApi = getApi();
-    auto requestDocumentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + L"Sample.docx"), std::istream::binary));
+    auto requestDocument = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + L"Sample.docx"), std::istream::binary));
     std::shared_ptr< requests::GetDocumentDrawingObjectByIndexOnlineRequest > request(
         new requests::GetDocumentDrawingObjectByIndexOnlineRequest(
-            requestDocumentStream, std::make_shared< int32_t >(0), std::make_shared< std::wstring >(L"sections/0")
+            requestDocument, std::make_shared< int32_t >(0), std::make_shared< std::wstring >(L"sections/0")
         )
     );
     wordsApi->getDocumentDrawingObjectByIndexOnline(request);
@@ -1191,10 +1189,10 @@ TEST_F(ExamplesTest, TestExampleGetDocumentDrawingObjectImageData) {
 TEST_F(ExamplesTest, TestExampleGetDocumentDrawingObjectImageDataOnline) {
     std::wstring documentsDir = localTestExamplesFolder;
     auto wordsApi = getApi();
-    auto requestDocumentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + L"Sample.docx"), std::istream::binary));
+    auto requestDocument = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + L"Sample.docx"), std::istream::binary));
     std::shared_ptr< requests::GetDocumentDrawingObjectImageDataOnlineRequest > request(
         new requests::GetDocumentDrawingObjectImageDataOnlineRequest(
-            requestDocumentStream, std::make_shared< int32_t >(0), std::make_shared< std::wstring >(L"sections/0")
+            requestDocument, std::make_shared< int32_t >(0), std::make_shared< std::wstring >(L"sections/0")
         )
     );
     wordsApi->getDocumentDrawingObjectImageDataOnline(request);
@@ -1213,10 +1211,10 @@ TEST_F(ExamplesTest, TestExampleGetDocumentDrawingObjectOleData) {
 TEST_F(ExamplesTest, TestExampleGetDocumentDrawingObjectOleDataOnline) {
     std::wstring documentsDir = localTestExamplesFolder;
     auto wordsApi = getApi();
-    auto requestDocumentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + L"Sample.docx"), std::istream::binary));
+    auto requestDocument = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + L"Sample.docx"), std::istream::binary));
     std::shared_ptr< requests::GetDocumentDrawingObjectOleDataOnlineRequest > request(
         new requests::GetDocumentDrawingObjectOleDataOnlineRequest(
-            requestDocumentStream, std::make_shared< int32_t >(0), std::make_shared< std::wstring >(L"sections/0")
+            requestDocument, std::make_shared< int32_t >(0), std::make_shared< std::wstring >(L"sections/0")
         )
     );
     wordsApi->getDocumentDrawingObjectOleDataOnline(request);
@@ -1235,10 +1233,10 @@ TEST_F(ExamplesTest, TestExampleGetDocumentDrawingObjects) {
 TEST_F(ExamplesTest, TestExampleGetDocumentDrawingObjectsOnline) {
     std::wstring documentsDir = localTestExamplesFolder;
     auto wordsApi = getApi();
-    auto requestDocumentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + L"Sample.docx"), std::istream::binary));
+    auto requestDocument = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + L"Sample.docx"), std::istream::binary));
     std::shared_ptr< requests::GetDocumentDrawingObjectsOnlineRequest > request(
         new requests::GetDocumentDrawingObjectsOnlineRequest(
-            requestDocumentStream, std::make_shared< std::wstring >(L"sections/0")
+            requestDocument, std::make_shared< std::wstring >(L"sections/0")
         )
     );
     wordsApi->getDocumentDrawingObjectsOnline(request);
@@ -1257,10 +1255,10 @@ TEST_F(ExamplesTest, TestExampleGetDocumentFieldNames) {
 TEST_F(ExamplesTest, TestExampleGetDocumentFieldNamesOnline) {
     std::wstring documentsDir = localTestExamplesFolder;
     auto wordsApi = getApi();
-    auto requestTemplateStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + L"Sample.docx"), std::istream::binary));
+    auto requestTemplate = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + L"Sample.docx"), std::istream::binary));
     std::shared_ptr< requests::GetDocumentFieldNamesOnlineRequest > request(
         new requests::GetDocumentFieldNamesOnlineRequest(
-            requestTemplateStream, std::make_shared< bool >(true)
+            requestTemplate, std::make_shared< bool >(true)
         )
     );
     wordsApi->getDocumentFieldNamesOnline(request);
@@ -1279,10 +1277,10 @@ TEST_F(ExamplesTest, TestExampleGetDocumentHyperlinkByIndex) {
 TEST_F(ExamplesTest, TestExampleGetDocumentHyperlinkByIndexOnline) {
     std::wstring documentsDir = localTestExamplesFolder;
     auto wordsApi = getApi();
-    auto requestDocumentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + L"Sample.docx"), std::istream::binary));
+    auto requestDocument = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + L"Sample.docx"), std::istream::binary));
     std::shared_ptr< requests::GetDocumentHyperlinkByIndexOnlineRequest > request(
         new requests::GetDocumentHyperlinkByIndexOnlineRequest(
-            requestDocumentStream, std::make_shared< int32_t >(0)
+            requestDocument, std::make_shared< int32_t >(0)
         )
     );
     wordsApi->getDocumentHyperlinkByIndexOnline(request);
@@ -1301,10 +1299,10 @@ TEST_F(ExamplesTest, TestExampleGetDocumentHyperlinks) {
 TEST_F(ExamplesTest, TestExampleGetDocumentHyperlinksOnline) {
     std::wstring documentsDir = localTestExamplesFolder;
     auto wordsApi = getApi();
-    auto requestDocumentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + L"Sample.docx"), std::istream::binary));
+    auto requestDocument = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + L"Sample.docx"), std::istream::binary));
     std::shared_ptr< requests::GetDocumentHyperlinksOnlineRequest > request(
         new requests::GetDocumentHyperlinksOnlineRequest(
-            requestDocumentStream
+            requestDocument
         )
     );
     wordsApi->getDocumentHyperlinksOnline(request);
@@ -1323,10 +1321,10 @@ TEST_F(ExamplesTest, TestExampleGetDocumentProperties) {
 TEST_F(ExamplesTest, TestExampleGetDocumentPropertiesOnline) {
     std::wstring documentsDir = localTestExamplesFolder;
     auto wordsApi = getApi();
-    auto requestDocumentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + L"Sample.docx"), std::istream::binary));
+    auto requestDocument = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + L"Sample.docx"), std::istream::binary));
     std::shared_ptr< requests::GetDocumentPropertiesOnlineRequest > request(
         new requests::GetDocumentPropertiesOnlineRequest(
-            requestDocumentStream
+            requestDocument
         )
     );
     wordsApi->getDocumentPropertiesOnline(request);
@@ -1345,10 +1343,10 @@ TEST_F(ExamplesTest, TestExampleGetDocumentProperty) {
 TEST_F(ExamplesTest, TestExampleGetDocumentPropertyOnline) {
     std::wstring documentsDir = localTestExamplesFolder;
     auto wordsApi = getApi();
-    auto requestDocumentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + L"Sample.docx"), std::istream::binary));
+    auto requestDocument = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + L"Sample.docx"), std::istream::binary));
     std::shared_ptr< requests::GetDocumentPropertyOnlineRequest > request(
         new requests::GetDocumentPropertyOnlineRequest(
-            requestDocumentStream, std::make_shared< std::wstring >(L"Author")
+            requestDocument, std::make_shared< std::wstring >(L"Author")
         )
     );
     wordsApi->getDocumentPropertyOnline(request);
@@ -1367,10 +1365,10 @@ TEST_F(ExamplesTest, TestExampleGetDocumentProtection) {
 TEST_F(ExamplesTest, TestExampleGetDocumentProtectionOnline) {
     std::wstring documentsDir = localTestExamplesFolder;
     auto wordsApi = getApi();
-    auto requestDocumentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + L"Sample.docx"), std::istream::binary));
+    auto requestDocument = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + L"Sample.docx"), std::istream::binary));
     std::shared_ptr< requests::GetDocumentProtectionOnlineRequest > request(
         new requests::GetDocumentProtectionOnlineRequest(
-            requestDocumentStream
+            requestDocument
         )
     );
     wordsApi->getDocumentProtectionOnline(request);
@@ -1389,10 +1387,10 @@ TEST_F(ExamplesTest, TestExampleGetDocumentStatistics) {
 TEST_F(ExamplesTest, TestExampleGetDocumentStatisticsOnline) {
     std::wstring documentsDir = localTestExamplesFolder;
     auto wordsApi = getApi();
-    auto requestDocumentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + L"Sample.docx"), std::istream::binary));
+    auto requestDocument = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + L"Sample.docx"), std::istream::binary));
     std::shared_ptr< requests::GetDocumentStatisticsOnlineRequest > request(
         new requests::GetDocumentStatisticsOnlineRequest(
-            requestDocumentStream
+            requestDocument
         )
     );
     wordsApi->getDocumentStatisticsOnline(request);
@@ -1421,10 +1419,10 @@ TEST_F(ExamplesTest, TestExampleGetField) {
 TEST_F(ExamplesTest, TestExampleGetFieldOnline) {
     std::wstring documentsDir = localTestExamplesFolder;
     auto wordsApi = getApi();
-    auto requestDocumentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + L"Sample.docx"), std::istream::binary));
+    auto requestDocument = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + L"Sample.docx"), std::istream::binary));
     std::shared_ptr< requests::GetFieldOnlineRequest > request(
         new requests::GetFieldOnlineRequest(
-            requestDocumentStream, std::make_shared< int32_t >(0), std::make_shared< std::wstring >(L"sections/0/paragraphs/0")
+            requestDocument, std::make_shared< int32_t >(0), std::make_shared< std::wstring >(L"sections/0/paragraphs/0")
         )
     );
     wordsApi->getFieldOnline(request);
@@ -1443,10 +1441,10 @@ TEST_F(ExamplesTest, TestExampleGetFields) {
 TEST_F(ExamplesTest, TestExampleGetFieldsOnline) {
     std::wstring documentsDir = localTestExamplesFolder;
     auto wordsApi = getApi();
-    auto requestDocumentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + L"Sample.docx"), std::istream::binary));
+    auto requestDocument = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + L"Sample.docx"), std::istream::binary));
     std::shared_ptr< requests::GetFieldsOnlineRequest > request(
         new requests::GetFieldsOnlineRequest(
-            requestDocumentStream, std::make_shared< std::wstring >(L"sections/0")
+            requestDocument, std::make_shared< std::wstring >(L"sections/0")
         )
     );
     wordsApi->getFieldsOnline(request);
@@ -1475,10 +1473,10 @@ TEST_F(ExamplesTest, TestExampleGetFootnote) {
 TEST_F(ExamplesTest, TestExampleGetFootnoteOnline) {
     std::wstring documentsDir = localTestExamplesFolder;
     auto wordsApi = getApi();
-    auto requestDocumentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + L"Sample.doc"), std::istream::binary));
+    auto requestDocument = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + L"Sample.doc"), std::istream::binary));
     std::shared_ptr< requests::GetFootnoteOnlineRequest > request(
         new requests::GetFootnoteOnlineRequest(
-            requestDocumentStream, std::make_shared< int32_t >(0)
+            requestDocument, std::make_shared< int32_t >(0)
         )
     );
     wordsApi->getFootnoteOnline(request);
@@ -1497,10 +1495,10 @@ TEST_F(ExamplesTest, TestExampleGetFootnotes) {
 TEST_F(ExamplesTest, TestExampleGetFootnotesOnline) {
     std::wstring documentsDir = localTestExamplesFolder;
     auto wordsApi = getApi();
-    auto requestDocumentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + L"Sample.doc"), std::istream::binary));
+    auto requestDocument = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + L"Sample.doc"), std::istream::binary));
     std::shared_ptr< requests::GetFootnotesOnlineRequest > request(
         new requests::GetFootnotesOnlineRequest(
-            requestDocumentStream
+            requestDocument
         )
     );
     wordsApi->getFootnotesOnline(request);
@@ -1519,10 +1517,10 @@ TEST_F(ExamplesTest, TestExampleGetFormField) {
 TEST_F(ExamplesTest, TestExampleGetFormFieldOnline) {
     std::wstring documentsDir = localTestExamplesFolder;
     auto wordsApi = getApi();
-    auto requestDocumentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + L"Sample.docx"), std::istream::binary));
+    auto requestDocument = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + L"Sample.docx"), std::istream::binary));
     std::shared_ptr< requests::GetFormFieldOnlineRequest > request(
         new requests::GetFormFieldOnlineRequest(
-            requestDocumentStream, std::make_shared< int32_t >(0), std::make_shared< std::wstring >(L"sections/0")
+            requestDocument, std::make_shared< int32_t >(0), std::make_shared< std::wstring >(L"sections/0")
         )
     );
     wordsApi->getFormFieldOnline(request);
@@ -1541,10 +1539,10 @@ TEST_F(ExamplesTest, TestExampleGetFormFields) {
 TEST_F(ExamplesTest, TestExampleGetFormFieldsOnline) {
     std::wstring documentsDir = localTestExamplesFolder;
     auto wordsApi = getApi();
-    auto requestDocumentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + L"Sample.docx"), std::istream::binary));
+    auto requestDocument = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + L"Sample.docx"), std::istream::binary));
     std::shared_ptr< requests::GetFormFieldsOnlineRequest > request(
         new requests::GetFormFieldsOnlineRequest(
-            requestDocumentStream, std::make_shared< std::wstring >(L"sections/0")
+            requestDocument, std::make_shared< std::wstring >(L"sections/0")
         )
     );
     wordsApi->getFormFieldsOnline(request);
@@ -1573,10 +1571,10 @@ TEST_F(ExamplesTest, TestExampleGetHeaderFooterOfSection) {
 TEST_F(ExamplesTest, TestExampleGetHeaderFooterOfSectionOnline) {
     std::wstring documentsDir = localTestExamplesFolder;
     auto wordsApi = getApi();
-    auto requestDocumentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + L"Sample.doc"), std::istream::binary));
+    auto requestDocument = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + L"Sample.doc"), std::istream::binary));
     std::shared_ptr< requests::GetHeaderFooterOfSectionOnlineRequest > request(
         new requests::GetHeaderFooterOfSectionOnlineRequest(
-            requestDocumentStream, std::make_shared< int32_t >(0), std::make_shared< int32_t >(0)
+            requestDocument, std::make_shared< int32_t >(0), std::make_shared< int32_t >(0)
         )
     );
     wordsApi->getHeaderFooterOfSectionOnline(request);
@@ -1585,10 +1583,10 @@ TEST_F(ExamplesTest, TestExampleGetHeaderFooterOfSectionOnline) {
 TEST_F(ExamplesTest, TestExampleGetHeaderFooterOnline) {
     std::wstring documentsDir = localTestExamplesFolder;
     auto wordsApi = getApi();
-    auto requestDocumentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + L"Sample.doc"), std::istream::binary));
+    auto requestDocument = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + L"Sample.doc"), std::istream::binary));
     std::shared_ptr< requests::GetHeaderFooterOnlineRequest > request(
         new requests::GetHeaderFooterOnlineRequest(
-            requestDocumentStream, std::make_shared< int32_t >(0)
+            requestDocument, std::make_shared< int32_t >(0)
         )
     );
     wordsApi->getHeaderFooterOnline(request);
@@ -1607,10 +1605,10 @@ TEST_F(ExamplesTest, TestExampleGetHeaderFooters) {
 TEST_F(ExamplesTest, TestExampleGetHeaderFootersOnline) {
     std::wstring documentsDir = localTestExamplesFolder;
     auto wordsApi = getApi();
-    auto requestDocumentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + L"Sample.doc"), std::istream::binary));
+    auto requestDocument = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + L"Sample.doc"), std::istream::binary));
     std::shared_ptr< requests::GetHeaderFootersOnlineRequest > request(
         new requests::GetHeaderFootersOnlineRequest(
-            requestDocumentStream, std::make_shared< std::wstring >(L"")
+            requestDocument, std::make_shared< std::wstring >(L"")
         )
     );
     wordsApi->getHeaderFootersOnline(request);
@@ -1629,10 +1627,10 @@ TEST_F(ExamplesTest, TestExampleGetList) {
 TEST_F(ExamplesTest, TestExampleGetListOnline) {
     std::wstring documentsDir = localTestExamplesFolder;
     auto wordsApi = getApi();
-    auto requestDocumentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + L"Sample.doc"), std::istream::binary));
+    auto requestDocument = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + L"Sample.doc"), std::istream::binary));
     std::shared_ptr< requests::GetListOnlineRequest > request(
         new requests::GetListOnlineRequest(
-            requestDocumentStream, std::make_shared< int32_t >(1)
+            requestDocument, std::make_shared< int32_t >(1)
         )
     );
     wordsApi->getListOnline(request);
@@ -1651,10 +1649,10 @@ TEST_F(ExamplesTest, TestExampleGetLists) {
 TEST_F(ExamplesTest, TestExampleGetListsOnline) {
     std::wstring documentsDir = localTestExamplesFolder;
     auto wordsApi = getApi();
-    auto requestDocumentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + L"Sample.doc"), std::istream::binary));
+    auto requestDocument = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + L"Sample.doc"), std::istream::binary));
     std::shared_ptr< requests::GetListsOnlineRequest > request(
         new requests::GetListsOnlineRequest(
-            requestDocumentStream
+            requestDocument
         )
     );
     wordsApi->getListsOnline(request);
@@ -1673,10 +1671,10 @@ TEST_F(ExamplesTest, TestExampleGetOfficeMathObject) {
 TEST_F(ExamplesTest, TestExampleGetOfficeMathObjectOnline) {
     std::wstring documentsDir = localTestExamplesFolder;
     auto wordsApi = getApi();
-    auto requestDocumentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + L"Sample.docx"), std::istream::binary));
+    auto requestDocument = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + L"Sample.docx"), std::istream::binary));
     std::shared_ptr< requests::GetOfficeMathObjectOnlineRequest > request(
         new requests::GetOfficeMathObjectOnlineRequest(
-            requestDocumentStream, std::make_shared< int32_t >(0)
+            requestDocument, std::make_shared< int32_t >(0)
         )
     );
     wordsApi->getOfficeMathObjectOnline(request);
@@ -1695,10 +1693,10 @@ TEST_F(ExamplesTest, TestExampleGetOfficeMathObjects) {
 TEST_F(ExamplesTest, TestExampleGetOfficeMathObjectsOnline) {
     std::wstring documentsDir = localTestExamplesFolder;
     auto wordsApi = getApi();
-    auto requestDocumentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + L"Sample.docx"), std::istream::binary));
+    auto requestDocument = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + L"Sample.docx"), std::istream::binary));
     std::shared_ptr< requests::GetOfficeMathObjectsOnlineRequest > request(
         new requests::GetOfficeMathObjectsOnlineRequest(
-            requestDocumentStream
+            requestDocument
         )
     );
     wordsApi->getOfficeMathObjectsOnline(request);
@@ -1727,10 +1725,10 @@ TEST_F(ExamplesTest, TestExampleGetParagraphFormat) {
 TEST_F(ExamplesTest, TestExampleGetParagraphFormatOnline) {
     std::wstring documentsDir = localTestExamplesFolder;
     auto wordsApi = getApi();
-    auto requestDocumentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + L"Sample.docx"), std::istream::binary));
+    auto requestDocument = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + L"Sample.docx"), std::istream::binary));
     std::shared_ptr< requests::GetParagraphFormatOnlineRequest > request(
         new requests::GetParagraphFormatOnlineRequest(
-            requestDocumentStream, std::make_shared< int32_t >(0)
+            requestDocument, std::make_shared< int32_t >(0)
         )
     );
     wordsApi->getParagraphFormatOnline(request);
@@ -1749,10 +1747,10 @@ TEST_F(ExamplesTest, TestExampleGetParagraphListFormat) {
 TEST_F(ExamplesTest, TestExampleGetParagraphListFormatOnline) {
     std::wstring documentsDir = localTestExamplesFolder;
     auto wordsApi = getApi();
-    auto requestDocumentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + L"Sample.doc"), std::istream::binary));
+    auto requestDocument = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + L"Sample.doc"), std::istream::binary));
     std::shared_ptr< requests::GetParagraphListFormatOnlineRequest > request(
         new requests::GetParagraphListFormatOnlineRequest(
-            requestDocumentStream, std::make_shared< int32_t >(0)
+            requestDocument, std::make_shared< int32_t >(0)
         )
     );
     wordsApi->getParagraphListFormatOnline(request);
@@ -1761,10 +1759,10 @@ TEST_F(ExamplesTest, TestExampleGetParagraphListFormatOnline) {
 TEST_F(ExamplesTest, TestExampleGetParagraphOnline) {
     std::wstring documentsDir = localTestExamplesFolder;
     auto wordsApi = getApi();
-    auto requestDocumentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + L"Sample.docx"), std::istream::binary));
+    auto requestDocument = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + L"Sample.docx"), std::istream::binary));
     std::shared_ptr< requests::GetParagraphOnlineRequest > request(
         new requests::GetParagraphOnlineRequest(
-            requestDocumentStream, std::make_shared< int32_t >(0), std::make_shared< std::wstring >(L"sections/0")
+            requestDocument, std::make_shared< int32_t >(0), std::make_shared< std::wstring >(L"sections/0")
         )
     );
     wordsApi->getParagraphOnline(request);
@@ -1783,10 +1781,10 @@ TEST_F(ExamplesTest, TestExampleGetParagraphs) {
 TEST_F(ExamplesTest, TestExampleGetParagraphsOnline) {
     std::wstring documentsDir = localTestExamplesFolder;
     auto wordsApi = getApi();
-    auto requestDocumentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + L"Sample.docx"), std::istream::binary));
+    auto requestDocument = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + L"Sample.docx"), std::istream::binary));
     std::shared_ptr< requests::GetParagraphsOnlineRequest > request(
         new requests::GetParagraphsOnlineRequest(
-            requestDocumentStream, std::make_shared< std::wstring >(L"sections/0")
+            requestDocument, std::make_shared< std::wstring >(L"sections/0")
         )
     );
     wordsApi->getParagraphsOnline(request);
@@ -1805,10 +1803,10 @@ TEST_F(ExamplesTest, TestExampleGetParagraphTabStops) {
 TEST_F(ExamplesTest, TestExampleGetParagraphTabStopsOnline) {
     std::wstring documentsDir = localTestExamplesFolder;
     auto wordsApi = getApi();
-    auto requestDocumentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + L"Sample.docx"), std::istream::binary));
+    auto requestDocument = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + L"Sample.docx"), std::istream::binary));
     std::shared_ptr< requests::GetParagraphTabStopsOnlineRequest > request(
         new requests::GetParagraphTabStopsOnlineRequest(
-            requestDocumentStream, std::make_shared< int32_t >(0)
+            requestDocument, std::make_shared< int32_t >(0)
         )
     );
     wordsApi->getParagraphTabStopsOnline(request);
@@ -1836,10 +1834,10 @@ TEST_F(ExamplesTest, TestExampleGetRangeText) {
 TEST_F(ExamplesTest, TestExampleGetRangeTextOnline) {
     std::wstring documentsDir = localTestExamplesFolder;
     auto wordsApi = getApi();
-    auto requestDocumentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + L"Sample.doc"), std::istream::binary));
+    auto requestDocument = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + L"Sample.doc"), std::istream::binary));
     std::shared_ptr< requests::GetRangeTextOnlineRequest > request(
         new requests::GetRangeTextOnlineRequest(
-            requestDocumentStream, std::make_shared< std::wstring >(L"id0.0.0"), std::make_shared< std::wstring >(L"id0.0.1")
+            requestDocument, std::make_shared< std::wstring >(L"id0.0.0"), std::make_shared< std::wstring >(L"id0.0.1")
         )
     );
     wordsApi->getRangeTextOnline(request);
@@ -1868,10 +1866,10 @@ TEST_F(ExamplesTest, TestExampleGetRunFont) {
 TEST_F(ExamplesTest, TestExampleGetRunFontOnline) {
     std::wstring documentsDir = localTestExamplesFolder;
     auto wordsApi = getApi();
-    auto requestDocumentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + L"Sample.docx"), std::istream::binary));
+    auto requestDocument = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + L"Sample.docx"), std::istream::binary));
     std::shared_ptr< requests::GetRunFontOnlineRequest > request(
         new requests::GetRunFontOnlineRequest(
-            requestDocumentStream, std::make_shared< std::wstring >(L"paragraphs/0"), std::make_shared< int32_t >(0)
+            requestDocument, std::make_shared< std::wstring >(L"paragraphs/0"), std::make_shared< int32_t >(0)
         )
     );
     wordsApi->getRunFontOnline(request);
@@ -1880,10 +1878,10 @@ TEST_F(ExamplesTest, TestExampleGetRunFontOnline) {
 TEST_F(ExamplesTest, TestExampleGetRunOnline) {
     std::wstring documentsDir = localTestExamplesFolder;
     auto wordsApi = getApi();
-    auto requestDocumentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + L"Sample.docx"), std::istream::binary));
+    auto requestDocument = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + L"Sample.docx"), std::istream::binary));
     std::shared_ptr< requests::GetRunOnlineRequest > request(
         new requests::GetRunOnlineRequest(
-            requestDocumentStream, std::make_shared< std::wstring >(L"paragraphs/0"), std::make_shared< int32_t >(0)
+            requestDocument, std::make_shared< std::wstring >(L"paragraphs/0"), std::make_shared< int32_t >(0)
         )
     );
     wordsApi->getRunOnline(request);
@@ -1902,10 +1900,10 @@ TEST_F(ExamplesTest, TestExampleGetRuns) {
 TEST_F(ExamplesTest, TestExampleGetRunsOnline) {
     std::wstring documentsDir = localTestExamplesFolder;
     auto wordsApi = getApi();
-    auto requestDocumentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + L"Sample.docx"), std::istream::binary));
+    auto requestDocument = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + L"Sample.docx"), std::istream::binary));
     std::shared_ptr< requests::GetRunsOnlineRequest > request(
         new requests::GetRunsOnlineRequest(
-            requestDocumentStream, std::make_shared< std::wstring >(L"sections/0/paragraphs/0")
+            requestDocument, std::make_shared< std::wstring >(L"sections/0/paragraphs/0")
         )
     );
     wordsApi->getRunsOnline(request);
@@ -1924,10 +1922,10 @@ TEST_F(ExamplesTest, TestExampleGetSection) {
 TEST_F(ExamplesTest, TestExampleGetSectionOnline) {
     std::wstring documentsDir = localTestExamplesFolder;
     auto wordsApi = getApi();
-    auto requestDocumentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + L"Sample.docx"), std::istream::binary));
+    auto requestDocument = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + L"Sample.docx"), std::istream::binary));
     std::shared_ptr< requests::GetSectionOnlineRequest > request(
         new requests::GetSectionOnlineRequest(
-            requestDocumentStream, std::make_shared< int32_t >(0)
+            requestDocument, std::make_shared< int32_t >(0)
         )
     );
     wordsApi->getSectionOnline(request);
@@ -1946,10 +1944,10 @@ TEST_F(ExamplesTest, TestExampleGetSectionPageSetup) {
 TEST_F(ExamplesTest, TestExampleGetSectionPageSetupOnline) {
     std::wstring documentsDir = localTestExamplesFolder;
     auto wordsApi = getApi();
-    auto requestDocumentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + L"Sample.docx"), std::istream::binary));
+    auto requestDocument = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + L"Sample.docx"), std::istream::binary));
     std::shared_ptr< requests::GetSectionPageSetupOnlineRequest > request(
         new requests::GetSectionPageSetupOnlineRequest(
-            requestDocumentStream, std::make_shared< int32_t >(0)
+            requestDocument, std::make_shared< int32_t >(0)
         )
     );
     wordsApi->getSectionPageSetupOnline(request);
@@ -1968,10 +1966,10 @@ TEST_F(ExamplesTest, TestExampleGetSections) {
 TEST_F(ExamplesTest, TestExampleGetSectionsOnline) {
     std::wstring documentsDir = localTestExamplesFolder;
     auto wordsApi = getApi();
-    auto requestDocumentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + L"Sample.docx"), std::istream::binary));
+    auto requestDocument = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + L"Sample.docx"), std::istream::binary));
     std::shared_ptr< requests::GetSectionsOnlineRequest > request(
         new requests::GetSectionsOnlineRequest(
-            requestDocumentStream
+            requestDocument
         )
     );
     wordsApi->getSectionsOnline(request);
@@ -2000,10 +1998,10 @@ TEST_F(ExamplesTest, TestExampleGetStyleFromDocumentElement) {
 TEST_F(ExamplesTest, TestExampleGetStyleFromDocumentElementOnline) {
     std::wstring documentsDir = localTestExamplesFolder;
     auto wordsApi = getApi();
-    auto requestDocumentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + L"Sample.docx"), std::istream::binary));
+    auto requestDocument = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + L"Sample.docx"), std::istream::binary));
     std::shared_ptr< requests::GetStyleFromDocumentElementOnlineRequest > request(
         new requests::GetStyleFromDocumentElementOnlineRequest(
-            requestDocumentStream, std::make_shared< std::wstring >(L"paragraphs/1/paragraphFormat")
+            requestDocument, std::make_shared< std::wstring >(L"paragraphs/1/paragraphFormat")
         )
     );
     wordsApi->getStyleFromDocumentElementOnline(request);
@@ -2012,10 +2010,10 @@ TEST_F(ExamplesTest, TestExampleGetStyleFromDocumentElementOnline) {
 TEST_F(ExamplesTest, TestExampleGetStyleOnline) {
     std::wstring documentsDir = localTestExamplesFolder;
     auto wordsApi = getApi();
-    auto requestDocumentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + L"Sample.docx"), std::istream::binary));
+    auto requestDocument = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + L"Sample.docx"), std::istream::binary));
     std::shared_ptr< requests::GetStyleOnlineRequest > request(
         new requests::GetStyleOnlineRequest(
-            requestDocumentStream, std::make_shared< std::wstring >(L"Heading 1")
+            requestDocument, std::make_shared< std::wstring >(L"Heading 1")
         )
     );
     wordsApi->getStyleOnline(request);
@@ -2034,10 +2032,10 @@ TEST_F(ExamplesTest, TestExampleGetStyles) {
 TEST_F(ExamplesTest, TestExampleGetStylesOnline) {
     std::wstring documentsDir = localTestExamplesFolder;
     auto wordsApi = getApi();
-    auto requestDocumentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + L"Sample.docx"), std::istream::binary));
+    auto requestDocument = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + L"Sample.docx"), std::istream::binary));
     std::shared_ptr< requests::GetStylesOnlineRequest > request(
         new requests::GetStylesOnlineRequest(
-            requestDocumentStream
+            requestDocument
         )
     );
     wordsApi->getStylesOnline(request);
@@ -2076,10 +2074,10 @@ TEST_F(ExamplesTest, TestExampleGetTableCellFormat) {
 TEST_F(ExamplesTest, TestExampleGetTableCellFormatOnline) {
     std::wstring documentsDir = localTestExamplesFolder;
     auto wordsApi = getApi();
-    auto requestDocumentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + L"Sample.docx"), std::istream::binary));
+    auto requestDocument = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + L"Sample.docx"), std::istream::binary));
     std::shared_ptr< requests::GetTableCellFormatOnlineRequest > request(
         new requests::GetTableCellFormatOnlineRequest(
-            requestDocumentStream, std::make_shared< std::wstring >(L"sections/0/tables/2/rows/0"), std::make_shared< int32_t >(0)
+            requestDocument, std::make_shared< std::wstring >(L"sections/0/tables/2/rows/0"), std::make_shared< int32_t >(0)
         )
     );
     wordsApi->getTableCellFormatOnline(request);
@@ -2088,10 +2086,10 @@ TEST_F(ExamplesTest, TestExampleGetTableCellFormatOnline) {
 TEST_F(ExamplesTest, TestExampleGetTableCellOnline) {
     std::wstring documentsDir = localTestExamplesFolder;
     auto wordsApi = getApi();
-    auto requestDocumentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + L"Sample.docx"), std::istream::binary));
+    auto requestDocument = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + L"Sample.docx"), std::istream::binary));
     std::shared_ptr< requests::GetTableCellOnlineRequest > request(
         new requests::GetTableCellOnlineRequest(
-            requestDocumentStream, std::make_shared< std::wstring >(L"sections/0/tables/2/rows/0"), std::make_shared< int32_t >(0)
+            requestDocument, std::make_shared< std::wstring >(L"sections/0/tables/2/rows/0"), std::make_shared< int32_t >(0)
         )
     );
     wordsApi->getTableCellOnline(request);
@@ -2100,10 +2098,10 @@ TEST_F(ExamplesTest, TestExampleGetTableCellOnline) {
 TEST_F(ExamplesTest, TestExampleGetTableOnline) {
     std::wstring documentsDir = localTestExamplesFolder;
     auto wordsApi = getApi();
-    auto requestDocumentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + L"Sample.docx"), std::istream::binary));
+    auto requestDocument = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + L"Sample.docx"), std::istream::binary));
     std::shared_ptr< requests::GetTableOnlineRequest > request(
         new requests::GetTableOnlineRequest(
-            requestDocumentStream, std::make_shared< int32_t >(1)
+            requestDocument, std::make_shared< int32_t >(1)
         )
     );
     wordsApi->getTableOnline(request);
@@ -2122,10 +2120,10 @@ TEST_F(ExamplesTest, TestExampleGetTableProperties) {
 TEST_F(ExamplesTest, TestExampleGetTablePropertiesOnline) {
     std::wstring documentsDir = localTestExamplesFolder;
     auto wordsApi = getApi();
-    auto requestDocumentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + L"Sample.docx"), std::istream::binary));
+    auto requestDocument = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + L"Sample.docx"), std::istream::binary));
     std::shared_ptr< requests::GetTablePropertiesOnlineRequest > request(
         new requests::GetTablePropertiesOnlineRequest(
-            requestDocumentStream, std::make_shared< int32_t >(1)
+            requestDocument, std::make_shared< int32_t >(1)
         )
     );
     wordsApi->getTablePropertiesOnline(request);
@@ -2154,10 +2152,10 @@ TEST_F(ExamplesTest, TestExampleGetTableRowFormat) {
 TEST_F(ExamplesTest, TestExampleGetTableRowFormatOnline) {
     std::wstring documentsDir = localTestExamplesFolder;
     auto wordsApi = getApi();
-    auto requestDocumentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + L"Sample.docx"), std::istream::binary));
+    auto requestDocument = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + L"Sample.docx"), std::istream::binary));
     std::shared_ptr< requests::GetTableRowFormatOnlineRequest > request(
         new requests::GetTableRowFormatOnlineRequest(
-            requestDocumentStream, std::make_shared< std::wstring >(L"sections/0/tables/2"), std::make_shared< int32_t >(0)
+            requestDocument, std::make_shared< std::wstring >(L"sections/0/tables/2"), std::make_shared< int32_t >(0)
         )
     );
     wordsApi->getTableRowFormatOnline(request);
@@ -2166,10 +2164,10 @@ TEST_F(ExamplesTest, TestExampleGetTableRowFormatOnline) {
 TEST_F(ExamplesTest, TestExampleGetTableRowOnline) {
     std::wstring documentsDir = localTestExamplesFolder;
     auto wordsApi = getApi();
-    auto requestDocumentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + L"Sample.docx"), std::istream::binary));
+    auto requestDocument = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + L"Sample.docx"), std::istream::binary));
     std::shared_ptr< requests::GetTableRowOnlineRequest > request(
         new requests::GetTableRowOnlineRequest(
-            requestDocumentStream, std::make_shared< std::wstring >(L"tables/1"), std::make_shared< int32_t >(0)
+            requestDocument, std::make_shared< std::wstring >(L"tables/1"), std::make_shared< int32_t >(0)
         )
     );
     wordsApi->getTableRowOnline(request);
@@ -2188,10 +2186,10 @@ TEST_F(ExamplesTest, TestExampleGetTables) {
 TEST_F(ExamplesTest, TestExampleGetTablesOnline) {
     std::wstring documentsDir = localTestExamplesFolder;
     auto wordsApi = getApi();
-    auto requestDocumentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + L"Sample.docx"), std::istream::binary));
+    auto requestDocument = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + L"Sample.docx"), std::istream::binary));
     std::shared_ptr< requests::GetTablesOnlineRequest > request(
         new requests::GetTablesOnlineRequest(
-            requestDocumentStream
+            requestDocument
         )
     );
     wordsApi->getTablesOnline(request);
@@ -2201,25 +2199,20 @@ TEST_F(ExamplesTest, TestExampleInsertComment) {
     auto wordsApi = getApi();
     auto requestCommentRangeStartNode = std::make_shared< aspose::words::cloud::models::NodeLink >();
     requestCommentRangeStartNode->setNodeId(std::make_shared< std::wstring >(L"0.3.0.3"));
-
     auto requestCommentRangeStart = std::make_shared< aspose::words::cloud::models::DocumentPosition >();
     requestCommentRangeStart->setNode(requestCommentRangeStartNode);
     requestCommentRangeStart->setOffset(std::make_shared< int32_t >(0));
-
     auto requestCommentRangeEndNode = std::make_shared< aspose::words::cloud::models::NodeLink >();
     requestCommentRangeEndNode->setNodeId(std::make_shared< std::wstring >(L"0.3.0.3"));
-
     auto requestCommentRangeEnd = std::make_shared< aspose::words::cloud::models::DocumentPosition >();
     requestCommentRangeEnd->setNode(requestCommentRangeEndNode);
     requestCommentRangeEnd->setOffset(std::make_shared< int32_t >(0));
-
     auto requestComment = std::make_shared< aspose::words::cloud::models::CommentInsert >();
     requestComment->setRangeStart(requestCommentRangeStart);
     requestComment->setRangeEnd(requestCommentRangeEnd);
     requestComment->setInitial(std::make_shared< std::wstring >(L"IA"));
     requestComment->setAuthor(std::make_shared< std::wstring >(L"Imran Anwar"));
     requestComment->setText(std::make_shared< std::wstring >(L"A new Comment"));
-
     std::shared_ptr< requests::InsertCommentRequest > insertRequest(
         new requests::InsertCommentRequest(
             std::make_shared< std::wstring >(L"Sample.docx"), requestComment
@@ -2231,31 +2224,26 @@ TEST_F(ExamplesTest, TestExampleInsertComment) {
 TEST_F(ExamplesTest, TestExampleInsertCommentOnline) {
     std::wstring documentsDir = localTestExamplesFolder;
     auto wordsApi = getApi();
-    auto requestDocumentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + L"Sample.docx"), std::istream::binary));
+    auto requestDocument = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + L"Sample.docx"), std::istream::binary));
     auto requestCommentRangeStartNode = std::make_shared< aspose::words::cloud::models::NodeLink >();
     requestCommentRangeStartNode->setNodeId(std::make_shared< std::wstring >(L"0.3.0.3"));
-
     auto requestCommentRangeStart = std::make_shared< aspose::words::cloud::models::DocumentPosition >();
     requestCommentRangeStart->setNode(requestCommentRangeStartNode);
     requestCommentRangeStart->setOffset(std::make_shared< int32_t >(0));
-
     auto requestCommentRangeEndNode = std::make_shared< aspose::words::cloud::models::NodeLink >();
     requestCommentRangeEndNode->setNodeId(std::make_shared< std::wstring >(L"0.3.0.3"));
-
     auto requestCommentRangeEnd = std::make_shared< aspose::words::cloud::models::DocumentPosition >();
     requestCommentRangeEnd->setNode(requestCommentRangeEndNode);
     requestCommentRangeEnd->setOffset(std::make_shared< int32_t >(0));
-
     auto requestComment = std::make_shared< aspose::words::cloud::models::CommentInsert >();
     requestComment->setRangeStart(requestCommentRangeStart);
     requestComment->setRangeEnd(requestCommentRangeEnd);
     requestComment->setInitial(std::make_shared< std::wstring >(L"IA"));
     requestComment->setAuthor(std::make_shared< std::wstring >(L"Imran Anwar"));
     requestComment->setText(std::make_shared< std::wstring >(L"A new Comment"));
-
     std::shared_ptr< requests::InsertCommentOnlineRequest > insertRequest(
         new requests::InsertCommentOnlineRequest(
-            requestDocumentStream, requestComment
+            requestDocument, requestComment
         )
     );
     wordsApi->insertCommentOnline(insertRequest);
@@ -2266,7 +2254,6 @@ TEST_F(ExamplesTest, TestExampleInsertCustomXmlPart) {
     auto requestCustomXmlPart = std::make_shared< aspose::words::cloud::models::CustomXmlPartInsert >();
     requestCustomXmlPart->setId(std::make_shared< std::wstring >(L"hello"));
     requestCustomXmlPart->setData(std::make_shared< std::wstring >(L"<data>Hello world</data>"));
-
     std::shared_ptr< requests::InsertCustomXmlPartRequest > insertRequest(
         new requests::InsertCustomXmlPartRequest(
             std::make_shared< std::wstring >(L"Sample.docx"), requestCustomXmlPart
@@ -2278,14 +2265,13 @@ TEST_F(ExamplesTest, TestExampleInsertCustomXmlPart) {
 TEST_F(ExamplesTest, TestExampleInsertCustomXmlPartOnline) {
     std::wstring documentsDir = localTestExamplesFolder;
     auto wordsApi = getApi();
-    auto requestDocumentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + L"Sample.docx"), std::istream::binary));
+    auto requestDocument = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + L"Sample.docx"), std::istream::binary));
     auto requestCustomXmlPart = std::make_shared< aspose::words::cloud::models::CustomXmlPartInsert >();
     requestCustomXmlPart->setId(std::make_shared< std::wstring >(L"hello"));
     requestCustomXmlPart->setData(std::make_shared< std::wstring >(L"<data>Hello world</data>"));
-
     std::shared_ptr< requests::InsertCustomXmlPartOnlineRequest > insertRequest(
         new requests::InsertCustomXmlPartOnlineRequest(
-            requestDocumentStream, requestCustomXmlPart
+            requestDocument, requestCustomXmlPart
         )
     );
     wordsApi->insertCustomXmlPartOnline(insertRequest);
@@ -2294,7 +2280,6 @@ TEST_F(ExamplesTest, TestExampleInsertCustomXmlPartOnline) {
 TEST_F(ExamplesTest, TestExampleInsertDrawingObject) {
     std::wstring documentsDir = localTestExamplesFolder;
     auto wordsApi = getApi();
-    auto requestImageFileStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + L"Common/aspose-cloud.png"), std::istream::binary));
     auto requestDrawingObject = std::make_shared< aspose::words::cloud::models::DrawingObjectInsert >();
     requestDrawingObject->setHeight(std::make_shared< double >(0));
     requestDrawingObject->setLeft(std::make_shared< double >(0));
@@ -2303,10 +2288,10 @@ TEST_F(ExamplesTest, TestExampleInsertDrawingObject) {
     requestDrawingObject->setRelativeHorizontalPosition(std::make_shared< aspose::words::cloud::models::DrawingObjectInsert::RelativeHorizontalPosition >(aspose::words::cloud::models::DrawingObjectInsert::RelativeHorizontalPosition::MARGIN));
     requestDrawingObject->setRelativeVerticalPosition(std::make_shared< aspose::words::cloud::models::DrawingObjectInsert::RelativeVerticalPosition >(aspose::words::cloud::models::DrawingObjectInsert::RelativeVerticalPosition::MARGIN));
     requestDrawingObject->setWrapType(std::make_shared< aspose::words::cloud::models::DrawingObjectInsert::WrapType >(aspose::words::cloud::models::DrawingObjectInsert::WrapType::INLINE));
-
+    auto requestImageFile = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + L"Common/aspose-cloud.png"), std::istream::binary));
     std::shared_ptr< requests::InsertDrawingObjectRequest > insertRequest(
         new requests::InsertDrawingObjectRequest(
-            std::make_shared< std::wstring >(L"Sample.docx"), requestDrawingObject, requestImageFileStream
+            std::make_shared< std::wstring >(L"Sample.docx"), requestDrawingObject, requestImageFile
         )
     );
     wordsApi->insertDrawingObject(insertRequest);
@@ -2315,8 +2300,7 @@ TEST_F(ExamplesTest, TestExampleInsertDrawingObject) {
 TEST_F(ExamplesTest, TestExampleInsertDrawingObjectOnline) {
     std::wstring documentsDir = localTestExamplesFolder;
     auto wordsApi = getApi();
-    auto requestDocumentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + L"Sample.docx"), std::istream::binary));
-    auto requestImageFileStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + L"Common/aspose-cloud.png"), std::istream::binary));
+    auto requestDocument = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + L"Sample.docx"), std::istream::binary));
     auto requestDrawingObject = std::make_shared< aspose::words::cloud::models::DrawingObjectInsert >();
     requestDrawingObject->setHeight(std::make_shared< double >(0));
     requestDrawingObject->setLeft(std::make_shared< double >(0));
@@ -2325,10 +2309,10 @@ TEST_F(ExamplesTest, TestExampleInsertDrawingObjectOnline) {
     requestDrawingObject->setRelativeHorizontalPosition(std::make_shared< aspose::words::cloud::models::DrawingObjectInsert::RelativeHorizontalPosition >(aspose::words::cloud::models::DrawingObjectInsert::RelativeHorizontalPosition::MARGIN));
     requestDrawingObject->setRelativeVerticalPosition(std::make_shared< aspose::words::cloud::models::DrawingObjectInsert::RelativeVerticalPosition >(aspose::words::cloud::models::DrawingObjectInsert::RelativeVerticalPosition::MARGIN));
     requestDrawingObject->setWrapType(std::make_shared< aspose::words::cloud::models::DrawingObjectInsert::WrapType >(aspose::words::cloud::models::DrawingObjectInsert::WrapType::INLINE));
-
+    auto requestImageFile = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + L"Common/aspose-cloud.png"), std::istream::binary));
     std::shared_ptr< requests::InsertDrawingObjectOnlineRequest > insertRequest(
         new requests::InsertDrawingObjectOnlineRequest(
-            requestDocumentStream, requestDrawingObject, requestImageFileStream
+            requestDocument, requestDrawingObject, requestImageFile
         )
     );
     wordsApi->insertDrawingObjectOnline(insertRequest);
@@ -2338,7 +2322,6 @@ TEST_F(ExamplesTest, TestExampleInsertField) {
     auto wordsApi = getApi();
     auto requestField = std::make_shared< aspose::words::cloud::models::FieldInsert >();
     requestField->setFieldCode(std::make_shared< std::wstring >(L"{ NUMPAGES }"));
-
     std::shared_ptr< requests::InsertFieldRequest > insertRequest(
         new requests::InsertFieldRequest(
             std::make_shared< std::wstring >(L"Sample.docx"), requestField
@@ -2350,13 +2333,12 @@ TEST_F(ExamplesTest, TestExampleInsertField) {
 TEST_F(ExamplesTest, TestExampleInsertFieldOnline) {
     std::wstring documentsDir = localTestExamplesFolder;
     auto wordsApi = getApi();
-    auto requestDocumentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + L"Sample.docx"), std::istream::binary));
+    auto requestDocument = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + L"Sample.docx"), std::istream::binary));
     auto requestField = std::make_shared< aspose::words::cloud::models::FieldInsert >();
     requestField->setFieldCode(std::make_shared< std::wstring >(L"{ NUMPAGES }"));
-
     std::shared_ptr< requests::InsertFieldOnlineRequest > insertRequest(
         new requests::InsertFieldOnlineRequest(
-            requestDocumentStream, requestField, std::make_shared< std::wstring >(L"sections/0/paragraphs/0")
+            requestDocument, requestField, std::make_shared< std::wstring >(L"sections/0/paragraphs/0")
         )
     );
     wordsApi->insertFieldOnline(insertRequest);
@@ -2367,7 +2349,6 @@ TEST_F(ExamplesTest, TestExampleInsertFootnote) {
     auto requestFootnoteDto = std::make_shared< aspose::words::cloud::models::FootnoteInsert >();
     requestFootnoteDto->setFootnoteType(std::make_shared< aspose::words::cloud::models::FootnoteBase::FootnoteType >(aspose::words::cloud::models::FootnoteBase::FootnoteType::ENDNOTE));
     requestFootnoteDto->setText(std::make_shared< std::wstring >(L"test endnote"));
-
     std::shared_ptr< requests::InsertFootnoteRequest > insertRequest(
         new requests::InsertFootnoteRequest(
             std::make_shared< std::wstring >(L"Sample.docx"), requestFootnoteDto
@@ -2379,14 +2360,13 @@ TEST_F(ExamplesTest, TestExampleInsertFootnote) {
 TEST_F(ExamplesTest, TestExampleInsertFootnoteOnline) {
     std::wstring documentsDir = localTestExamplesFolder;
     auto wordsApi = getApi();
-    auto requestDocumentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + L"Sample.doc"), std::istream::binary));
+    auto requestDocument = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + L"Sample.doc"), std::istream::binary));
     auto requestFootnoteDto = std::make_shared< aspose::words::cloud::models::FootnoteInsert >();
     requestFootnoteDto->setFootnoteType(std::make_shared< aspose::words::cloud::models::FootnoteBase::FootnoteType >(aspose::words::cloud::models::FootnoteBase::FootnoteType::ENDNOTE));
     requestFootnoteDto->setText(std::make_shared< std::wstring >(L"test endnote"));
-
     std::shared_ptr< requests::InsertFootnoteOnlineRequest > insertRequest(
         new requests::InsertFootnoteOnlineRequest(
-            requestDocumentStream, requestFootnoteDto
+            requestDocument, requestFootnoteDto
         )
     );
     wordsApi->insertFootnoteOnline(insertRequest);
@@ -2402,7 +2382,6 @@ TEST_F(ExamplesTest, TestExampleInsertFormField) {
     requestFormField->setTextInputType(std::make_shared< aspose::words::cloud::models::FormFieldTextInput::TextInputType >(aspose::words::cloud::models::FormFieldTextInput::TextInputType::REGULAR));
     requestFormField->setTextInputDefault(std::make_shared< std::wstring >(L"123"));
     requestFormField->setTextInputFormat(std::make_shared< std::wstring >(L"UPPERCASE"));
-
     std::shared_ptr< requests::InsertFormFieldRequest > insertRequest(
         new requests::InsertFormFieldRequest(
             std::make_shared< std::wstring >(L"Sample.docx"), requestFormField
@@ -2414,7 +2393,7 @@ TEST_F(ExamplesTest, TestExampleInsertFormField) {
 TEST_F(ExamplesTest, TestExampleInsertFormFieldOnline) {
     std::wstring documentsDir = localTestExamplesFolder;
     auto wordsApi = getApi();
-    auto requestDocumentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + L"Sample.docx"), std::istream::binary));
+    auto requestDocument = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + L"Sample.docx"), std::istream::binary));
     auto requestFormField = std::make_shared< aspose::words::cloud::models::FormFieldTextInput >();
     requestFormField->setName(std::make_shared< std::wstring >(L"FullName"));
     requestFormField->setEnabled(std::make_shared< bool >(true));
@@ -2423,10 +2402,9 @@ TEST_F(ExamplesTest, TestExampleInsertFormFieldOnline) {
     requestFormField->setTextInputType(std::make_shared< aspose::words::cloud::models::FormFieldTextInput::TextInputType >(aspose::words::cloud::models::FormFieldTextInput::TextInputType::REGULAR));
     requestFormField->setTextInputDefault(std::make_shared< std::wstring >(L"123"));
     requestFormField->setTextInputFormat(std::make_shared< std::wstring >(L"UPPERCASE"));
-
     std::shared_ptr< requests::InsertFormFieldOnlineRequest > insertRequest(
         new requests::InsertFormFieldOnlineRequest(
-            requestDocumentStream, requestFormField, std::make_shared< std::wstring >(L"sections/0/paragraphs/0")
+            requestDocument, requestFormField, std::make_shared< std::wstring >(L"sections/0/paragraphs/0")
         )
     );
     wordsApi->insertFormFieldOnline(insertRequest);
@@ -2445,10 +2423,10 @@ TEST_F(ExamplesTest, TestExampleInsertHeaderFooter) {
 TEST_F(ExamplesTest, TestExampleInsertHeaderFooterOnline) {
     std::wstring documentsDir = localTestExamplesFolder;
     auto wordsApi = getApi();
-    auto requestDocumentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + L"Sample.doc"), std::istream::binary));
+    auto requestDocument = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + L"Sample.doc"), std::istream::binary));
     std::shared_ptr< requests::InsertHeaderFooterOnlineRequest > insertRequest(
         new requests::InsertHeaderFooterOnlineRequest(
-            requestDocumentStream, std::make_shared< std::wstring >(L""), std::make_shared< std::wstring >(L"FooterEven")
+            requestDocument, std::make_shared< std::wstring >(L""), std::make_shared< std::wstring >(L"FooterEven")
         )
     );
     wordsApi->insertHeaderFooterOnline(insertRequest);
@@ -2458,7 +2436,6 @@ TEST_F(ExamplesTest, TestExampleInsertList) {
     auto wordsApi = getApi();
     auto requestListInsert = std::make_shared< aspose::words::cloud::models::ListInsert >();
     requestListInsert->setTemplate(std::make_shared< aspose::words::cloud::models::ListInsert::Template >(aspose::words::cloud::models::ListInsert::Template::OUTLINE_LEGAL));
-
     std::shared_ptr< requests::InsertListRequest > insertRequest(
         new requests::InsertListRequest(
             std::make_shared< std::wstring >(L"TestGetLists.doc"), requestListInsert
@@ -2470,13 +2447,12 @@ TEST_F(ExamplesTest, TestExampleInsertList) {
 TEST_F(ExamplesTest, TestExampleInsertListOnline) {
     std::wstring documentsDir = localTestExamplesFolder;
     auto wordsApi = getApi();
-    auto requestDocumentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + L"Sample.doc"), std::istream::binary));
+    auto requestDocument = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + L"Sample.doc"), std::istream::binary));
     auto requestListInsert = std::make_shared< aspose::words::cloud::models::ListInsert >();
     requestListInsert->setTemplate(std::make_shared< aspose::words::cloud::models::ListInsert::Template >(aspose::words::cloud::models::ListInsert::Template::OUTLINE_LEGAL));
-
     std::shared_ptr< requests::InsertListOnlineRequest > insertRequest(
         new requests::InsertListOnlineRequest(
-            requestDocumentStream, requestListInsert
+            requestDocument, requestListInsert
         )
     );
     wordsApi->insertListOnline(insertRequest);
@@ -2488,7 +2464,6 @@ TEST_F(ExamplesTest, TestExampleInsertOrUpdateParagraphTabStop) {
     requestTabStopInsertDto->setAlignment(std::make_shared< aspose::words::cloud::models::TabStopBase::Alignment >(aspose::words::cloud::models::TabStopBase::Alignment::LEFT));
     requestTabStopInsertDto->setLeader(std::make_shared< aspose::words::cloud::models::TabStopBase::Leader >(aspose::words::cloud::models::TabStopBase::Leader::NONE));
     requestTabStopInsertDto->setPosition(std::make_shared< double >(100.0));
-
     std::shared_ptr< requests::InsertOrUpdateParagraphTabStopRequest > insertRequest(
         new requests::InsertOrUpdateParagraphTabStopRequest(
             std::make_shared< std::wstring >(L"Sample.docx"), std::make_shared< int32_t >(0), requestTabStopInsertDto
@@ -2500,15 +2475,14 @@ TEST_F(ExamplesTest, TestExampleInsertOrUpdateParagraphTabStop) {
 TEST_F(ExamplesTest, TestExampleInsertOrUpdateParagraphTabStopOnline) {
     std::wstring documentsDir = localTestExamplesFolder;
     auto wordsApi = getApi();
-    auto requestDocumentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + L"Sample.docx"), std::istream::binary));
+    auto requestDocument = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + L"Sample.docx"), std::istream::binary));
     auto requestTabStopInsertDto = std::make_shared< aspose::words::cloud::models::TabStopInsert >();
     requestTabStopInsertDto->setAlignment(std::make_shared< aspose::words::cloud::models::TabStopBase::Alignment >(aspose::words::cloud::models::TabStopBase::Alignment::LEFT));
     requestTabStopInsertDto->setLeader(std::make_shared< aspose::words::cloud::models::TabStopBase::Leader >(aspose::words::cloud::models::TabStopBase::Leader::NONE));
     requestTabStopInsertDto->setPosition(std::make_shared< double >(72));
-
     std::shared_ptr< requests::InsertOrUpdateParagraphTabStopOnlineRequest > insertRequest(
         new requests::InsertOrUpdateParagraphTabStopOnlineRequest(
-            requestDocumentStream, requestTabStopInsertDto, std::make_shared< int32_t >(0)
+            requestDocument, requestTabStopInsertDto, std::make_shared< int32_t >(0)
         )
     );
     wordsApi->insertOrUpdateParagraphTabStopOnline(insertRequest);
@@ -2519,7 +2493,6 @@ TEST_F(ExamplesTest, TestExampleInsertPageNumbers) {
     auto requestPageNumber = std::make_shared< aspose::words::cloud::models::PageNumber >();
     requestPageNumber->setAlignment(std::make_shared< std::wstring >(L"center"));
     requestPageNumber->setFormat(std::make_shared< std::wstring >(L"{PAGE} of {NUMPAGES}"));
-
     std::shared_ptr< requests::InsertPageNumbersRequest > insertRequest(
         new requests::InsertPageNumbersRequest(
             std::make_shared< std::wstring >(L"Sample.docx"), requestPageNumber
@@ -2531,14 +2504,13 @@ TEST_F(ExamplesTest, TestExampleInsertPageNumbers) {
 TEST_F(ExamplesTest, TestExampleInsertPageNumbersOnline) {
     std::wstring documentsDir = localTestExamplesFolder;
     auto wordsApi = getApi();
-    auto requestDocumentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + L"Common/Sample.docx"), std::istream::binary));
+    auto requestDocument = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + L"Common/Sample.docx"), std::istream::binary));
     auto requestPageNumber = std::make_shared< aspose::words::cloud::models::PageNumber >();
     requestPageNumber->setAlignment(std::make_shared< std::wstring >(L"center"));
     requestPageNumber->setFormat(std::make_shared< std::wstring >(L"{PAGE} of {NUMPAGES}"));
-
     std::shared_ptr< requests::InsertPageNumbersOnlineRequest > insertRequest(
         new requests::InsertPageNumbersOnlineRequest(
-            requestDocumentStream, requestPageNumber
+            requestDocument, requestPageNumber
         )
     );
     wordsApi->insertPageNumbersOnline(insertRequest);
@@ -2548,7 +2520,6 @@ TEST_F(ExamplesTest, TestExampleInsertParagraph) {
     auto wordsApi = getApi();
     auto requestParagraph = std::make_shared< aspose::words::cloud::models::ParagraphInsert >();
     requestParagraph->setText(std::make_shared< std::wstring >(L"This is a new paragraph for your document"));
-
     std::shared_ptr< requests::InsertParagraphRequest > insertRequest(
         new requests::InsertParagraphRequest(
             std::make_shared< std::wstring >(L"Sample.docx"), requestParagraph
@@ -2560,13 +2531,12 @@ TEST_F(ExamplesTest, TestExampleInsertParagraph) {
 TEST_F(ExamplesTest, TestExampleInsertParagraphOnline) {
     std::wstring documentsDir = localTestExamplesFolder;
     auto wordsApi = getApi();
-    auto requestDocumentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + L"Sample.docx"), std::istream::binary));
+    auto requestDocument = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + L"Sample.docx"), std::istream::binary));
     auto requestParagraph = std::make_shared< aspose::words::cloud::models::ParagraphInsert >();
     requestParagraph->setText(std::make_shared< std::wstring >(L"This is a new paragraph for your document"));
-
     std::shared_ptr< requests::InsertParagraphOnlineRequest > insertRequest(
         new requests::InsertParagraphOnlineRequest(
-            requestDocumentStream, requestParagraph, std::make_shared< std::wstring >(L"sections/0")
+            requestDocument, requestParagraph, std::make_shared< std::wstring >(L"sections/0")
         )
     );
     wordsApi->insertParagraphOnline(insertRequest);
@@ -2576,7 +2546,6 @@ TEST_F(ExamplesTest, TestExampleInsertRun) {
     auto wordsApi = getApi();
     auto requestRun = std::make_shared< aspose::words::cloud::models::RunInsert >();
     requestRun->setText(std::make_shared< std::wstring >(L"run with text"));
-
     std::shared_ptr< requests::InsertRunRequest > insertRequest(
         new requests::InsertRunRequest(
             std::make_shared< std::wstring >(L"Sample.docx"), std::make_shared< std::wstring >(L"paragraphs/1"), requestRun
@@ -2588,13 +2557,12 @@ TEST_F(ExamplesTest, TestExampleInsertRun) {
 TEST_F(ExamplesTest, TestExampleInsertRunOnline) {
     std::wstring documentsDir = localTestExamplesFolder;
     auto wordsApi = getApi();
-    auto requestDocumentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + L"Sample.doc"), std::istream::binary));
+    auto requestDocument = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + L"Sample.doc"), std::istream::binary));
     auto requestRun = std::make_shared< aspose::words::cloud::models::RunInsert >();
     requestRun->setText(std::make_shared< std::wstring >(L"run with text"));
-
     std::shared_ptr< requests::InsertRunOnlineRequest > insertRequest(
         new requests::InsertRunOnlineRequest(
-            requestDocumentStream, std::make_shared< std::wstring >(L"paragraphs/1"), requestRun
+            requestDocument, std::make_shared< std::wstring >(L"paragraphs/1"), requestRun
         )
     );
     wordsApi->insertRunOnline(insertRequest);
@@ -2605,7 +2573,6 @@ TEST_F(ExamplesTest, TestExampleInsertStyle) {
     auto requestStyleInsert = std::make_shared< aspose::words::cloud::models::StyleInsert >();
     requestStyleInsert->setStyleName(std::make_shared< std::wstring >(L"My Style"));
     requestStyleInsert->setStyleType(std::make_shared< aspose::words::cloud::models::StyleInsert::StyleType >(aspose::words::cloud::models::StyleInsert::StyleType::PARAGRAPH));
-
     std::shared_ptr< requests::InsertStyleRequest > insertRequest(
         new requests::InsertStyleRequest(
             std::make_shared< std::wstring >(L"Sample.docx"), requestStyleInsert
@@ -2617,14 +2584,13 @@ TEST_F(ExamplesTest, TestExampleInsertStyle) {
 TEST_F(ExamplesTest, TestExampleInsertStyleOnline) {
     std::wstring documentsDir = localTestExamplesFolder;
     auto wordsApi = getApi();
-    auto requestDocumentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + L"Sample.docx"), std::istream::binary));
+    auto requestDocument = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + L"Sample.docx"), std::istream::binary));
     auto requestStyleInsert = std::make_shared< aspose::words::cloud::models::StyleInsert >();
     requestStyleInsert->setStyleName(std::make_shared< std::wstring >(L"My Style"));
     requestStyleInsert->setStyleType(std::make_shared< aspose::words::cloud::models::StyleInsert::StyleType >(aspose::words::cloud::models::StyleInsert::StyleType::PARAGRAPH));
-
     std::shared_ptr< requests::InsertStyleOnlineRequest > insertRequest(
         new requests::InsertStyleOnlineRequest(
-            requestDocumentStream, requestStyleInsert
+            requestDocument, requestStyleInsert
         )
     );
     wordsApi->insertStyleOnline(insertRequest);
@@ -2635,7 +2601,6 @@ TEST_F(ExamplesTest, TestExampleInsertTable) {
     auto requestTable = std::make_shared< aspose::words::cloud::models::TableInsert >();
     requestTable->setColumnsCount(std::make_shared< int32_t >(5));
     requestTable->setRowsCount(std::make_shared< int32_t >(4));
-
     std::shared_ptr< requests::InsertTableRequest > insertRequest(
         new requests::InsertTableRequest(
             std::make_shared< std::wstring >(L"Sample.docx"), requestTable
@@ -2648,7 +2613,6 @@ TEST_F(ExamplesTest, TestExampleInsertTableCell) {
     auto wordsApi = getApi();
     auto requestCell = std::make_shared< aspose::words::cloud::models::TableCellInsert >();
 
-
     std::shared_ptr< requests::InsertTableCellRequest > insertRequest(
         new requests::InsertTableCellRequest(
             std::make_shared< std::wstring >(L"Sample.docx"), std::make_shared< std::wstring >(L"sections/0/tables/2/rows/0"), requestCell
@@ -2660,13 +2624,12 @@ TEST_F(ExamplesTest, TestExampleInsertTableCell) {
 TEST_F(ExamplesTest, TestExampleInsertTableCellOnline) {
     std::wstring documentsDir = localTestExamplesFolder;
     auto wordsApi = getApi();
-    auto requestDocumentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + L"Sample.docx"), std::istream::binary));
+    auto requestDocument = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + L"Sample.docx"), std::istream::binary));
     auto requestCell = std::make_shared< aspose::words::cloud::models::TableCellInsert >();
-
 
     std::shared_ptr< requests::InsertTableCellOnlineRequest > insertRequest(
         new requests::InsertTableCellOnlineRequest(
-            requestDocumentStream, std::make_shared< std::wstring >(L"sections/0/tables/2/rows/0"), requestCell
+            requestDocument, std::make_shared< std::wstring >(L"sections/0/tables/2/rows/0"), requestCell
         )
     );
     wordsApi->insertTableCellOnline(insertRequest);
@@ -2675,14 +2638,13 @@ TEST_F(ExamplesTest, TestExampleInsertTableCellOnline) {
 TEST_F(ExamplesTest, TestExampleInsertTableOnline) {
     std::wstring documentsDir = localTestExamplesFolder;
     auto wordsApi = getApi();
-    auto requestDocumentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + L"Sample.docx"), std::istream::binary));
+    auto requestDocument = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + L"Sample.docx"), std::istream::binary));
     auto requestTable = std::make_shared< aspose::words::cloud::models::TableInsert >();
     requestTable->setColumnsCount(std::make_shared< int32_t >(5));
     requestTable->setRowsCount(std::make_shared< int32_t >(4));
-
     std::shared_ptr< requests::InsertTableOnlineRequest > insertRequest(
         new requests::InsertTableOnlineRequest(
-            requestDocumentStream, requestTable
+            requestDocument, requestTable
         )
     );
     wordsApi->insertTableOnline(insertRequest);
@@ -2692,7 +2654,6 @@ TEST_F(ExamplesTest, TestExampleInsertTableRow) {
     auto wordsApi = getApi();
     auto requestRow = std::make_shared< aspose::words::cloud::models::TableRowInsert >();
     requestRow->setColumnsCount(std::make_shared< int32_t >(5));
-
     std::shared_ptr< requests::InsertTableRowRequest > insertRequest(
         new requests::InsertTableRowRequest(
             std::make_shared< std::wstring >(L"Sample.docx"), std::make_shared< std::wstring >(L"sections/0/tables/2"), requestRow
@@ -2704,13 +2665,12 @@ TEST_F(ExamplesTest, TestExampleInsertTableRow) {
 TEST_F(ExamplesTest, TestExampleInsertTableRowOnline) {
     std::wstring documentsDir = localTestExamplesFolder;
     auto wordsApi = getApi();
-    auto requestDocumentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + L"Sample.docx"), std::istream::binary));
+    auto requestDocument = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + L"Sample.docx"), std::istream::binary));
     auto requestRow = std::make_shared< aspose::words::cloud::models::TableRowInsert >();
     requestRow->setColumnsCount(std::make_shared< int32_t >(5));
-
     std::shared_ptr< requests::InsertTableRowOnlineRequest > insertRequest(
         new requests::InsertTableRowOnlineRequest(
-            requestDocumentStream, std::make_shared< std::wstring >(L"sections/0/tables/2"), requestRow
+            requestDocument, std::make_shared< std::wstring >(L"sections/0/tables/2"), requestRow
         )
     );
     wordsApi->insertTableRowOnline(insertRequest);
@@ -2730,11 +2690,11 @@ TEST_F(ExamplesTest, TestExampleInsertWatermarkImage) {
 TEST_F(ExamplesTest, TestExampleInsertWatermarkImageOnline) {
     std::wstring documentsDir = localTestExamplesFolder;
     auto wordsApi = getApi();
-    auto requestDocumentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + L"Sample.docx"), std::istream::binary));
-    auto requestImageFileStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + L"Common/aspose-cloud.png"), std::istream::binary));
+    auto requestDocument = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + L"Sample.docx"), std::istream::binary));
+    auto requestImageFile = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + L"Common/aspose-cloud.png"), std::istream::binary));
     std::shared_ptr< requests::InsertWatermarkImageOnlineRequest > insertRequest(
         new requests::InsertWatermarkImageOnlineRequest(
-            requestDocumentStream, requestImageFileStream
+            requestDocument, requestImageFile
         )
     );
     wordsApi->insertWatermarkImageOnline(insertRequest);
@@ -2745,7 +2705,6 @@ TEST_F(ExamplesTest, TestExampleInsertWatermarkText) {
     auto requestWatermarkText = std::make_shared< aspose::words::cloud::models::WatermarkText >();
     requestWatermarkText->setText(std::make_shared< std::wstring >(L"This is the text"));
     requestWatermarkText->setRotationAngle(std::make_shared< double >(90.0));
-
     std::shared_ptr< requests::InsertWatermarkTextRequest > insertRequest(
         new requests::InsertWatermarkTextRequest(
             std::make_shared< std::wstring >(L"Sample.docx"), requestWatermarkText
@@ -2757,14 +2716,13 @@ TEST_F(ExamplesTest, TestExampleInsertWatermarkText) {
 TEST_F(ExamplesTest, TestExampleInsertWatermarkTextOnline) {
     std::wstring documentsDir = localTestExamplesFolder;
     auto wordsApi = getApi();
-    auto requestDocumentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + L"Sample.docx"), std::istream::binary));
+    auto requestDocument = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + L"Sample.docx"), std::istream::binary));
     auto requestWatermarkText = std::make_shared< aspose::words::cloud::models::WatermarkText >();
     requestWatermarkText->setText(std::make_shared< std::wstring >(L"This is the text"));
     requestWatermarkText->setRotationAngle(std::make_shared< double >(90));
-
     std::shared_ptr< requests::InsertWatermarkTextOnlineRequest > insertRequest(
         new requests::InsertWatermarkTextOnlineRequest(
-            requestDocumentStream, requestWatermarkText
+            requestDocument, requestWatermarkText
         )
     );
     wordsApi->insertWatermarkTextOnline(insertRequest);
@@ -2779,11 +2737,9 @@ TEST_F(ExamplesTest, TestExampleLoadWebDocument) {
     requestDataSaveOptions->setDmlRenderingMode(std::make_shared< std::wstring >(L"1"));
     requestDataSaveOptions->setUpdateSdtContent(std::make_shared< bool >(false));
     requestDataSaveOptions->setZipOutput(std::make_shared< bool >(false));
-
     auto requestData = std::make_shared< aspose::words::cloud::models::LoadWebDocumentData >();
     requestData->setLoadingDocumentUrl(std::make_shared< std::wstring >(L"http://google.com"));
     requestData->setSaveOptions(requestDataSaveOptions);
-
     std::shared_ptr< requests::LoadWebDocumentRequest > loadRequest(
         new requests::LoadWebDocumentRequest(
             requestData
@@ -2816,7 +2772,6 @@ TEST_F(ExamplesTest, TestExampleOptimizeDocument) {
     auto wordsApi = getApi();
     auto requestOptions = std::make_shared< aspose::words::cloud::models::OptimizationOptions >();
     requestOptions->setMsWordVersion(std::make_shared< aspose::words::cloud::models::OptimizationOptions::MsWordVersion >(aspose::words::cloud::models::OptimizationOptions::MsWordVersion::WORD2002));
-
     std::shared_ptr< requests::OptimizeDocumentRequest > optimizeRequest(
         new requests::OptimizeDocumentRequest(
             std::make_shared< std::wstring >(L"Sample.docx"), requestOptions
@@ -2828,13 +2783,12 @@ TEST_F(ExamplesTest, TestExampleOptimizeDocument) {
 TEST_F(ExamplesTest, TestExampleOptimizeDocumentOnline) {
     std::wstring documentsDir = localTestExamplesFolder;
     auto wordsApi = getApi();
-    auto requestDocumentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + L"Sample.docx"), std::istream::binary));
+    auto requestDocument = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + L"Sample.docx"), std::istream::binary));
     auto requestOptions = std::make_shared< aspose::words::cloud::models::OptimizationOptions >();
     requestOptions->setMsWordVersion(std::make_shared< aspose::words::cloud::models::OptimizationOptions::MsWordVersion >(aspose::words::cloud::models::OptimizationOptions::MsWordVersion::WORD2002));
-
     std::shared_ptr< requests::OptimizeDocumentOnlineRequest > optimizeRequest(
         new requests::OptimizeDocumentOnlineRequest(
-            requestDocumentStream, requestOptions
+            requestDocument, requestOptions
         )
     );
     wordsApi->optimizeDocumentOnline(optimizeRequest);
@@ -2845,7 +2799,6 @@ TEST_F(ExamplesTest, TestExampleProtectDocument) {
     auto requestProtectionRequest = std::make_shared< aspose::words::cloud::models::ProtectionRequest >();
     requestProtectionRequest->setPassword(std::make_shared< std::wstring >(L"123"));
     requestProtectionRequest->setProtectionType(std::make_shared< std::wstring >(L"ReadOnly"));
-
     std::shared_ptr< requests::ProtectDocumentRequest > protectRequest(
         new requests::ProtectDocumentRequest(
             std::make_shared< std::wstring >(L"Sample.docx"), requestProtectionRequest
@@ -2857,13 +2810,12 @@ TEST_F(ExamplesTest, TestExampleProtectDocument) {
 TEST_F(ExamplesTest, TestExampleProtectDocumentOnline) {
     std::wstring documentsDir = localTestExamplesFolder;
     auto wordsApi = getApi();
-    auto requestDocumentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + L"Sample.docx"), std::istream::binary));
+    auto requestDocument = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + L"Sample.docx"), std::istream::binary));
     auto requestProtectionRequest = std::make_shared< aspose::words::cloud::models::ProtectionRequest >();
     requestProtectionRequest->setNewPassword(std::make_shared< std::wstring >(L"123"));
-
     std::shared_ptr< requests::ProtectDocumentOnlineRequest > protectRequest(
         new requests::ProtectDocumentOnlineRequest(
-            requestDocumentStream, requestProtectionRequest
+            requestDocument, requestProtectionRequest
         )
     );
     wordsApi->protectDocumentOnline(protectRequest);
@@ -2882,10 +2834,10 @@ TEST_F(ExamplesTest, TestExampleRejectAllRevisions) {
 TEST_F(ExamplesTest, TestExampleRejectAllRevisionsOnline) {
     std::wstring documentsDir = localTestExamplesFolder;
     auto wordsApi = getApi();
-    auto requestDocumentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + L"Sample.docx"), std::istream::binary));
+    auto requestDocument = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + L"Sample.docx"), std::istream::binary));
     std::shared_ptr< requests::RejectAllRevisionsOnlineRequest > rejectRequest(
         new requests::RejectAllRevisionsOnlineRequest(
-            requestDocumentStream
+            requestDocument
         )
     );
     wordsApi->rejectAllRevisionsOnline(rejectRequest);
@@ -2904,10 +2856,10 @@ TEST_F(ExamplesTest, TestExampleRemoveRange) {
 TEST_F(ExamplesTest, TestExampleRemoveRangeOnline) {
     std::wstring documentsDir = localTestExamplesFolder;
     auto wordsApi = getApi();
-    auto requestDocumentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + L"Sample.doc"), std::istream::binary));
+    auto requestDocument = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + L"Sample.doc"), std::istream::binary));
     std::shared_ptr< requests::RemoveRangeOnlineRequest > removeRequest(
         new requests::RemoveRangeOnlineRequest(
-            requestDocumentStream, std::make_shared< std::wstring >(L"id0.0.0"), std::make_shared< std::wstring >(L"id0.0.1")
+            requestDocument, std::make_shared< std::wstring >(L"id0.0.0"), std::make_shared< std::wstring >(L"id0.0.1")
         )
     );
     wordsApi->removeRangeOnline(removeRequest);
@@ -2926,10 +2878,10 @@ TEST_F(ExamplesTest, TestExampleRenderDrawingObject) {
 TEST_F(ExamplesTest, TestExampleRenderDrawingObjectOnline) {
     std::wstring documentsDir = localTestExamplesFolder;
     auto wordsApi = getApi();
-    auto requestDocumentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + L"Sample.docx"), std::istream::binary));
+    auto requestDocument = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + L"Sample.docx"), std::istream::binary));
     std::shared_ptr< requests::RenderDrawingObjectOnlineRequest > renderRequest(
         new requests::RenderDrawingObjectOnlineRequest(
-            requestDocumentStream, std::make_shared< std::wstring >(L"png"), std::make_shared< int32_t >(0), std::make_shared< std::wstring >(L"sections/0")
+            requestDocument, std::make_shared< std::wstring >(L"png"), std::make_shared< int32_t >(0), std::make_shared< std::wstring >(L"sections/0")
         )
     );
     wordsApi->renderDrawingObjectOnline(renderRequest);
@@ -2948,10 +2900,10 @@ TEST_F(ExamplesTest, TestExampleRenderMathObject) {
 TEST_F(ExamplesTest, TestExampleRenderMathObjectOnline) {
     std::wstring documentsDir = localTestExamplesFolder;
     auto wordsApi = getApi();
-    auto requestDocumentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + L"Sample.docx"), std::istream::binary));
+    auto requestDocument = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + L"Sample.docx"), std::istream::binary));
     std::shared_ptr< requests::RenderMathObjectOnlineRequest > renderRequest(
         new requests::RenderMathObjectOnlineRequest(
-            requestDocumentStream, std::make_shared< std::wstring >(L"png"), std::make_shared< int32_t >(0)
+            requestDocument, std::make_shared< std::wstring >(L"png"), std::make_shared< int32_t >(0)
         )
     );
     wordsApi->renderMathObjectOnline(renderRequest);
@@ -2970,10 +2922,10 @@ TEST_F(ExamplesTest, TestExampleRenderPage) {
 TEST_F(ExamplesTest, TestExampleRenderPageOnline) {
     std::wstring documentsDir = localTestExamplesFolder;
     auto wordsApi = getApi();
-    auto requestDocumentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + L"Sample.docx"), std::istream::binary));
+    auto requestDocument = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + L"Sample.docx"), std::istream::binary));
     std::shared_ptr< requests::RenderPageOnlineRequest > renderRequest(
         new requests::RenderPageOnlineRequest(
-            requestDocumentStream, std::make_shared< int32_t >(1), std::make_shared< std::wstring >(L"bmp")
+            requestDocument, std::make_shared< int32_t >(1), std::make_shared< std::wstring >(L"bmp")
         )
     );
     wordsApi->renderPageOnline(renderRequest);
@@ -2992,10 +2944,10 @@ TEST_F(ExamplesTest, TestExampleRenderParagraph) {
 TEST_F(ExamplesTest, TestExampleRenderParagraphOnline) {
     std::wstring documentsDir = localTestExamplesFolder;
     auto wordsApi = getApi();
-    auto requestDocumentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + L"Sample.docx"), std::istream::binary));
+    auto requestDocument = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + L"Sample.docx"), std::istream::binary));
     std::shared_ptr< requests::RenderParagraphOnlineRequest > renderRequest(
         new requests::RenderParagraphOnlineRequest(
-            requestDocumentStream, std::make_shared< std::wstring >(L"png"), std::make_shared< int32_t >(0)
+            requestDocument, std::make_shared< std::wstring >(L"png"), std::make_shared< int32_t >(0)
         )
     );
     wordsApi->renderParagraphOnline(renderRequest);
@@ -3014,10 +2966,10 @@ TEST_F(ExamplesTest, TestExampleRenderTable) {
 TEST_F(ExamplesTest, TestExampleRenderTableOnline) {
     std::wstring documentsDir = localTestExamplesFolder;
     auto wordsApi = getApi();
-    auto requestDocumentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + L"Sample.docx"), std::istream::binary));
+    auto requestDocument = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + L"Sample.docx"), std::istream::binary));
     std::shared_ptr< requests::RenderTableOnlineRequest > renderRequest(
         new requests::RenderTableOnlineRequest(
-            requestDocumentStream, std::make_shared< std::wstring >(L"png"), std::make_shared< int32_t >(0)
+            requestDocument, std::make_shared< std::wstring >(L"png"), std::make_shared< int32_t >(0)
         )
     );
     wordsApi->renderTableOnline(renderRequest);
@@ -3028,7 +2980,6 @@ TEST_F(ExamplesTest, TestExampleReplaceText) {
     auto requestReplaceText = std::make_shared< aspose::words::cloud::models::ReplaceTextParameters >();
     requestReplaceText->setOldValue(std::make_shared< std::wstring >(L"Testing"));
     requestReplaceText->setNewValue(std::make_shared< std::wstring >(L"Aspose testing"));
-
     std::shared_ptr< requests::ReplaceTextRequest > replaceRequest(
         new requests::ReplaceTextRequest(
             std::make_shared< std::wstring >(L"Sample.docx"), requestReplaceText
@@ -3040,14 +2991,13 @@ TEST_F(ExamplesTest, TestExampleReplaceText) {
 TEST_F(ExamplesTest, TestExampleReplaceTextOnline) {
     std::wstring documentsDir = localTestExamplesFolder;
     auto wordsApi = getApi();
-    auto requestDocumentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + L"Sample.docx"), std::istream::binary));
+    auto requestDocument = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + L"Sample.docx"), std::istream::binary));
     auto requestReplaceText = std::make_shared< aspose::words::cloud::models::ReplaceTextParameters >();
     requestReplaceText->setOldValue(std::make_shared< std::wstring >(L"aspose"));
     requestReplaceText->setNewValue(std::make_shared< std::wstring >(L"aspose new"));
-
     std::shared_ptr< requests::ReplaceTextOnlineRequest > replaceRequest(
         new requests::ReplaceTextOnlineRequest(
-            requestDocumentStream, requestReplaceText
+            requestDocument, requestReplaceText
         )
     );
     wordsApi->replaceTextOnline(replaceRequest);
@@ -3057,7 +3007,6 @@ TEST_F(ExamplesTest, TestExampleReplaceWithText) {
     auto wordsApi = getApi();
     auto requestRangeText = std::make_shared< aspose::words::cloud::models::ReplaceRange >();
     requestRangeText->setText(std::make_shared< std::wstring >(L"Replaced header"));
-
     std::shared_ptr< requests::ReplaceWithTextRequest > replaceRequest(
         new requests::ReplaceWithTextRequest(
             std::make_shared< std::wstring >(L"Sample.docx"), std::make_shared< std::wstring >(L"id0.0.0"), requestRangeText, std::make_shared< std::wstring >(L"id0.0.1")
@@ -3069,13 +3018,12 @@ TEST_F(ExamplesTest, TestExampleReplaceWithText) {
 TEST_F(ExamplesTest, TestExampleReplaceWithTextOnline) {
     std::wstring documentsDir = localTestExamplesFolder;
     auto wordsApi = getApi();
-    auto requestDocumentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + L"Sample.doc"), std::istream::binary));
+    auto requestDocument = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + L"Sample.doc"), std::istream::binary));
     auto requestRangeText = std::make_shared< aspose::words::cloud::models::ReplaceRange >();
     requestRangeText->setText(std::make_shared< std::wstring >(L"Replaced header"));
-
     std::shared_ptr< requests::ReplaceWithTextOnlineRequest > replaceRequest(
         new requests::ReplaceWithTextOnlineRequest(
-            requestDocumentStream, std::make_shared< std::wstring >(L"id0.0.0"), requestRangeText, std::make_shared< std::wstring >(L"id0.0.1")
+            requestDocument, std::make_shared< std::wstring >(L"id0.0.0"), requestRangeText, std::make_shared< std::wstring >(L"id0.0.1")
         )
     );
     wordsApi->replaceWithTextOnline(replaceRequest);
@@ -3095,7 +3043,6 @@ TEST_F(ExamplesTest, TestExampleSaveAs) {
     auto requestSaveOptionsData = std::make_shared< aspose::words::cloud::models::SaveOptionsData >();
     requestSaveOptionsData->setSaveFormat(std::make_shared< std::wstring >(L"docx"));
     requestSaveOptionsData->setFileName(std::make_shared< std::wstring >(L"/TestSaveAsFromPdfToDoc.docx"));
-
     std::shared_ptr< requests::SaveAsRequest > saveRequest(
         new requests::SaveAsRequest(
             std::make_shared< std::wstring >(L"Sample.docx"), requestSaveOptionsData
@@ -3107,14 +3054,13 @@ TEST_F(ExamplesTest, TestExampleSaveAs) {
 TEST_F(ExamplesTest, TestExampleSaveAsOnline) {
     std::wstring documentsDir = localTestExamplesFolder;
     auto wordsApi = getApi();
-    auto requestDocumentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + L"Common/test_multi_pages.docx"), std::istream::binary));
+    auto requestDocument = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + L"Common/test_multi_pages.docx"), std::istream::binary));
     auto requestSaveOptionsData = std::make_shared< aspose::words::cloud::models::SaveOptionsData >();
     requestSaveOptionsData->setSaveFormat(std::make_shared< std::wstring >(L"pdf"));
     requestSaveOptionsData->setFileName(std::make_shared< std::wstring >(L"/TestSaveAs.pdf"));
-
     std::shared_ptr< requests::SaveAsOnlineRequest > saveRequest(
         new requests::SaveAsOnlineRequest(
-            requestDocumentStream, requestSaveOptionsData
+            requestDocument, requestSaveOptionsData
         )
     );
     wordsApi->saveAsOnline(saveRequest);
@@ -3124,7 +3070,6 @@ TEST_F(ExamplesTest, TestExampleSaveAsRange) {
     auto wordsApi = getApi();
     auto requestDocumentParameters = std::make_shared< aspose::words::cloud::models::RangeDocument >();
     requestDocumentParameters->setDocumentName(std::make_shared< std::wstring >(L"/NewDoc.docx"));
-
     std::shared_ptr< requests::SaveAsRangeRequest > saveRequest(
         new requests::SaveAsRangeRequest(
             std::make_shared< std::wstring >(L"Sample.docx"), std::make_shared< std::wstring >(L"id0.0.0"), requestDocumentParameters, std::make_shared< std::wstring >(L"id0.0.1")
@@ -3136,13 +3081,12 @@ TEST_F(ExamplesTest, TestExampleSaveAsRange) {
 TEST_F(ExamplesTest, TestExampleSaveAsRangeOnline) {
     std::wstring documentsDir = localTestExamplesFolder;
     auto wordsApi = getApi();
-    auto requestDocumentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + L"Sample.doc"), std::istream::binary));
+    auto requestDocument = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + L"Sample.doc"), std::istream::binary));
     auto requestDocumentParameters = std::make_shared< aspose::words::cloud::models::RangeDocument >();
     requestDocumentParameters->setDocumentName(std::make_shared< std::wstring >(L"/NewDoc.docx"));
-
     std::shared_ptr< requests::SaveAsRangeOnlineRequest > saveRequest(
         new requests::SaveAsRangeOnlineRequest(
-            requestDocumentStream, std::make_shared< std::wstring >(L"id0.0.0"), requestDocumentParameters, std::make_shared< std::wstring >(L"id0.0.1")
+            requestDocument, std::make_shared< std::wstring >(L"id0.0.0"), requestDocumentParameters, std::make_shared< std::wstring >(L"id0.0.1")
         )
     );
     wordsApi->saveAsRangeOnline(saveRequest);
@@ -3153,7 +3097,6 @@ TEST_F(ExamplesTest, TestExampleSaveAsTiff) {
     auto requestSaveOptions = std::make_shared< aspose::words::cloud::models::TiffSaveOptionsData >();
     requestSaveOptions->setSaveFormat(std::make_shared< std::wstring >(L"tiff"));
     requestSaveOptions->setFileName(std::make_shared< std::wstring >(L"/abc.tiff"));
-
     std::shared_ptr< requests::SaveAsTiffRequest > saveRequest(
         new requests::SaveAsTiffRequest(
             std::make_shared< std::wstring >(L"Sample.docx"), requestSaveOptions
@@ -3165,14 +3108,13 @@ TEST_F(ExamplesTest, TestExampleSaveAsTiff) {
 TEST_F(ExamplesTest, TestExampleSaveAsTiffOnline) {
     std::wstring documentsDir = localTestExamplesFolder;
     auto wordsApi = getApi();
-    auto requestDocumentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + L"Common/test_multi_pages.docx"), std::istream::binary));
+    auto requestDocument = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + L"Common/test_multi_pages.docx"), std::istream::binary));
     auto requestSaveOptions = std::make_shared< aspose::words::cloud::models::TiffSaveOptionsData >();
     requestSaveOptions->setSaveFormat(std::make_shared< std::wstring >(L"tiff"));
     requestSaveOptions->setFileName(std::make_shared< std::wstring >(L"/abc.tiff"));
-
     std::shared_ptr< requests::SaveAsTiffOnlineRequest > saveRequest(
         new requests::SaveAsTiffOnlineRequest(
-            requestDocumentStream, requestSaveOptions
+            requestDocument, requestSaveOptions
         )
     );
     wordsApi->saveAsTiffOnline(saveRequest);
@@ -3191,10 +3133,10 @@ TEST_F(ExamplesTest, TestExampleSearch) {
 TEST_F(ExamplesTest, TestExampleSearchOnline) {
     std::wstring documentsDir = localTestExamplesFolder;
     auto wordsApi = getApi();
-    auto requestDocumentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + L"Sample.docx"), std::istream::binary));
+    auto requestDocument = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + L"Sample.docx"), std::istream::binary));
     std::shared_ptr< requests::SearchOnlineRequest > searchRequest(
         new requests::SearchOnlineRequest(
-            requestDocumentStream, std::make_shared< std::wstring >(L"aspose")
+            requestDocument, std::make_shared< std::wstring >(L"aspose")
         )
     );
     wordsApi->searchOnline(searchRequest);
@@ -3213,10 +3155,10 @@ TEST_F(ExamplesTest, TestExampleSplitDocument) {
 TEST_F(ExamplesTest, TestExampleSplitDocumentOnline) {
     std::wstring documentsDir = localTestExamplesFolder;
     auto wordsApi = getApi();
-    auto requestDocumentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + L"Sample.docx"), std::istream::binary));
+    auto requestDocument = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + L"Sample.docx"), std::istream::binary));
     std::shared_ptr< requests::SplitDocumentOnlineRequest > splitRequest(
         new requests::SplitDocumentOnlineRequest(
-            requestDocumentStream, std::make_shared< std::wstring >(L"text"), std::make_shared< std::wstring >(L"/TestSplitDocument.text"), std::make_shared< int32_t >(1), std::make_shared< int32_t >(2)
+            requestDocument, std::make_shared< std::wstring >(L"text"), std::make_shared< std::wstring >(L"/TestSplitDocument.text"), std::make_shared< int32_t >(1), std::make_shared< int32_t >(2)
         )
     );
     wordsApi->splitDocumentOnline(splitRequest);
@@ -3226,7 +3168,6 @@ TEST_F(ExamplesTest, TestExampleUnprotectDocument) {
     auto wordsApi = getApi();
     auto requestProtectionRequest = std::make_shared< aspose::words::cloud::models::ProtectionRequest >();
     requestProtectionRequest->setPassword(std::make_shared< std::wstring >(L"aspose"));
-
     std::shared_ptr< requests::UnprotectDocumentRequest > unprotectRequest(
         new requests::UnprotectDocumentRequest(
             std::make_shared< std::wstring >(L"Sample.docx"), requestProtectionRequest
@@ -3238,13 +3179,12 @@ TEST_F(ExamplesTest, TestExampleUnprotectDocument) {
 TEST_F(ExamplesTest, TestExampleUnprotectDocumentOnline) {
     std::wstring documentsDir = localTestExamplesFolder;
     auto wordsApi = getApi();
-    auto requestDocumentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + L"Sample.docx"), std::istream::binary));
+    auto requestDocument = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + L"Sample.docx"), std::istream::binary));
     auto requestProtectionRequest = std::make_shared< aspose::words::cloud::models::ProtectionRequest >();
     requestProtectionRequest->setPassword(std::make_shared< std::wstring >(L"aspose"));
-
     std::shared_ptr< requests::UnprotectDocumentOnlineRequest > unprotectRequest(
         new requests::UnprotectDocumentOnlineRequest(
-            requestDocumentStream, requestProtectionRequest
+            requestDocument, requestProtectionRequest
         )
     );
     wordsApi->unprotectDocumentOnline(unprotectRequest);
@@ -3257,7 +3197,6 @@ TEST_F(ExamplesTest, TestExampleUpdateBookmark) {
     auto requestBookmarkData = std::make_shared< aspose::words::cloud::models::BookmarkData >();
     requestBookmarkData->setName(std::make_shared< std::wstring >(bookmarkName));
     requestBookmarkData->setText(std::make_shared< std::wstring >(L"This will be the text for Aspose"));
-
     std::shared_ptr< requests::UpdateBookmarkRequest > updateRequest(
         new requests::UpdateBookmarkRequest(
             std::make_shared< std::wstring >(L"Sample.docx"), std::make_shared< std::wstring >(bookmarkName), requestBookmarkData
@@ -3271,14 +3210,13 @@ TEST_F(ExamplesTest, TestExampleUpdateBookmarkOnline) {
     auto wordsApi = getApi();
     std::wstring bookmarkName = L"aspose";
 
-    auto requestDocumentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + L"Sample.docx"), std::istream::binary));
+    auto requestDocument = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + L"Sample.docx"), std::istream::binary));
     auto requestBookmarkData = std::make_shared< aspose::words::cloud::models::BookmarkData >();
     requestBookmarkData->setName(std::make_shared< std::wstring >(bookmarkName));
     requestBookmarkData->setText(std::make_shared< std::wstring >(L"This will be the text for Aspose"));
-
     std::shared_ptr< requests::UpdateBookmarkOnlineRequest > updateRequest(
         new requests::UpdateBookmarkOnlineRequest(
-            requestDocumentStream, std::make_shared< std::wstring >(bookmarkName), requestBookmarkData, std::make_shared< std::wstring >(L"Sample.docx")
+            requestDocument, std::make_shared< std::wstring >(bookmarkName), requestBookmarkData, std::make_shared< std::wstring >(L"Sample.docx")
         )
     );
     wordsApi->updateBookmarkOnline(updateRequest);
@@ -3288,7 +3226,6 @@ TEST_F(ExamplesTest, TestExampleUpdateBorder) {
     auto wordsApi = getApi();
     auto requestBorderPropertiesColor = std::make_shared< aspose::words::cloud::models::XmlColor >();
     requestBorderPropertiesColor->setWeb(std::make_shared< std::wstring >(L"#AABBCC"));
-
     auto requestBorderProperties = std::make_shared< aspose::words::cloud::models::Border >();
     requestBorderProperties->setBorderType(std::make_shared< aspose::words::cloud::models::Border::BorderType >(aspose::words::cloud::models::Border::BorderType::LEFT));
     requestBorderProperties->setColor(requestBorderPropertiesColor);
@@ -3296,7 +3233,6 @@ TEST_F(ExamplesTest, TestExampleUpdateBorder) {
     requestBorderProperties->setLineStyle(std::make_shared< aspose::words::cloud::models::Border::LineStyle >(aspose::words::cloud::models::Border::LineStyle::DASH_DOT_STROKER));
     requestBorderProperties->setLineWidth(std::make_shared< double >(2.0));
     requestBorderProperties->setShadow(std::make_shared< bool >(true));
-
     std::shared_ptr< requests::UpdateBorderRequest > updateRequest(
         new requests::UpdateBorderRequest(
             std::make_shared< std::wstring >(L"Sample.docx"), std::make_shared< std::wstring >(L"left"), requestBorderProperties, std::make_shared< std::wstring >(L"tables/1/rows/0/cells/0")
@@ -3308,10 +3244,9 @@ TEST_F(ExamplesTest, TestExampleUpdateBorder) {
 TEST_F(ExamplesTest, TestExampleUpdateBorderOnline) {
     std::wstring documentsDir = localTestExamplesFolder;
     auto wordsApi = getApi();
-    auto requestDocumentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + L"Sample.docx"), std::istream::binary));
+    auto requestDocument = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + L"Sample.docx"), std::istream::binary));
     auto requestBorderPropertiesColor = std::make_shared< aspose::words::cloud::models::XmlColor >();
     requestBorderPropertiesColor->setWeb(std::make_shared< std::wstring >(L"#AABBCC"));
-
     auto requestBorderProperties = std::make_shared< aspose::words::cloud::models::Border >();
     requestBorderProperties->setBorderType(std::make_shared< aspose::words::cloud::models::Border::BorderType >(aspose::words::cloud::models::Border::BorderType::LEFT));
     requestBorderProperties->setColor(requestBorderPropertiesColor);
@@ -3319,10 +3254,9 @@ TEST_F(ExamplesTest, TestExampleUpdateBorderOnline) {
     requestBorderProperties->setLineStyle(std::make_shared< aspose::words::cloud::models::Border::LineStyle >(aspose::words::cloud::models::Border::LineStyle::DASH_DOT_STROKER));
     requestBorderProperties->setLineWidth(std::make_shared< double >(2));
     requestBorderProperties->setShadow(std::make_shared< bool >(true));
-
     std::shared_ptr< requests::UpdateBorderOnlineRequest > updateRequest(
         new requests::UpdateBorderOnlineRequest(
-            requestDocumentStream, requestBorderProperties, std::make_shared< std::wstring >(L"left"), std::make_shared< std::wstring >(L"tables/1/rows/0/cells/0")
+            requestDocument, requestBorderProperties, std::make_shared< std::wstring >(L"left"), std::make_shared< std::wstring >(L"tables/1/rows/0/cells/0")
         )
     );
     wordsApi->updateBorderOnline(updateRequest);
@@ -3332,25 +3266,20 @@ TEST_F(ExamplesTest, TestExampleUpdateComment) {
     auto wordsApi = getApi();
     auto requestCommentRangeStartNode = std::make_shared< aspose::words::cloud::models::NodeLink >();
     requestCommentRangeStartNode->setNodeId(std::make_shared< std::wstring >(L"0.3.0"));
-
     auto requestCommentRangeStart = std::make_shared< aspose::words::cloud::models::DocumentPosition >();
     requestCommentRangeStart->setNode(requestCommentRangeStartNode);
     requestCommentRangeStart->setOffset(std::make_shared< int32_t >(0));
-
     auto requestCommentRangeEndNode = std::make_shared< aspose::words::cloud::models::NodeLink >();
     requestCommentRangeEndNode->setNodeId(std::make_shared< std::wstring >(L"0.3.0"));
-
     auto requestCommentRangeEnd = std::make_shared< aspose::words::cloud::models::DocumentPosition >();
     requestCommentRangeEnd->setNode(requestCommentRangeEndNode);
     requestCommentRangeEnd->setOffset(std::make_shared< int32_t >(0));
-
     auto requestComment = std::make_shared< aspose::words::cloud::models::CommentUpdate >();
     requestComment->setRangeStart(requestCommentRangeStart);
     requestComment->setRangeEnd(requestCommentRangeEnd);
     requestComment->setInitial(std::make_shared< std::wstring >(L"IA"));
     requestComment->setAuthor(std::make_shared< std::wstring >(L"Imran Anwar"));
     requestComment->setText(std::make_shared< std::wstring >(L"A new Comment"));
-
     std::shared_ptr< requests::UpdateCommentRequest > updateRequest(
         new requests::UpdateCommentRequest(
             std::make_shared< std::wstring >(L"Sample.docx"), std::make_shared< int32_t >(0), requestComment
@@ -3362,31 +3291,26 @@ TEST_F(ExamplesTest, TestExampleUpdateComment) {
 TEST_F(ExamplesTest, TestExampleUpdateCommentOnline) {
     std::wstring documentsDir = localTestExamplesFolder;
     auto wordsApi = getApi();
-    auto requestDocumentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + L"Sample.docx"), std::istream::binary));
+    auto requestDocument = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + L"Sample.docx"), std::istream::binary));
     auto requestCommentRangeStartNode = std::make_shared< aspose::words::cloud::models::NodeLink >();
     requestCommentRangeStartNode->setNodeId(std::make_shared< std::wstring >(L"0.3.0"));
-
     auto requestCommentRangeStart = std::make_shared< aspose::words::cloud::models::DocumentPosition >();
     requestCommentRangeStart->setNode(requestCommentRangeStartNode);
     requestCommentRangeStart->setOffset(std::make_shared< int32_t >(0));
-
     auto requestCommentRangeEndNode = std::make_shared< aspose::words::cloud::models::NodeLink >();
     requestCommentRangeEndNode->setNodeId(std::make_shared< std::wstring >(L"0.3.0"));
-
     auto requestCommentRangeEnd = std::make_shared< aspose::words::cloud::models::DocumentPosition >();
     requestCommentRangeEnd->setNode(requestCommentRangeEndNode);
     requestCommentRangeEnd->setOffset(std::make_shared< int32_t >(0));
-
     auto requestComment = std::make_shared< aspose::words::cloud::models::CommentUpdate >();
     requestComment->setRangeStart(requestCommentRangeStart);
     requestComment->setRangeEnd(requestCommentRangeEnd);
     requestComment->setInitial(std::make_shared< std::wstring >(L"IA"));
     requestComment->setAuthor(std::make_shared< std::wstring >(L"Imran Anwar"));
     requestComment->setText(std::make_shared< std::wstring >(L"A new Comment"));
-
     std::shared_ptr< requests::UpdateCommentOnlineRequest > updateRequest(
         new requests::UpdateCommentOnlineRequest(
-            requestDocumentStream, std::make_shared< int32_t >(0), requestComment
+            requestDocument, std::make_shared< int32_t >(0), requestComment
         )
     );
     wordsApi->updateCommentOnline(updateRequest);
@@ -3396,7 +3320,6 @@ TEST_F(ExamplesTest, TestExampleUpdateCustomXmlPart) {
     auto wordsApi = getApi();
     auto requestCustomXmlPart = std::make_shared< aspose::words::cloud::models::CustomXmlPartUpdate >();
     requestCustomXmlPart->setData(std::make_shared< std::wstring >(L"<data>Hello world</data>"));
-
     std::shared_ptr< requests::UpdateCustomXmlPartRequest > updateRequest(
         new requests::UpdateCustomXmlPartRequest(
             std::make_shared< std::wstring >(L"Sample.docx"), std::make_shared< int32_t >(0), requestCustomXmlPart
@@ -3408,13 +3331,12 @@ TEST_F(ExamplesTest, TestExampleUpdateCustomXmlPart) {
 TEST_F(ExamplesTest, TestExampleUpdateCustomXmlPartOnline) {
     std::wstring documentsDir = localTestExamplesFolder;
     auto wordsApi = getApi();
-    auto requestDocumentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + L"Sample.docx"), std::istream::binary));
+    auto requestDocument = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + L"Sample.docx"), std::istream::binary));
     auto requestCustomXmlPart = std::make_shared< aspose::words::cloud::models::CustomXmlPartUpdate >();
     requestCustomXmlPart->setData(std::make_shared< std::wstring >(L"<data>Hello world</data>"));
-
     std::shared_ptr< requests::UpdateCustomXmlPartOnlineRequest > updateRequest(
         new requests::UpdateCustomXmlPartOnlineRequest(
-            requestDocumentStream, std::make_shared< int32_t >(0), requestCustomXmlPart
+            requestDocument, std::make_shared< int32_t >(0), requestCustomXmlPart
         )
     );
     wordsApi->updateCustomXmlPartOnline(updateRequest);
@@ -3423,13 +3345,12 @@ TEST_F(ExamplesTest, TestExampleUpdateCustomXmlPartOnline) {
 TEST_F(ExamplesTest, TestExampleUpdateDrawingObject) {
     std::wstring documentsDir = localTestExamplesFolder;
     auto wordsApi = getApi();
-    auto requestImageFileStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + L"Common/aspose-cloud.png"), std::istream::binary));
     auto requestDrawingObject = std::make_shared< aspose::words::cloud::models::DrawingObjectUpdate >();
     requestDrawingObject->setLeft(std::make_shared< double >(0));
-
+    auto requestImageFile = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + L"Common/aspose-cloud.png"), std::istream::binary));
     std::shared_ptr< requests::UpdateDrawingObjectRequest > updateRequest(
         new requests::UpdateDrawingObjectRequest(
-            std::make_shared< std::wstring >(L"Sample.docx"), requestDrawingObject, requestImageFileStream, std::make_shared< int32_t >(0)
+            std::make_shared< std::wstring >(L"Sample.docx"), requestDrawingObject, requestImageFile, std::make_shared< int32_t >(0)
         )
     );
     wordsApi->updateDrawingObject(updateRequest);
@@ -3438,14 +3359,13 @@ TEST_F(ExamplesTest, TestExampleUpdateDrawingObject) {
 TEST_F(ExamplesTest, TestExampleUpdateDrawingObjectOnline) {
     std::wstring documentsDir = localTestExamplesFolder;
     auto wordsApi = getApi();
-    auto requestDocumentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + L"Sample.docx"), std::istream::binary));
-    auto requestImageFileStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + L"Common/aspose-cloud.png"), std::istream::binary));
+    auto requestDocument = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + L"Sample.docx"), std::istream::binary));
     auto requestDrawingObject = std::make_shared< aspose::words::cloud::models::DrawingObjectUpdate >();
     requestDrawingObject->setLeft(std::make_shared< double >(0));
-
+    auto requestImageFile = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + L"Common/aspose-cloud.png"), std::istream::binary));
     std::shared_ptr< requests::UpdateDrawingObjectOnlineRequest > updateRequest(
         new requests::UpdateDrawingObjectOnlineRequest(
-            requestDocumentStream, requestDrawingObject, requestImageFileStream, std::make_shared< int32_t >(0)
+            requestDocument, requestDrawingObject, requestImageFile, std::make_shared< int32_t >(0)
         )
     );
     wordsApi->updateDrawingObjectOnline(updateRequest);
@@ -3455,7 +3375,6 @@ TEST_F(ExamplesTest, TestExampleUpdateField) {
     auto wordsApi = getApi();
     auto requestField = std::make_shared< aspose::words::cloud::models::FieldUpdate >();
     requestField->setFieldCode(std::make_shared< std::wstring >(L"{ NUMPAGES }"));
-
     std::shared_ptr< requests::UpdateFieldRequest > updateRequest(
         new requests::UpdateFieldRequest(
             std::make_shared< std::wstring >(L"Sample.docx"), std::make_shared< int32_t >(0), requestField, std::make_shared< std::wstring >(L"sections/0/paragraphs/0")
@@ -3467,13 +3386,12 @@ TEST_F(ExamplesTest, TestExampleUpdateField) {
 TEST_F(ExamplesTest, TestExampleUpdateFieldOnline) {
     std::wstring documentsDir = localTestExamplesFolder;
     auto wordsApi = getApi();
-    auto requestDocumentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + L"Sample.docx"), std::istream::binary));
+    auto requestDocument = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + L"Sample.docx"), std::istream::binary));
     auto requestField = std::make_shared< aspose::words::cloud::models::FieldUpdate >();
     requestField->setFieldCode(std::make_shared< std::wstring >(L"{ NUMPAGES }"));
-
     std::shared_ptr< requests::UpdateFieldOnlineRequest > updateRequest(
         new requests::UpdateFieldOnlineRequest(
-            requestDocumentStream, requestField, std::make_shared< int32_t >(0), std::make_shared< std::wstring >(L"sections/0/paragraphs/0")
+            requestDocument, requestField, std::make_shared< int32_t >(0), std::make_shared< std::wstring >(L"sections/0/paragraphs/0")
         )
     );
     wordsApi->updateFieldOnline(updateRequest);
@@ -3492,10 +3410,10 @@ TEST_F(ExamplesTest, TestExampleUpdateFields) {
 TEST_F(ExamplesTest, TestExampleUpdateFieldsOnline) {
     std::wstring documentsDir = localTestExamplesFolder;
     auto wordsApi = getApi();
-    auto requestDocumentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + L"Sample.docx"), std::istream::binary));
+    auto requestDocument = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + L"Sample.docx"), std::istream::binary));
     std::shared_ptr< requests::UpdateFieldsOnlineRequest > updateRequest(
         new requests::UpdateFieldsOnlineRequest(
-            requestDocumentStream
+            requestDocument
         )
     );
     wordsApi->updateFieldsOnline(updateRequest);
@@ -3505,7 +3423,6 @@ TEST_F(ExamplesTest, TestExampleUpdateFootnote) {
     auto wordsApi = getApi();
     auto requestFootnoteDto = std::make_shared< aspose::words::cloud::models::FootnoteUpdate >();
     requestFootnoteDto->setText(std::make_shared< std::wstring >(L"new text is here"));
-
     std::shared_ptr< requests::UpdateFootnoteRequest > updateRequest(
         new requests::UpdateFootnoteRequest(
             std::make_shared< std::wstring >(L"Sample.docx"), std::make_shared< int32_t >(0), requestFootnoteDto
@@ -3517,13 +3434,12 @@ TEST_F(ExamplesTest, TestExampleUpdateFootnote) {
 TEST_F(ExamplesTest, TestExampleUpdateFootnoteOnline) {
     std::wstring documentsDir = localTestExamplesFolder;
     auto wordsApi = getApi();
-    auto requestDocumentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + L"Sample.doc"), std::istream::binary));
+    auto requestDocument = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + L"Sample.doc"), std::istream::binary));
     auto requestFootnoteDto = std::make_shared< aspose::words::cloud::models::FootnoteUpdate >();
     requestFootnoteDto->setText(std::make_shared< std::wstring >(L"new text is here"));
-
     std::shared_ptr< requests::UpdateFootnoteOnlineRequest > updateRequest(
         new requests::UpdateFootnoteOnlineRequest(
-            requestDocumentStream, requestFootnoteDto, std::make_shared< int32_t >(0)
+            requestDocument, requestFootnoteDto, std::make_shared< int32_t >(0)
         )
     );
     wordsApi->updateFootnoteOnline(updateRequest);
@@ -3538,7 +3454,6 @@ TEST_F(ExamplesTest, TestExampleUpdateFormField) {
     requestFormField->setStatusText(std::make_shared< std::wstring >(L""));
     requestFormField->setTextInputType(std::make_shared< aspose::words::cloud::models::FormFieldTextInput::TextInputType >(aspose::words::cloud::models::FormFieldTextInput::TextInputType::REGULAR));
     requestFormField->setTextInputDefault(std::make_shared< std::wstring >(L"No name"));
-
     std::shared_ptr< requests::UpdateFormFieldRequest > updateRequest(
         new requests::UpdateFormFieldRequest(
             std::make_shared< std::wstring >(L"Sample.docx"), std::make_shared< int32_t >(0), requestFormField
@@ -3550,7 +3465,7 @@ TEST_F(ExamplesTest, TestExampleUpdateFormField) {
 TEST_F(ExamplesTest, TestExampleUpdateFormFieldOnline) {
     std::wstring documentsDir = localTestExamplesFolder;
     auto wordsApi = getApi();
-    auto requestDocumentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + L"Sample.docx"), std::istream::binary));
+    auto requestDocument = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + L"Sample.docx"), std::istream::binary));
     auto requestFormField = std::make_shared< aspose::words::cloud::models::FormFieldTextInput >();
     requestFormField->setName(std::make_shared< std::wstring >(L"FullName"));
     requestFormField->setEnabled(std::make_shared< bool >(true));
@@ -3558,10 +3473,9 @@ TEST_F(ExamplesTest, TestExampleUpdateFormFieldOnline) {
     requestFormField->setStatusText(std::make_shared< std::wstring >(L""));
     requestFormField->setTextInputType(std::make_shared< aspose::words::cloud::models::FormFieldTextInput::TextInputType >(aspose::words::cloud::models::FormFieldTextInput::TextInputType::REGULAR));
     requestFormField->setTextInputDefault(std::make_shared< std::wstring >(L"No name"));
-
     std::shared_ptr< requests::UpdateFormFieldOnlineRequest > updateRequest(
         new requests::UpdateFormFieldOnlineRequest(
-            requestDocumentStream, requestFormField, std::make_shared< int32_t >(0), std::make_shared< std::wstring >(L"sections/0")
+            requestDocument, requestFormField, std::make_shared< int32_t >(0), std::make_shared< std::wstring >(L"sections/0")
         )
     );
     wordsApi->updateFormFieldOnline(updateRequest);
@@ -3571,7 +3485,6 @@ TEST_F(ExamplesTest, TestExampleUpdateList) {
     auto wordsApi = getApi();
     auto requestListUpdate = std::make_shared< aspose::words::cloud::models::ListUpdate >();
     requestListUpdate->setIsRestartAtEachSection(std::make_shared< bool >(true));
-
     std::shared_ptr< requests::UpdateListRequest > updateRequest(
         new requests::UpdateListRequest(
             std::make_shared< std::wstring >(L"TestGetLists.doc"), std::make_shared< int32_t >(1), requestListUpdate
@@ -3584,7 +3497,6 @@ TEST_F(ExamplesTest, TestExampleUpdateListLevel) {
     auto wordsApi = getApi();
     auto requestListUpdate = std::make_shared< aspose::words::cloud::models::ListLevelUpdate >();
     requestListUpdate->setAlignment(std::make_shared< aspose::words::cloud::models::ListLevelUpdate::Alignment >(aspose::words::cloud::models::ListLevelUpdate::Alignment::RIGHT));
-
     std::shared_ptr< requests::UpdateListLevelRequest > updateRequest(
         new requests::UpdateListLevelRequest(
             std::make_shared< std::wstring >(L"TestGetLists.doc"), std::make_shared< int32_t >(1), std::make_shared< int32_t >(1), requestListUpdate
@@ -3596,13 +3508,12 @@ TEST_F(ExamplesTest, TestExampleUpdateListLevel) {
 TEST_F(ExamplesTest, TestExampleUpdateListLevelOnline) {
     std::wstring documentsDir = localTestExamplesFolder;
     auto wordsApi = getApi();
-    auto requestDocumentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + L"Sample.doc"), std::istream::binary));
+    auto requestDocument = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + L"Sample.doc"), std::istream::binary));
     auto requestListUpdate = std::make_shared< aspose::words::cloud::models::ListLevelUpdate >();
     requestListUpdate->setAlignment(std::make_shared< aspose::words::cloud::models::ListLevelUpdate::Alignment >(aspose::words::cloud::models::ListLevelUpdate::Alignment::RIGHT));
-
     std::shared_ptr< requests::UpdateListLevelOnlineRequest > updateRequest(
         new requests::UpdateListLevelOnlineRequest(
-            requestDocumentStream, std::make_shared< int32_t >(1), requestListUpdate, std::make_shared< int32_t >(1)
+            requestDocument, std::make_shared< int32_t >(1), requestListUpdate, std::make_shared< int32_t >(1)
         )
     );
     wordsApi->updateListLevelOnline(updateRequest);
@@ -3611,13 +3522,12 @@ TEST_F(ExamplesTest, TestExampleUpdateListLevelOnline) {
 TEST_F(ExamplesTest, TestExampleUpdateListOnline) {
     std::wstring documentsDir = localTestExamplesFolder;
     auto wordsApi = getApi();
-    auto requestDocumentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + L"Sample.doc"), std::istream::binary));
+    auto requestDocument = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + L"Sample.doc"), std::istream::binary));
     auto requestListUpdate = std::make_shared< aspose::words::cloud::models::ListUpdate >();
     requestListUpdate->setIsRestartAtEachSection(std::make_shared< bool >(true));
-
     std::shared_ptr< requests::UpdateListOnlineRequest > updateRequest(
         new requests::UpdateListOnlineRequest(
-            requestDocumentStream, std::make_shared< int32_t >(1), requestListUpdate
+            requestDocument, std::make_shared< int32_t >(1), requestListUpdate
         )
     );
     wordsApi->updateListOnline(updateRequest);
@@ -3627,7 +3537,6 @@ TEST_F(ExamplesTest, TestExampleUpdateParagraphFormat) {
     auto wordsApi = getApi();
     auto requestParagraphFormatDto = std::make_shared< aspose::words::cloud::models::ParagraphFormatUpdate >();
     requestParagraphFormatDto->setAlignment(std::make_shared< aspose::words::cloud::models::ParagraphFormatBase::Alignment >(aspose::words::cloud::models::ParagraphFormatBase::Alignment::RIGHT));
-
     std::shared_ptr< requests::UpdateParagraphFormatRequest > updateRequest(
         new requests::UpdateParagraphFormatRequest(
             std::make_shared< std::wstring >(L"Sample.docx"), std::make_shared< int32_t >(0), requestParagraphFormatDto
@@ -3639,13 +3548,12 @@ TEST_F(ExamplesTest, TestExampleUpdateParagraphFormat) {
 TEST_F(ExamplesTest, TestExampleUpdateParagraphFormatOnline) {
     std::wstring documentsDir = localTestExamplesFolder;
     auto wordsApi = getApi();
-    auto requestDocumentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + L"Sample.docx"), std::istream::binary));
+    auto requestDocument = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + L"Sample.docx"), std::istream::binary));
     auto requestParagraphFormatDto = std::make_shared< aspose::words::cloud::models::ParagraphFormatUpdate >();
     requestParagraphFormatDto->setAlignment(std::make_shared< aspose::words::cloud::models::ParagraphFormatBase::Alignment >(aspose::words::cloud::models::ParagraphFormatBase::Alignment::RIGHT));
-
     std::shared_ptr< requests::UpdateParagraphFormatOnlineRequest > updateRequest(
         new requests::UpdateParagraphFormatOnlineRequest(
-            requestDocumentStream, requestParagraphFormatDto, std::make_shared< int32_t >(0)
+            requestDocument, requestParagraphFormatDto, std::make_shared< int32_t >(0)
         )
     );
     wordsApi->updateParagraphFormatOnline(updateRequest);
@@ -3655,7 +3563,6 @@ TEST_F(ExamplesTest, TestExampleUpdateParagraphListFormat) {
     auto wordsApi = getApi();
     auto requestListFormatDto = std::make_shared< aspose::words::cloud::models::ListFormatUpdate >();
     requestListFormatDto->setListId(std::make_shared< int32_t >(2));
-
     std::shared_ptr< requests::UpdateParagraphListFormatRequest > updateRequest(
         new requests::UpdateParagraphListFormatRequest(
             std::make_shared< std::wstring >(L"Sample.docx"), std::make_shared< int32_t >(0), requestListFormatDto
@@ -3667,13 +3574,12 @@ TEST_F(ExamplesTest, TestExampleUpdateParagraphListFormat) {
 TEST_F(ExamplesTest, TestExampleUpdateParagraphListFormatOnline) {
     std::wstring documentsDir = localTestExamplesFolder;
     auto wordsApi = getApi();
-    auto requestDocumentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + L"Sample.doc"), std::istream::binary));
+    auto requestDocument = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + L"Sample.doc"), std::istream::binary));
     auto requestListFormatDto = std::make_shared< aspose::words::cloud::models::ListFormatUpdate >();
     requestListFormatDto->setListId(std::make_shared< int32_t >(2));
-
     std::shared_ptr< requests::UpdateParagraphListFormatOnlineRequest > updateRequest(
         new requests::UpdateParagraphListFormatOnlineRequest(
-            requestDocumentStream, requestListFormatDto, std::make_shared< int32_t >(0)
+            requestDocument, requestListFormatDto, std::make_shared< int32_t >(0)
         )
     );
     wordsApi->updateParagraphListFormatOnline(updateRequest);
@@ -3683,7 +3589,6 @@ TEST_F(ExamplesTest, TestExampleUpdateRun) {
     auto wordsApi = getApi();
     auto requestRun = std::make_shared< aspose::words::cloud::models::RunUpdate >();
     requestRun->setText(std::make_shared< std::wstring >(L"run with text"));
-
     std::shared_ptr< requests::UpdateRunRequest > updateRequest(
         new requests::UpdateRunRequest(
             std::make_shared< std::wstring >(L"Sample.docx"), std::make_shared< std::wstring >(L"paragraphs/1"), std::make_shared< int32_t >(0), requestRun
@@ -3696,7 +3601,6 @@ TEST_F(ExamplesTest, TestExampleUpdateRunFont) {
     auto wordsApi = getApi();
     auto requestFontDto = std::make_shared< aspose::words::cloud::models::Font >();
     requestFontDto->setBold(std::make_shared< bool >(true));
-
     std::shared_ptr< requests::UpdateRunFontRequest > updateRequest(
         new requests::UpdateRunFontRequest(
             std::make_shared< std::wstring >(L"Sample.docx"), std::make_shared< std::wstring >(L"paragraphs/0"), std::make_shared< int32_t >(0), requestFontDto
@@ -3708,13 +3612,12 @@ TEST_F(ExamplesTest, TestExampleUpdateRunFont) {
 TEST_F(ExamplesTest, TestExampleUpdateRunFontOnline) {
     std::wstring documentsDir = localTestExamplesFolder;
     auto wordsApi = getApi();
-    auto requestDocumentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + L"Sample.docx"), std::istream::binary));
+    auto requestDocument = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + L"Sample.docx"), std::istream::binary));
     auto requestFontDto = std::make_shared< aspose::words::cloud::models::Font >();
     requestFontDto->setBold(std::make_shared< bool >(true));
-
     std::shared_ptr< requests::UpdateRunFontOnlineRequest > updateRequest(
         new requests::UpdateRunFontOnlineRequest(
-            requestDocumentStream, std::make_shared< std::wstring >(L"paragraphs/0"), requestFontDto, std::make_shared< int32_t >(0)
+            requestDocument, std::make_shared< std::wstring >(L"paragraphs/0"), requestFontDto, std::make_shared< int32_t >(0)
         )
     );
     wordsApi->updateRunFontOnline(updateRequest);
@@ -3723,13 +3626,12 @@ TEST_F(ExamplesTest, TestExampleUpdateRunFontOnline) {
 TEST_F(ExamplesTest, TestExampleUpdateRunOnline) {
     std::wstring documentsDir = localTestExamplesFolder;
     auto wordsApi = getApi();
-    auto requestDocumentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + L"Sample.doc"), std::istream::binary));
+    auto requestDocument = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + L"Sample.doc"), std::istream::binary));
     auto requestRun = std::make_shared< aspose::words::cloud::models::RunUpdate >();
     requestRun->setText(std::make_shared< std::wstring >(L"run with text"));
-
     std::shared_ptr< requests::UpdateRunOnlineRequest > updateRequest(
         new requests::UpdateRunOnlineRequest(
-            requestDocumentStream, std::make_shared< std::wstring >(L"paragraphs/1"), requestRun, std::make_shared< int32_t >(0)
+            requestDocument, std::make_shared< std::wstring >(L"paragraphs/1"), requestRun, std::make_shared< int32_t >(0)
         )
     );
     wordsApi->updateRunOnline(updateRequest);
@@ -3742,7 +3644,6 @@ TEST_F(ExamplesTest, TestExampleUpdateSectionPageSetup) {
     requestPageSetup->setLeftMargin(std::make_shared< double >(10.0));
     requestPageSetup->setOrientation(std::make_shared< aspose::words::cloud::models::PageSetup::Orientation >(aspose::words::cloud::models::PageSetup::Orientation::LANDSCAPE));
     requestPageSetup->setPaperSize(std::make_shared< aspose::words::cloud::models::PageSetup::PaperSize >(aspose::words::cloud::models::PageSetup::PaperSize::A5));
-
     std::shared_ptr< requests::UpdateSectionPageSetupRequest > updateRequest(
         new requests::UpdateSectionPageSetupRequest(
             std::make_shared< std::wstring >(L"Sample.docx"), std::make_shared< int32_t >(0), requestPageSetup
@@ -3754,16 +3655,15 @@ TEST_F(ExamplesTest, TestExampleUpdateSectionPageSetup) {
 TEST_F(ExamplesTest, TestExampleUpdateSectionPageSetupOnline) {
     std::wstring documentsDir = localTestExamplesFolder;
     auto wordsApi = getApi();
-    auto requestDocumentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + L"Sample.docx"), std::istream::binary));
+    auto requestDocument = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + L"Sample.docx"), std::istream::binary));
     auto requestPageSetup = std::make_shared< aspose::words::cloud::models::PageSetup >();
     requestPageSetup->setRtlGutter(std::make_shared< bool >(true));
     requestPageSetup->setLeftMargin(std::make_shared< double >(10));
     requestPageSetup->setOrientation(std::make_shared< aspose::words::cloud::models::PageSetup::Orientation >(aspose::words::cloud::models::PageSetup::Orientation::LANDSCAPE));
     requestPageSetup->setPaperSize(std::make_shared< aspose::words::cloud::models::PageSetup::PaperSize >(aspose::words::cloud::models::PageSetup::PaperSize::A5));
-
     std::shared_ptr< requests::UpdateSectionPageSetupOnlineRequest > updateRequest(
         new requests::UpdateSectionPageSetupOnlineRequest(
-            requestDocumentStream, std::make_shared< int32_t >(0), requestPageSetup
+            requestDocument, std::make_shared< int32_t >(0), requestPageSetup
         )
     );
     wordsApi->updateSectionPageSetupOnline(updateRequest);
@@ -3773,7 +3673,6 @@ TEST_F(ExamplesTest, TestExampleUpdateStyle) {
     auto wordsApi = getApi();
     auto requestStyleUpdate = std::make_shared< aspose::words::cloud::models::StyleUpdate >();
     requestStyleUpdate->setName(std::make_shared< std::wstring >(L"My Style"));
-
     std::shared_ptr< requests::UpdateStyleRequest > updateRequest(
         new requests::UpdateStyleRequest(
             std::make_shared< std::wstring >(L"Sample.docx"), std::make_shared< std::wstring >(L"Heading 1"), requestStyleUpdate
@@ -3785,13 +3684,12 @@ TEST_F(ExamplesTest, TestExampleUpdateStyle) {
 TEST_F(ExamplesTest, TestExampleUpdateStyleOnline) {
     std::wstring documentsDir = localTestExamplesFolder;
     auto wordsApi = getApi();
-    auto requestDocumentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + L"Sample.docx"), std::istream::binary));
+    auto requestDocument = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + L"Sample.docx"), std::istream::binary));
     auto requestStyleUpdate = std::make_shared< aspose::words::cloud::models::StyleUpdate >();
     requestStyleUpdate->setName(std::make_shared< std::wstring >(L"My Style"));
-
     std::shared_ptr< requests::UpdateStyleOnlineRequest > updateRequest(
         new requests::UpdateStyleOnlineRequest(
-            requestDocumentStream, std::make_shared< std::wstring >(L"Heading 1"), requestStyleUpdate
+            requestDocument, std::make_shared< std::wstring >(L"Heading 1"), requestStyleUpdate
         )
     );
     wordsApi->updateStyleOnline(updateRequest);
@@ -3804,7 +3702,6 @@ TEST_F(ExamplesTest, TestExampleUpdateTableCellFormat) {
     requestFormat->setFitText(std::make_shared< bool >(true));
     requestFormat->setHorizontalMerge(std::make_shared< aspose::words::cloud::models::TableCellFormat::HorizontalMerge >(aspose::words::cloud::models::TableCellFormat::HorizontalMerge::FIRST));
     requestFormat->setWrapText(std::make_shared< bool >(true));
-
     std::shared_ptr< requests::UpdateTableCellFormatRequest > updateRequest(
         new requests::UpdateTableCellFormatRequest(
             std::make_shared< std::wstring >(L"Sample.docx"), std::make_shared< std::wstring >(L"sections/0/tables/2/rows/0"), std::make_shared< int32_t >(0), requestFormat
@@ -3816,16 +3713,15 @@ TEST_F(ExamplesTest, TestExampleUpdateTableCellFormat) {
 TEST_F(ExamplesTest, TestExampleUpdateTableCellFormatOnline) {
     std::wstring documentsDir = localTestExamplesFolder;
     auto wordsApi = getApi();
-    auto requestDocumentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + L"Sample.docx"), std::istream::binary));
+    auto requestDocument = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + L"Sample.docx"), std::istream::binary));
     auto requestFormat = std::make_shared< aspose::words::cloud::models::TableCellFormat >();
     requestFormat->setBottomPadding(std::make_shared< double >(5));
     requestFormat->setFitText(std::make_shared< bool >(true));
     requestFormat->setHorizontalMerge(std::make_shared< aspose::words::cloud::models::TableCellFormat::HorizontalMerge >(aspose::words::cloud::models::TableCellFormat::HorizontalMerge::FIRST));
     requestFormat->setWrapText(std::make_shared< bool >(true));
-
     std::shared_ptr< requests::UpdateTableCellFormatOnlineRequest > updateRequest(
         new requests::UpdateTableCellFormatOnlineRequest(
-            requestDocumentStream, std::make_shared< std::wstring >(L"sections/0/tables/2/rows/0"), requestFormat, std::make_shared< int32_t >(0)
+            requestDocument, std::make_shared< std::wstring >(L"sections/0/tables/2/rows/0"), requestFormat, std::make_shared< int32_t >(0)
         )
     );
     wordsApi->updateTableCellFormatOnline(updateRequest);
@@ -3840,7 +3736,6 @@ TEST_F(ExamplesTest, TestExampleUpdateTableProperties) {
     requestProperties->setBottomPadding(std::make_shared< double >(1.0));
     requestProperties->setCellSpacing(std::make_shared< double >(2.0));
     requestProperties->setStyleOptions(std::make_shared< aspose::words::cloud::models::TableProperties::StyleOptions >(aspose::words::cloud::models::TableProperties::StyleOptions::COLUMN_BANDS));
-
     std::shared_ptr< requests::UpdateTablePropertiesRequest > updateRequest(
         new requests::UpdateTablePropertiesRequest(
             std::make_shared< std::wstring >(L"Sample.docx"), std::make_shared< int32_t >(1), requestProperties
@@ -3852,7 +3747,7 @@ TEST_F(ExamplesTest, TestExampleUpdateTableProperties) {
 TEST_F(ExamplesTest, TestExampleUpdateTablePropertiesOnline) {
     std::wstring documentsDir = localTestExamplesFolder;
     auto wordsApi = getApi();
-    auto requestDocumentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + L"Sample.docx"), std::istream::binary));
+    auto requestDocument = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + L"Sample.docx"), std::istream::binary));
     auto requestProperties = std::make_shared< aspose::words::cloud::models::TableProperties >();
     requestProperties->setAlignment(std::make_shared< aspose::words::cloud::models::TableProperties::Alignment >(aspose::words::cloud::models::TableProperties::Alignment::RIGHT));
     requestProperties->setAllowAutoFit(std::make_shared< bool >(false));
@@ -3860,10 +3755,9 @@ TEST_F(ExamplesTest, TestExampleUpdateTablePropertiesOnline) {
     requestProperties->setBottomPadding(std::make_shared< double >(1));
     requestProperties->setCellSpacing(std::make_shared< double >(2));
     requestProperties->setStyleOptions(std::make_shared< aspose::words::cloud::models::TableProperties::StyleOptions >(aspose::words::cloud::models::TableProperties::StyleOptions::COLUMN_BANDS));
-
     std::shared_ptr< requests::UpdateTablePropertiesOnlineRequest > updateRequest(
         new requests::UpdateTablePropertiesOnlineRequest(
-            requestDocumentStream, requestProperties, std::make_shared< int32_t >(1)
+            requestDocument, requestProperties, std::make_shared< int32_t >(1)
         )
     );
     wordsApi->updateTablePropertiesOnline(updateRequest);
@@ -3876,7 +3770,6 @@ TEST_F(ExamplesTest, TestExampleUpdateTableRowFormat) {
     requestFormat->setHeadingFormat(std::make_shared< bool >(true));
     requestFormat->setHeight(std::make_shared< double >(10.0));
     requestFormat->setHeightRule(std::make_shared< aspose::words::cloud::models::TableRowFormat::HeightRule >(aspose::words::cloud::models::TableRowFormat::HeightRule::EXACTLY));
-
     std::shared_ptr< requests::UpdateTableRowFormatRequest > updateRequest(
         new requests::UpdateTableRowFormatRequest(
             std::make_shared< std::wstring >(L"Sample.docx"), std::make_shared< std::wstring >(L"sections/0/tables/2"), std::make_shared< int32_t >(0), requestFormat
@@ -3888,16 +3781,15 @@ TEST_F(ExamplesTest, TestExampleUpdateTableRowFormat) {
 TEST_F(ExamplesTest, TestExampleUpdateTableRowFormatOnline) {
     std::wstring documentsDir = localTestExamplesFolder;
     auto wordsApi = getApi();
-    auto requestDocumentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + L"Sample.docx"), std::istream::binary));
+    auto requestDocument = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + L"Sample.docx"), std::istream::binary));
     auto requestFormat = std::make_shared< aspose::words::cloud::models::TableRowFormat >();
     requestFormat->setAllowBreakAcrossPages(std::make_shared< bool >(true));
     requestFormat->setHeadingFormat(std::make_shared< bool >(true));
     requestFormat->setHeight(std::make_shared< double >(10));
     requestFormat->setHeightRule(std::make_shared< aspose::words::cloud::models::TableRowFormat::HeightRule >(aspose::words::cloud::models::TableRowFormat::HeightRule::AUTO));
-
     std::shared_ptr< requests::UpdateTableRowFormatOnlineRequest > updateRequest(
         new requests::UpdateTableRowFormatOnlineRequest(
-            requestDocumentStream, std::make_shared< std::wstring >(L"sections/0/tables/2"), requestFormat, std::make_shared< int32_t >(0)
+            requestDocument, std::make_shared< std::wstring >(L"sections/0/tables/2"), requestFormat, std::make_shared< int32_t >(0)
         )
     );
     wordsApi->updateTableRowFormatOnline(updateRequest);
@@ -3906,10 +3798,10 @@ TEST_F(ExamplesTest, TestExampleUpdateTableRowFormatOnline) {
 TEST_F(ExamplesTest, TestExampleUploadFile) {
     std::wstring documentsDir = localTestExamplesFolder;
     auto wordsApi = getApi();
-    auto requestFileContentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + L"Sample.docx"), std::istream::binary));
+    auto requestFileContent = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + L"Sample.docx"), std::istream::binary));
     std::shared_ptr< requests::UploadFileRequest > uploadRequest(
         new requests::UploadFileRequest(
-            requestFileContentStream, std::make_shared< std::wstring >(L"Sample.docx")
+            requestFileContent, std::make_shared< std::wstring >(L"Sample.docx")
         )
     );
     wordsApi->uploadFile(uploadRequest);

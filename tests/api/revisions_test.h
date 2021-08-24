@@ -65,9 +65,9 @@ TEST_F(RevisionsTests, TestAcceptAllRevisions) {
 /// Test for accepting revisions in document online.
 /// </summary>
 TEST_F(RevisionsTests, TestAcceptAllRevisionsOnline) {
-    auto requestDocumentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(localFile)), std::istream::binary));
+    auto requestDocument = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(localFile)), std::istream::binary));
     std::shared_ptr<requests::AcceptAllRevisionsOnlineRequest> request(new requests::AcceptAllRevisionsOnlineRequest(
-        requestDocumentStream,
+        requestDocument,
         nullptr,
         nullptr,
         nullptr
@@ -109,9 +109,9 @@ TEST_F(RevisionsTests, TestRejectAllRevisions) {
 /// Test for rejecting revisions in document online.
 /// </summary>
 TEST_F(RevisionsTests, TestRejectAllRevisionsOnline) {
-    auto requestDocumentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(localFile)), std::istream::binary));
+    auto requestDocument = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(localFile)), std::istream::binary));
     std::shared_ptr<requests::RejectAllRevisionsOnlineRequest> request(new requests::RejectAllRevisionsOnlineRequest(
-        requestDocumentStream,
+        requestDocument,
         nullptr,
         nullptr,
         nullptr
