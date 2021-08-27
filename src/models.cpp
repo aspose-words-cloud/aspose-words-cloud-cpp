@@ -1390,6 +1390,9 @@ namespace aspose::words::cloud::models {
         if (m_DateTime) {
             json["DateTime"] = convertUtf16(*m_DateTime);
         }
+        if (m_ResultDocumentFormat) {
+            json["ResultDocumentFormat"] = convertUtf16(*m_ResultDocumentFormat);
+        }
     }
 
     void CompareData::fromJson(const void* jsonIfc)
@@ -1412,6 +1415,11 @@ namespace aspose::words::cloud::models {
         if (json.contains("DateTime") && !json["DateTime"].is_null()) {
             m_DateTime = std::make_shared< std::wstring >(
                 convertUtf8( json["DateTime"].get< std::string >() )
+            );
+        }
+        if (json.contains("ResultDocumentFormat") && !json["ResultDocumentFormat"].is_null()) {
+            m_ResultDocumentFormat = std::make_shared< std::wstring >(
+                convertUtf8( json["ResultDocumentFormat"].get< std::string >() )
             );
         }
     }
@@ -1454,6 +1462,16 @@ namespace aspose::words::cloud::models {
     void CompareData::setDateTime(std::shared_ptr< std::wstring > value)
     {
         m_DateTime = value;
+    }
+
+    std::shared_ptr< std::wstring > CompareData::getResultDocumentFormat() const
+    {
+        return m_ResultDocumentFormat;
+    }
+
+    void CompareData::setResultDocumentFormat(std::shared_ptr< std::wstring > value)
+    {
+        m_ResultDocumentFormat = value;
     }
 
 
@@ -1748,6 +1766,210 @@ namespace aspose::words::cloud::models {
     {
         m_QuoteChar = value;
     }
+
+
+    /*
+     * CustomXmlPart implementation
+     */
+    void CustomXmlPart::toJson(void* jsonIfc) const
+    {
+        CustomXmlPartLink::toJson(jsonIfc);
+        ::nlohmann::json& json = *((::nlohmann::json*)jsonIfc);
+        if (m_Data) {
+            json["Data"] = convertUtf16(*m_Data);
+        }
+        if (m_Id) {
+            json["Id"] = convertUtf16(*m_Id);
+        }
+    }
+
+    void CustomXmlPart::fromJson(const void* jsonIfc)
+    {
+        CustomXmlPartLink::fromJson(jsonIfc);
+        ::nlohmann::json& json = *((::nlohmann::json*)jsonIfc);
+        if (json.contains("Data") && !json["Data"].is_null()) {
+            m_Data = std::make_shared< std::wstring >(
+                convertUtf8( json["Data"].get< std::string >() )
+            );
+        }
+        if (json.contains("Id") && !json["Id"].is_null()) {
+            m_Id = std::make_shared< std::wstring >(
+                convertUtf8( json["Id"].get< std::string >() )
+            );
+        }
+    }
+
+    std::shared_ptr< std::wstring > CustomXmlPart::getData() const
+    {
+        return m_Data;
+    }
+
+    void CustomXmlPart::setData(std::shared_ptr< std::wstring > value)
+    {
+        m_Data = value;
+    }
+
+    std::shared_ptr< std::wstring > CustomXmlPart::getId() const
+    {
+        return m_Id;
+    }
+
+    void CustomXmlPart::setId(std::shared_ptr< std::wstring > value)
+    {
+        m_Id = value;
+    }
+
+
+    /*
+     * CustomXmlPartInsert implementation
+     */
+    void CustomXmlPartInsert::toJson(void* jsonIfc) const
+    {
+        CustomXmlPart::toJson(jsonIfc);
+    }
+
+    void CustomXmlPartInsert::fromJson(const void* jsonIfc)
+    {
+        CustomXmlPart::fromJson(jsonIfc);
+    }
+
+
+
+
+    /*
+     * CustomXmlPartLink implementation
+     */
+    void CustomXmlPartLink::toJson(void* jsonIfc) const
+    {
+        LinkElement::toJson(jsonIfc);
+    }
+
+    void CustomXmlPartLink::fromJson(const void* jsonIfc)
+    {
+        LinkElement::fromJson(jsonIfc);
+    }
+
+
+
+
+    /*
+     * CustomXmlPartResponse implementation
+     */
+    void CustomXmlPartResponse::toJson(void* jsonIfc) const
+    {
+        WordsResponse::toJson(jsonIfc);
+        ::nlohmann::json& json = *((::nlohmann::json*)jsonIfc);
+        if (m_CustomXmlPart) {
+            m_CustomXmlPart->toJson(&json["CustomXmlPart"]);
+        }
+    }
+
+    void CustomXmlPartResponse::fromJson(const void* jsonIfc)
+    {
+        WordsResponse::fromJson(jsonIfc);
+        ::nlohmann::json& json = *((::nlohmann::json*)jsonIfc);
+        if (json.contains("CustomXmlPart") && !json["CustomXmlPart"].is_null()) {
+            m_CustomXmlPart = std::make_shared< aspose::words::cloud::models::CustomXmlPart >();
+            m_CustomXmlPart->fromJson(&json["CustomXmlPart"]);
+        }
+    }
+
+    std::shared_ptr< aspose::words::cloud::models::CustomXmlPart > CustomXmlPartResponse::getCustomXmlPart() const
+    {
+        return m_CustomXmlPart;
+    }
+
+    void CustomXmlPartResponse::setCustomXmlPart(std::shared_ptr< aspose::words::cloud::models::CustomXmlPart > value)
+    {
+        m_CustomXmlPart = value;
+    }
+
+
+    /*
+     * CustomXmlPartsCollection implementation
+     */
+    void CustomXmlPartsCollection::toJson(void* jsonIfc) const
+    {
+        LinkElement::toJson(jsonIfc);
+        ::nlohmann::json& json = *((::nlohmann::json*)jsonIfc);
+        if (m_CustomXmlPartsList) {
+            json["CustomXmlPartsList"] = ::nlohmann::json::array();
+            for (auto& element : *m_CustomXmlPartsList) {
+                element->toJson(&json["CustomXmlPartsList"].emplace_back());
+            }
+        }
+    }
+
+    void CustomXmlPartsCollection::fromJson(const void* jsonIfc)
+    {
+        LinkElement::fromJson(jsonIfc);
+        ::nlohmann::json& json = *((::nlohmann::json*)jsonIfc);
+        if (json.contains("CustomXmlPartsList") && !json["CustomXmlPartsList"].is_null()) {
+            m_CustomXmlPartsList = std::make_shared< std::vector<std::shared_ptr<aspose::words::cloud::models::CustomXmlPart>> >();
+            for (auto& element : json["CustomXmlPartsList"]) {
+                m_CustomXmlPartsList->emplace_back(std::make_shared< aspose::words::cloud::models::CustomXmlPart >())->fromJson(&element);
+            }
+        }
+    }
+
+    std::shared_ptr< std::vector<std::shared_ptr<aspose::words::cloud::models::CustomXmlPart>> > CustomXmlPartsCollection::getCustomXmlPartsList() const
+    {
+        return m_CustomXmlPartsList;
+    }
+
+    void CustomXmlPartsCollection::setCustomXmlPartsList(std::shared_ptr< std::vector<std::shared_ptr<aspose::words::cloud::models::CustomXmlPart>> > value)
+    {
+        m_CustomXmlPartsList = value;
+    }
+
+
+    /*
+     * CustomXmlPartsResponse implementation
+     */
+    void CustomXmlPartsResponse::toJson(void* jsonIfc) const
+    {
+        WordsResponse::toJson(jsonIfc);
+        ::nlohmann::json& json = *((::nlohmann::json*)jsonIfc);
+        if (m_CustomXmlParts) {
+            m_CustomXmlParts->toJson(&json["CustomXmlParts"]);
+        }
+    }
+
+    void CustomXmlPartsResponse::fromJson(const void* jsonIfc)
+    {
+        WordsResponse::fromJson(jsonIfc);
+        ::nlohmann::json& json = *((::nlohmann::json*)jsonIfc);
+        if (json.contains("CustomXmlParts") && !json["CustomXmlParts"].is_null()) {
+            m_CustomXmlParts = std::make_shared< aspose::words::cloud::models::CustomXmlPartsCollection >();
+            m_CustomXmlParts->fromJson(&json["CustomXmlParts"]);
+        }
+    }
+
+    std::shared_ptr< aspose::words::cloud::models::CustomXmlPartsCollection > CustomXmlPartsResponse::getCustomXmlParts() const
+    {
+        return m_CustomXmlParts;
+    }
+
+    void CustomXmlPartsResponse::setCustomXmlParts(std::shared_ptr< aspose::words::cloud::models::CustomXmlPartsCollection > value)
+    {
+        m_CustomXmlParts = value;
+    }
+
+
+    /*
+     * CustomXmlPartUpdate implementation
+     */
+    void CustomXmlPartUpdate::toJson(void* jsonIfc) const
+    {
+        CustomXmlPart::toJson(jsonIfc);
+    }
+
+    void CustomXmlPartUpdate::fromJson(const void* jsonIfc)
+    {
+        CustomXmlPart::fromJson(jsonIfc);
+    }
+
+
 
 
     /*
@@ -14139,6 +14361,9 @@ namespace aspose::words::cloud::models {
         if (m_ExportDocumentStructure) {
             json["ExportDocumentStructure"] = *m_ExportDocumentStructure;
         }
+        if (m_ExportLanguageToSpanTag) {
+            json["ExportLanguageToSpanTag"] = *m_ExportLanguageToSpanTag;
+        }
         if (m_FontEmbeddingMode) {
             json["FontEmbeddingMode"] = convertUtf16(*m_FontEmbeddingMode);
         }
@@ -14230,6 +14455,11 @@ namespace aspose::words::cloud::models {
         if (json.contains("ExportDocumentStructure") && !json["ExportDocumentStructure"].is_null()) {
             m_ExportDocumentStructure = std::make_shared< bool >(
                 json["ExportDocumentStructure"].get< bool >()
+            );
+        }
+        if (json.contains("ExportLanguageToSpanTag") && !json["ExportLanguageToSpanTag"].is_null()) {
+            m_ExportLanguageToSpanTag = std::make_shared< bool >(
+                json["ExportLanguageToSpanTag"].get< bool >()
             );
         }
         if (json.contains("FontEmbeddingMode") && !json["FontEmbeddingMode"].is_null()) {
@@ -14396,6 +14626,16 @@ namespace aspose::words::cloud::models {
     void PdfSaveOptionsData::setExportDocumentStructure(std::shared_ptr< bool > value)
     {
         m_ExportDocumentStructure = value;
+    }
+
+    std::shared_ptr< bool > PdfSaveOptionsData::getExportLanguageToSpanTag() const
+    {
+        return m_ExportLanguageToSpanTag;
+    }
+
+    void PdfSaveOptionsData::setExportLanguageToSpanTag(std::shared_ptr< bool > value)
+    {
+        m_ExportLanguageToSpanTag = value;
     }
 
     std::shared_ptr< std::wstring > PdfSaveOptionsData::getFontEmbeddingMode() const
@@ -15743,6 +15983,9 @@ namespace aspose::words::cloud::models {
         if (m_FileName) {
             json["FileName"] = convertUtf16(*m_FileName);
         }
+        if (m_FlatOpcXmlMappingOnly) {
+            json["FlatOpcXmlMappingOnly"] = *m_FlatOpcXmlMappingOnly;
+        }
         if (m_ImlRenderingMode) {
             json["ImlRenderingMode"] = convertUtf16(*m_ImlRenderingMode);
         }
@@ -15799,6 +16042,11 @@ namespace aspose::words::cloud::models {
         if (json.contains("FileName") && !json["FileName"].is_null()) {
             m_FileName = std::make_shared< std::wstring >(
                 convertUtf8( json["FileName"].get< std::string >() )
+            );
+        }
+        if (json.contains("FlatOpcXmlMappingOnly") && !json["FlatOpcXmlMappingOnly"].is_null()) {
+            m_FlatOpcXmlMappingOnly = std::make_shared< bool >(
+                json["FlatOpcXmlMappingOnly"].get< bool >()
             );
         }
         if (json.contains("ImlRenderingMode") && !json["ImlRenderingMode"].is_null()) {
@@ -15901,6 +16149,16 @@ namespace aspose::words::cloud::models {
     void SaveOptionsData::setFileName(std::shared_ptr< std::wstring > value)
     {
         m_FileName = value;
+    }
+
+    std::shared_ptr< bool > SaveOptionsData::getFlatOpcXmlMappingOnly() const
+    {
+        return m_FlatOpcXmlMappingOnly;
+    }
+
+    void SaveOptionsData::setFlatOpcXmlMappingOnly(std::shared_ptr< bool > value)
+    {
+        m_FlatOpcXmlMappingOnly = value;
     }
 
     std::shared_ptr< std::wstring > SaveOptionsData::getImlRenderingMode() const

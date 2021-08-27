@@ -43,13 +43,12 @@ TEST_F(BuildReportTests, TestBuildReportOnline) {
     std::wstring localDocumentFile = L"ReportTemplate.docx";
     std::wstring localDataFile = getFileTextUtf16(localTestDataFolder + L"/" + reportingFolder + L"/ReportData.json");
 
-    auto requestTemplateStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(reportingFolder + L"/" + localDocumentFile)), std::istream::binary));
+    auto requestTemplate = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(reportingFolder + L"/" + localDocumentFile)), std::istream::binary));
     auto requestReportEngineSettings = std::make_shared< aspose::words::cloud::models::ReportEngineSettings >();
     requestReportEngineSettings->setDataSourceType(std::make_shared< aspose::words::cloud::models::ReportEngineSettings::DataSourceType >(aspose::words::cloud::models::ReportEngineSettings::DataSourceType::JSON));
     requestReportEngineSettings->setDataSourceName(std::make_shared< std::wstring >(L"persons"));
-
     std::shared_ptr<requests::BuildReportOnlineRequest> request(new requests::BuildReportOnlineRequest(
-        requestTemplateStream,
+        requestTemplate,
         std::make_shared< std::wstring >(localDataFile),
         requestReportEngineSettings,
         nullptr
@@ -74,11 +73,9 @@ TEST_F(BuildReportTests, TestBuildReport) {
     auto requestReportEngineSettingsReportBuildOptions = std::make_shared< std::vector<std::shared_ptr<aspose::words::cloud::models::ReportBuildOptions>> >();
     requestReportEngineSettingsReportBuildOptions->push_back(std::make_shared< aspose::words::cloud::models::ReportBuildOptions >(aspose::words::cloud::models::ReportBuildOptions::ALLOW_MISSING_MEMBERS));
     requestReportEngineSettingsReportBuildOptions->push_back(std::make_shared< aspose::words::cloud::models::ReportBuildOptions >(aspose::words::cloud::models::ReportBuildOptions::REMOVE_EMPTY_PARAGRAPHS));
-
     auto requestReportEngineSettings = std::make_shared< aspose::words::cloud::models::ReportEngineSettings >();
     requestReportEngineSettings->setDataSourceType(std::make_shared< aspose::words::cloud::models::ReportEngineSettings::DataSourceType >(aspose::words::cloud::models::ReportEngineSettings::DataSourceType::JSON));
     requestReportEngineSettings->setReportBuildOptions(requestReportEngineSettingsReportBuildOptions);
-
     std::shared_ptr<requests::BuildReportRequest> request(new requests::BuildReportRequest(
         std::make_shared< std::wstring >(remoteFileName),
         std::make_shared< std::wstring >(localDataFile),

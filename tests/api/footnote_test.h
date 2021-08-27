@@ -50,7 +50,6 @@ TEST_F(FootnoteTests, TestInsertFootnote) {
     auto requestFootnoteDto = std::make_shared< aspose::words::cloud::models::FootnoteInsert >();
     requestFootnoteDto->setFootnoteType(std::make_shared< aspose::words::cloud::models::FootnoteBase::FootnoteType >(aspose::words::cloud::models::FootnoteBase::FootnoteType::ENDNOTE));
     requestFootnoteDto->setText(std::make_shared< std::wstring >(L"test endnote"));
-
     std::shared_ptr<requests::InsertFootnoteRequest> request(new requests::InsertFootnoteRequest(
         std::make_shared< std::wstring >(remoteFileName),
         requestFootnoteDto,
@@ -74,13 +73,12 @@ TEST_F(FootnoteTests, TestInsertFootnote) {
 /// Test for adding footnote online.
 /// </summary>
 TEST_F(FootnoteTests, TestInsertFootnoteOnline) {
-    auto requestDocumentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(footnoteFolder + L"/Footnote.doc")), std::istream::binary));
+    auto requestDocument = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(footnoteFolder + L"/Footnote.doc")), std::istream::binary));
     auto requestFootnoteDto = std::make_shared< aspose::words::cloud::models::FootnoteInsert >();
     requestFootnoteDto->setFootnoteType(std::make_shared< aspose::words::cloud::models::FootnoteBase::FootnoteType >(aspose::words::cloud::models::FootnoteBase::FootnoteType::ENDNOTE));
     requestFootnoteDto->setText(std::make_shared< std::wstring >(L"test endnote"));
-
     std::shared_ptr<requests::InsertFootnoteOnlineRequest> request(new requests::InsertFootnoteOnlineRequest(
-        requestDocumentStream,
+        requestDocument,
         requestFootnoteDto,
         std::make_shared< std::wstring >(L""),
         nullptr,
@@ -107,7 +105,6 @@ TEST_F(FootnoteTests, TestInsertFootnoteWithoutNodePath) {
     auto requestFootnoteDto = std::make_shared< aspose::words::cloud::models::FootnoteInsert >();
     requestFootnoteDto->setFootnoteType(std::make_shared< aspose::words::cloud::models::FootnoteBase::FootnoteType >(aspose::words::cloud::models::FootnoteBase::FootnoteType::ENDNOTE));
     requestFootnoteDto->setText(std::make_shared< std::wstring >(L"test endnote"));
-
     std::shared_ptr<requests::InsertFootnoteRequest> request(new requests::InsertFootnoteRequest(
         std::make_shared< std::wstring >(remoteFileName),
         requestFootnoteDto,
@@ -158,9 +155,9 @@ getApi()->deleteFootnote(request);
 /// Test for deleting footnote online.
 /// </summary>
 TEST_F(FootnoteTests, TestDeleteFootnoteOnline) {
-    auto requestDocumentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(footnoteFolder + L"/Footnote.doc")), std::istream::binary));
+    auto requestDocument = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(footnoteFolder + L"/Footnote.doc")), std::istream::binary));
     std::shared_ptr<requests::DeleteFootnoteOnlineRequest> request(new requests::DeleteFootnoteOnlineRequest(
-        requestDocumentStream,
+        requestDocument,
         std::make_shared< int32_t >(0),
         std::make_shared< std::wstring >(L""),
         nullptr,
@@ -231,9 +228,9 @@ TEST_F(FootnoteTests, TestGetFootnotes) {
 /// Test for getting footnotes online.
 /// </summary>
 TEST_F(FootnoteTests, TestGetFootnotesOnline) {
-    auto requestDocumentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(footnoteFolder + L"/Footnote.doc")), std::istream::binary));
+    auto requestDocument = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(footnoteFolder + L"/Footnote.doc")), std::istream::binary));
     std::shared_ptr<requests::GetFootnotesOnlineRequest> request(new requests::GetFootnotesOnlineRequest(
-        requestDocumentStream,
+        requestDocument,
         std::make_shared< std::wstring >(L""),
         nullptr,
         nullptr
@@ -299,9 +296,9 @@ TEST_F(FootnoteTests, TestGetFootnote) {
 /// Test for getting footnote online.
 /// </summary>
 TEST_F(FootnoteTests, TestGetFootnoteOnline) {
-    auto requestDocumentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(footnoteFolder + L"/Footnote.doc")), std::istream::binary));
+    auto requestDocument = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(footnoteFolder + L"/Footnote.doc")), std::istream::binary));
     std::shared_ptr<requests::GetFootnoteOnlineRequest> request(new requests::GetFootnoteOnlineRequest(
-        requestDocumentStream,
+        requestDocument,
         std::make_shared< int32_t >(0),
         std::make_shared< std::wstring >(L""),
         nullptr,
@@ -350,7 +347,6 @@ TEST_F(FootnoteTests, TestUpdateFootnote) {
 
     auto requestFootnoteDto = std::make_shared< aspose::words::cloud::models::FootnoteUpdate >();
     requestFootnoteDto->setText(std::make_shared< std::wstring >(L"new text is here"));
-
     std::shared_ptr<requests::UpdateFootnoteRequest> request(new requests::UpdateFootnoteRequest(
         std::make_shared< std::wstring >(remoteFileName),
         std::make_shared< int32_t >(0),
@@ -374,12 +370,11 @@ TEST_F(FootnoteTests, TestUpdateFootnote) {
 /// Test for updating footnote online.
 /// </summary>
 TEST_F(FootnoteTests, TestUpdateFootnoteOnline) {
-    auto requestDocumentStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(footnoteFolder + L"/Footnote.doc")), std::istream::binary));
+    auto requestDocument = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(footnoteFolder + L"/Footnote.doc")), std::istream::binary));
     auto requestFootnoteDto = std::make_shared< aspose::words::cloud::models::FootnoteUpdate >();
     requestFootnoteDto->setText(std::make_shared< std::wstring >(L"new text is here"));
-
     std::shared_ptr<requests::UpdateFootnoteOnlineRequest> request(new requests::UpdateFootnoteOnlineRequest(
-        requestDocumentStream,
+        requestDocument,
         requestFootnoteDto,
         std::make_shared< int32_t >(0),
         std::make_shared< std::wstring >(L""),
@@ -406,7 +401,6 @@ TEST_F(FootnoteTests, TestUpdateFootnoteWithoutNodePath) {
 
     auto requestFootnoteDto = std::make_shared< aspose::words::cloud::models::FootnoteUpdate >();
     requestFootnoteDto->setText(std::make_shared< std::wstring >(L"new text is here"));
-
     std::shared_ptr<requests::UpdateFootnoteRequest> request(new requests::UpdateFootnoteRequest(
         std::make_shared< std::wstring >(remoteFileName),
         std::make_shared< int32_t >(0),
