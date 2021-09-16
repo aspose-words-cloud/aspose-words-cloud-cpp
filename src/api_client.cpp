@@ -151,7 +151,7 @@ namespace aspose::words::cloud {
 
         ::httplib::Headers headers;
         headers.emplace("Authorization", m_AccessToken);
-        headers.emplace("x-aspose-client-version", "21.8");
+        headers.emplace("x-aspose-client-version", "21.9");
         headers.emplace("x-aspose-client", "C++ SDK");
 
         for (auto& pair : httpRequest->getHeaders()) {
