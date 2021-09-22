@@ -26,7 +26,6 @@
 #pragma once
 #include "./model_base.h"
 #include "fixed_page_save_options_data.h"
-#include "graphics_quality_options_data.h"
 
 namespace aspose::words::cloud::models {
     /// <summary>
@@ -39,16 +38,6 @@ namespace aspose::words::cloud::models {
         ASPOSE_WORDS_CLOUD_EXPORT virtual ~ImageSaveOptionsData() = default;
         ASPOSE_WORDS_CLOUD_EXPORT virtual void toJson(void* jsonIfc) const override;
         ASPOSE_WORDS_CLOUD_EXPORT virtual void fromJson(const void* jsonIfc) override;
-
-        /// <summary>
-        /// Gets or sets the additional System.Drawing.Graphics quality options.
-        /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::GraphicsQualityOptionsData > getGraphicsQualityOptions() const;
-
-        /// <summary>
-        /// Gets or sets the additional System.Drawing.Graphics quality options.
-        /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setGraphicsQualityOptions(std::shared_ptr< aspose::words::cloud::models::GraphicsQualityOptionsData > value);
 
         /// <summary>
         /// Gets or sets the horizontal resolution in dots per inch for the generated images.
@@ -183,7 +172,6 @@ namespace aspose::words::cloud::models {
         ASPOSE_WORDS_CLOUD_EXPORT void setVerticalResolution(std::shared_ptr< double > value);
 
     protected:
-        std::shared_ptr< aspose::words::cloud::models::GraphicsQualityOptionsData > m_GraphicsQualityOptions;
         std::shared_ptr< double > m_HorizontalResolution;
         std::shared_ptr< double > m_ImageBrightness;
         std::shared_ptr< std::wstring > m_ImageColorMode;
