@@ -251,7 +251,7 @@ namespace aspose::words::cloud {
 
     void HttpRequestData::encryptSecureData(aspose::words::cloud::ApiClient* apiClient)
     {
-        auto& passwordField = m_QueryParams.find(L"password");
+        auto passwordField = m_QueryParams.find(L"password");
         if (passwordField != m_QueryParams.end())
         {
             m_QueryParams.insert(std::pair<std::wstring, std::wstring>(L"encryptedPassword", apiClient->encryptString(passwordField->second)));
