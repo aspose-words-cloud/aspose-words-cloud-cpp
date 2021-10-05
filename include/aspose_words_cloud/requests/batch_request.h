@@ -30,6 +30,10 @@
 #include "aspose_words_cloud/common.h"
 #include "aspose_words_cloud/requests/request_model_base.h"
 
+namespace aspose::words::cloud {
+    class ApiClient;
+}
+
 namespace aspose::words::cloud::requests {
     class BatchRequest
     {
@@ -38,7 +42,7 @@ namespace aspose::words::cloud::requests {
         ASPOSE_WORDS_CLOUD_EXPORT virtual ~BatchRequest() = default;
         ASPOSE_WORDS_CLOUD_EXPORT void dependsOn(const BatchRequest& other);
         ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr<std::istream> asResult() const;
-        ASPOSE_WORDS_CLOUD_EXPORT void serialize(std::string& body) const;
+        ASPOSE_WORDS_CLOUD_EXPORT void serialize(ApiClient* apiClient, std::string& body) const;
         ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr<RequestModelBase> get() const;
         ASPOSE_WORDS_CLOUD_EXPORT const std::string& getRequestId() const;
 

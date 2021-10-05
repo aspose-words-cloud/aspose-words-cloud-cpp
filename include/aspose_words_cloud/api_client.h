@@ -32,6 +32,7 @@
 #include "./responses/response_model_base.h"
 #include "./common.h"
 
+struct rsa_st;
 namespace httplib {
     class Client;
 }
@@ -41,19 +42,23 @@ namespace aspose::words::cloud {
     {
     public:
         ASPOSE_WORDS_CLOUD_EXPORT ApiClient(std::shared_ptr<ApiConfiguration> configuration);
-        ASPOSE_WORDS_CLOUD_EXPORT virtual ~ApiClient() = default;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual ~ApiClient();
 
         ASPOSE_WORDS_CLOUD_EXPORT void call(
             std::shared_ptr< HttpRequestData > httpRequest,
             aspose::words::cloud::responses::ResponseModelBase& response);
 
+        ASPOSE_WORDS_CLOUD_EXPORT ::std::wstring encryptString(const ::std::wstring& text);
+
         static ASPOSE_WORDS_CLOUD_EXPORT std::string createRandomGuid();
 
     private:
         void requestToken();
+        void requestEncryptionKey();
         std::shared_ptr<::httplib::Client> m_HttpClient;
         std::shared_ptr<ApiConfiguration> m_Configuration;
         std::string m_AccessToken;
         std::mutex m_Mutex;
+        rsa_st* m_encryptionKey;
     };
 }

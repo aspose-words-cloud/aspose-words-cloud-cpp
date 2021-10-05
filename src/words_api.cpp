@@ -3363,7 +3363,7 @@ namespace aspose::words::cloud::api {
                 requestBodyRef.append("\r\n");
                 requestBodyRef.append("Content-Type: application/http; msgtype=request\r\n");
                 requestBodyRef.append("Content-Disposition: form-data\r\n\r\n");
-                batchRequest.serialize(requestBodyRef);
+                batchRequest.serialize(m_ApiClient.get(), requestBodyRef);
                 requestBodyRef.append("\r\n");
             }
             requestBodyRef.append("--");

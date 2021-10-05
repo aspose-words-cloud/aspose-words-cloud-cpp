@@ -35,6 +35,7 @@ namespace aspose::words::cloud {
         HttpGET, HttpPOST, HttpPUT, HttpDELETE
     };
 
+    class ApiClient;
     class HttpRequestData
     {
     public:
@@ -58,6 +59,7 @@ namespace aspose::words::cloud {
         ASPOSE_WORDS_CLOUD_EXPORT void addFormDataParam(const std::wstring& name, std::istream& stream);
         ASPOSE_WORDS_CLOUD_EXPORT void addFormDataParam(const std::wstring& name, const std::wstring& value);
         ASPOSE_WORDS_CLOUD_EXPORT void setContentType(const std::string& value);
+        ASPOSE_WORDS_CLOUD_EXPORT void encryptSecureData(aspose::words::cloud::ApiClient* apiClient);
 
         ASPOSE_WORDS_CLOUD_EXPORT std::string getFullPath() const;
         ASPOSE_WORDS_CLOUD_EXPORT HttpRequestMethod getMethod() const;
