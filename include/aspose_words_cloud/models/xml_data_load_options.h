@@ -1,5 +1,5 @@
 ﻿/** --------------------------------------------------------------------------------------------------------------------
-* <copyright company="Aspose" file="batch_response.h">
+* <copyright company="Aspose" file="xml_data_load_options.h">
 *   Copyright (c) 2021 Aspose.Words for Cloud
 * </copyright>
 * <summary>
@@ -24,37 +24,36 @@
 -------------------------------------------------------------------------------------------------------------------- **/
 
 #pragma once
-#include <vector>
-#include <memory>
-#include <unordered_map>
-#include <string_view>
-#include "aspose_words_cloud/common.h"
-#include "aspose_words_cloud/requests/batch_request.h"
-#include "aspose_words_cloud/requests/request_model_base.h"
-#include "aspose_words_cloud/responses/response_model_base.h"
+#include "./model_base.h"
 
-namespace aspose::words::cloud::responses {
-    class BatchResponse : public ResponseModelBase {
+namespace aspose::words::cloud::models {
+    /// <summary>
+    /// Represents options for XML data loading.
+    /// </summary>
+    class XmlDataLoadOptions : public ModelBase
+    {
     public:
-        ASPOSE_WORDS_CLOUD_EXPORT virtual ~BatchResponse() = default;
 
-        ASPOSE_WORDS_CLOUD_EXPORT void initialize(const std::vector<aspose::words::cloud::requests::BatchRequest>& requests);
-        ASPOSE_WORDS_CLOUD_EXPORT virtual void deserialize(const std::string_view& response) override;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual ~XmlDataLoadOptions() = default;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void toJson(void* jsonIfc) const override;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void fromJson(const void* jsonIfc) override;
 
-        const std::shared_ptr< ResponseModelBase > getResult(size_t index) const {
-            if (!m_Result || m_Result->size() <= index) return nullptr;
-            return m_Result->at(index);
-        }
+        /// <summary>
+        /// Gets or sets a flag indicating whether a generated data source will always contain an object for an XML root
+        /// element. If an XML root element has no attributes and all its child elements have same names, such an object
+        /// is not created by default.
+        /// </summary>
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< bool > getAlwaysGenerateRootObject() const;
 
-        template<class ResultType>
-        const ResultType* getResult(size_t index) const {
-            return dynamic_cast<ResultType*>(getResult(index).get());
-        }
+        /// <summary>
+        /// Gets or sets a flag indicating whether a generated data source will always contain an object for an XML root
+        /// element. If an XML root element has no attributes and all its child elements have same names, such an object
+        /// is not created by default.
+        /// </summary>
+        ASPOSE_WORDS_CLOUD_EXPORT void setAlwaysGenerateRootObject(std::shared_ptr< bool > value);
 
-        ASPOSE_WORDS_CLOUD_EXPORT size_t getCount() const;
-
-    private:
-        std::shared_ptr< std::unordered_map< std::string, std::shared_ptr<aspose::words::cloud::requests::RequestModelBase> > > m_Order;
-        std::shared_ptr< std::vector< std::shared_ptr< ResponseModelBase > > > m_Result;
+    protected:
+        std::shared_ptr< bool > m_AlwaysGenerateRootObject;
     };
 }
+

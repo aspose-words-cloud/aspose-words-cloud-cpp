@@ -4378,7 +4378,7 @@ namespace aspose::words::cloud::api {
         /// There is no restriction on the number of inner requests inside a single batch request.
         /// </summary>
         /// <param name="requests">List of batch requests.</param>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr<aspose::words::cloud::responses::BatchResponse> batch(const std::vector<aspose::words::cloud::requests::BatchRequest>& requests);
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr<aspose::words::cloud::responses::BatchResponse> batch(const std::vector<aspose::words::cloud::requests::BatchRequest>& requests, bool displayIntermediateResults = true);
 
     public:
         ASPOSE_WORDS_CLOUD_EXPORT WordsApi(std::shared_ptr<ApiConfiguration> configuration);

@@ -8759,6 +8759,91 @@ namespace aspose::words::cloud::models {
 
 
     /*
+     * JsonDataLoadOptions implementation
+     */
+    inline std::string jsonDataLoadOptionsSimpleValueParseModeToString(aspose::words::cloud::models::JsonDataLoadOptions::SimpleValueParseMode value)
+    {
+        if (value == aspose::words::cloud::models::JsonDataLoadOptions::SimpleValueParseMode::LOOSE) return "Loose";
+        if (value == aspose::words::cloud::models::JsonDataLoadOptions::SimpleValueParseMode::STRICT) return "Strict";
+        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
+    }
+
+    inline aspose::words::cloud::models::JsonDataLoadOptions::SimpleValueParseMode jsonDataLoadOptionsSimpleValueParseModeFromString(const std::string& value)
+    {
+        if (value == "Loose") return aspose::words::cloud::models::JsonDataLoadOptions::SimpleValueParseMode::LOOSE;
+        if (value == "Strict") return aspose::words::cloud::models::JsonDataLoadOptions::SimpleValueParseMode::STRICT;
+        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
+    }
+    void JsonDataLoadOptions::toJson(void* jsonIfc) const
+    {
+        ::nlohmann::json& json = *((::nlohmann::json*)jsonIfc);
+        if (m_AlwaysGenerateRootObject) {
+            json["AlwaysGenerateRootObject"] = *m_AlwaysGenerateRootObject;
+        }
+        if (m_ExactDateTimeParseFormats) {
+            json["ExactDateTimeParseFormats"] = ::nlohmann::json::array();
+            for (auto& element : *m_ExactDateTimeParseFormats) {
+                json["ExactDateTimeParseFormats"].push_back(convertUtf16(*element));
+            }
+        }
+        if (m_SimpleValueParseMode) {
+            json["SimpleValueParseMode"] = jsonDataLoadOptionsSimpleValueParseModeToString(*m_SimpleValueParseMode);
+        }
+    }
+
+    void JsonDataLoadOptions::fromJson(const void* jsonIfc)
+    {
+        ::nlohmann::json& json = *((::nlohmann::json*)jsonIfc);
+        if (json.contains("AlwaysGenerateRootObject") && !json["AlwaysGenerateRootObject"].is_null()) {
+            m_AlwaysGenerateRootObject = std::make_shared< bool >(
+                json["AlwaysGenerateRootObject"].get< bool >()
+            );
+        }
+        if (json.contains("ExactDateTimeParseFormats") && !json["ExactDateTimeParseFormats"].is_null()) {
+            m_ExactDateTimeParseFormats = std::make_shared< std::vector<std::shared_ptr<std::wstring>> >();
+            for (auto& element : json["ExactDateTimeParseFormats"]) {
+                m_ExactDateTimeParseFormats->push_back(std::make_shared< std::wstring >(convertUtf8( element.get< std::string >() )));
+            }
+        }
+        if (json.contains("SimpleValueParseMode") && !json["SimpleValueParseMode"].is_null()) {
+            m_SimpleValueParseMode = std::make_shared< aspose::words::cloud::models::JsonDataLoadOptions::SimpleValueParseMode >(
+                jsonDataLoadOptionsSimpleValueParseModeFromString(json["SimpleValueParseMode"].get< std::string >())
+            );
+        }
+    }
+
+    std::shared_ptr< bool > JsonDataLoadOptions::getAlwaysGenerateRootObject() const
+    {
+        return m_AlwaysGenerateRootObject;
+    }
+
+    void JsonDataLoadOptions::setAlwaysGenerateRootObject(std::shared_ptr< bool > value)
+    {
+        m_AlwaysGenerateRootObject = value;
+    }
+
+    std::shared_ptr< std::vector<std::shared_ptr<std::wstring>> > JsonDataLoadOptions::getExactDateTimeParseFormats() const
+    {
+        return m_ExactDateTimeParseFormats;
+    }
+
+    void JsonDataLoadOptions::setExactDateTimeParseFormats(std::shared_ptr< std::vector<std::shared_ptr<std::wstring>> > value)
+    {
+        m_ExactDateTimeParseFormats = value;
+    }
+
+    std::shared_ptr< aspose::words::cloud::models::JsonDataLoadOptions::SimpleValueParseMode > JsonDataLoadOptions::getSimpleValueParseMode() const
+    {
+        return m_SimpleValueParseMode;
+    }
+
+    void JsonDataLoadOptions::setSimpleValueParseMode(std::shared_ptr< aspose::words::cloud::models::JsonDataLoadOptions::SimpleValueParseMode > value)
+    {
+        m_SimpleValueParseMode = value;
+    }
+
+
+    /*
      * Link implementation
      */
     void Link::toJson(void* jsonIfc) const
@@ -15288,11 +15373,17 @@ namespace aspose::words::cloud::models {
         if (m_DataSourceType) {
             json["DataSourceType"] = reportEngineSettingsDataSourceTypeToString(*m_DataSourceType);
         }
+        if (m_JsonDataLoadOptions) {
+            m_JsonDataLoadOptions->toJson(&json["JsonDataLoadOptions"]);
+        }
         if (m_ReportBuildOptions) {
             json["ReportBuildOptions"] = ::nlohmann::json::array();
             for (auto& element : *m_ReportBuildOptions) {
                 json["ReportBuildOptions"].push_back(reportBuildOptionsToString(*element));
             }
+        }
+        if (m_XmlDataLoadOptions) {
+            m_XmlDataLoadOptions->toJson(&json["XmlDataLoadOptions"]);
         }
     }
 
@@ -15313,11 +15404,19 @@ namespace aspose::words::cloud::models {
                 reportEngineSettingsDataSourceTypeFromString(json["DataSourceType"].get< std::string >())
             );
         }
+        if (json.contains("JsonDataLoadOptions") && !json["JsonDataLoadOptions"].is_null()) {
+            m_JsonDataLoadOptions = std::make_shared< aspose::words::cloud::models::JsonDataLoadOptions >();
+            m_JsonDataLoadOptions->fromJson(&json["JsonDataLoadOptions"]);
+        }
         if (json.contains("ReportBuildOptions") && !json["ReportBuildOptions"].is_null()) {
             m_ReportBuildOptions = std::make_shared< std::vector<std::shared_ptr<aspose::words::cloud::models::ReportBuildOptions>> >();
             for (auto& element : json["ReportBuildOptions"]) {
                 m_ReportBuildOptions->push_back(std::make_shared< aspose::words::cloud::models::ReportBuildOptions >(reportBuildOptionsFromString(element.get< std::string >())));
             }
+        }
+        if (json.contains("XmlDataLoadOptions") && !json["XmlDataLoadOptions"].is_null()) {
+            m_XmlDataLoadOptions = std::make_shared< aspose::words::cloud::models::XmlDataLoadOptions >();
+            m_XmlDataLoadOptions->fromJson(&json["XmlDataLoadOptions"]);
         }
     }
 
@@ -15351,6 +15450,16 @@ namespace aspose::words::cloud::models {
         m_DataSourceType = value;
     }
 
+    std::shared_ptr< aspose::words::cloud::models::JsonDataLoadOptions > ReportEngineSettings::getJsonDataLoadOptions() const
+    {
+        return m_JsonDataLoadOptions;
+    }
+
+    void ReportEngineSettings::setJsonDataLoadOptions(std::shared_ptr< aspose::words::cloud::models::JsonDataLoadOptions > value)
+    {
+        m_JsonDataLoadOptions = value;
+    }
+
     std::shared_ptr< std::vector<std::shared_ptr<aspose::words::cloud::models::ReportBuildOptions>> > ReportEngineSettings::getReportBuildOptions() const
     {
         return m_ReportBuildOptions;
@@ -15359,6 +15468,16 @@ namespace aspose::words::cloud::models {
     void ReportEngineSettings::setReportBuildOptions(std::shared_ptr< std::vector<std::shared_ptr<aspose::words::cloud::models::ReportBuildOptions>> > value)
     {
         m_ReportBuildOptions = value;
+    }
+
+    std::shared_ptr< aspose::words::cloud::models::XmlDataLoadOptions > ReportEngineSettings::getXmlDataLoadOptions() const
+    {
+        return m_XmlDataLoadOptions;
+    }
+
+    void ReportEngineSettings::setXmlDataLoadOptions(std::shared_ptr< aspose::words::cloud::models::XmlDataLoadOptions > value)
+    {
+        m_XmlDataLoadOptions = value;
     }
 
 
@@ -21500,6 +21619,38 @@ namespace aspose::words::cloud::models {
     void XmlColor::setWeb(std::shared_ptr< std::wstring > value)
     {
         m_Web = value;
+    }
+
+
+    /*
+     * XmlDataLoadOptions implementation
+     */
+    void XmlDataLoadOptions::toJson(void* jsonIfc) const
+    {
+        ::nlohmann::json& json = *((::nlohmann::json*)jsonIfc);
+        if (m_AlwaysGenerateRootObject) {
+            json["AlwaysGenerateRootObject"] = *m_AlwaysGenerateRootObject;
+        }
+    }
+
+    void XmlDataLoadOptions::fromJson(const void* jsonIfc)
+    {
+        ::nlohmann::json& json = *((::nlohmann::json*)jsonIfc);
+        if (json.contains("AlwaysGenerateRootObject") && !json["AlwaysGenerateRootObject"].is_null()) {
+            m_AlwaysGenerateRootObject = std::make_shared< bool >(
+                json["AlwaysGenerateRootObject"].get< bool >()
+            );
+        }
+    }
+
+    std::shared_ptr< bool > XmlDataLoadOptions::getAlwaysGenerateRootObject() const
+    {
+        return m_AlwaysGenerateRootObject;
+    }
+
+    void XmlDataLoadOptions::setAlwaysGenerateRootObject(std::shared_ptr< bool > value)
+    {
+        m_AlwaysGenerateRootObject = value;
     }
 
 
