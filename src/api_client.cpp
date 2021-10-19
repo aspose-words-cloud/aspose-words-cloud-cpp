@@ -25,6 +25,8 @@
 
 #include <random>
 #include "aspose_words_cloud/api_client.h"
+#include "aspose_words_cloud/requests/get_public_key_request.h"
+#include "aspose_words_cloud/responses/get_public_key_response.h"
 
 // USE THIRD PARTY LIBS ONLY IN CPP FILES!!!
 #include "../thirdparty/utf8.h"
@@ -33,6 +35,9 @@
 #define CPPHTTPLIB_OPENSSL_SUPPORT
 #include "../thirdparty/httplib.h"
 #pragma warning(pop)
+
+// INCLUDE OPENSSL
+#include <openssl/rsa.h>
 
 namespace aspose::words::cloud {
     inline ::httplib::Result callInternal(
@@ -129,7 +134,8 @@ namespace aspose::words::cloud {
     }
 
     ApiClient::ApiClient(std::shared_ptr<ApiConfiguration> configuration )
-        : m_Configuration(configuration)
+        : m_Configuration(configuration),
+        m_encryptionKey(nullptr)
     {
         std::string baseUrlUtf8;
         ::utf8::utf16to8(configuration->getBaseUrl().begin(), configuration->getBaseUrl().end(), back_inserter(baseUrlUtf8));
@@ -140,10 +146,21 @@ namespace aspose::words::cloud {
         m_HttpClient->set_tcp_nodelay(true);
     }
 
+    ApiClient::~ApiClient()
+    {
+        if (m_encryptionKey != nullptr)
+        {
+            RSA_free(m_encryptionKey);
+            m_encryptionKey = nullptr;
+        }
+    }
+
     void ApiClient::call(
         std::shared_ptr<HttpRequestData> httpRequest,
         aspose::words::cloud::responses::ResponseModelBase& response)
     {
+        httpRequest->encryptSecureData(this);
+
         std::lock_guard<std::mutex> lock(m_Mutex);
         if (m_AccessToken.empty()) requestToken();
         std::string path("/v4.0");
@@ -151,7 +168,7 @@ namespace aspose::words::cloud {
 
         ::httplib::Headers headers;
         headers.emplace("Authorization", m_AccessToken);
-        headers.emplace("x-aspose-client-version", "21.9");
+        headers.emplace("x-aspose-client-version", "21.10");
         headers.emplace("x-aspose-client", "C++ SDK");
 
         for (auto& pair : httpRequest->getHeaders()) {
@@ -247,6 +264,101 @@ namespace aspose::words::cloud {
 
         auto json = ::nlohmann::json::parse(result->body);
         m_AccessToken = "Bearer " + json["access_token"].get<std::string>();
+    }
+
+    unsigned char* base64_decode(const char* base64data, int* len) {
+        BIO* b64, * bmem;
+        size_t length = strlen(base64data);
+        unsigned char* buffer = (unsigned char*)malloc(length);
+        b64 = BIO_new(BIO_f_base64());
+        BIO_set_flags(b64, BIO_FLAGS_BASE64_NO_NL);
+        bmem = BIO_new_mem_buf((void*)base64data, (int)length);
+        bmem = BIO_push(b64, bmem);
+        *len = BIO_read(bmem, buffer, (int)length);
+        BIO_free_all(bmem);
+        return buffer;
+    }
+
+    BIGNUM* bignum_base64_decode(const char* base64bignum) {
+        BIGNUM* bn = NULL;
+        int len;
+        unsigned char* data = base64_decode(base64bignum, &len);
+        if (len) {
+            bn = BN_bin2bn(data, len, NULL);
+        }
+        free(data);
+        return bn;
+    }
+
+    RSA* RSA_fromBase64(const char* modulus_b64, const char* exp_b64) {
+        BIGNUM* n = bignum_base64_decode(modulus_b64);
+        BIGNUM* e = bignum_base64_decode(exp_b64);
+        if (e && n) {
+            RSA* rsa = RSA_new();
+            RSA_set0_key(rsa, n, e, nullptr);
+            return rsa;
+        }
+        else {
+            if (n) BN_free(n);
+            if (e) BN_free(e);
+            return NULL;
+        }
+    }
+
+    void ApiClient::requestEncryptionKey()
+    {
+        if (m_encryptionKey == nullptr)
+        {
+            auto request = std::make_shared<aspose::words::cloud::requests::GetPublicKeyRequest>();
+            auto response = std::make_shared<aspose::words::cloud::responses::GetPublicKeyResponse>();
+            this->call(request->createHttpRequest(), *response);
+            if (response->getStatusCode() != 200) {
+                throw aspose::words::cloud::ApiException(response->getStatusCode(), response->getErrorMessage());
+            }
+
+            auto result = response->getResult();
+
+            std::string modulus, exponent;
+            ::utf8::utf16to8(result->getModulus()->begin(), result->getModulus()->end(), back_inserter(modulus));
+            ::utf8::utf16to8(result->getExponent()->begin(), result->getExponent()->end(), back_inserter(exponent));
+            m_encryptionKey = RSA_fromBase64(modulus.c_str(), exponent.c_str());
+
+            if (m_encryptionKey == nullptr)
+            {
+                throw ApiException(400, L"Failed to create encryption key.");
+            }
+        }
+    }
+
+    ::std::wstring ApiClient::encryptString(const ::std::wstring& text)
+    {
+        requestEncryptionKey();
+
+        std::string plainText;
+        ::utf8::utf16to8(text.begin(), text.end(), back_inserter(plainText));
+
+        unsigned char* crypttext = new unsigned char[RSA_size(m_encryptionKey)];
+        int cryptLength = RSA_public_encrypt(
+            (int)plainText.length(),
+            (const unsigned char*)plainText.data(),
+            crypttext,
+            m_encryptionKey,
+            RSA_PKCS1_PADDING
+        );
+
+        BIO* base64 = BIO_new(BIO_s_mem());
+        base64 = BIO_push(BIO_new(BIO_f_base64()), base64);
+        BIO_write(base64, crypttext, cryptLength);
+        BIO_flush(base64);
+        char* base64Data;
+        const long base64Length = BIO_get_mem_data(base64, &base64Data);
+        auto base64Str = std::string(base64Data, base64Length);
+        BIO_free(base64);
+        delete[] crypttext;
+
+        ::std::wstring result;
+        ::utf8::utf8to16(base64Str.begin(), base64Str.end(), back_inserter(result));
+        return result;
     }
 
     std::string ApiClient::createRandomGuid()

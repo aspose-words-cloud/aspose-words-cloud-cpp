@@ -56,6 +56,8 @@ TEST_F(BatchTest, TestBatchParallel) {
 
     auto response = getApi()->batch({ request1, request2 });
 
+    ASSERT_TRUE(response->getCount() == 2);
+
     ASSERT_TRUE(response->getResult<responses::GetBookmarksOnlineResponse>(0) != nullptr);
     ASSERT_TRUE(response->getResult<responses::GetBookmarksOnlineResponse>(0)->getStatusCode() == 200);
     ASSERT_TRUE(response->getResult<responses::GetBookmarksOnlineResponse>(0)->getResult()->getBookmarks()->getBookmarkList()->size() > 0);
@@ -103,6 +105,8 @@ TEST_F(BatchTest, TestBatchDepends) {
 
     auto response = getApi()->batch({ request0, request1, request2 });
 
+    ASSERT_TRUE(response->getCount() == 3);
+
     ASSERT_TRUE(response->getResult<responses::GetBookmarksResponse>(1) != nullptr);
     ASSERT_TRUE(response->getResult<responses::GetBookmarksResponse>(1)->getStatusCode() == 200);
     ASSERT_TRUE(response->getResult<responses::GetBookmarksResponse>(1)->getResult()->getBookmarks()->getBookmarkList()->size() > 0);
@@ -134,9 +138,54 @@ TEST_F(BatchTest, TestBatchResultOf) {
 
     auto response = getApi()->batch({ request1, request2 });
 
+    ASSERT_TRUE(response->getCount() == 2);
+
     ASSERT_TRUE(response->getResult<responses::GetBookmarksOnlineResponse>(0) != nullptr);
     ASSERT_TRUE(response->getResult<responses::GetBookmarksOnlineResponse>(0)->getStatusCode() == 200);
 
     ASSERT_TRUE(response->getResult<responses::GetCommentsOnlineResponse>(1) != nullptr);
     ASSERT_TRUE(response->getResult<responses::GetCommentsOnlineResponse>(1)->getStatusCode() == 200);
+}
+
+/// <summary>
+/// Test for batch depends requests
+/// </summary>
+TEST_F(BatchTest, TestBatchWithoutIntermediateResults) {
+    std::wstring remoteFileName = L"TestBatchWithoutIntermediateResults.docx";
+
+    requests::BatchRequest request0(
+        std::shared_ptr<requests::UploadFileRequest>(
+            new requests::UploadFileRequest(
+                std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(localTestDataFolder + L"/" + localFile), std::ios_base::binary)),
+                std::make_shared< std::wstring >(remoteBaseTestDataFolder + L"/" + remoteFileName)
+            )
+        )
+    );
+
+    requests::BatchRequest request1(
+        std::shared_ptr<requests::GetBookmarksRequest>(
+            new requests::GetBookmarksRequest(
+                std::make_shared< std::wstring >(remoteFileName),
+                std::make_shared< std::wstring >(remoteBaseTestDataFolder)
+            )
+        )
+    );
+
+    requests::BatchRequest request2(
+        std::shared_ptr<requests::GetCommentsRequest>(
+            new requests::GetCommentsRequest(
+                std::make_shared< std::wstring >(remoteFileName),
+                std::make_shared< std::wstring >(remoteBaseTestDataFolder)
+            )
+        )
+    );
+
+    request2.dependsOn(request1);
+    request1.dependsOn(request0);
+
+    auto response = getApi()->batch({ request0, request1, request2 }, false);
+    ASSERT_TRUE(response->getCount() == 1);
+    ASSERT_TRUE(response->getResult<responses::GetCommentsResponse>(0) != nullptr);
+    ASSERT_TRUE(response->getResult<responses::GetCommentsResponse>(0)->getStatusCode() == 200);
+    ASSERT_TRUE(response->getResult<responses::GetCommentsResponse>(0)->getResult()->getComments()->getCommentList()->size() > 0);
 }

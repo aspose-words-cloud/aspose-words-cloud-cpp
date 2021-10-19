@@ -30,6 +30,7 @@
 #include <string_view>
 #include "aspose_words_cloud/common.h"
 #include "aspose_words_cloud/requests/batch_request.h"
+#include "aspose_words_cloud/requests/request_model_base.h"
 #include "aspose_words_cloud/responses/response_model_base.h"
 
 namespace aspose::words::cloud::responses {
@@ -50,8 +51,10 @@ namespace aspose::words::cloud::responses {
             return dynamic_cast<ResultType*>(getResult(index).get());
         }
 
+        ASPOSE_WORDS_CLOUD_EXPORT size_t getCount() const;
+
     private:
-        std::shared_ptr< std::unordered_map< std::string, size_t > > m_Order;
+        std::shared_ptr< std::unordered_map< std::string, std::shared_ptr<aspose::words::cloud::requests::RequestModelBase> > > m_Order;
         std::shared_ptr< std::vector< std::shared_ptr< ResponseModelBase > > > m_Result;
     };
 }

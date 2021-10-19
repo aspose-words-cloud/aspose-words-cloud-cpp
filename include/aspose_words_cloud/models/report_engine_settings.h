@@ -26,7 +26,9 @@
 #pragma once
 #include "./model_base.h"
 #include "csv_data_load_options.h"
+#include "json_data_load_options.h"
 #include "report_build_options.h"
+#include "xml_data_load_options.h"
 
 namespace aspose::words::cloud::models {
     /// <summary>
@@ -81,6 +83,16 @@ namespace aspose::words::cloud::models {
         ASPOSE_WORDS_CLOUD_EXPORT void setDataSourceType(std::shared_ptr< aspose::words::cloud::models::ReportEngineSettings::DataSourceType > value);
 
         /// <summary>
+        /// Gets or sets the options for parsing JSON data.
+        /// </summary>
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::JsonDataLoadOptions > getJsonDataLoadOptions() const;
+
+        /// <summary>
+        /// Gets or sets the options for parsing JSON data.
+        /// </summary>
+        ASPOSE_WORDS_CLOUD_EXPORT void setJsonDataLoadOptions(std::shared_ptr< aspose::words::cloud::models::JsonDataLoadOptions > value);
+
+        /// <summary>
         /// Gets or sets type of options to build report.
         /// </summary>
         ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::vector<std::shared_ptr<aspose::words::cloud::models::ReportBuildOptions>> > getReportBuildOptions() const;
@@ -90,11 +102,23 @@ namespace aspose::words::cloud::models {
         /// </summary>
         ASPOSE_WORDS_CLOUD_EXPORT void setReportBuildOptions(std::shared_ptr< std::vector<std::shared_ptr<aspose::words::cloud::models::ReportBuildOptions>> > value);
 
+        /// <summary>
+        /// Gets or sets the options for parsing XML data.
+        /// </summary>
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::XmlDataLoadOptions > getXmlDataLoadOptions() const;
+
+        /// <summary>
+        /// Gets or sets the options for parsing XML data.
+        /// </summary>
+        ASPOSE_WORDS_CLOUD_EXPORT void setXmlDataLoadOptions(std::shared_ptr< aspose::words::cloud::models::XmlDataLoadOptions > value);
+
     protected:
         std::shared_ptr< aspose::words::cloud::models::CsvDataLoadOptions > m_CsvDataLoadOptions;
         std::shared_ptr< std::wstring > m_DataSourceName;
         std::shared_ptr< aspose::words::cloud::models::ReportEngineSettings::DataSourceType > m_DataSourceType;
+        std::shared_ptr< aspose::words::cloud::models::JsonDataLoadOptions > m_JsonDataLoadOptions;
         std::shared_ptr< std::vector<std::shared_ptr<aspose::words::cloud::models::ReportBuildOptions>> > m_ReportBuildOptions;
+        std::shared_ptr< aspose::words::cloud::models::XmlDataLoadOptions > m_XmlDataLoadOptions;
     };
 }
 

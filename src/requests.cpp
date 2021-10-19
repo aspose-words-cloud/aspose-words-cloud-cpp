@@ -45,8 +45,10 @@ namespace aspose::words::cloud::requests {
         );
     }
 
-    void BatchRequest::serialize(std::string& body) const {
+    void BatchRequest::serialize(ApiClient* apiClient, std::string& body) const {
         auto httpRequest = m_Request->createHttpRequest();
+        httpRequest->encryptSecureData(apiClient);
+
         auto method = httpRequest->getMethod();
         if (method == aspose::words::cloud::HttpRequestMethod::HttpGET) body.append("GET ");
         else if (method == aspose::words::cloud::HttpRequestMethod::HttpPOST) body.append("POST ");

@@ -7093,234 +7093,6 @@ namespace aspose::words::cloud::models {
 
 
     /*
-     * GraphicsQualityOptionsData implementation
-     */
-    inline std::string graphicsQualityOptionsDataCompositingModeToString(aspose::words::cloud::models::GraphicsQualityOptionsData::CompositingMode value)
-    {
-        if (value == aspose::words::cloud::models::GraphicsQualityOptionsData::CompositingMode::SOURCE_OVER) return "SourceOver";
-        if (value == aspose::words::cloud::models::GraphicsQualityOptionsData::CompositingMode::SOURCE_COPY) return "SourceCopy";
-        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
-    }
-
-    inline aspose::words::cloud::models::GraphicsQualityOptionsData::CompositingMode graphicsQualityOptionsDataCompositingModeFromString(const std::string& value)
-    {
-        if (value == "SourceOver") return aspose::words::cloud::models::GraphicsQualityOptionsData::CompositingMode::SOURCE_OVER;
-        if (value == "SourceCopy") return aspose::words::cloud::models::GraphicsQualityOptionsData::CompositingMode::SOURCE_COPY;
-        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
-    }
-
-    inline std::string graphicsQualityOptionsDataCompositingQualityToString(aspose::words::cloud::models::GraphicsQualityOptionsData::CompositingQuality value)
-    {
-        if (value == aspose::words::cloud::models::GraphicsQualityOptionsData::CompositingQuality::DEFAULT) return "Default";
-        if (value == aspose::words::cloud::models::GraphicsQualityOptionsData::CompositingQuality::HIGH_SPEED) return "HighSpeed";
-        if (value == aspose::words::cloud::models::GraphicsQualityOptionsData::CompositingQuality::HIGH_QUALITY) return "HighQuality";
-        if (value == aspose::words::cloud::models::GraphicsQualityOptionsData::CompositingQuality::GAMMA_CORRECTED) return "GammaCorrected";
-        if (value == aspose::words::cloud::models::GraphicsQualityOptionsData::CompositingQuality::ASSUME_LINEAR) return "AssumeLinear";
-        if (value == aspose::words::cloud::models::GraphicsQualityOptionsData::CompositingQuality::INVALID) return "Invalid";
-        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
-    }
-
-    inline aspose::words::cloud::models::GraphicsQualityOptionsData::CompositingQuality graphicsQualityOptionsDataCompositingQualityFromString(const std::string& value)
-    {
-        if (value == "Default") return aspose::words::cloud::models::GraphicsQualityOptionsData::CompositingQuality::DEFAULT;
-        if (value == "HighSpeed") return aspose::words::cloud::models::GraphicsQualityOptionsData::CompositingQuality::HIGH_SPEED;
-        if (value == "HighQuality") return aspose::words::cloud::models::GraphicsQualityOptionsData::CompositingQuality::HIGH_QUALITY;
-        if (value == "GammaCorrected") return aspose::words::cloud::models::GraphicsQualityOptionsData::CompositingQuality::GAMMA_CORRECTED;
-        if (value == "AssumeLinear") return aspose::words::cloud::models::GraphicsQualityOptionsData::CompositingQuality::ASSUME_LINEAR;
-        if (value == "Invalid") return aspose::words::cloud::models::GraphicsQualityOptionsData::CompositingQuality::INVALID;
-        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
-    }
-
-    inline std::string graphicsQualityOptionsDataInterpolationModeToString(aspose::words::cloud::models::GraphicsQualityOptionsData::InterpolationMode value)
-    {
-        if (value == aspose::words::cloud::models::GraphicsQualityOptionsData::InterpolationMode::DEFAULT) return "Default";
-        if (value == aspose::words::cloud::models::GraphicsQualityOptionsData::InterpolationMode::LOW) return "Low";
-        if (value == aspose::words::cloud::models::GraphicsQualityOptionsData::InterpolationMode::HIGH) return "High";
-        if (value == aspose::words::cloud::models::GraphicsQualityOptionsData::InterpolationMode::BILINEAR) return "Bilinear";
-        if (value == aspose::words::cloud::models::GraphicsQualityOptionsData::InterpolationMode::BICUBIC) return "Bicubic";
-        if (value == aspose::words::cloud::models::GraphicsQualityOptionsData::InterpolationMode::NEAREST_NEIGHBOR) return "NearestNeighbor";
-        if (value == aspose::words::cloud::models::GraphicsQualityOptionsData::InterpolationMode::HIGH_QUALITY_BILINEAR) return "HighQualityBilinear";
-        if (value == aspose::words::cloud::models::GraphicsQualityOptionsData::InterpolationMode::HIGH_QUALITY_BICUBIC) return "HighQualityBicubic";
-        if (value == aspose::words::cloud::models::GraphicsQualityOptionsData::InterpolationMode::INVALID) return "Invalid";
-        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
-    }
-
-    inline aspose::words::cloud::models::GraphicsQualityOptionsData::InterpolationMode graphicsQualityOptionsDataInterpolationModeFromString(const std::string& value)
-    {
-        if (value == "Default") return aspose::words::cloud::models::GraphicsQualityOptionsData::InterpolationMode::DEFAULT;
-        if (value == "Low") return aspose::words::cloud::models::GraphicsQualityOptionsData::InterpolationMode::LOW;
-        if (value == "High") return aspose::words::cloud::models::GraphicsQualityOptionsData::InterpolationMode::HIGH;
-        if (value == "Bilinear") return aspose::words::cloud::models::GraphicsQualityOptionsData::InterpolationMode::BILINEAR;
-        if (value == "Bicubic") return aspose::words::cloud::models::GraphicsQualityOptionsData::InterpolationMode::BICUBIC;
-        if (value == "NearestNeighbor") return aspose::words::cloud::models::GraphicsQualityOptionsData::InterpolationMode::NEAREST_NEIGHBOR;
-        if (value == "HighQualityBilinear") return aspose::words::cloud::models::GraphicsQualityOptionsData::InterpolationMode::HIGH_QUALITY_BILINEAR;
-        if (value == "HighQualityBicubic") return aspose::words::cloud::models::GraphicsQualityOptionsData::InterpolationMode::HIGH_QUALITY_BICUBIC;
-        if (value == "Invalid") return aspose::words::cloud::models::GraphicsQualityOptionsData::InterpolationMode::INVALID;
-        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
-    }
-
-    inline std::string graphicsQualityOptionsDataSmoothingModeToString(aspose::words::cloud::models::GraphicsQualityOptionsData::SmoothingMode value)
-    {
-        if (value == aspose::words::cloud::models::GraphicsQualityOptionsData::SmoothingMode::DEFAULT) return "Default";
-        if (value == aspose::words::cloud::models::GraphicsQualityOptionsData::SmoothingMode::HIGH_SPEED) return "HighSpeed";
-        if (value == aspose::words::cloud::models::GraphicsQualityOptionsData::SmoothingMode::HIGH_QUALITY) return "HighQuality";
-        if (value == aspose::words::cloud::models::GraphicsQualityOptionsData::SmoothingMode::NONE) return "None";
-        if (value == aspose::words::cloud::models::GraphicsQualityOptionsData::SmoothingMode::ANTI_ALIAS) return "AntiAlias";
-        if (value == aspose::words::cloud::models::GraphicsQualityOptionsData::SmoothingMode::INVALID) return "Invalid";
-        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
-    }
-
-    inline aspose::words::cloud::models::GraphicsQualityOptionsData::SmoothingMode graphicsQualityOptionsDataSmoothingModeFromString(const std::string& value)
-    {
-        if (value == "Default") return aspose::words::cloud::models::GraphicsQualityOptionsData::SmoothingMode::DEFAULT;
-        if (value == "HighSpeed") return aspose::words::cloud::models::GraphicsQualityOptionsData::SmoothingMode::HIGH_SPEED;
-        if (value == "HighQuality") return aspose::words::cloud::models::GraphicsQualityOptionsData::SmoothingMode::HIGH_QUALITY;
-        if (value == "None") return aspose::words::cloud::models::GraphicsQualityOptionsData::SmoothingMode::NONE;
-        if (value == "AntiAlias") return aspose::words::cloud::models::GraphicsQualityOptionsData::SmoothingMode::ANTI_ALIAS;
-        if (value == "Invalid") return aspose::words::cloud::models::GraphicsQualityOptionsData::SmoothingMode::INVALID;
-        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
-    }
-
-    inline std::string graphicsQualityOptionsDataTextRenderingHintToString(aspose::words::cloud::models::GraphicsQualityOptionsData::TextRenderingHint value)
-    {
-        if (value == aspose::words::cloud::models::GraphicsQualityOptionsData::TextRenderingHint::SYSTEM_DEFAULT) return "SystemDefault";
-        if (value == aspose::words::cloud::models::GraphicsQualityOptionsData::TextRenderingHint::SINGLE_BIT_PER_PIXEL_GRID_FIT) return "SingleBitPerPixelGridFit";
-        if (value == aspose::words::cloud::models::GraphicsQualityOptionsData::TextRenderingHint::SINGLE_BIT_PER_PIXEL) return "SingleBitPerPixel";
-        if (value == aspose::words::cloud::models::GraphicsQualityOptionsData::TextRenderingHint::ANTI_ALIAS_GRID_FIT) return "AntiAliasGridFit";
-        if (value == aspose::words::cloud::models::GraphicsQualityOptionsData::TextRenderingHint::ANTI_ALIAS) return "AntiAlias";
-        if (value == aspose::words::cloud::models::GraphicsQualityOptionsData::TextRenderingHint::CLEAR_TYPE_GRID_FIT) return "ClearTypeGridFit";
-        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
-    }
-
-    inline aspose::words::cloud::models::GraphicsQualityOptionsData::TextRenderingHint graphicsQualityOptionsDataTextRenderingHintFromString(const std::string& value)
-    {
-        if (value == "SystemDefault") return aspose::words::cloud::models::GraphicsQualityOptionsData::TextRenderingHint::SYSTEM_DEFAULT;
-        if (value == "SingleBitPerPixelGridFit") return aspose::words::cloud::models::GraphicsQualityOptionsData::TextRenderingHint::SINGLE_BIT_PER_PIXEL_GRID_FIT;
-        if (value == "SingleBitPerPixel") return aspose::words::cloud::models::GraphicsQualityOptionsData::TextRenderingHint::SINGLE_BIT_PER_PIXEL;
-        if (value == "AntiAliasGridFit") return aspose::words::cloud::models::GraphicsQualityOptionsData::TextRenderingHint::ANTI_ALIAS_GRID_FIT;
-        if (value == "AntiAlias") return aspose::words::cloud::models::GraphicsQualityOptionsData::TextRenderingHint::ANTI_ALIAS;
-        if (value == "ClearTypeGridFit") return aspose::words::cloud::models::GraphicsQualityOptionsData::TextRenderingHint::CLEAR_TYPE_GRID_FIT;
-        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
-    }
-    void GraphicsQualityOptionsData::toJson(void* jsonIfc) const
-    {
-        ::nlohmann::json& json = *((::nlohmann::json*)jsonIfc);
-        if (m_CompositingMode) {
-            json["CompositingMode"] = graphicsQualityOptionsDataCompositingModeToString(*m_CompositingMode);
-        }
-        if (m_CompositingQuality) {
-            json["CompositingQuality"] = graphicsQualityOptionsDataCompositingQualityToString(*m_CompositingQuality);
-        }
-        if (m_InterpolationMode) {
-            json["InterpolationMode"] = graphicsQualityOptionsDataInterpolationModeToString(*m_InterpolationMode);
-        }
-        if (m_SmoothingMode) {
-            json["SmoothingMode"] = graphicsQualityOptionsDataSmoothingModeToString(*m_SmoothingMode);
-        }
-        if (m_StringFormat) {
-            m_StringFormat->toJson(&json["StringFormat"]);
-        }
-        if (m_TextRenderingHint) {
-            json["TextRenderingHint"] = graphicsQualityOptionsDataTextRenderingHintToString(*m_TextRenderingHint);
-        }
-    }
-
-    void GraphicsQualityOptionsData::fromJson(const void* jsonIfc)
-    {
-        ::nlohmann::json& json = *((::nlohmann::json*)jsonIfc);
-        if (json.contains("CompositingMode") && !json["CompositingMode"].is_null()) {
-            m_CompositingMode = std::make_shared< aspose::words::cloud::models::GraphicsQualityOptionsData::CompositingMode >(
-                graphicsQualityOptionsDataCompositingModeFromString(json["CompositingMode"].get< std::string >())
-            );
-        }
-        if (json.contains("CompositingQuality") && !json["CompositingQuality"].is_null()) {
-            m_CompositingQuality = std::make_shared< aspose::words::cloud::models::GraphicsQualityOptionsData::CompositingQuality >(
-                graphicsQualityOptionsDataCompositingQualityFromString(json["CompositingQuality"].get< std::string >())
-            );
-        }
-        if (json.contains("InterpolationMode") && !json["InterpolationMode"].is_null()) {
-            m_InterpolationMode = std::make_shared< aspose::words::cloud::models::GraphicsQualityOptionsData::InterpolationMode >(
-                graphicsQualityOptionsDataInterpolationModeFromString(json["InterpolationMode"].get< std::string >())
-            );
-        }
-        if (json.contains("SmoothingMode") && !json["SmoothingMode"].is_null()) {
-            m_SmoothingMode = std::make_shared< aspose::words::cloud::models::GraphicsQualityOptionsData::SmoothingMode >(
-                graphicsQualityOptionsDataSmoothingModeFromString(json["SmoothingMode"].get< std::string >())
-            );
-        }
-        if (json.contains("StringFormat") && !json["StringFormat"].is_null()) {
-            m_StringFormat = std::make_shared< aspose::words::cloud::models::StringFormatData >();
-            m_StringFormat->fromJson(&json["StringFormat"]);
-        }
-        if (json.contains("TextRenderingHint") && !json["TextRenderingHint"].is_null()) {
-            m_TextRenderingHint = std::make_shared< aspose::words::cloud::models::GraphicsQualityOptionsData::TextRenderingHint >(
-                graphicsQualityOptionsDataTextRenderingHintFromString(json["TextRenderingHint"].get< std::string >())
-            );
-        }
-    }
-
-    std::shared_ptr< aspose::words::cloud::models::GraphicsQualityOptionsData::CompositingMode > GraphicsQualityOptionsData::getCompositingMode() const
-    {
-        return m_CompositingMode;
-    }
-
-    void GraphicsQualityOptionsData::setCompositingMode(std::shared_ptr< aspose::words::cloud::models::GraphicsQualityOptionsData::CompositingMode > value)
-    {
-        m_CompositingMode = value;
-    }
-
-    std::shared_ptr< aspose::words::cloud::models::GraphicsQualityOptionsData::CompositingQuality > GraphicsQualityOptionsData::getCompositingQuality() const
-    {
-        return m_CompositingQuality;
-    }
-
-    void GraphicsQualityOptionsData::setCompositingQuality(std::shared_ptr< aspose::words::cloud::models::GraphicsQualityOptionsData::CompositingQuality > value)
-    {
-        m_CompositingQuality = value;
-    }
-
-    std::shared_ptr< aspose::words::cloud::models::GraphicsQualityOptionsData::InterpolationMode > GraphicsQualityOptionsData::getInterpolationMode() const
-    {
-        return m_InterpolationMode;
-    }
-
-    void GraphicsQualityOptionsData::setInterpolationMode(std::shared_ptr< aspose::words::cloud::models::GraphicsQualityOptionsData::InterpolationMode > value)
-    {
-        m_InterpolationMode = value;
-    }
-
-    std::shared_ptr< aspose::words::cloud::models::GraphicsQualityOptionsData::SmoothingMode > GraphicsQualityOptionsData::getSmoothingMode() const
-    {
-        return m_SmoothingMode;
-    }
-
-    void GraphicsQualityOptionsData::setSmoothingMode(std::shared_ptr< aspose::words::cloud::models::GraphicsQualityOptionsData::SmoothingMode > value)
-    {
-        m_SmoothingMode = value;
-    }
-
-    std::shared_ptr< aspose::words::cloud::models::StringFormatData > GraphicsQualityOptionsData::getStringFormat() const
-    {
-        return m_StringFormat;
-    }
-
-    void GraphicsQualityOptionsData::setStringFormat(std::shared_ptr< aspose::words::cloud::models::StringFormatData > value)
-    {
-        m_StringFormat = value;
-    }
-
-    std::shared_ptr< aspose::words::cloud::models::GraphicsQualityOptionsData::TextRenderingHint > GraphicsQualityOptionsData::getTextRenderingHint() const
-    {
-        return m_TextRenderingHint;
-    }
-
-    void GraphicsQualityOptionsData::setTextRenderingHint(std::shared_ptr< aspose::words::cloud::models::GraphicsQualityOptionsData::TextRenderingHint > value)
-    {
-        m_TextRenderingHint = value;
-    }
-
-
-    /*
      * HeaderFooter implementation
      */
     void HeaderFooter::toJson(void* jsonIfc) const
@@ -8745,9 +8517,6 @@ namespace aspose::words::cloud::models {
     {
         FixedPageSaveOptionsData::toJson(jsonIfc);
         ::nlohmann::json& json = *((::nlohmann::json*)jsonIfc);
-        if (m_GraphicsQualityOptions) {
-            m_GraphicsQualityOptions->toJson(&json["GraphicsQualityOptions"]);
-        }
         if (m_HorizontalResolution) {
             json["HorizontalResolution"] = *m_HorizontalResolution;
         }
@@ -8790,10 +8559,6 @@ namespace aspose::words::cloud::models {
     {
         FixedPageSaveOptionsData::fromJson(jsonIfc);
         ::nlohmann::json& json = *((::nlohmann::json*)jsonIfc);
-        if (json.contains("GraphicsQualityOptions") && !json["GraphicsQualityOptions"].is_null()) {
-            m_GraphicsQualityOptions = std::make_shared< aspose::words::cloud::models::GraphicsQualityOptionsData >();
-            m_GraphicsQualityOptions->fromJson(&json["GraphicsQualityOptions"]);
-        }
         if (json.contains("HorizontalResolution") && !json["HorizontalResolution"].is_null()) {
             m_HorizontalResolution = std::make_shared< double >(
                 json["HorizontalResolution"].get< double >()
@@ -8854,16 +8619,6 @@ namespace aspose::words::cloud::models {
                 json["VerticalResolution"].get< double >()
             );
         }
-    }
-
-    std::shared_ptr< aspose::words::cloud::models::GraphicsQualityOptionsData > ImageSaveOptionsData::getGraphicsQualityOptions() const
-    {
-        return m_GraphicsQualityOptions;
-    }
-
-    void ImageSaveOptionsData::setGraphicsQualityOptions(std::shared_ptr< aspose::words::cloud::models::GraphicsQualityOptionsData > value)
-    {
-        m_GraphicsQualityOptions = value;
     }
 
     std::shared_ptr< double > ImageSaveOptionsData::getHorizontalResolution() const
@@ -9001,6 +8756,91 @@ namespace aspose::words::cloud::models {
     }
 
 
+
+
+    /*
+     * JsonDataLoadOptions implementation
+     */
+    inline std::string jsonDataLoadOptionsSimpleValueParseModeToString(aspose::words::cloud::models::JsonDataLoadOptions::SimpleValueParseMode value)
+    {
+        if (value == aspose::words::cloud::models::JsonDataLoadOptions::SimpleValueParseMode::LOOSE) return "Loose";
+        if (value == aspose::words::cloud::models::JsonDataLoadOptions::SimpleValueParseMode::STRICT) return "Strict";
+        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
+    }
+
+    inline aspose::words::cloud::models::JsonDataLoadOptions::SimpleValueParseMode jsonDataLoadOptionsSimpleValueParseModeFromString(const std::string& value)
+    {
+        if (value == "Loose") return aspose::words::cloud::models::JsonDataLoadOptions::SimpleValueParseMode::LOOSE;
+        if (value == "Strict") return aspose::words::cloud::models::JsonDataLoadOptions::SimpleValueParseMode::STRICT;
+        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
+    }
+    void JsonDataLoadOptions::toJson(void* jsonIfc) const
+    {
+        ::nlohmann::json& json = *((::nlohmann::json*)jsonIfc);
+        if (m_AlwaysGenerateRootObject) {
+            json["AlwaysGenerateRootObject"] = *m_AlwaysGenerateRootObject;
+        }
+        if (m_ExactDateTimeParseFormats) {
+            json["ExactDateTimeParseFormats"] = ::nlohmann::json::array();
+            for (auto& element : *m_ExactDateTimeParseFormats) {
+                json["ExactDateTimeParseFormats"].push_back(convertUtf16(*element));
+            }
+        }
+        if (m_SimpleValueParseMode) {
+            json["SimpleValueParseMode"] = jsonDataLoadOptionsSimpleValueParseModeToString(*m_SimpleValueParseMode);
+        }
+    }
+
+    void JsonDataLoadOptions::fromJson(const void* jsonIfc)
+    {
+        ::nlohmann::json& json = *((::nlohmann::json*)jsonIfc);
+        if (json.contains("AlwaysGenerateRootObject") && !json["AlwaysGenerateRootObject"].is_null()) {
+            m_AlwaysGenerateRootObject = std::make_shared< bool >(
+                json["AlwaysGenerateRootObject"].get< bool >()
+            );
+        }
+        if (json.contains("ExactDateTimeParseFormats") && !json["ExactDateTimeParseFormats"].is_null()) {
+            m_ExactDateTimeParseFormats = std::make_shared< std::vector<std::shared_ptr<std::wstring>> >();
+            for (auto& element : json["ExactDateTimeParseFormats"]) {
+                m_ExactDateTimeParseFormats->push_back(std::make_shared< std::wstring >(convertUtf8( element.get< std::string >() )));
+            }
+        }
+        if (json.contains("SimpleValueParseMode") && !json["SimpleValueParseMode"].is_null()) {
+            m_SimpleValueParseMode = std::make_shared< aspose::words::cloud::models::JsonDataLoadOptions::SimpleValueParseMode >(
+                jsonDataLoadOptionsSimpleValueParseModeFromString(json["SimpleValueParseMode"].get< std::string >())
+            );
+        }
+    }
+
+    std::shared_ptr< bool > JsonDataLoadOptions::getAlwaysGenerateRootObject() const
+    {
+        return m_AlwaysGenerateRootObject;
+    }
+
+    void JsonDataLoadOptions::setAlwaysGenerateRootObject(std::shared_ptr< bool > value)
+    {
+        m_AlwaysGenerateRootObject = value;
+    }
+
+    std::shared_ptr< std::vector<std::shared_ptr<std::wstring>> > JsonDataLoadOptions::getExactDateTimeParseFormats() const
+    {
+        return m_ExactDateTimeParseFormats;
+    }
+
+    void JsonDataLoadOptions::setExactDateTimeParseFormats(std::shared_ptr< std::vector<std::shared_ptr<std::wstring>> > value)
+    {
+        m_ExactDateTimeParseFormats = value;
+    }
+
+    std::shared_ptr< aspose::words::cloud::models::JsonDataLoadOptions::SimpleValueParseMode > JsonDataLoadOptions::getSimpleValueParseMode() const
+    {
+        return m_SimpleValueParseMode;
+    }
+
+    void JsonDataLoadOptions::setSimpleValueParseMode(std::shared_ptr< aspose::words::cloud::models::JsonDataLoadOptions::SimpleValueParseMode > value)
+    {
+        m_SimpleValueParseMode = value;
+    }
 
 
     /*
@@ -15533,11 +15373,17 @@ namespace aspose::words::cloud::models {
         if (m_DataSourceType) {
             json["DataSourceType"] = reportEngineSettingsDataSourceTypeToString(*m_DataSourceType);
         }
+        if (m_JsonDataLoadOptions) {
+            m_JsonDataLoadOptions->toJson(&json["JsonDataLoadOptions"]);
+        }
         if (m_ReportBuildOptions) {
             json["ReportBuildOptions"] = ::nlohmann::json::array();
             for (auto& element : *m_ReportBuildOptions) {
                 json["ReportBuildOptions"].push_back(reportBuildOptionsToString(*element));
             }
+        }
+        if (m_XmlDataLoadOptions) {
+            m_XmlDataLoadOptions->toJson(&json["XmlDataLoadOptions"]);
         }
     }
 
@@ -15558,11 +15404,19 @@ namespace aspose::words::cloud::models {
                 reportEngineSettingsDataSourceTypeFromString(json["DataSourceType"].get< std::string >())
             );
         }
+        if (json.contains("JsonDataLoadOptions") && !json["JsonDataLoadOptions"].is_null()) {
+            m_JsonDataLoadOptions = std::make_shared< aspose::words::cloud::models::JsonDataLoadOptions >();
+            m_JsonDataLoadOptions->fromJson(&json["JsonDataLoadOptions"]);
+        }
         if (json.contains("ReportBuildOptions") && !json["ReportBuildOptions"].is_null()) {
             m_ReportBuildOptions = std::make_shared< std::vector<std::shared_ptr<aspose::words::cloud::models::ReportBuildOptions>> >();
             for (auto& element : json["ReportBuildOptions"]) {
                 m_ReportBuildOptions->push_back(std::make_shared< aspose::words::cloud::models::ReportBuildOptions >(reportBuildOptionsFromString(element.get< std::string >())));
             }
+        }
+        if (json.contains("XmlDataLoadOptions") && !json["XmlDataLoadOptions"].is_null()) {
+            m_XmlDataLoadOptions = std::make_shared< aspose::words::cloud::models::XmlDataLoadOptions >();
+            m_XmlDataLoadOptions->fromJson(&json["XmlDataLoadOptions"]);
         }
     }
 
@@ -15596,6 +15450,16 @@ namespace aspose::words::cloud::models {
         m_DataSourceType = value;
     }
 
+    std::shared_ptr< aspose::words::cloud::models::JsonDataLoadOptions > ReportEngineSettings::getJsonDataLoadOptions() const
+    {
+        return m_JsonDataLoadOptions;
+    }
+
+    void ReportEngineSettings::setJsonDataLoadOptions(std::shared_ptr< aspose::words::cloud::models::JsonDataLoadOptions > value)
+    {
+        m_JsonDataLoadOptions = value;
+    }
+
     std::shared_ptr< std::vector<std::shared_ptr<aspose::words::cloud::models::ReportBuildOptions>> > ReportEngineSettings::getReportBuildOptions() const
     {
         return m_ReportBuildOptions;
@@ -15604,6 +15468,16 @@ namespace aspose::words::cloud::models {
     void ReportEngineSettings::setReportBuildOptions(std::shared_ptr< std::vector<std::shared_ptr<aspose::words::cloud::models::ReportBuildOptions>> > value)
     {
         m_ReportBuildOptions = value;
+    }
+
+    std::shared_ptr< aspose::words::cloud::models::XmlDataLoadOptions > ReportEngineSettings::getXmlDataLoadOptions() const
+    {
+        return m_XmlDataLoadOptions;
+    }
+
+    void ReportEngineSettings::setXmlDataLoadOptions(std::shared_ptr< aspose::words::cloud::models::XmlDataLoadOptions > value)
+    {
+        m_XmlDataLoadOptions = value;
     }
 
 
@@ -17214,207 +17088,6 @@ namespace aspose::words::cloud::models {
     void StoryChildNodes::setChildNodes(std::shared_ptr< std::vector<std::shared_ptr<aspose::words::cloud::models::NodeLink>> > value)
     {
         m_ChildNodes = value;
-    }
-
-
-    /*
-     * StringFormatData implementation
-     */
-    inline std::string stringFormatDataAlignmentToString(aspose::words::cloud::models::StringFormatData::Alignment value)
-    {
-        if (value == aspose::words::cloud::models::StringFormatData::Alignment::_NEAR) return "Near";
-        if (value == aspose::words::cloud::models::StringFormatData::Alignment::CENTER) return "Center";
-        if (value == aspose::words::cloud::models::StringFormatData::Alignment::_FAR) return "Far";
-        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
-    }
-
-    inline aspose::words::cloud::models::StringFormatData::Alignment stringFormatDataAlignmentFromString(const std::string& value)
-    {
-        if (value == "Near") return aspose::words::cloud::models::StringFormatData::Alignment::_NEAR;
-        if (value == "Center") return aspose::words::cloud::models::StringFormatData::Alignment::CENTER;
-        if (value == "Far") return aspose::words::cloud::models::StringFormatData::Alignment::_FAR;
-        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
-    }
-
-    inline std::string stringFormatDataFormatFlagsToString(aspose::words::cloud::models::StringFormatData::FormatFlags value)
-    {
-        if (value == aspose::words::cloud::models::StringFormatData::FormatFlags::DIRECTION_RIGHT_TO_LEFT) return "DirectionRightToLeft";
-        if (value == aspose::words::cloud::models::StringFormatData::FormatFlags::DIRECTION_VERTICAL) return "DirectionVertical";
-        if (value == aspose::words::cloud::models::StringFormatData::FormatFlags::FIT_BLACK_BOX) return "FitBlackBox";
-        if (value == aspose::words::cloud::models::StringFormatData::FormatFlags::DISPLAY_FORMAT_CONTROL) return "DisplayFormatControl";
-        if (value == aspose::words::cloud::models::StringFormatData::FormatFlags::NO_FONT_FALLBACK) return "NoFontFallback";
-        if (value == aspose::words::cloud::models::StringFormatData::FormatFlags::MEASURE_TRAILING_SPACES) return "MeasureTrailingSpaces";
-        if (value == aspose::words::cloud::models::StringFormatData::FormatFlags::NO_WRAP) return "NoWrap";
-        if (value == aspose::words::cloud::models::StringFormatData::FormatFlags::LINE_LIMIT) return "LineLimit";
-        if (value == aspose::words::cloud::models::StringFormatData::FormatFlags::NO_CLIP) return "NoClip";
-        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
-    }
-
-    inline aspose::words::cloud::models::StringFormatData::FormatFlags stringFormatDataFormatFlagsFromString(const std::string& value)
-    {
-        if (value == "DirectionRightToLeft") return aspose::words::cloud::models::StringFormatData::FormatFlags::DIRECTION_RIGHT_TO_LEFT;
-        if (value == "DirectionVertical") return aspose::words::cloud::models::StringFormatData::FormatFlags::DIRECTION_VERTICAL;
-        if (value == "FitBlackBox") return aspose::words::cloud::models::StringFormatData::FormatFlags::FIT_BLACK_BOX;
-        if (value == "DisplayFormatControl") return aspose::words::cloud::models::StringFormatData::FormatFlags::DISPLAY_FORMAT_CONTROL;
-        if (value == "NoFontFallback") return aspose::words::cloud::models::StringFormatData::FormatFlags::NO_FONT_FALLBACK;
-        if (value == "MeasureTrailingSpaces") return aspose::words::cloud::models::StringFormatData::FormatFlags::MEASURE_TRAILING_SPACES;
-        if (value == "NoWrap") return aspose::words::cloud::models::StringFormatData::FormatFlags::NO_WRAP;
-        if (value == "LineLimit") return aspose::words::cloud::models::StringFormatData::FormatFlags::LINE_LIMIT;
-        if (value == "NoClip") return aspose::words::cloud::models::StringFormatData::FormatFlags::NO_CLIP;
-        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
-    }
-
-    inline std::string stringFormatDataHotkeyPrefixToString(aspose::words::cloud::models::StringFormatData::HotkeyPrefix value)
-    {
-        if (value == aspose::words::cloud::models::StringFormatData::HotkeyPrefix::NONE) return "None";
-        if (value == aspose::words::cloud::models::StringFormatData::HotkeyPrefix::SHOW) return "Show";
-        if (value == aspose::words::cloud::models::StringFormatData::HotkeyPrefix::HIDE) return "Hide";
-        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
-    }
-
-    inline aspose::words::cloud::models::StringFormatData::HotkeyPrefix stringFormatDataHotkeyPrefixFromString(const std::string& value)
-    {
-        if (value == "None") return aspose::words::cloud::models::StringFormatData::HotkeyPrefix::NONE;
-        if (value == "Show") return aspose::words::cloud::models::StringFormatData::HotkeyPrefix::SHOW;
-        if (value == "Hide") return aspose::words::cloud::models::StringFormatData::HotkeyPrefix::HIDE;
-        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
-    }
-
-    inline std::string stringFormatDataLineAlignmentToString(aspose::words::cloud::models::StringFormatData::LineAlignment value)
-    {
-        if (value == aspose::words::cloud::models::StringFormatData::LineAlignment::_NEAR) return "Near";
-        if (value == aspose::words::cloud::models::StringFormatData::LineAlignment::CENTER) return "Center";
-        if (value == aspose::words::cloud::models::StringFormatData::LineAlignment::_FAR) return "Far";
-        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
-    }
-
-    inline aspose::words::cloud::models::StringFormatData::LineAlignment stringFormatDataLineAlignmentFromString(const std::string& value)
-    {
-        if (value == "Near") return aspose::words::cloud::models::StringFormatData::LineAlignment::_NEAR;
-        if (value == "Center") return aspose::words::cloud::models::StringFormatData::LineAlignment::CENTER;
-        if (value == "Far") return aspose::words::cloud::models::StringFormatData::LineAlignment::_FAR;
-        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
-    }
-
-    inline std::string stringFormatDataTrimmingToString(aspose::words::cloud::models::StringFormatData::Trimming value)
-    {
-        if (value == aspose::words::cloud::models::StringFormatData::Trimming::NONE) return "None";
-        if (value == aspose::words::cloud::models::StringFormatData::Trimming::CHARACTER) return "Character";
-        if (value == aspose::words::cloud::models::StringFormatData::Trimming::WORD) return "Word";
-        if (value == aspose::words::cloud::models::StringFormatData::Trimming::ELLIPSIS_CHARACTER) return "EllipsisCharacter";
-        if (value == aspose::words::cloud::models::StringFormatData::Trimming::ELLIPSIS_WORD) return "EllipsisWord";
-        if (value == aspose::words::cloud::models::StringFormatData::Trimming::ELLIPSIS_PATH) return "EllipsisPath";
-        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
-    }
-
-    inline aspose::words::cloud::models::StringFormatData::Trimming stringFormatDataTrimmingFromString(const std::string& value)
-    {
-        if (value == "None") return aspose::words::cloud::models::StringFormatData::Trimming::NONE;
-        if (value == "Character") return aspose::words::cloud::models::StringFormatData::Trimming::CHARACTER;
-        if (value == "Word") return aspose::words::cloud::models::StringFormatData::Trimming::WORD;
-        if (value == "EllipsisCharacter") return aspose::words::cloud::models::StringFormatData::Trimming::ELLIPSIS_CHARACTER;
-        if (value == "EllipsisWord") return aspose::words::cloud::models::StringFormatData::Trimming::ELLIPSIS_WORD;
-        if (value == "EllipsisPath") return aspose::words::cloud::models::StringFormatData::Trimming::ELLIPSIS_PATH;
-        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
-    }
-    void StringFormatData::toJson(void* jsonIfc) const
-    {
-        ::nlohmann::json& json = *((::nlohmann::json*)jsonIfc);
-        if (m_Alignment) {
-            json["Alignment"] = stringFormatDataAlignmentToString(*m_Alignment);
-        }
-        if (m_FormatFlags) {
-            json["FormatFlags"] = stringFormatDataFormatFlagsToString(*m_FormatFlags);
-        }
-        if (m_HotkeyPrefix) {
-            json["HotkeyPrefix"] = stringFormatDataHotkeyPrefixToString(*m_HotkeyPrefix);
-        }
-        if (m_LineAlignment) {
-            json["LineAlignment"] = stringFormatDataLineAlignmentToString(*m_LineAlignment);
-        }
-        if (m_Trimming) {
-            json["Trimming"] = stringFormatDataTrimmingToString(*m_Trimming);
-        }
-    }
-
-    void StringFormatData::fromJson(const void* jsonIfc)
-    {
-        ::nlohmann::json& json = *((::nlohmann::json*)jsonIfc);
-        if (json.contains("Alignment") && !json["Alignment"].is_null()) {
-            m_Alignment = std::make_shared< aspose::words::cloud::models::StringFormatData::Alignment >(
-                stringFormatDataAlignmentFromString(json["Alignment"].get< std::string >())
-            );
-        }
-        if (json.contains("FormatFlags") && !json["FormatFlags"].is_null()) {
-            m_FormatFlags = std::make_shared< aspose::words::cloud::models::StringFormatData::FormatFlags >(
-                stringFormatDataFormatFlagsFromString(json["FormatFlags"].get< std::string >())
-            );
-        }
-        if (json.contains("HotkeyPrefix") && !json["HotkeyPrefix"].is_null()) {
-            m_HotkeyPrefix = std::make_shared< aspose::words::cloud::models::StringFormatData::HotkeyPrefix >(
-                stringFormatDataHotkeyPrefixFromString(json["HotkeyPrefix"].get< std::string >())
-            );
-        }
-        if (json.contains("LineAlignment") && !json["LineAlignment"].is_null()) {
-            m_LineAlignment = std::make_shared< aspose::words::cloud::models::StringFormatData::LineAlignment >(
-                stringFormatDataLineAlignmentFromString(json["LineAlignment"].get< std::string >())
-            );
-        }
-        if (json.contains("Trimming") && !json["Trimming"].is_null()) {
-            m_Trimming = std::make_shared< aspose::words::cloud::models::StringFormatData::Trimming >(
-                stringFormatDataTrimmingFromString(json["Trimming"].get< std::string >())
-            );
-        }
-    }
-
-    std::shared_ptr< aspose::words::cloud::models::StringFormatData::Alignment > StringFormatData::getAlignment() const
-    {
-        return m_Alignment;
-    }
-
-    void StringFormatData::setAlignment(std::shared_ptr< aspose::words::cloud::models::StringFormatData::Alignment > value)
-    {
-        m_Alignment = value;
-    }
-
-    std::shared_ptr< aspose::words::cloud::models::StringFormatData::FormatFlags > StringFormatData::getFormatFlags() const
-    {
-        return m_FormatFlags;
-    }
-
-    void StringFormatData::setFormatFlags(std::shared_ptr< aspose::words::cloud::models::StringFormatData::FormatFlags > value)
-    {
-        m_FormatFlags = value;
-    }
-
-    std::shared_ptr< aspose::words::cloud::models::StringFormatData::HotkeyPrefix > StringFormatData::getHotkeyPrefix() const
-    {
-        return m_HotkeyPrefix;
-    }
-
-    void StringFormatData::setHotkeyPrefix(std::shared_ptr< aspose::words::cloud::models::StringFormatData::HotkeyPrefix > value)
-    {
-        m_HotkeyPrefix = value;
-    }
-
-    std::shared_ptr< aspose::words::cloud::models::StringFormatData::LineAlignment > StringFormatData::getLineAlignment() const
-    {
-        return m_LineAlignment;
-    }
-
-    void StringFormatData::setLineAlignment(std::shared_ptr< aspose::words::cloud::models::StringFormatData::LineAlignment > value)
-    {
-        m_LineAlignment = value;
-    }
-
-    std::shared_ptr< aspose::words::cloud::models::StringFormatData::Trimming > StringFormatData::getTrimming() const
-    {
-        return m_Trimming;
-    }
-
-    void StringFormatData::setTrimming(std::shared_ptr< aspose::words::cloud::models::StringFormatData::Trimming > value)
-    {
-        m_Trimming = value;
     }
 
 
@@ -21946,6 +21619,38 @@ namespace aspose::words::cloud::models {
     void XmlColor::setWeb(std::shared_ptr< std::wstring > value)
     {
         m_Web = value;
+    }
+
+
+    /*
+     * XmlDataLoadOptions implementation
+     */
+    void XmlDataLoadOptions::toJson(void* jsonIfc) const
+    {
+        ::nlohmann::json& json = *((::nlohmann::json*)jsonIfc);
+        if (m_AlwaysGenerateRootObject) {
+            json["AlwaysGenerateRootObject"] = *m_AlwaysGenerateRootObject;
+        }
+    }
+
+    void XmlDataLoadOptions::fromJson(const void* jsonIfc)
+    {
+        ::nlohmann::json& json = *((::nlohmann::json*)jsonIfc);
+        if (json.contains("AlwaysGenerateRootObject") && !json["AlwaysGenerateRootObject"].is_null()) {
+            m_AlwaysGenerateRootObject = std::make_shared< bool >(
+                json["AlwaysGenerateRootObject"].get< bool >()
+            );
+        }
+    }
+
+    std::shared_ptr< bool > XmlDataLoadOptions::getAlwaysGenerateRootObject() const
+    {
+        return m_AlwaysGenerateRootObject;
+    }
+
+    void XmlDataLoadOptions::setAlwaysGenerateRootObject(std::shared_ptr< bool > value)
+    {
+        m_AlwaysGenerateRootObject = value;
     }
 
 

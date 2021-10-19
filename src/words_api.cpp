@@ -3348,7 +3348,7 @@ namespace aspose::words::cloud::api {
         return response->getResult();
     }
 
-    std::shared_ptr<aspose::words::cloud::responses::BatchResponse> WordsApi::batch(const std::vector<aspose::words::cloud::requests::BatchRequest>& requests) {
+    std::shared_ptr<aspose::words::cloud::responses::BatchResponse> WordsApi::batch(const std::vector<aspose::words::cloud::requests::BatchRequest>& requests, bool displayIntermediateResults) {
         auto response = std::make_shared<aspose::words::cloud::responses::BatchResponse>();
         auto requestData = std::make_shared<aspose::words::cloud::HttpRequestData>();
         {
@@ -3356,6 +3356,7 @@ namespace aspose::words::cloud::api {
             auto boundary = ApiClient::createRandomGuid();
             requestData->setMethod(aspose::words::cloud::HttpRequestMethod::HttpPUT);
             requestData->setPath(L"/words/batch");
+            requestData->addQueryParam(L"displayIntermediateResults", displayIntermediateResults);
             requestData->setContentType("multipart/form-data; boundary=" + boundary);
             for (auto& batchRequest : requests) {
                 requestBodyRef.append("--");
@@ -3363,7 +3364,7 @@ namespace aspose::words::cloud::api {
                 requestBodyRef.append("\r\n");
                 requestBodyRef.append("Content-Type: application/http; msgtype=request\r\n");
                 requestBodyRef.append("Content-Disposition: form-data\r\n\r\n");
-                batchRequest.serialize(requestBodyRef);
+                batchRequest.serialize(m_ApiClient.get(), requestBodyRef);
                 requestBodyRef.append("\r\n");
             }
             requestBodyRef.append("--");

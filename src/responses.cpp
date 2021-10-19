@@ -133,14 +133,10 @@ namespace aspose::words::cloud::responses {
 
     void BatchResponse::initialize(const std::vector<aspose::words::cloud::requests::BatchRequest>& requests)
     {
-        m_Order = std::make_shared< std::unordered_map< std::string, size_t > >();
-        m_Result = std::make_shared< std::vector< std::shared_ptr< ResponseModelBase > > >();
-        m_Result->reserve(requests.size());
-
+        m_Order = std::make_shared< std::unordered_map< std::string, std::shared_ptr<aspose::words::cloud::requests::RequestModelBase> > >();
         for (size_t i = 0; i < requests.size(); i++) {
             auto& request = requests[i];
-            m_Result->push_back(request.get()->createResponse());
-            m_Order->emplace(request.getRequestId(), i);
+            m_Order->emplace(request.getRequestId(), request.get());
         }
     }
 
@@ -149,7 +145,7 @@ namespace aspose::words::cloud::responses {
         std::vector<std::string_view> parts;
         parseMultipart(response, parts);
 
-        std::unordered_map<std::string_view, std::string_view> sortedParts;
+        m_Result = std::make_shared< std::vector< std::shared_ptr< ResponseModelBase > > >();
         for (size_t i = 0; i < parts.size(); i++) {
             auto& part = parts.at(i);
             auto bodyIndex = part.find("\r\n\r\n");
@@ -196,11 +192,8 @@ namespace aspose::words::cloud::responses {
             if (m_Order->find(requestId) == m_Order->end())
                 throw aspose::words::cloud::ApiException(400, L"Failed to parse batch response");
 
-            auto requestIndex = m_Order->at(requestId);
-            if (requestIndex < 0 || requestIndex >= m_Result->size())
-                throw aspose::words::cloud::ApiException(400, L"Failed to parse batch response");
-
-            auto& result = m_Result->at(requestIndex);
+            auto request = m_Order->at(requestId);
+            auto result = request.get()->createResponse();
             result->setStatusCode(statusCode);
             if (statusCode == 200) {
                 result->deserialize(contentData);
@@ -208,7 +201,14 @@ namespace aspose::words::cloud::responses {
             else {
                 result->setErrorData(contentData);
             }
+
+            m_Result->push_back(result);
         }
+    }
+
+    size_t BatchResponse::getCount() const
+    {
+        return m_Result->size();
     }
 
     /*
