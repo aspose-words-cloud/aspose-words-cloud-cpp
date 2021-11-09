@@ -4827,6 +4827,10 @@ namespace aspose::words::cloud::models {
         if (value == aspose::words::cloud::models::Font::StyleIdentifier::LIST_TABLE6_COLORFUL_ACCENT6) return "ListTable6ColorfulAccent6";
         if (value == aspose::words::cloud::models::Font::StyleIdentifier::LIST_TABLE7_COLORFUL_ACCENT6) return "ListTable7ColorfulAccent6";
         if (value == aspose::words::cloud::models::Font::StyleIdentifier::SMART_LINK) return "SmartLink";
+        if (value == aspose::words::cloud::models::Font::StyleIdentifier::MENTION) return "Mention";
+        if (value == aspose::words::cloud::models::Font::StyleIdentifier::SMART_HYPERLINK) return "SmartHyperlink";
+        if (value == aspose::words::cloud::models::Font::StyleIdentifier::HASHTAG) return "Hashtag";
+        if (value == aspose::words::cloud::models::Font::StyleIdentifier::UNRESOLVED_MENTION) return "UnresolvedMention";
         if (value == aspose::words::cloud::models::Font::StyleIdentifier::USER) return "User";
         if (value == aspose::words::cloud::models::Font::StyleIdentifier::NIL) return "Nil";
         throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
@@ -5206,6 +5210,10 @@ namespace aspose::words::cloud::models {
         if (value == "ListTable6ColorfulAccent6") return aspose::words::cloud::models::Font::StyleIdentifier::LIST_TABLE6_COLORFUL_ACCENT6;
         if (value == "ListTable7ColorfulAccent6") return aspose::words::cloud::models::Font::StyleIdentifier::LIST_TABLE7_COLORFUL_ACCENT6;
         if (value == "SmartLink") return aspose::words::cloud::models::Font::StyleIdentifier::SMART_LINK;
+        if (value == "Mention") return aspose::words::cloud::models::Font::StyleIdentifier::MENTION;
+        if (value == "SmartHyperlink") return aspose::words::cloud::models::Font::StyleIdentifier::SMART_HYPERLINK;
+        if (value == "Hashtag") return aspose::words::cloud::models::Font::StyleIdentifier::HASHTAG;
+        if (value == "UnresolvedMention") return aspose::words::cloud::models::Font::StyleIdentifier::UNRESOLVED_MENTION;
         if (value == "User") return aspose::words::cloud::models::Font::StyleIdentifier::USER;
         if (value == "Nil") return aspose::words::cloud::models::Font::StyleIdentifier::NIL;
         throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
@@ -12795,6 +12803,10 @@ namespace aspose::words::cloud::models {
         if (value == aspose::words::cloud::models::ParagraphFormatBase::StyleIdentifier::LIST_TABLE6_COLORFUL_ACCENT6) return "ListTable6ColorfulAccent6";
         if (value == aspose::words::cloud::models::ParagraphFormatBase::StyleIdentifier::LIST_TABLE7_COLORFUL_ACCENT6) return "ListTable7ColorfulAccent6";
         if (value == aspose::words::cloud::models::ParagraphFormatBase::StyleIdentifier::SMART_LINK) return "SmartLink";
+        if (value == aspose::words::cloud::models::ParagraphFormatBase::StyleIdentifier::MENTION) return "Mention";
+        if (value == aspose::words::cloud::models::ParagraphFormatBase::StyleIdentifier::SMART_HYPERLINK) return "SmartHyperlink";
+        if (value == aspose::words::cloud::models::ParagraphFormatBase::StyleIdentifier::HASHTAG) return "Hashtag";
+        if (value == aspose::words::cloud::models::ParagraphFormatBase::StyleIdentifier::UNRESOLVED_MENTION) return "UnresolvedMention";
         if (value == aspose::words::cloud::models::ParagraphFormatBase::StyleIdentifier::USER) return "User";
         if (value == aspose::words::cloud::models::ParagraphFormatBase::StyleIdentifier::NIL) return "Nil";
         throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
@@ -13174,6 +13186,10 @@ namespace aspose::words::cloud::models {
         if (value == "ListTable6ColorfulAccent6") return aspose::words::cloud::models::ParagraphFormatBase::StyleIdentifier::LIST_TABLE6_COLORFUL_ACCENT6;
         if (value == "ListTable7ColorfulAccent6") return aspose::words::cloud::models::ParagraphFormatBase::StyleIdentifier::LIST_TABLE7_COLORFUL_ACCENT6;
         if (value == "SmartLink") return aspose::words::cloud::models::ParagraphFormatBase::StyleIdentifier::SMART_LINK;
+        if (value == "Mention") return aspose::words::cloud::models::ParagraphFormatBase::StyleIdentifier::MENTION;
+        if (value == "SmartHyperlink") return aspose::words::cloud::models::ParagraphFormatBase::StyleIdentifier::SMART_HYPERLINK;
+        if (value == "Hashtag") return aspose::words::cloud::models::ParagraphFormatBase::StyleIdentifier::HASHTAG;
+        if (value == "UnresolvedMention") return aspose::words::cloud::models::ParagraphFormatBase::StyleIdentifier::UNRESOLVED_MENTION;
         if (value == "User") return aspose::words::cloud::models::ParagraphFormatBase::StyleIdentifier::USER;
         if (value == "Nil") return aspose::words::cloud::models::ParagraphFormatBase::StyleIdentifier::NIL;
         throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
@@ -17468,6 +17484,10 @@ namespace aspose::words::cloud::models {
         if (value == aspose::words::cloud::models::Style::StyleIdentifier::LIST_TABLE6_COLORFUL_ACCENT6) return "ListTable6ColorfulAccent6";
         if (value == aspose::words::cloud::models::Style::StyleIdentifier::LIST_TABLE7_COLORFUL_ACCENT6) return "ListTable7ColorfulAccent6";
         if (value == aspose::words::cloud::models::Style::StyleIdentifier::SMART_LINK) return "SmartLink";
+        if (value == aspose::words::cloud::models::Style::StyleIdentifier::MENTION) return "Mention";
+        if (value == aspose::words::cloud::models::Style::StyleIdentifier::SMART_HYPERLINK) return "SmartHyperlink";
+        if (value == aspose::words::cloud::models::Style::StyleIdentifier::HASHTAG) return "Hashtag";
+        if (value == aspose::words::cloud::models::Style::StyleIdentifier::UNRESOLVED_MENTION) return "UnresolvedMention";
         if (value == aspose::words::cloud::models::Style::StyleIdentifier::USER) return "User";
         if (value == aspose::words::cloud::models::Style::StyleIdentifier::NIL) return "Nil";
         throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
@@ -17847,6 +17867,10 @@ namespace aspose::words::cloud::models {
         if (value == "ListTable6ColorfulAccent6") return aspose::words::cloud::models::Style::StyleIdentifier::LIST_TABLE6_COLORFUL_ACCENT6;
         if (value == "ListTable7ColorfulAccent6") return aspose::words::cloud::models::Style::StyleIdentifier::LIST_TABLE7_COLORFUL_ACCENT6;
         if (value == "SmartLink") return aspose::words::cloud::models::Style::StyleIdentifier::SMART_LINK;
+        if (value == "Mention") return aspose::words::cloud::models::Style::StyleIdentifier::MENTION;
+        if (value == "SmartHyperlink") return aspose::words::cloud::models::Style::StyleIdentifier::SMART_HYPERLINK;
+        if (value == "Hashtag") return aspose::words::cloud::models::Style::StyleIdentifier::HASHTAG;
+        if (value == "UnresolvedMention") return aspose::words::cloud::models::Style::StyleIdentifier::UNRESOLVED_MENTION;
         if (value == "User") return aspose::words::cloud::models::Style::StyleIdentifier::USER;
         if (value == "Nil") return aspose::words::cloud::models::Style::StyleIdentifier::NIL;
         throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
@@ -19646,6 +19670,10 @@ namespace aspose::words::cloud::models {
         if (value == aspose::words::cloud::models::TableProperties::StyleIdentifier::LIST_TABLE6_COLORFUL_ACCENT6) return "ListTable6ColorfulAccent6";
         if (value == aspose::words::cloud::models::TableProperties::StyleIdentifier::LIST_TABLE7_COLORFUL_ACCENT6) return "ListTable7ColorfulAccent6";
         if (value == aspose::words::cloud::models::TableProperties::StyleIdentifier::SMART_LINK) return "SmartLink";
+        if (value == aspose::words::cloud::models::TableProperties::StyleIdentifier::MENTION) return "Mention";
+        if (value == aspose::words::cloud::models::TableProperties::StyleIdentifier::SMART_HYPERLINK) return "SmartHyperlink";
+        if (value == aspose::words::cloud::models::TableProperties::StyleIdentifier::HASHTAG) return "Hashtag";
+        if (value == aspose::words::cloud::models::TableProperties::StyleIdentifier::UNRESOLVED_MENTION) return "UnresolvedMention";
         if (value == aspose::words::cloud::models::TableProperties::StyleIdentifier::USER) return "User";
         if (value == aspose::words::cloud::models::TableProperties::StyleIdentifier::NIL) return "Nil";
         throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
@@ -20025,6 +20053,10 @@ namespace aspose::words::cloud::models {
         if (value == "ListTable6ColorfulAccent6") return aspose::words::cloud::models::TableProperties::StyleIdentifier::LIST_TABLE6_COLORFUL_ACCENT6;
         if (value == "ListTable7ColorfulAccent6") return aspose::words::cloud::models::TableProperties::StyleIdentifier::LIST_TABLE7_COLORFUL_ACCENT6;
         if (value == "SmartLink") return aspose::words::cloud::models::TableProperties::StyleIdentifier::SMART_LINK;
+        if (value == "Mention") return aspose::words::cloud::models::TableProperties::StyleIdentifier::MENTION;
+        if (value == "SmartHyperlink") return aspose::words::cloud::models::TableProperties::StyleIdentifier::SMART_HYPERLINK;
+        if (value == "Hashtag") return aspose::words::cloud::models::TableProperties::StyleIdentifier::HASHTAG;
+        if (value == "UnresolvedMention") return aspose::words::cloud::models::TableProperties::StyleIdentifier::UNRESOLVED_MENTION;
         if (value == "User") return aspose::words::cloud::models::TableProperties::StyleIdentifier::USER;
         if (value == "Nil") return aspose::words::cloud::models::TableProperties::StyleIdentifier::NIL;
         throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
