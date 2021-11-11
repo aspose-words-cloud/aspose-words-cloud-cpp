@@ -38,11 +38,12 @@ parallel windows: {
                             try {
                                 bat """
                                     docker pull ${buildCacheImage}/wincore:latest || goto build
-                                    exit /b 0
+                                    rem exit /b 0
                                     
                                     :build
                                     docker build --cache-from=${buildCacheImage}/wincore:latest -t ${buildCacheImage}/wincore:latest -t aspose-words-cloud-cpp-tests:wincore - < Dockerfile.wincore || goto error
                                     docker build -t aspose-words-cloud-cpp-tests:windows -f Dockerfile.windows . || goto error
+                                    docker push ${buildCacheImage}/wincore:latest || goto error
                                     exit /b 0
                                     
                                     :error
