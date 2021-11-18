@@ -307,6 +307,8 @@
 #include "aspose_words_cloud/responses/get_header_footers_response.h"
 #include "aspose_words_cloud/requests/get_header_footers_online_request.h"
 #include "aspose_words_cloud/responses/get_header_footers_online_response.h"
+#include "aspose_words_cloud/requests/get_info_request.h"
+#include "aspose_words_cloud/responses/get_info_response.h"
 #include "aspose_words_cloud/requests/get_list_request.h"
 #include "aspose_words_cloud/responses/get_list_response.h"
 #include "aspose_words_cloud/requests/get_list_online_request.h"
@@ -2248,6 +2250,11 @@ namespace aspose::words::cloud::api {
         /// <param name="password">Password for opening an encrypted document.</param>
         /// <param name="filterByType">The list of HeaderFooter types.</param>
         ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::HeaderFootersResponse > getHeaderFootersOnline(std::shared_ptr<aspose::words::cloud::requests::GetHeaderFootersOnlineRequest> request);
+
+        /// <summary>
+        /// Returns application info.
+        /// </summary>
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::InfoResponse > getInfo(std::shared_ptr<aspose::words::cloud::requests::GetInfoRequest> request);
 
         /// <summary>
         /// Reads a list from the document.

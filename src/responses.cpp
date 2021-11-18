@@ -2232,6 +2232,21 @@ namespace aspose::words::cloud::responses {
     }
 
     /*
+     * GetInfo request implementation
+     */
+    std::shared_ptr< aspose::words::cloud::models::InfoResponse > GetInfoResponse::getResult() const
+    {
+        return m_Result;
+    }
+
+    void GetInfoResponse::deserialize(const std::string_view& response)
+    {
+        auto json = ::nlohmann::json::parse(response);
+        m_Result = std::make_shared< aspose::words::cloud::models::InfoResponse >();
+        m_Result->fromJson(&json);
+    }
+
+    /*
      * GetList request implementation
      */
     std::shared_ptr< aspose::words::cloud::models::ListResponse > GetListResponse::getResult() const

@@ -48,6 +48,7 @@
 #include "./api/footnote_test.h"
 #include "./api/header_footer_test.h"
 #include "./api/hyperlink_test.h"
+#include "./api/info_test.h"
 #include "./api/lists_test.h"
 #include "./api/macros_test.h"
 #include "./api/execute_mail_merge_test.h"

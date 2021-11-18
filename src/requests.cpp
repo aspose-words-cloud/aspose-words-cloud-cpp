@@ -10777,6 +10777,30 @@ namespace aspose::words::cloud::requests {
     }
 
     /*
+     * GetInfo request implementation
+     */
+    GetInfoRequest::GetInfoRequest(
+    ) 
+    {
+    }
+
+
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetInfoRequest::createHttpRequest() const
+    {
+        auto result = std::make_shared<HttpRequestData>();
+        result->setMethod(HttpRequestMethod::HttpGET);
+        result->setPath(L"/words/info");
+        return result;
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > GetInfoRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::GetInfoResponse()
+        );
+    }
+
+    /*
      * GetList request implementation
      */
     GetListRequest::GetListRequest(

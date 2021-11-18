@@ -8751,6 +8751,130 @@ namespace aspose::words::cloud::models {
 
 
     /*
+     * InfoAdditionalItem implementation
+     */
+    void InfoAdditionalItem::toJson(void* jsonIfc) const
+    {
+        ::nlohmann::json& json = *((::nlohmann::json*)jsonIfc);
+        if (m_Key) {
+            json["Key"] = convertUtf16(*m_Key);
+        }
+        if (m_Value) {
+            json["Value"] = convertUtf16(*m_Value);
+        }
+    }
+
+    void InfoAdditionalItem::fromJson(const void* jsonIfc)
+    {
+        ::nlohmann::json& json = *((::nlohmann::json*)jsonIfc);
+        if (json.contains("Key") && !json["Key"].is_null()) {
+            m_Key = std::make_shared< std::wstring >(
+                convertUtf8( json["Key"].get< std::string >() )
+            );
+        }
+        if (json.contains("Value") && !json["Value"].is_null()) {
+            m_Value = std::make_shared< std::wstring >(
+                convertUtf8( json["Value"].get< std::string >() )
+            );
+        }
+    }
+
+    std::shared_ptr< std::wstring > InfoAdditionalItem::getKey() const
+    {
+        return m_Key;
+    }
+
+    void InfoAdditionalItem::setKey(std::shared_ptr< std::wstring > value)
+    {
+        m_Key = value;
+    }
+
+    std::shared_ptr< std::wstring > InfoAdditionalItem::getValue() const
+    {
+        return m_Value;
+    }
+
+    void InfoAdditionalItem::setValue(std::shared_ptr< std::wstring > value)
+    {
+        m_Value = value;
+    }
+
+
+    /*
+     * InfoResponse implementation
+     */
+    void InfoResponse::toJson(void* jsonIfc) const
+    {
+        WordsResponse::toJson(jsonIfc);
+        ::nlohmann::json& json = *((::nlohmann::json*)jsonIfc);
+        if (m_AdditionalInfo) {
+            json["AdditionalInfo"] = ::nlohmann::json::array();
+            for (auto& element : *m_AdditionalInfo) {
+                element->toJson(&json["AdditionalInfo"].emplace_back());
+            }
+        }
+        if (m_Name) {
+            json["Name"] = convertUtf16(*m_Name);
+        }
+        if (m_Version) {
+            json["Version"] = convertUtf16(*m_Version);
+        }
+    }
+
+    void InfoResponse::fromJson(const void* jsonIfc)
+    {
+        WordsResponse::fromJson(jsonIfc);
+        ::nlohmann::json& json = *((::nlohmann::json*)jsonIfc);
+        if (json.contains("AdditionalInfo") && !json["AdditionalInfo"].is_null()) {
+            m_AdditionalInfo = std::make_shared< std::vector<std::shared_ptr<aspose::words::cloud::models::InfoAdditionalItem>> >();
+            for (auto& element : json["AdditionalInfo"]) {
+                m_AdditionalInfo->emplace_back(std::make_shared< aspose::words::cloud::models::InfoAdditionalItem >())->fromJson(&element);
+            }
+        }
+        if (json.contains("Name") && !json["Name"].is_null()) {
+            m_Name = std::make_shared< std::wstring >(
+                convertUtf8( json["Name"].get< std::string >() )
+            );
+        }
+        if (json.contains("Version") && !json["Version"].is_null()) {
+            m_Version = std::make_shared< std::wstring >(
+                convertUtf8( json["Version"].get< std::string >() )
+            );
+        }
+    }
+
+    std::shared_ptr< std::vector<std::shared_ptr<aspose::words::cloud::models::InfoAdditionalItem>> > InfoResponse::getAdditionalInfo() const
+    {
+        return m_AdditionalInfo;
+    }
+
+    void InfoResponse::setAdditionalInfo(std::shared_ptr< std::vector<std::shared_ptr<aspose::words::cloud::models::InfoAdditionalItem>> > value)
+    {
+        m_AdditionalInfo = value;
+    }
+
+    std::shared_ptr< std::wstring > InfoResponse::getName() const
+    {
+        return m_Name;
+    }
+
+    void InfoResponse::setName(std::shared_ptr< std::wstring > value)
+    {
+        m_Name = value;
+    }
+
+    std::shared_ptr< std::wstring > InfoResponse::getVersion() const
+    {
+        return m_Version;
+    }
+
+    void InfoResponse::setVersion(std::shared_ptr< std::wstring > value)
+    {
+        m_Version = value;
+    }
+
+
+    /*
      * JpegSaveOptionsData implementation
      */
     void JpegSaveOptionsData::toJson(void* jsonIfc) const
