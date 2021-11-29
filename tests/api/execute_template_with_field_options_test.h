@@ -1,5 +1,5 @@
 ﻿/** --------------------------------------------------------------------------------------------------------------------
-* <copyright company="Aspose" file="execute_mail_merge_test.h">
+* <copyright company="Aspose" file="execute_template_with_field_options_test.h">
 *   Copyright (c) 2021 Aspose.Words for Cloud
 * </copyright>
 * <summary>
@@ -27,9 +27,9 @@
 #include "../test_base.h"
 
 /// <summary>
-/// Example of how to perform mail merge.
+/// Example of how to perform template execution.
 /// </summary>
-class ExecuteMailMergeTests : public InfrastructureTest {
+class ExecuteTemplateWithFieldOptionsTests : public InfrastructureTest {
 protected:
     std::wstring remoteDataFolder = remoteBaseTestDataFolder + L"/DocumentActions/MailMerge";
     std::wstring mailMergeFolder = L"DocumentActions/MailMerge";
@@ -37,48 +37,31 @@ protected:
 };
 
 /// <summary>
-/// Test for executing mail merge online.
+/// Test for posting execute template.
 /// </summary>
-TEST_F(ExecuteMailMergeTests, TestExecuteMailMergeOnline) {
-    std::wstring localDocumentFile = L"SampleExecuteTemplate.docx";
-    std::wstring localDataFile = L"SampleExecuteTemplateData.txt";
-
-    auto requestTemplate = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(mailMergeFolder + L"/" + localDocumentFile)), std::istream::binary));
-    auto requestData = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(mailMergeFolder + L"/" + localDataFile)), std::istream::binary));
-    std::shared_ptr<requests::ExecuteMailMergeOnlineRequest> request(new requests::ExecuteMailMergeOnlineRequest(
-        requestTemplate,
-        requestData,
-        nullptr,
-        nullptr,
-        nullptr,
-        nullptr
-    ));
-
-    auto actual = getApi()->executeMailMergeOnline(request);
-}
-
-/// <summary>
-/// Test for executing mail merge.
-/// </summary>
-TEST_F(ExecuteMailMergeTests, TestExecuteMailMerge) {
-    std::wstring localDocumentFile = L"SampleExecuteTemplate.docx";
-    std::wstring remoteFileName = L"TestExecuteMailMerge.docx";
-    std::wstring localDataFile = getFileTextUtf16(localTestDataFolder + L"/" + mailMergeFolder + L"/SampleMailMergeTemplateData.txt");
+TEST_F(ExecuteTemplateWithFieldOptionsTests, TestExecuteTemplateWithFieldOptions) {
+    std::wstring localDocumentFile = L"TestMailMergeWithOptions.docx";
+    std::wstring remoteFileName = L"TestMailMergeWithOptions.docx";
+    std::wstring localDataFile = getFileTextUtf16(localTestDataFolder + L"/" + mailMergeFolder + L"/TestMailMergeData.xml");
 
     uploadFileToStorage(
         localTestDataFolder + L"/" + mailMergeFolder + L"/" + localDocumentFile,
         remoteDataFolder + L"/" + remoteFileName
     );
 
+    auto requestOptionsCurrentUser = std::make_shared< aspose::words::cloud::models::UserInformation >();
+    requestOptionsCurrentUser->setName(std::make_shared< std::wstring >(L"SdkTestUser"));
+    auto requestOptions = std::make_shared< aspose::words::cloud::models::FieldOptions >();
+    requestOptions->setCurrentUser(requestOptionsCurrentUser);
     std::shared_ptr<requests::ExecuteMailMergeRequest> request(new requests::ExecuteMailMergeRequest(
         std::make_shared< std::wstring >(remoteFileName),
         std::make_shared< std::wstring >(localDataFile),
-        nullptr,
+        requestOptions,
         std::make_shared< std::wstring >(remoteDataFolder),
         nullptr,
         nullptr,
         nullptr,
-        std::make_shared< bool >(false),
+        nullptr,
         nullptr,
         nullptr,
         nullptr,
@@ -87,5 +70,30 @@ TEST_F(ExecuteMailMergeTests, TestExecuteMailMerge) {
 
     auto actual = getApi()->executeMailMerge(request);
     ASSERT_TRUE(actual->getDocument() != nullptr);
-    ASSERT_TRUE(actual->getDocument()->getFileName()->compare(L"TestExecuteMailMerge.docx") == 0);
+    ASSERT_TRUE(actual->getDocument()->getFileName()->compare(L"TestMailMergeWithOptions.docx") == 0);
+}
+
+/// <summary>
+/// Test for execute template online.
+/// </summary>
+TEST_F(ExecuteTemplateWithFieldOptionsTests, TestExecuteTemplateOnlineWithFieldOptions) {
+    std::wstring localDocumentFile = L"TestMailMergeWithOptions.docx";
+    std::wstring localDataFile = L"TestMailMergeData.xml";
+
+    auto requestTemplate = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(mailMergeFolder + L"/" + localDocumentFile)), std::istream::binary));
+    auto requestData = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(mailMergeFolder + L"/" + localDataFile)), std::istream::binary));
+    auto requestOptionsCurrentUser = std::make_shared< aspose::words::cloud::models::UserInformation >();
+    requestOptionsCurrentUser->setName(std::make_shared< std::wstring >(L"SdkTestUser"));
+    auto requestOptions = std::make_shared< aspose::words::cloud::models::FieldOptions >();
+    requestOptions->setCurrentUser(requestOptionsCurrentUser);
+    std::shared_ptr<requests::ExecuteMailMergeOnlineRequest> request(new requests::ExecuteMailMergeOnlineRequest(
+        requestTemplate,
+        requestData,
+        requestOptions,
+        nullptr,
+        nullptr,
+        nullptr
+    ));
+
+    auto actual = getApi()->executeMailMergeOnline(request);
 }

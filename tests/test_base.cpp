@@ -53,6 +53,7 @@
 #include "./api/macros_test.h"
 #include "./api/execute_mail_merge_test.h"
 #include "./api/execute_template_test.h"
+#include "./api/execute_template_with_field_options_test.h"
 #include "./api/mail_merge_fileds_test.h"
 #include "./api/math_object_test.h"
 #include "./api/page_setup_test.h"
