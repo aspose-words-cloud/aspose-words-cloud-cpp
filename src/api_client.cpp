@@ -140,8 +140,8 @@ namespace aspose::words::cloud {
         std::string baseUrlUtf8;
         ::utf8::utf16to8(configuration->getBaseUrl().begin(), configuration->getBaseUrl().end(), back_inserter(baseUrlUtf8));
         m_HttpClient = std::make_shared<::httplib::Client>(baseUrlUtf8.c_str());
-        m_HttpClient->set_read_timeout(300, 0);
-        m_HttpClient->set_write_timeout(300, 0);
+        m_HttpClient->set_read_timeout(configuration->getTimeout(), 0);
+        m_HttpClient->set_write_timeout(configuration->getTimeout(), 0);
         m_HttpClient->set_keep_alive(true);
         m_HttpClient->set_tcp_nodelay(true);
     }

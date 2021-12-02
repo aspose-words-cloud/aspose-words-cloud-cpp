@@ -6653,6 +6653,7 @@ namespace aspose::words::cloud::requests {
     ExecuteMailMergeRequest::ExecuteMailMergeRequest(
         const std::shared_ptr< std::wstring > name,
         const std::shared_ptr< std::wstring > data,
+        const std::shared_ptr< aspose::words::cloud::models::FieldOptions > options,
         const std::shared_ptr< std::wstring > folder,
         const std::shared_ptr< std::wstring > storage,
         const std::shared_ptr< std::wstring > loadEncoding,
@@ -6665,6 +6666,7 @@ namespace aspose::words::cloud::requests {
     ) : 
         m_Name(name),
         m_Data(data),
+        m_Options(options),
         m_Folder(folder),
         m_Storage(storage),
         m_LoadEncoding(loadEncoding),
@@ -6685,6 +6687,11 @@ namespace aspose::words::cloud::requests {
     const std::shared_ptr< std::wstring > ExecuteMailMergeRequest::getData() const
     {
         return m_Data;
+    }
+
+    const std::shared_ptr< aspose::words::cloud::models::FieldOptions > ExecuteMailMergeRequest::getOptions() const
+    {
+        return m_Options;
     }
 
     const std::shared_ptr< std::wstring > ExecuteMailMergeRequest::getFolder() const
@@ -6748,7 +6755,8 @@ namespace aspose::words::cloud::requests {
         if (m_Cleanup) result->addQueryParam(L"cleanup", *m_Cleanup);
         if (m_UseWholeParagraphAsRegion) result->addQueryParam(L"useWholeParagraphAsRegion", *m_UseWholeParagraphAsRegion);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
-        if (m_Data) result->setBodyText(*m_Data);
+        if (m_Data) result->addFormDataParam(L"data", *m_Data);
+        if (m_Options) result->addFormDataParam(L"options", *m_Options);
         return result;
     }
 
@@ -6765,12 +6773,14 @@ namespace aspose::words::cloud::requests {
     ExecuteMailMergeOnlineRequest::ExecuteMailMergeOnlineRequest(
         const std::shared_ptr< std::istream > _template,
         const std::shared_ptr< std::istream > data,
+        const std::shared_ptr< aspose::words::cloud::models::FieldOptions > options,
         const std::shared_ptr< bool > withRegions,
         const std::shared_ptr< std::wstring > cleanup,
         const std::shared_ptr< std::wstring > documentFileName
     ) : 
         m_Template(_template),
         m_Data(data),
+        m_Options(options),
         m_WithRegions(withRegions),
         m_Cleanup(cleanup),
         m_DocumentFileName(documentFileName)
@@ -6785,6 +6795,11 @@ namespace aspose::words::cloud::requests {
     const std::shared_ptr< std::istream > ExecuteMailMergeOnlineRequest::getData() const
     {
         return m_Data;
+    }
+
+    const std::shared_ptr< aspose::words::cloud::models::FieldOptions > ExecuteMailMergeOnlineRequest::getOptions() const
+    {
+        return m_Options;
     }
 
     const std::shared_ptr< bool > ExecuteMailMergeOnlineRequest::getWithRegions() const
@@ -6814,6 +6829,7 @@ namespace aspose::words::cloud::requests {
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Template' is required.");
         if (m_Data) result->addFormDataParam(L"data", *m_Data);
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Data' is required.");
+        if (m_Options) result->addFormDataParam(L"options", *m_Options);
         return result;
     }
 

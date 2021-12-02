@@ -25,6 +25,7 @@
 
 #pragma once
 #include "./request_model_base.h"
+#include "aspose_words_cloud/models/field_options.h"
 
 namespace aspose::words::cloud::requests {
     class ExecuteMailMergeOnlineRequest : public RequestModelBase {
@@ -32,6 +33,7 @@ namespace aspose::words::cloud::requests {
         ASPOSE_WORDS_CLOUD_EXPORT ExecuteMailMergeOnlineRequest(
             const std::shared_ptr< std::istream > _template,
             const std::shared_ptr< std::istream > data,
+            const std::shared_ptr< aspose::words::cloud::models::FieldOptions > options = nullptr,
             const std::shared_ptr< bool > withRegions = nullptr,
             const std::shared_ptr< std::wstring > cleanup = nullptr,
             const std::shared_ptr< std::wstring > documentFileName = nullptr
@@ -39,6 +41,7 @@ namespace aspose::words::cloud::requests {
 
         ASPOSE_WORDS_CLOUD_EXPORT const std::shared_ptr< std::istream > getTemplate() const;
         ASPOSE_WORDS_CLOUD_EXPORT const std::shared_ptr< std::istream > getData() const;
+        ASPOSE_WORDS_CLOUD_EXPORT const std::shared_ptr< aspose::words::cloud::models::FieldOptions > getOptions() const;
         ASPOSE_WORDS_CLOUD_EXPORT const std::shared_ptr< bool > getWithRegions() const;
         ASPOSE_WORDS_CLOUD_EXPORT const std::shared_ptr< std::wstring > getCleanup() const;
         ASPOSE_WORDS_CLOUD_EXPORT const std::shared_ptr< std::wstring > getDocumentFileName() const;
@@ -49,6 +52,7 @@ namespace aspose::words::cloud::requests {
     private:
         const std::shared_ptr< std::istream > m_Template;
         const std::shared_ptr< std::istream > m_Data;
+        const std::shared_ptr< aspose::words::cloud::models::FieldOptions > m_Options;
         const std::shared_ptr< bool > m_WithRegions;
         const std::shared_ptr< std::wstring > m_Cleanup;
         const std::shared_ptr< std::wstring > m_DocumentFileName;
