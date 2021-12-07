@@ -3,7 +3,7 @@ using namespace aspose::words::cloud;
 
 auto config = std::make_shared<ApiConfiguration>(/*clientId*/ L"####-####-####-####-####", /*clientSecret*/ L"##################");
 auto wordsApi = std::make_shared<WordsApi>(config);
-std::wstring fileName  = L"test_doc.docx";
+std::wstring fileName = L"test_doc.docx";
 
 // Upload original document to cloud storage.
 auto myVar1 = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(fileName), std::istream::binary));
