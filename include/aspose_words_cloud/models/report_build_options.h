@@ -35,7 +35,8 @@ namespace aspose::words::cloud::models {
         NONE,
         ALLOW_MISSING_MEMBERS,
         REMOVE_EMPTY_PARAGRAPHS,
-        INLINE_ERROR_MESSAGES
+        INLINE_ERROR_MESSAGES,
+        USE_LEGACY_HEADER_FOOTER_VISITING
     };
 }
 

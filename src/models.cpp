@@ -49,6 +49,7 @@ namespace aspose::words::cloud::models {
         if (value == ReportBuildOptions::ALLOW_MISSING_MEMBERS) return "AllowMissingMembers";
         if (value == ReportBuildOptions::REMOVE_EMPTY_PARAGRAPHS) return "RemoveEmptyParagraphs";
         if (value == ReportBuildOptions::INLINE_ERROR_MESSAGES) return "InlineErrorMessages";
+        if (value == ReportBuildOptions::USE_LEGACY_HEADER_FOOTER_VISITING) return "UseLegacyHeaderFooterVisiting";
         throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
     }
 
@@ -58,6 +59,7 @@ namespace aspose::words::cloud::models {
         if (value == "AllowMissingMembers") return ReportBuildOptions::ALLOW_MISSING_MEMBERS;
         if (value == "RemoveEmptyParagraphs") return ReportBuildOptions::REMOVE_EMPTY_PARAGRAPHS;
         if (value == "InlineErrorMessages") return ReportBuildOptions::INLINE_ERROR_MESSAGES;
+        if (value == "UseLegacyHeaderFooterVisiting") return ReportBuildOptions::USE_LEGACY_HEADER_FOOTER_VISITING;
         throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
     }
 
@@ -15760,6 +15762,7 @@ namespace aspose::words::cloud::models {
         if (value == aspose::words::cloud::models::ReportBuildOptions::ALLOW_MISSING_MEMBERS) return "AllowMissingMembers";
         if (value == aspose::words::cloud::models::ReportBuildOptions::REMOVE_EMPTY_PARAGRAPHS) return "RemoveEmptyParagraphs";
         if (value == aspose::words::cloud::models::ReportBuildOptions::INLINE_ERROR_MESSAGES) return "InlineErrorMessages";
+        if (value == aspose::words::cloud::models::ReportBuildOptions::USE_LEGACY_HEADER_FOOTER_VISITING) return "UseLegacyHeaderFooterVisiting";
         throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
     }
 
@@ -15769,6 +15772,7 @@ namespace aspose::words::cloud::models {
         if (value == "AllowMissingMembers") return aspose::words::cloud::models::ReportBuildOptions::ALLOW_MISSING_MEMBERS;
         if (value == "RemoveEmptyParagraphs") return aspose::words::cloud::models::ReportBuildOptions::REMOVE_EMPTY_PARAGRAPHS;
         if (value == "InlineErrorMessages") return aspose::words::cloud::models::ReportBuildOptions::INLINE_ERROR_MESSAGES;
+        if (value == "UseLegacyHeaderFooterVisiting") return aspose::words::cloud::models::ReportBuildOptions::USE_LEGACY_HEADER_FOOTER_VISITING;
         throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
     }
     void ReportEngineSettings::toJson(void* jsonIfc) const
