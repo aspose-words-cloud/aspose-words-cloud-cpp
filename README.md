@@ -17,6 +17,10 @@ Feel free to explore the [Developer's Guide](https://docs.aspose.cloud/display/w
 - Read & write access to Document Object Model.
 - Thread safe
 
+## Enhancements in Version 21.12
+
+- Added 'timeout' parameter to api configuration
+
 ## Enhancements in Version 21.11
 
 - Support encryption of 'CommonRequest.Password'. Automatic encryption of all passwords sent to the API server as request parameters.

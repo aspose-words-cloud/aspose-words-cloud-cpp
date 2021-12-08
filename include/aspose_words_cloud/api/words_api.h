@@ -307,6 +307,8 @@
 #include "aspose_words_cloud/responses/get_header_footers_response.h"
 #include "aspose_words_cloud/requests/get_header_footers_online_request.h"
 #include "aspose_words_cloud/responses/get_header_footers_online_response.h"
+#include "aspose_words_cloud/requests/get_info_request.h"
+#include "aspose_words_cloud/responses/get_info_response.h"
 #include "aspose_words_cloud/requests/get_list_request.h"
 #include "aspose_words_cloud/responses/get_list_response.h"
 #include "aspose_words_cloud/requests/get_list_online_request.h"
@@ -1618,6 +1620,7 @@ namespace aspose::words::cloud::api {
         /// </summary>
         /// <param name="name">The filename of the input document.</param>
         /// <param name="data">Mail merge data.</param>
+        /// <param name="options">Field options.</param>
         /// <param name="folder">Original document folder.</param>
         /// <param name="storage">Original document storage.</param>
         /// <param name="loadEncoding">Encoding that will be used to load an HTML (or TXT) document if the encoding is not specified in HTML.</param>
@@ -1634,6 +1637,7 @@ namespace aspose::words::cloud::api {
         /// </summary>
         /// <param name="_template">File with template.</param>
         /// <param name="data">File with mailmerge data.</param>
+        /// <param name="options">Field options.</param>
         /// <param name="withRegions">The flag indicating whether to execute Mail Merge operation with regions.</param>
         /// <param name="cleanup">The cleanup options.</param>
         /// <param name="documentFileName">The filename of the output document, that will be used when the resulting document has a dynamic field {filename}. If it is not set, the "template" will be used instead.</param>
@@ -2248,6 +2252,11 @@ namespace aspose::words::cloud::api {
         /// <param name="password">Password for opening an encrypted document.</param>
         /// <param name="filterByType">The list of HeaderFooter types.</param>
         ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::HeaderFootersResponse > getHeaderFootersOnline(std::shared_ptr<aspose::words::cloud::requests::GetHeaderFootersOnlineRequest> request);
+
+        /// <summary>
+        /// Returns application info.
+        /// </summary>
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::InfoResponse > getInfo(std::shared_ptr<aspose::words::cloud::requests::GetInfoRequest> request);
 
         /// <summary>
         /// Reads a list from the document.

@@ -36,3 +36,12 @@ RUN powershell -NoProfile -InputFormat None -ExecutionPolicy Bypass -Command " \
     $chain.build($cert); \
     $chain.ChainElements.Certificate | % {set-content -value $(""""-----BEGIN CERTIFICATE-----`r`n$([System.Convert]::ToBase64String($($_.Export([Security.Cryptography.X509Certificates.X509ContentType]::Cert)), 'InsertLineBreaks'))`r`n-----END CERTIFICATE-----`r`n"""") -encoding Ascii -path """"$($_.Thumbprint).cer""""; CertUtil -addStore Root """"$($_.Thumbprint).cer""""; }; \
 "
+
+RUN powershell -NoProfile -InputFormat None -ExecutionPolicy Bypass -Command " \
+    $webRequest = [Net.WebRequest]::Create(""""https://api-qa.aspose.cloud""""); \
+    $webRequest.GetResponse(); \
+    $cert = $webRequest.ServicePoint.Certificate; \
+    $chain = New-Object -TypeName System.Security.Cryptography.X509Certificates.X509Chain; \
+    $chain.build($cert); \
+    $chain.ChainElements.Certificate | % {set-content -value $(""""-----BEGIN CERTIFICATE-----`r`n$([System.Convert]::ToBase64String($($_.Export([Security.Cryptography.X509Certificates.X509ContentType]::Cert)), 'InsertLineBreaks'))`r`n-----END CERTIFICATE-----`r`n"""") -encoding Ascii -path """"$($_.Thumbprint).cer""""; CertUtil -addStore Root """"$($_.Thumbprint).cer""""; }; \
+"

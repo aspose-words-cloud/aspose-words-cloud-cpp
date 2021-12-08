@@ -1,5 +1,5 @@
 ﻿/** --------------------------------------------------------------------------------------------------------------------
-* <copyright company="Aspose" file="report_build_options.h">
+* <copyright company="Aspose" file="get_info_response.h">
 *   Copyright (c) 2021 Aspose.Words for Cloud
 * </copyright>
 * <summary>
@@ -24,19 +24,18 @@
 -------------------------------------------------------------------------------------------------------------------- **/
 
 #pragma once
-#include "./model_base.h"
+#include "./response_model_base.h"
+#include "aspose_words_cloud/models/info_response.h"
 
-namespace aspose::words::cloud::models {
-    /// <summary>
-    /// Specifies options controlling behavior of ReportingEngine while building a report.
-    /// </summary>
-    enum class ReportBuildOptions
-    {
-        NONE,
-        ALLOW_MISSING_MEMBERS,
-        REMOVE_EMPTY_PARAGRAPHS,
-        INLINE_ERROR_MESSAGES,
-        USE_LEGACY_HEADER_FOOTER_VISITING
+namespace aspose::words::cloud::responses {
+    class GetInfoResponse : public ResponseModelBase {
+    public: 
+        ASPOSE_WORDS_CLOUD_EXPORT virtual ~GetInfoResponse() = default;
+
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::InfoResponse > getResult() const;
+
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void deserialize(const std::string_view& response) override;
+    private:
+        std::shared_ptr< aspose::words::cloud::models::InfoResponse > m_Result;
     };
 }
-

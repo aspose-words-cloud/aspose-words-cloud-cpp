@@ -1,5 +1,5 @@
 ﻿/** --------------------------------------------------------------------------------------------------------------------
-* <copyright company="Aspose" file="report_build_options.h">
+* <copyright company="Aspose" file="info_additional_item.h">
 *   Copyright (c) 2021 Aspose.Words for Cloud
 * </copyright>
 * <summary>
@@ -28,15 +28,39 @@
 
 namespace aspose::words::cloud::models {
     /// <summary>
-    /// Specifies options controlling behavior of ReportingEngine while building a report.
+    /// Info additional item.
     /// </summary>
-    enum class ReportBuildOptions
+    class InfoAdditionalItem : public ModelBase
     {
-        NONE,
-        ALLOW_MISSING_MEMBERS,
-        REMOVE_EMPTY_PARAGRAPHS,
-        INLINE_ERROR_MESSAGES,
-        USE_LEGACY_HEADER_FOOTER_VISITING
+    public:
+
+        ASPOSE_WORDS_CLOUD_EXPORT virtual ~InfoAdditionalItem() = default;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void toJson(void* jsonIfc) const override;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void fromJson(const void* jsonIfc) override;
+
+        /// <summary>
+        /// Gets or sets Key.
+        /// </summary>
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getKey() const;
+
+        /// <summary>
+        /// Gets or sets Key.
+        /// </summary>
+        ASPOSE_WORDS_CLOUD_EXPORT void setKey(std::shared_ptr< std::wstring > value);
+
+        /// <summary>
+        /// Gets or sets Value.
+        /// </summary>
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getValue() const;
+
+        /// <summary>
+        /// Gets or sets Value.
+        /// </summary>
+        ASPOSE_WORDS_CLOUD_EXPORT void setValue(std::shared_ptr< std::wstring > value);
+
+    protected:
+        std::shared_ptr< std::wstring > m_Key;
+        std::shared_ptr< std::wstring > m_Value;
     };
 }
 

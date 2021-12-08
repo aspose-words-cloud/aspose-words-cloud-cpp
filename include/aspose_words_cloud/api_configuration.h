@@ -42,8 +42,12 @@ namespace aspose::words::cloud {
         ASPOSE_WORDS_CLOUD_EXPORT bool isDebugMode() const;
         ASPOSE_WORDS_CLOUD_EXPORT void setDebugMode(bool debug);
 
+        ASPOSE_WORDS_CLOUD_EXPORT size_t getTimeout() const;
+        ASPOSE_WORDS_CLOUD_EXPORT void setTimeout(size_t seconds);
+
     protected:
         bool m_DebugMode = false;
+        size_t m_Timeout = 300;
         const std::wstring m_Version = L"v4.0";
         std::wstring m_BaseUrl;
         std::wstring m_ClientSecret;

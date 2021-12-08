@@ -51,6 +51,14 @@ namespace aspose::words::cloud {
         m_DebugMode = debug;
     }
 
+    size_t ApiConfiguration::getTimeout() const {
+        return m_Timeout;
+    }
+
+    void ApiConfiguration::setTimeout(size_t seconds) {
+        m_Timeout = seconds;
+    }
+
     const std::wstring& ApiConfiguration::getApiVersion() const
     {
         return m_Version;

@@ -49,6 +49,7 @@ namespace aspose::words::cloud::models {
         if (value == ReportBuildOptions::ALLOW_MISSING_MEMBERS) return "AllowMissingMembers";
         if (value == ReportBuildOptions::REMOVE_EMPTY_PARAGRAPHS) return "RemoveEmptyParagraphs";
         if (value == ReportBuildOptions::INLINE_ERROR_MESSAGES) return "InlineErrorMessages";
+        if (value == ReportBuildOptions::USE_LEGACY_HEADER_FOOTER_VISITING) return "UseLegacyHeaderFooterVisiting";
         throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
     }
 
@@ -58,6 +59,7 @@ namespace aspose::words::cloud::models {
         if (value == "AllowMissingMembers") return ReportBuildOptions::ALLOW_MISSING_MEMBERS;
         if (value == "RemoveEmptyParagraphs") return ReportBuildOptions::REMOVE_EMPTY_PARAGRAPHS;
         if (value == "InlineErrorMessages") return ReportBuildOptions::INLINE_ERROR_MESSAGES;
+        if (value == "UseLegacyHeaderFooterVisiting") return ReportBuildOptions::USE_LEGACY_HEADER_FOOTER_VISITING;
         throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
     }
 
@@ -4114,6 +4116,276 @@ namespace aspose::words::cloud::models {
     void FieldNamesResponse::setFieldNames(std::shared_ptr< aspose::words::cloud::models::FieldNames > value)
     {
         m_FieldNames = value;
+    }
+
+
+    /*
+     * FieldOptions implementation
+     */
+    inline std::string fieldOptionsFieldIndexFormatToString(aspose::words::cloud::models::FieldOptions::FieldIndexFormat value)
+    {
+        if (value == aspose::words::cloud::models::FieldOptions::FieldIndexFormat::TEMPLATE) return "Template";
+        if (value == aspose::words::cloud::models::FieldOptions::FieldIndexFormat::CLASSIC) return "Classic";
+        if (value == aspose::words::cloud::models::FieldOptions::FieldIndexFormat::FANCY) return "Fancy";
+        if (value == aspose::words::cloud::models::FieldOptions::FieldIndexFormat::MODERN) return "Modern";
+        if (value == aspose::words::cloud::models::FieldOptions::FieldIndexFormat::BULLETED) return "Bulleted";
+        if (value == aspose::words::cloud::models::FieldOptions::FieldIndexFormat::FORMAL) return "Formal";
+        if (value == aspose::words::cloud::models::FieldOptions::FieldIndexFormat::SIMPLE) return "Simple";
+        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
+    }
+
+    inline aspose::words::cloud::models::FieldOptions::FieldIndexFormat fieldOptionsFieldIndexFormatFromString(const std::string& value)
+    {
+        if (value == "Template") return aspose::words::cloud::models::FieldOptions::FieldIndexFormat::TEMPLATE;
+        if (value == "Classic") return aspose::words::cloud::models::FieldOptions::FieldIndexFormat::CLASSIC;
+        if (value == "Fancy") return aspose::words::cloud::models::FieldOptions::FieldIndexFormat::FANCY;
+        if (value == "Modern") return aspose::words::cloud::models::FieldOptions::FieldIndexFormat::MODERN;
+        if (value == "Bulleted") return aspose::words::cloud::models::FieldOptions::FieldIndexFormat::BULLETED;
+        if (value == "Formal") return aspose::words::cloud::models::FieldOptions::FieldIndexFormat::FORMAL;
+        if (value == "Simple") return aspose::words::cloud::models::FieldOptions::FieldIndexFormat::SIMPLE;
+        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
+    }
+
+    inline std::string fieldOptionsFieldUpdateCultureSourceToString(aspose::words::cloud::models::FieldOptions::FieldUpdateCultureSource value)
+    {
+        if (value == aspose::words::cloud::models::FieldOptions::FieldUpdateCultureSource::CURRENT_THREAD) return "CurrentThread";
+        if (value == aspose::words::cloud::models::FieldOptions::FieldUpdateCultureSource::FIELD_CODE) return "FieldCode";
+        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
+    }
+
+    inline aspose::words::cloud::models::FieldOptions::FieldUpdateCultureSource fieldOptionsFieldUpdateCultureSourceFromString(const std::string& value)
+    {
+        if (value == "CurrentThread") return aspose::words::cloud::models::FieldOptions::FieldUpdateCultureSource::CURRENT_THREAD;
+        if (value == "FieldCode") return aspose::words::cloud::models::FieldOptions::FieldUpdateCultureSource::FIELD_CODE;
+        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
+    }
+    void FieldOptions::toJson(void* jsonIfc) const
+    {
+        ::nlohmann::json& json = *((::nlohmann::json*)jsonIfc);
+        if (m_BuiltInTemplatesPaths) {
+            json["BuiltInTemplatesPaths"] = ::nlohmann::json::array();
+            for (auto& element : *m_BuiltInTemplatesPaths) {
+                json["BuiltInTemplatesPaths"].push_back(convertUtf16(*element));
+            }
+        }
+        if (m_CurrentUser) {
+            m_CurrentUser->toJson(&json["CurrentUser"]);
+        }
+        if (m_CustomTocStyleSeparator) {
+            json["CustomTocStyleSeparator"] = convertUtf16(*m_CustomTocStyleSeparator);
+        }
+        if (m_DefaultDocumentAuthor) {
+            json["DefaultDocumentAuthor"] = convertUtf16(*m_DefaultDocumentAuthor);
+        }
+        if (m_FieldIndexFormat) {
+            json["FieldIndexFormat"] = fieldOptionsFieldIndexFormatToString(*m_FieldIndexFormat);
+        }
+        if (m_FieldUpdateCultureSource) {
+            json["FieldUpdateCultureSource"] = fieldOptionsFieldUpdateCultureSourceToString(*m_FieldUpdateCultureSource);
+        }
+        if (m_FileName) {
+            json["FileName"] = convertUtf16(*m_FileName);
+        }
+        if (m_IsBidiTextSupportedOnUpdate) {
+            json["IsBidiTextSupportedOnUpdate"] = *m_IsBidiTextSupportedOnUpdate;
+        }
+        if (m_LegacyNumberFormat) {
+            json["LegacyNumberFormat"] = *m_LegacyNumberFormat;
+        }
+        if (m_PreProcessCultureName) {
+            json["PreProcessCultureName"] = convertUtf16(*m_PreProcessCultureName);
+        }
+        if (m_TemplateName) {
+            json["TemplateName"] = convertUtf16(*m_TemplateName);
+        }
+        if (m_UseInvariantCultureNumberFormat) {
+            json["UseInvariantCultureNumberFormat"] = *m_UseInvariantCultureNumberFormat;
+        }
+    }
+
+    void FieldOptions::fromJson(const void* jsonIfc)
+    {
+        ::nlohmann::json& json = *((::nlohmann::json*)jsonIfc);
+        if (json.contains("BuiltInTemplatesPaths") && !json["BuiltInTemplatesPaths"].is_null()) {
+            m_BuiltInTemplatesPaths = std::make_shared< std::vector<std::shared_ptr<std::wstring>> >();
+            for (auto& element : json["BuiltInTemplatesPaths"]) {
+                m_BuiltInTemplatesPaths->push_back(std::make_shared< std::wstring >(convertUtf8( element.get< std::string >() )));
+            }
+        }
+        if (json.contains("CurrentUser") && !json["CurrentUser"].is_null()) {
+            m_CurrentUser = std::make_shared< aspose::words::cloud::models::UserInformation >();
+            m_CurrentUser->fromJson(&json["CurrentUser"]);
+        }
+        if (json.contains("CustomTocStyleSeparator") && !json["CustomTocStyleSeparator"].is_null()) {
+            m_CustomTocStyleSeparator = std::make_shared< std::wstring >(
+                convertUtf8( json["CustomTocStyleSeparator"].get< std::string >() )
+            );
+        }
+        if (json.contains("DefaultDocumentAuthor") && !json["DefaultDocumentAuthor"].is_null()) {
+            m_DefaultDocumentAuthor = std::make_shared< std::wstring >(
+                convertUtf8( json["DefaultDocumentAuthor"].get< std::string >() )
+            );
+        }
+        if (json.contains("FieldIndexFormat") && !json["FieldIndexFormat"].is_null()) {
+            m_FieldIndexFormat = std::make_shared< aspose::words::cloud::models::FieldOptions::FieldIndexFormat >(
+                fieldOptionsFieldIndexFormatFromString(json["FieldIndexFormat"].get< std::string >())
+            );
+        }
+        if (json.contains("FieldUpdateCultureSource") && !json["FieldUpdateCultureSource"].is_null()) {
+            m_FieldUpdateCultureSource = std::make_shared< aspose::words::cloud::models::FieldOptions::FieldUpdateCultureSource >(
+                fieldOptionsFieldUpdateCultureSourceFromString(json["FieldUpdateCultureSource"].get< std::string >())
+            );
+        }
+        if (json.contains("FileName") && !json["FileName"].is_null()) {
+            m_FileName = std::make_shared< std::wstring >(
+                convertUtf8( json["FileName"].get< std::string >() )
+            );
+        }
+        if (json.contains("IsBidiTextSupportedOnUpdate") && !json["IsBidiTextSupportedOnUpdate"].is_null()) {
+            m_IsBidiTextSupportedOnUpdate = std::make_shared< bool >(
+                json["IsBidiTextSupportedOnUpdate"].get< bool >()
+            );
+        }
+        if (json.contains("LegacyNumberFormat") && !json["LegacyNumberFormat"].is_null()) {
+            m_LegacyNumberFormat = std::make_shared< bool >(
+                json["LegacyNumberFormat"].get< bool >()
+            );
+        }
+        if (json.contains("PreProcessCultureName") && !json["PreProcessCultureName"].is_null()) {
+            m_PreProcessCultureName = std::make_shared< std::wstring >(
+                convertUtf8( json["PreProcessCultureName"].get< std::string >() )
+            );
+        }
+        if (json.contains("TemplateName") && !json["TemplateName"].is_null()) {
+            m_TemplateName = std::make_shared< std::wstring >(
+                convertUtf8( json["TemplateName"].get< std::string >() )
+            );
+        }
+        if (json.contains("UseInvariantCultureNumberFormat") && !json["UseInvariantCultureNumberFormat"].is_null()) {
+            m_UseInvariantCultureNumberFormat = std::make_shared< bool >(
+                json["UseInvariantCultureNumberFormat"].get< bool >()
+            );
+        }
+    }
+
+    std::shared_ptr< std::vector<std::shared_ptr<std::wstring>> > FieldOptions::getBuiltInTemplatesPaths() const
+    {
+        return m_BuiltInTemplatesPaths;
+    }
+
+    void FieldOptions::setBuiltInTemplatesPaths(std::shared_ptr< std::vector<std::shared_ptr<std::wstring>> > value)
+    {
+        m_BuiltInTemplatesPaths = value;
+    }
+
+    std::shared_ptr< aspose::words::cloud::models::UserInformation > FieldOptions::getCurrentUser() const
+    {
+        return m_CurrentUser;
+    }
+
+    void FieldOptions::setCurrentUser(std::shared_ptr< aspose::words::cloud::models::UserInformation > value)
+    {
+        m_CurrentUser = value;
+    }
+
+    std::shared_ptr< std::wstring > FieldOptions::getCustomTocStyleSeparator() const
+    {
+        return m_CustomTocStyleSeparator;
+    }
+
+    void FieldOptions::setCustomTocStyleSeparator(std::shared_ptr< std::wstring > value)
+    {
+        m_CustomTocStyleSeparator = value;
+    }
+
+    std::shared_ptr< std::wstring > FieldOptions::getDefaultDocumentAuthor() const
+    {
+        return m_DefaultDocumentAuthor;
+    }
+
+    void FieldOptions::setDefaultDocumentAuthor(std::shared_ptr< std::wstring > value)
+    {
+        m_DefaultDocumentAuthor = value;
+    }
+
+    std::shared_ptr< aspose::words::cloud::models::FieldOptions::FieldIndexFormat > FieldOptions::getFieldIndexFormat() const
+    {
+        return m_FieldIndexFormat;
+    }
+
+    void FieldOptions::setFieldIndexFormat(std::shared_ptr< aspose::words::cloud::models::FieldOptions::FieldIndexFormat > value)
+    {
+        m_FieldIndexFormat = value;
+    }
+
+    std::shared_ptr< aspose::words::cloud::models::FieldOptions::FieldUpdateCultureSource > FieldOptions::getFieldUpdateCultureSource() const
+    {
+        return m_FieldUpdateCultureSource;
+    }
+
+    void FieldOptions::setFieldUpdateCultureSource(std::shared_ptr< aspose::words::cloud::models::FieldOptions::FieldUpdateCultureSource > value)
+    {
+        m_FieldUpdateCultureSource = value;
+    }
+
+    std::shared_ptr< std::wstring > FieldOptions::getFileName() const
+    {
+        return m_FileName;
+    }
+
+    void FieldOptions::setFileName(std::shared_ptr< std::wstring > value)
+    {
+        m_FileName = value;
+    }
+
+    std::shared_ptr< bool > FieldOptions::getIsBidiTextSupportedOnUpdate() const
+    {
+        return m_IsBidiTextSupportedOnUpdate;
+    }
+
+    void FieldOptions::setIsBidiTextSupportedOnUpdate(std::shared_ptr< bool > value)
+    {
+        m_IsBidiTextSupportedOnUpdate = value;
+    }
+
+    std::shared_ptr< bool > FieldOptions::getLegacyNumberFormat() const
+    {
+        return m_LegacyNumberFormat;
+    }
+
+    void FieldOptions::setLegacyNumberFormat(std::shared_ptr< bool > value)
+    {
+        m_LegacyNumberFormat = value;
+    }
+
+    std::shared_ptr< std::wstring > FieldOptions::getPreProcessCultureName() const
+    {
+        return m_PreProcessCultureName;
+    }
+
+    void FieldOptions::setPreProcessCultureName(std::shared_ptr< std::wstring > value)
+    {
+        m_PreProcessCultureName = value;
+    }
+
+    std::shared_ptr< std::wstring > FieldOptions::getTemplateName() const
+    {
+        return m_TemplateName;
+    }
+
+    void FieldOptions::setTemplateName(std::shared_ptr< std::wstring > value)
+    {
+        m_TemplateName = value;
+    }
+
+    std::shared_ptr< bool > FieldOptions::getUseInvariantCultureNumberFormat() const
+    {
+        return m_UseInvariantCultureNumberFormat;
+    }
+
+    void FieldOptions::setUseInvariantCultureNumberFormat(std::shared_ptr< bool > value)
+    {
+        m_UseInvariantCultureNumberFormat = value;
     }
 
 
@@ -8747,6 +9019,130 @@ namespace aspose::words::cloud::models {
     void ImageSaveOptionsData::setVerticalResolution(std::shared_ptr< double > value)
     {
         m_VerticalResolution = value;
+    }
+
+
+    /*
+     * InfoAdditionalItem implementation
+     */
+    void InfoAdditionalItem::toJson(void* jsonIfc) const
+    {
+        ::nlohmann::json& json = *((::nlohmann::json*)jsonIfc);
+        if (m_Key) {
+            json["Key"] = convertUtf16(*m_Key);
+        }
+        if (m_Value) {
+            json["Value"] = convertUtf16(*m_Value);
+        }
+    }
+
+    void InfoAdditionalItem::fromJson(const void* jsonIfc)
+    {
+        ::nlohmann::json& json = *((::nlohmann::json*)jsonIfc);
+        if (json.contains("Key") && !json["Key"].is_null()) {
+            m_Key = std::make_shared< std::wstring >(
+                convertUtf8( json["Key"].get< std::string >() )
+            );
+        }
+        if (json.contains("Value") && !json["Value"].is_null()) {
+            m_Value = std::make_shared< std::wstring >(
+                convertUtf8( json["Value"].get< std::string >() )
+            );
+        }
+    }
+
+    std::shared_ptr< std::wstring > InfoAdditionalItem::getKey() const
+    {
+        return m_Key;
+    }
+
+    void InfoAdditionalItem::setKey(std::shared_ptr< std::wstring > value)
+    {
+        m_Key = value;
+    }
+
+    std::shared_ptr< std::wstring > InfoAdditionalItem::getValue() const
+    {
+        return m_Value;
+    }
+
+    void InfoAdditionalItem::setValue(std::shared_ptr< std::wstring > value)
+    {
+        m_Value = value;
+    }
+
+
+    /*
+     * InfoResponse implementation
+     */
+    void InfoResponse::toJson(void* jsonIfc) const
+    {
+        WordsResponse::toJson(jsonIfc);
+        ::nlohmann::json& json = *((::nlohmann::json*)jsonIfc);
+        if (m_AdditionalInfo) {
+            json["AdditionalInfo"] = ::nlohmann::json::array();
+            for (auto& element : *m_AdditionalInfo) {
+                element->toJson(&json["AdditionalInfo"].emplace_back());
+            }
+        }
+        if (m_Name) {
+            json["Name"] = convertUtf16(*m_Name);
+        }
+        if (m_Version) {
+            json["Version"] = convertUtf16(*m_Version);
+        }
+    }
+
+    void InfoResponse::fromJson(const void* jsonIfc)
+    {
+        WordsResponse::fromJson(jsonIfc);
+        ::nlohmann::json& json = *((::nlohmann::json*)jsonIfc);
+        if (json.contains("AdditionalInfo") && !json["AdditionalInfo"].is_null()) {
+            m_AdditionalInfo = std::make_shared< std::vector<std::shared_ptr<aspose::words::cloud::models::InfoAdditionalItem>> >();
+            for (auto& element : json["AdditionalInfo"]) {
+                m_AdditionalInfo->emplace_back(std::make_shared< aspose::words::cloud::models::InfoAdditionalItem >())->fromJson(&element);
+            }
+        }
+        if (json.contains("Name") && !json["Name"].is_null()) {
+            m_Name = std::make_shared< std::wstring >(
+                convertUtf8( json["Name"].get< std::string >() )
+            );
+        }
+        if (json.contains("Version") && !json["Version"].is_null()) {
+            m_Version = std::make_shared< std::wstring >(
+                convertUtf8( json["Version"].get< std::string >() )
+            );
+        }
+    }
+
+    std::shared_ptr< std::vector<std::shared_ptr<aspose::words::cloud::models::InfoAdditionalItem>> > InfoResponse::getAdditionalInfo() const
+    {
+        return m_AdditionalInfo;
+    }
+
+    void InfoResponse::setAdditionalInfo(std::shared_ptr< std::vector<std::shared_ptr<aspose::words::cloud::models::InfoAdditionalItem>> > value)
+    {
+        m_AdditionalInfo = value;
+    }
+
+    std::shared_ptr< std::wstring > InfoResponse::getName() const
+    {
+        return m_Name;
+    }
+
+    void InfoResponse::setName(std::shared_ptr< std::wstring > value)
+    {
+        m_Name = value;
+    }
+
+    std::shared_ptr< std::wstring > InfoResponse::getVersion() const
+    {
+        return m_Version;
+    }
+
+    void InfoResponse::setVersion(std::shared_ptr< std::wstring > value)
+    {
+        m_Version = value;
     }
 
 
@@ -15366,6 +15762,7 @@ namespace aspose::words::cloud::models {
         if (value == aspose::words::cloud::models::ReportBuildOptions::ALLOW_MISSING_MEMBERS) return "AllowMissingMembers";
         if (value == aspose::words::cloud::models::ReportBuildOptions::REMOVE_EMPTY_PARAGRAPHS) return "RemoveEmptyParagraphs";
         if (value == aspose::words::cloud::models::ReportBuildOptions::INLINE_ERROR_MESSAGES) return "InlineErrorMessages";
+        if (value == aspose::words::cloud::models::ReportBuildOptions::USE_LEGACY_HEADER_FOOTER_VISITING) return "UseLegacyHeaderFooterVisiting";
         throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
     }
 
@@ -15375,6 +15772,7 @@ namespace aspose::words::cloud::models {
         if (value == "AllowMissingMembers") return aspose::words::cloud::models::ReportBuildOptions::ALLOW_MISSING_MEMBERS;
         if (value == "RemoveEmptyParagraphs") return aspose::words::cloud::models::ReportBuildOptions::REMOVE_EMPTY_PARAGRAPHS;
         if (value == "InlineErrorMessages") return aspose::words::cloud::models::ReportBuildOptions::INLINE_ERROR_MESSAGES;
+        if (value == "UseLegacyHeaderFooterVisiting") return aspose::words::cloud::models::ReportBuildOptions::USE_LEGACY_HEADER_FOOTER_VISITING;
         throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
     }
     void ReportEngineSettings::toJson(void* jsonIfc) const
@@ -21332,6 +21730,74 @@ namespace aspose::words::cloud::models {
     void TxtSaveOptionsBaseData::setParagraphBreak(std::shared_ptr< std::wstring > value)
     {
         m_ParagraphBreak = value;
+    }
+
+
+    /*
+     * UserInformation implementation
+     */
+    void UserInformation::toJson(void* jsonIfc) const
+    {
+        ::nlohmann::json& json = *((::nlohmann::json*)jsonIfc);
+        if (m_Address) {
+            json["Address"] = convertUtf16(*m_Address);
+        }
+        if (m_Initials) {
+            json["Initials"] = convertUtf16(*m_Initials);
+        }
+        if (m_Name) {
+            json["Name"] = convertUtf16(*m_Name);
+        }
+    }
+
+    void UserInformation::fromJson(const void* jsonIfc)
+    {
+        ::nlohmann::json& json = *((::nlohmann::json*)jsonIfc);
+        if (json.contains("Address") && !json["Address"].is_null()) {
+            m_Address = std::make_shared< std::wstring >(
+                convertUtf8( json["Address"].get< std::string >() )
+            );
+        }
+        if (json.contains("Initials") && !json["Initials"].is_null()) {
+            m_Initials = std::make_shared< std::wstring >(
+                convertUtf8( json["Initials"].get< std::string >() )
+            );
+        }
+        if (json.contains("Name") && !json["Name"].is_null()) {
+            m_Name = std::make_shared< std::wstring >(
+                convertUtf8( json["Name"].get< std::string >() )
+            );
+        }
+    }
+
+    std::shared_ptr< std::wstring > UserInformation::getAddress() const
+    {
+        return m_Address;
+    }
+
+    void UserInformation::setAddress(std::shared_ptr< std::wstring > value)
+    {
+        m_Address = value;
+    }
+
+    std::shared_ptr< std::wstring > UserInformation::getInitials() const
+    {
+        return m_Initials;
+    }
+
+    void UserInformation::setInitials(std::shared_ptr< std::wstring > value)
+    {
+        m_Initials = value;
+    }
+
+    std::shared_ptr< std::wstring > UserInformation::getName() const
+    {
+        return m_Name;
+    }
+
+    void UserInformation::setName(std::shared_ptr< std::wstring > value)
+    {
+        m_Name = value;
     }
 
 

@@ -1,5 +1,5 @@
 ﻿/** --------------------------------------------------------------------------------------------------------------------
-* <copyright company="Aspose" file="report_build_options.h">
+* <copyright company="Aspose" file="info_test.h">
 *   Copyright (c) 2021 Aspose.Words for Cloud
 * </copyright>
 * <summary>
@@ -24,19 +24,21 @@
 -------------------------------------------------------------------------------------------------------------------- **/
 
 #pragma once
-#include "./model_base.h"
+#include "../test_base.h"
 
-namespace aspose::words::cloud::models {
-    /// <summary>
-    /// Specifies options controlling behavior of ReportingEngine while building a report.
-    /// </summary>
-    enum class ReportBuildOptions
-    {
-        NONE,
-        ALLOW_MISSING_MEMBERS,
-        REMOVE_EMPTY_PARAGRAPHS,
-        INLINE_ERROR_MESSAGES,
-        USE_LEGACY_HEADER_FOOTER_VISITING
-    };
+/// <summary>
+/// Example of how to work api info.
+/// </summary>
+class InfoTests : public InfrastructureTest {
+protected:
+};
+
+/// <summary>
+/// Test for getting api info.
+/// </summary>
+TEST_F(InfoTests, TestGetInfo) {
+    std::shared_ptr<requests::GetInfoRequest> request(new requests::GetInfoRequest(
+    ));
+
+    auto actual = getApi()->getInfo(request);
 }
-

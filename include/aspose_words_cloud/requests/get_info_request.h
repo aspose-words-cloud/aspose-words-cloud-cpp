@@ -1,5 +1,5 @@
 ﻿/** --------------------------------------------------------------------------------------------------------------------
-* <copyright company="Aspose" file="report_build_options.h">
+* <copyright company="Aspose" file="get_info_request.h">
 *   Copyright (c) 2021 Aspose.Words for Cloud
 * </copyright>
 * <summary>
@@ -24,19 +24,18 @@
 -------------------------------------------------------------------------------------------------------------------- **/
 
 #pragma once
-#include "./model_base.h"
+#include "./request_model_base.h"
 
-namespace aspose::words::cloud::models {
-    /// <summary>
-    /// Specifies options controlling behavior of ReportingEngine while building a report.
-    /// </summary>
-    enum class ReportBuildOptions
-    {
-        NONE,
-        ALLOW_MISSING_MEMBERS,
-        REMOVE_EMPTY_PARAGRAPHS,
-        INLINE_ERROR_MESSAGES,
-        USE_LEGACY_HEADER_FOOTER_VISITING
+namespace aspose::words::cloud::requests {
+    class GetInfoRequest : public RequestModelBase {
+    public:
+        ASPOSE_WORDS_CLOUD_EXPORT GetInfoRequest(
+        );
+
+
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< aspose::words::cloud::HttpRequestData > createHttpRequest() const override;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > createResponse() const override;
+
+    private:
     };
 }
-

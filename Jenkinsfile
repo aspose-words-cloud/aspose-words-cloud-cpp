@@ -43,6 +43,9 @@ parallel windows: {
                                     :build
                                     docker build --cache-from=${buildCacheImage}/wincore:latest -t ${buildCacheImage}/wincore:latest -t aspose-words-cloud-cpp-tests:wincore - < Dockerfile.wincore || goto error
                                     docker build -t aspose-words-cloud-cpp-tests:windows -f Dockerfile.windows . || goto error
+                                    
+                                    rem Uncomment for pushing updated image
+                                    rem docker push ${buildCacheImage}/wincore:latest || goto error
                                     exit /b 0
                                     
                                     :error

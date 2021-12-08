@@ -1508,6 +1508,17 @@ namespace aspose::words::cloud::api {
         return response->getResult();
     }
 
+    std::shared_ptr< aspose::words::cloud::models::InfoResponse > WordsApi::getInfo(std::shared_ptr<aspose::words::cloud::requests::GetInfoRequest> request)
+    {
+        auto response = std::make_shared< aspose::words::cloud::responses::GetInfoResponse >();
+        m_ApiClient->call( request->createHttpRequest(), *response);
+        if (response->getStatusCode() != 200) {
+            throw aspose::words::cloud::ApiException(response->getStatusCode(), response->getErrorMessage());
+        }
+
+        return response->getResult();
+    }
+
     std::shared_ptr< aspose::words::cloud::models::ListResponse > WordsApi::getList(std::shared_ptr<aspose::words::cloud::requests::GetListRequest> request)
     {
         auto response = std::make_shared< aspose::words::cloud::responses::GetListResponse >();

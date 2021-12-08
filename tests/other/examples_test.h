@@ -36,7 +36,7 @@ protected:
 TEST_F(ExamplesTest, TestExampleAcceptAllRevisions) {
     std::wstring documentsDir = localTestExamplesFolder;
     auto wordsApi = getApi();
-    std::wstring fileName  = L"test_doc.docx";
+    std::wstring fileName = L"test_doc.docx";
 
     // Upload original document to cloud storage.
     auto myVar1 = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + fileName), std::istream::binary));
@@ -62,7 +62,7 @@ TEST_F(ExamplesTest, TestExampleAcceptAllRevisionsOnline) {
     std::wstring documentsDir = localTestExamplesFolder;
     auto wordsApi = getApi();
     uploadFileToStorage(documentsDir + L"/test_doc.docx", L"test_doc.docx");
-    std::wstring fileName  = L"test_doc.docx";
+    std::wstring fileName = L"test_doc.docx";
 
     // Calls AcceptAllRevisionsOnline method for document in cloud.
     auto requestDocument = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(documentsDir + L"/" + fileName), std::istream::binary));
