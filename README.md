@@ -19,7 +19,9 @@ Feel free to explore the [Developer's Guide](https://docs.aspose.cloud/display/w
 
 ## Enhancements in Version 21.12
 
-- Added 'timeout' parameter to api configuration
+- Added FieldOptions parameter to mail merge operations
+- Added timeout parameter to api configuration
+
 
 ## Enhancements in Version 21.11
 
