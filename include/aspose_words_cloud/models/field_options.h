@@ -113,6 +113,18 @@ namespace aspose::words::cloud::models {
         ASPOSE_WORDS_CLOUD_EXPORT void setFieldIndexFormat(std::shared_ptr< aspose::words::cloud::models::FieldOptions::FieldIndexFormat > value);
 
         /// <summary>
+        /// Gets or sets Field Update Culture Name.
+        /// It is used for all fields if FieldUpdateCultureSource is FieldCode.
+        /// </summary>
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getFieldUpdateCultureName() const;
+
+        /// <summary>
+        /// Gets or sets Field Update Culture Name.
+        /// It is used for all fields if FieldUpdateCultureSource is FieldCode.
+        /// </summary>
+        ASPOSE_WORDS_CLOUD_EXPORT void setFieldUpdateCultureName(std::shared_ptr< std::wstring > value);
+
+        /// <summary>
         /// Gets or sets Field Update Culture Source.
         /// </summary>
         ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::FieldOptions::FieldUpdateCultureSource > getFieldUpdateCultureSource() const;
@@ -154,11 +166,13 @@ namespace aspose::words::cloud::models {
 
         /// <summary>
         /// Gets or sets PreProcess Culture Name.
+        /// It is a culture code for DOC fields.
         /// </summary>
         ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getPreProcessCultureName() const;
 
         /// <summary>
         /// Gets or sets PreProcess Culture Name.
+        /// It is a culture code for DOC fields.
         /// </summary>
         ASPOSE_WORDS_CLOUD_EXPORT void setPreProcessCultureName(std::shared_ptr< std::wstring > value);
 
@@ -188,6 +202,7 @@ namespace aspose::words::cloud::models {
         std::shared_ptr< std::wstring > m_CustomTocStyleSeparator;
         std::shared_ptr< std::wstring > m_DefaultDocumentAuthor;
         std::shared_ptr< aspose::words::cloud::models::FieldOptions::FieldIndexFormat > m_FieldIndexFormat;
+        std::shared_ptr< std::wstring > m_FieldUpdateCultureName;
         std::shared_ptr< aspose::words::cloud::models::FieldOptions::FieldUpdateCultureSource > m_FieldUpdateCultureSource;
         std::shared_ptr< std::wstring > m_FileName;
         std::shared_ptr< bool > m_IsBidiTextSupportedOnUpdate;

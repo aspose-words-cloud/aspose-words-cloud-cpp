@@ -4180,6 +4180,9 @@ namespace aspose::words::cloud::models {
         if (m_FieldIndexFormat) {
             json["FieldIndexFormat"] = fieldOptionsFieldIndexFormatToString(*m_FieldIndexFormat);
         }
+        if (m_FieldUpdateCultureName) {
+            json["FieldUpdateCultureName"] = convertUtf16(*m_FieldUpdateCultureName);
+        }
         if (m_FieldUpdateCultureSource) {
             json["FieldUpdateCultureSource"] = fieldOptionsFieldUpdateCultureSourceToString(*m_FieldUpdateCultureSource);
         }
@@ -4229,6 +4232,11 @@ namespace aspose::words::cloud::models {
         if (json.contains("FieldIndexFormat") && !json["FieldIndexFormat"].is_null()) {
             m_FieldIndexFormat = std::make_shared< aspose::words::cloud::models::FieldOptions::FieldIndexFormat >(
                 fieldOptionsFieldIndexFormatFromString(json["FieldIndexFormat"].get< std::string >())
+            );
+        }
+        if (json.contains("FieldUpdateCultureName") && !json["FieldUpdateCultureName"].is_null()) {
+            m_FieldUpdateCultureName = std::make_shared< std::wstring >(
+                convertUtf8( json["FieldUpdateCultureName"].get< std::string >() )
             );
         }
         if (json.contains("FieldUpdateCultureSource") && !json["FieldUpdateCultureSource"].is_null()) {
@@ -4316,6 +4324,16 @@ namespace aspose::words::cloud::models {
     void FieldOptions::setFieldIndexFormat(std::shared_ptr< aspose::words::cloud::models::FieldOptions::FieldIndexFormat > value)
     {
         m_FieldIndexFormat = value;
+    }
+
+    std::shared_ptr< std::wstring > FieldOptions::getFieldUpdateCultureName() const
+    {
+        return m_FieldUpdateCultureName;
+    }
+
+    void FieldOptions::setFieldUpdateCultureName(std::shared_ptr< std::wstring > value)
+    {
+        m_FieldUpdateCultureName = value;
     }
 
     std::shared_ptr< aspose::words::cloud::models::FieldOptions::FieldUpdateCultureSource > FieldOptions::getFieldUpdateCultureSource() const
