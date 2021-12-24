@@ -52,6 +52,7 @@ TEST_F(DocumentTests, TestGetDocument) {
         std::make_shared< std::wstring >(remoteDataFolder),
         nullptr,
         nullptr,
+        nullptr,
         nullptr
     ));
 

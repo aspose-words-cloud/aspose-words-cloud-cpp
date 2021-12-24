@@ -54,6 +54,7 @@ TEST_F(PageSetupTests, TestGetSectionPageSetup) {
         std::make_shared< std::wstring >(remoteDataFolder),
         nullptr,
         nullptr,
+        nullptr,
         nullptr
     ));
 
@@ -70,6 +71,7 @@ TEST_F(PageSetupTests, TestGetSectionPageSetupOnline) {
     std::shared_ptr<requests::GetSectionPageSetupOnlineRequest> request(new requests::GetSectionPageSetupOnlineRequest(
         requestDocument,
         std::make_shared< int32_t >(0),
+        nullptr,
         nullptr,
         nullptr
     ));
@@ -103,6 +105,7 @@ TEST_F(PageSetupTests, TestUpdateSectionPageSetup) {
         nullptr,
         nullptr,
         nullptr,
+        nullptr,
         nullptr
     ));
 
@@ -127,6 +130,7 @@ TEST_F(PageSetupTests, TestUpdateSectionPageSetupOnline) {
         requestDocument,
         std::make_shared< int32_t >(0),
         requestPageSetup,
+        nullptr,
         nullptr,
         nullptr,
         nullptr,
@@ -156,6 +160,7 @@ TEST_F(PageSetupTests, TestGetRenderPage) {
         nullptr,
         nullptr,
         nullptr,
+        nullptr,
         nullptr
     ));
 
@@ -171,6 +176,7 @@ TEST_F(PageSetupTests, TestGetRenderPageOnline) {
         requestDocument,
         std::make_shared< int32_t >(1),
         std::make_shared< std::wstring >(L"bmp"),
+        nullptr,
         nullptr,
         nullptr,
         nullptr

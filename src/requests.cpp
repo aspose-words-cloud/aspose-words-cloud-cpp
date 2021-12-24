@@ -98,6 +98,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > storage,
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword,
         const std::shared_ptr< std::wstring > destFileName
     ) : 
         m_Name(name),
@@ -105,6 +106,7 @@ namespace aspose::words::cloud::requests {
         m_Storage(storage),
         m_LoadEncoding(loadEncoding),
         m_Password(password),
+        m_EncryptedPassword(encryptedPassword),
         m_DestFileName(destFileName)
     {
     }
@@ -134,6 +136,11 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
+    const std::shared_ptr< std::wstring > AcceptAllRevisionsRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
+    }
+
     const std::shared_ptr< std::wstring > AcceptAllRevisionsRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -150,6 +157,7 @@ namespace aspose::words::cloud::requests {
         if (m_Storage) result->addQueryParam(L"storage", *m_Storage);
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         return result;
     }
@@ -168,11 +176,13 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::istream > document,
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword,
         const std::shared_ptr< std::wstring > destFileName
     ) : 
         m_Document(document),
         m_LoadEncoding(loadEncoding),
         m_Password(password),
+        m_EncryptedPassword(encryptedPassword),
         m_DestFileName(destFileName)
     {
     }
@@ -192,6 +202,11 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
+    const std::shared_ptr< std::wstring > AcceptAllRevisionsOnlineRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
+    }
+
     const std::shared_ptr< std::wstring > AcceptAllRevisionsOnlineRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -204,6 +219,7 @@ namespace aspose::words::cloud::requests {
         result->setPath(L"/words/online/put/revisions/acceptAll");
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_Document) result->setBody(*m_Document);
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Document' is required.");
@@ -227,6 +243,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > storage,
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword,
         const std::shared_ptr< std::wstring > destFileName,
         const std::shared_ptr< std::wstring > revisionAuthor,
         const std::shared_ptr< std::wstring > revisionDateTime
@@ -237,6 +254,7 @@ namespace aspose::words::cloud::requests {
         m_Storage(storage),
         m_LoadEncoding(loadEncoding),
         m_Password(password),
+        m_EncryptedPassword(encryptedPassword),
         m_DestFileName(destFileName),
         m_RevisionAuthor(revisionAuthor),
         m_RevisionDateTime(revisionDateTime)
@@ -273,6 +291,11 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
+    const std::shared_ptr< std::wstring > AppendDocumentRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
+    }
+
     const std::shared_ptr< std::wstring > AppendDocumentRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -299,6 +322,7 @@ namespace aspose::words::cloud::requests {
         if (m_Storage) result->addQueryParam(L"storage", *m_Storage);
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
@@ -322,6 +346,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< aspose::words::cloud::models::DocumentEntryList > documentList,
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword,
         const std::shared_ptr< std::wstring > destFileName,
         const std::shared_ptr< std::wstring > revisionAuthor,
         const std::shared_ptr< std::wstring > revisionDateTime
@@ -330,6 +355,7 @@ namespace aspose::words::cloud::requests {
         m_DocumentList(documentList),
         m_LoadEncoding(loadEncoding),
         m_Password(password),
+        m_EncryptedPassword(encryptedPassword),
         m_DestFileName(destFileName),
         m_RevisionAuthor(revisionAuthor),
         m_RevisionDateTime(revisionDateTime)
@@ -356,6 +382,11 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
+    const std::shared_ptr< std::wstring > AppendDocumentOnlineRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
+    }
+
     const std::shared_ptr< std::wstring > AppendDocumentOnlineRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -378,6 +409,7 @@ namespace aspose::words::cloud::requests {
         result->setPath(L"/words/online/put/appendDocument");
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
@@ -406,6 +438,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > storage,
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword,
         const std::shared_ptr< std::wstring > destFileName,
         const std::shared_ptr< std::wstring > revisionAuthor,
         const std::shared_ptr< std::wstring > revisionDateTime
@@ -417,6 +450,7 @@ namespace aspose::words::cloud::requests {
         m_Storage(storage),
         m_LoadEncoding(loadEncoding),
         m_Password(password),
+        m_EncryptedPassword(encryptedPassword),
         m_DestFileName(destFileName),
         m_RevisionAuthor(revisionAuthor),
         m_RevisionDateTime(revisionDateTime)
@@ -458,6 +492,11 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
+    const std::shared_ptr< std::wstring > ApplyStyleToDocumentElementRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
+    }
+
     const std::shared_ptr< std::wstring > ApplyStyleToDocumentElementRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -486,6 +525,7 @@ namespace aspose::words::cloud::requests {
         if (m_Storage) result->addQueryParam(L"storage", *m_Storage);
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
@@ -510,6 +550,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< aspose::words::cloud::models::StyleApply > styleApply,
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword,
         const std::shared_ptr< std::wstring > destFileName,
         const std::shared_ptr< std::wstring > revisionAuthor,
         const std::shared_ptr< std::wstring > revisionDateTime
@@ -519,6 +560,7 @@ namespace aspose::words::cloud::requests {
         m_StyleApply(styleApply),
         m_LoadEncoding(loadEncoding),
         m_Password(password),
+        m_EncryptedPassword(encryptedPassword),
         m_DestFileName(destFileName),
         m_RevisionAuthor(revisionAuthor),
         m_RevisionDateTime(revisionDateTime)
@@ -550,6 +592,11 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
+    const std::shared_ptr< std::wstring > ApplyStyleToDocumentElementOnlineRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
+    }
+
     const std::shared_ptr< std::wstring > ApplyStyleToDocumentElementOnlineRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -574,6 +621,7 @@ namespace aspose::words::cloud::requests {
         result->setPathParam(L"{styledNodePath}", *m_StyledNodePath);
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
@@ -602,6 +650,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > storage,
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword,
         const std::shared_ptr< std::wstring > destFileName
     ) : 
         m_Name(name),
@@ -611,6 +660,7 @@ namespace aspose::words::cloud::requests {
         m_Storage(storage),
         m_LoadEncoding(loadEncoding),
         m_Password(password),
+        m_EncryptedPassword(encryptedPassword),
         m_DestFileName(destFileName)
     {
     }
@@ -650,6 +700,11 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
+    const std::shared_ptr< std::wstring > BuildReportRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
+    }
+
     const std::shared_ptr< std::wstring > BuildReportRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -666,6 +721,7 @@ namespace aspose::words::cloud::requests {
         if (m_Storage) result->addQueryParam(L"storage", *m_Storage);
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_Data) result->addFormDataParam(L"data", *m_Data);
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Data' is required.");
@@ -788,6 +844,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > storage,
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword,
         const std::shared_ptr< std::wstring > bestClassesCount,
         const std::shared_ptr< std::wstring > taxonomy
     ) : 
@@ -796,6 +853,7 @@ namespace aspose::words::cloud::requests {
         m_Storage(storage),
         m_LoadEncoding(loadEncoding),
         m_Password(password),
+        m_EncryptedPassword(encryptedPassword),
         m_BestClassesCount(bestClassesCount),
         m_Taxonomy(taxonomy)
     {
@@ -826,6 +884,11 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
+    const std::shared_ptr< std::wstring > ClassifyDocumentRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
+    }
+
     const std::shared_ptr< std::wstring > ClassifyDocumentRequest::getBestClassesCount() const
     {
         return m_BestClassesCount;
@@ -847,6 +910,7 @@ namespace aspose::words::cloud::requests {
         if (m_Storage) result->addQueryParam(L"storage", *m_Storage);
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
         if (m_BestClassesCount) result->addQueryParam(L"bestClassesCount", *m_BestClassesCount);
         if (m_Taxonomy) result->addQueryParam(L"taxonomy", *m_Taxonomy);
         return result;
@@ -866,12 +930,14 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::istream > document,
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword,
         const std::shared_ptr< std::wstring > bestClassesCount,
         const std::shared_ptr< std::wstring > taxonomy
     ) : 
         m_Document(document),
         m_LoadEncoding(loadEncoding),
         m_Password(password),
+        m_EncryptedPassword(encryptedPassword),
         m_BestClassesCount(bestClassesCount),
         m_Taxonomy(taxonomy)
     {
@@ -892,6 +958,11 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
+    const std::shared_ptr< std::wstring > ClassifyDocumentOnlineRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
+    }
+
     const std::shared_ptr< std::wstring > ClassifyDocumentOnlineRequest::getBestClassesCount() const
     {
         return m_BestClassesCount;
@@ -909,6 +980,7 @@ namespace aspose::words::cloud::requests {
         result->setPath(L"/words/online/get/classify");
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
         if (m_BestClassesCount) result->addQueryParam(L"bestClassesCount", *m_BestClassesCount);
         if (m_Taxonomy) result->addQueryParam(L"taxonomy", *m_Taxonomy);
         if (m_Document) result->setBody(*m_Document);
@@ -933,6 +1005,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > storage,
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword,
         const std::shared_ptr< std::wstring > destFileName
     ) : 
         m_Name(name),
@@ -941,6 +1014,7 @@ namespace aspose::words::cloud::requests {
         m_Storage(storage),
         m_LoadEncoding(loadEncoding),
         m_Password(password),
+        m_EncryptedPassword(encryptedPassword),
         m_DestFileName(destFileName)
     {
     }
@@ -975,6 +1049,11 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
+    const std::shared_ptr< std::wstring > CompareDocumentRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
+    }
+
     const std::shared_ptr< std::wstring > CompareDocumentRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -991,6 +1070,7 @@ namespace aspose::words::cloud::requests {
         if (m_Storage) result->addQueryParam(L"storage", *m_Storage);
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_CompareData) result->setBody(*m_CompareData);
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'CompareData' is required.");
@@ -1013,6 +1093,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::istream > comparingDocument,
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword,
         const std::shared_ptr< std::wstring > destFileName
     ) : 
         m_Document(document),
@@ -1020,6 +1101,7 @@ namespace aspose::words::cloud::requests {
         m_ComparingDocument(comparingDocument),
         m_LoadEncoding(loadEncoding),
         m_Password(password),
+        m_EncryptedPassword(encryptedPassword),
         m_DestFileName(destFileName)
     {
     }
@@ -1049,6 +1131,11 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
+    const std::shared_ptr< std::wstring > CompareDocumentOnlineRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
+    }
+
     const std::shared_ptr< std::wstring > CompareDocumentOnlineRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -1061,6 +1148,7 @@ namespace aspose::words::cloud::requests {
         result->setPath(L"/words/online/put/compareDocument");
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_Document) result->addFormDataParam(L"document", *m_Document);
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Document' is required.");
@@ -1282,6 +1370,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > storage,
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword,
         const std::shared_ptr< std::wstring > destFileName,
         const std::shared_ptr< std::wstring > revisionAuthor,
         const std::shared_ptr< std::wstring > revisionDateTime
@@ -1292,6 +1381,7 @@ namespace aspose::words::cloud::requests {
         m_Storage(storage),
         m_LoadEncoding(loadEncoding),
         m_Password(password),
+        m_EncryptedPassword(encryptedPassword),
         m_DestFileName(destFileName),
         m_RevisionAuthor(revisionAuthor),
         m_RevisionDateTime(revisionDateTime)
@@ -1328,6 +1418,11 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
+    const std::shared_ptr< std::wstring > CopyStyleRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
+    }
+
     const std::shared_ptr< std::wstring > CopyStyleRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -1354,6 +1449,7 @@ namespace aspose::words::cloud::requests {
         if (m_Storage) result->addQueryParam(L"storage", *m_Storage);
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
@@ -1377,6 +1473,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< aspose::words::cloud::models::StyleCopy > styleCopy,
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword,
         const std::shared_ptr< std::wstring > destFileName,
         const std::shared_ptr< std::wstring > revisionAuthor,
         const std::shared_ptr< std::wstring > revisionDateTime
@@ -1385,6 +1482,7 @@ namespace aspose::words::cloud::requests {
         m_StyleCopy(styleCopy),
         m_LoadEncoding(loadEncoding),
         m_Password(password),
+        m_EncryptedPassword(encryptedPassword),
         m_DestFileName(destFileName),
         m_RevisionAuthor(revisionAuthor),
         m_RevisionDateTime(revisionDateTime)
@@ -1411,6 +1509,11 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
+    const std::shared_ptr< std::wstring > CopyStyleOnlineRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
+    }
+
     const std::shared_ptr< std::wstring > CopyStyleOnlineRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -1433,6 +1536,7 @@ namespace aspose::words::cloud::requests {
         result->setPath(L"/words/online/post/styles/copy");
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
@@ -1548,6 +1652,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > storage,
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword,
         const std::shared_ptr< std::wstring > destFileName,
         const std::shared_ptr< std::wstring > revisionAuthor,
         const std::shared_ptr< std::wstring > revisionDateTime
@@ -1559,6 +1664,7 @@ namespace aspose::words::cloud::requests {
         m_Storage(storage),
         m_LoadEncoding(loadEncoding),
         m_Password(password),
+        m_EncryptedPassword(encryptedPassword),
         m_DestFileName(destFileName),
         m_RevisionAuthor(revisionAuthor),
         m_RevisionDateTime(revisionDateTime)
@@ -1600,6 +1706,11 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
+    const std::shared_ptr< std::wstring > CreateOrUpdateDocumentPropertyRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
+    }
+
     const std::shared_ptr< std::wstring > CreateOrUpdateDocumentPropertyRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -1628,6 +1739,7 @@ namespace aspose::words::cloud::requests {
         if (m_Storage) result->addQueryParam(L"storage", *m_Storage);
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
@@ -1652,6 +1764,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< aspose::words::cloud::models::DocumentPropertyCreateOrUpdate > property,
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword,
         const std::shared_ptr< std::wstring > destFileName,
         const std::shared_ptr< std::wstring > revisionAuthor,
         const std::shared_ptr< std::wstring > revisionDateTime
@@ -1661,6 +1774,7 @@ namespace aspose::words::cloud::requests {
         m_Property(property),
         m_LoadEncoding(loadEncoding),
         m_Password(password),
+        m_EncryptedPassword(encryptedPassword),
         m_DestFileName(destFileName),
         m_RevisionAuthor(revisionAuthor),
         m_RevisionDateTime(revisionDateTime)
@@ -1692,6 +1806,11 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
+    const std::shared_ptr< std::wstring > CreateOrUpdateDocumentPropertyOnlineRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
+    }
+
     const std::shared_ptr< std::wstring > CreateOrUpdateDocumentPropertyOnlineRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -1716,6 +1835,7 @@ namespace aspose::words::cloud::requests {
         result->setPathParam(L"{propertyName}", *m_PropertyName);
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
@@ -1744,6 +1864,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > storage,
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword,
         const std::shared_ptr< std::wstring > destFileName
     ) : 
         m_Name(name),
@@ -1753,6 +1874,7 @@ namespace aspose::words::cloud::requests {
         m_Storage(storage),
         m_LoadEncoding(loadEncoding),
         m_Password(password),
+        m_EncryptedPassword(encryptedPassword),
         m_DestFileName(destFileName)
     {
     }
@@ -1792,6 +1914,11 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
+    const std::shared_ptr< std::wstring > DeleteAllParagraphTabStopsRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
+    }
+
     const std::shared_ptr< std::wstring > DeleteAllParagraphTabStopsRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -1811,6 +1938,7 @@ namespace aspose::words::cloud::requests {
         if (m_Storage) result->addQueryParam(L"storage", *m_Storage);
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         return result;
     }
@@ -1831,6 +1959,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > nodePath,
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword,
         const std::shared_ptr< std::wstring > destFileName
     ) : 
         m_Document(document),
@@ -1838,6 +1967,7 @@ namespace aspose::words::cloud::requests {
         m_NodePath(nodePath),
         m_LoadEncoding(loadEncoding),
         m_Password(password),
+        m_EncryptedPassword(encryptedPassword),
         m_DestFileName(destFileName)
     {
     }
@@ -1867,6 +1997,11 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
+    const std::shared_ptr< std::wstring > DeleteAllParagraphTabStopsOnlineRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
+    }
+
     const std::shared_ptr< std::wstring > DeleteAllParagraphTabStopsOnlineRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -1882,6 +2017,7 @@ namespace aspose::words::cloud::requests {
         result->setPathParam(L"{nodePath}", m_NodePath ? *m_NodePath : L"");
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_Document) result->setBody(*m_Document);
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Document' is required.");
@@ -1906,6 +2042,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > storage,
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword,
         const std::shared_ptr< std::wstring > destFileName,
         const std::shared_ptr< std::wstring > revisionAuthor,
         const std::shared_ptr< std::wstring > revisionDateTime
@@ -1917,6 +2054,7 @@ namespace aspose::words::cloud::requests {
         m_Storage(storage),
         m_LoadEncoding(loadEncoding),
         m_Password(password),
+        m_EncryptedPassword(encryptedPassword),
         m_DestFileName(destFileName),
         m_RevisionAuthor(revisionAuthor),
         m_RevisionDateTime(revisionDateTime)
@@ -1958,6 +2096,11 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
+    const std::shared_ptr< std::wstring > DeleteBorderRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
+    }
+
     const std::shared_ptr< std::wstring > DeleteBorderRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -1987,6 +2130,7 @@ namespace aspose::words::cloud::requests {
         if (m_Storage) result->addQueryParam(L"storage", *m_Storage);
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
@@ -2009,6 +2153,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > nodePath,
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword,
         const std::shared_ptr< std::wstring > destFileName,
         const std::shared_ptr< std::wstring > revisionAuthor,
         const std::shared_ptr< std::wstring > revisionDateTime
@@ -2018,6 +2163,7 @@ namespace aspose::words::cloud::requests {
         m_NodePath(nodePath),
         m_LoadEncoding(loadEncoding),
         m_Password(password),
+        m_EncryptedPassword(encryptedPassword),
         m_DestFileName(destFileName),
         m_RevisionAuthor(revisionAuthor),
         m_RevisionDateTime(revisionDateTime)
@@ -2049,6 +2195,11 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
+    const std::shared_ptr< std::wstring > DeleteBorderOnlineRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
+    }
+
     const std::shared_ptr< std::wstring > DeleteBorderOnlineRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -2074,6 +2225,7 @@ namespace aspose::words::cloud::requests {
         result->setPathParam(L"{nodePath}", m_NodePath ? *m_NodePath : L"");
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
@@ -2099,6 +2251,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > storage,
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword,
         const std::shared_ptr< std::wstring > destFileName,
         const std::shared_ptr< std::wstring > revisionAuthor,
         const std::shared_ptr< std::wstring > revisionDateTime
@@ -2109,6 +2262,7 @@ namespace aspose::words::cloud::requests {
         m_Storage(storage),
         m_LoadEncoding(loadEncoding),
         m_Password(password),
+        m_EncryptedPassword(encryptedPassword),
         m_DestFileName(destFileName),
         m_RevisionAuthor(revisionAuthor),
         m_RevisionDateTime(revisionDateTime)
@@ -2145,6 +2299,11 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
+    const std::shared_ptr< std::wstring > DeleteBordersRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
+    }
+
     const std::shared_ptr< std::wstring > DeleteBordersRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -2172,6 +2331,7 @@ namespace aspose::words::cloud::requests {
         if (m_Storage) result->addQueryParam(L"storage", *m_Storage);
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
@@ -2193,6 +2353,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > nodePath,
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword,
         const std::shared_ptr< std::wstring > destFileName,
         const std::shared_ptr< std::wstring > revisionAuthor,
         const std::shared_ptr< std::wstring > revisionDateTime
@@ -2201,6 +2362,7 @@ namespace aspose::words::cloud::requests {
         m_NodePath(nodePath),
         m_LoadEncoding(loadEncoding),
         m_Password(password),
+        m_EncryptedPassword(encryptedPassword),
         m_DestFileName(destFileName),
         m_RevisionAuthor(revisionAuthor),
         m_RevisionDateTime(revisionDateTime)
@@ -2227,6 +2389,11 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
+    const std::shared_ptr< std::wstring > DeleteBordersOnlineRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
+    }
+
     const std::shared_ptr< std::wstring > DeleteBordersOnlineRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -2250,6 +2417,7 @@ namespace aspose::words::cloud::requests {
         result->setPathParam(L"{nodePath}", m_NodePath ? *m_NodePath : L"");
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
@@ -2275,6 +2443,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > storage,
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword,
         const std::shared_ptr< std::wstring > destFileName,
         const std::shared_ptr< std::wstring > revisionAuthor,
         const std::shared_ptr< std::wstring > revisionDateTime
@@ -2285,6 +2454,7 @@ namespace aspose::words::cloud::requests {
         m_Storage(storage),
         m_LoadEncoding(loadEncoding),
         m_Password(password),
+        m_EncryptedPassword(encryptedPassword),
         m_DestFileName(destFileName),
         m_RevisionAuthor(revisionAuthor),
         m_RevisionDateTime(revisionDateTime)
@@ -2321,6 +2491,11 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
+    const std::shared_ptr< std::wstring > DeleteCommentRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
+    }
+
     const std::shared_ptr< std::wstring > DeleteCommentRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -2349,6 +2524,7 @@ namespace aspose::words::cloud::requests {
         if (m_Storage) result->addQueryParam(L"storage", *m_Storage);
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
@@ -2370,6 +2546,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< int32_t > commentIndex,
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword,
         const std::shared_ptr< std::wstring > destFileName,
         const std::shared_ptr< std::wstring > revisionAuthor,
         const std::shared_ptr< std::wstring > revisionDateTime
@@ -2378,6 +2555,7 @@ namespace aspose::words::cloud::requests {
         m_CommentIndex(commentIndex),
         m_LoadEncoding(loadEncoding),
         m_Password(password),
+        m_EncryptedPassword(encryptedPassword),
         m_DestFileName(destFileName),
         m_RevisionAuthor(revisionAuthor),
         m_RevisionDateTime(revisionDateTime)
@@ -2404,6 +2582,11 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
+    const std::shared_ptr< std::wstring > DeleteCommentOnlineRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
+    }
+
     const std::shared_ptr< std::wstring > DeleteCommentOnlineRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -2428,6 +2611,7 @@ namespace aspose::words::cloud::requests {
         result->setPathParam(L"{commentIndex}", *m_CommentIndex);
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
@@ -2452,6 +2636,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > storage,
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword,
         const std::shared_ptr< std::wstring > destFileName,
         const std::shared_ptr< std::wstring > revisionAuthor,
         const std::shared_ptr< std::wstring > revisionDateTime
@@ -2461,6 +2646,7 @@ namespace aspose::words::cloud::requests {
         m_Storage(storage),
         m_LoadEncoding(loadEncoding),
         m_Password(password),
+        m_EncryptedPassword(encryptedPassword),
         m_DestFileName(destFileName),
         m_RevisionAuthor(revisionAuthor),
         m_RevisionDateTime(revisionDateTime)
@@ -2492,6 +2678,11 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
+    const std::shared_ptr< std::wstring > DeleteCommentsRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
+    }
+
     const std::shared_ptr< std::wstring > DeleteCommentsRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -2518,6 +2709,7 @@ namespace aspose::words::cloud::requests {
         if (m_Storage) result->addQueryParam(L"storage", *m_Storage);
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
@@ -2538,6 +2730,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::istream > document,
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword,
         const std::shared_ptr< std::wstring > destFileName,
         const std::shared_ptr< std::wstring > revisionAuthor,
         const std::shared_ptr< std::wstring > revisionDateTime
@@ -2545,6 +2738,7 @@ namespace aspose::words::cloud::requests {
         m_Document(document),
         m_LoadEncoding(loadEncoding),
         m_Password(password),
+        m_EncryptedPassword(encryptedPassword),
         m_DestFileName(destFileName),
         m_RevisionAuthor(revisionAuthor),
         m_RevisionDateTime(revisionDateTime)
@@ -2564,6 +2758,11 @@ namespace aspose::words::cloud::requests {
     const std::shared_ptr< std::wstring > DeleteCommentsOnlineRequest::getPassword() const
     {
         return m_Password;
+    }
+
+    const std::shared_ptr< std::wstring > DeleteCommentsOnlineRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
     }
 
     const std::shared_ptr< std::wstring > DeleteCommentsOnlineRequest::getDestFileName() const
@@ -2588,6 +2787,7 @@ namespace aspose::words::cloud::requests {
         result->setPath(L"/words/online/delete/comments");
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
@@ -2613,6 +2813,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > storage,
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword,
         const std::shared_ptr< std::wstring > destFileName,
         const std::shared_ptr< std::wstring > revisionAuthor,
         const std::shared_ptr< std::wstring > revisionDateTime
@@ -2623,6 +2824,7 @@ namespace aspose::words::cloud::requests {
         m_Storage(storage),
         m_LoadEncoding(loadEncoding),
         m_Password(password),
+        m_EncryptedPassword(encryptedPassword),
         m_DestFileName(destFileName),
         m_RevisionAuthor(revisionAuthor),
         m_RevisionDateTime(revisionDateTime)
@@ -2659,6 +2861,11 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
+    const std::shared_ptr< std::wstring > DeleteCustomXmlPartRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
+    }
+
     const std::shared_ptr< std::wstring > DeleteCustomXmlPartRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -2687,6 +2894,7 @@ namespace aspose::words::cloud::requests {
         if (m_Storage) result->addQueryParam(L"storage", *m_Storage);
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
@@ -2708,6 +2916,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< int32_t > customXmlPartIndex,
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword,
         const std::shared_ptr< std::wstring > destFileName,
         const std::shared_ptr< std::wstring > revisionAuthor,
         const std::shared_ptr< std::wstring > revisionDateTime
@@ -2716,6 +2925,7 @@ namespace aspose::words::cloud::requests {
         m_CustomXmlPartIndex(customXmlPartIndex),
         m_LoadEncoding(loadEncoding),
         m_Password(password),
+        m_EncryptedPassword(encryptedPassword),
         m_DestFileName(destFileName),
         m_RevisionAuthor(revisionAuthor),
         m_RevisionDateTime(revisionDateTime)
@@ -2742,6 +2952,11 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
+    const std::shared_ptr< std::wstring > DeleteCustomXmlPartOnlineRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
+    }
+
     const std::shared_ptr< std::wstring > DeleteCustomXmlPartOnlineRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -2766,6 +2981,7 @@ namespace aspose::words::cloud::requests {
         result->setPathParam(L"{customXmlPartIndex}", *m_CustomXmlPartIndex);
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
@@ -2790,6 +3006,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > storage,
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword,
         const std::shared_ptr< std::wstring > destFileName,
         const std::shared_ptr< std::wstring > revisionAuthor,
         const std::shared_ptr< std::wstring > revisionDateTime
@@ -2799,6 +3016,7 @@ namespace aspose::words::cloud::requests {
         m_Storage(storage),
         m_LoadEncoding(loadEncoding),
         m_Password(password),
+        m_EncryptedPassword(encryptedPassword),
         m_DestFileName(destFileName),
         m_RevisionAuthor(revisionAuthor),
         m_RevisionDateTime(revisionDateTime)
@@ -2830,6 +3048,11 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
+    const std::shared_ptr< std::wstring > DeleteCustomXmlPartsRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
+    }
+
     const std::shared_ptr< std::wstring > DeleteCustomXmlPartsRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -2856,6 +3079,7 @@ namespace aspose::words::cloud::requests {
         if (m_Storage) result->addQueryParam(L"storage", *m_Storage);
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
@@ -2876,6 +3100,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::istream > document,
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword,
         const std::shared_ptr< std::wstring > destFileName,
         const std::shared_ptr< std::wstring > revisionAuthor,
         const std::shared_ptr< std::wstring > revisionDateTime
@@ -2883,6 +3108,7 @@ namespace aspose::words::cloud::requests {
         m_Document(document),
         m_LoadEncoding(loadEncoding),
         m_Password(password),
+        m_EncryptedPassword(encryptedPassword),
         m_DestFileName(destFileName),
         m_RevisionAuthor(revisionAuthor),
         m_RevisionDateTime(revisionDateTime)
@@ -2902,6 +3128,11 @@ namespace aspose::words::cloud::requests {
     const std::shared_ptr< std::wstring > DeleteCustomXmlPartsOnlineRequest::getPassword() const
     {
         return m_Password;
+    }
+
+    const std::shared_ptr< std::wstring > DeleteCustomXmlPartsOnlineRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
     }
 
     const std::shared_ptr< std::wstring > DeleteCustomXmlPartsOnlineRequest::getDestFileName() const
@@ -2926,6 +3157,7 @@ namespace aspose::words::cloud::requests {
         result->setPath(L"/words/online/delete/customXmlParts");
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
@@ -2951,6 +3183,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > storage,
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword,
         const std::shared_ptr< std::wstring > destFileName,
         const std::shared_ptr< std::wstring > revisionAuthor,
         const std::shared_ptr< std::wstring > revisionDateTime
@@ -2961,6 +3194,7 @@ namespace aspose::words::cloud::requests {
         m_Storage(storage),
         m_LoadEncoding(loadEncoding),
         m_Password(password),
+        m_EncryptedPassword(encryptedPassword),
         m_DestFileName(destFileName),
         m_RevisionAuthor(revisionAuthor),
         m_RevisionDateTime(revisionDateTime)
@@ -2997,6 +3231,11 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
+    const std::shared_ptr< std::wstring > DeleteDocumentPropertyRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
+    }
+
     const std::shared_ptr< std::wstring > DeleteDocumentPropertyRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -3025,6 +3264,7 @@ namespace aspose::words::cloud::requests {
         if (m_Storage) result->addQueryParam(L"storage", *m_Storage);
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
@@ -3046,6 +3286,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > propertyName,
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword,
         const std::shared_ptr< std::wstring > destFileName,
         const std::shared_ptr< std::wstring > revisionAuthor,
         const std::shared_ptr< std::wstring > revisionDateTime
@@ -3054,6 +3295,7 @@ namespace aspose::words::cloud::requests {
         m_PropertyName(propertyName),
         m_LoadEncoding(loadEncoding),
         m_Password(password),
+        m_EncryptedPassword(encryptedPassword),
         m_DestFileName(destFileName),
         m_RevisionAuthor(revisionAuthor),
         m_RevisionDateTime(revisionDateTime)
@@ -3080,6 +3322,11 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
+    const std::shared_ptr< std::wstring > DeleteDocumentPropertyOnlineRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
+    }
+
     const std::shared_ptr< std::wstring > DeleteDocumentPropertyOnlineRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -3104,6 +3351,7 @@ namespace aspose::words::cloud::requests {
         result->setPathParam(L"{propertyName}", *m_PropertyName);
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
@@ -3130,6 +3378,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > storage,
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword,
         const std::shared_ptr< std::wstring > destFileName,
         const std::shared_ptr< std::wstring > revisionAuthor,
         const std::shared_ptr< std::wstring > revisionDateTime
@@ -3141,6 +3390,7 @@ namespace aspose::words::cloud::requests {
         m_Storage(storage),
         m_LoadEncoding(loadEncoding),
         m_Password(password),
+        m_EncryptedPassword(encryptedPassword),
         m_DestFileName(destFileName),
         m_RevisionAuthor(revisionAuthor),
         m_RevisionDateTime(revisionDateTime)
@@ -3182,6 +3432,11 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
+    const std::shared_ptr< std::wstring > DeleteDrawingObjectRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
+    }
+
     const std::shared_ptr< std::wstring > DeleteDrawingObjectRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -3211,6 +3466,7 @@ namespace aspose::words::cloud::requests {
         if (m_Storage) result->addQueryParam(L"storage", *m_Storage);
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
@@ -3233,6 +3489,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > nodePath,
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword,
         const std::shared_ptr< std::wstring > destFileName,
         const std::shared_ptr< std::wstring > revisionAuthor,
         const std::shared_ptr< std::wstring > revisionDateTime
@@ -3242,6 +3499,7 @@ namespace aspose::words::cloud::requests {
         m_NodePath(nodePath),
         m_LoadEncoding(loadEncoding),
         m_Password(password),
+        m_EncryptedPassword(encryptedPassword),
         m_DestFileName(destFileName),
         m_RevisionAuthor(revisionAuthor),
         m_RevisionDateTime(revisionDateTime)
@@ -3273,6 +3531,11 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
+    const std::shared_ptr< std::wstring > DeleteDrawingObjectOnlineRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
+    }
+
     const std::shared_ptr< std::wstring > DeleteDrawingObjectOnlineRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -3298,6 +3561,7 @@ namespace aspose::words::cloud::requests {
         result->setPathParam(L"{nodePath}", m_NodePath ? *m_NodePath : L"");
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
@@ -3324,6 +3588,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > storage,
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword,
         const std::shared_ptr< std::wstring > destFileName,
         const std::shared_ptr< std::wstring > revisionAuthor,
         const std::shared_ptr< std::wstring > revisionDateTime
@@ -3335,6 +3600,7 @@ namespace aspose::words::cloud::requests {
         m_Storage(storage),
         m_LoadEncoding(loadEncoding),
         m_Password(password),
+        m_EncryptedPassword(encryptedPassword),
         m_DestFileName(destFileName),
         m_RevisionAuthor(revisionAuthor),
         m_RevisionDateTime(revisionDateTime)
@@ -3376,6 +3642,11 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
+    const std::shared_ptr< std::wstring > DeleteFieldRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
+    }
+
     const std::shared_ptr< std::wstring > DeleteFieldRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -3405,6 +3676,7 @@ namespace aspose::words::cloud::requests {
         if (m_Storage) result->addQueryParam(L"storage", *m_Storage);
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
@@ -3427,6 +3699,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > nodePath,
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword,
         const std::shared_ptr< std::wstring > destFileName,
         const std::shared_ptr< std::wstring > revisionAuthor,
         const std::shared_ptr< std::wstring > revisionDateTime
@@ -3436,6 +3709,7 @@ namespace aspose::words::cloud::requests {
         m_NodePath(nodePath),
         m_LoadEncoding(loadEncoding),
         m_Password(password),
+        m_EncryptedPassword(encryptedPassword),
         m_DestFileName(destFileName),
         m_RevisionAuthor(revisionAuthor),
         m_RevisionDateTime(revisionDateTime)
@@ -3467,6 +3741,11 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
+    const std::shared_ptr< std::wstring > DeleteFieldOnlineRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
+    }
+
     const std::shared_ptr< std::wstring > DeleteFieldOnlineRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -3492,6 +3771,7 @@ namespace aspose::words::cloud::requests {
         result->setPathParam(L"{nodePath}", m_NodePath ? *m_NodePath : L"");
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
@@ -3517,6 +3797,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > storage,
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword,
         const std::shared_ptr< std::wstring > destFileName,
         const std::shared_ptr< std::wstring > revisionAuthor,
         const std::shared_ptr< std::wstring > revisionDateTime
@@ -3527,6 +3808,7 @@ namespace aspose::words::cloud::requests {
         m_Storage(storage),
         m_LoadEncoding(loadEncoding),
         m_Password(password),
+        m_EncryptedPassword(encryptedPassword),
         m_DestFileName(destFileName),
         m_RevisionAuthor(revisionAuthor),
         m_RevisionDateTime(revisionDateTime)
@@ -3563,6 +3845,11 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
+    const std::shared_ptr< std::wstring > DeleteFieldsRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
+    }
+
     const std::shared_ptr< std::wstring > DeleteFieldsRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -3590,6 +3877,7 @@ namespace aspose::words::cloud::requests {
         if (m_Storage) result->addQueryParam(L"storage", *m_Storage);
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
@@ -3611,6 +3899,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > nodePath,
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword,
         const std::shared_ptr< std::wstring > destFileName,
         const std::shared_ptr< std::wstring > revisionAuthor,
         const std::shared_ptr< std::wstring > revisionDateTime
@@ -3619,6 +3908,7 @@ namespace aspose::words::cloud::requests {
         m_NodePath(nodePath),
         m_LoadEncoding(loadEncoding),
         m_Password(password),
+        m_EncryptedPassword(encryptedPassword),
         m_DestFileName(destFileName),
         m_RevisionAuthor(revisionAuthor),
         m_RevisionDateTime(revisionDateTime)
@@ -3645,6 +3935,11 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
+    const std::shared_ptr< std::wstring > DeleteFieldsOnlineRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
+    }
+
     const std::shared_ptr< std::wstring > DeleteFieldsOnlineRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -3668,6 +3963,7 @@ namespace aspose::words::cloud::requests {
         result->setPathParam(L"{nodePath}", m_NodePath ? *m_NodePath : L"");
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
@@ -3790,6 +4086,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > storage,
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword,
         const std::shared_ptr< std::wstring > destFileName,
         const std::shared_ptr< std::wstring > revisionAuthor,
         const std::shared_ptr< std::wstring > revisionDateTime
@@ -3801,6 +4098,7 @@ namespace aspose::words::cloud::requests {
         m_Storage(storage),
         m_LoadEncoding(loadEncoding),
         m_Password(password),
+        m_EncryptedPassword(encryptedPassword),
         m_DestFileName(destFileName),
         m_RevisionAuthor(revisionAuthor),
         m_RevisionDateTime(revisionDateTime)
@@ -3842,6 +4140,11 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
+    const std::shared_ptr< std::wstring > DeleteFootnoteRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
+    }
+
     const std::shared_ptr< std::wstring > DeleteFootnoteRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -3871,6 +4174,7 @@ namespace aspose::words::cloud::requests {
         if (m_Storage) result->addQueryParam(L"storage", *m_Storage);
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
@@ -3893,6 +4197,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > nodePath,
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword,
         const std::shared_ptr< std::wstring > destFileName,
         const std::shared_ptr< std::wstring > revisionAuthor,
         const std::shared_ptr< std::wstring > revisionDateTime
@@ -3902,6 +4207,7 @@ namespace aspose::words::cloud::requests {
         m_NodePath(nodePath),
         m_LoadEncoding(loadEncoding),
         m_Password(password),
+        m_EncryptedPassword(encryptedPassword),
         m_DestFileName(destFileName),
         m_RevisionAuthor(revisionAuthor),
         m_RevisionDateTime(revisionDateTime)
@@ -3933,6 +4239,11 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
+    const std::shared_ptr< std::wstring > DeleteFootnoteOnlineRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
+    }
+
     const std::shared_ptr< std::wstring > DeleteFootnoteOnlineRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -3958,6 +4269,7 @@ namespace aspose::words::cloud::requests {
         result->setPathParam(L"{nodePath}", m_NodePath ? *m_NodePath : L"");
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
@@ -3984,6 +4296,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > storage,
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword,
         const std::shared_ptr< std::wstring > destFileName,
         const std::shared_ptr< std::wstring > revisionAuthor,
         const std::shared_ptr< std::wstring > revisionDateTime
@@ -3995,6 +4308,7 @@ namespace aspose::words::cloud::requests {
         m_Storage(storage),
         m_LoadEncoding(loadEncoding),
         m_Password(password),
+        m_EncryptedPassword(encryptedPassword),
         m_DestFileName(destFileName),
         m_RevisionAuthor(revisionAuthor),
         m_RevisionDateTime(revisionDateTime)
@@ -4036,6 +4350,11 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
+    const std::shared_ptr< std::wstring > DeleteFormFieldRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
+    }
+
     const std::shared_ptr< std::wstring > DeleteFormFieldRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -4065,6 +4384,7 @@ namespace aspose::words::cloud::requests {
         if (m_Storage) result->addQueryParam(L"storage", *m_Storage);
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
@@ -4087,6 +4407,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > nodePath,
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword,
         const std::shared_ptr< std::wstring > destFileName,
         const std::shared_ptr< std::wstring > revisionAuthor,
         const std::shared_ptr< std::wstring > revisionDateTime
@@ -4096,6 +4417,7 @@ namespace aspose::words::cloud::requests {
         m_NodePath(nodePath),
         m_LoadEncoding(loadEncoding),
         m_Password(password),
+        m_EncryptedPassword(encryptedPassword),
         m_DestFileName(destFileName),
         m_RevisionAuthor(revisionAuthor),
         m_RevisionDateTime(revisionDateTime)
@@ -4127,6 +4449,11 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
+    const std::shared_ptr< std::wstring > DeleteFormFieldOnlineRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
+    }
+
     const std::shared_ptr< std::wstring > DeleteFormFieldOnlineRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -4152,6 +4479,7 @@ namespace aspose::words::cloud::requests {
         result->setPathParam(L"{nodePath}", m_NodePath ? *m_NodePath : L"");
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
@@ -4178,6 +4506,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > storage,
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword,
         const std::shared_ptr< std::wstring > destFileName,
         const std::shared_ptr< std::wstring > revisionAuthor,
         const std::shared_ptr< std::wstring > revisionDateTime
@@ -4189,6 +4518,7 @@ namespace aspose::words::cloud::requests {
         m_Storage(storage),
         m_LoadEncoding(loadEncoding),
         m_Password(password),
+        m_EncryptedPassword(encryptedPassword),
         m_DestFileName(destFileName),
         m_RevisionAuthor(revisionAuthor),
         m_RevisionDateTime(revisionDateTime)
@@ -4230,6 +4560,11 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
+    const std::shared_ptr< std::wstring > DeleteHeaderFooterRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
+    }
+
     const std::shared_ptr< std::wstring > DeleteHeaderFooterRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -4260,6 +4595,7 @@ namespace aspose::words::cloud::requests {
         if (m_Storage) result->addQueryParam(L"storage", *m_Storage);
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
@@ -4282,6 +4618,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< int32_t > index,
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword,
         const std::shared_ptr< std::wstring > destFileName,
         const std::shared_ptr< std::wstring > revisionAuthor,
         const std::shared_ptr< std::wstring > revisionDateTime
@@ -4291,6 +4628,7 @@ namespace aspose::words::cloud::requests {
         m_Index(index),
         m_LoadEncoding(loadEncoding),
         m_Password(password),
+        m_EncryptedPassword(encryptedPassword),
         m_DestFileName(destFileName),
         m_RevisionAuthor(revisionAuthor),
         m_RevisionDateTime(revisionDateTime)
@@ -4322,6 +4660,11 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
+    const std::shared_ptr< std::wstring > DeleteHeaderFooterOnlineRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
+    }
+
     const std::shared_ptr< std::wstring > DeleteHeaderFooterOnlineRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -4348,6 +4691,7 @@ namespace aspose::words::cloud::requests {
         result->setPathParam(L"{index}", *m_Index);
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
@@ -4373,6 +4717,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > storage,
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword,
         const std::shared_ptr< std::wstring > destFileName,
         const std::shared_ptr< std::wstring > revisionAuthor,
         const std::shared_ptr< std::wstring > revisionDateTime,
@@ -4384,6 +4729,7 @@ namespace aspose::words::cloud::requests {
         m_Storage(storage),
         m_LoadEncoding(loadEncoding),
         m_Password(password),
+        m_EncryptedPassword(encryptedPassword),
         m_DestFileName(destFileName),
         m_RevisionAuthor(revisionAuthor),
         m_RevisionDateTime(revisionDateTime),
@@ -4421,6 +4767,11 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
+    const std::shared_ptr< std::wstring > DeleteHeadersFootersRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
+    }
+
     const std::shared_ptr< std::wstring > DeleteHeadersFootersRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -4454,6 +4805,7 @@ namespace aspose::words::cloud::requests {
         if (m_Storage) result->addQueryParam(L"storage", *m_Storage);
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
@@ -4476,6 +4828,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > sectionPath,
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword,
         const std::shared_ptr< std::wstring > destFileName,
         const std::shared_ptr< std::wstring > revisionAuthor,
         const std::shared_ptr< std::wstring > revisionDateTime,
@@ -4485,6 +4838,7 @@ namespace aspose::words::cloud::requests {
         m_SectionPath(sectionPath),
         m_LoadEncoding(loadEncoding),
         m_Password(password),
+        m_EncryptedPassword(encryptedPassword),
         m_DestFileName(destFileName),
         m_RevisionAuthor(revisionAuthor),
         m_RevisionDateTime(revisionDateTime),
@@ -4510,6 +4864,11 @@ namespace aspose::words::cloud::requests {
     const std::shared_ptr< std::wstring > DeleteHeadersFootersOnlineRequest::getPassword() const
     {
         return m_Password;
+    }
+
+    const std::shared_ptr< std::wstring > DeleteHeadersFootersOnlineRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
     }
 
     const std::shared_ptr< std::wstring > DeleteHeadersFootersOnlineRequest::getDestFileName() const
@@ -4541,6 +4900,7 @@ namespace aspose::words::cloud::requests {
         result->setPathParam(L"{sectionPath}", *m_SectionPath);
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
@@ -4566,6 +4926,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > storage,
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword,
         const std::shared_ptr< std::wstring > destFileName,
         const std::shared_ptr< std::wstring > revisionAuthor,
         const std::shared_ptr< std::wstring > revisionDateTime
@@ -4575,6 +4936,7 @@ namespace aspose::words::cloud::requests {
         m_Storage(storage),
         m_LoadEncoding(loadEncoding),
         m_Password(password),
+        m_EncryptedPassword(encryptedPassword),
         m_DestFileName(destFileName),
         m_RevisionAuthor(revisionAuthor),
         m_RevisionDateTime(revisionDateTime)
@@ -4606,6 +4968,11 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
+    const std::shared_ptr< std::wstring > DeleteMacrosRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
+    }
+
     const std::shared_ptr< std::wstring > DeleteMacrosRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -4632,6 +4999,7 @@ namespace aspose::words::cloud::requests {
         if (m_Storage) result->addQueryParam(L"storage", *m_Storage);
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
@@ -4652,6 +5020,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::istream > document,
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword,
         const std::shared_ptr< std::wstring > destFileName,
         const std::shared_ptr< std::wstring > revisionAuthor,
         const std::shared_ptr< std::wstring > revisionDateTime
@@ -4659,6 +5028,7 @@ namespace aspose::words::cloud::requests {
         m_Document(document),
         m_LoadEncoding(loadEncoding),
         m_Password(password),
+        m_EncryptedPassword(encryptedPassword),
         m_DestFileName(destFileName),
         m_RevisionAuthor(revisionAuthor),
         m_RevisionDateTime(revisionDateTime)
@@ -4678,6 +5048,11 @@ namespace aspose::words::cloud::requests {
     const std::shared_ptr< std::wstring > DeleteMacrosOnlineRequest::getPassword() const
     {
         return m_Password;
+    }
+
+    const std::shared_ptr< std::wstring > DeleteMacrosOnlineRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
     }
 
     const std::shared_ptr< std::wstring > DeleteMacrosOnlineRequest::getDestFileName() const
@@ -4702,6 +5077,7 @@ namespace aspose::words::cloud::requests {
         result->setPath(L"/words/online/delete/macros");
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
@@ -4728,6 +5104,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > storage,
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword,
         const std::shared_ptr< std::wstring > destFileName,
         const std::shared_ptr< std::wstring > revisionAuthor,
         const std::shared_ptr< std::wstring > revisionDateTime
@@ -4739,6 +5116,7 @@ namespace aspose::words::cloud::requests {
         m_Storage(storage),
         m_LoadEncoding(loadEncoding),
         m_Password(password),
+        m_EncryptedPassword(encryptedPassword),
         m_DestFileName(destFileName),
         m_RevisionAuthor(revisionAuthor),
         m_RevisionDateTime(revisionDateTime)
@@ -4780,6 +5158,11 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
+    const std::shared_ptr< std::wstring > DeleteOfficeMathObjectRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
+    }
+
     const std::shared_ptr< std::wstring > DeleteOfficeMathObjectRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -4809,6 +5192,7 @@ namespace aspose::words::cloud::requests {
         if (m_Storage) result->addQueryParam(L"storage", *m_Storage);
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
@@ -4831,6 +5215,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > nodePath,
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword,
         const std::shared_ptr< std::wstring > destFileName,
         const std::shared_ptr< std::wstring > revisionAuthor,
         const std::shared_ptr< std::wstring > revisionDateTime
@@ -4840,6 +5225,7 @@ namespace aspose::words::cloud::requests {
         m_NodePath(nodePath),
         m_LoadEncoding(loadEncoding),
         m_Password(password),
+        m_EncryptedPassword(encryptedPassword),
         m_DestFileName(destFileName),
         m_RevisionAuthor(revisionAuthor),
         m_RevisionDateTime(revisionDateTime)
@@ -4871,6 +5257,11 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
+    const std::shared_ptr< std::wstring > DeleteOfficeMathObjectOnlineRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
+    }
+
     const std::shared_ptr< std::wstring > DeleteOfficeMathObjectOnlineRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -4896,6 +5287,7 @@ namespace aspose::words::cloud::requests {
         result->setPathParam(L"{nodePath}", m_NodePath ? *m_NodePath : L"");
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
@@ -4922,6 +5314,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > storage,
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword,
         const std::shared_ptr< std::wstring > destFileName,
         const std::shared_ptr< std::wstring > revisionAuthor,
         const std::shared_ptr< std::wstring > revisionDateTime
@@ -4933,6 +5326,7 @@ namespace aspose::words::cloud::requests {
         m_Storage(storage),
         m_LoadEncoding(loadEncoding),
         m_Password(password),
+        m_EncryptedPassword(encryptedPassword),
         m_DestFileName(destFileName),
         m_RevisionAuthor(revisionAuthor),
         m_RevisionDateTime(revisionDateTime)
@@ -4974,6 +5368,11 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
+    const std::shared_ptr< std::wstring > DeleteParagraphRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
+    }
+
     const std::shared_ptr< std::wstring > DeleteParagraphRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -5003,6 +5402,7 @@ namespace aspose::words::cloud::requests {
         if (m_Storage) result->addQueryParam(L"storage", *m_Storage);
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
@@ -5027,6 +5427,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > storage,
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword,
         const std::shared_ptr< std::wstring > destFileName,
         const std::shared_ptr< std::wstring > revisionAuthor,
         const std::shared_ptr< std::wstring > revisionDateTime
@@ -5038,6 +5439,7 @@ namespace aspose::words::cloud::requests {
         m_Storage(storage),
         m_LoadEncoding(loadEncoding),
         m_Password(password),
+        m_EncryptedPassword(encryptedPassword),
         m_DestFileName(destFileName),
         m_RevisionAuthor(revisionAuthor),
         m_RevisionDateTime(revisionDateTime)
@@ -5079,6 +5481,11 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
+    const std::shared_ptr< std::wstring > DeleteParagraphListFormatRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
+    }
+
     const std::shared_ptr< std::wstring > DeleteParagraphListFormatRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -5108,6 +5515,7 @@ namespace aspose::words::cloud::requests {
         if (m_Storage) result->addQueryParam(L"storage", *m_Storage);
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
@@ -5130,6 +5538,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > nodePath,
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword,
         const std::shared_ptr< std::wstring > destFileName,
         const std::shared_ptr< std::wstring > revisionAuthor,
         const std::shared_ptr< std::wstring > revisionDateTime
@@ -5139,6 +5548,7 @@ namespace aspose::words::cloud::requests {
         m_NodePath(nodePath),
         m_LoadEncoding(loadEncoding),
         m_Password(password),
+        m_EncryptedPassword(encryptedPassword),
         m_DestFileName(destFileName),
         m_RevisionAuthor(revisionAuthor),
         m_RevisionDateTime(revisionDateTime)
@@ -5170,6 +5580,11 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
+    const std::shared_ptr< std::wstring > DeleteParagraphListFormatOnlineRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
+    }
+
     const std::shared_ptr< std::wstring > DeleteParagraphListFormatOnlineRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -5195,6 +5610,7 @@ namespace aspose::words::cloud::requests {
         result->setPathParam(L"{nodePath}", m_NodePath ? *m_NodePath : L"");
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
@@ -5219,6 +5635,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > nodePath,
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword,
         const std::shared_ptr< std::wstring > destFileName,
         const std::shared_ptr< std::wstring > revisionAuthor,
         const std::shared_ptr< std::wstring > revisionDateTime
@@ -5228,6 +5645,7 @@ namespace aspose::words::cloud::requests {
         m_NodePath(nodePath),
         m_LoadEncoding(loadEncoding),
         m_Password(password),
+        m_EncryptedPassword(encryptedPassword),
         m_DestFileName(destFileName),
         m_RevisionAuthor(revisionAuthor),
         m_RevisionDateTime(revisionDateTime)
@@ -5259,6 +5677,11 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
+    const std::shared_ptr< std::wstring > DeleteParagraphOnlineRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
+    }
+
     const std::shared_ptr< std::wstring > DeleteParagraphOnlineRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -5284,6 +5707,7 @@ namespace aspose::words::cloud::requests {
         result->setPathParam(L"{nodePath}", m_NodePath ? *m_NodePath : L"");
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
@@ -5311,6 +5735,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > storage,
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword,
         const std::shared_ptr< std::wstring > destFileName
     ) : 
         m_Name(name),
@@ -5321,6 +5746,7 @@ namespace aspose::words::cloud::requests {
         m_Storage(storage),
         m_LoadEncoding(loadEncoding),
         m_Password(password),
+        m_EncryptedPassword(encryptedPassword),
         m_DestFileName(destFileName)
     {
     }
@@ -5365,6 +5791,11 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
+    const std::shared_ptr< std::wstring > DeleteParagraphTabStopRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
+    }
+
     const std::shared_ptr< std::wstring > DeleteParagraphTabStopRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -5386,6 +5817,7 @@ namespace aspose::words::cloud::requests {
         if (m_Storage) result->addQueryParam(L"storage", *m_Storage);
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         return result;
     }
@@ -5407,6 +5839,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > nodePath,
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword,
         const std::shared_ptr< std::wstring > destFileName
     ) : 
         m_Document(document),
@@ -5415,6 +5848,7 @@ namespace aspose::words::cloud::requests {
         m_NodePath(nodePath),
         m_LoadEncoding(loadEncoding),
         m_Password(password),
+        m_EncryptedPassword(encryptedPassword),
         m_DestFileName(destFileName)
     {
     }
@@ -5449,6 +5883,11 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
+    const std::shared_ptr< std::wstring > DeleteParagraphTabStopOnlineRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
+    }
+
     const std::shared_ptr< std::wstring > DeleteParagraphTabStopOnlineRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -5466,6 +5905,7 @@ namespace aspose::words::cloud::requests {
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Position' is required.");
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_Document) result->setBody(*m_Document);
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Document' is required.");
@@ -5490,6 +5930,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > storage,
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword,
         const std::shared_ptr< std::wstring > destFileName,
         const std::shared_ptr< std::wstring > revisionAuthor,
         const std::shared_ptr< std::wstring > revisionDateTime
@@ -5501,6 +5942,7 @@ namespace aspose::words::cloud::requests {
         m_Storage(storage),
         m_LoadEncoding(loadEncoding),
         m_Password(password),
+        m_EncryptedPassword(encryptedPassword),
         m_DestFileName(destFileName),
         m_RevisionAuthor(revisionAuthor),
         m_RevisionDateTime(revisionDateTime)
@@ -5542,6 +5984,11 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
+    const std::shared_ptr< std::wstring > DeleteRunRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
+    }
+
     const std::shared_ptr< std::wstring > DeleteRunRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -5572,6 +6019,7 @@ namespace aspose::words::cloud::requests {
         if (m_Storage) result->addQueryParam(L"storage", *m_Storage);
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
@@ -5594,6 +6042,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< int32_t > index,
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword,
         const std::shared_ptr< std::wstring > destFileName,
         const std::shared_ptr< std::wstring > revisionAuthor,
         const std::shared_ptr< std::wstring > revisionDateTime
@@ -5603,6 +6052,7 @@ namespace aspose::words::cloud::requests {
         m_Index(index),
         m_LoadEncoding(loadEncoding),
         m_Password(password),
+        m_EncryptedPassword(encryptedPassword),
         m_DestFileName(destFileName),
         m_RevisionAuthor(revisionAuthor),
         m_RevisionDateTime(revisionDateTime)
@@ -5634,6 +6084,11 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
+    const std::shared_ptr< std::wstring > DeleteRunOnlineRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
+    }
+
     const std::shared_ptr< std::wstring > DeleteRunOnlineRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -5660,6 +6115,7 @@ namespace aspose::words::cloud::requests {
         result->setPathParam(L"{index}", *m_Index);
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
@@ -5685,6 +6141,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > storage,
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword,
         const std::shared_ptr< std::wstring > destFileName,
         const std::shared_ptr< std::wstring > revisionAuthor,
         const std::shared_ptr< std::wstring > revisionDateTime
@@ -5695,6 +6152,7 @@ namespace aspose::words::cloud::requests {
         m_Storage(storage),
         m_LoadEncoding(loadEncoding),
         m_Password(password),
+        m_EncryptedPassword(encryptedPassword),
         m_DestFileName(destFileName),
         m_RevisionAuthor(revisionAuthor),
         m_RevisionDateTime(revisionDateTime)
@@ -5731,6 +6189,11 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
+    const std::shared_ptr< std::wstring > DeleteSectionRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
+    }
+
     const std::shared_ptr< std::wstring > DeleteSectionRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -5759,6 +6222,7 @@ namespace aspose::words::cloud::requests {
         if (m_Storage) result->addQueryParam(L"storage", *m_Storage);
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
@@ -5780,6 +6244,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< int32_t > sectionIndex,
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword,
         const std::shared_ptr< std::wstring > destFileName,
         const std::shared_ptr< std::wstring > revisionAuthor,
         const std::shared_ptr< std::wstring > revisionDateTime
@@ -5788,6 +6253,7 @@ namespace aspose::words::cloud::requests {
         m_SectionIndex(sectionIndex),
         m_LoadEncoding(loadEncoding),
         m_Password(password),
+        m_EncryptedPassword(encryptedPassword),
         m_DestFileName(destFileName),
         m_RevisionAuthor(revisionAuthor),
         m_RevisionDateTime(revisionDateTime)
@@ -5814,6 +6280,11 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
+    const std::shared_ptr< std::wstring > DeleteSectionOnlineRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
+    }
+
     const std::shared_ptr< std::wstring > DeleteSectionOnlineRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -5838,6 +6309,7 @@ namespace aspose::words::cloud::requests {
         result->setPathParam(L"{sectionIndex}", *m_SectionIndex);
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
@@ -5864,6 +6336,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > storage,
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword,
         const std::shared_ptr< std::wstring > destFileName,
         const std::shared_ptr< std::wstring > revisionAuthor,
         const std::shared_ptr< std::wstring > revisionDateTime
@@ -5875,6 +6348,7 @@ namespace aspose::words::cloud::requests {
         m_Storage(storage),
         m_LoadEncoding(loadEncoding),
         m_Password(password),
+        m_EncryptedPassword(encryptedPassword),
         m_DestFileName(destFileName),
         m_RevisionAuthor(revisionAuthor),
         m_RevisionDateTime(revisionDateTime)
@@ -5916,6 +6390,11 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
+    const std::shared_ptr< std::wstring > DeleteTableRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
+    }
+
     const std::shared_ptr< std::wstring > DeleteTableRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -5945,6 +6424,7 @@ namespace aspose::words::cloud::requests {
         if (m_Storage) result->addQueryParam(L"storage", *m_Storage);
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
@@ -5969,6 +6449,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > storage,
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword,
         const std::shared_ptr< std::wstring > destFileName,
         const std::shared_ptr< std::wstring > revisionAuthor,
         const std::shared_ptr< std::wstring > revisionDateTime
@@ -5980,6 +6461,7 @@ namespace aspose::words::cloud::requests {
         m_Storage(storage),
         m_LoadEncoding(loadEncoding),
         m_Password(password),
+        m_EncryptedPassword(encryptedPassword),
         m_DestFileName(destFileName),
         m_RevisionAuthor(revisionAuthor),
         m_RevisionDateTime(revisionDateTime)
@@ -6021,6 +6503,11 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
+    const std::shared_ptr< std::wstring > DeleteTableCellRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
+    }
+
     const std::shared_ptr< std::wstring > DeleteTableCellRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -6051,6 +6538,7 @@ namespace aspose::words::cloud::requests {
         if (m_Storage) result->addQueryParam(L"storage", *m_Storage);
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
@@ -6073,6 +6561,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< int32_t > index,
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword,
         const std::shared_ptr< std::wstring > destFileName,
         const std::shared_ptr< std::wstring > revisionAuthor,
         const std::shared_ptr< std::wstring > revisionDateTime
@@ -6082,6 +6571,7 @@ namespace aspose::words::cloud::requests {
         m_Index(index),
         m_LoadEncoding(loadEncoding),
         m_Password(password),
+        m_EncryptedPassword(encryptedPassword),
         m_DestFileName(destFileName),
         m_RevisionAuthor(revisionAuthor),
         m_RevisionDateTime(revisionDateTime)
@@ -6113,6 +6603,11 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
+    const std::shared_ptr< std::wstring > DeleteTableCellOnlineRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
+    }
+
     const std::shared_ptr< std::wstring > DeleteTableCellOnlineRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -6139,6 +6634,7 @@ namespace aspose::words::cloud::requests {
         result->setPathParam(L"{index}", *m_Index);
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
@@ -6163,6 +6659,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > nodePath,
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword,
         const std::shared_ptr< std::wstring > destFileName,
         const std::shared_ptr< std::wstring > revisionAuthor,
         const std::shared_ptr< std::wstring > revisionDateTime
@@ -6172,6 +6669,7 @@ namespace aspose::words::cloud::requests {
         m_NodePath(nodePath),
         m_LoadEncoding(loadEncoding),
         m_Password(password),
+        m_EncryptedPassword(encryptedPassword),
         m_DestFileName(destFileName),
         m_RevisionAuthor(revisionAuthor),
         m_RevisionDateTime(revisionDateTime)
@@ -6203,6 +6701,11 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
+    const std::shared_ptr< std::wstring > DeleteTableOnlineRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
+    }
+
     const std::shared_ptr< std::wstring > DeleteTableOnlineRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -6228,6 +6731,7 @@ namespace aspose::words::cloud::requests {
         result->setPathParam(L"{nodePath}", m_NodePath ? *m_NodePath : L"");
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
@@ -6254,6 +6758,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > storage,
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword,
         const std::shared_ptr< std::wstring > destFileName,
         const std::shared_ptr< std::wstring > revisionAuthor,
         const std::shared_ptr< std::wstring > revisionDateTime
@@ -6265,6 +6770,7 @@ namespace aspose::words::cloud::requests {
         m_Storage(storage),
         m_LoadEncoding(loadEncoding),
         m_Password(password),
+        m_EncryptedPassword(encryptedPassword),
         m_DestFileName(destFileName),
         m_RevisionAuthor(revisionAuthor),
         m_RevisionDateTime(revisionDateTime)
@@ -6306,6 +6812,11 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
+    const std::shared_ptr< std::wstring > DeleteTableRowRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
+    }
+
     const std::shared_ptr< std::wstring > DeleteTableRowRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -6336,6 +6847,7 @@ namespace aspose::words::cloud::requests {
         if (m_Storage) result->addQueryParam(L"storage", *m_Storage);
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
@@ -6358,6 +6870,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< int32_t > index,
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword,
         const std::shared_ptr< std::wstring > destFileName,
         const std::shared_ptr< std::wstring > revisionAuthor,
         const std::shared_ptr< std::wstring > revisionDateTime
@@ -6367,6 +6880,7 @@ namespace aspose::words::cloud::requests {
         m_Index(index),
         m_LoadEncoding(loadEncoding),
         m_Password(password),
+        m_EncryptedPassword(encryptedPassword),
         m_DestFileName(destFileName),
         m_RevisionAuthor(revisionAuthor),
         m_RevisionDateTime(revisionDateTime)
@@ -6398,6 +6912,11 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
+    const std::shared_ptr< std::wstring > DeleteTableRowOnlineRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
+    }
+
     const std::shared_ptr< std::wstring > DeleteTableRowOnlineRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -6424,6 +6943,7 @@ namespace aspose::words::cloud::requests {
         result->setPathParam(L"{index}", *m_Index);
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
@@ -6448,6 +6968,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > storage,
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword,
         const std::shared_ptr< std::wstring > destFileName,
         const std::shared_ptr< std::wstring > revisionAuthor,
         const std::shared_ptr< std::wstring > revisionDateTime
@@ -6457,6 +6978,7 @@ namespace aspose::words::cloud::requests {
         m_Storage(storage),
         m_LoadEncoding(loadEncoding),
         m_Password(password),
+        m_EncryptedPassword(encryptedPassword),
         m_DestFileName(destFileName),
         m_RevisionAuthor(revisionAuthor),
         m_RevisionDateTime(revisionDateTime)
@@ -6488,6 +7010,11 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
+    const std::shared_ptr< std::wstring > DeleteWatermarkRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
+    }
+
     const std::shared_ptr< std::wstring > DeleteWatermarkRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -6514,6 +7041,7 @@ namespace aspose::words::cloud::requests {
         if (m_Storage) result->addQueryParam(L"storage", *m_Storage);
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
@@ -6534,6 +7062,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::istream > document,
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword,
         const std::shared_ptr< std::wstring > destFileName,
         const std::shared_ptr< std::wstring > revisionAuthor,
         const std::shared_ptr< std::wstring > revisionDateTime
@@ -6541,6 +7070,7 @@ namespace aspose::words::cloud::requests {
         m_Document(document),
         m_LoadEncoding(loadEncoding),
         m_Password(password),
+        m_EncryptedPassword(encryptedPassword),
         m_DestFileName(destFileName),
         m_RevisionAuthor(revisionAuthor),
         m_RevisionDateTime(revisionDateTime)
@@ -6560,6 +7090,11 @@ namespace aspose::words::cloud::requests {
     const std::shared_ptr< std::wstring > DeleteWatermarkOnlineRequest::getPassword() const
     {
         return m_Password;
+    }
+
+    const std::shared_ptr< std::wstring > DeleteWatermarkOnlineRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
     }
 
     const std::shared_ptr< std::wstring > DeleteWatermarkOnlineRequest::getDestFileName() const
@@ -6584,6 +7119,7 @@ namespace aspose::words::cloud::requests {
         result->setPath(L"/words/online/post/watermarks/deleteLast");
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
@@ -6658,6 +7194,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > storage,
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword,
         const std::shared_ptr< bool > withRegions,
         const std::shared_ptr< std::wstring > mailMergeDataFile,
         const std::shared_ptr< std::wstring > cleanup,
@@ -6671,6 +7208,7 @@ namespace aspose::words::cloud::requests {
         m_Storage(storage),
         m_LoadEncoding(loadEncoding),
         m_Password(password),
+        m_EncryptedPassword(encryptedPassword),
         m_WithRegions(withRegions),
         m_MailMergeDataFile(mailMergeDataFile),
         m_Cleanup(cleanup),
@@ -6714,6 +7252,11 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
+    const std::shared_ptr< std::wstring > ExecuteMailMergeRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
+    }
+
     const std::shared_ptr< bool > ExecuteMailMergeRequest::getWithRegions() const
     {
         return m_WithRegions;
@@ -6750,6 +7293,7 @@ namespace aspose::words::cloud::requests {
         if (m_Storage) result->addQueryParam(L"storage", *m_Storage);
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
         if (m_WithRegions) result->addQueryParam(L"withRegions", *m_WithRegions);
         if (m_MailMergeDataFile) result->addQueryParam(L"mailMergeDataFile", *m_MailMergeDataFile);
         if (m_Cleanup) result->addQueryParam(L"cleanup", *m_Cleanup);
@@ -6880,14 +7424,16 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > folder,
         const std::shared_ptr< std::wstring > storage,
         const std::shared_ptr< std::wstring > loadEncoding,
-        const std::shared_ptr< std::wstring > password
+        const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword
     ) : 
         m_Name(name),
         m_BookmarkName(bookmarkName),
         m_Folder(folder),
         m_Storage(storage),
         m_LoadEncoding(loadEncoding),
-        m_Password(password)
+        m_Password(password),
+        m_EncryptedPassword(encryptedPassword)
     {
     }
 
@@ -6921,6 +7467,11 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
+    const std::shared_ptr< std::wstring > GetBookmarkByNameRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
+    }
+
     std::shared_ptr< aspose::words::cloud::HttpRequestData > GetBookmarkByNameRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
@@ -6934,6 +7485,7 @@ namespace aspose::words::cloud::requests {
         if (m_Storage) result->addQueryParam(L"storage", *m_Storage);
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
         return result;
     }
 
@@ -6951,12 +7503,14 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::istream > document,
         const std::shared_ptr< std::wstring > bookmarkName,
         const std::shared_ptr< std::wstring > loadEncoding,
-        const std::shared_ptr< std::wstring > password
+        const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword
     ) : 
         m_Document(document),
         m_BookmarkName(bookmarkName),
         m_LoadEncoding(loadEncoding),
-        m_Password(password)
+        m_Password(password),
+        m_EncryptedPassword(encryptedPassword)
     {
     }
 
@@ -6980,6 +7534,11 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
+    const std::shared_ptr< std::wstring > GetBookmarkByNameOnlineRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
+    }
+
     std::shared_ptr< aspose::words::cloud::HttpRequestData > GetBookmarkByNameOnlineRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
@@ -6989,6 +7548,7 @@ namespace aspose::words::cloud::requests {
         result->setPathParam(L"{bookmarkName}", *m_BookmarkName);
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
         if (m_Document) result->setBody(*m_Document);
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Document' is required.");
         return result;
@@ -7009,13 +7569,15 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > folder,
         const std::shared_ptr< std::wstring > storage,
         const std::shared_ptr< std::wstring > loadEncoding,
-        const std::shared_ptr< std::wstring > password
+        const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword
     ) : 
         m_Name(name),
         m_Folder(folder),
         m_Storage(storage),
         m_LoadEncoding(loadEncoding),
-        m_Password(password)
+        m_Password(password),
+        m_EncryptedPassword(encryptedPassword)
     {
     }
 
@@ -7044,6 +7606,11 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
+    const std::shared_ptr< std::wstring > GetBookmarksRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
+    }
+
     std::shared_ptr< aspose::words::cloud::HttpRequestData > GetBookmarksRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
@@ -7055,6 +7622,7 @@ namespace aspose::words::cloud::requests {
         if (m_Storage) result->addQueryParam(L"storage", *m_Storage);
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
         return result;
     }
 
@@ -7071,11 +7639,13 @@ namespace aspose::words::cloud::requests {
     GetBookmarksOnlineRequest::GetBookmarksOnlineRequest(
         const std::shared_ptr< std::istream > document,
         const std::shared_ptr< std::wstring > loadEncoding,
-        const std::shared_ptr< std::wstring > password
+        const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword
     ) : 
         m_Document(document),
         m_LoadEncoding(loadEncoding),
-        m_Password(password)
+        m_Password(password),
+        m_EncryptedPassword(encryptedPassword)
     {
     }
 
@@ -7094,6 +7664,11 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
+    const std::shared_ptr< std::wstring > GetBookmarksOnlineRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
+    }
+
     std::shared_ptr< aspose::words::cloud::HttpRequestData > GetBookmarksOnlineRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
@@ -7101,6 +7676,7 @@ namespace aspose::words::cloud::requests {
         result->setPath(L"/words/online/get/bookmarks");
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
         if (m_Document) result->setBody(*m_Document);
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Document' is required.");
         return result;
@@ -7123,7 +7699,8 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > folder,
         const std::shared_ptr< std::wstring > storage,
         const std::shared_ptr< std::wstring > loadEncoding,
-        const std::shared_ptr< std::wstring > password
+        const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword
     ) : 
         m_Name(name),
         m_BorderType(borderType),
@@ -7131,7 +7708,8 @@ namespace aspose::words::cloud::requests {
         m_Folder(folder),
         m_Storage(storage),
         m_LoadEncoding(loadEncoding),
-        m_Password(password)
+        m_Password(password),
+        m_EncryptedPassword(encryptedPassword)
     {
     }
 
@@ -7170,6 +7748,11 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
+    const std::shared_ptr< std::wstring > GetBorderRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
+    }
+
     std::shared_ptr< aspose::words::cloud::HttpRequestData > GetBorderRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
@@ -7184,6 +7767,7 @@ namespace aspose::words::cloud::requests {
         if (m_Storage) result->addQueryParam(L"storage", *m_Storage);
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
         return result;
     }
 
@@ -7202,13 +7786,15 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > borderType,
         const std::shared_ptr< std::wstring > nodePath,
         const std::shared_ptr< std::wstring > loadEncoding,
-        const std::shared_ptr< std::wstring > password
+        const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword
     ) : 
         m_Document(document),
         m_BorderType(borderType),
         m_NodePath(nodePath),
         m_LoadEncoding(loadEncoding),
-        m_Password(password)
+        m_Password(password),
+        m_EncryptedPassword(encryptedPassword)
     {
     }
 
@@ -7237,6 +7823,11 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
+    const std::shared_ptr< std::wstring > GetBorderOnlineRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
+    }
+
     std::shared_ptr< aspose::words::cloud::HttpRequestData > GetBorderOnlineRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
@@ -7247,6 +7838,7 @@ namespace aspose::words::cloud::requests {
         result->setPathParam(L"{nodePath}", m_NodePath ? *m_NodePath : L"");
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
         if (m_Document) result->setBody(*m_Document);
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Document' is required.");
         return result;
@@ -7268,14 +7860,16 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > folder,
         const std::shared_ptr< std::wstring > storage,
         const std::shared_ptr< std::wstring > loadEncoding,
-        const std::shared_ptr< std::wstring > password
+        const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword
     ) : 
         m_Name(name),
         m_NodePath(nodePath),
         m_Folder(folder),
         m_Storage(storage),
         m_LoadEncoding(loadEncoding),
-        m_Password(password)
+        m_Password(password),
+        m_EncryptedPassword(encryptedPassword)
     {
     }
 
@@ -7309,6 +7903,11 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
+    const std::shared_ptr< std::wstring > GetBordersRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
+    }
+
     std::shared_ptr< aspose::words::cloud::HttpRequestData > GetBordersRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
@@ -7321,6 +7920,7 @@ namespace aspose::words::cloud::requests {
         if (m_Storage) result->addQueryParam(L"storage", *m_Storage);
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
         return result;
     }
 
@@ -7338,12 +7938,14 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::istream > document,
         const std::shared_ptr< std::wstring > nodePath,
         const std::shared_ptr< std::wstring > loadEncoding,
-        const std::shared_ptr< std::wstring > password
+        const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword
     ) : 
         m_Document(document),
         m_NodePath(nodePath),
         m_LoadEncoding(loadEncoding),
-        m_Password(password)
+        m_Password(password),
+        m_EncryptedPassword(encryptedPassword)
     {
     }
 
@@ -7367,6 +7969,11 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
+    const std::shared_ptr< std::wstring > GetBordersOnlineRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
+    }
+
     std::shared_ptr< aspose::words::cloud::HttpRequestData > GetBordersOnlineRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
@@ -7375,6 +7982,7 @@ namespace aspose::words::cloud::requests {
         result->setPathParam(L"{nodePath}", m_NodePath ? *m_NodePath : L"");
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
         if (m_Document) result->setBody(*m_Document);
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Document' is required.");
         return result;
@@ -7396,14 +8004,16 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > folder,
         const std::shared_ptr< std::wstring > storage,
         const std::shared_ptr< std::wstring > loadEncoding,
-        const std::shared_ptr< std::wstring > password
+        const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword
     ) : 
         m_Name(name),
         m_CommentIndex(commentIndex),
         m_Folder(folder),
         m_Storage(storage),
         m_LoadEncoding(loadEncoding),
-        m_Password(password)
+        m_Password(password),
+        m_EncryptedPassword(encryptedPassword)
     {
     }
 
@@ -7437,6 +8047,11 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
+    const std::shared_ptr< std::wstring > GetCommentRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
+    }
+
     std::shared_ptr< aspose::words::cloud::HttpRequestData > GetCommentRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
@@ -7450,6 +8065,7 @@ namespace aspose::words::cloud::requests {
         if (m_Storage) result->addQueryParam(L"storage", *m_Storage);
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
         return result;
     }
 
@@ -7467,12 +8083,14 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::istream > document,
         const std::shared_ptr< int32_t > commentIndex,
         const std::shared_ptr< std::wstring > loadEncoding,
-        const std::shared_ptr< std::wstring > password
+        const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword
     ) : 
         m_Document(document),
         m_CommentIndex(commentIndex),
         m_LoadEncoding(loadEncoding),
-        m_Password(password)
+        m_Password(password),
+        m_EncryptedPassword(encryptedPassword)
     {
     }
 
@@ -7496,6 +8114,11 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
+    const std::shared_ptr< std::wstring > GetCommentOnlineRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
+    }
+
     std::shared_ptr< aspose::words::cloud::HttpRequestData > GetCommentOnlineRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
@@ -7505,6 +8128,7 @@ namespace aspose::words::cloud::requests {
         result->setPathParam(L"{commentIndex}", *m_CommentIndex);
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
         if (m_Document) result->setBody(*m_Document);
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Document' is required.");
         return result;
@@ -7525,13 +8149,15 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > folder,
         const std::shared_ptr< std::wstring > storage,
         const std::shared_ptr< std::wstring > loadEncoding,
-        const std::shared_ptr< std::wstring > password
+        const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword
     ) : 
         m_Name(name),
         m_Folder(folder),
         m_Storage(storage),
         m_LoadEncoding(loadEncoding),
-        m_Password(password)
+        m_Password(password),
+        m_EncryptedPassword(encryptedPassword)
     {
     }
 
@@ -7560,6 +8186,11 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
+    const std::shared_ptr< std::wstring > GetCommentsRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
+    }
+
     std::shared_ptr< aspose::words::cloud::HttpRequestData > GetCommentsRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
@@ -7571,6 +8202,7 @@ namespace aspose::words::cloud::requests {
         if (m_Storage) result->addQueryParam(L"storage", *m_Storage);
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
         return result;
     }
 
@@ -7587,11 +8219,13 @@ namespace aspose::words::cloud::requests {
     GetCommentsOnlineRequest::GetCommentsOnlineRequest(
         const std::shared_ptr< std::istream > document,
         const std::shared_ptr< std::wstring > loadEncoding,
-        const std::shared_ptr< std::wstring > password
+        const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword
     ) : 
         m_Document(document),
         m_LoadEncoding(loadEncoding),
-        m_Password(password)
+        m_Password(password),
+        m_EncryptedPassword(encryptedPassword)
     {
     }
 
@@ -7610,6 +8244,11 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
+    const std::shared_ptr< std::wstring > GetCommentsOnlineRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
+    }
+
     std::shared_ptr< aspose::words::cloud::HttpRequestData > GetCommentsOnlineRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
@@ -7617,6 +8256,7 @@ namespace aspose::words::cloud::requests {
         result->setPath(L"/words/online/get/comments");
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
         if (m_Document) result->setBody(*m_Document);
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Document' is required.");
         return result;
@@ -7638,14 +8278,16 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > folder,
         const std::shared_ptr< std::wstring > storage,
         const std::shared_ptr< std::wstring > loadEncoding,
-        const std::shared_ptr< std::wstring > password
+        const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword
     ) : 
         m_Name(name),
         m_CustomXmlPartIndex(customXmlPartIndex),
         m_Folder(folder),
         m_Storage(storage),
         m_LoadEncoding(loadEncoding),
-        m_Password(password)
+        m_Password(password),
+        m_EncryptedPassword(encryptedPassword)
     {
     }
 
@@ -7679,6 +8321,11 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
+    const std::shared_ptr< std::wstring > GetCustomXmlPartRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
+    }
+
     std::shared_ptr< aspose::words::cloud::HttpRequestData > GetCustomXmlPartRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
@@ -7692,6 +8339,7 @@ namespace aspose::words::cloud::requests {
         if (m_Storage) result->addQueryParam(L"storage", *m_Storage);
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
         return result;
     }
 
@@ -7709,12 +8357,14 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::istream > document,
         const std::shared_ptr< int32_t > customXmlPartIndex,
         const std::shared_ptr< std::wstring > loadEncoding,
-        const std::shared_ptr< std::wstring > password
+        const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword
     ) : 
         m_Document(document),
         m_CustomXmlPartIndex(customXmlPartIndex),
         m_LoadEncoding(loadEncoding),
-        m_Password(password)
+        m_Password(password),
+        m_EncryptedPassword(encryptedPassword)
     {
     }
 
@@ -7738,6 +8388,11 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
+    const std::shared_ptr< std::wstring > GetCustomXmlPartOnlineRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
+    }
+
     std::shared_ptr< aspose::words::cloud::HttpRequestData > GetCustomXmlPartOnlineRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
@@ -7747,6 +8402,7 @@ namespace aspose::words::cloud::requests {
         result->setPathParam(L"{customXmlPartIndex}", *m_CustomXmlPartIndex);
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
         if (m_Document) result->setBody(*m_Document);
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Document' is required.");
         return result;
@@ -7767,13 +8423,15 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > folder,
         const std::shared_ptr< std::wstring > storage,
         const std::shared_ptr< std::wstring > loadEncoding,
-        const std::shared_ptr< std::wstring > password
+        const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword
     ) : 
         m_Name(name),
         m_Folder(folder),
         m_Storage(storage),
         m_LoadEncoding(loadEncoding),
-        m_Password(password)
+        m_Password(password),
+        m_EncryptedPassword(encryptedPassword)
     {
     }
 
@@ -7802,6 +8460,11 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
+    const std::shared_ptr< std::wstring > GetCustomXmlPartsRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
+    }
+
     std::shared_ptr< aspose::words::cloud::HttpRequestData > GetCustomXmlPartsRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
@@ -7813,6 +8476,7 @@ namespace aspose::words::cloud::requests {
         if (m_Storage) result->addQueryParam(L"storage", *m_Storage);
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
         return result;
     }
 
@@ -7829,11 +8493,13 @@ namespace aspose::words::cloud::requests {
     GetCustomXmlPartsOnlineRequest::GetCustomXmlPartsOnlineRequest(
         const std::shared_ptr< std::istream > document,
         const std::shared_ptr< std::wstring > loadEncoding,
-        const std::shared_ptr< std::wstring > password
+        const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword
     ) : 
         m_Document(document),
         m_LoadEncoding(loadEncoding),
-        m_Password(password)
+        m_Password(password),
+        m_EncryptedPassword(encryptedPassword)
     {
     }
 
@@ -7852,6 +8518,11 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
+    const std::shared_ptr< std::wstring > GetCustomXmlPartsOnlineRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
+    }
+
     std::shared_ptr< aspose::words::cloud::HttpRequestData > GetCustomXmlPartsOnlineRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
@@ -7859,6 +8530,7 @@ namespace aspose::words::cloud::requests {
         result->setPath(L"/words/online/get/customXmlParts");
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
         if (m_Document) result->setBody(*m_Document);
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Document' is required.");
         return result;
@@ -7879,13 +8551,15 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > folder,
         const std::shared_ptr< std::wstring > storage,
         const std::shared_ptr< std::wstring > loadEncoding,
-        const std::shared_ptr< std::wstring > password
+        const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword
     ) : 
         m_DocumentName(documentName),
         m_Folder(folder),
         m_Storage(storage),
         m_LoadEncoding(loadEncoding),
-        m_Password(password)
+        m_Password(password),
+        m_EncryptedPassword(encryptedPassword)
     {
     }
 
@@ -7914,6 +8588,11 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
+    const std::shared_ptr< std::wstring > GetDocumentRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
+    }
+
     std::shared_ptr< aspose::words::cloud::HttpRequestData > GetDocumentRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
@@ -7925,6 +8604,7 @@ namespace aspose::words::cloud::requests {
         if (m_Storage) result->addQueryParam(L"storage", *m_Storage);
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
         return result;
     }
 
@@ -7945,7 +8625,8 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > folder,
         const std::shared_ptr< std::wstring > storage,
         const std::shared_ptr< std::wstring > loadEncoding,
-        const std::shared_ptr< std::wstring > password
+        const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword
     ) : 
         m_Name(name),
         m_Index(index),
@@ -7953,7 +8634,8 @@ namespace aspose::words::cloud::requests {
         m_Folder(folder),
         m_Storage(storage),
         m_LoadEncoding(loadEncoding),
-        m_Password(password)
+        m_Password(password),
+        m_EncryptedPassword(encryptedPassword)
     {
     }
 
@@ -7992,6 +8674,11 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
+    const std::shared_ptr< std::wstring > GetDocumentDrawingObjectByIndexRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
+    }
+
     std::shared_ptr< aspose::words::cloud::HttpRequestData > GetDocumentDrawingObjectByIndexRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
@@ -8006,6 +8693,7 @@ namespace aspose::words::cloud::requests {
         if (m_Storage) result->addQueryParam(L"storage", *m_Storage);
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
         return result;
     }
 
@@ -8024,13 +8712,15 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< int32_t > index,
         const std::shared_ptr< std::wstring > nodePath,
         const std::shared_ptr< std::wstring > loadEncoding,
-        const std::shared_ptr< std::wstring > password
+        const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword
     ) : 
         m_Document(document),
         m_Index(index),
         m_NodePath(nodePath),
         m_LoadEncoding(loadEncoding),
-        m_Password(password)
+        m_Password(password),
+        m_EncryptedPassword(encryptedPassword)
     {
     }
 
@@ -8059,6 +8749,11 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
+    const std::shared_ptr< std::wstring > GetDocumentDrawingObjectByIndexOnlineRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
+    }
+
     std::shared_ptr< aspose::words::cloud::HttpRequestData > GetDocumentDrawingObjectByIndexOnlineRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
@@ -8069,6 +8764,7 @@ namespace aspose::words::cloud::requests {
         result->setPathParam(L"{nodePath}", m_NodePath ? *m_NodePath : L"");
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
         if (m_Document) result->setBody(*m_Document);
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Document' is required.");
         return result;
@@ -8091,7 +8787,8 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > folder,
         const std::shared_ptr< std::wstring > storage,
         const std::shared_ptr< std::wstring > loadEncoding,
-        const std::shared_ptr< std::wstring > password
+        const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword
     ) : 
         m_Name(name),
         m_Index(index),
@@ -8099,7 +8796,8 @@ namespace aspose::words::cloud::requests {
         m_Folder(folder),
         m_Storage(storage),
         m_LoadEncoding(loadEncoding),
-        m_Password(password)
+        m_Password(password),
+        m_EncryptedPassword(encryptedPassword)
     {
     }
 
@@ -8138,6 +8836,11 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
+    const std::shared_ptr< std::wstring > GetDocumentDrawingObjectImageDataRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
+    }
+
     std::shared_ptr< aspose::words::cloud::HttpRequestData > GetDocumentDrawingObjectImageDataRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
@@ -8152,6 +8855,7 @@ namespace aspose::words::cloud::requests {
         if (m_Storage) result->addQueryParam(L"storage", *m_Storage);
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
         return result;
     }
 
@@ -8170,13 +8874,15 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< int32_t > index,
         const std::shared_ptr< std::wstring > nodePath,
         const std::shared_ptr< std::wstring > loadEncoding,
-        const std::shared_ptr< std::wstring > password
+        const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword
     ) : 
         m_Document(document),
         m_Index(index),
         m_NodePath(nodePath),
         m_LoadEncoding(loadEncoding),
-        m_Password(password)
+        m_Password(password),
+        m_EncryptedPassword(encryptedPassword)
     {
     }
 
@@ -8205,6 +8911,11 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
+    const std::shared_ptr< std::wstring > GetDocumentDrawingObjectImageDataOnlineRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
+    }
+
     std::shared_ptr< aspose::words::cloud::HttpRequestData > GetDocumentDrawingObjectImageDataOnlineRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
@@ -8215,6 +8926,7 @@ namespace aspose::words::cloud::requests {
         result->setPathParam(L"{nodePath}", m_NodePath ? *m_NodePath : L"");
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
         if (m_Document) result->setBody(*m_Document);
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Document' is required.");
         return result;
@@ -8237,7 +8949,8 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > folder,
         const std::shared_ptr< std::wstring > storage,
         const std::shared_ptr< std::wstring > loadEncoding,
-        const std::shared_ptr< std::wstring > password
+        const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword
     ) : 
         m_Name(name),
         m_Index(index),
@@ -8245,7 +8958,8 @@ namespace aspose::words::cloud::requests {
         m_Folder(folder),
         m_Storage(storage),
         m_LoadEncoding(loadEncoding),
-        m_Password(password)
+        m_Password(password),
+        m_EncryptedPassword(encryptedPassword)
     {
     }
 
@@ -8284,6 +8998,11 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
+    const std::shared_ptr< std::wstring > GetDocumentDrawingObjectOleDataRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
+    }
+
     std::shared_ptr< aspose::words::cloud::HttpRequestData > GetDocumentDrawingObjectOleDataRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
@@ -8298,6 +9017,7 @@ namespace aspose::words::cloud::requests {
         if (m_Storage) result->addQueryParam(L"storage", *m_Storage);
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
         return result;
     }
 
@@ -8316,13 +9036,15 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< int32_t > index,
         const std::shared_ptr< std::wstring > nodePath,
         const std::shared_ptr< std::wstring > loadEncoding,
-        const std::shared_ptr< std::wstring > password
+        const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword
     ) : 
         m_Document(document),
         m_Index(index),
         m_NodePath(nodePath),
         m_LoadEncoding(loadEncoding),
-        m_Password(password)
+        m_Password(password),
+        m_EncryptedPassword(encryptedPassword)
     {
     }
 
@@ -8351,6 +9073,11 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
+    const std::shared_ptr< std::wstring > GetDocumentDrawingObjectOleDataOnlineRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
+    }
+
     std::shared_ptr< aspose::words::cloud::HttpRequestData > GetDocumentDrawingObjectOleDataOnlineRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
@@ -8361,6 +9088,7 @@ namespace aspose::words::cloud::requests {
         result->setPathParam(L"{nodePath}", m_NodePath ? *m_NodePath : L"");
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
         if (m_Document) result->setBody(*m_Document);
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Document' is required.");
         return result;
@@ -8382,14 +9110,16 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > folder,
         const std::shared_ptr< std::wstring > storage,
         const std::shared_ptr< std::wstring > loadEncoding,
-        const std::shared_ptr< std::wstring > password
+        const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword
     ) : 
         m_Name(name),
         m_NodePath(nodePath),
         m_Folder(folder),
         m_Storage(storage),
         m_LoadEncoding(loadEncoding),
-        m_Password(password)
+        m_Password(password),
+        m_EncryptedPassword(encryptedPassword)
     {
     }
 
@@ -8423,6 +9153,11 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
+    const std::shared_ptr< std::wstring > GetDocumentDrawingObjectsRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
+    }
+
     std::shared_ptr< aspose::words::cloud::HttpRequestData > GetDocumentDrawingObjectsRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
@@ -8435,6 +9170,7 @@ namespace aspose::words::cloud::requests {
         if (m_Storage) result->addQueryParam(L"storage", *m_Storage);
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
         return result;
     }
 
@@ -8452,12 +9188,14 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::istream > document,
         const std::shared_ptr< std::wstring > nodePath,
         const std::shared_ptr< std::wstring > loadEncoding,
-        const std::shared_ptr< std::wstring > password
+        const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword
     ) : 
         m_Document(document),
         m_NodePath(nodePath),
         m_LoadEncoding(loadEncoding),
-        m_Password(password)
+        m_Password(password),
+        m_EncryptedPassword(encryptedPassword)
     {
     }
 
@@ -8481,6 +9219,11 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
+    const std::shared_ptr< std::wstring > GetDocumentDrawingObjectsOnlineRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
+    }
+
     std::shared_ptr< aspose::words::cloud::HttpRequestData > GetDocumentDrawingObjectsOnlineRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
@@ -8489,6 +9232,7 @@ namespace aspose::words::cloud::requests {
         result->setPathParam(L"{nodePath}", m_NodePath ? *m_NodePath : L"");
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
         if (m_Document) result->setBody(*m_Document);
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Document' is required.");
         return result;
@@ -8510,6 +9254,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > storage,
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword,
         const std::shared_ptr< bool > useNonMergeFields
     ) : 
         m_Name(name),
@@ -8517,6 +9262,7 @@ namespace aspose::words::cloud::requests {
         m_Storage(storage),
         m_LoadEncoding(loadEncoding),
         m_Password(password),
+        m_EncryptedPassword(encryptedPassword),
         m_UseNonMergeFields(useNonMergeFields)
     {
     }
@@ -8546,6 +9292,11 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
+    const std::shared_ptr< std::wstring > GetDocumentFieldNamesRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
+    }
+
     const std::shared_ptr< bool > GetDocumentFieldNamesRequest::getUseNonMergeFields() const
     {
         return m_UseNonMergeFields;
@@ -8562,6 +9313,7 @@ namespace aspose::words::cloud::requests {
         if (m_Storage) result->addQueryParam(L"storage", *m_Storage);
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
         if (m_UseNonMergeFields) result->addQueryParam(L"useNonMergeFields", *m_UseNonMergeFields);
         return result;
     }
@@ -8580,11 +9332,13 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::istream > _template,
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword,
         const std::shared_ptr< bool > useNonMergeFields
     ) : 
         m_Template(_template),
         m_LoadEncoding(loadEncoding),
         m_Password(password),
+        m_EncryptedPassword(encryptedPassword),
         m_UseNonMergeFields(useNonMergeFields)
     {
     }
@@ -8604,6 +9358,11 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
+    const std::shared_ptr< std::wstring > GetDocumentFieldNamesOnlineRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
+    }
+
     const std::shared_ptr< bool > GetDocumentFieldNamesOnlineRequest::getUseNonMergeFields() const
     {
         return m_UseNonMergeFields;
@@ -8616,6 +9375,7 @@ namespace aspose::words::cloud::requests {
         result->setPath(L"/words/online/get/mailMerge/FieldNames");
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
         if (m_UseNonMergeFields) result->addQueryParam(L"useNonMergeFields", *m_UseNonMergeFields);
         if (m_Template) result->setBody(*m_Template);
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Template' is required.");
@@ -8638,14 +9398,16 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > folder,
         const std::shared_ptr< std::wstring > storage,
         const std::shared_ptr< std::wstring > loadEncoding,
-        const std::shared_ptr< std::wstring > password
+        const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword
     ) : 
         m_Name(name),
         m_HyperlinkIndex(hyperlinkIndex),
         m_Folder(folder),
         m_Storage(storage),
         m_LoadEncoding(loadEncoding),
-        m_Password(password)
+        m_Password(password),
+        m_EncryptedPassword(encryptedPassword)
     {
     }
 
@@ -8679,6 +9441,11 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
+    const std::shared_ptr< std::wstring > GetDocumentHyperlinkByIndexRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
+    }
+
     std::shared_ptr< aspose::words::cloud::HttpRequestData > GetDocumentHyperlinkByIndexRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
@@ -8692,6 +9459,7 @@ namespace aspose::words::cloud::requests {
         if (m_Storage) result->addQueryParam(L"storage", *m_Storage);
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
         return result;
     }
 
@@ -8709,12 +9477,14 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::istream > document,
         const std::shared_ptr< int32_t > hyperlinkIndex,
         const std::shared_ptr< std::wstring > loadEncoding,
-        const std::shared_ptr< std::wstring > password
+        const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword
     ) : 
         m_Document(document),
         m_HyperlinkIndex(hyperlinkIndex),
         m_LoadEncoding(loadEncoding),
-        m_Password(password)
+        m_Password(password),
+        m_EncryptedPassword(encryptedPassword)
     {
     }
 
@@ -8738,6 +9508,11 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
+    const std::shared_ptr< std::wstring > GetDocumentHyperlinkByIndexOnlineRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
+    }
+
     std::shared_ptr< aspose::words::cloud::HttpRequestData > GetDocumentHyperlinkByIndexOnlineRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
@@ -8747,6 +9522,7 @@ namespace aspose::words::cloud::requests {
         result->setPathParam(L"{hyperlinkIndex}", *m_HyperlinkIndex);
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
         if (m_Document) result->setBody(*m_Document);
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Document' is required.");
         return result;
@@ -8767,13 +9543,15 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > folder,
         const std::shared_ptr< std::wstring > storage,
         const std::shared_ptr< std::wstring > loadEncoding,
-        const std::shared_ptr< std::wstring > password
+        const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword
     ) : 
         m_Name(name),
         m_Folder(folder),
         m_Storage(storage),
         m_LoadEncoding(loadEncoding),
-        m_Password(password)
+        m_Password(password),
+        m_EncryptedPassword(encryptedPassword)
     {
     }
 
@@ -8802,6 +9580,11 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
+    const std::shared_ptr< std::wstring > GetDocumentHyperlinksRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
+    }
+
     std::shared_ptr< aspose::words::cloud::HttpRequestData > GetDocumentHyperlinksRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
@@ -8813,6 +9596,7 @@ namespace aspose::words::cloud::requests {
         if (m_Storage) result->addQueryParam(L"storage", *m_Storage);
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
         return result;
     }
 
@@ -8829,11 +9613,13 @@ namespace aspose::words::cloud::requests {
     GetDocumentHyperlinksOnlineRequest::GetDocumentHyperlinksOnlineRequest(
         const std::shared_ptr< std::istream > document,
         const std::shared_ptr< std::wstring > loadEncoding,
-        const std::shared_ptr< std::wstring > password
+        const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword
     ) : 
         m_Document(document),
         m_LoadEncoding(loadEncoding),
-        m_Password(password)
+        m_Password(password),
+        m_EncryptedPassword(encryptedPassword)
     {
     }
 
@@ -8852,6 +9638,11 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
+    const std::shared_ptr< std::wstring > GetDocumentHyperlinksOnlineRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
+    }
+
     std::shared_ptr< aspose::words::cloud::HttpRequestData > GetDocumentHyperlinksOnlineRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
@@ -8859,6 +9650,7 @@ namespace aspose::words::cloud::requests {
         result->setPath(L"/words/online/get/hyperlinks");
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
         if (m_Document) result->setBody(*m_Document);
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Document' is required.");
         return result;
@@ -8879,13 +9671,15 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > folder,
         const std::shared_ptr< std::wstring > storage,
         const std::shared_ptr< std::wstring > loadEncoding,
-        const std::shared_ptr< std::wstring > password
+        const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword
     ) : 
         m_Name(name),
         m_Folder(folder),
         m_Storage(storage),
         m_LoadEncoding(loadEncoding),
-        m_Password(password)
+        m_Password(password),
+        m_EncryptedPassword(encryptedPassword)
     {
     }
 
@@ -8914,6 +9708,11 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
+    const std::shared_ptr< std::wstring > GetDocumentPropertiesRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
+    }
+
     std::shared_ptr< aspose::words::cloud::HttpRequestData > GetDocumentPropertiesRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
@@ -8925,6 +9724,7 @@ namespace aspose::words::cloud::requests {
         if (m_Storage) result->addQueryParam(L"storage", *m_Storage);
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
         return result;
     }
 
@@ -8941,11 +9741,13 @@ namespace aspose::words::cloud::requests {
     GetDocumentPropertiesOnlineRequest::GetDocumentPropertiesOnlineRequest(
         const std::shared_ptr< std::istream > document,
         const std::shared_ptr< std::wstring > loadEncoding,
-        const std::shared_ptr< std::wstring > password
+        const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword
     ) : 
         m_Document(document),
         m_LoadEncoding(loadEncoding),
-        m_Password(password)
+        m_Password(password),
+        m_EncryptedPassword(encryptedPassword)
     {
     }
 
@@ -8964,6 +9766,11 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
+    const std::shared_ptr< std::wstring > GetDocumentPropertiesOnlineRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
+    }
+
     std::shared_ptr< aspose::words::cloud::HttpRequestData > GetDocumentPropertiesOnlineRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
@@ -8971,6 +9778,7 @@ namespace aspose::words::cloud::requests {
         result->setPath(L"/words/online/get/documentProperties");
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
         if (m_Document) result->setBody(*m_Document);
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Document' is required.");
         return result;
@@ -8992,14 +9800,16 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > folder,
         const std::shared_ptr< std::wstring > storage,
         const std::shared_ptr< std::wstring > loadEncoding,
-        const std::shared_ptr< std::wstring > password
+        const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword
     ) : 
         m_Name(name),
         m_PropertyName(propertyName),
         m_Folder(folder),
         m_Storage(storage),
         m_LoadEncoding(loadEncoding),
-        m_Password(password)
+        m_Password(password),
+        m_EncryptedPassword(encryptedPassword)
     {
     }
 
@@ -9033,6 +9843,11 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
+    const std::shared_ptr< std::wstring > GetDocumentPropertyRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
+    }
+
     std::shared_ptr< aspose::words::cloud::HttpRequestData > GetDocumentPropertyRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
@@ -9046,6 +9861,7 @@ namespace aspose::words::cloud::requests {
         if (m_Storage) result->addQueryParam(L"storage", *m_Storage);
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
         return result;
     }
 
@@ -9063,12 +9879,14 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::istream > document,
         const std::shared_ptr< std::wstring > propertyName,
         const std::shared_ptr< std::wstring > loadEncoding,
-        const std::shared_ptr< std::wstring > password
+        const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword
     ) : 
         m_Document(document),
         m_PropertyName(propertyName),
         m_LoadEncoding(loadEncoding),
-        m_Password(password)
+        m_Password(password),
+        m_EncryptedPassword(encryptedPassword)
     {
     }
 
@@ -9092,6 +9910,11 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
+    const std::shared_ptr< std::wstring > GetDocumentPropertyOnlineRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
+    }
+
     std::shared_ptr< aspose::words::cloud::HttpRequestData > GetDocumentPropertyOnlineRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
@@ -9101,6 +9924,7 @@ namespace aspose::words::cloud::requests {
         result->setPathParam(L"{propertyName}", *m_PropertyName);
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
         if (m_Document) result->setBody(*m_Document);
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Document' is required.");
         return result;
@@ -9121,13 +9945,15 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > folder,
         const std::shared_ptr< std::wstring > storage,
         const std::shared_ptr< std::wstring > loadEncoding,
-        const std::shared_ptr< std::wstring > password
+        const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword
     ) : 
         m_Name(name),
         m_Folder(folder),
         m_Storage(storage),
         m_LoadEncoding(loadEncoding),
-        m_Password(password)
+        m_Password(password),
+        m_EncryptedPassword(encryptedPassword)
     {
     }
 
@@ -9156,6 +9982,11 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
+    const std::shared_ptr< std::wstring > GetDocumentProtectionRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
+    }
+
     std::shared_ptr< aspose::words::cloud::HttpRequestData > GetDocumentProtectionRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
@@ -9167,6 +9998,7 @@ namespace aspose::words::cloud::requests {
         if (m_Storage) result->addQueryParam(L"storage", *m_Storage);
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
         return result;
     }
 
@@ -9183,11 +10015,13 @@ namespace aspose::words::cloud::requests {
     GetDocumentProtectionOnlineRequest::GetDocumentProtectionOnlineRequest(
         const std::shared_ptr< std::istream > document,
         const std::shared_ptr< std::wstring > loadEncoding,
-        const std::shared_ptr< std::wstring > password
+        const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword
     ) : 
         m_Document(document),
         m_LoadEncoding(loadEncoding),
-        m_Password(password)
+        m_Password(password),
+        m_EncryptedPassword(encryptedPassword)
     {
     }
 
@@ -9206,6 +10040,11 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
+    const std::shared_ptr< std::wstring > GetDocumentProtectionOnlineRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
+    }
+
     std::shared_ptr< aspose::words::cloud::HttpRequestData > GetDocumentProtectionOnlineRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
@@ -9213,6 +10052,7 @@ namespace aspose::words::cloud::requests {
         result->setPath(L"/words/online/get/protection");
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
         if (m_Document) result->setBody(*m_Document);
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Document' is required.");
         return result;
@@ -9234,6 +10074,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > storage,
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword,
         const std::shared_ptr< bool > includeComments,
         const std::shared_ptr< bool > includeFootnotes,
         const std::shared_ptr< bool > includeTextInShapes
@@ -9243,6 +10084,7 @@ namespace aspose::words::cloud::requests {
         m_Storage(storage),
         m_LoadEncoding(loadEncoding),
         m_Password(password),
+        m_EncryptedPassword(encryptedPassword),
         m_IncludeComments(includeComments),
         m_IncludeFootnotes(includeFootnotes),
         m_IncludeTextInShapes(includeTextInShapes)
@@ -9274,6 +10116,11 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
+    const std::shared_ptr< std::wstring > GetDocumentStatisticsRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
+    }
+
     const std::shared_ptr< bool > GetDocumentStatisticsRequest::getIncludeComments() const
     {
         return m_IncludeComments;
@@ -9300,6 +10147,7 @@ namespace aspose::words::cloud::requests {
         if (m_Storage) result->addQueryParam(L"storage", *m_Storage);
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
         if (m_IncludeComments) result->addQueryParam(L"includeComments", *m_IncludeComments);
         if (m_IncludeFootnotes) result->addQueryParam(L"includeFootnotes", *m_IncludeFootnotes);
         if (m_IncludeTextInShapes) result->addQueryParam(L"includeTextInShapes", *m_IncludeTextInShapes);
@@ -9320,6 +10168,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::istream > document,
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword,
         const std::shared_ptr< bool > includeComments,
         const std::shared_ptr< bool > includeFootnotes,
         const std::shared_ptr< bool > includeTextInShapes
@@ -9327,6 +10176,7 @@ namespace aspose::words::cloud::requests {
         m_Document(document),
         m_LoadEncoding(loadEncoding),
         m_Password(password),
+        m_EncryptedPassword(encryptedPassword),
         m_IncludeComments(includeComments),
         m_IncludeFootnotes(includeFootnotes),
         m_IncludeTextInShapes(includeTextInShapes)
@@ -9346,6 +10196,11 @@ namespace aspose::words::cloud::requests {
     const std::shared_ptr< std::wstring > GetDocumentStatisticsOnlineRequest::getPassword() const
     {
         return m_Password;
+    }
+
+    const std::shared_ptr< std::wstring > GetDocumentStatisticsOnlineRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
     }
 
     const std::shared_ptr< bool > GetDocumentStatisticsOnlineRequest::getIncludeComments() const
@@ -9370,6 +10225,7 @@ namespace aspose::words::cloud::requests {
         result->setPath(L"/words/online/get/statistics");
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
         if (m_IncludeComments) result->addQueryParam(L"includeComments", *m_IncludeComments);
         if (m_IncludeFootnotes) result->addQueryParam(L"includeFootnotes", *m_IncludeFootnotes);
         if (m_IncludeTextInShapes) result->addQueryParam(L"includeTextInShapes", *m_IncludeTextInShapes);
@@ -9395,6 +10251,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > storage,
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword,
         const std::shared_ptr< std::wstring > outPath,
         const std::shared_ptr< std::wstring > fontsLocation
     ) : 
@@ -9404,6 +10261,7 @@ namespace aspose::words::cloud::requests {
         m_Storage(storage),
         m_LoadEncoding(loadEncoding),
         m_Password(password),
+        m_EncryptedPassword(encryptedPassword),
         m_OutPath(outPath),
         m_FontsLocation(fontsLocation)
     {
@@ -9439,6 +10297,11 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
+    const std::shared_ptr< std::wstring > GetDocumentWithFormatRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
+    }
+
     const std::shared_ptr< std::wstring > GetDocumentWithFormatRequest::getOutPath() const
     {
         return m_OutPath;
@@ -9462,6 +10325,7 @@ namespace aspose::words::cloud::requests {
         if (m_Storage) result->addQueryParam(L"storage", *m_Storage);
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
         if (m_OutPath) result->addQueryParam(L"outPath", *m_OutPath);
         if (m_FontsLocation) result->addQueryParam(L"fontsLocation", *m_FontsLocation);
         return result;
@@ -9484,7 +10348,8 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > folder,
         const std::shared_ptr< std::wstring > storage,
         const std::shared_ptr< std::wstring > loadEncoding,
-        const std::shared_ptr< std::wstring > password
+        const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword
     ) : 
         m_Name(name),
         m_Index(index),
@@ -9492,7 +10357,8 @@ namespace aspose::words::cloud::requests {
         m_Folder(folder),
         m_Storage(storage),
         m_LoadEncoding(loadEncoding),
-        m_Password(password)
+        m_Password(password),
+        m_EncryptedPassword(encryptedPassword)
     {
     }
 
@@ -9531,6 +10397,11 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
+    const std::shared_ptr< std::wstring > GetFieldRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
+    }
+
     std::shared_ptr< aspose::words::cloud::HttpRequestData > GetFieldRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
@@ -9545,6 +10416,7 @@ namespace aspose::words::cloud::requests {
         if (m_Storage) result->addQueryParam(L"storage", *m_Storage);
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
         return result;
     }
 
@@ -9563,13 +10435,15 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< int32_t > index,
         const std::shared_ptr< std::wstring > nodePath,
         const std::shared_ptr< std::wstring > loadEncoding,
-        const std::shared_ptr< std::wstring > password
+        const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword
     ) : 
         m_Document(document),
         m_Index(index),
         m_NodePath(nodePath),
         m_LoadEncoding(loadEncoding),
-        m_Password(password)
+        m_Password(password),
+        m_EncryptedPassword(encryptedPassword)
     {
     }
 
@@ -9598,6 +10472,11 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
+    const std::shared_ptr< std::wstring > GetFieldOnlineRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
+    }
+
     std::shared_ptr< aspose::words::cloud::HttpRequestData > GetFieldOnlineRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
@@ -9608,6 +10487,7 @@ namespace aspose::words::cloud::requests {
         result->setPathParam(L"{nodePath}", m_NodePath ? *m_NodePath : L"");
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
         if (m_Document) result->setBody(*m_Document);
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Document' is required.");
         return result;
@@ -9629,14 +10509,16 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > folder,
         const std::shared_ptr< std::wstring > storage,
         const std::shared_ptr< std::wstring > loadEncoding,
-        const std::shared_ptr< std::wstring > password
+        const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword
     ) : 
         m_Name(name),
         m_NodePath(nodePath),
         m_Folder(folder),
         m_Storage(storage),
         m_LoadEncoding(loadEncoding),
-        m_Password(password)
+        m_Password(password),
+        m_EncryptedPassword(encryptedPassword)
     {
     }
 
@@ -9670,6 +10552,11 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
+    const std::shared_ptr< std::wstring > GetFieldsRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
+    }
+
     std::shared_ptr< aspose::words::cloud::HttpRequestData > GetFieldsRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
@@ -9682,6 +10569,7 @@ namespace aspose::words::cloud::requests {
         if (m_Storage) result->addQueryParam(L"storage", *m_Storage);
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
         return result;
     }
 
@@ -9699,12 +10587,14 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::istream > document,
         const std::shared_ptr< std::wstring > nodePath,
         const std::shared_ptr< std::wstring > loadEncoding,
-        const std::shared_ptr< std::wstring > password
+        const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword
     ) : 
         m_Document(document),
         m_NodePath(nodePath),
         m_LoadEncoding(loadEncoding),
-        m_Password(password)
+        m_Password(password),
+        m_EncryptedPassword(encryptedPassword)
     {
     }
 
@@ -9728,6 +10618,11 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
+    const std::shared_ptr< std::wstring > GetFieldsOnlineRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
+    }
+
     std::shared_ptr< aspose::words::cloud::HttpRequestData > GetFieldsOnlineRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
@@ -9736,6 +10631,7 @@ namespace aspose::words::cloud::requests {
         result->setPathParam(L"{nodePath}", m_NodePath ? *m_NodePath : L"");
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
         if (m_Document) result->setBody(*m_Document);
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Document' is required.");
         return result;
@@ -9798,7 +10694,8 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > folder,
         const std::shared_ptr< std::wstring > storage,
         const std::shared_ptr< std::wstring > loadEncoding,
-        const std::shared_ptr< std::wstring > password
+        const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword
     ) : 
         m_Name(name),
         m_Index(index),
@@ -9806,7 +10703,8 @@ namespace aspose::words::cloud::requests {
         m_Folder(folder),
         m_Storage(storage),
         m_LoadEncoding(loadEncoding),
-        m_Password(password)
+        m_Password(password),
+        m_EncryptedPassword(encryptedPassword)
     {
     }
 
@@ -9845,6 +10743,11 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
+    const std::shared_ptr< std::wstring > GetFootnoteRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
+    }
+
     std::shared_ptr< aspose::words::cloud::HttpRequestData > GetFootnoteRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
@@ -9859,6 +10762,7 @@ namespace aspose::words::cloud::requests {
         if (m_Storage) result->addQueryParam(L"storage", *m_Storage);
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
         return result;
     }
 
@@ -9877,13 +10781,15 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< int32_t > index,
         const std::shared_ptr< std::wstring > nodePath,
         const std::shared_ptr< std::wstring > loadEncoding,
-        const std::shared_ptr< std::wstring > password
+        const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword
     ) : 
         m_Document(document),
         m_Index(index),
         m_NodePath(nodePath),
         m_LoadEncoding(loadEncoding),
-        m_Password(password)
+        m_Password(password),
+        m_EncryptedPassword(encryptedPassword)
     {
     }
 
@@ -9912,6 +10818,11 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
+    const std::shared_ptr< std::wstring > GetFootnoteOnlineRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
+    }
+
     std::shared_ptr< aspose::words::cloud::HttpRequestData > GetFootnoteOnlineRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
@@ -9922,6 +10833,7 @@ namespace aspose::words::cloud::requests {
         result->setPathParam(L"{nodePath}", m_NodePath ? *m_NodePath : L"");
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
         if (m_Document) result->setBody(*m_Document);
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Document' is required.");
         return result;
@@ -9943,14 +10855,16 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > folder,
         const std::shared_ptr< std::wstring > storage,
         const std::shared_ptr< std::wstring > loadEncoding,
-        const std::shared_ptr< std::wstring > password
+        const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword
     ) : 
         m_Name(name),
         m_NodePath(nodePath),
         m_Folder(folder),
         m_Storage(storage),
         m_LoadEncoding(loadEncoding),
-        m_Password(password)
+        m_Password(password),
+        m_EncryptedPassword(encryptedPassword)
     {
     }
 
@@ -9984,6 +10898,11 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
+    const std::shared_ptr< std::wstring > GetFootnotesRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
+    }
+
     std::shared_ptr< aspose::words::cloud::HttpRequestData > GetFootnotesRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
@@ -9996,6 +10915,7 @@ namespace aspose::words::cloud::requests {
         if (m_Storage) result->addQueryParam(L"storage", *m_Storage);
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
         return result;
     }
 
@@ -10013,12 +10933,14 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::istream > document,
         const std::shared_ptr< std::wstring > nodePath,
         const std::shared_ptr< std::wstring > loadEncoding,
-        const std::shared_ptr< std::wstring > password
+        const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword
     ) : 
         m_Document(document),
         m_NodePath(nodePath),
         m_LoadEncoding(loadEncoding),
-        m_Password(password)
+        m_Password(password),
+        m_EncryptedPassword(encryptedPassword)
     {
     }
 
@@ -10042,6 +10964,11 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
+    const std::shared_ptr< std::wstring > GetFootnotesOnlineRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
+    }
+
     std::shared_ptr< aspose::words::cloud::HttpRequestData > GetFootnotesOnlineRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
@@ -10050,6 +10977,7 @@ namespace aspose::words::cloud::requests {
         result->setPathParam(L"{nodePath}", m_NodePath ? *m_NodePath : L"");
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
         if (m_Document) result->setBody(*m_Document);
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Document' is required.");
         return result;
@@ -10072,7 +11000,8 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > folder,
         const std::shared_ptr< std::wstring > storage,
         const std::shared_ptr< std::wstring > loadEncoding,
-        const std::shared_ptr< std::wstring > password
+        const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword
     ) : 
         m_Name(name),
         m_Index(index),
@@ -10080,7 +11009,8 @@ namespace aspose::words::cloud::requests {
         m_Folder(folder),
         m_Storage(storage),
         m_LoadEncoding(loadEncoding),
-        m_Password(password)
+        m_Password(password),
+        m_EncryptedPassword(encryptedPassword)
     {
     }
 
@@ -10119,6 +11049,11 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
+    const std::shared_ptr< std::wstring > GetFormFieldRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
+    }
+
     std::shared_ptr< aspose::words::cloud::HttpRequestData > GetFormFieldRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
@@ -10133,6 +11068,7 @@ namespace aspose::words::cloud::requests {
         if (m_Storage) result->addQueryParam(L"storage", *m_Storage);
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
         return result;
     }
 
@@ -10151,13 +11087,15 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< int32_t > index,
         const std::shared_ptr< std::wstring > nodePath,
         const std::shared_ptr< std::wstring > loadEncoding,
-        const std::shared_ptr< std::wstring > password
+        const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword
     ) : 
         m_Document(document),
         m_Index(index),
         m_NodePath(nodePath),
         m_LoadEncoding(loadEncoding),
-        m_Password(password)
+        m_Password(password),
+        m_EncryptedPassword(encryptedPassword)
     {
     }
 
@@ -10186,6 +11124,11 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
+    const std::shared_ptr< std::wstring > GetFormFieldOnlineRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
+    }
+
     std::shared_ptr< aspose::words::cloud::HttpRequestData > GetFormFieldOnlineRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
@@ -10196,6 +11139,7 @@ namespace aspose::words::cloud::requests {
         result->setPathParam(L"{nodePath}", m_NodePath ? *m_NodePath : L"");
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
         if (m_Document) result->setBody(*m_Document);
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Document' is required.");
         return result;
@@ -10217,14 +11161,16 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > folder,
         const std::shared_ptr< std::wstring > storage,
         const std::shared_ptr< std::wstring > loadEncoding,
-        const std::shared_ptr< std::wstring > password
+        const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword
     ) : 
         m_Name(name),
         m_NodePath(nodePath),
         m_Folder(folder),
         m_Storage(storage),
         m_LoadEncoding(loadEncoding),
-        m_Password(password)
+        m_Password(password),
+        m_EncryptedPassword(encryptedPassword)
     {
     }
 
@@ -10258,6 +11204,11 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
+    const std::shared_ptr< std::wstring > GetFormFieldsRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
+    }
+
     std::shared_ptr< aspose::words::cloud::HttpRequestData > GetFormFieldsRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
@@ -10270,6 +11221,7 @@ namespace aspose::words::cloud::requests {
         if (m_Storage) result->addQueryParam(L"storage", *m_Storage);
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
         return result;
     }
 
@@ -10287,12 +11239,14 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::istream > document,
         const std::shared_ptr< std::wstring > nodePath,
         const std::shared_ptr< std::wstring > loadEncoding,
-        const std::shared_ptr< std::wstring > password
+        const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword
     ) : 
         m_Document(document),
         m_NodePath(nodePath),
         m_LoadEncoding(loadEncoding),
-        m_Password(password)
+        m_Password(password),
+        m_EncryptedPassword(encryptedPassword)
     {
     }
 
@@ -10316,6 +11270,11 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
+    const std::shared_ptr< std::wstring > GetFormFieldsOnlineRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
+    }
+
     std::shared_ptr< aspose::words::cloud::HttpRequestData > GetFormFieldsOnlineRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
@@ -10324,6 +11283,7 @@ namespace aspose::words::cloud::requests {
         result->setPathParam(L"{nodePath}", m_NodePath ? *m_NodePath : L"");
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
         if (m_Document) result->setBody(*m_Document);
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Document' is required.");
         return result;
@@ -10346,6 +11306,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > storage,
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword,
         const std::shared_ptr< std::wstring > filterByType
     ) : 
         m_Name(name),
@@ -10354,6 +11315,7 @@ namespace aspose::words::cloud::requests {
         m_Storage(storage),
         m_LoadEncoding(loadEncoding),
         m_Password(password),
+        m_EncryptedPassword(encryptedPassword),
         m_FilterByType(filterByType)
     {
     }
@@ -10388,6 +11350,11 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
+    const std::shared_ptr< std::wstring > GetHeaderFooterRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
+    }
+
     const std::shared_ptr< std::wstring > GetHeaderFooterRequest::getFilterByType() const
     {
         return m_FilterByType;
@@ -10406,6 +11373,7 @@ namespace aspose::words::cloud::requests {
         if (m_Storage) result->addQueryParam(L"storage", *m_Storage);
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
         if (m_FilterByType) result->addQueryParam(L"filterByType", *m_FilterByType);
         return result;
     }
@@ -10428,6 +11396,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > storage,
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword,
         const std::shared_ptr< std::wstring > filterByType
     ) : 
         m_Name(name),
@@ -10437,6 +11406,7 @@ namespace aspose::words::cloud::requests {
         m_Storage(storage),
         m_LoadEncoding(loadEncoding),
         m_Password(password),
+        m_EncryptedPassword(encryptedPassword),
         m_FilterByType(filterByType)
     {
     }
@@ -10476,6 +11446,11 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
+    const std::shared_ptr< std::wstring > GetHeaderFooterOfSectionRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
+    }
+
     const std::shared_ptr< std::wstring > GetHeaderFooterOfSectionRequest::getFilterByType() const
     {
         return m_FilterByType;
@@ -10496,6 +11471,7 @@ namespace aspose::words::cloud::requests {
         if (m_Storage) result->addQueryParam(L"storage", *m_Storage);
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
         if (m_FilterByType) result->addQueryParam(L"filterByType", *m_FilterByType);
         return result;
     }
@@ -10516,6 +11492,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< int32_t > sectionIndex,
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword,
         const std::shared_ptr< std::wstring > filterByType
     ) : 
         m_Document(document),
@@ -10523,6 +11500,7 @@ namespace aspose::words::cloud::requests {
         m_SectionIndex(sectionIndex),
         m_LoadEncoding(loadEncoding),
         m_Password(password),
+        m_EncryptedPassword(encryptedPassword),
         m_FilterByType(filterByType)
     {
     }
@@ -10552,6 +11530,11 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
+    const std::shared_ptr< std::wstring > GetHeaderFooterOfSectionOnlineRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
+    }
+
     const std::shared_ptr< std::wstring > GetHeaderFooterOfSectionOnlineRequest::getFilterByType() const
     {
         return m_FilterByType;
@@ -10568,6 +11551,7 @@ namespace aspose::words::cloud::requests {
         result->setPathParam(L"{sectionIndex}", *m_SectionIndex);
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
         if (m_FilterByType) result->addQueryParam(L"filterByType", *m_FilterByType);
         if (m_Document) result->setBody(*m_Document);
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Document' is required.");
@@ -10589,12 +11573,14 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< int32_t > headerFooterIndex,
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword,
         const std::shared_ptr< std::wstring > filterByType
     ) : 
         m_Document(document),
         m_HeaderFooterIndex(headerFooterIndex),
         m_LoadEncoding(loadEncoding),
         m_Password(password),
+        m_EncryptedPassword(encryptedPassword),
         m_FilterByType(filterByType)
     {
     }
@@ -10619,6 +11605,11 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
+    const std::shared_ptr< std::wstring > GetHeaderFooterOnlineRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
+    }
+
     const std::shared_ptr< std::wstring > GetHeaderFooterOnlineRequest::getFilterByType() const
     {
         return m_FilterByType;
@@ -10633,6 +11624,7 @@ namespace aspose::words::cloud::requests {
         result->setPathParam(L"{headerFooterIndex}", *m_HeaderFooterIndex);
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
         if (m_FilterByType) result->addQueryParam(L"filterByType", *m_FilterByType);
         if (m_Document) result->setBody(*m_Document);
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Document' is required.");
@@ -10656,6 +11648,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > storage,
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword,
         const std::shared_ptr< std::wstring > filterByType
     ) : 
         m_Name(name),
@@ -10664,6 +11657,7 @@ namespace aspose::words::cloud::requests {
         m_Storage(storage),
         m_LoadEncoding(loadEncoding),
         m_Password(password),
+        m_EncryptedPassword(encryptedPassword),
         m_FilterByType(filterByType)
     {
     }
@@ -10698,6 +11692,11 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
+    const std::shared_ptr< std::wstring > GetHeaderFootersRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
+    }
+
     const std::shared_ptr< std::wstring > GetHeaderFootersRequest::getFilterByType() const
     {
         return m_FilterByType;
@@ -10716,6 +11715,7 @@ namespace aspose::words::cloud::requests {
         if (m_Storage) result->addQueryParam(L"storage", *m_Storage);
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
         if (m_FilterByType) result->addQueryParam(L"filterByType", *m_FilterByType);
         return result;
     }
@@ -10735,12 +11735,14 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > sectionPath,
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword,
         const std::shared_ptr< std::wstring > filterByType
     ) : 
         m_Document(document),
         m_SectionPath(sectionPath),
         m_LoadEncoding(loadEncoding),
         m_Password(password),
+        m_EncryptedPassword(encryptedPassword),
         m_FilterByType(filterByType)
     {
     }
@@ -10765,6 +11767,11 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
+    const std::shared_ptr< std::wstring > GetHeaderFootersOnlineRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
+    }
+
     const std::shared_ptr< std::wstring > GetHeaderFootersOnlineRequest::getFilterByType() const
     {
         return m_FilterByType;
@@ -10779,6 +11786,7 @@ namespace aspose::words::cloud::requests {
         result->setPathParam(L"{sectionPath}", *m_SectionPath);
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
         if (m_FilterByType) result->addQueryParam(L"filterByType", *m_FilterByType);
         if (m_Document) result->setBody(*m_Document);
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Document' is required.");
@@ -10825,14 +11833,16 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > folder,
         const std::shared_ptr< std::wstring > storage,
         const std::shared_ptr< std::wstring > loadEncoding,
-        const std::shared_ptr< std::wstring > password
+        const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword
     ) : 
         m_Name(name),
         m_ListId(listId),
         m_Folder(folder),
         m_Storage(storage),
         m_LoadEncoding(loadEncoding),
-        m_Password(password)
+        m_Password(password),
+        m_EncryptedPassword(encryptedPassword)
     {
     }
 
@@ -10866,6 +11876,11 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
+    const std::shared_ptr< std::wstring > GetListRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
+    }
+
     std::shared_ptr< aspose::words::cloud::HttpRequestData > GetListRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
@@ -10879,6 +11894,7 @@ namespace aspose::words::cloud::requests {
         if (m_Storage) result->addQueryParam(L"storage", *m_Storage);
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
         return result;
     }
 
@@ -10896,12 +11912,14 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::istream > document,
         const std::shared_ptr< int32_t > listId,
         const std::shared_ptr< std::wstring > loadEncoding,
-        const std::shared_ptr< std::wstring > password
+        const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword
     ) : 
         m_Document(document),
         m_ListId(listId),
         m_LoadEncoding(loadEncoding),
-        m_Password(password)
+        m_Password(password),
+        m_EncryptedPassword(encryptedPassword)
     {
     }
 
@@ -10925,6 +11943,11 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
+    const std::shared_ptr< std::wstring > GetListOnlineRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
+    }
+
     std::shared_ptr< aspose::words::cloud::HttpRequestData > GetListOnlineRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
@@ -10934,6 +11957,7 @@ namespace aspose::words::cloud::requests {
         result->setPathParam(L"{listId}", *m_ListId);
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
         if (m_Document) result->setBody(*m_Document);
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Document' is required.");
         return result;
@@ -10954,13 +11978,15 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > folder,
         const std::shared_ptr< std::wstring > storage,
         const std::shared_ptr< std::wstring > loadEncoding,
-        const std::shared_ptr< std::wstring > password
+        const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword
     ) : 
         m_Name(name),
         m_Folder(folder),
         m_Storage(storage),
         m_LoadEncoding(loadEncoding),
-        m_Password(password)
+        m_Password(password),
+        m_EncryptedPassword(encryptedPassword)
     {
     }
 
@@ -10989,6 +12015,11 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
+    const std::shared_ptr< std::wstring > GetListsRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
+    }
+
     std::shared_ptr< aspose::words::cloud::HttpRequestData > GetListsRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
@@ -11000,6 +12031,7 @@ namespace aspose::words::cloud::requests {
         if (m_Storage) result->addQueryParam(L"storage", *m_Storage);
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
         return result;
     }
 
@@ -11016,11 +12048,13 @@ namespace aspose::words::cloud::requests {
     GetListsOnlineRequest::GetListsOnlineRequest(
         const std::shared_ptr< std::istream > document,
         const std::shared_ptr< std::wstring > loadEncoding,
-        const std::shared_ptr< std::wstring > password
+        const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword
     ) : 
         m_Document(document),
         m_LoadEncoding(loadEncoding),
-        m_Password(password)
+        m_Password(password),
+        m_EncryptedPassword(encryptedPassword)
     {
     }
 
@@ -11039,6 +12073,11 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
+    const std::shared_ptr< std::wstring > GetListsOnlineRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
+    }
+
     std::shared_ptr< aspose::words::cloud::HttpRequestData > GetListsOnlineRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
@@ -11046,6 +12085,7 @@ namespace aspose::words::cloud::requests {
         result->setPath(L"/words/online/get/lists");
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
         if (m_Document) result->setBody(*m_Document);
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Document' is required.");
         return result;
@@ -11068,7 +12108,8 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > folder,
         const std::shared_ptr< std::wstring > storage,
         const std::shared_ptr< std::wstring > loadEncoding,
-        const std::shared_ptr< std::wstring > password
+        const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword
     ) : 
         m_Name(name),
         m_Index(index),
@@ -11076,7 +12117,8 @@ namespace aspose::words::cloud::requests {
         m_Folder(folder),
         m_Storage(storage),
         m_LoadEncoding(loadEncoding),
-        m_Password(password)
+        m_Password(password),
+        m_EncryptedPassword(encryptedPassword)
     {
     }
 
@@ -11115,6 +12157,11 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
+    const std::shared_ptr< std::wstring > GetOfficeMathObjectRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
+    }
+
     std::shared_ptr< aspose::words::cloud::HttpRequestData > GetOfficeMathObjectRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
@@ -11129,6 +12176,7 @@ namespace aspose::words::cloud::requests {
         if (m_Storage) result->addQueryParam(L"storage", *m_Storage);
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
         return result;
     }
 
@@ -11147,13 +12195,15 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< int32_t > index,
         const std::shared_ptr< std::wstring > nodePath,
         const std::shared_ptr< std::wstring > loadEncoding,
-        const std::shared_ptr< std::wstring > password
+        const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword
     ) : 
         m_Document(document),
         m_Index(index),
         m_NodePath(nodePath),
         m_LoadEncoding(loadEncoding),
-        m_Password(password)
+        m_Password(password),
+        m_EncryptedPassword(encryptedPassword)
     {
     }
 
@@ -11182,6 +12232,11 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
+    const std::shared_ptr< std::wstring > GetOfficeMathObjectOnlineRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
+    }
+
     std::shared_ptr< aspose::words::cloud::HttpRequestData > GetOfficeMathObjectOnlineRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
@@ -11192,6 +12247,7 @@ namespace aspose::words::cloud::requests {
         result->setPathParam(L"{nodePath}", m_NodePath ? *m_NodePath : L"");
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
         if (m_Document) result->setBody(*m_Document);
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Document' is required.");
         return result;
@@ -11213,14 +12269,16 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > folder,
         const std::shared_ptr< std::wstring > storage,
         const std::shared_ptr< std::wstring > loadEncoding,
-        const std::shared_ptr< std::wstring > password
+        const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword
     ) : 
         m_Name(name),
         m_NodePath(nodePath),
         m_Folder(folder),
         m_Storage(storage),
         m_LoadEncoding(loadEncoding),
-        m_Password(password)
+        m_Password(password),
+        m_EncryptedPassword(encryptedPassword)
     {
     }
 
@@ -11254,6 +12312,11 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
+    const std::shared_ptr< std::wstring > GetOfficeMathObjectsRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
+    }
+
     std::shared_ptr< aspose::words::cloud::HttpRequestData > GetOfficeMathObjectsRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
@@ -11266,6 +12329,7 @@ namespace aspose::words::cloud::requests {
         if (m_Storage) result->addQueryParam(L"storage", *m_Storage);
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
         return result;
     }
 
@@ -11283,12 +12347,14 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::istream > document,
         const std::shared_ptr< std::wstring > nodePath,
         const std::shared_ptr< std::wstring > loadEncoding,
-        const std::shared_ptr< std::wstring > password
+        const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword
     ) : 
         m_Document(document),
         m_NodePath(nodePath),
         m_LoadEncoding(loadEncoding),
-        m_Password(password)
+        m_Password(password),
+        m_EncryptedPassword(encryptedPassword)
     {
     }
 
@@ -11312,6 +12378,11 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
+    const std::shared_ptr< std::wstring > GetOfficeMathObjectsOnlineRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
+    }
+
     std::shared_ptr< aspose::words::cloud::HttpRequestData > GetOfficeMathObjectsOnlineRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
@@ -11320,6 +12391,7 @@ namespace aspose::words::cloud::requests {
         result->setPathParam(L"{nodePath}", m_NodePath ? *m_NodePath : L"");
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
         if (m_Document) result->setBody(*m_Document);
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Document' is required.");
         return result;
@@ -11342,7 +12414,8 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > folder,
         const std::shared_ptr< std::wstring > storage,
         const std::shared_ptr< std::wstring > loadEncoding,
-        const std::shared_ptr< std::wstring > password
+        const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword
     ) : 
         m_Name(name),
         m_Index(index),
@@ -11350,7 +12423,8 @@ namespace aspose::words::cloud::requests {
         m_Folder(folder),
         m_Storage(storage),
         m_LoadEncoding(loadEncoding),
-        m_Password(password)
+        m_Password(password),
+        m_EncryptedPassword(encryptedPassword)
     {
     }
 
@@ -11389,6 +12463,11 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
+    const std::shared_ptr< std::wstring > GetParagraphRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
+    }
+
     std::shared_ptr< aspose::words::cloud::HttpRequestData > GetParagraphRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
@@ -11403,6 +12482,7 @@ namespace aspose::words::cloud::requests {
         if (m_Storage) result->addQueryParam(L"storage", *m_Storage);
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
         return result;
     }
 
@@ -11423,7 +12503,8 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > folder,
         const std::shared_ptr< std::wstring > storage,
         const std::shared_ptr< std::wstring > loadEncoding,
-        const std::shared_ptr< std::wstring > password
+        const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword
     ) : 
         m_Name(name),
         m_Index(index),
@@ -11431,7 +12512,8 @@ namespace aspose::words::cloud::requests {
         m_Folder(folder),
         m_Storage(storage),
         m_LoadEncoding(loadEncoding),
-        m_Password(password)
+        m_Password(password),
+        m_EncryptedPassword(encryptedPassword)
     {
     }
 
@@ -11470,6 +12552,11 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
+    const std::shared_ptr< std::wstring > GetParagraphFormatRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
+    }
+
     std::shared_ptr< aspose::words::cloud::HttpRequestData > GetParagraphFormatRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
@@ -11484,6 +12571,7 @@ namespace aspose::words::cloud::requests {
         if (m_Storage) result->addQueryParam(L"storage", *m_Storage);
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
         return result;
     }
 
@@ -11502,13 +12590,15 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< int32_t > index,
         const std::shared_ptr< std::wstring > nodePath,
         const std::shared_ptr< std::wstring > loadEncoding,
-        const std::shared_ptr< std::wstring > password
+        const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword
     ) : 
         m_Document(document),
         m_Index(index),
         m_NodePath(nodePath),
         m_LoadEncoding(loadEncoding),
-        m_Password(password)
+        m_Password(password),
+        m_EncryptedPassword(encryptedPassword)
     {
     }
 
@@ -11537,6 +12627,11 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
+    const std::shared_ptr< std::wstring > GetParagraphFormatOnlineRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
+    }
+
     std::shared_ptr< aspose::words::cloud::HttpRequestData > GetParagraphFormatOnlineRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
@@ -11547,6 +12642,7 @@ namespace aspose::words::cloud::requests {
         result->setPathParam(L"{nodePath}", m_NodePath ? *m_NodePath : L"");
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
         if (m_Document) result->setBody(*m_Document);
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Document' is required.");
         return result;
@@ -11569,7 +12665,8 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > folder,
         const std::shared_ptr< std::wstring > storage,
         const std::shared_ptr< std::wstring > loadEncoding,
-        const std::shared_ptr< std::wstring > password
+        const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword
     ) : 
         m_Name(name),
         m_Index(index),
@@ -11577,7 +12674,8 @@ namespace aspose::words::cloud::requests {
         m_Folder(folder),
         m_Storage(storage),
         m_LoadEncoding(loadEncoding),
-        m_Password(password)
+        m_Password(password),
+        m_EncryptedPassword(encryptedPassword)
     {
     }
 
@@ -11616,6 +12714,11 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
+    const std::shared_ptr< std::wstring > GetParagraphListFormatRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
+    }
+
     std::shared_ptr< aspose::words::cloud::HttpRequestData > GetParagraphListFormatRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
@@ -11630,6 +12733,7 @@ namespace aspose::words::cloud::requests {
         if (m_Storage) result->addQueryParam(L"storage", *m_Storage);
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
         return result;
     }
 
@@ -11648,13 +12752,15 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< int32_t > index,
         const std::shared_ptr< std::wstring > nodePath,
         const std::shared_ptr< std::wstring > loadEncoding,
-        const std::shared_ptr< std::wstring > password
+        const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword
     ) : 
         m_Document(document),
         m_Index(index),
         m_NodePath(nodePath),
         m_LoadEncoding(loadEncoding),
-        m_Password(password)
+        m_Password(password),
+        m_EncryptedPassword(encryptedPassword)
     {
     }
 
@@ -11683,6 +12789,11 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
+    const std::shared_ptr< std::wstring > GetParagraphListFormatOnlineRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
+    }
+
     std::shared_ptr< aspose::words::cloud::HttpRequestData > GetParagraphListFormatOnlineRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
@@ -11693,6 +12804,7 @@ namespace aspose::words::cloud::requests {
         result->setPathParam(L"{nodePath}", m_NodePath ? *m_NodePath : L"");
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
         if (m_Document) result->setBody(*m_Document);
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Document' is required.");
         return result;
@@ -11713,13 +12825,15 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< int32_t > index,
         const std::shared_ptr< std::wstring > nodePath,
         const std::shared_ptr< std::wstring > loadEncoding,
-        const std::shared_ptr< std::wstring > password
+        const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword
     ) : 
         m_Document(document),
         m_Index(index),
         m_NodePath(nodePath),
         m_LoadEncoding(loadEncoding),
-        m_Password(password)
+        m_Password(password),
+        m_EncryptedPassword(encryptedPassword)
     {
     }
 
@@ -11748,6 +12862,11 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
+    const std::shared_ptr< std::wstring > GetParagraphOnlineRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
+    }
+
     std::shared_ptr< aspose::words::cloud::HttpRequestData > GetParagraphOnlineRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
@@ -11758,6 +12877,7 @@ namespace aspose::words::cloud::requests {
         result->setPathParam(L"{nodePath}", m_NodePath ? *m_NodePath : L"");
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
         if (m_Document) result->setBody(*m_Document);
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Document' is required.");
         return result;
@@ -11779,14 +12899,16 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > folder,
         const std::shared_ptr< std::wstring > storage,
         const std::shared_ptr< std::wstring > loadEncoding,
-        const std::shared_ptr< std::wstring > password
+        const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword
     ) : 
         m_Name(name),
         m_NodePath(nodePath),
         m_Folder(folder),
         m_Storage(storage),
         m_LoadEncoding(loadEncoding),
-        m_Password(password)
+        m_Password(password),
+        m_EncryptedPassword(encryptedPassword)
     {
     }
 
@@ -11820,6 +12942,11 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
+    const std::shared_ptr< std::wstring > GetParagraphsRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
+    }
+
     std::shared_ptr< aspose::words::cloud::HttpRequestData > GetParagraphsRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
@@ -11832,6 +12959,7 @@ namespace aspose::words::cloud::requests {
         if (m_Storage) result->addQueryParam(L"storage", *m_Storage);
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
         return result;
     }
 
@@ -11849,12 +12977,14 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::istream > document,
         const std::shared_ptr< std::wstring > nodePath,
         const std::shared_ptr< std::wstring > loadEncoding,
-        const std::shared_ptr< std::wstring > password
+        const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword
     ) : 
         m_Document(document),
         m_NodePath(nodePath),
         m_LoadEncoding(loadEncoding),
-        m_Password(password)
+        m_Password(password),
+        m_EncryptedPassword(encryptedPassword)
     {
     }
 
@@ -11878,6 +13008,11 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
+    const std::shared_ptr< std::wstring > GetParagraphsOnlineRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
+    }
+
     std::shared_ptr< aspose::words::cloud::HttpRequestData > GetParagraphsOnlineRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
@@ -11886,6 +13021,7 @@ namespace aspose::words::cloud::requests {
         result->setPathParam(L"{nodePath}", m_NodePath ? *m_NodePath : L"");
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
         if (m_Document) result->setBody(*m_Document);
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Document' is required.");
         return result;
@@ -11908,7 +13044,8 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > folder,
         const std::shared_ptr< std::wstring > storage,
         const std::shared_ptr< std::wstring > loadEncoding,
-        const std::shared_ptr< std::wstring > password
+        const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword
     ) : 
         m_Name(name),
         m_Index(index),
@@ -11916,7 +13053,8 @@ namespace aspose::words::cloud::requests {
         m_Folder(folder),
         m_Storage(storage),
         m_LoadEncoding(loadEncoding),
-        m_Password(password)
+        m_Password(password),
+        m_EncryptedPassword(encryptedPassword)
     {
     }
 
@@ -11955,6 +13093,11 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
+    const std::shared_ptr< std::wstring > GetParagraphTabStopsRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
+    }
+
     std::shared_ptr< aspose::words::cloud::HttpRequestData > GetParagraphTabStopsRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
@@ -11969,6 +13112,7 @@ namespace aspose::words::cloud::requests {
         if (m_Storage) result->addQueryParam(L"storage", *m_Storage);
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
         return result;
     }
 
@@ -11987,13 +13131,15 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< int32_t > index,
         const std::shared_ptr< std::wstring > nodePath,
         const std::shared_ptr< std::wstring > loadEncoding,
-        const std::shared_ptr< std::wstring > password
+        const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword
     ) : 
         m_Document(document),
         m_Index(index),
         m_NodePath(nodePath),
         m_LoadEncoding(loadEncoding),
-        m_Password(password)
+        m_Password(password),
+        m_EncryptedPassword(encryptedPassword)
     {
     }
 
@@ -12022,6 +13168,11 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
+    const std::shared_ptr< std::wstring > GetParagraphTabStopsOnlineRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
+    }
+
     std::shared_ptr< aspose::words::cloud::HttpRequestData > GetParagraphTabStopsOnlineRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
@@ -12032,6 +13183,7 @@ namespace aspose::words::cloud::requests {
         result->setPathParam(L"{nodePath}", m_NodePath ? *m_NodePath : L"");
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
         if (m_Document) result->setBody(*m_Document);
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Document' is required.");
         return result;
@@ -12078,7 +13230,8 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > folder,
         const std::shared_ptr< std::wstring > storage,
         const std::shared_ptr< std::wstring > loadEncoding,
-        const std::shared_ptr< std::wstring > password
+        const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword
     ) : 
         m_Name(name),
         m_RangeStartIdentifier(rangeStartIdentifier),
@@ -12086,7 +13239,8 @@ namespace aspose::words::cloud::requests {
         m_Folder(folder),
         m_Storage(storage),
         m_LoadEncoding(loadEncoding),
-        m_Password(password)
+        m_Password(password),
+        m_EncryptedPassword(encryptedPassword)
     {
     }
 
@@ -12125,6 +13279,11 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
+    const std::shared_ptr< std::wstring > GetRangeTextRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
+    }
+
     std::shared_ptr< aspose::words::cloud::HttpRequestData > GetRangeTextRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
@@ -12139,6 +13298,7 @@ namespace aspose::words::cloud::requests {
         if (m_Storage) result->addQueryParam(L"storage", *m_Storage);
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
         return result;
     }
 
@@ -12157,13 +13317,15 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > rangeStartIdentifier,
         const std::shared_ptr< std::wstring > rangeEndIdentifier,
         const std::shared_ptr< std::wstring > loadEncoding,
-        const std::shared_ptr< std::wstring > password
+        const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword
     ) : 
         m_Document(document),
         m_RangeStartIdentifier(rangeStartIdentifier),
         m_RangeEndIdentifier(rangeEndIdentifier),
         m_LoadEncoding(loadEncoding),
-        m_Password(password)
+        m_Password(password),
+        m_EncryptedPassword(encryptedPassword)
     {
     }
 
@@ -12192,6 +13354,11 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
+    const std::shared_ptr< std::wstring > GetRangeTextOnlineRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
+    }
+
     std::shared_ptr< aspose::words::cloud::HttpRequestData > GetRangeTextOnlineRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
@@ -12202,6 +13369,7 @@ namespace aspose::words::cloud::requests {
         result->setPathParam(L"{rangeEndIdentifier}", m_RangeEndIdentifier ? *m_RangeEndIdentifier : L"");
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
         if (m_Document) result->setBody(*m_Document);
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Document' is required.");
         return result;
@@ -12224,7 +13392,8 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > folder,
         const std::shared_ptr< std::wstring > storage,
         const std::shared_ptr< std::wstring > loadEncoding,
-        const std::shared_ptr< std::wstring > password
+        const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword
     ) : 
         m_Name(name),
         m_ParagraphPath(paragraphPath),
@@ -12232,7 +13401,8 @@ namespace aspose::words::cloud::requests {
         m_Folder(folder),
         m_Storage(storage),
         m_LoadEncoding(loadEncoding),
-        m_Password(password)
+        m_Password(password),
+        m_EncryptedPassword(encryptedPassword)
     {
     }
 
@@ -12271,6 +13441,11 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
+    const std::shared_ptr< std::wstring > GetRunRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
+    }
+
     std::shared_ptr< aspose::words::cloud::HttpRequestData > GetRunRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
@@ -12286,6 +13461,7 @@ namespace aspose::words::cloud::requests {
         if (m_Storage) result->addQueryParam(L"storage", *m_Storage);
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
         return result;
     }
 
@@ -12306,7 +13482,8 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > folder,
         const std::shared_ptr< std::wstring > storage,
         const std::shared_ptr< std::wstring > loadEncoding,
-        const std::shared_ptr< std::wstring > password
+        const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword
     ) : 
         m_Name(name),
         m_ParagraphPath(paragraphPath),
@@ -12314,7 +13491,8 @@ namespace aspose::words::cloud::requests {
         m_Folder(folder),
         m_Storage(storage),
         m_LoadEncoding(loadEncoding),
-        m_Password(password)
+        m_Password(password),
+        m_EncryptedPassword(encryptedPassword)
     {
     }
 
@@ -12353,6 +13531,11 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
+    const std::shared_ptr< std::wstring > GetRunFontRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
+    }
+
     std::shared_ptr< aspose::words::cloud::HttpRequestData > GetRunFontRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
@@ -12368,6 +13551,7 @@ namespace aspose::words::cloud::requests {
         if (m_Storage) result->addQueryParam(L"storage", *m_Storage);
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
         return result;
     }
 
@@ -12386,13 +13570,15 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > paragraphPath,
         const std::shared_ptr< int32_t > index,
         const std::shared_ptr< std::wstring > loadEncoding,
-        const std::shared_ptr< std::wstring > password
+        const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword
     ) : 
         m_Document(document),
         m_ParagraphPath(paragraphPath),
         m_Index(index),
         m_LoadEncoding(loadEncoding),
-        m_Password(password)
+        m_Password(password),
+        m_EncryptedPassword(encryptedPassword)
     {
     }
 
@@ -12421,6 +13607,11 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
+    const std::shared_ptr< std::wstring > GetRunFontOnlineRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
+    }
+
     std::shared_ptr< aspose::words::cloud::HttpRequestData > GetRunFontOnlineRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
@@ -12432,6 +13623,7 @@ namespace aspose::words::cloud::requests {
         result->setPathParam(L"{index}", *m_Index);
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
         if (m_Document) result->setBody(*m_Document);
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Document' is required.");
         return result;
@@ -12452,13 +13644,15 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > paragraphPath,
         const std::shared_ptr< int32_t > index,
         const std::shared_ptr< std::wstring > loadEncoding,
-        const std::shared_ptr< std::wstring > password
+        const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword
     ) : 
         m_Document(document),
         m_ParagraphPath(paragraphPath),
         m_Index(index),
         m_LoadEncoding(loadEncoding),
-        m_Password(password)
+        m_Password(password),
+        m_EncryptedPassword(encryptedPassword)
     {
     }
 
@@ -12487,6 +13681,11 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
+    const std::shared_ptr< std::wstring > GetRunOnlineRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
+    }
+
     std::shared_ptr< aspose::words::cloud::HttpRequestData > GetRunOnlineRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
@@ -12498,6 +13697,7 @@ namespace aspose::words::cloud::requests {
         result->setPathParam(L"{index}", *m_Index);
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
         if (m_Document) result->setBody(*m_Document);
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Document' is required.");
         return result;
@@ -12519,14 +13719,16 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > folder,
         const std::shared_ptr< std::wstring > storage,
         const std::shared_ptr< std::wstring > loadEncoding,
-        const std::shared_ptr< std::wstring > password
+        const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword
     ) : 
         m_Name(name),
         m_ParagraphPath(paragraphPath),
         m_Folder(folder),
         m_Storage(storage),
         m_LoadEncoding(loadEncoding),
-        m_Password(password)
+        m_Password(password),
+        m_EncryptedPassword(encryptedPassword)
     {
     }
 
@@ -12560,6 +13762,11 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
+    const std::shared_ptr< std::wstring > GetRunsRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
+    }
+
     std::shared_ptr< aspose::words::cloud::HttpRequestData > GetRunsRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
@@ -12573,6 +13780,7 @@ namespace aspose::words::cloud::requests {
         if (m_Storage) result->addQueryParam(L"storage", *m_Storage);
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
         return result;
     }
 
@@ -12590,12 +13798,14 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::istream > document,
         const std::shared_ptr< std::wstring > paragraphPath,
         const std::shared_ptr< std::wstring > loadEncoding,
-        const std::shared_ptr< std::wstring > password
+        const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword
     ) : 
         m_Document(document),
         m_ParagraphPath(paragraphPath),
         m_LoadEncoding(loadEncoding),
-        m_Password(password)
+        m_Password(password),
+        m_EncryptedPassword(encryptedPassword)
     {
     }
 
@@ -12619,6 +13829,11 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
+    const std::shared_ptr< std::wstring > GetRunsOnlineRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
+    }
+
     std::shared_ptr< aspose::words::cloud::HttpRequestData > GetRunsOnlineRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
@@ -12628,6 +13843,7 @@ namespace aspose::words::cloud::requests {
         result->setPathParam(L"{paragraphPath}", *m_ParagraphPath);
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
         if (m_Document) result->setBody(*m_Document);
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Document' is required.");
         return result;
@@ -12649,14 +13865,16 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > folder,
         const std::shared_ptr< std::wstring > storage,
         const std::shared_ptr< std::wstring > loadEncoding,
-        const std::shared_ptr< std::wstring > password
+        const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword
     ) : 
         m_Name(name),
         m_SectionIndex(sectionIndex),
         m_Folder(folder),
         m_Storage(storage),
         m_LoadEncoding(loadEncoding),
-        m_Password(password)
+        m_Password(password),
+        m_EncryptedPassword(encryptedPassword)
     {
     }
 
@@ -12690,6 +13908,11 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
+    const std::shared_ptr< std::wstring > GetSectionRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
+    }
+
     std::shared_ptr< aspose::words::cloud::HttpRequestData > GetSectionRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
@@ -12703,6 +13926,7 @@ namespace aspose::words::cloud::requests {
         if (m_Storage) result->addQueryParam(L"storage", *m_Storage);
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
         return result;
     }
 
@@ -12720,12 +13944,14 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::istream > document,
         const std::shared_ptr< int32_t > sectionIndex,
         const std::shared_ptr< std::wstring > loadEncoding,
-        const std::shared_ptr< std::wstring > password
+        const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword
     ) : 
         m_Document(document),
         m_SectionIndex(sectionIndex),
         m_LoadEncoding(loadEncoding),
-        m_Password(password)
+        m_Password(password),
+        m_EncryptedPassword(encryptedPassword)
     {
     }
 
@@ -12749,6 +13975,11 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
+    const std::shared_ptr< std::wstring > GetSectionOnlineRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
+    }
+
     std::shared_ptr< aspose::words::cloud::HttpRequestData > GetSectionOnlineRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
@@ -12758,6 +13989,7 @@ namespace aspose::words::cloud::requests {
         result->setPathParam(L"{sectionIndex}", *m_SectionIndex);
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
         if (m_Document) result->setBody(*m_Document);
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Document' is required.");
         return result;
@@ -12779,14 +14011,16 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > folder,
         const std::shared_ptr< std::wstring > storage,
         const std::shared_ptr< std::wstring > loadEncoding,
-        const std::shared_ptr< std::wstring > password
+        const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword
     ) : 
         m_Name(name),
         m_SectionIndex(sectionIndex),
         m_Folder(folder),
         m_Storage(storage),
         m_LoadEncoding(loadEncoding),
-        m_Password(password)
+        m_Password(password),
+        m_EncryptedPassword(encryptedPassword)
     {
     }
 
@@ -12820,6 +14054,11 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
+    const std::shared_ptr< std::wstring > GetSectionPageSetupRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
+    }
+
     std::shared_ptr< aspose::words::cloud::HttpRequestData > GetSectionPageSetupRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
@@ -12833,6 +14072,7 @@ namespace aspose::words::cloud::requests {
         if (m_Storage) result->addQueryParam(L"storage", *m_Storage);
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
         return result;
     }
 
@@ -12850,12 +14090,14 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::istream > document,
         const std::shared_ptr< int32_t > sectionIndex,
         const std::shared_ptr< std::wstring > loadEncoding,
-        const std::shared_ptr< std::wstring > password
+        const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword
     ) : 
         m_Document(document),
         m_SectionIndex(sectionIndex),
         m_LoadEncoding(loadEncoding),
-        m_Password(password)
+        m_Password(password),
+        m_EncryptedPassword(encryptedPassword)
     {
     }
 
@@ -12879,6 +14121,11 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
+    const std::shared_ptr< std::wstring > GetSectionPageSetupOnlineRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
+    }
+
     std::shared_ptr< aspose::words::cloud::HttpRequestData > GetSectionPageSetupOnlineRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
@@ -12888,6 +14135,7 @@ namespace aspose::words::cloud::requests {
         result->setPathParam(L"{sectionIndex}", *m_SectionIndex);
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
         if (m_Document) result->setBody(*m_Document);
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Document' is required.");
         return result;
@@ -12908,13 +14156,15 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > folder,
         const std::shared_ptr< std::wstring > storage,
         const std::shared_ptr< std::wstring > loadEncoding,
-        const std::shared_ptr< std::wstring > password
+        const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword
     ) : 
         m_Name(name),
         m_Folder(folder),
         m_Storage(storage),
         m_LoadEncoding(loadEncoding),
-        m_Password(password)
+        m_Password(password),
+        m_EncryptedPassword(encryptedPassword)
     {
     }
 
@@ -12943,6 +14193,11 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
+    const std::shared_ptr< std::wstring > GetSectionsRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
+    }
+
     std::shared_ptr< aspose::words::cloud::HttpRequestData > GetSectionsRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
@@ -12954,6 +14209,7 @@ namespace aspose::words::cloud::requests {
         if (m_Storage) result->addQueryParam(L"storage", *m_Storage);
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
         return result;
     }
 
@@ -12970,11 +14226,13 @@ namespace aspose::words::cloud::requests {
     GetSectionsOnlineRequest::GetSectionsOnlineRequest(
         const std::shared_ptr< std::istream > document,
         const std::shared_ptr< std::wstring > loadEncoding,
-        const std::shared_ptr< std::wstring > password
+        const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword
     ) : 
         m_Document(document),
         m_LoadEncoding(loadEncoding),
-        m_Password(password)
+        m_Password(password),
+        m_EncryptedPassword(encryptedPassword)
     {
     }
 
@@ -12993,6 +14251,11 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
+    const std::shared_ptr< std::wstring > GetSectionsOnlineRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
+    }
+
     std::shared_ptr< aspose::words::cloud::HttpRequestData > GetSectionsOnlineRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
@@ -13000,6 +14263,7 @@ namespace aspose::words::cloud::requests {
         result->setPath(L"/words/online/get/sections");
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
         if (m_Document) result->setBody(*m_Document);
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Document' is required.");
         return result;
@@ -13021,14 +14285,16 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > folder,
         const std::shared_ptr< std::wstring > storage,
         const std::shared_ptr< std::wstring > loadEncoding,
-        const std::shared_ptr< std::wstring > password
+        const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword
     ) : 
         m_Name(name),
         m_StyleName(styleName),
         m_Folder(folder),
         m_Storage(storage),
         m_LoadEncoding(loadEncoding),
-        m_Password(password)
+        m_Password(password),
+        m_EncryptedPassword(encryptedPassword)
     {
     }
 
@@ -13062,6 +14328,11 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
+    const std::shared_ptr< std::wstring > GetStyleRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
+    }
+
     std::shared_ptr< aspose::words::cloud::HttpRequestData > GetStyleRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
@@ -13075,6 +14346,7 @@ namespace aspose::words::cloud::requests {
         if (m_Storage) result->addQueryParam(L"storage", *m_Storage);
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
         return result;
     }
 
@@ -13094,14 +14366,16 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > folder,
         const std::shared_ptr< std::wstring > storage,
         const std::shared_ptr< std::wstring > loadEncoding,
-        const std::shared_ptr< std::wstring > password
+        const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword
     ) : 
         m_Name(name),
         m_StyledNodePath(styledNodePath),
         m_Folder(folder),
         m_Storage(storage),
         m_LoadEncoding(loadEncoding),
-        m_Password(password)
+        m_Password(password),
+        m_EncryptedPassword(encryptedPassword)
     {
     }
 
@@ -13135,6 +14409,11 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
+    const std::shared_ptr< std::wstring > GetStyleFromDocumentElementRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
+    }
+
     std::shared_ptr< aspose::words::cloud::HttpRequestData > GetStyleFromDocumentElementRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
@@ -13148,6 +14427,7 @@ namespace aspose::words::cloud::requests {
         if (m_Storage) result->addQueryParam(L"storage", *m_Storage);
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
         return result;
     }
 
@@ -13165,12 +14445,14 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::istream > document,
         const std::shared_ptr< std::wstring > styledNodePath,
         const std::shared_ptr< std::wstring > loadEncoding,
-        const std::shared_ptr< std::wstring > password
+        const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword
     ) : 
         m_Document(document),
         m_StyledNodePath(styledNodePath),
         m_LoadEncoding(loadEncoding),
-        m_Password(password)
+        m_Password(password),
+        m_EncryptedPassword(encryptedPassword)
     {
     }
 
@@ -13194,6 +14476,11 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
+    const std::shared_ptr< std::wstring > GetStyleFromDocumentElementOnlineRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
+    }
+
     std::shared_ptr< aspose::words::cloud::HttpRequestData > GetStyleFromDocumentElementOnlineRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
@@ -13203,6 +14490,7 @@ namespace aspose::words::cloud::requests {
         result->setPathParam(L"{styledNodePath}", *m_StyledNodePath);
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
         if (m_Document) result->setBody(*m_Document);
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Document' is required.");
         return result;
@@ -13222,12 +14510,14 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::istream > document,
         const std::shared_ptr< std::wstring > styleName,
         const std::shared_ptr< std::wstring > loadEncoding,
-        const std::shared_ptr< std::wstring > password
+        const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword
     ) : 
         m_Document(document),
         m_StyleName(styleName),
         m_LoadEncoding(loadEncoding),
-        m_Password(password)
+        m_Password(password),
+        m_EncryptedPassword(encryptedPassword)
     {
     }
 
@@ -13251,6 +14541,11 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
+    const std::shared_ptr< std::wstring > GetStyleOnlineRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
+    }
+
     std::shared_ptr< aspose::words::cloud::HttpRequestData > GetStyleOnlineRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
@@ -13260,6 +14555,7 @@ namespace aspose::words::cloud::requests {
         result->setPathParam(L"{styleName}", *m_StyleName);
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
         if (m_Document) result->setBody(*m_Document);
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Document' is required.");
         return result;
@@ -13280,13 +14576,15 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > folder,
         const std::shared_ptr< std::wstring > storage,
         const std::shared_ptr< std::wstring > loadEncoding,
-        const std::shared_ptr< std::wstring > password
+        const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword
     ) : 
         m_Name(name),
         m_Folder(folder),
         m_Storage(storage),
         m_LoadEncoding(loadEncoding),
-        m_Password(password)
+        m_Password(password),
+        m_EncryptedPassword(encryptedPassword)
     {
     }
 
@@ -13315,6 +14613,11 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
+    const std::shared_ptr< std::wstring > GetStylesRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
+    }
+
     std::shared_ptr< aspose::words::cloud::HttpRequestData > GetStylesRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
@@ -13326,6 +14629,7 @@ namespace aspose::words::cloud::requests {
         if (m_Storage) result->addQueryParam(L"storage", *m_Storage);
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
         return result;
     }
 
@@ -13342,11 +14646,13 @@ namespace aspose::words::cloud::requests {
     GetStylesOnlineRequest::GetStylesOnlineRequest(
         const std::shared_ptr< std::istream > document,
         const std::shared_ptr< std::wstring > loadEncoding,
-        const std::shared_ptr< std::wstring > password
+        const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword
     ) : 
         m_Document(document),
         m_LoadEncoding(loadEncoding),
-        m_Password(password)
+        m_Password(password),
+        m_EncryptedPassword(encryptedPassword)
     {
     }
 
@@ -13365,6 +14671,11 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
+    const std::shared_ptr< std::wstring > GetStylesOnlineRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
+    }
+
     std::shared_ptr< aspose::words::cloud::HttpRequestData > GetStylesOnlineRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
@@ -13372,6 +14683,7 @@ namespace aspose::words::cloud::requests {
         result->setPath(L"/words/online/get/styles");
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
         if (m_Document) result->setBody(*m_Document);
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Document' is required.");
         return result;
@@ -13394,7 +14706,8 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > folder,
         const std::shared_ptr< std::wstring > storage,
         const std::shared_ptr< std::wstring > loadEncoding,
-        const std::shared_ptr< std::wstring > password
+        const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword
     ) : 
         m_Name(name),
         m_Index(index),
@@ -13402,7 +14715,8 @@ namespace aspose::words::cloud::requests {
         m_Folder(folder),
         m_Storage(storage),
         m_LoadEncoding(loadEncoding),
-        m_Password(password)
+        m_Password(password),
+        m_EncryptedPassword(encryptedPassword)
     {
     }
 
@@ -13441,6 +14755,11 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
+    const std::shared_ptr< std::wstring > GetTableRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
+    }
+
     std::shared_ptr< aspose::words::cloud::HttpRequestData > GetTableRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
@@ -13455,6 +14774,7 @@ namespace aspose::words::cloud::requests {
         if (m_Storage) result->addQueryParam(L"storage", *m_Storage);
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
         return result;
     }
 
@@ -13475,7 +14795,8 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > folder,
         const std::shared_ptr< std::wstring > storage,
         const std::shared_ptr< std::wstring > loadEncoding,
-        const std::shared_ptr< std::wstring > password
+        const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword
     ) : 
         m_Name(name),
         m_TableRowPath(tableRowPath),
@@ -13483,7 +14804,8 @@ namespace aspose::words::cloud::requests {
         m_Folder(folder),
         m_Storage(storage),
         m_LoadEncoding(loadEncoding),
-        m_Password(password)
+        m_Password(password),
+        m_EncryptedPassword(encryptedPassword)
     {
     }
 
@@ -13522,6 +14844,11 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
+    const std::shared_ptr< std::wstring > GetTableCellRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
+    }
+
     std::shared_ptr< aspose::words::cloud::HttpRequestData > GetTableCellRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
@@ -13537,6 +14864,7 @@ namespace aspose::words::cloud::requests {
         if (m_Storage) result->addQueryParam(L"storage", *m_Storage);
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
         return result;
     }
 
@@ -13557,7 +14885,8 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > folder,
         const std::shared_ptr< std::wstring > storage,
         const std::shared_ptr< std::wstring > loadEncoding,
-        const std::shared_ptr< std::wstring > password
+        const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword
     ) : 
         m_Name(name),
         m_TableRowPath(tableRowPath),
@@ -13565,7 +14894,8 @@ namespace aspose::words::cloud::requests {
         m_Folder(folder),
         m_Storage(storage),
         m_LoadEncoding(loadEncoding),
-        m_Password(password)
+        m_Password(password),
+        m_EncryptedPassword(encryptedPassword)
     {
     }
 
@@ -13604,6 +14934,11 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
+    const std::shared_ptr< std::wstring > GetTableCellFormatRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
+    }
+
     std::shared_ptr< aspose::words::cloud::HttpRequestData > GetTableCellFormatRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
@@ -13619,6 +14954,7 @@ namespace aspose::words::cloud::requests {
         if (m_Storage) result->addQueryParam(L"storage", *m_Storage);
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
         return result;
     }
 
@@ -13637,13 +14973,15 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > tableRowPath,
         const std::shared_ptr< int32_t > index,
         const std::shared_ptr< std::wstring > loadEncoding,
-        const std::shared_ptr< std::wstring > password
+        const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword
     ) : 
         m_Document(document),
         m_TableRowPath(tableRowPath),
         m_Index(index),
         m_LoadEncoding(loadEncoding),
-        m_Password(password)
+        m_Password(password),
+        m_EncryptedPassword(encryptedPassword)
     {
     }
 
@@ -13672,6 +15010,11 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
+    const std::shared_ptr< std::wstring > GetTableCellFormatOnlineRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
+    }
+
     std::shared_ptr< aspose::words::cloud::HttpRequestData > GetTableCellFormatOnlineRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
@@ -13683,6 +15026,7 @@ namespace aspose::words::cloud::requests {
         result->setPathParam(L"{index}", *m_Index);
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
         if (m_Document) result->setBody(*m_Document);
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Document' is required.");
         return result;
@@ -13703,13 +15047,15 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > tableRowPath,
         const std::shared_ptr< int32_t > index,
         const std::shared_ptr< std::wstring > loadEncoding,
-        const std::shared_ptr< std::wstring > password
+        const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword
     ) : 
         m_Document(document),
         m_TableRowPath(tableRowPath),
         m_Index(index),
         m_LoadEncoding(loadEncoding),
-        m_Password(password)
+        m_Password(password),
+        m_EncryptedPassword(encryptedPassword)
     {
     }
 
@@ -13738,6 +15084,11 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
+    const std::shared_ptr< std::wstring > GetTableCellOnlineRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
+    }
+
     std::shared_ptr< aspose::words::cloud::HttpRequestData > GetTableCellOnlineRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
@@ -13749,6 +15100,7 @@ namespace aspose::words::cloud::requests {
         result->setPathParam(L"{index}", *m_Index);
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
         if (m_Document) result->setBody(*m_Document);
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Document' is required.");
         return result;
@@ -13769,13 +15121,15 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< int32_t > index,
         const std::shared_ptr< std::wstring > nodePath,
         const std::shared_ptr< std::wstring > loadEncoding,
-        const std::shared_ptr< std::wstring > password
+        const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword
     ) : 
         m_Document(document),
         m_Index(index),
         m_NodePath(nodePath),
         m_LoadEncoding(loadEncoding),
-        m_Password(password)
+        m_Password(password),
+        m_EncryptedPassword(encryptedPassword)
     {
     }
 
@@ -13804,6 +15158,11 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
+    const std::shared_ptr< std::wstring > GetTableOnlineRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
+    }
+
     std::shared_ptr< aspose::words::cloud::HttpRequestData > GetTableOnlineRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
@@ -13814,6 +15173,7 @@ namespace aspose::words::cloud::requests {
         result->setPathParam(L"{nodePath}", m_NodePath ? *m_NodePath : L"");
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
         if (m_Document) result->setBody(*m_Document);
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Document' is required.");
         return result;
@@ -13836,7 +15196,8 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > folder,
         const std::shared_ptr< std::wstring > storage,
         const std::shared_ptr< std::wstring > loadEncoding,
-        const std::shared_ptr< std::wstring > password
+        const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword
     ) : 
         m_Name(name),
         m_Index(index),
@@ -13844,7 +15205,8 @@ namespace aspose::words::cloud::requests {
         m_Folder(folder),
         m_Storage(storage),
         m_LoadEncoding(loadEncoding),
-        m_Password(password)
+        m_Password(password),
+        m_EncryptedPassword(encryptedPassword)
     {
     }
 
@@ -13883,6 +15245,11 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
+    const std::shared_ptr< std::wstring > GetTablePropertiesRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
+    }
+
     std::shared_ptr< aspose::words::cloud::HttpRequestData > GetTablePropertiesRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
@@ -13897,6 +15264,7 @@ namespace aspose::words::cloud::requests {
         if (m_Storage) result->addQueryParam(L"storage", *m_Storage);
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
         return result;
     }
 
@@ -13915,13 +15283,15 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< int32_t > index,
         const std::shared_ptr< std::wstring > nodePath,
         const std::shared_ptr< std::wstring > loadEncoding,
-        const std::shared_ptr< std::wstring > password
+        const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword
     ) : 
         m_Document(document),
         m_Index(index),
         m_NodePath(nodePath),
         m_LoadEncoding(loadEncoding),
-        m_Password(password)
+        m_Password(password),
+        m_EncryptedPassword(encryptedPassword)
     {
     }
 
@@ -13950,6 +15320,11 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
+    const std::shared_ptr< std::wstring > GetTablePropertiesOnlineRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
+    }
+
     std::shared_ptr< aspose::words::cloud::HttpRequestData > GetTablePropertiesOnlineRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
@@ -13960,6 +15335,7 @@ namespace aspose::words::cloud::requests {
         result->setPathParam(L"{nodePath}", m_NodePath ? *m_NodePath : L"");
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
         if (m_Document) result->setBody(*m_Document);
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Document' is required.");
         return result;
@@ -13982,7 +15358,8 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > folder,
         const std::shared_ptr< std::wstring > storage,
         const std::shared_ptr< std::wstring > loadEncoding,
-        const std::shared_ptr< std::wstring > password
+        const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword
     ) : 
         m_Name(name),
         m_TablePath(tablePath),
@@ -13990,7 +15367,8 @@ namespace aspose::words::cloud::requests {
         m_Folder(folder),
         m_Storage(storage),
         m_LoadEncoding(loadEncoding),
-        m_Password(password)
+        m_Password(password),
+        m_EncryptedPassword(encryptedPassword)
     {
     }
 
@@ -14029,6 +15407,11 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
+    const std::shared_ptr< std::wstring > GetTableRowRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
+    }
+
     std::shared_ptr< aspose::words::cloud::HttpRequestData > GetTableRowRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
@@ -14044,6 +15427,7 @@ namespace aspose::words::cloud::requests {
         if (m_Storage) result->addQueryParam(L"storage", *m_Storage);
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
         return result;
     }
 
@@ -14064,7 +15448,8 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > folder,
         const std::shared_ptr< std::wstring > storage,
         const std::shared_ptr< std::wstring > loadEncoding,
-        const std::shared_ptr< std::wstring > password
+        const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword
     ) : 
         m_Name(name),
         m_TablePath(tablePath),
@@ -14072,7 +15457,8 @@ namespace aspose::words::cloud::requests {
         m_Folder(folder),
         m_Storage(storage),
         m_LoadEncoding(loadEncoding),
-        m_Password(password)
+        m_Password(password),
+        m_EncryptedPassword(encryptedPassword)
     {
     }
 
@@ -14111,6 +15497,11 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
+    const std::shared_ptr< std::wstring > GetTableRowFormatRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
+    }
+
     std::shared_ptr< aspose::words::cloud::HttpRequestData > GetTableRowFormatRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
@@ -14126,6 +15517,7 @@ namespace aspose::words::cloud::requests {
         if (m_Storage) result->addQueryParam(L"storage", *m_Storage);
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
         return result;
     }
 
@@ -14144,13 +15536,15 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > tablePath,
         const std::shared_ptr< int32_t > index,
         const std::shared_ptr< std::wstring > loadEncoding,
-        const std::shared_ptr< std::wstring > password
+        const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword
     ) : 
         m_Document(document),
         m_TablePath(tablePath),
         m_Index(index),
         m_LoadEncoding(loadEncoding),
-        m_Password(password)
+        m_Password(password),
+        m_EncryptedPassword(encryptedPassword)
     {
     }
 
@@ -14179,6 +15573,11 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
+    const std::shared_ptr< std::wstring > GetTableRowFormatOnlineRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
+    }
+
     std::shared_ptr< aspose::words::cloud::HttpRequestData > GetTableRowFormatOnlineRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
@@ -14190,6 +15589,7 @@ namespace aspose::words::cloud::requests {
         result->setPathParam(L"{index}", *m_Index);
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
         if (m_Document) result->setBody(*m_Document);
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Document' is required.");
         return result;
@@ -14210,13 +15610,15 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > tablePath,
         const std::shared_ptr< int32_t > index,
         const std::shared_ptr< std::wstring > loadEncoding,
-        const std::shared_ptr< std::wstring > password
+        const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword
     ) : 
         m_Document(document),
         m_TablePath(tablePath),
         m_Index(index),
         m_LoadEncoding(loadEncoding),
-        m_Password(password)
+        m_Password(password),
+        m_EncryptedPassword(encryptedPassword)
     {
     }
 
@@ -14245,6 +15647,11 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
+    const std::shared_ptr< std::wstring > GetTableRowOnlineRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
+    }
+
     std::shared_ptr< aspose::words::cloud::HttpRequestData > GetTableRowOnlineRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
@@ -14256,6 +15663,7 @@ namespace aspose::words::cloud::requests {
         result->setPathParam(L"{index}", *m_Index);
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
         if (m_Document) result->setBody(*m_Document);
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Document' is required.");
         return result;
@@ -14277,14 +15685,16 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > folder,
         const std::shared_ptr< std::wstring > storage,
         const std::shared_ptr< std::wstring > loadEncoding,
-        const std::shared_ptr< std::wstring > password
+        const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword
     ) : 
         m_Name(name),
         m_NodePath(nodePath),
         m_Folder(folder),
         m_Storage(storage),
         m_LoadEncoding(loadEncoding),
-        m_Password(password)
+        m_Password(password),
+        m_EncryptedPassword(encryptedPassword)
     {
     }
 
@@ -14318,6 +15728,11 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
+    const std::shared_ptr< std::wstring > GetTablesRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
+    }
+
     std::shared_ptr< aspose::words::cloud::HttpRequestData > GetTablesRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
@@ -14330,6 +15745,7 @@ namespace aspose::words::cloud::requests {
         if (m_Storage) result->addQueryParam(L"storage", *m_Storage);
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
         return result;
     }
 
@@ -14347,12 +15763,14 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::istream > document,
         const std::shared_ptr< std::wstring > nodePath,
         const std::shared_ptr< std::wstring > loadEncoding,
-        const std::shared_ptr< std::wstring > password
+        const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword
     ) : 
         m_Document(document),
         m_NodePath(nodePath),
         m_LoadEncoding(loadEncoding),
-        m_Password(password)
+        m_Password(password),
+        m_EncryptedPassword(encryptedPassword)
     {
     }
 
@@ -14376,6 +15794,11 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
+    const std::shared_ptr< std::wstring > GetTablesOnlineRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
+    }
+
     std::shared_ptr< aspose::words::cloud::HttpRequestData > GetTablesOnlineRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
@@ -14384,6 +15807,7 @@ namespace aspose::words::cloud::requests {
         result->setPathParam(L"{nodePath}", m_NodePath ? *m_NodePath : L"");
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
         if (m_Document) result->setBody(*m_Document);
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Document' is required.");
         return result;
@@ -14406,6 +15830,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > storage,
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword,
         const std::shared_ptr< std::wstring > destFileName,
         const std::shared_ptr< std::wstring > revisionAuthor,
         const std::shared_ptr< std::wstring > revisionDateTime
@@ -14416,6 +15841,7 @@ namespace aspose::words::cloud::requests {
         m_Storage(storage),
         m_LoadEncoding(loadEncoding),
         m_Password(password),
+        m_EncryptedPassword(encryptedPassword),
         m_DestFileName(destFileName),
         m_RevisionAuthor(revisionAuthor),
         m_RevisionDateTime(revisionDateTime)
@@ -14452,6 +15878,11 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
+    const std::shared_ptr< std::wstring > InsertCommentRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
+    }
+
     const std::shared_ptr< std::wstring > InsertCommentRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -14478,6 +15909,7 @@ namespace aspose::words::cloud::requests {
         if (m_Storage) result->addQueryParam(L"storage", *m_Storage);
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
@@ -14501,6 +15933,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< aspose::words::cloud::models::CommentInsert > comment,
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword,
         const std::shared_ptr< std::wstring > destFileName,
         const std::shared_ptr< std::wstring > revisionAuthor,
         const std::shared_ptr< std::wstring > revisionDateTime
@@ -14509,6 +15942,7 @@ namespace aspose::words::cloud::requests {
         m_Comment(comment),
         m_LoadEncoding(loadEncoding),
         m_Password(password),
+        m_EncryptedPassword(encryptedPassword),
         m_DestFileName(destFileName),
         m_RevisionAuthor(revisionAuthor),
         m_RevisionDateTime(revisionDateTime)
@@ -14535,6 +15969,11 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
+    const std::shared_ptr< std::wstring > InsertCommentOnlineRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
+    }
+
     const std::shared_ptr< std::wstring > InsertCommentOnlineRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -14557,6 +15996,7 @@ namespace aspose::words::cloud::requests {
         result->setPath(L"/words/online/post/comments");
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
@@ -14584,6 +16024,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > storage,
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword,
         const std::shared_ptr< std::wstring > destFileName,
         const std::shared_ptr< std::wstring > revisionAuthor,
         const std::shared_ptr< std::wstring > revisionDateTime
@@ -14594,6 +16035,7 @@ namespace aspose::words::cloud::requests {
         m_Storage(storage),
         m_LoadEncoding(loadEncoding),
         m_Password(password),
+        m_EncryptedPassword(encryptedPassword),
         m_DestFileName(destFileName),
         m_RevisionAuthor(revisionAuthor),
         m_RevisionDateTime(revisionDateTime)
@@ -14630,6 +16072,11 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
+    const std::shared_ptr< std::wstring > InsertCustomXmlPartRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
+    }
+
     const std::shared_ptr< std::wstring > InsertCustomXmlPartRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -14656,6 +16103,7 @@ namespace aspose::words::cloud::requests {
         if (m_Storage) result->addQueryParam(L"storage", *m_Storage);
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
@@ -14679,6 +16127,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< aspose::words::cloud::models::CustomXmlPartInsert > customXmlPart,
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword,
         const std::shared_ptr< std::wstring > destFileName,
         const std::shared_ptr< std::wstring > revisionAuthor,
         const std::shared_ptr< std::wstring > revisionDateTime
@@ -14687,6 +16136,7 @@ namespace aspose::words::cloud::requests {
         m_CustomXmlPart(customXmlPart),
         m_LoadEncoding(loadEncoding),
         m_Password(password),
+        m_EncryptedPassword(encryptedPassword),
         m_DestFileName(destFileName),
         m_RevisionAuthor(revisionAuthor),
         m_RevisionDateTime(revisionDateTime)
@@ -14713,6 +16163,11 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
+    const std::shared_ptr< std::wstring > InsertCustomXmlPartOnlineRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
+    }
+
     const std::shared_ptr< std::wstring > InsertCustomXmlPartOnlineRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -14735,6 +16190,7 @@ namespace aspose::words::cloud::requests {
         result->setPath(L"/words/online/post/customXmlParts");
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
@@ -14764,6 +16220,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > storage,
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword,
         const std::shared_ptr< std::wstring > destFileName,
         const std::shared_ptr< std::wstring > revisionAuthor,
         const std::shared_ptr< std::wstring > revisionDateTime
@@ -14776,6 +16233,7 @@ namespace aspose::words::cloud::requests {
         m_Storage(storage),
         m_LoadEncoding(loadEncoding),
         m_Password(password),
+        m_EncryptedPassword(encryptedPassword),
         m_DestFileName(destFileName),
         m_RevisionAuthor(revisionAuthor),
         m_RevisionDateTime(revisionDateTime)
@@ -14822,6 +16280,11 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
+    const std::shared_ptr< std::wstring > InsertDrawingObjectRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
+    }
+
     const std::shared_ptr< std::wstring > InsertDrawingObjectRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -14849,6 +16312,7 @@ namespace aspose::words::cloud::requests {
         if (m_Storage) result->addQueryParam(L"storage", *m_Storage);
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
@@ -14876,6 +16340,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > nodePath,
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword,
         const std::shared_ptr< std::wstring > destFileName,
         const std::shared_ptr< std::wstring > revisionAuthor,
         const std::shared_ptr< std::wstring > revisionDateTime
@@ -14886,6 +16351,7 @@ namespace aspose::words::cloud::requests {
         m_NodePath(nodePath),
         m_LoadEncoding(loadEncoding),
         m_Password(password),
+        m_EncryptedPassword(encryptedPassword),
         m_DestFileName(destFileName),
         m_RevisionAuthor(revisionAuthor),
         m_RevisionDateTime(revisionDateTime)
@@ -14922,6 +16388,11 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
+    const std::shared_ptr< std::wstring > InsertDrawingObjectOnlineRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
+    }
+
     const std::shared_ptr< std::wstring > InsertDrawingObjectOnlineRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -14945,6 +16416,7 @@ namespace aspose::words::cloud::requests {
         result->setPathParam(L"{nodePath}", m_NodePath ? *m_NodePath : L"");
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
@@ -14975,6 +16447,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > storage,
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword,
         const std::shared_ptr< std::wstring > destFileName,
         const std::shared_ptr< std::wstring > revisionAuthor,
         const std::shared_ptr< std::wstring > revisionDateTime,
@@ -14987,6 +16460,7 @@ namespace aspose::words::cloud::requests {
         m_Storage(storage),
         m_LoadEncoding(loadEncoding),
         m_Password(password),
+        m_EncryptedPassword(encryptedPassword),
         m_DestFileName(destFileName),
         m_RevisionAuthor(revisionAuthor),
         m_RevisionDateTime(revisionDateTime),
@@ -15029,6 +16503,11 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
+    const std::shared_ptr< std::wstring > InsertFieldRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
+    }
+
     const std::shared_ptr< std::wstring > InsertFieldRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -15061,6 +16540,7 @@ namespace aspose::words::cloud::requests {
         if (m_Storage) result->addQueryParam(L"storage", *m_Storage);
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
@@ -15086,6 +16566,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > nodePath,
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword,
         const std::shared_ptr< std::wstring > destFileName,
         const std::shared_ptr< std::wstring > revisionAuthor,
         const std::shared_ptr< std::wstring > revisionDateTime,
@@ -15096,6 +16577,7 @@ namespace aspose::words::cloud::requests {
         m_NodePath(nodePath),
         m_LoadEncoding(loadEncoding),
         m_Password(password),
+        m_EncryptedPassword(encryptedPassword),
         m_DestFileName(destFileName),
         m_RevisionAuthor(revisionAuthor),
         m_RevisionDateTime(revisionDateTime),
@@ -15128,6 +16610,11 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
+    const std::shared_ptr< std::wstring > InsertFieldOnlineRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
+    }
+
     const std::shared_ptr< std::wstring > InsertFieldOnlineRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -15156,6 +16643,7 @@ namespace aspose::words::cloud::requests {
         result->setPathParam(L"{nodePath}", m_NodePath ? *m_NodePath : L"");
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
@@ -15185,6 +16673,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > storage,
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword,
         const std::shared_ptr< std::wstring > destFileName,
         const std::shared_ptr< std::wstring > revisionAuthor,
         const std::shared_ptr< std::wstring > revisionDateTime
@@ -15196,6 +16685,7 @@ namespace aspose::words::cloud::requests {
         m_Storage(storage),
         m_LoadEncoding(loadEncoding),
         m_Password(password),
+        m_EncryptedPassword(encryptedPassword),
         m_DestFileName(destFileName),
         m_RevisionAuthor(revisionAuthor),
         m_RevisionDateTime(revisionDateTime)
@@ -15237,6 +16727,11 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
+    const std::shared_ptr< std::wstring > InsertFootnoteRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
+    }
+
     const std::shared_ptr< std::wstring > InsertFootnoteRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -15264,6 +16759,7 @@ namespace aspose::words::cloud::requests {
         if (m_Storage) result->addQueryParam(L"storage", *m_Storage);
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
@@ -15288,6 +16784,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > nodePath,
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword,
         const std::shared_ptr< std::wstring > destFileName,
         const std::shared_ptr< std::wstring > revisionAuthor,
         const std::shared_ptr< std::wstring > revisionDateTime
@@ -15297,6 +16794,7 @@ namespace aspose::words::cloud::requests {
         m_NodePath(nodePath),
         m_LoadEncoding(loadEncoding),
         m_Password(password),
+        m_EncryptedPassword(encryptedPassword),
         m_DestFileName(destFileName),
         m_RevisionAuthor(revisionAuthor),
         m_RevisionDateTime(revisionDateTime)
@@ -15328,6 +16826,11 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
+    const std::shared_ptr< std::wstring > InsertFootnoteOnlineRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
+    }
+
     const std::shared_ptr< std::wstring > InsertFootnoteOnlineRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -15351,6 +16854,7 @@ namespace aspose::words::cloud::requests {
         result->setPathParam(L"{nodePath}", m_NodePath ? *m_NodePath : L"");
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
@@ -15379,6 +16883,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > storage,
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword,
         const std::shared_ptr< std::wstring > destFileName,
         const std::shared_ptr< std::wstring > revisionAuthor,
         const std::shared_ptr< std::wstring > revisionDateTime,
@@ -15391,6 +16896,7 @@ namespace aspose::words::cloud::requests {
         m_Storage(storage),
         m_LoadEncoding(loadEncoding),
         m_Password(password),
+        m_EncryptedPassword(encryptedPassword),
         m_DestFileName(destFileName),
         m_RevisionAuthor(revisionAuthor),
         m_RevisionDateTime(revisionDateTime),
@@ -15433,6 +16939,11 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
+    const std::shared_ptr< std::wstring > InsertFormFieldRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
+    }
+
     const std::shared_ptr< std::wstring > InsertFormFieldRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -15465,6 +16976,7 @@ namespace aspose::words::cloud::requests {
         if (m_Storage) result->addQueryParam(L"storage", *m_Storage);
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
@@ -15490,6 +17002,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > nodePath,
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword,
         const std::shared_ptr< std::wstring > destFileName,
         const std::shared_ptr< std::wstring > revisionAuthor,
         const std::shared_ptr< std::wstring > revisionDateTime,
@@ -15500,6 +17013,7 @@ namespace aspose::words::cloud::requests {
         m_NodePath(nodePath),
         m_LoadEncoding(loadEncoding),
         m_Password(password),
+        m_EncryptedPassword(encryptedPassword),
         m_DestFileName(destFileName),
         m_RevisionAuthor(revisionAuthor),
         m_RevisionDateTime(revisionDateTime),
@@ -15532,6 +17046,11 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
+    const std::shared_ptr< std::wstring > InsertFormFieldOnlineRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
+    }
+
     const std::shared_ptr< std::wstring > InsertFormFieldOnlineRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -15560,6 +17079,7 @@ namespace aspose::words::cloud::requests {
         result->setPathParam(L"{nodePath}", m_NodePath ? *m_NodePath : L"");
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
@@ -15589,6 +17109,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > storage,
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword,
         const std::shared_ptr< std::wstring > destFileName,
         const std::shared_ptr< std::wstring > revisionAuthor,
         const std::shared_ptr< std::wstring > revisionDateTime
@@ -15600,6 +17121,7 @@ namespace aspose::words::cloud::requests {
         m_Storage(storage),
         m_LoadEncoding(loadEncoding),
         m_Password(password),
+        m_EncryptedPassword(encryptedPassword),
         m_DestFileName(destFileName),
         m_RevisionAuthor(revisionAuthor),
         m_RevisionDateTime(revisionDateTime)
@@ -15641,6 +17163,11 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
+    const std::shared_ptr< std::wstring > InsertHeaderFooterRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
+    }
+
     const std::shared_ptr< std::wstring > InsertHeaderFooterRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -15669,6 +17196,7 @@ namespace aspose::words::cloud::requests {
         if (m_Storage) result->addQueryParam(L"storage", *m_Storage);
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
@@ -15693,6 +17221,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > headerFooterType,
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword,
         const std::shared_ptr< std::wstring > destFileName,
         const std::shared_ptr< std::wstring > revisionAuthor,
         const std::shared_ptr< std::wstring > revisionDateTime
@@ -15702,6 +17231,7 @@ namespace aspose::words::cloud::requests {
         m_HeaderFooterType(headerFooterType),
         m_LoadEncoding(loadEncoding),
         m_Password(password),
+        m_EncryptedPassword(encryptedPassword),
         m_DestFileName(destFileName),
         m_RevisionAuthor(revisionAuthor),
         m_RevisionDateTime(revisionDateTime)
@@ -15733,6 +17263,11 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
+    const std::shared_ptr< std::wstring > InsertHeaderFooterOnlineRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
+    }
+
     const std::shared_ptr< std::wstring > InsertHeaderFooterOnlineRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -15757,6 +17292,7 @@ namespace aspose::words::cloud::requests {
         result->setPathParam(L"{sectionPath}", *m_SectionPath);
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
@@ -15784,6 +17320,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > storage,
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword,
         const std::shared_ptr< std::wstring > destFileName,
         const std::shared_ptr< std::wstring > revisionAuthor,
         const std::shared_ptr< std::wstring > revisionDateTime
@@ -15794,6 +17331,7 @@ namespace aspose::words::cloud::requests {
         m_Storage(storage),
         m_LoadEncoding(loadEncoding),
         m_Password(password),
+        m_EncryptedPassword(encryptedPassword),
         m_DestFileName(destFileName),
         m_RevisionAuthor(revisionAuthor),
         m_RevisionDateTime(revisionDateTime)
@@ -15830,6 +17368,11 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
+    const std::shared_ptr< std::wstring > InsertListRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
+    }
+
     const std::shared_ptr< std::wstring > InsertListRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -15856,6 +17399,7 @@ namespace aspose::words::cloud::requests {
         if (m_Storage) result->addQueryParam(L"storage", *m_Storage);
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
@@ -15879,6 +17423,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< aspose::words::cloud::models::ListInsert > listInsert,
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword,
         const std::shared_ptr< std::wstring > destFileName,
         const std::shared_ptr< std::wstring > revisionAuthor,
         const std::shared_ptr< std::wstring > revisionDateTime
@@ -15887,6 +17432,7 @@ namespace aspose::words::cloud::requests {
         m_ListInsert(listInsert),
         m_LoadEncoding(loadEncoding),
         m_Password(password),
+        m_EncryptedPassword(encryptedPassword),
         m_DestFileName(destFileName),
         m_RevisionAuthor(revisionAuthor),
         m_RevisionDateTime(revisionDateTime)
@@ -15913,6 +17459,11 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
+    const std::shared_ptr< std::wstring > InsertListOnlineRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
+    }
+
     const std::shared_ptr< std::wstring > InsertListOnlineRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -15935,6 +17486,7 @@ namespace aspose::words::cloud::requests {
         result->setPath(L"/words/online/post/lists");
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
@@ -15964,6 +17516,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > storage,
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword,
         const std::shared_ptr< std::wstring > destFileName
     ) : 
         m_Name(name),
@@ -15974,6 +17527,7 @@ namespace aspose::words::cloud::requests {
         m_Storage(storage),
         m_LoadEncoding(loadEncoding),
         m_Password(password),
+        m_EncryptedPassword(encryptedPassword),
         m_DestFileName(destFileName)
     {
     }
@@ -16018,6 +17572,11 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
+    const std::shared_ptr< std::wstring > InsertOrUpdateParagraphTabStopRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
+    }
+
     const std::shared_ptr< std::wstring > InsertOrUpdateParagraphTabStopRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -16037,6 +17596,7 @@ namespace aspose::words::cloud::requests {
         if (m_Storage) result->addQueryParam(L"storage", *m_Storage);
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_TabStopInsertDto) result->setBody(*m_TabStopInsertDto);
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'TabStopInsertDto' is required.");
@@ -16060,6 +17620,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > nodePath,
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword,
         const std::shared_ptr< std::wstring > destFileName
     ) : 
         m_Document(document),
@@ -16068,6 +17629,7 @@ namespace aspose::words::cloud::requests {
         m_NodePath(nodePath),
         m_LoadEncoding(loadEncoding),
         m_Password(password),
+        m_EncryptedPassword(encryptedPassword),
         m_DestFileName(destFileName)
     {
     }
@@ -16102,6 +17664,11 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
+    const std::shared_ptr< std::wstring > InsertOrUpdateParagraphTabStopOnlineRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
+    }
+
     const std::shared_ptr< std::wstring > InsertOrUpdateParagraphTabStopOnlineRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -16117,6 +17684,7 @@ namespace aspose::words::cloud::requests {
         result->setPathParam(L"{nodePath}", m_NodePath ? *m_NodePath : L"");
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_Document) result->addFormDataParam(L"document", *m_Document);
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Document' is required.");
@@ -16142,6 +17710,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > storage,
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword,
         const std::shared_ptr< std::wstring > destFileName,
         const std::shared_ptr< std::wstring > revisionAuthor,
         const std::shared_ptr< std::wstring > revisionDateTime
@@ -16152,6 +17721,7 @@ namespace aspose::words::cloud::requests {
         m_Storage(storage),
         m_LoadEncoding(loadEncoding),
         m_Password(password),
+        m_EncryptedPassword(encryptedPassword),
         m_DestFileName(destFileName),
         m_RevisionAuthor(revisionAuthor),
         m_RevisionDateTime(revisionDateTime)
@@ -16188,6 +17758,11 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
+    const std::shared_ptr< std::wstring > InsertPageNumbersRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
+    }
+
     const std::shared_ptr< std::wstring > InsertPageNumbersRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -16214,6 +17789,7 @@ namespace aspose::words::cloud::requests {
         if (m_Storage) result->addQueryParam(L"storage", *m_Storage);
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
@@ -16237,6 +17813,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< aspose::words::cloud::models::PageNumber > pageNumber,
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword,
         const std::shared_ptr< std::wstring > destFileName,
         const std::shared_ptr< std::wstring > revisionAuthor,
         const std::shared_ptr< std::wstring > revisionDateTime
@@ -16245,6 +17822,7 @@ namespace aspose::words::cloud::requests {
         m_PageNumber(pageNumber),
         m_LoadEncoding(loadEncoding),
         m_Password(password),
+        m_EncryptedPassword(encryptedPassword),
         m_DestFileName(destFileName),
         m_RevisionAuthor(revisionAuthor),
         m_RevisionDateTime(revisionDateTime)
@@ -16271,6 +17849,11 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
+    const std::shared_ptr< std::wstring > InsertPageNumbersOnlineRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
+    }
+
     const std::shared_ptr< std::wstring > InsertPageNumbersOnlineRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -16293,6 +17876,7 @@ namespace aspose::words::cloud::requests {
         result->setPath(L"/words/online/put/PageNumbers");
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
@@ -16321,6 +17905,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > storage,
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword,
         const std::shared_ptr< std::wstring > destFileName,
         const std::shared_ptr< std::wstring > revisionAuthor,
         const std::shared_ptr< std::wstring > revisionDateTime,
@@ -16333,6 +17918,7 @@ namespace aspose::words::cloud::requests {
         m_Storage(storage),
         m_LoadEncoding(loadEncoding),
         m_Password(password),
+        m_EncryptedPassword(encryptedPassword),
         m_DestFileName(destFileName),
         m_RevisionAuthor(revisionAuthor),
         m_RevisionDateTime(revisionDateTime),
@@ -16375,6 +17961,11 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
+    const std::shared_ptr< std::wstring > InsertParagraphRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
+    }
+
     const std::shared_ptr< std::wstring > InsertParagraphRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -16407,6 +17998,7 @@ namespace aspose::words::cloud::requests {
         if (m_Storage) result->addQueryParam(L"storage", *m_Storage);
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
@@ -16432,6 +18024,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > nodePath,
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword,
         const std::shared_ptr< std::wstring > destFileName,
         const std::shared_ptr< std::wstring > revisionAuthor,
         const std::shared_ptr< std::wstring > revisionDateTime,
@@ -16442,6 +18035,7 @@ namespace aspose::words::cloud::requests {
         m_NodePath(nodePath),
         m_LoadEncoding(loadEncoding),
         m_Password(password),
+        m_EncryptedPassword(encryptedPassword),
         m_DestFileName(destFileName),
         m_RevisionAuthor(revisionAuthor),
         m_RevisionDateTime(revisionDateTime),
@@ -16474,6 +18068,11 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
+    const std::shared_ptr< std::wstring > InsertParagraphOnlineRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
+    }
+
     const std::shared_ptr< std::wstring > InsertParagraphOnlineRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -16502,6 +18101,7 @@ namespace aspose::words::cloud::requests {
         result->setPathParam(L"{nodePath}", m_NodePath ? *m_NodePath : L"");
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
@@ -16531,6 +18131,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > storage,
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword,
         const std::shared_ptr< std::wstring > destFileName,
         const std::shared_ptr< std::wstring > revisionAuthor,
         const std::shared_ptr< std::wstring > revisionDateTime,
@@ -16543,6 +18144,7 @@ namespace aspose::words::cloud::requests {
         m_Storage(storage),
         m_LoadEncoding(loadEncoding),
         m_Password(password),
+        m_EncryptedPassword(encryptedPassword),
         m_DestFileName(destFileName),
         m_RevisionAuthor(revisionAuthor),
         m_RevisionDateTime(revisionDateTime),
@@ -16585,6 +18187,11 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
+    const std::shared_ptr< std::wstring > InsertRunRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
+    }
+
     const std::shared_ptr< std::wstring > InsertRunRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -16618,6 +18225,7 @@ namespace aspose::words::cloud::requests {
         if (m_Storage) result->addQueryParam(L"storage", *m_Storage);
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
@@ -16643,6 +18251,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< aspose::words::cloud::models::RunInsert > run,
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword,
         const std::shared_ptr< std::wstring > destFileName,
         const std::shared_ptr< std::wstring > revisionAuthor,
         const std::shared_ptr< std::wstring > revisionDateTime,
@@ -16653,6 +18262,7 @@ namespace aspose::words::cloud::requests {
         m_Run(run),
         m_LoadEncoding(loadEncoding),
         m_Password(password),
+        m_EncryptedPassword(encryptedPassword),
         m_DestFileName(destFileName),
         m_RevisionAuthor(revisionAuthor),
         m_RevisionDateTime(revisionDateTime),
@@ -16685,6 +18295,11 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
+    const std::shared_ptr< std::wstring > InsertRunOnlineRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
+    }
+
     const std::shared_ptr< std::wstring > InsertRunOnlineRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -16714,6 +18329,7 @@ namespace aspose::words::cloud::requests {
         result->setPathParam(L"{paragraphPath}", *m_ParagraphPath);
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
@@ -16742,6 +18358,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > storage,
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword,
         const std::shared_ptr< std::wstring > destFileName,
         const std::shared_ptr< std::wstring > revisionAuthor,
         const std::shared_ptr< std::wstring > revisionDateTime
@@ -16752,6 +18369,7 @@ namespace aspose::words::cloud::requests {
         m_Storage(storage),
         m_LoadEncoding(loadEncoding),
         m_Password(password),
+        m_EncryptedPassword(encryptedPassword),
         m_DestFileName(destFileName),
         m_RevisionAuthor(revisionAuthor),
         m_RevisionDateTime(revisionDateTime)
@@ -16788,6 +18406,11 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
+    const std::shared_ptr< std::wstring > InsertStyleRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
+    }
+
     const std::shared_ptr< std::wstring > InsertStyleRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -16814,6 +18437,7 @@ namespace aspose::words::cloud::requests {
         if (m_Storage) result->addQueryParam(L"storage", *m_Storage);
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
@@ -16837,6 +18461,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< aspose::words::cloud::models::StyleInsert > styleInsert,
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword,
         const std::shared_ptr< std::wstring > destFileName,
         const std::shared_ptr< std::wstring > revisionAuthor,
         const std::shared_ptr< std::wstring > revisionDateTime
@@ -16845,6 +18470,7 @@ namespace aspose::words::cloud::requests {
         m_StyleInsert(styleInsert),
         m_LoadEncoding(loadEncoding),
         m_Password(password),
+        m_EncryptedPassword(encryptedPassword),
         m_DestFileName(destFileName),
         m_RevisionAuthor(revisionAuthor),
         m_RevisionDateTime(revisionDateTime)
@@ -16871,6 +18497,11 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
+    const std::shared_ptr< std::wstring > InsertStyleOnlineRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
+    }
+
     const std::shared_ptr< std::wstring > InsertStyleOnlineRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -16893,6 +18524,7 @@ namespace aspose::words::cloud::requests {
         result->setPath(L"/words/online/post/styles/insert");
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
@@ -16921,6 +18553,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > storage,
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword,
         const std::shared_ptr< std::wstring > destFileName,
         const std::shared_ptr< std::wstring > revisionAuthor,
         const std::shared_ptr< std::wstring > revisionDateTime
@@ -16932,6 +18565,7 @@ namespace aspose::words::cloud::requests {
         m_Storage(storage),
         m_LoadEncoding(loadEncoding),
         m_Password(password),
+        m_EncryptedPassword(encryptedPassword),
         m_DestFileName(destFileName),
         m_RevisionAuthor(revisionAuthor),
         m_RevisionDateTime(revisionDateTime)
@@ -16973,6 +18607,11 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
+    const std::shared_ptr< std::wstring > InsertTableRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
+    }
+
     const std::shared_ptr< std::wstring > InsertTableRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -17000,6 +18639,7 @@ namespace aspose::words::cloud::requests {
         if (m_Storage) result->addQueryParam(L"storage", *m_Storage);
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
@@ -17026,6 +18666,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > storage,
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword,
         const std::shared_ptr< std::wstring > destFileName,
         const std::shared_ptr< std::wstring > revisionAuthor,
         const std::shared_ptr< std::wstring > revisionDateTime
@@ -17037,6 +18678,7 @@ namespace aspose::words::cloud::requests {
         m_Storage(storage),
         m_LoadEncoding(loadEncoding),
         m_Password(password),
+        m_EncryptedPassword(encryptedPassword),
         m_DestFileName(destFileName),
         m_RevisionAuthor(revisionAuthor),
         m_RevisionDateTime(revisionDateTime)
@@ -17078,6 +18720,11 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
+    const std::shared_ptr< std::wstring > InsertTableCellRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
+    }
+
     const std::shared_ptr< std::wstring > InsertTableCellRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -17106,6 +18753,7 @@ namespace aspose::words::cloud::requests {
         if (m_Storage) result->addQueryParam(L"storage", *m_Storage);
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
@@ -17130,6 +18778,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< aspose::words::cloud::models::TableCellInsert > cell,
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword,
         const std::shared_ptr< std::wstring > destFileName,
         const std::shared_ptr< std::wstring > revisionAuthor,
         const std::shared_ptr< std::wstring > revisionDateTime
@@ -17139,6 +18788,7 @@ namespace aspose::words::cloud::requests {
         m_Cell(cell),
         m_LoadEncoding(loadEncoding),
         m_Password(password),
+        m_EncryptedPassword(encryptedPassword),
         m_DestFileName(destFileName),
         m_RevisionAuthor(revisionAuthor),
         m_RevisionDateTime(revisionDateTime)
@@ -17170,6 +18820,11 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
+    const std::shared_ptr< std::wstring > InsertTableCellOnlineRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
+    }
+
     const std::shared_ptr< std::wstring > InsertTableCellOnlineRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -17194,6 +18849,7 @@ namespace aspose::words::cloud::requests {
         result->setPathParam(L"{tableRowPath}", *m_TableRowPath);
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
@@ -17220,6 +18876,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > nodePath,
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword,
         const std::shared_ptr< std::wstring > destFileName,
         const std::shared_ptr< std::wstring > revisionAuthor,
         const std::shared_ptr< std::wstring > revisionDateTime
@@ -17229,6 +18886,7 @@ namespace aspose::words::cloud::requests {
         m_NodePath(nodePath),
         m_LoadEncoding(loadEncoding),
         m_Password(password),
+        m_EncryptedPassword(encryptedPassword),
         m_DestFileName(destFileName),
         m_RevisionAuthor(revisionAuthor),
         m_RevisionDateTime(revisionDateTime)
@@ -17260,6 +18918,11 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
+    const std::shared_ptr< std::wstring > InsertTableOnlineRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
+    }
+
     const std::shared_ptr< std::wstring > InsertTableOnlineRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -17283,6 +18946,7 @@ namespace aspose::words::cloud::requests {
         result->setPathParam(L"{nodePath}", m_NodePath ? *m_NodePath : L"");
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
@@ -17311,6 +18975,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > storage,
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword,
         const std::shared_ptr< std::wstring > destFileName,
         const std::shared_ptr< std::wstring > revisionAuthor,
         const std::shared_ptr< std::wstring > revisionDateTime
@@ -17322,6 +18987,7 @@ namespace aspose::words::cloud::requests {
         m_Storage(storage),
         m_LoadEncoding(loadEncoding),
         m_Password(password),
+        m_EncryptedPassword(encryptedPassword),
         m_DestFileName(destFileName),
         m_RevisionAuthor(revisionAuthor),
         m_RevisionDateTime(revisionDateTime)
@@ -17363,6 +19029,11 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
+    const std::shared_ptr< std::wstring > InsertTableRowRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
+    }
+
     const std::shared_ptr< std::wstring > InsertTableRowRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -17391,6 +19062,7 @@ namespace aspose::words::cloud::requests {
         if (m_Storage) result->addQueryParam(L"storage", *m_Storage);
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
@@ -17415,6 +19087,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< aspose::words::cloud::models::TableRowInsert > row,
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword,
         const std::shared_ptr< std::wstring > destFileName,
         const std::shared_ptr< std::wstring > revisionAuthor,
         const std::shared_ptr< std::wstring > revisionDateTime
@@ -17424,6 +19097,7 @@ namespace aspose::words::cloud::requests {
         m_Row(row),
         m_LoadEncoding(loadEncoding),
         m_Password(password),
+        m_EncryptedPassword(encryptedPassword),
         m_DestFileName(destFileName),
         m_RevisionAuthor(revisionAuthor),
         m_RevisionDateTime(revisionDateTime)
@@ -17455,6 +19129,11 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
+    const std::shared_ptr< std::wstring > InsertTableRowOnlineRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
+    }
+
     const std::shared_ptr< std::wstring > InsertTableRowOnlineRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -17479,6 +19158,7 @@ namespace aspose::words::cloud::requests {
         result->setPathParam(L"{tablePath}", *m_TablePath);
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
@@ -17506,6 +19186,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > storage,
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword,
         const std::shared_ptr< std::wstring > destFileName,
         const std::shared_ptr< std::wstring > revisionAuthor,
         const std::shared_ptr< std::wstring > revisionDateTime,
@@ -17518,6 +19199,7 @@ namespace aspose::words::cloud::requests {
         m_Storage(storage),
         m_LoadEncoding(loadEncoding),
         m_Password(password),
+        m_EncryptedPassword(encryptedPassword),
         m_DestFileName(destFileName),
         m_RevisionAuthor(revisionAuthor),
         m_RevisionDateTime(revisionDateTime),
@@ -17556,6 +19238,11 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
+    const std::shared_ptr< std::wstring > InsertWatermarkImageRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
+    }
+
     const std::shared_ptr< std::wstring > InsertWatermarkImageRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -17592,6 +19279,7 @@ namespace aspose::words::cloud::requests {
         if (m_Storage) result->addQueryParam(L"storage", *m_Storage);
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
@@ -17616,6 +19304,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::istream > imageFile,
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword,
         const std::shared_ptr< std::wstring > destFileName,
         const std::shared_ptr< std::wstring > revisionAuthor,
         const std::shared_ptr< std::wstring > revisionDateTime,
@@ -17626,6 +19315,7 @@ namespace aspose::words::cloud::requests {
         m_ImageFile(imageFile),
         m_LoadEncoding(loadEncoding),
         m_Password(password),
+        m_EncryptedPassword(encryptedPassword),
         m_DestFileName(destFileName),
         m_RevisionAuthor(revisionAuthor),
         m_RevisionDateTime(revisionDateTime),
@@ -17652,6 +19342,11 @@ namespace aspose::words::cloud::requests {
     const std::shared_ptr< std::wstring > InsertWatermarkImageOnlineRequest::getPassword() const
     {
         return m_Password;
+    }
+
+    const std::shared_ptr< std::wstring > InsertWatermarkImageOnlineRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
     }
 
     const std::shared_ptr< std::wstring > InsertWatermarkImageOnlineRequest::getDestFileName() const
@@ -17686,6 +19381,7 @@ namespace aspose::words::cloud::requests {
         result->setPath(L"/words/online/post/watermarks/images");
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
@@ -17715,6 +19411,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > storage,
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword,
         const std::shared_ptr< std::wstring > destFileName,
         const std::shared_ptr< std::wstring > revisionAuthor,
         const std::shared_ptr< std::wstring > revisionDateTime
@@ -17725,6 +19422,7 @@ namespace aspose::words::cloud::requests {
         m_Storage(storage),
         m_LoadEncoding(loadEncoding),
         m_Password(password),
+        m_EncryptedPassword(encryptedPassword),
         m_DestFileName(destFileName),
         m_RevisionAuthor(revisionAuthor),
         m_RevisionDateTime(revisionDateTime)
@@ -17761,6 +19459,11 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
+    const std::shared_ptr< std::wstring > InsertWatermarkTextRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
+    }
+
     const std::shared_ptr< std::wstring > InsertWatermarkTextRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -17787,6 +19490,7 @@ namespace aspose::words::cloud::requests {
         if (m_Storage) result->addQueryParam(L"storage", *m_Storage);
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
@@ -17810,6 +19514,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< aspose::words::cloud::models::WatermarkText > watermarkText,
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword,
         const std::shared_ptr< std::wstring > destFileName,
         const std::shared_ptr< std::wstring > revisionAuthor,
         const std::shared_ptr< std::wstring > revisionDateTime
@@ -17818,6 +19523,7 @@ namespace aspose::words::cloud::requests {
         m_WatermarkText(watermarkText),
         m_LoadEncoding(loadEncoding),
         m_Password(password),
+        m_EncryptedPassword(encryptedPassword),
         m_DestFileName(destFileName),
         m_RevisionAuthor(revisionAuthor),
         m_RevisionDateTime(revisionDateTime)
@@ -17844,6 +19550,11 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
+    const std::shared_ptr< std::wstring > InsertWatermarkTextOnlineRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
+    }
+
     const std::shared_ptr< std::wstring > InsertWatermarkTextOnlineRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -17866,6 +19577,7 @@ namespace aspose::words::cloud::requests {
         result->setPath(L"/words/online/post/watermarks/texts");
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
@@ -18055,6 +19767,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > storage,
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword,
         const std::shared_ptr< std::wstring > destFileName,
         const std::shared_ptr< std::wstring > revisionAuthor,
         const std::shared_ptr< std::wstring > revisionDateTime
@@ -18065,6 +19778,7 @@ namespace aspose::words::cloud::requests {
         m_Storage(storage),
         m_LoadEncoding(loadEncoding),
         m_Password(password),
+        m_EncryptedPassword(encryptedPassword),
         m_DestFileName(destFileName),
         m_RevisionAuthor(revisionAuthor),
         m_RevisionDateTime(revisionDateTime)
@@ -18101,6 +19815,11 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
+    const std::shared_ptr< std::wstring > OptimizeDocumentRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
+    }
+
     const std::shared_ptr< std::wstring > OptimizeDocumentRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -18127,6 +19846,7 @@ namespace aspose::words::cloud::requests {
         if (m_Storage) result->addQueryParam(L"storage", *m_Storage);
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
@@ -18150,6 +19870,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< aspose::words::cloud::models::OptimizationOptions > options,
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword,
         const std::shared_ptr< std::wstring > destFileName,
         const std::shared_ptr< std::wstring > revisionAuthor,
         const std::shared_ptr< std::wstring > revisionDateTime
@@ -18158,6 +19879,7 @@ namespace aspose::words::cloud::requests {
         m_Options(options),
         m_LoadEncoding(loadEncoding),
         m_Password(password),
+        m_EncryptedPassword(encryptedPassword),
         m_DestFileName(destFileName),
         m_RevisionAuthor(revisionAuthor),
         m_RevisionDateTime(revisionDateTime)
@@ -18184,6 +19906,11 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
+    const std::shared_ptr< std::wstring > OptimizeDocumentOnlineRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
+    }
+
     const std::shared_ptr< std::wstring > OptimizeDocumentOnlineRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -18206,6 +19933,7 @@ namespace aspose::words::cloud::requests {
         result->setPath(L"/words/online/put/compatibility/optimize");
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
@@ -18233,6 +19961,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > storage,
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword,
         const std::shared_ptr< std::wstring > destFileName
     ) : 
         m_Name(name),
@@ -18241,6 +19970,7 @@ namespace aspose::words::cloud::requests {
         m_Storage(storage),
         m_LoadEncoding(loadEncoding),
         m_Password(password),
+        m_EncryptedPassword(encryptedPassword),
         m_DestFileName(destFileName)
     {
     }
@@ -18275,6 +20005,11 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
+    const std::shared_ptr< std::wstring > ProtectDocumentRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
+    }
+
     const std::shared_ptr< std::wstring > ProtectDocumentRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -18291,6 +20026,7 @@ namespace aspose::words::cloud::requests {
         if (m_Storage) result->addQueryParam(L"storage", *m_Storage);
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_ProtectionRequest) result->setBody(*m_ProtectionRequest);
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'ProtectionRequest' is required.");
@@ -18312,12 +20048,14 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< aspose::words::cloud::models::ProtectionRequest > protectionRequest,
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword,
         const std::shared_ptr< std::wstring > destFileName
     ) : 
         m_Document(document),
         m_ProtectionRequest(protectionRequest),
         m_LoadEncoding(loadEncoding),
         m_Password(password),
+        m_EncryptedPassword(encryptedPassword),
         m_DestFileName(destFileName)
     {
     }
@@ -18342,6 +20080,11 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
+    const std::shared_ptr< std::wstring > ProtectDocumentOnlineRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
+    }
+
     const std::shared_ptr< std::wstring > ProtectDocumentOnlineRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -18354,6 +20097,7 @@ namespace aspose::words::cloud::requests {
         result->setPath(L"/words/online/put/protection");
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_Document) result->addFormDataParam(L"document", *m_Document);
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Document' is required.");
@@ -18378,6 +20122,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > storage,
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword,
         const std::shared_ptr< std::wstring > destFileName
     ) : 
         m_Name(name),
@@ -18385,6 +20130,7 @@ namespace aspose::words::cloud::requests {
         m_Storage(storage),
         m_LoadEncoding(loadEncoding),
         m_Password(password),
+        m_EncryptedPassword(encryptedPassword),
         m_DestFileName(destFileName)
     {
     }
@@ -18414,6 +20160,11 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
+    const std::shared_ptr< std::wstring > RejectAllRevisionsRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
+    }
+
     const std::shared_ptr< std::wstring > RejectAllRevisionsRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -18430,6 +20181,7 @@ namespace aspose::words::cloud::requests {
         if (m_Storage) result->addQueryParam(L"storage", *m_Storage);
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         return result;
     }
@@ -18448,11 +20200,13 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::istream > document,
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword,
         const std::shared_ptr< std::wstring > destFileName
     ) : 
         m_Document(document),
         m_LoadEncoding(loadEncoding),
         m_Password(password),
+        m_EncryptedPassword(encryptedPassword),
         m_DestFileName(destFileName)
     {
     }
@@ -18472,6 +20226,11 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
+    const std::shared_ptr< std::wstring > RejectAllRevisionsOnlineRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
+    }
+
     const std::shared_ptr< std::wstring > RejectAllRevisionsOnlineRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -18484,6 +20243,7 @@ namespace aspose::words::cloud::requests {
         result->setPath(L"/words/online/put/revisions/rejectAll");
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_Document) result->setBody(*m_Document);
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Document' is required.");
@@ -18508,6 +20268,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > storage,
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword,
         const std::shared_ptr< std::wstring > destFileName
     ) : 
         m_Name(name),
@@ -18517,6 +20278,7 @@ namespace aspose::words::cloud::requests {
         m_Storage(storage),
         m_LoadEncoding(loadEncoding),
         m_Password(password),
+        m_EncryptedPassword(encryptedPassword),
         m_DestFileName(destFileName)
     {
     }
@@ -18556,6 +20318,11 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
+    const std::shared_ptr< std::wstring > RemoveRangeRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
+    }
+
     const std::shared_ptr< std::wstring > RemoveRangeRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -18575,6 +20342,7 @@ namespace aspose::words::cloud::requests {
         if (m_Storage) result->addQueryParam(L"storage", *m_Storage);
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         return result;
     }
@@ -18595,6 +20363,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > rangeEndIdentifier,
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword,
         const std::shared_ptr< std::wstring > destFileName
     ) : 
         m_Document(document),
@@ -18602,6 +20371,7 @@ namespace aspose::words::cloud::requests {
         m_RangeEndIdentifier(rangeEndIdentifier),
         m_LoadEncoding(loadEncoding),
         m_Password(password),
+        m_EncryptedPassword(encryptedPassword),
         m_DestFileName(destFileName)
     {
     }
@@ -18631,6 +20401,11 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
+    const std::shared_ptr< std::wstring > RemoveRangeOnlineRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
+    }
+
     const std::shared_ptr< std::wstring > RemoveRangeOnlineRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -18646,6 +20421,7 @@ namespace aspose::words::cloud::requests {
         result->setPathParam(L"{rangeEndIdentifier}", m_RangeEndIdentifier ? *m_RangeEndIdentifier : L"");
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_Document) result->setBody(*m_Document);
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Document' is required.");
@@ -18671,6 +20447,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > storage,
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword,
         const std::shared_ptr< std::wstring > destFileName,
         const std::shared_ptr< std::wstring > fontsLocation
     ) : 
@@ -18682,6 +20459,7 @@ namespace aspose::words::cloud::requests {
         m_Storage(storage),
         m_LoadEncoding(loadEncoding),
         m_Password(password),
+        m_EncryptedPassword(encryptedPassword),
         m_DestFileName(destFileName),
         m_FontsLocation(fontsLocation)
     {
@@ -18727,6 +20505,11 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
+    const std::shared_ptr< std::wstring > RenderDrawingObjectRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
+    }
+
     const std::shared_ptr< std::wstring > RenderDrawingObjectRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -18753,6 +20536,7 @@ namespace aspose::words::cloud::requests {
         if (m_Storage) result->addQueryParam(L"storage", *m_Storage);
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_FontsLocation) result->addQueryParam(L"fontsLocation", *m_FontsLocation);
         return result;
@@ -18775,6 +20559,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > nodePath,
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword,
         const std::shared_ptr< std::wstring > destFileName,
         const std::shared_ptr< std::wstring > fontsLocation
     ) : 
@@ -18784,6 +20569,7 @@ namespace aspose::words::cloud::requests {
         m_NodePath(nodePath),
         m_LoadEncoding(loadEncoding),
         m_Password(password),
+        m_EncryptedPassword(encryptedPassword),
         m_DestFileName(destFileName),
         m_FontsLocation(fontsLocation)
     {
@@ -18819,6 +20605,11 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
+    const std::shared_ptr< std::wstring > RenderDrawingObjectOnlineRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
+    }
+
     const std::shared_ptr< std::wstring > RenderDrawingObjectOnlineRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -18841,6 +20632,7 @@ namespace aspose::words::cloud::requests {
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Format' is required.");
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_FontsLocation) result->addQueryParam(L"fontsLocation", *m_FontsLocation);
         if (m_Document) result->setBody(*m_Document);
@@ -18867,6 +20659,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > storage,
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword,
         const std::shared_ptr< std::wstring > destFileName,
         const std::shared_ptr< std::wstring > fontsLocation
     ) : 
@@ -18878,6 +20671,7 @@ namespace aspose::words::cloud::requests {
         m_Storage(storage),
         m_LoadEncoding(loadEncoding),
         m_Password(password),
+        m_EncryptedPassword(encryptedPassword),
         m_DestFileName(destFileName),
         m_FontsLocation(fontsLocation)
     {
@@ -18923,6 +20717,11 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
+    const std::shared_ptr< std::wstring > RenderMathObjectRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
+    }
+
     const std::shared_ptr< std::wstring > RenderMathObjectRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -18949,6 +20748,7 @@ namespace aspose::words::cloud::requests {
         if (m_Storage) result->addQueryParam(L"storage", *m_Storage);
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_FontsLocation) result->addQueryParam(L"fontsLocation", *m_FontsLocation);
         return result;
@@ -18971,6 +20771,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > nodePath,
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword,
         const std::shared_ptr< std::wstring > destFileName,
         const std::shared_ptr< std::wstring > fontsLocation
     ) : 
@@ -18980,6 +20781,7 @@ namespace aspose::words::cloud::requests {
         m_NodePath(nodePath),
         m_LoadEncoding(loadEncoding),
         m_Password(password),
+        m_EncryptedPassword(encryptedPassword),
         m_DestFileName(destFileName),
         m_FontsLocation(fontsLocation)
     {
@@ -19015,6 +20817,11 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
+    const std::shared_ptr< std::wstring > RenderMathObjectOnlineRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
+    }
+
     const std::shared_ptr< std::wstring > RenderMathObjectOnlineRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -19037,6 +20844,7 @@ namespace aspose::words::cloud::requests {
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Format' is required.");
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_FontsLocation) result->addQueryParam(L"fontsLocation", *m_FontsLocation);
         if (m_Document) result->setBody(*m_Document);
@@ -19062,6 +20870,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > storage,
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword,
         const std::shared_ptr< std::wstring > fontsLocation
     ) : 
         m_Name(name),
@@ -19071,6 +20880,7 @@ namespace aspose::words::cloud::requests {
         m_Storage(storage),
         m_LoadEncoding(loadEncoding),
         m_Password(password),
+        m_EncryptedPassword(encryptedPassword),
         m_FontsLocation(fontsLocation)
     {
     }
@@ -19110,6 +20920,11 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
+    const std::shared_ptr< std::wstring > RenderPageRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
+    }
+
     const std::shared_ptr< std::wstring > RenderPageRequest::getFontsLocation() const
     {
         return m_FontsLocation;
@@ -19130,6 +20945,7 @@ namespace aspose::words::cloud::requests {
         if (m_Storage) result->addQueryParam(L"storage", *m_Storage);
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
         if (m_FontsLocation) result->addQueryParam(L"fontsLocation", *m_FontsLocation);
         return result;
     }
@@ -19150,6 +20966,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > format,
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword,
         const std::shared_ptr< std::wstring > fontsLocation
     ) : 
         m_Document(document),
@@ -19157,6 +20974,7 @@ namespace aspose::words::cloud::requests {
         m_Format(format),
         m_LoadEncoding(loadEncoding),
         m_Password(password),
+        m_EncryptedPassword(encryptedPassword),
         m_FontsLocation(fontsLocation)
     {
     }
@@ -19186,6 +21004,11 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
+    const std::shared_ptr< std::wstring > RenderPageOnlineRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
+    }
+
     const std::shared_ptr< std::wstring > RenderPageOnlineRequest::getFontsLocation() const
     {
         return m_FontsLocation;
@@ -19202,6 +21025,7 @@ namespace aspose::words::cloud::requests {
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Format' is required.");
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
         if (m_FontsLocation) result->addQueryParam(L"fontsLocation", *m_FontsLocation);
         if (m_Document) result->setBody(*m_Document);
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Document' is required.");
@@ -19227,6 +21051,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > storage,
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword,
         const std::shared_ptr< std::wstring > destFileName,
         const std::shared_ptr< std::wstring > fontsLocation
     ) : 
@@ -19238,6 +21063,7 @@ namespace aspose::words::cloud::requests {
         m_Storage(storage),
         m_LoadEncoding(loadEncoding),
         m_Password(password),
+        m_EncryptedPassword(encryptedPassword),
         m_DestFileName(destFileName),
         m_FontsLocation(fontsLocation)
     {
@@ -19283,6 +21109,11 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
+    const std::shared_ptr< std::wstring > RenderParagraphRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
+    }
+
     const std::shared_ptr< std::wstring > RenderParagraphRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -19309,6 +21140,7 @@ namespace aspose::words::cloud::requests {
         if (m_Storage) result->addQueryParam(L"storage", *m_Storage);
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_FontsLocation) result->addQueryParam(L"fontsLocation", *m_FontsLocation);
         return result;
@@ -19331,6 +21163,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > nodePath,
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword,
         const std::shared_ptr< std::wstring > destFileName,
         const std::shared_ptr< std::wstring > fontsLocation
     ) : 
@@ -19340,6 +21173,7 @@ namespace aspose::words::cloud::requests {
         m_NodePath(nodePath),
         m_LoadEncoding(loadEncoding),
         m_Password(password),
+        m_EncryptedPassword(encryptedPassword),
         m_DestFileName(destFileName),
         m_FontsLocation(fontsLocation)
     {
@@ -19375,6 +21209,11 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
+    const std::shared_ptr< std::wstring > RenderParagraphOnlineRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
+    }
+
     const std::shared_ptr< std::wstring > RenderParagraphOnlineRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -19397,6 +21236,7 @@ namespace aspose::words::cloud::requests {
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Format' is required.");
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_FontsLocation) result->addQueryParam(L"fontsLocation", *m_FontsLocation);
         if (m_Document) result->setBody(*m_Document);
@@ -19423,6 +21263,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > storage,
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword,
         const std::shared_ptr< std::wstring > destFileName,
         const std::shared_ptr< std::wstring > fontsLocation
     ) : 
@@ -19434,6 +21275,7 @@ namespace aspose::words::cloud::requests {
         m_Storage(storage),
         m_LoadEncoding(loadEncoding),
         m_Password(password),
+        m_EncryptedPassword(encryptedPassword),
         m_DestFileName(destFileName),
         m_FontsLocation(fontsLocation)
     {
@@ -19479,6 +21321,11 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
+    const std::shared_ptr< std::wstring > RenderTableRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
+    }
+
     const std::shared_ptr< std::wstring > RenderTableRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -19505,6 +21352,7 @@ namespace aspose::words::cloud::requests {
         if (m_Storage) result->addQueryParam(L"storage", *m_Storage);
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_FontsLocation) result->addQueryParam(L"fontsLocation", *m_FontsLocation);
         return result;
@@ -19527,6 +21375,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > nodePath,
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword,
         const std::shared_ptr< std::wstring > destFileName,
         const std::shared_ptr< std::wstring > fontsLocation
     ) : 
@@ -19536,6 +21385,7 @@ namespace aspose::words::cloud::requests {
         m_NodePath(nodePath),
         m_LoadEncoding(loadEncoding),
         m_Password(password),
+        m_EncryptedPassword(encryptedPassword),
         m_DestFileName(destFileName),
         m_FontsLocation(fontsLocation)
     {
@@ -19571,6 +21421,11 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
+    const std::shared_ptr< std::wstring > RenderTableOnlineRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
+    }
+
     const std::shared_ptr< std::wstring > RenderTableOnlineRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -19593,6 +21448,7 @@ namespace aspose::words::cloud::requests {
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Format' is required.");
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_FontsLocation) result->addQueryParam(L"fontsLocation", *m_FontsLocation);
         if (m_Document) result->setBody(*m_Document);
@@ -19617,6 +21473,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > storage,
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword,
         const std::shared_ptr< std::wstring > destFileName,
         const std::shared_ptr< std::wstring > revisionAuthor,
         const std::shared_ptr< std::wstring > revisionDateTime
@@ -19627,6 +21484,7 @@ namespace aspose::words::cloud::requests {
         m_Storage(storage),
         m_LoadEncoding(loadEncoding),
         m_Password(password),
+        m_EncryptedPassword(encryptedPassword),
         m_DestFileName(destFileName),
         m_RevisionAuthor(revisionAuthor),
         m_RevisionDateTime(revisionDateTime)
@@ -19663,6 +21521,11 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
+    const std::shared_ptr< std::wstring > ReplaceTextRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
+    }
+
     const std::shared_ptr< std::wstring > ReplaceTextRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -19689,6 +21552,7 @@ namespace aspose::words::cloud::requests {
         if (m_Storage) result->addQueryParam(L"storage", *m_Storage);
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
@@ -19712,6 +21576,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< aspose::words::cloud::models::ReplaceTextParameters > replaceText,
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword,
         const std::shared_ptr< std::wstring > destFileName,
         const std::shared_ptr< std::wstring > revisionAuthor,
         const std::shared_ptr< std::wstring > revisionDateTime
@@ -19720,6 +21585,7 @@ namespace aspose::words::cloud::requests {
         m_ReplaceText(replaceText),
         m_LoadEncoding(loadEncoding),
         m_Password(password),
+        m_EncryptedPassword(encryptedPassword),
         m_DestFileName(destFileName),
         m_RevisionAuthor(revisionAuthor),
         m_RevisionDateTime(revisionDateTime)
@@ -19746,6 +21612,11 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
+    const std::shared_ptr< std::wstring > ReplaceTextOnlineRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
+    }
+
     const std::shared_ptr< std::wstring > ReplaceTextOnlineRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -19768,6 +21639,7 @@ namespace aspose::words::cloud::requests {
         result->setPath(L"/words/online/put/replaceText");
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
@@ -19797,6 +21669,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > storage,
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword,
         const std::shared_ptr< std::wstring > destFileName
     ) : 
         m_Name(name),
@@ -19807,6 +21680,7 @@ namespace aspose::words::cloud::requests {
         m_Storage(storage),
         m_LoadEncoding(loadEncoding),
         m_Password(password),
+        m_EncryptedPassword(encryptedPassword),
         m_DestFileName(destFileName)
     {
     }
@@ -19851,6 +21725,11 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
+    const std::shared_ptr< std::wstring > ReplaceWithTextRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
+    }
+
     const std::shared_ptr< std::wstring > ReplaceWithTextRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -19870,6 +21749,7 @@ namespace aspose::words::cloud::requests {
         if (m_Storage) result->addQueryParam(L"storage", *m_Storage);
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RangeText) result->setBody(*m_RangeText);
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'RangeText' is required.");
@@ -19893,6 +21773,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > rangeEndIdentifier,
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword,
         const std::shared_ptr< std::wstring > destFileName
     ) : 
         m_Document(document),
@@ -19901,6 +21782,7 @@ namespace aspose::words::cloud::requests {
         m_RangeEndIdentifier(rangeEndIdentifier),
         m_LoadEncoding(loadEncoding),
         m_Password(password),
+        m_EncryptedPassword(encryptedPassword),
         m_DestFileName(destFileName)
     {
     }
@@ -19935,6 +21817,11 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
+    const std::shared_ptr< std::wstring > ReplaceWithTextOnlineRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
+    }
+
     const std::shared_ptr< std::wstring > ReplaceWithTextOnlineRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -19950,6 +21837,7 @@ namespace aspose::words::cloud::requests {
         result->setPathParam(L"{rangeEndIdentifier}", m_RangeEndIdentifier ? *m_RangeEndIdentifier : L"");
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_Document) result->addFormDataParam(L"document", *m_Document);
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Document' is required.");
@@ -19999,6 +21887,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > storage,
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword,
         const std::shared_ptr< std::wstring > fontsLocation
     ) : 
         m_Name(name),
@@ -20007,6 +21896,7 @@ namespace aspose::words::cloud::requests {
         m_Storage(storage),
         m_LoadEncoding(loadEncoding),
         m_Password(password),
+        m_EncryptedPassword(encryptedPassword),
         m_FontsLocation(fontsLocation)
     {
     }
@@ -20041,6 +21931,11 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
+    const std::shared_ptr< std::wstring > SaveAsRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
+    }
+
     const std::shared_ptr< std::wstring > SaveAsRequest::getFontsLocation() const
     {
         return m_FontsLocation;
@@ -20057,6 +21952,7 @@ namespace aspose::words::cloud::requests {
         if (m_Storage) result->addQueryParam(L"storage", *m_Storage);
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
         if (m_FontsLocation) result->addQueryParam(L"fontsLocation", *m_FontsLocation);
         if (m_SaveOptionsData) result->setBody(*m_SaveOptionsData);
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'SaveOptionsData' is required.");
@@ -20078,12 +21974,14 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< aspose::words::cloud::models::SaveOptionsData > saveOptionsData,
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword,
         const std::shared_ptr< std::wstring > fontsLocation
     ) : 
         m_Document(document),
         m_SaveOptionsData(saveOptionsData),
         m_LoadEncoding(loadEncoding),
         m_Password(password),
+        m_EncryptedPassword(encryptedPassword),
         m_FontsLocation(fontsLocation)
     {
     }
@@ -20108,6 +22006,11 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
+    const std::shared_ptr< std::wstring > SaveAsOnlineRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
+    }
+
     const std::shared_ptr< std::wstring > SaveAsOnlineRequest::getFontsLocation() const
     {
         return m_FontsLocation;
@@ -20120,6 +22023,7 @@ namespace aspose::words::cloud::requests {
         result->setPath(L"/words/online/put/saveAs");
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
         if (m_FontsLocation) result->addQueryParam(L"fontsLocation", *m_FontsLocation);
         if (m_Document) result->addFormDataParam(L"document", *m_Document);
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Document' is required.");
@@ -20146,7 +22050,8 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > folder,
         const std::shared_ptr< std::wstring > storage,
         const std::shared_ptr< std::wstring > loadEncoding,
-        const std::shared_ptr< std::wstring > password
+        const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword
     ) : 
         m_Name(name),
         m_RangeStartIdentifier(rangeStartIdentifier),
@@ -20155,7 +22060,8 @@ namespace aspose::words::cloud::requests {
         m_Folder(folder),
         m_Storage(storage),
         m_LoadEncoding(loadEncoding),
-        m_Password(password)
+        m_Password(password),
+        m_EncryptedPassword(encryptedPassword)
     {
     }
 
@@ -20199,6 +22105,11 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
+    const std::shared_ptr< std::wstring > SaveAsRangeRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
+    }
+
     std::shared_ptr< aspose::words::cloud::HttpRequestData > SaveAsRangeRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
@@ -20213,6 +22124,7 @@ namespace aspose::words::cloud::requests {
         if (m_Storage) result->addQueryParam(L"storage", *m_Storage);
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
         if (m_DocumentParameters) result->setBody(*m_DocumentParameters);
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'DocumentParameters' is required.");
         return result;
@@ -20234,14 +22146,16 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< aspose::words::cloud::models::RangeDocument > documentParameters,
         const std::shared_ptr< std::wstring > rangeEndIdentifier,
         const std::shared_ptr< std::wstring > loadEncoding,
-        const std::shared_ptr< std::wstring > password
+        const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword
     ) : 
         m_Document(document),
         m_RangeStartIdentifier(rangeStartIdentifier),
         m_DocumentParameters(documentParameters),
         m_RangeEndIdentifier(rangeEndIdentifier),
         m_LoadEncoding(loadEncoding),
-        m_Password(password)
+        m_Password(password),
+        m_EncryptedPassword(encryptedPassword)
     {
     }
 
@@ -20275,6 +22189,11 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
+    const std::shared_ptr< std::wstring > SaveAsRangeOnlineRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
+    }
+
     std::shared_ptr< aspose::words::cloud::HttpRequestData > SaveAsRangeOnlineRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
@@ -20285,6 +22204,7 @@ namespace aspose::words::cloud::requests {
         result->setPathParam(L"{rangeEndIdentifier}", m_RangeEndIdentifier ? *m_RangeEndIdentifier : L"");
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
         if (m_Document) result->addFormDataParam(L"document", *m_Document);
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Document' is required.");
         if (m_DocumentParameters) result->addFormDataParam(L"documentParameters", *m_DocumentParameters);
@@ -20309,6 +22229,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > storage,
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword,
         const std::shared_ptr< bool > useAntiAliasing,
         const std::shared_ptr< bool > useHighQualityRendering,
         const std::shared_ptr< double > imageBrightness,
@@ -20334,6 +22255,7 @@ namespace aspose::words::cloud::requests {
         m_Storage(storage),
         m_LoadEncoding(loadEncoding),
         m_Password(password),
+        m_EncryptedPassword(encryptedPassword),
         m_UseAntiAliasing(useAntiAliasing),
         m_UseHighQualityRendering(useHighQualityRendering),
         m_ImageBrightness(imageBrightness),
@@ -20383,6 +22305,11 @@ namespace aspose::words::cloud::requests {
     const std::shared_ptr< std::wstring > SaveAsTiffRequest::getPassword() const
     {
         return m_Password;
+    }
+
+    const std::shared_ptr< std::wstring > SaveAsTiffRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
     }
 
     const std::shared_ptr< bool > SaveAsTiffRequest::getUseAntiAliasing() const
@@ -20486,6 +22413,7 @@ namespace aspose::words::cloud::requests {
         if (m_Storage) result->addQueryParam(L"storage", *m_Storage);
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
         if (m_UseAntiAliasing) result->addQueryParam(L"useAntiAliasing", *m_UseAntiAliasing);
         if (m_UseHighQualityRendering) result->addQueryParam(L"useHighQualityRendering", *m_UseHighQualityRendering);
         if (m_ImageBrightness) result->addQueryParam(L"imageBrightness", *m_ImageBrightness);
@@ -20524,6 +22452,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< aspose::words::cloud::models::TiffSaveOptionsData > saveOptions,
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword,
         const std::shared_ptr< bool > useAntiAliasing,
         const std::shared_ptr< bool > useHighQualityRendering,
         const std::shared_ptr< double > imageBrightness,
@@ -20547,6 +22476,7 @@ namespace aspose::words::cloud::requests {
         m_SaveOptions(saveOptions),
         m_LoadEncoding(loadEncoding),
         m_Password(password),
+        m_EncryptedPassword(encryptedPassword),
         m_UseAntiAliasing(useAntiAliasing),
         m_UseHighQualityRendering(useHighQualityRendering),
         m_ImageBrightness(imageBrightness),
@@ -20586,6 +22516,11 @@ namespace aspose::words::cloud::requests {
     const std::shared_ptr< std::wstring > SaveAsTiffOnlineRequest::getPassword() const
     {
         return m_Password;
+    }
+
+    const std::shared_ptr< std::wstring > SaveAsTiffOnlineRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
     }
 
     const std::shared_ptr< bool > SaveAsTiffOnlineRequest::getUseAntiAliasing() const
@@ -20685,6 +22620,7 @@ namespace aspose::words::cloud::requests {
         result->setPath(L"/words/online/put/saveAs/tiff");
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
         if (m_UseAntiAliasing) result->addQueryParam(L"useAntiAliasing", *m_UseAntiAliasing);
         if (m_UseHighQualityRendering) result->addQueryParam(L"useHighQualityRendering", *m_UseHighQualityRendering);
         if (m_ImageBrightness) result->addQueryParam(L"imageBrightness", *m_ImageBrightness);
@@ -20726,14 +22662,16 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > folder,
         const std::shared_ptr< std::wstring > storage,
         const std::shared_ptr< std::wstring > loadEncoding,
-        const std::shared_ptr< std::wstring > password
+        const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword
     ) : 
         m_Name(name),
         m_Pattern(pattern),
         m_Folder(folder),
         m_Storage(storage),
         m_LoadEncoding(loadEncoding),
-        m_Password(password)
+        m_Password(password),
+        m_EncryptedPassword(encryptedPassword)
     {
     }
 
@@ -20767,6 +22705,11 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
+    const std::shared_ptr< std::wstring > SearchRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
+    }
+
     std::shared_ptr< aspose::words::cloud::HttpRequestData > SearchRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
@@ -20780,6 +22723,7 @@ namespace aspose::words::cloud::requests {
         if (m_Storage) result->addQueryParam(L"storage", *m_Storage);
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
         return result;
     }
 
@@ -20797,12 +22741,14 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::istream > document,
         const std::shared_ptr< std::wstring > pattern,
         const std::shared_ptr< std::wstring > loadEncoding,
-        const std::shared_ptr< std::wstring > password
+        const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword
     ) : 
         m_Document(document),
         m_Pattern(pattern),
         m_LoadEncoding(loadEncoding),
-        m_Password(password)
+        m_Password(password),
+        m_EncryptedPassword(encryptedPassword)
     {
     }
 
@@ -20826,6 +22772,11 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
+    const std::shared_ptr< std::wstring > SearchOnlineRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
+    }
+
     std::shared_ptr< aspose::words::cloud::HttpRequestData > SearchOnlineRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
@@ -20835,6 +22786,7 @@ namespace aspose::words::cloud::requests {
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Pattern' is required.");
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
         if (m_Document) result->setBody(*m_Document);
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Document' is required.");
         return result;
@@ -20857,6 +22809,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > storage,
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword,
         const std::shared_ptr< std::wstring > destFileName,
         const std::shared_ptr< int32_t > from,
         const std::shared_ptr< int32_t > to,
@@ -20869,6 +22822,7 @@ namespace aspose::words::cloud::requests {
         m_Storage(storage),
         m_LoadEncoding(loadEncoding),
         m_Password(password),
+        m_EncryptedPassword(encryptedPassword),
         m_DestFileName(destFileName),
         m_From(from),
         m_To(to),
@@ -20905,6 +22859,11 @@ namespace aspose::words::cloud::requests {
     const std::shared_ptr< std::wstring > SplitDocumentRequest::getPassword() const
     {
         return m_Password;
+    }
+
+    const std::shared_ptr< std::wstring > SplitDocumentRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
     }
 
     const std::shared_ptr< std::wstring > SplitDocumentRequest::getDestFileName() const
@@ -20945,6 +22904,7 @@ namespace aspose::words::cloud::requests {
         if (m_Storage) result->addQueryParam(L"storage", *m_Storage);
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_From) result->addQueryParam(L"from", *m_From);
         if (m_To) result->addQueryParam(L"to", *m_To);
@@ -20968,6 +22928,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > format,
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword,
         const std::shared_ptr< std::wstring > destFileName,
         const std::shared_ptr< int32_t > from,
         const std::shared_ptr< int32_t > to,
@@ -20978,6 +22939,7 @@ namespace aspose::words::cloud::requests {
         m_Format(format),
         m_LoadEncoding(loadEncoding),
         m_Password(password),
+        m_EncryptedPassword(encryptedPassword),
         m_DestFileName(destFileName),
         m_From(from),
         m_To(to),
@@ -21004,6 +22966,11 @@ namespace aspose::words::cloud::requests {
     const std::shared_ptr< std::wstring > SplitDocumentOnlineRequest::getPassword() const
     {
         return m_Password;
+    }
+
+    const std::shared_ptr< std::wstring > SplitDocumentOnlineRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
     }
 
     const std::shared_ptr< std::wstring > SplitDocumentOnlineRequest::getDestFileName() const
@@ -21040,6 +23007,7 @@ namespace aspose::words::cloud::requests {
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Format' is required.");
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_From) result->addQueryParam(L"from", *m_From);
         if (m_To) result->addQueryParam(L"to", *m_To);
@@ -21067,6 +23035,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > storage,
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword,
         const std::shared_ptr< std::wstring > destFileName
     ) : 
         m_Name(name),
@@ -21075,6 +23044,7 @@ namespace aspose::words::cloud::requests {
         m_Storage(storage),
         m_LoadEncoding(loadEncoding),
         m_Password(password),
+        m_EncryptedPassword(encryptedPassword),
         m_DestFileName(destFileName)
     {
     }
@@ -21109,6 +23079,11 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
+    const std::shared_ptr< std::wstring > UnprotectDocumentRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
+    }
+
     const std::shared_ptr< std::wstring > UnprotectDocumentRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -21125,6 +23100,7 @@ namespace aspose::words::cloud::requests {
         if (m_Storage) result->addQueryParam(L"storage", *m_Storage);
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_ProtectionRequest) result->setBody(*m_ProtectionRequest);
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'ProtectionRequest' is required.");
@@ -21146,12 +23122,14 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< aspose::words::cloud::models::ProtectionRequest > protectionRequest,
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword,
         const std::shared_ptr< std::wstring > destFileName
     ) : 
         m_Document(document),
         m_ProtectionRequest(protectionRequest),
         m_LoadEncoding(loadEncoding),
         m_Password(password),
+        m_EncryptedPassword(encryptedPassword),
         m_DestFileName(destFileName)
     {
     }
@@ -21176,6 +23154,11 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
+    const std::shared_ptr< std::wstring > UnprotectDocumentOnlineRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
+    }
+
     const std::shared_ptr< std::wstring > UnprotectDocumentOnlineRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -21188,6 +23171,7 @@ namespace aspose::words::cloud::requests {
         result->setPath(L"/words/online/delete/protection");
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_Document) result->addFormDataParam(L"document", *m_Document);
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Document' is required.");
@@ -21214,6 +23198,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > storage,
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword,
         const std::shared_ptr< std::wstring > destFileName,
         const std::shared_ptr< std::wstring > revisionAuthor,
         const std::shared_ptr< std::wstring > revisionDateTime
@@ -21225,6 +23210,7 @@ namespace aspose::words::cloud::requests {
         m_Storage(storage),
         m_LoadEncoding(loadEncoding),
         m_Password(password),
+        m_EncryptedPassword(encryptedPassword),
         m_DestFileName(destFileName),
         m_RevisionAuthor(revisionAuthor),
         m_RevisionDateTime(revisionDateTime)
@@ -21266,6 +23252,11 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
+    const std::shared_ptr< std::wstring > UpdateBookmarkRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
+    }
+
     const std::shared_ptr< std::wstring > UpdateBookmarkRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -21294,6 +23285,7 @@ namespace aspose::words::cloud::requests {
         if (m_Storage) result->addQueryParam(L"storage", *m_Storage);
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
@@ -21318,6 +23310,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< aspose::words::cloud::models::BookmarkData > bookmarkData,
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword,
         const std::shared_ptr< std::wstring > destFileName,
         const std::shared_ptr< std::wstring > revisionAuthor,
         const std::shared_ptr< std::wstring > revisionDateTime
@@ -21327,6 +23320,7 @@ namespace aspose::words::cloud::requests {
         m_BookmarkData(bookmarkData),
         m_LoadEncoding(loadEncoding),
         m_Password(password),
+        m_EncryptedPassword(encryptedPassword),
         m_DestFileName(destFileName),
         m_RevisionAuthor(revisionAuthor),
         m_RevisionDateTime(revisionDateTime)
@@ -21358,6 +23352,11 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
+    const std::shared_ptr< std::wstring > UpdateBookmarkOnlineRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
+    }
+
     const std::shared_ptr< std::wstring > UpdateBookmarkOnlineRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -21382,6 +23381,7 @@ namespace aspose::words::cloud::requests {
         result->setPathParam(L"{bookmarkName}", *m_BookmarkName);
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
@@ -21411,6 +23411,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > storage,
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword,
         const std::shared_ptr< std::wstring > destFileName,
         const std::shared_ptr< std::wstring > revisionAuthor,
         const std::shared_ptr< std::wstring > revisionDateTime
@@ -21423,6 +23424,7 @@ namespace aspose::words::cloud::requests {
         m_Storage(storage),
         m_LoadEncoding(loadEncoding),
         m_Password(password),
+        m_EncryptedPassword(encryptedPassword),
         m_DestFileName(destFileName),
         m_RevisionAuthor(revisionAuthor),
         m_RevisionDateTime(revisionDateTime)
@@ -21469,6 +23471,11 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
+    const std::shared_ptr< std::wstring > UpdateBorderRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
+    }
+
     const std::shared_ptr< std::wstring > UpdateBorderRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -21498,6 +23505,7 @@ namespace aspose::words::cloud::requests {
         if (m_Storage) result->addQueryParam(L"storage", *m_Storage);
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
@@ -21523,6 +23531,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > nodePath,
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword,
         const std::shared_ptr< std::wstring > destFileName,
         const std::shared_ptr< std::wstring > revisionAuthor,
         const std::shared_ptr< std::wstring > revisionDateTime
@@ -21533,6 +23542,7 @@ namespace aspose::words::cloud::requests {
         m_NodePath(nodePath),
         m_LoadEncoding(loadEncoding),
         m_Password(password),
+        m_EncryptedPassword(encryptedPassword),
         m_DestFileName(destFileName),
         m_RevisionAuthor(revisionAuthor),
         m_RevisionDateTime(revisionDateTime)
@@ -21569,6 +23579,11 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
+    const std::shared_ptr< std::wstring > UpdateBorderOnlineRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
+    }
+
     const std::shared_ptr< std::wstring > UpdateBorderOnlineRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -21594,6 +23609,7 @@ namespace aspose::words::cloud::requests {
         result->setPathParam(L"{nodePath}", m_NodePath ? *m_NodePath : L"");
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
@@ -21622,6 +23638,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > storage,
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword,
         const std::shared_ptr< std::wstring > destFileName,
         const std::shared_ptr< std::wstring > revisionAuthor,
         const std::shared_ptr< std::wstring > revisionDateTime
@@ -21633,6 +23650,7 @@ namespace aspose::words::cloud::requests {
         m_Storage(storage),
         m_LoadEncoding(loadEncoding),
         m_Password(password),
+        m_EncryptedPassword(encryptedPassword),
         m_DestFileName(destFileName),
         m_RevisionAuthor(revisionAuthor),
         m_RevisionDateTime(revisionDateTime)
@@ -21674,6 +23692,11 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
+    const std::shared_ptr< std::wstring > UpdateCommentRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
+    }
+
     const std::shared_ptr< std::wstring > UpdateCommentRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -21702,6 +23725,7 @@ namespace aspose::words::cloud::requests {
         if (m_Storage) result->addQueryParam(L"storage", *m_Storage);
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
@@ -21726,6 +23750,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< aspose::words::cloud::models::CommentUpdate > comment,
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword,
         const std::shared_ptr< std::wstring > destFileName,
         const std::shared_ptr< std::wstring > revisionAuthor,
         const std::shared_ptr< std::wstring > revisionDateTime
@@ -21735,6 +23760,7 @@ namespace aspose::words::cloud::requests {
         m_Comment(comment),
         m_LoadEncoding(loadEncoding),
         m_Password(password),
+        m_EncryptedPassword(encryptedPassword),
         m_DestFileName(destFileName),
         m_RevisionAuthor(revisionAuthor),
         m_RevisionDateTime(revisionDateTime)
@@ -21766,6 +23792,11 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
+    const std::shared_ptr< std::wstring > UpdateCommentOnlineRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
+    }
+
     const std::shared_ptr< std::wstring > UpdateCommentOnlineRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -21790,6 +23821,7 @@ namespace aspose::words::cloud::requests {
         result->setPathParam(L"{commentIndex}", *m_CommentIndex);
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
@@ -21818,6 +23850,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > storage,
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword,
         const std::shared_ptr< std::wstring > destFileName,
         const std::shared_ptr< std::wstring > revisionAuthor,
         const std::shared_ptr< std::wstring > revisionDateTime
@@ -21829,6 +23862,7 @@ namespace aspose::words::cloud::requests {
         m_Storage(storage),
         m_LoadEncoding(loadEncoding),
         m_Password(password),
+        m_EncryptedPassword(encryptedPassword),
         m_DestFileName(destFileName),
         m_RevisionAuthor(revisionAuthor),
         m_RevisionDateTime(revisionDateTime)
@@ -21870,6 +23904,11 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
+    const std::shared_ptr< std::wstring > UpdateCustomXmlPartRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
+    }
+
     const std::shared_ptr< std::wstring > UpdateCustomXmlPartRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -21898,6 +23937,7 @@ namespace aspose::words::cloud::requests {
         if (m_Storage) result->addQueryParam(L"storage", *m_Storage);
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
@@ -21922,6 +23962,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< aspose::words::cloud::models::CustomXmlPartUpdate > customXmlPart,
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword,
         const std::shared_ptr< std::wstring > destFileName,
         const std::shared_ptr< std::wstring > revisionAuthor,
         const std::shared_ptr< std::wstring > revisionDateTime
@@ -21931,6 +23972,7 @@ namespace aspose::words::cloud::requests {
         m_CustomXmlPart(customXmlPart),
         m_LoadEncoding(loadEncoding),
         m_Password(password),
+        m_EncryptedPassword(encryptedPassword),
         m_DestFileName(destFileName),
         m_RevisionAuthor(revisionAuthor),
         m_RevisionDateTime(revisionDateTime)
@@ -21962,6 +24004,11 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
+    const std::shared_ptr< std::wstring > UpdateCustomXmlPartOnlineRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
+    }
+
     const std::shared_ptr< std::wstring > UpdateCustomXmlPartOnlineRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -21986,6 +24033,7 @@ namespace aspose::words::cloud::requests {
         result->setPathParam(L"{customXmlPartIndex}", *m_CustomXmlPartIndex);
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
@@ -22016,6 +24064,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > storage,
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword,
         const std::shared_ptr< std::wstring > destFileName,
         const std::shared_ptr< std::wstring > revisionAuthor,
         const std::shared_ptr< std::wstring > revisionDateTime
@@ -22029,6 +24078,7 @@ namespace aspose::words::cloud::requests {
         m_Storage(storage),
         m_LoadEncoding(loadEncoding),
         m_Password(password),
+        m_EncryptedPassword(encryptedPassword),
         m_DestFileName(destFileName),
         m_RevisionAuthor(revisionAuthor),
         m_RevisionDateTime(revisionDateTime)
@@ -22080,6 +24130,11 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
+    const std::shared_ptr< std::wstring > UpdateDrawingObjectRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
+    }
+
     const std::shared_ptr< std::wstring > UpdateDrawingObjectRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -22109,6 +24164,7 @@ namespace aspose::words::cloud::requests {
         if (m_Storage) result->addQueryParam(L"storage", *m_Storage);
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
@@ -22137,6 +24193,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > nodePath,
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword,
         const std::shared_ptr< std::wstring > destFileName,
         const std::shared_ptr< std::wstring > revisionAuthor,
         const std::shared_ptr< std::wstring > revisionDateTime
@@ -22148,6 +24205,7 @@ namespace aspose::words::cloud::requests {
         m_NodePath(nodePath),
         m_LoadEncoding(loadEncoding),
         m_Password(password),
+        m_EncryptedPassword(encryptedPassword),
         m_DestFileName(destFileName),
         m_RevisionAuthor(revisionAuthor),
         m_RevisionDateTime(revisionDateTime)
@@ -22189,6 +24247,11 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
+    const std::shared_ptr< std::wstring > UpdateDrawingObjectOnlineRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
+    }
+
     const std::shared_ptr< std::wstring > UpdateDrawingObjectOnlineRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -22214,6 +24277,7 @@ namespace aspose::words::cloud::requests {
         result->setPathParam(L"{nodePath}", m_NodePath ? *m_NodePath : L"");
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
@@ -22245,6 +24309,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > storage,
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword,
         const std::shared_ptr< std::wstring > destFileName,
         const std::shared_ptr< std::wstring > revisionAuthor,
         const std::shared_ptr< std::wstring > revisionDateTime
@@ -22257,6 +24322,7 @@ namespace aspose::words::cloud::requests {
         m_Storage(storage),
         m_LoadEncoding(loadEncoding),
         m_Password(password),
+        m_EncryptedPassword(encryptedPassword),
         m_DestFileName(destFileName),
         m_RevisionAuthor(revisionAuthor),
         m_RevisionDateTime(revisionDateTime)
@@ -22303,6 +24369,11 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
+    const std::shared_ptr< std::wstring > UpdateFieldRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
+    }
+
     const std::shared_ptr< std::wstring > UpdateFieldRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -22332,6 +24403,7 @@ namespace aspose::words::cloud::requests {
         if (m_Storage) result->addQueryParam(L"storage", *m_Storage);
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
@@ -22357,6 +24429,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > nodePath,
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword,
         const std::shared_ptr< std::wstring > destFileName,
         const std::shared_ptr< std::wstring > revisionAuthor,
         const std::shared_ptr< std::wstring > revisionDateTime
@@ -22367,6 +24440,7 @@ namespace aspose::words::cloud::requests {
         m_NodePath(nodePath),
         m_LoadEncoding(loadEncoding),
         m_Password(password),
+        m_EncryptedPassword(encryptedPassword),
         m_DestFileName(destFileName),
         m_RevisionAuthor(revisionAuthor),
         m_RevisionDateTime(revisionDateTime)
@@ -22403,6 +24477,11 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
+    const std::shared_ptr< std::wstring > UpdateFieldOnlineRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
+    }
+
     const std::shared_ptr< std::wstring > UpdateFieldOnlineRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -22428,6 +24507,7 @@ namespace aspose::words::cloud::requests {
         result->setPathParam(L"{nodePath}", m_NodePath ? *m_NodePath : L"");
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
@@ -22454,6 +24534,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > storage,
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword,
         const std::shared_ptr< std::wstring > destFileName
     ) : 
         m_Name(name),
@@ -22461,6 +24542,7 @@ namespace aspose::words::cloud::requests {
         m_Storage(storage),
         m_LoadEncoding(loadEncoding),
         m_Password(password),
+        m_EncryptedPassword(encryptedPassword),
         m_DestFileName(destFileName)
     {
     }
@@ -22490,6 +24572,11 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
+    const std::shared_ptr< std::wstring > UpdateFieldsRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
+    }
+
     const std::shared_ptr< std::wstring > UpdateFieldsRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -22506,6 +24593,7 @@ namespace aspose::words::cloud::requests {
         if (m_Storage) result->addQueryParam(L"storage", *m_Storage);
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         return result;
     }
@@ -22524,11 +24612,13 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::istream > document,
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword,
         const std::shared_ptr< std::wstring > destFileName
     ) : 
         m_Document(document),
         m_LoadEncoding(loadEncoding),
         m_Password(password),
+        m_EncryptedPassword(encryptedPassword),
         m_DestFileName(destFileName)
     {
     }
@@ -22548,6 +24638,11 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
+    const std::shared_ptr< std::wstring > UpdateFieldsOnlineRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
+    }
+
     const std::shared_ptr< std::wstring > UpdateFieldsOnlineRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -22560,6 +24655,7 @@ namespace aspose::words::cloud::requests {
         result->setPath(L"/words/online/put/updateFields");
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_Document) result->setBody(*m_Document);
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Document' is required.");
@@ -22585,6 +24681,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > storage,
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword,
         const std::shared_ptr< std::wstring > destFileName,
         const std::shared_ptr< std::wstring > revisionAuthor,
         const std::shared_ptr< std::wstring > revisionDateTime
@@ -22597,6 +24694,7 @@ namespace aspose::words::cloud::requests {
         m_Storage(storage),
         m_LoadEncoding(loadEncoding),
         m_Password(password),
+        m_EncryptedPassword(encryptedPassword),
         m_DestFileName(destFileName),
         m_RevisionAuthor(revisionAuthor),
         m_RevisionDateTime(revisionDateTime)
@@ -22643,6 +24741,11 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
+    const std::shared_ptr< std::wstring > UpdateFootnoteRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
+    }
+
     const std::shared_ptr< std::wstring > UpdateFootnoteRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -22672,6 +24775,7 @@ namespace aspose::words::cloud::requests {
         if (m_Storage) result->addQueryParam(L"storage", *m_Storage);
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
@@ -22697,6 +24801,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > nodePath,
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword,
         const std::shared_ptr< std::wstring > destFileName,
         const std::shared_ptr< std::wstring > revisionAuthor,
         const std::shared_ptr< std::wstring > revisionDateTime
@@ -22707,6 +24812,7 @@ namespace aspose::words::cloud::requests {
         m_NodePath(nodePath),
         m_LoadEncoding(loadEncoding),
         m_Password(password),
+        m_EncryptedPassword(encryptedPassword),
         m_DestFileName(destFileName),
         m_RevisionAuthor(revisionAuthor),
         m_RevisionDateTime(revisionDateTime)
@@ -22743,6 +24849,11 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
+    const std::shared_ptr< std::wstring > UpdateFootnoteOnlineRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
+    }
+
     const std::shared_ptr< std::wstring > UpdateFootnoteOnlineRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -22768,6 +24879,7 @@ namespace aspose::words::cloud::requests {
         result->setPathParam(L"{nodePath}", m_NodePath ? *m_NodePath : L"");
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
@@ -22797,6 +24909,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > storage,
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword,
         const std::shared_ptr< std::wstring > destFileName,
         const std::shared_ptr< std::wstring > revisionAuthor,
         const std::shared_ptr< std::wstring > revisionDateTime
@@ -22809,6 +24922,7 @@ namespace aspose::words::cloud::requests {
         m_Storage(storage),
         m_LoadEncoding(loadEncoding),
         m_Password(password),
+        m_EncryptedPassword(encryptedPassword),
         m_DestFileName(destFileName),
         m_RevisionAuthor(revisionAuthor),
         m_RevisionDateTime(revisionDateTime)
@@ -22855,6 +24969,11 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
+    const std::shared_ptr< std::wstring > UpdateFormFieldRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
+    }
+
     const std::shared_ptr< std::wstring > UpdateFormFieldRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -22884,6 +25003,7 @@ namespace aspose::words::cloud::requests {
         if (m_Storage) result->addQueryParam(L"storage", *m_Storage);
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
@@ -22909,6 +25029,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > nodePath,
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword,
         const std::shared_ptr< std::wstring > destFileName,
         const std::shared_ptr< std::wstring > revisionAuthor,
         const std::shared_ptr< std::wstring > revisionDateTime
@@ -22919,6 +25040,7 @@ namespace aspose::words::cloud::requests {
         m_NodePath(nodePath),
         m_LoadEncoding(loadEncoding),
         m_Password(password),
+        m_EncryptedPassword(encryptedPassword),
         m_DestFileName(destFileName),
         m_RevisionAuthor(revisionAuthor),
         m_RevisionDateTime(revisionDateTime)
@@ -22955,6 +25077,11 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
+    const std::shared_ptr< std::wstring > UpdateFormFieldOnlineRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
+    }
+
     const std::shared_ptr< std::wstring > UpdateFormFieldOnlineRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -22980,6 +25107,7 @@ namespace aspose::words::cloud::requests {
         result->setPathParam(L"{nodePath}", m_NodePath ? *m_NodePath : L"");
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
@@ -23008,6 +25136,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > storage,
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword,
         const std::shared_ptr< std::wstring > destFileName,
         const std::shared_ptr< std::wstring > revisionAuthor,
         const std::shared_ptr< std::wstring > revisionDateTime
@@ -23019,6 +25148,7 @@ namespace aspose::words::cloud::requests {
         m_Storage(storage),
         m_LoadEncoding(loadEncoding),
         m_Password(password),
+        m_EncryptedPassword(encryptedPassword),
         m_DestFileName(destFileName),
         m_RevisionAuthor(revisionAuthor),
         m_RevisionDateTime(revisionDateTime)
@@ -23060,6 +25190,11 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
+    const std::shared_ptr< std::wstring > UpdateListRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
+    }
+
     const std::shared_ptr< std::wstring > UpdateListRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -23088,6 +25223,7 @@ namespace aspose::words::cloud::requests {
         if (m_Storage) result->addQueryParam(L"storage", *m_Storage);
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
@@ -23115,6 +25251,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > storage,
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword,
         const std::shared_ptr< std::wstring > destFileName,
         const std::shared_ptr< std::wstring > revisionAuthor,
         const std::shared_ptr< std::wstring > revisionDateTime
@@ -23127,6 +25264,7 @@ namespace aspose::words::cloud::requests {
         m_Storage(storage),
         m_LoadEncoding(loadEncoding),
         m_Password(password),
+        m_EncryptedPassword(encryptedPassword),
         m_DestFileName(destFileName),
         m_RevisionAuthor(revisionAuthor),
         m_RevisionDateTime(revisionDateTime)
@@ -23173,6 +25311,11 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
+    const std::shared_ptr< std::wstring > UpdateListLevelRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
+    }
+
     const std::shared_ptr< std::wstring > UpdateListLevelRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -23203,6 +25346,7 @@ namespace aspose::words::cloud::requests {
         if (m_Storage) result->addQueryParam(L"storage", *m_Storage);
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
@@ -23228,6 +25372,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< int32_t > listLevel,
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword,
         const std::shared_ptr< std::wstring > destFileName,
         const std::shared_ptr< std::wstring > revisionAuthor,
         const std::shared_ptr< std::wstring > revisionDateTime
@@ -23238,6 +25383,7 @@ namespace aspose::words::cloud::requests {
         m_ListLevel(listLevel),
         m_LoadEncoding(loadEncoding),
         m_Password(password),
+        m_EncryptedPassword(encryptedPassword),
         m_DestFileName(destFileName),
         m_RevisionAuthor(revisionAuthor),
         m_RevisionDateTime(revisionDateTime)
@@ -23274,6 +25420,11 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
+    const std::shared_ptr< std::wstring > UpdateListLevelOnlineRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
+    }
+
     const std::shared_ptr< std::wstring > UpdateListLevelOnlineRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -23300,6 +25451,7 @@ namespace aspose::words::cloud::requests {
         result->setPathParam(L"{listLevel}", *m_ListLevel);
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
@@ -23326,6 +25478,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< aspose::words::cloud::models::ListUpdate > listUpdate,
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword,
         const std::shared_ptr< std::wstring > destFileName,
         const std::shared_ptr< std::wstring > revisionAuthor,
         const std::shared_ptr< std::wstring > revisionDateTime
@@ -23335,6 +25488,7 @@ namespace aspose::words::cloud::requests {
         m_ListUpdate(listUpdate),
         m_LoadEncoding(loadEncoding),
         m_Password(password),
+        m_EncryptedPassword(encryptedPassword),
         m_DestFileName(destFileName),
         m_RevisionAuthor(revisionAuthor),
         m_RevisionDateTime(revisionDateTime)
@@ -23366,6 +25520,11 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
+    const std::shared_ptr< std::wstring > UpdateListOnlineRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
+    }
+
     const std::shared_ptr< std::wstring > UpdateListOnlineRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -23390,6 +25549,7 @@ namespace aspose::words::cloud::requests {
         result->setPathParam(L"{listId}", *m_ListId);
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
@@ -23419,6 +25579,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > storage,
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword,
         const std::shared_ptr< std::wstring > destFileName,
         const std::shared_ptr< std::wstring > revisionAuthor,
         const std::shared_ptr< std::wstring > revisionDateTime
@@ -23431,6 +25592,7 @@ namespace aspose::words::cloud::requests {
         m_Storage(storage),
         m_LoadEncoding(loadEncoding),
         m_Password(password),
+        m_EncryptedPassword(encryptedPassword),
         m_DestFileName(destFileName),
         m_RevisionAuthor(revisionAuthor),
         m_RevisionDateTime(revisionDateTime)
@@ -23477,6 +25639,11 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
+    const std::shared_ptr< std::wstring > UpdateParagraphFormatRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
+    }
+
     const std::shared_ptr< std::wstring > UpdateParagraphFormatRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -23506,6 +25673,7 @@ namespace aspose::words::cloud::requests {
         if (m_Storage) result->addQueryParam(L"storage", *m_Storage);
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
@@ -23531,6 +25699,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > nodePath,
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword,
         const std::shared_ptr< std::wstring > destFileName,
         const std::shared_ptr< std::wstring > revisionAuthor,
         const std::shared_ptr< std::wstring > revisionDateTime
@@ -23541,6 +25710,7 @@ namespace aspose::words::cloud::requests {
         m_NodePath(nodePath),
         m_LoadEncoding(loadEncoding),
         m_Password(password),
+        m_EncryptedPassword(encryptedPassword),
         m_DestFileName(destFileName),
         m_RevisionAuthor(revisionAuthor),
         m_RevisionDateTime(revisionDateTime)
@@ -23577,6 +25747,11 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
+    const std::shared_ptr< std::wstring > UpdateParagraphFormatOnlineRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
+    }
+
     const std::shared_ptr< std::wstring > UpdateParagraphFormatOnlineRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -23602,6 +25777,7 @@ namespace aspose::words::cloud::requests {
         result->setPathParam(L"{nodePath}", m_NodePath ? *m_NodePath : L"");
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
@@ -23631,6 +25807,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > storage,
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword,
         const std::shared_ptr< std::wstring > destFileName,
         const std::shared_ptr< std::wstring > revisionAuthor,
         const std::shared_ptr< std::wstring > revisionDateTime
@@ -23643,6 +25820,7 @@ namespace aspose::words::cloud::requests {
         m_Storage(storage),
         m_LoadEncoding(loadEncoding),
         m_Password(password),
+        m_EncryptedPassword(encryptedPassword),
         m_DestFileName(destFileName),
         m_RevisionAuthor(revisionAuthor),
         m_RevisionDateTime(revisionDateTime)
@@ -23689,6 +25867,11 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
+    const std::shared_ptr< std::wstring > UpdateParagraphListFormatRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
+    }
+
     const std::shared_ptr< std::wstring > UpdateParagraphListFormatRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -23718,6 +25901,7 @@ namespace aspose::words::cloud::requests {
         if (m_Storage) result->addQueryParam(L"storage", *m_Storage);
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
@@ -23743,6 +25927,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > nodePath,
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword,
         const std::shared_ptr< std::wstring > destFileName,
         const std::shared_ptr< std::wstring > revisionAuthor,
         const std::shared_ptr< std::wstring > revisionDateTime
@@ -23753,6 +25938,7 @@ namespace aspose::words::cloud::requests {
         m_NodePath(nodePath),
         m_LoadEncoding(loadEncoding),
         m_Password(password),
+        m_EncryptedPassword(encryptedPassword),
         m_DestFileName(destFileName),
         m_RevisionAuthor(revisionAuthor),
         m_RevisionDateTime(revisionDateTime)
@@ -23789,6 +25975,11 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
+    const std::shared_ptr< std::wstring > UpdateParagraphListFormatOnlineRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
+    }
+
     const std::shared_ptr< std::wstring > UpdateParagraphListFormatOnlineRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -23814,6 +26005,7 @@ namespace aspose::words::cloud::requests {
         result->setPathParam(L"{nodePath}", m_NodePath ? *m_NodePath : L"");
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
@@ -23843,6 +26035,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > storage,
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword,
         const std::shared_ptr< std::wstring > destFileName,
         const std::shared_ptr< std::wstring > revisionAuthor,
         const std::shared_ptr< std::wstring > revisionDateTime
@@ -23855,6 +26048,7 @@ namespace aspose::words::cloud::requests {
         m_Storage(storage),
         m_LoadEncoding(loadEncoding),
         m_Password(password),
+        m_EncryptedPassword(encryptedPassword),
         m_DestFileName(destFileName),
         m_RevisionAuthor(revisionAuthor),
         m_RevisionDateTime(revisionDateTime)
@@ -23901,6 +26095,11 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
+    const std::shared_ptr< std::wstring > UpdateRunRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
+    }
+
     const std::shared_ptr< std::wstring > UpdateRunRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -23931,6 +26130,7 @@ namespace aspose::words::cloud::requests {
         if (m_Storage) result->addQueryParam(L"storage", *m_Storage);
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
@@ -23958,6 +26158,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > storage,
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword,
         const std::shared_ptr< std::wstring > destFileName,
         const std::shared_ptr< std::wstring > revisionAuthor,
         const std::shared_ptr< std::wstring > revisionDateTime
@@ -23970,6 +26171,7 @@ namespace aspose::words::cloud::requests {
         m_Storage(storage),
         m_LoadEncoding(loadEncoding),
         m_Password(password),
+        m_EncryptedPassword(encryptedPassword),
         m_DestFileName(destFileName),
         m_RevisionAuthor(revisionAuthor),
         m_RevisionDateTime(revisionDateTime)
@@ -24016,6 +26218,11 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
+    const std::shared_ptr< std::wstring > UpdateRunFontRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
+    }
+
     const std::shared_ptr< std::wstring > UpdateRunFontRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -24046,6 +26253,7 @@ namespace aspose::words::cloud::requests {
         if (m_Storage) result->addQueryParam(L"storage", *m_Storage);
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
@@ -24071,6 +26279,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< int32_t > index,
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword,
         const std::shared_ptr< std::wstring > destFileName,
         const std::shared_ptr< std::wstring > revisionAuthor,
         const std::shared_ptr< std::wstring > revisionDateTime
@@ -24081,6 +26290,7 @@ namespace aspose::words::cloud::requests {
         m_Index(index),
         m_LoadEncoding(loadEncoding),
         m_Password(password),
+        m_EncryptedPassword(encryptedPassword),
         m_DestFileName(destFileName),
         m_RevisionAuthor(revisionAuthor),
         m_RevisionDateTime(revisionDateTime)
@@ -24117,6 +26327,11 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
+    const std::shared_ptr< std::wstring > UpdateRunFontOnlineRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
+    }
+
     const std::shared_ptr< std::wstring > UpdateRunFontOnlineRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -24143,6 +26358,7 @@ namespace aspose::words::cloud::requests {
         result->setPathParam(L"{index}", *m_Index);
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
@@ -24170,6 +26386,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< int32_t > index,
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword,
         const std::shared_ptr< std::wstring > destFileName,
         const std::shared_ptr< std::wstring > revisionAuthor,
         const std::shared_ptr< std::wstring > revisionDateTime
@@ -24180,6 +26397,7 @@ namespace aspose::words::cloud::requests {
         m_Index(index),
         m_LoadEncoding(loadEncoding),
         m_Password(password),
+        m_EncryptedPassword(encryptedPassword),
         m_DestFileName(destFileName),
         m_RevisionAuthor(revisionAuthor),
         m_RevisionDateTime(revisionDateTime)
@@ -24216,6 +26434,11 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
+    const std::shared_ptr< std::wstring > UpdateRunOnlineRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
+    }
+
     const std::shared_ptr< std::wstring > UpdateRunOnlineRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -24242,6 +26465,7 @@ namespace aspose::words::cloud::requests {
         result->setPathParam(L"{index}", *m_Index);
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
@@ -24270,6 +26494,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > storage,
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword,
         const std::shared_ptr< std::wstring > destFileName,
         const std::shared_ptr< std::wstring > revisionAuthor,
         const std::shared_ptr< std::wstring > revisionDateTime
@@ -24281,6 +26506,7 @@ namespace aspose::words::cloud::requests {
         m_Storage(storage),
         m_LoadEncoding(loadEncoding),
         m_Password(password),
+        m_EncryptedPassword(encryptedPassword),
         m_DestFileName(destFileName),
         m_RevisionAuthor(revisionAuthor),
         m_RevisionDateTime(revisionDateTime)
@@ -24322,6 +26548,11 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
+    const std::shared_ptr< std::wstring > UpdateSectionPageSetupRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
+    }
+
     const std::shared_ptr< std::wstring > UpdateSectionPageSetupRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -24350,6 +26581,7 @@ namespace aspose::words::cloud::requests {
         if (m_Storage) result->addQueryParam(L"storage", *m_Storage);
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
@@ -24374,6 +26606,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< aspose::words::cloud::models::PageSetup > pageSetup,
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword,
         const std::shared_ptr< std::wstring > destFileName,
         const std::shared_ptr< std::wstring > revisionAuthor,
         const std::shared_ptr< std::wstring > revisionDateTime
@@ -24383,6 +26616,7 @@ namespace aspose::words::cloud::requests {
         m_PageSetup(pageSetup),
         m_LoadEncoding(loadEncoding),
         m_Password(password),
+        m_EncryptedPassword(encryptedPassword),
         m_DestFileName(destFileName),
         m_RevisionAuthor(revisionAuthor),
         m_RevisionDateTime(revisionDateTime)
@@ -24414,6 +26648,11 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
+    const std::shared_ptr< std::wstring > UpdateSectionPageSetupOnlineRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
+    }
+
     const std::shared_ptr< std::wstring > UpdateSectionPageSetupOnlineRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -24438,6 +26677,7 @@ namespace aspose::words::cloud::requests {
         result->setPathParam(L"{sectionIndex}", *m_SectionIndex);
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
@@ -24466,6 +26706,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > storage,
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword,
         const std::shared_ptr< std::wstring > destFileName,
         const std::shared_ptr< std::wstring > revisionAuthor,
         const std::shared_ptr< std::wstring > revisionDateTime
@@ -24477,6 +26718,7 @@ namespace aspose::words::cloud::requests {
         m_Storage(storage),
         m_LoadEncoding(loadEncoding),
         m_Password(password),
+        m_EncryptedPassword(encryptedPassword),
         m_DestFileName(destFileName),
         m_RevisionAuthor(revisionAuthor),
         m_RevisionDateTime(revisionDateTime)
@@ -24518,6 +26760,11 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
+    const std::shared_ptr< std::wstring > UpdateStyleRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
+    }
+
     const std::shared_ptr< std::wstring > UpdateStyleRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -24546,6 +26793,7 @@ namespace aspose::words::cloud::requests {
         if (m_Storage) result->addQueryParam(L"storage", *m_Storage);
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
@@ -24570,6 +26818,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< aspose::words::cloud::models::StyleUpdate > styleUpdate,
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword,
         const std::shared_ptr< std::wstring > destFileName,
         const std::shared_ptr< std::wstring > revisionAuthor,
         const std::shared_ptr< std::wstring > revisionDateTime
@@ -24579,6 +26828,7 @@ namespace aspose::words::cloud::requests {
         m_StyleUpdate(styleUpdate),
         m_LoadEncoding(loadEncoding),
         m_Password(password),
+        m_EncryptedPassword(encryptedPassword),
         m_DestFileName(destFileName),
         m_RevisionAuthor(revisionAuthor),
         m_RevisionDateTime(revisionDateTime)
@@ -24610,6 +26860,11 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
+    const std::shared_ptr< std::wstring > UpdateStyleOnlineRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
+    }
+
     const std::shared_ptr< std::wstring > UpdateStyleOnlineRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -24634,6 +26889,7 @@ namespace aspose::words::cloud::requests {
         result->setPathParam(L"{styleName}", *m_StyleName);
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
@@ -24663,6 +26919,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > storage,
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword,
         const std::shared_ptr< std::wstring > destFileName,
         const std::shared_ptr< std::wstring > revisionAuthor,
         const std::shared_ptr< std::wstring > revisionDateTime
@@ -24675,6 +26932,7 @@ namespace aspose::words::cloud::requests {
         m_Storage(storage),
         m_LoadEncoding(loadEncoding),
         m_Password(password),
+        m_EncryptedPassword(encryptedPassword),
         m_DestFileName(destFileName),
         m_RevisionAuthor(revisionAuthor),
         m_RevisionDateTime(revisionDateTime)
@@ -24721,6 +26979,11 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
+    const std::shared_ptr< std::wstring > UpdateTableCellFormatRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
+    }
+
     const std::shared_ptr< std::wstring > UpdateTableCellFormatRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -24751,6 +27014,7 @@ namespace aspose::words::cloud::requests {
         if (m_Storage) result->addQueryParam(L"storage", *m_Storage);
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
@@ -24776,6 +27040,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< int32_t > index,
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword,
         const std::shared_ptr< std::wstring > destFileName,
         const std::shared_ptr< std::wstring > revisionAuthor,
         const std::shared_ptr< std::wstring > revisionDateTime
@@ -24786,6 +27051,7 @@ namespace aspose::words::cloud::requests {
         m_Index(index),
         m_LoadEncoding(loadEncoding),
         m_Password(password),
+        m_EncryptedPassword(encryptedPassword),
         m_DestFileName(destFileName),
         m_RevisionAuthor(revisionAuthor),
         m_RevisionDateTime(revisionDateTime)
@@ -24822,6 +27088,11 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
+    const std::shared_ptr< std::wstring > UpdateTableCellFormatOnlineRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
+    }
+
     const std::shared_ptr< std::wstring > UpdateTableCellFormatOnlineRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -24848,6 +27119,7 @@ namespace aspose::words::cloud::requests {
         result->setPathParam(L"{index}", *m_Index);
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
@@ -24877,6 +27149,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > storage,
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword,
         const std::shared_ptr< std::wstring > destFileName,
         const std::shared_ptr< std::wstring > revisionAuthor,
         const std::shared_ptr< std::wstring > revisionDateTime
@@ -24889,6 +27162,7 @@ namespace aspose::words::cloud::requests {
         m_Storage(storage),
         m_LoadEncoding(loadEncoding),
         m_Password(password),
+        m_EncryptedPassword(encryptedPassword),
         m_DestFileName(destFileName),
         m_RevisionAuthor(revisionAuthor),
         m_RevisionDateTime(revisionDateTime)
@@ -24935,6 +27209,11 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
+    const std::shared_ptr< std::wstring > UpdateTablePropertiesRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
+    }
+
     const std::shared_ptr< std::wstring > UpdateTablePropertiesRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -24964,6 +27243,7 @@ namespace aspose::words::cloud::requests {
         if (m_Storage) result->addQueryParam(L"storage", *m_Storage);
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
@@ -24989,6 +27269,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > nodePath,
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword,
         const std::shared_ptr< std::wstring > destFileName,
         const std::shared_ptr< std::wstring > revisionAuthor,
         const std::shared_ptr< std::wstring > revisionDateTime
@@ -24999,6 +27280,7 @@ namespace aspose::words::cloud::requests {
         m_NodePath(nodePath),
         m_LoadEncoding(loadEncoding),
         m_Password(password),
+        m_EncryptedPassword(encryptedPassword),
         m_DestFileName(destFileName),
         m_RevisionAuthor(revisionAuthor),
         m_RevisionDateTime(revisionDateTime)
@@ -25035,6 +27317,11 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
+    const std::shared_ptr< std::wstring > UpdateTablePropertiesOnlineRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
+    }
+
     const std::shared_ptr< std::wstring > UpdateTablePropertiesOnlineRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -25060,6 +27347,7 @@ namespace aspose::words::cloud::requests {
         result->setPathParam(L"{nodePath}", m_NodePath ? *m_NodePath : L"");
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
@@ -25089,6 +27377,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > storage,
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword,
         const std::shared_ptr< std::wstring > destFileName,
         const std::shared_ptr< std::wstring > revisionAuthor,
         const std::shared_ptr< std::wstring > revisionDateTime
@@ -25101,6 +27390,7 @@ namespace aspose::words::cloud::requests {
         m_Storage(storage),
         m_LoadEncoding(loadEncoding),
         m_Password(password),
+        m_EncryptedPassword(encryptedPassword),
         m_DestFileName(destFileName),
         m_RevisionAuthor(revisionAuthor),
         m_RevisionDateTime(revisionDateTime)
@@ -25147,6 +27437,11 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
+    const std::shared_ptr< std::wstring > UpdateTableRowFormatRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
+    }
+
     const std::shared_ptr< std::wstring > UpdateTableRowFormatRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -25177,6 +27472,7 @@ namespace aspose::words::cloud::requests {
         if (m_Storage) result->addQueryParam(L"storage", *m_Storage);
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
@@ -25202,6 +27498,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< int32_t > index,
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword,
         const std::shared_ptr< std::wstring > destFileName,
         const std::shared_ptr< std::wstring > revisionAuthor,
         const std::shared_ptr< std::wstring > revisionDateTime
@@ -25212,6 +27509,7 @@ namespace aspose::words::cloud::requests {
         m_Index(index),
         m_LoadEncoding(loadEncoding),
         m_Password(password),
+        m_EncryptedPassword(encryptedPassword),
         m_DestFileName(destFileName),
         m_RevisionAuthor(revisionAuthor),
         m_RevisionDateTime(revisionDateTime)
@@ -25248,6 +27546,11 @@ namespace aspose::words::cloud::requests {
         return m_Password;
     }
 
+    const std::shared_ptr< std::wstring > UpdateTableRowFormatOnlineRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
+    }
+
     const std::shared_ptr< std::wstring > UpdateTableRowFormatOnlineRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -25274,6 +27577,7 @@ namespace aspose::words::cloud::requests {
         result->setPathParam(L"{index}", *m_Index);
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);

@@ -55,6 +55,7 @@ TEST_F(DocumentWithFormatTests, TestGetDocumentWithFormat) {
         nullptr,
         nullptr,
         nullptr,
+        nullptr,
         nullptr
     ));
 
@@ -76,6 +77,7 @@ TEST_F(DocumentWithFormatTests, TestGetDocumentWithFormatAndOutPath) {
         std::make_shared< std::wstring >(remoteFileName),
         std::make_shared< std::wstring >(L"text"),
         std::make_shared< std::wstring >(remoteDataFolder),
+        nullptr,
         nullptr,
         nullptr,
         nullptr,

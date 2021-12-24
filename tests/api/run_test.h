@@ -60,6 +60,7 @@ TEST_F(RunTests, TestUpdateRun) {
         nullptr,
         nullptr,
         nullptr,
+        nullptr,
         nullptr
     ));
 
@@ -80,6 +81,7 @@ TEST_F(RunTests, TestUpdateRunOnline) {
         std::make_shared< std::wstring >(L"paragraphs/1"),
         requestRun,
         std::make_shared< int32_t >(0),
+        nullptr,
         nullptr,
         nullptr,
         nullptr,
@@ -114,6 +116,7 @@ TEST_F(RunTests, TestInsertRun) {
         nullptr,
         nullptr,
         nullptr,
+        nullptr,
         nullptr
     ));
 
@@ -134,6 +137,7 @@ TEST_F(RunTests, TestInsertRunOnline) {
         requestDocument,
         std::make_shared< std::wstring >(L"paragraphs/1"),
         requestRun,
+        nullptr,
         nullptr,
         nullptr,
         nullptr,
@@ -166,6 +170,7 @@ TEST_F(RunTests, TestDeleteRun) {
         nullptr,
         nullptr,
         nullptr,
+        nullptr,
         nullptr
     ));
 
@@ -181,6 +186,7 @@ TEST_F(RunTests, TestDeleteRunOnline) {
         requestDocument,
         std::make_shared< std::wstring >(L"paragraphs/1"),
         std::make_shared< int32_t >(0),
+        nullptr,
         nullptr,
         nullptr,
         nullptr,

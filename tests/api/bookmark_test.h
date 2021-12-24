@@ -53,6 +53,7 @@ TEST_F(BookmarkTests, TestGetBookmarks) {
         std::make_shared< std::wstring >(remoteDataFolder),
         nullptr,
         nullptr,
+        nullptr,
         nullptr
     ));
 
@@ -66,6 +67,7 @@ TEST_F(BookmarkTests, TestGetBookmarksOnline) {
     auto requestDocument = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(localFile)), std::istream::binary));
     std::shared_ptr<requests::GetBookmarksOnlineRequest> request(new requests::GetBookmarksOnlineRequest(
         requestDocument,
+        nullptr,
         nullptr,
         nullptr
     ));
@@ -90,6 +92,7 @@ TEST_F(BookmarkTests, TestGetBookmarkByName) {
         std::make_shared< std::wstring >(remoteDataFolder),
         nullptr,
         nullptr,
+        nullptr,
         nullptr
     ));
 
@@ -104,6 +107,7 @@ TEST_F(BookmarkTests, TestGetBookmarkByNameOnline) {
     std::shared_ptr<requests::GetBookmarkByNameOnlineRequest> request(new requests::GetBookmarkByNameOnlineRequest(
         requestDocument,
         std::make_shared< std::wstring >(bookmarkName),
+        nullptr,
         nullptr,
         nullptr
     ));
@@ -134,6 +138,7 @@ TEST_F(BookmarkTests, TestUpdateBookmark) {
         nullptr,
         nullptr,
         nullptr,
+        nullptr,
         std::make_shared< std::wstring >(baseTestOutPath + L"/" + remoteFileName),
         nullptr,
         nullptr
@@ -156,6 +161,7 @@ TEST_F(BookmarkTests, TestUpdateBookmarkOnline) {
         requestDocument,
         std::make_shared< std::wstring >(bookmarkName),
         requestBookmarkData,
+        nullptr,
         nullptr,
         nullptr,
         std::make_shared< std::wstring >(baseTestOutPath + L"/" + remoteFileName),

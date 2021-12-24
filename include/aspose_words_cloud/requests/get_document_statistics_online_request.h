@@ -33,6 +33,7 @@ namespace aspose::words::cloud::requests {
             const std::shared_ptr< std::istream > document,
             const std::shared_ptr< std::wstring > loadEncoding = nullptr,
             const std::shared_ptr< std::wstring > password = nullptr,
+            const std::shared_ptr< std::wstring > encryptedPassword = nullptr,
             const std::shared_ptr< bool > includeComments = nullptr,
             const std::shared_ptr< bool > includeFootnotes = nullptr,
             const std::shared_ptr< bool > includeTextInShapes = nullptr
@@ -41,6 +42,7 @@ namespace aspose::words::cloud::requests {
         ASPOSE_WORDS_CLOUD_EXPORT const std::shared_ptr< std::istream > getDocument() const;
         ASPOSE_WORDS_CLOUD_EXPORT const std::shared_ptr< std::wstring > getLoadEncoding() const;
         ASPOSE_WORDS_CLOUD_EXPORT const std::shared_ptr< std::wstring > getPassword() const;
+        ASPOSE_WORDS_CLOUD_EXPORT const std::shared_ptr< std::wstring > getEncryptedPassword() const;
         ASPOSE_WORDS_CLOUD_EXPORT const std::shared_ptr< bool > getIncludeComments() const;
         ASPOSE_WORDS_CLOUD_EXPORT const std::shared_ptr< bool > getIncludeFootnotes() const;
         ASPOSE_WORDS_CLOUD_EXPORT const std::shared_ptr< bool > getIncludeTextInShapes() const;
@@ -52,6 +54,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::istream > m_Document;
         const std::shared_ptr< std::wstring > m_LoadEncoding;
         const std::shared_ptr< std::wstring > m_Password;
+        const std::shared_ptr< std::wstring > m_EncryptedPassword;
         const std::shared_ptr< bool > m_IncludeComments;
         const std::shared_ptr< bool > m_IncludeFootnotes;
         const std::shared_ptr< bool > m_IncludeTextInShapes;

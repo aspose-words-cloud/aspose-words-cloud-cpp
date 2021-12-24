@@ -53,6 +53,7 @@ TEST_F(TableTests, TestGetTables) {
         std::make_shared< std::wstring >(remoteDataFolder),
         nullptr,
         nullptr,
+        nullptr,
         nullptr
     ));
 
@@ -71,6 +72,7 @@ TEST_F(TableTests, TestGetTablesOnline) {
     std::shared_ptr<requests::GetTablesOnlineRequest> request(new requests::GetTablesOnlineRequest(
         requestDocument,
         std::make_shared< std::wstring >(L""),
+        nullptr,
         nullptr,
         nullptr
     ));
@@ -93,6 +95,7 @@ TEST_F(TableTests, TestGetTablesWithoutNodePath) {
         std::make_shared< std::wstring >(remoteFileName),
         nullptr,
         std::make_shared< std::wstring >(remoteDataFolder),
+        nullptr,
         nullptr,
         nullptr,
         nullptr
@@ -123,6 +126,7 @@ TEST_F(TableTests, TestGetTable) {
         std::make_shared< std::wstring >(remoteDataFolder),
         nullptr,
         nullptr,
+        nullptr,
         nullptr
     ));
 
@@ -143,6 +147,7 @@ TEST_F(TableTests, TestGetTableOnline) {
         requestDocument,
         std::make_shared< int32_t >(1),
         std::make_shared< std::wstring >(L""),
+        nullptr,
         nullptr,
         nullptr
     ));
@@ -166,6 +171,7 @@ TEST_F(TableTests, TestGetTableWithoutNodePath) {
         std::make_shared< int32_t >(1),
         nullptr,
         std::make_shared< std::wstring >(remoteDataFolder),
+        nullptr,
         nullptr,
         nullptr,
         nullptr
@@ -200,6 +206,7 @@ TEST_F(TableTests, TestDeleteTable) {
         nullptr,
         nullptr,
         nullptr,
+        nullptr,
         nullptr
     ));
 
@@ -215,6 +222,7 @@ TEST_F(TableTests, TestDeleteTableOnline) {
         requestDocument,
         std::make_shared< int32_t >(1),
         std::make_shared< std::wstring >(L""),
+        nullptr,
         nullptr,
         nullptr,
         nullptr,
@@ -241,6 +249,7 @@ TEST_F(TableTests, TestDeleteTableWithoutNodePath) {
         std::make_shared< int32_t >(1),
         nullptr,
         std::make_shared< std::wstring >(remoteDataFolder),
+        nullptr,
         nullptr,
         nullptr,
         nullptr,
@@ -276,6 +285,7 @@ TEST_F(TableTests, TestInsertTable) {
         nullptr,
         nullptr,
         nullptr,
+        nullptr,
         nullptr
     ));
 
@@ -299,6 +309,7 @@ TEST_F(TableTests, TestInsertTableOnline) {
         requestDocument,
         requestTable,
         std::make_shared< std::wstring >(L""),
+        nullptr,
         nullptr,
         nullptr,
         nullptr,
@@ -333,6 +344,7 @@ TEST_F(TableTests, TestInsertTableWithoutNodePath) {
         nullptr,
         nullptr,
         nullptr,
+        nullptr,
         nullptr
     ));
 
@@ -362,6 +374,7 @@ TEST_F(TableTests, TestGetTableProperties) {
         std::make_shared< std::wstring >(remoteDataFolder),
         nullptr,
         nullptr,
+        nullptr,
         nullptr
     ));
 
@@ -379,6 +392,7 @@ TEST_F(TableTests, TestGetTablePropertiesOnline) {
         requestDocument,
         std::make_shared< int32_t >(1),
         std::make_shared< std::wstring >(L""),
+        nullptr,
         nullptr,
         nullptr
     ));
@@ -402,6 +416,7 @@ TEST_F(TableTests, TestGetTablePropertiesWithoutNodePath) {
         std::make_shared< int32_t >(1),
         nullptr,
         std::make_shared< std::wstring >(remoteDataFolder),
+        nullptr,
         nullptr,
         nullptr,
         nullptr
@@ -441,6 +456,7 @@ TEST_F(TableTests, TestUpdateTableProperties) {
         nullptr,
         nullptr,
         nullptr,
+        nullptr,
         nullptr
     ));
 
@@ -469,6 +485,7 @@ TEST_F(TableTests, TestUpdateTablePropertiesOnline) {
         requestProperties,
         std::make_shared< int32_t >(1),
         std::make_shared< std::wstring >(L""),
+        nullptr,
         nullptr,
         nullptr,
         nullptr,
@@ -508,6 +525,7 @@ TEST_F(TableTests, TestUpdateTablePropertiesWithoutNodePath) {
         nullptr,
         nullptr,
         nullptr,
+        nullptr,
         nullptr
     ));
 
@@ -537,6 +555,7 @@ TEST_F(TableTests, TestGetTableRow) {
         std::make_shared< std::wstring >(remoteDataFolder),
         nullptr,
         nullptr,
+        nullptr,
         nullptr
     ));
 
@@ -555,6 +574,7 @@ TEST_F(TableTests, TestGetTableRowOnline) {
         requestDocument,
         std::make_shared< std::wstring >(L"tables/1"),
         std::make_shared< int32_t >(0),
+        nullptr,
         nullptr,
         nullptr
     ));
@@ -583,6 +603,7 @@ TEST_F(TableTests, TestDeleteTableRow) {
         nullptr,
         nullptr,
         nullptr,
+        nullptr,
         nullptr
     ));
 
@@ -598,6 +619,7 @@ TEST_F(TableTests, TestDeleteTableRowOnline) {
         requestDocument,
         std::make_shared< std::wstring >(L"tables/1"),
         std::make_shared< int32_t >(0),
+        nullptr,
         nullptr,
         nullptr,
         nullptr,
@@ -631,6 +653,7 @@ TEST_F(TableTests, TestInsertTableRow) {
         nullptr,
         nullptr,
         nullptr,
+        nullptr,
         nullptr
     ));
 
@@ -651,6 +674,7 @@ TEST_F(TableTests, TestInsertTableRowOnline) {
         requestDocument,
         std::make_shared< std::wstring >(L"sections/0/tables/2"),
         requestRow,
+        nullptr,
         nullptr,
         nullptr,
         nullptr,
@@ -679,6 +703,7 @@ TEST_F(TableTests, TestGetTableRowFormat) {
         std::make_shared< std::wstring >(remoteDataFolder),
         nullptr,
         nullptr,
+        nullptr,
         nullptr
     ));
 
@@ -696,6 +721,7 @@ TEST_F(TableTests, TestGetTableRowFormatOnline) {
         requestDocument,
         std::make_shared< std::wstring >(L"sections/0/tables/2"),
         std::make_shared< int32_t >(0),
+        nullptr,
         nullptr,
         nullptr
     ));
@@ -730,6 +756,7 @@ TEST_F(TableTests, TestUpdateTableRowFormat) {
         nullptr,
         nullptr,
         nullptr,
+        nullptr,
         nullptr
     ));
 
@@ -759,6 +786,7 @@ TEST_F(TableTests, TestUpdateTableRowFormatOnline) {
         nullptr,
         nullptr,
         nullptr,
+        nullptr,
         nullptr
     ));
 
@@ -783,6 +811,7 @@ TEST_F(TableTests, TestGetTableCell) {
         std::make_shared< std::wstring >(remoteDataFolder),
         nullptr,
         nullptr,
+        nullptr,
         nullptr
     ));
 
@@ -800,6 +829,7 @@ TEST_F(TableTests, TestGetTableCellOnline) {
         requestDocument,
         std::make_shared< std::wstring >(L"sections/0/tables/2/rows/0"),
         std::make_shared< int32_t >(0),
+        nullptr,
         nullptr,
         nullptr
     ));
@@ -828,6 +858,7 @@ TEST_F(TableTests, TestDeleteTableCell) {
         nullptr,
         nullptr,
         nullptr,
+        nullptr,
         nullptr
     ));
 
@@ -843,6 +874,7 @@ TEST_F(TableTests, TestDeleteTableCellOnline) {
         requestDocument,
         std::make_shared< std::wstring >(L"sections/0/tables/2/rows/0"),
         std::make_shared< int32_t >(0),
+        nullptr,
         nullptr,
         nullptr,
         nullptr,
@@ -876,6 +908,7 @@ TEST_F(TableTests, TestInsertTableCell) {
         nullptr,
         nullptr,
         nullptr,
+        nullptr,
         nullptr
     ));
 
@@ -895,6 +928,7 @@ TEST_F(TableTests, TestInsertTableCellOnline) {
         requestDocument,
         std::make_shared< std::wstring >(L"sections/0/tables/2/rows/0"),
         requestCell,
+        nullptr,
         nullptr,
         nullptr,
         nullptr,
@@ -923,6 +957,7 @@ TEST_F(TableTests, TestGetTableCellFormat) {
         std::make_shared< std::wstring >(remoteDataFolder),
         nullptr,
         nullptr,
+        nullptr,
         nullptr
     ));
 
@@ -940,6 +975,7 @@ TEST_F(TableTests, TestGetTableCellFormatOnline) {
         requestDocument,
         std::make_shared< std::wstring >(L"sections/0/tables/2/rows/0"),
         std::make_shared< int32_t >(0),
+        nullptr,
         nullptr,
         nullptr
     ));
@@ -974,6 +1010,7 @@ TEST_F(TableTests, TestUpdateTableCellFormat) {
         nullptr,
         nullptr,
         nullptr,
+        nullptr,
         nullptr
     ));
 
@@ -999,6 +1036,7 @@ TEST_F(TableTests, TestUpdateTableCellFormatOnline) {
         std::make_shared< std::wstring >(L"sections/0/tables/2/rows/0"),
         requestFormat,
         std::make_shared< int32_t >(0),
+        nullptr,
         nullptr,
         nullptr,
         nullptr,
@@ -1030,6 +1068,7 @@ TEST_F(TableTests, TestRenderTable) {
         nullptr,
         nullptr,
         nullptr,
+        nullptr,
         nullptr
     ));
 
@@ -1046,6 +1085,7 @@ TEST_F(TableTests, TestRenderTableOnline) {
         std::make_shared< std::wstring >(L"png"),
         std::make_shared< int32_t >(0),
         std::make_shared< std::wstring >(L""),
+        nullptr,
         nullptr,
         nullptr,
         nullptr,
@@ -1072,6 +1112,7 @@ TEST_F(TableTests, TestRenderTableWithoutNodePath) {
         std::make_shared< int32_t >(0),
         nullptr,
         std::make_shared< std::wstring >(remoteDataFolder),
+        nullptr,
         nullptr,
         nullptr,
         nullptr,

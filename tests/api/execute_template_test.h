@@ -61,6 +61,7 @@ TEST_F(ExecuteTemplateTests, TestExecuteTemplate) {
         nullptr,
         nullptr,
         nullptr,
+        nullptr,
         std::make_shared< std::wstring >(baseTestOutPath + L"/" + remoteFileName)
     ));
 

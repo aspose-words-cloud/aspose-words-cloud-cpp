@@ -61,6 +61,7 @@ TEST_F(AppendDocumentTests, TestAppendDocument) {
         nullptr,
         nullptr,
         nullptr,
+        nullptr,
         std::make_shared< std::wstring >(baseTestOutPath + L"/" + remoteFileName),
         nullptr,
         nullptr
@@ -93,6 +94,7 @@ TEST_F(AppendDocumentTests, TestAppendDocumentOnline) {
     std::shared_ptr<requests::AppendDocumentOnlineRequest> request(new requests::AppendDocumentOnlineRequest(
         requestDocument,
         requestDocumentList,
+        nullptr,
         nullptr,
         nullptr,
         nullptr,

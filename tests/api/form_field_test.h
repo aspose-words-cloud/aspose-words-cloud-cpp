@@ -63,6 +63,7 @@ TEST_F(FormFieldTests, TestUpdateFormField) {
         nullptr,
         nullptr,
         nullptr,
+        nullptr,
         std::make_shared< std::wstring >(baseTestOutPath + L"/" + remoteFileName),
         nullptr,
         nullptr
@@ -91,6 +92,7 @@ TEST_F(FormFieldTests, TestUpdateFormFieldOnline) {
         requestFormField,
         std::make_shared< int32_t >(0),
         std::make_shared< std::wstring >(L"sections/0"),
+        nullptr,
         nullptr,
         nullptr,
         nullptr,
@@ -128,6 +130,7 @@ TEST_F(FormFieldTests, TestUpdateFormFieldWithoutNodePath) {
         nullptr,
         nullptr,
         nullptr,
+        nullptr,
         std::make_shared< std::wstring >(baseTestOutPath + L"/" + remoteFileName),
         nullptr,
         nullptr
@@ -157,6 +160,7 @@ TEST_F(FormFieldTests, TestGetFormField) {
         std::make_shared< std::wstring >(remoteDataFolder),
         nullptr,
         nullptr,
+        nullptr,
         nullptr
     ));
 
@@ -174,6 +178,7 @@ TEST_F(FormFieldTests, TestGetFormFieldOnline) {
         requestDocument,
         std::make_shared< int32_t >(0),
         std::make_shared< std::wstring >(L"sections/0"),
+        nullptr,
         nullptr,
         nullptr
     ));
@@ -197,6 +202,7 @@ TEST_F(FormFieldTests, TestGetFormFieldWithoutNodePath) {
         std::make_shared< int32_t >(0),
         nullptr,
         std::make_shared< std::wstring >(remoteDataFolder),
+        nullptr,
         nullptr,
         nullptr,
         nullptr
@@ -224,6 +230,7 @@ TEST_F(FormFieldTests, TestGetFormFields) {
         std::make_shared< std::wstring >(remoteDataFolder),
         nullptr,
         nullptr,
+        nullptr,
         nullptr
     ));
 
@@ -242,6 +249,7 @@ TEST_F(FormFieldTests, TestGetFormFieldsOnline) {
     std::shared_ptr<requests::GetFormFieldsOnlineRequest> request(new requests::GetFormFieldsOnlineRequest(
         requestDocument,
         std::make_shared< std::wstring >(L"sections/0"),
+        nullptr,
         nullptr,
         nullptr
     ));
@@ -264,6 +272,7 @@ TEST_F(FormFieldTests, TestGetFormFieldsWithoutNodePath) {
         std::make_shared< std::wstring >(remoteFileName),
         nullptr,
         std::make_shared< std::wstring >(remoteDataFolder),
+        nullptr,
         nullptr,
         nullptr,
         nullptr
@@ -303,6 +312,7 @@ TEST_F(FormFieldTests, TestInsertFormField) {
         nullptr,
         nullptr,
         nullptr,
+        nullptr,
         std::make_shared< std::wstring >(baseTestOutPath + L"/" + remoteFileName),
         nullptr,
         nullptr,
@@ -332,6 +342,7 @@ TEST_F(FormFieldTests, TestInsertFormFieldOnline) {
         requestDocument,
         requestFormField,
         std::make_shared< std::wstring >(L"sections/0/paragraphs/0"),
+        nullptr,
         nullptr,
         nullptr,
         nullptr,
@@ -370,6 +381,7 @@ TEST_F(FormFieldTests, TestInsertFormFieldWithoutNodePath) {
         nullptr,
         nullptr,
         nullptr,
+        nullptr,
         std::make_shared< std::wstring >(baseTestOutPath + L"/" + remoteFileName),
         nullptr,
         nullptr,
@@ -401,6 +413,7 @@ TEST_F(FormFieldTests, TestDeleteFormField) {
         nullptr,
         nullptr,
         nullptr,
+        nullptr,
         std::make_shared< std::wstring >(baseTestOutPath + L"/" + remoteFileName),
         nullptr,
         nullptr
@@ -418,6 +431,7 @@ TEST_F(FormFieldTests, TestDeleteFormFieldOnline) {
         requestDocument,
         std::make_shared< int32_t >(0),
         std::make_shared< std::wstring >(L"sections/0"),
+        nullptr,
         nullptr,
         nullptr,
         nullptr,
@@ -444,6 +458,7 @@ TEST_F(FormFieldTests, TestDeleteFormFieldWithoutNodePath) {
         std::make_shared< int32_t >(0),
         nullptr,
         std::make_shared< std::wstring >(remoteDataFolder),
+        nullptr,
         nullptr,
         nullptr,
         nullptr,

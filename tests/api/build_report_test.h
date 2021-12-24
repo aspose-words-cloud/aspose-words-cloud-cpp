@@ -84,6 +84,7 @@ TEST_F(BuildReportTests, TestBuildReport) {
         nullptr,
         nullptr,
         nullptr,
+        nullptr,
         nullptr
     ));
 

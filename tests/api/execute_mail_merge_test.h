@@ -78,6 +78,7 @@ TEST_F(ExecuteMailMergeTests, TestExecuteMailMerge) {
         nullptr,
         nullptr,
         nullptr,
+        nullptr,
         std::make_shared< bool >(false),
         nullptr,
         nullptr,

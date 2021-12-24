@@ -58,6 +58,7 @@ TEST_F(ConvertDocumentTests, TestSaveAs) {
         nullptr,
         nullptr,
         nullptr,
+        nullptr,
         nullptr
     ));
 
@@ -79,6 +80,7 @@ TEST_F(ConvertDocumentTests, TestSaveAsOnline) {
     std::shared_ptr<requests::SaveAsOnlineRequest> request(new requests::SaveAsOnlineRequest(
         requestDocument,
         requestSaveOptionsData,
+        nullptr,
         nullptr,
         nullptr,
         nullptr
@@ -106,6 +108,7 @@ TEST_F(ConvertDocumentTests, TestSaveAsDocx) {
         std::make_shared< std::wstring >(remoteName),
         requestSaveOptionsData,
         std::make_shared< std::wstring >(remoteFolder),
+        nullptr,
         nullptr,
         nullptr,
         nullptr,
@@ -156,6 +159,7 @@ TEST_F(ConvertDocumentTests, TestSaveAsTiff) {
         nullptr,
         nullptr,
         nullptr,
+        nullptr,
         nullptr
     ));
 
@@ -177,6 +181,7 @@ TEST_F(ConvertDocumentTests, TestSaveAsTiffOnline) {
     std::shared_ptr<requests::SaveAsTiffOnlineRequest> request(new requests::SaveAsTiffOnlineRequest(
         requestDocument,
         requestSaveOptions,
+        nullptr,
         nullptr,
         nullptr,
         nullptr,
