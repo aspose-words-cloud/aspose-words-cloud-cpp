@@ -1,6 +1,6 @@
 ﻿/** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="execute_mail_merge_test.h">
-*   Copyright (c) 2021 Aspose.Words for Cloud
+*   Copyright (c) 2022 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -75,6 +75,7 @@ TEST_F(ExecuteMailMergeTests, TestExecuteMailMerge) {
         std::make_shared< std::wstring >(localDataFile),
         nullptr,
         std::make_shared< std::wstring >(remoteDataFolder),
+        nullptr,
         nullptr,
         nullptr,
         nullptr,

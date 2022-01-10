@@ -1,6 +1,6 @@
 ﻿/** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="macros_test.h">
-*   Copyright (c) 2021 Aspose.Words for Cloud
+*   Copyright (c) 2022 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -55,6 +55,7 @@ TEST_F(MacrosTests, TestDeleteMacros) {
         nullptr,
         nullptr,
         nullptr,
+        nullptr,
         nullptr
     ));
 
@@ -68,6 +69,7 @@ TEST_F(MacrosTests, TestDeleteMacrosOnline) {
     auto requestDocument = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(localFile)), std::istream::binary));
     std::shared_ptr<requests::DeleteMacrosOnlineRequest> request(new requests::DeleteMacrosOnlineRequest(
         requestDocument,
+        nullptr,
         nullptr,
         nullptr,
         nullptr,

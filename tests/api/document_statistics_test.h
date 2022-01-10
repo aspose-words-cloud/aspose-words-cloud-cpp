@@ -1,6 +1,6 @@
 ﻿/** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="document_statistics_test.h">
-*   Copyright (c) 2021 Aspose.Words for Cloud
+*   Copyright (c) 2022 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -55,6 +55,7 @@ TEST_F(DocumentStatisticsTests, TestGetDocumentStatistics) {
         nullptr,
         nullptr,
         nullptr,
+        nullptr,
         nullptr
     ));
 
@@ -70,6 +71,7 @@ TEST_F(DocumentStatisticsTests, TestGetDocumentStatisticsOnline) {
     auto requestDocument = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(localFile)), std::istream::binary));
     std::shared_ptr<requests::GetDocumentStatisticsOnlineRequest> request(new requests::GetDocumentStatisticsOnlineRequest(
         requestDocument,
+        nullptr,
         nullptr,
         nullptr,
         nullptr,

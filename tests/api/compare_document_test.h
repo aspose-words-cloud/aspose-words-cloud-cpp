@@ -1,6 +1,6 @@
 ﻿/** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="compare_document_test.h">
-*   Copyright (c) 2021 Aspose.Words for Cloud
+*   Copyright (c) 2022 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -65,7 +65,9 @@ TEST_F(CompareDocumentTests, TestCompareDocument) {
         nullptr,
         nullptr,
         nullptr,
-        std::make_shared< std::wstring >(baseTestOutPath + L"/TestCompareDocumentOut.doc")
+        nullptr,
+        std::make_shared< std::wstring >(baseTestOutPath + L"/TestCompareDocumentOut.doc"),
+        nullptr
     ));
 
     auto actual = getApi()->compareDocument(request);
@@ -97,7 +99,9 @@ TEST_F(CompareDocumentTests, TestCompareDocumentOnline) {
         nullptr,
         nullptr,
         nullptr,
-        std::make_shared< std::wstring >(baseTestOutPath + L"/TestCompareDocumentOut.doc")
+        nullptr,
+        std::make_shared< std::wstring >(baseTestOutPath + L"/TestCompareDocumentOut.doc"),
+        nullptr
     ));
 
     auto actual = getApi()->compareDocumentOnline(request);
@@ -128,7 +132,9 @@ TEST_F(CompareDocumentTests, TestCompareTwoDocumentOnline) {
         requestComparingDocument,
         nullptr,
         nullptr,
-        std::make_shared< std::wstring >(baseTestOutPath + L"/TestCompareDocumentOut.doc")
+        nullptr,
+        std::make_shared< std::wstring >(baseTestOutPath + L"/TestCompareDocumentOut.doc"),
+        nullptr
     ));
 
     auto actual = getApi()->compareDocumentOnline(request);

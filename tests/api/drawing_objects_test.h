@@ -1,6 +1,6 @@
 ﻿/** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="drawing_objects_test.h">
-*   Copyright (c) 2021 Aspose.Words for Cloud
+*   Copyright (c) 2022 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -54,6 +54,7 @@ TEST_F(DrawingObjectsTests, TestGetDocumentDrawingObjects) {
         std::make_shared< std::wstring >(remoteDataFolder),
         nullptr,
         nullptr,
+        nullptr,
         nullptr
     ));
 
@@ -68,6 +69,7 @@ TEST_F(DrawingObjectsTests, TestGetDocumentDrawingObjectsOnline) {
     std::shared_ptr<requests::GetDocumentDrawingObjectsOnlineRequest> request(new requests::GetDocumentDrawingObjectsOnlineRequest(
         requestDocument,
         std::make_shared< std::wstring >(L"sections/0"),
+        nullptr,
         nullptr,
         nullptr
     ));
@@ -90,6 +92,7 @@ TEST_F(DrawingObjectsTests, TestGetDocumentDrawingObjectsWithoutNodePath) {
         std::make_shared< std::wstring >(remoteFileName),
         nullptr,
         std::make_shared< std::wstring >(remoteDataFolder),
+        nullptr,
         nullptr,
         nullptr,
         nullptr
@@ -116,6 +119,7 @@ TEST_F(DrawingObjectsTests, TestGetDocumentDrawingObjectByIndex) {
         std::make_shared< std::wstring >(remoteDataFolder),
         nullptr,
         nullptr,
+        nullptr,
         nullptr
     ));
 
@@ -131,6 +135,7 @@ TEST_F(DrawingObjectsTests, TestGetDocumentDrawingObjectByIndexOnline) {
         requestDocument,
         std::make_shared< int32_t >(0),
         std::make_shared< std::wstring >(L"sections/0"),
+        nullptr,
         nullptr,
         nullptr
     ));
@@ -154,6 +159,7 @@ TEST_F(DrawingObjectsTests, TestGetDocumentDrawingObjectByIndexWithoutNodePath) 
         std::make_shared< int32_t >(0),
         nullptr,
         std::make_shared< std::wstring >(remoteDataFolder),
+        nullptr,
         nullptr,
         nullptr,
         nullptr
@@ -183,6 +189,7 @@ TEST_F(DrawingObjectsTests, TestRenderDrawingObject) {
         nullptr,
         nullptr,
         nullptr,
+        nullptr,
         nullptr
     ));
 
@@ -199,6 +206,7 @@ TEST_F(DrawingObjectsTests, TestRenderDrawingObjectOnline) {
         std::make_shared< std::wstring >(L"png"),
         std::make_shared< int32_t >(0),
         std::make_shared< std::wstring >(L"sections/0"),
+        nullptr,
         nullptr,
         nullptr,
         nullptr,
@@ -229,6 +237,7 @@ TEST_F(DrawingObjectsTests, TestRenderDrawingObjectWithoutNodePath) {
         nullptr,
         nullptr,
         nullptr,
+        nullptr,
         nullptr
     ));
 
@@ -253,6 +262,7 @@ TEST_F(DrawingObjectsTests, TestGetDocumentDrawingObjectImageData) {
         std::make_shared< std::wstring >(remoteDataFolder),
         nullptr,
         nullptr,
+        nullptr,
         nullptr
     ));
 
@@ -268,6 +278,7 @@ TEST_F(DrawingObjectsTests, TestGetDocumentDrawingObjectImageDataOnline) {
         requestDocument,
         std::make_shared< int32_t >(0),
         std::make_shared< std::wstring >(L"sections/0"),
+        nullptr,
         nullptr,
         nullptr
     ));
@@ -291,6 +302,7 @@ TEST_F(DrawingObjectsTests, TestGetDocumentDrawingObjectImageDataWithoutNodePath
         std::make_shared< int32_t >(0),
         nullptr,
         std::make_shared< std::wstring >(remoteDataFolder),
+        nullptr,
         nullptr,
         nullptr,
         nullptr
@@ -317,6 +329,7 @@ TEST_F(DrawingObjectsTests, TestGetDocumentDrawingObjectOleData) {
         std::make_shared< std::wstring >(remoteDataFolder),
         nullptr,
         nullptr,
+        nullptr,
         nullptr
     ));
 
@@ -332,6 +345,7 @@ TEST_F(DrawingObjectsTests, TestGetDocumentDrawingObjectOleDataOnline) {
         requestDocument,
         std::make_shared< int32_t >(0),
         std::make_shared< std::wstring >(L"sections/0"),
+        nullptr,
         nullptr,
         nullptr
     ));
@@ -355,6 +369,7 @@ TEST_F(DrawingObjectsTests, TestGetDocumentDrawingObjectOleDataWithoutNodePath) 
         std::make_shared< int32_t >(0),
         nullptr,
         std::make_shared< std::wstring >(remoteDataFolder),
+        nullptr,
         nullptr,
         nullptr,
         nullptr
@@ -394,6 +409,7 @@ TEST_F(DrawingObjectsTests, TestInsertDrawingObject) {
         nullptr,
         nullptr,
         nullptr,
+        nullptr,
         nullptr
     ));
 
@@ -419,6 +435,7 @@ TEST_F(DrawingObjectsTests, TestInsertDrawingObjectOnline) {
         requestDrawingObject,
         requestImageFile,
         std::make_shared< std::wstring >(L""),
+        nullptr,
         nullptr,
         nullptr,
         nullptr,
@@ -460,6 +477,7 @@ TEST_F(DrawingObjectsTests, TestInsertDrawingObjectWithoutNodePath) {
         nullptr,
         nullptr,
         nullptr,
+        nullptr,
         nullptr
     ));
 
@@ -487,6 +505,7 @@ TEST_F(DrawingObjectsTests, TestDeleteDrawingObject) {
         nullptr,
         nullptr,
         nullptr,
+        nullptr,
         nullptr
     ));
 
@@ -502,6 +521,7 @@ TEST_F(DrawingObjectsTests, TestDeleteDrawingObjectOnline) {
         requestDocument,
         std::make_shared< int32_t >(0),
         std::make_shared< std::wstring >(L""),
+        nullptr,
         nullptr,
         nullptr,
         nullptr,
@@ -528,6 +548,7 @@ TEST_F(DrawingObjectsTests, TestDeleteDrawingObjectWithoutNodePath) {
         std::make_shared< int32_t >(0),
         nullptr,
         std::make_shared< std::wstring >(remoteDataFolder),
+        nullptr,
         nullptr,
         nullptr,
         nullptr,
@@ -565,6 +586,7 @@ TEST_F(DrawingObjectsTests, TestUpdateDrawingObject) {
         nullptr,
         nullptr,
         nullptr,
+        nullptr,
         nullptr
     ));
 
@@ -585,6 +607,7 @@ TEST_F(DrawingObjectsTests, TestUpdateDrawingObjectOnline) {
         requestImageFile,
         std::make_shared< int32_t >(0),
         std::make_shared< std::wstring >(L""),
+        nullptr,
         nullptr,
         nullptr,
         nullptr,
@@ -616,6 +639,7 @@ TEST_F(DrawingObjectsTests, TestUpdateDrawingObjectWithoutNodePath) {
         std::make_shared< int32_t >(0),
         nullptr,
         std::make_shared< std::wstring >(remoteDataFolder),
+        nullptr,
         nullptr,
         nullptr,
         nullptr,

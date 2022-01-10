@@ -1,6 +1,6 @@
 ﻿/** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="text_test.h">
-*   Copyright (c) 2021 Aspose.Words for Cloud
+*   Copyright (c) 2022 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -57,6 +57,7 @@ TEST_F(TextTests, TestReplaceText) {
         nullptr,
         nullptr,
         nullptr,
+        nullptr,
         std::make_shared< std::wstring >(baseTestOutPath + L"/" + remoteFileName),
         nullptr,
         nullptr
@@ -79,6 +80,7 @@ TEST_F(TextTests, TestReplaceTextOnline) {
     std::shared_ptr<requests::ReplaceTextOnlineRequest> request(new requests::ReplaceTextOnlineRequest(
         requestDocument,
         requestReplaceText,
+        nullptr,
         nullptr,
         nullptr,
         nullptr,
@@ -107,6 +109,7 @@ TEST_F(TextTests, TestSearch) {
         std::make_shared< std::wstring >(remoteDataFolder),
         nullptr,
         nullptr,
+        nullptr,
         nullptr
     ));
 
@@ -128,6 +131,7 @@ TEST_F(TextTests, TestSearchOnline) {
     std::shared_ptr<requests::SearchOnlineRequest> request(new requests::SearchOnlineRequest(
         requestDocument,
         std::make_shared< std::wstring >(L"aspose"),
+        nullptr,
         nullptr,
         nullptr
     ));

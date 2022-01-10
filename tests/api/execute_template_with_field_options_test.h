@@ -1,6 +1,6 @@
 ﻿/** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="execute_template_with_field_options_test.h">
-*   Copyright (c) 2021 Aspose.Words for Cloud
+*   Copyright (c) 2022 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -58,6 +58,7 @@ TEST_F(ExecuteTemplateWithFieldOptionsTests, TestExecuteTemplateWithFieldOptions
         std::make_shared< std::wstring >(localDataFile),
         requestOptions,
         std::make_shared< std::wstring >(remoteDataFolder),
+        nullptr,
         nullptr,
         nullptr,
         nullptr,

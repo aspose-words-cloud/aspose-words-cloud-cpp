@@ -1,6 +1,6 @@
 ﻿/** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="math_object_test.h">
-*   Copyright (c) 2021 Aspose.Words for Cloud
+*   Copyright (c) 2022 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -53,6 +53,7 @@ TEST_F(MathObjectTests, TestGetOfficeMathObjects) {
         std::make_shared< std::wstring >(remoteDataFolder),
         nullptr,
         nullptr,
+        nullptr,
         nullptr
     ));
 
@@ -71,6 +72,7 @@ TEST_F(MathObjectTests, TestGetOfficeMathObjectsOnline) {
     std::shared_ptr<requests::GetOfficeMathObjectsOnlineRequest> request(new requests::GetOfficeMathObjectsOnlineRequest(
         requestDocument,
         std::make_shared< std::wstring >(L""),
+        nullptr,
         nullptr,
         nullptr
     ));
@@ -93,6 +95,7 @@ TEST_F(MathObjectTests, TestGetOfficeMathObjectsWithoutNodePath) {
         std::make_shared< std::wstring >(remoteFileName),
         nullptr,
         std::make_shared< std::wstring >(remoteDataFolder),
+        nullptr,
         nullptr,
         nullptr,
         nullptr
@@ -123,6 +126,7 @@ TEST_F(MathObjectTests, TestGetOfficeMathObject) {
         std::make_shared< std::wstring >(remoteDataFolder),
         nullptr,
         nullptr,
+        nullptr,
         nullptr
     ));
 
@@ -140,6 +144,7 @@ TEST_F(MathObjectTests, TestGetOfficeMathObjectOnline) {
         requestDocument,
         std::make_shared< int32_t >(0),
         std::make_shared< std::wstring >(L""),
+        nullptr,
         nullptr,
         nullptr
     ));
@@ -163,6 +168,7 @@ TEST_F(MathObjectTests, TestGetOfficeMathObjectWithoutNodePath) {
         std::make_shared< int32_t >(0),
         nullptr,
         std::make_shared< std::wstring >(remoteDataFolder),
+        nullptr,
         nullptr,
         nullptr,
         nullptr
@@ -194,6 +200,7 @@ TEST_F(MathObjectTests, TestRenderMathObject) {
         nullptr,
         nullptr,
         nullptr,
+        nullptr,
         nullptr
     ));
 
@@ -210,6 +217,7 @@ TEST_F(MathObjectTests, TestRenderMathObjectOnline) {
         std::make_shared< std::wstring >(L"png"),
         std::make_shared< int32_t >(0),
         std::make_shared< std::wstring >(L""),
+        nullptr,
         nullptr,
         nullptr,
         nullptr,
@@ -236,6 +244,7 @@ TEST_F(MathObjectTests, TestRenderMathObjectWithoutNodePath) {
         std::make_shared< int32_t >(0),
         nullptr,
         std::make_shared< std::wstring >(remoteDataFolder),
+        nullptr,
         nullptr,
         nullptr,
         nullptr,
@@ -267,6 +276,7 @@ TEST_F(MathObjectTests, TestDeleteOfficeMathObject) {
         nullptr,
         nullptr,
         nullptr,
+        nullptr,
         nullptr
     ));
 
@@ -282,6 +292,7 @@ TEST_F(MathObjectTests, TestDeleteOfficeMathObjectOnline) {
         requestDocument,
         std::make_shared< int32_t >(0),
         std::make_shared< std::wstring >(L""),
+        nullptr,
         nullptr,
         nullptr,
         nullptr,
@@ -308,6 +319,7 @@ TEST_F(MathObjectTests, TestDeleteOfficeMathObjectWithoutNodePath) {
         std::make_shared< int32_t >(0),
         nullptr,
         std::make_shared< std::wstring >(remoteDataFolder),
+        nullptr,
         nullptr,
         nullptr,
         nullptr,

@@ -1,6 +1,6 @@
 ﻿/** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="split_document_to_format_test.h">
-*   Copyright (c) 2021 Aspose.Words for Cloud
+*   Copyright (c) 2022 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -54,6 +54,7 @@ TEST_F(SplitDocumentToFormatTests, TestSplitDocument) {
         nullptr,
         nullptr,
         nullptr,
+        nullptr,
         std::make_shared< std::wstring >(baseTestOutPath + L"/TestSplitDocument.text"),
         std::make_shared< int32_t >(1),
         std::make_shared< int32_t >(2),
@@ -75,6 +76,7 @@ TEST_F(SplitDocumentToFormatTests, TestSplitDocumentOnline) {
     std::shared_ptr<requests::SplitDocumentOnlineRequest> request(new requests::SplitDocumentOnlineRequest(
         requestDocument,
         std::make_shared< std::wstring >(L"text"),
+        nullptr,
         nullptr,
         nullptr,
         std::make_shared< std::wstring >(baseTestOutPath + L"/TestSplitDocument.text"),
