@@ -1,6 +1,6 @@
 ﻿/** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="compatibility_test.h">
-*   Copyright (c) 2021 Aspose.Words for Cloud
+*   Copyright (c) 2022 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -58,6 +58,7 @@ TEST_F(CompatibilityTests, TestOptimizeDocument) {
         nullptr,
         nullptr,
         nullptr,
+        nullptr,
         nullptr
     ));
 
@@ -74,6 +75,7 @@ TEST_F(CompatibilityTests, TestOptimizeDocumentOnline) {
     std::shared_ptr<requests::OptimizeDocumentOnlineRequest> request(new requests::OptimizeDocumentOnlineRequest(
         requestDocument,
         requestOptions,
+        nullptr,
         nullptr,
         nullptr,
         nullptr,

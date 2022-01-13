@@ -1,6 +1,6 @@
 ﻿/** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="mail_merge_fileds_test.h">
-*   Copyright (c) 2021 Aspose.Words for Cloud
+*   Copyright (c) 2022 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -47,6 +47,7 @@ TEST_F(MailMergeFiledsTests, TestGetDocumentFieldNamesOnline) {
         requestTemplate,
         nullptr,
         nullptr,
+        nullptr,
         std::make_shared< bool >(true)
     ));
 
@@ -71,6 +72,7 @@ TEST_F(MailMergeFiledsTests, TestGetDocumentFieldNames) {
     std::shared_ptr<requests::GetDocumentFieldNamesRequest> request(new requests::GetDocumentFieldNamesRequest(
         std::make_shared< std::wstring >(remoteFileName),
         std::make_shared< std::wstring >(remoteDataFolder),
+        nullptr,
         nullptr,
         nullptr,
         nullptr,

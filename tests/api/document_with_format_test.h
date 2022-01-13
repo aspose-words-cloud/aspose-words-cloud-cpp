@@ -1,6 +1,6 @@
 ﻿/** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="document_with_format_test.h">
-*   Copyright (c) 2021 Aspose.Words for Cloud
+*   Copyright (c) 2022 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -55,6 +55,7 @@ TEST_F(DocumentWithFormatTests, TestGetDocumentWithFormat) {
         nullptr,
         nullptr,
         nullptr,
+        nullptr,
         nullptr
     ));
 
@@ -76,6 +77,7 @@ TEST_F(DocumentWithFormatTests, TestGetDocumentWithFormatAndOutPath) {
         std::make_shared< std::wstring >(remoteFileName),
         std::make_shared< std::wstring >(L"text"),
         std::make_shared< std::wstring >(remoteDataFolder),
+        nullptr,
         nullptr,
         nullptr,
         nullptr,

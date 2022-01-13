@@ -1,6 +1,6 @@
 ﻿/** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="classification_test.h">
-*   Copyright (c) 2021 Aspose.Words for Cloud
+*   Copyright (c) 2022 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -68,6 +68,7 @@ TEST_F(ClassificationTests, TestClassifyDocument) {
         nullptr,
         nullptr,
         nullptr,
+        nullptr,
         std::make_shared< std::wstring >(L"3"),
         nullptr
     ));
@@ -85,6 +86,7 @@ TEST_F(ClassificationTests, TestClassifyDocumentOnline) {
     auto requestDocument = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(localFile)), std::istream::binary));
     std::shared_ptr<requests::ClassifyDocumentOnlineRequest> request(new requests::ClassifyDocumentOnlineRequest(
         requestDocument,
+        nullptr,
         nullptr,
         nullptr,
         std::make_shared< std::wstring >(L"3"),

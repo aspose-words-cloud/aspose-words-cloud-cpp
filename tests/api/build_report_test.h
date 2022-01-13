@@ -1,6 +1,6 @@
 ﻿/** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="build_report_test.h">
-*   Copyright (c) 2021 Aspose.Words for Cloud
+*   Copyright (c) 2022 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -81,6 +81,7 @@ TEST_F(BuildReportTests, TestBuildReport) {
         std::make_shared< std::wstring >(localDataFile),
         requestReportEngineSettings,
         std::make_shared< std::wstring >(remoteDataFolder),
+        nullptr,
         nullptr,
         nullptr,
         nullptr,

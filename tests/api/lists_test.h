@@ -1,6 +1,6 @@
 ﻿/** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="lists_test.h">
-*   Copyright (c) 2021 Aspose.Words for Cloud
+*   Copyright (c) 2022 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -52,6 +52,7 @@ TEST_F(ListsTests, TestGetLists) {
         std::make_shared< std::wstring >(remoteDataFolder),
         nullptr,
         nullptr,
+        nullptr,
         nullptr
     ));
 
@@ -69,6 +70,7 @@ TEST_F(ListsTests, TestGetListsOnline) {
     auto requestDocument = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(localFile)), std::istream::binary));
     std::shared_ptr<requests::GetListsOnlineRequest> request(new requests::GetListsOnlineRequest(
         requestDocument,
+        nullptr,
         nullptr,
         nullptr
     ));
@@ -93,6 +95,7 @@ TEST_F(ListsTests, TestGetList) {
         std::make_shared< std::wstring >(remoteDataFolder),
         nullptr,
         nullptr,
+        nullptr,
         nullptr
     ));
 
@@ -109,6 +112,7 @@ TEST_F(ListsTests, TestGetListOnline) {
     std::shared_ptr<requests::GetListOnlineRequest> request(new requests::GetListOnlineRequest(
         requestDocument,
         std::make_shared< int32_t >(1),
+        nullptr,
         nullptr,
         nullptr
     ));
@@ -139,6 +143,7 @@ TEST_F(ListsTests, TestUpdateList) {
         nullptr,
         nullptr,
         nullptr,
+        nullptr,
         nullptr
     ));
 
@@ -156,6 +161,7 @@ TEST_F(ListsTests, TestUpdateListOnline) {
         requestDocument,
         std::make_shared< int32_t >(1),
         requestListUpdate,
+        nullptr,
         nullptr,
         nullptr,
         nullptr,
@@ -193,6 +199,7 @@ TEST_F(ListsTests, TestUpdateListLevel) {
         nullptr,
         nullptr,
         nullptr,
+        nullptr,
         nullptr
     ));
 
@@ -211,6 +218,7 @@ TEST_F(ListsTests, TestUpdateListLevelOnline) {
         std::make_shared< int32_t >(1),
         requestListUpdate,
         std::make_shared< int32_t >(1),
+        nullptr,
         nullptr,
         nullptr,
         nullptr,
@@ -248,6 +256,7 @@ TEST_F(ListsTests, TestInsertList) {
         nullptr,
         nullptr,
         nullptr,
+        nullptr,
         nullptr
     ));
 
@@ -266,6 +275,7 @@ TEST_F(ListsTests, TestInsertListOnline) {
     std::shared_ptr<requests::InsertListOnlineRequest> request(new requests::InsertListOnlineRequest(
         requestDocument,
         requestListInsert,
+        nullptr,
         nullptr,
         nullptr,
         nullptr,

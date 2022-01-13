@@ -1,6 +1,6 @@
 ﻿/** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="delete_document_property_online_request.h">
-*   Copyright (c) 2021 Aspose.Words for Cloud
+*   Copyright (c) 2022 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -34,6 +34,7 @@ namespace aspose::words::cloud::requests {
             const std::shared_ptr< std::wstring > propertyName,
             const std::shared_ptr< std::wstring > loadEncoding = nullptr,
             const std::shared_ptr< std::wstring > password = nullptr,
+            const std::shared_ptr< std::wstring > encryptedPassword = nullptr,
             const std::shared_ptr< std::wstring > destFileName = nullptr,
             const std::shared_ptr< std::wstring > revisionAuthor = nullptr,
             const std::shared_ptr< std::wstring > revisionDateTime = nullptr
@@ -43,6 +44,7 @@ namespace aspose::words::cloud::requests {
         ASPOSE_WORDS_CLOUD_EXPORT const std::shared_ptr< std::wstring > getPropertyName() const;
         ASPOSE_WORDS_CLOUD_EXPORT const std::shared_ptr< std::wstring > getLoadEncoding() const;
         ASPOSE_WORDS_CLOUD_EXPORT const std::shared_ptr< std::wstring > getPassword() const;
+        ASPOSE_WORDS_CLOUD_EXPORT const std::shared_ptr< std::wstring > getEncryptedPassword() const;
         ASPOSE_WORDS_CLOUD_EXPORT const std::shared_ptr< std::wstring > getDestFileName() const;
         ASPOSE_WORDS_CLOUD_EXPORT const std::shared_ptr< std::wstring > getRevisionAuthor() const;
         ASPOSE_WORDS_CLOUD_EXPORT const std::shared_ptr< std::wstring > getRevisionDateTime() const;
@@ -55,6 +57,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > m_PropertyName;
         const std::shared_ptr< std::wstring > m_LoadEncoding;
         const std::shared_ptr< std::wstring > m_Password;
+        const std::shared_ptr< std::wstring > m_EncryptedPassword;
         const std::shared_ptr< std::wstring > m_DestFileName;
         const std::shared_ptr< std::wstring > m_RevisionAuthor;
         const std::shared_ptr< std::wstring > m_RevisionDateTime;

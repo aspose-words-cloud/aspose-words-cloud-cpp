@@ -1,6 +1,6 @@
 ﻿/** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="save_as_range_online_request.h">
-*   Copyright (c) 2021 Aspose.Words for Cloud
+*   Copyright (c) 2022 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -36,7 +36,8 @@ namespace aspose::words::cloud::requests {
             const std::shared_ptr< aspose::words::cloud::models::RangeDocument > documentParameters,
             const std::shared_ptr< std::wstring > rangeEndIdentifier = nullptr,
             const std::shared_ptr< std::wstring > loadEncoding = nullptr,
-            const std::shared_ptr< std::wstring > password = nullptr
+            const std::shared_ptr< std::wstring > password = nullptr,
+            const std::shared_ptr< std::wstring > encryptedPassword = nullptr
         );
 
         ASPOSE_WORDS_CLOUD_EXPORT const std::shared_ptr< std::istream > getDocument() const;
@@ -45,6 +46,7 @@ namespace aspose::words::cloud::requests {
         ASPOSE_WORDS_CLOUD_EXPORT const std::shared_ptr< std::wstring > getRangeEndIdentifier() const;
         ASPOSE_WORDS_CLOUD_EXPORT const std::shared_ptr< std::wstring > getLoadEncoding() const;
         ASPOSE_WORDS_CLOUD_EXPORT const std::shared_ptr< std::wstring > getPassword() const;
+        ASPOSE_WORDS_CLOUD_EXPORT const std::shared_ptr< std::wstring > getEncryptedPassword() const;
 
         ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< aspose::words::cloud::HttpRequestData > createHttpRequest() const override;
         ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > createResponse() const override;
@@ -56,5 +58,6 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > m_RangeEndIdentifier;
         const std::shared_ptr< std::wstring > m_LoadEncoding;
         const std::shared_ptr< std::wstring > m_Password;
+        const std::shared_ptr< std::wstring > m_EncryptedPassword;
     };
 }
