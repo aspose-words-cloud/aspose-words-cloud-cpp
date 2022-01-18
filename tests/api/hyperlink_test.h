@@ -1,6 +1,6 @@
 ﻿/** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="hyperlink_test.h">
-*   Copyright (c) 2021 Aspose.Words for Cloud
+*   Copyright (c) 2022 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -53,6 +53,7 @@ TEST_F(HyperlinkTests, TestGetDocumentHyperlinkByIndex) {
         std::make_shared< std::wstring >(remoteDataFolder),
         nullptr,
         nullptr,
+        nullptr,
         nullptr
     ));
 
@@ -69,6 +70,7 @@ TEST_F(HyperlinkTests, TestGetDocumentHyperlinkByIndexOnline) {
     std::shared_ptr<requests::GetDocumentHyperlinkByIndexOnlineRequest> request(new requests::GetDocumentHyperlinkByIndexOnlineRequest(
         requestDocument,
         std::make_shared< int32_t >(0),
+        nullptr,
         nullptr,
         nullptr
     ));
@@ -92,6 +94,7 @@ TEST_F(HyperlinkTests, TestGetDocumentHyperlinks) {
         std::make_shared< std::wstring >(remoteDataFolder),
         nullptr,
         nullptr,
+        nullptr,
         nullptr
     ));
 
@@ -109,6 +112,7 @@ TEST_F(HyperlinkTests, TestGetDocumentHyperlinksOnline) {
     auto requestDocument = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(localFile)), std::istream::binary));
     std::shared_ptr<requests::GetDocumentHyperlinksOnlineRequest> request(new requests::GetDocumentHyperlinksOnlineRequest(
         requestDocument,
+        nullptr,
         nullptr,
         nullptr
     ));

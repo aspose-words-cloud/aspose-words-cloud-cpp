@@ -1,6 +1,6 @@
 ﻿/** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="document_entry.h">
-*   Copyright (c) 2021 Aspose.Words for Cloud
+*   Copyright (c) 2022 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -58,9 +58,20 @@ namespace aspose::words::cloud::models {
         /// </summary>
         ASPOSE_WORDS_CLOUD_EXPORT void setImportFormatMode(std::shared_ptr< std::wstring > value);
 
+        /// <summary>
+        /// Gets or sets document password encrypted on API public key. The default value is null (the document has no password).
+        /// </summary>
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getPassword() const;
+
+        /// <summary>
+        /// Gets or sets document password encrypted on API public key. The default value is null (the document has no password).
+        /// </summary>
+        ASPOSE_WORDS_CLOUD_EXPORT void setPassword(std::shared_ptr< std::wstring > value);
+
     protected:
         std::shared_ptr< std::wstring > m_Href;
         std::shared_ptr< std::wstring > m_ImportFormatMode;
+        std::shared_ptr< std::wstring > m_Password;
     };
 }
 

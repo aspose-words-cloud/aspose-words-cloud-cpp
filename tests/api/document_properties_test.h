@@ -1,6 +1,6 @@
 ﻿/** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="document_properties_test.h">
-*   Copyright (c) 2021 Aspose.Words for Cloud
+*   Copyright (c) 2022 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -52,6 +52,7 @@ TEST_F(DocumentPropertiesTests, TestGetDocumentProperties) {
         std::make_shared< std::wstring >(remoteDataFolder),
         nullptr,
         nullptr,
+        nullptr,
         nullptr
     ));
 
@@ -71,6 +72,7 @@ TEST_F(DocumentPropertiesTests, TestGetDocumentPropertiesOnline) {
     auto requestDocument = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(localFile)), std::istream::binary));
     std::shared_ptr<requests::GetDocumentPropertiesOnlineRequest> request(new requests::GetDocumentPropertiesOnlineRequest(
         requestDocument,
+        nullptr,
         nullptr,
         nullptr
     ));
@@ -95,6 +97,7 @@ TEST_F(DocumentPropertiesTests, TestGetDocumentProperty) {
         std::make_shared< std::wstring >(remoteDataFolder),
         nullptr,
         nullptr,
+        nullptr,
         nullptr
     ));
 
@@ -112,6 +115,7 @@ TEST_F(DocumentPropertiesTests, TestGetDocumentPropertyOnline) {
     std::shared_ptr<requests::GetDocumentPropertyOnlineRequest> request(new requests::GetDocumentPropertyOnlineRequest(
         requestDocument,
         std::make_shared< std::wstring >(L"Author"),
+        nullptr,
         nullptr,
         nullptr
     ));
@@ -137,6 +141,7 @@ TEST_F(DocumentPropertiesTests, TestDeleteDocumentProperty) {
         nullptr,
         nullptr,
         nullptr,
+        nullptr,
         std::make_shared< std::wstring >(baseTestOutPath + L"/" + remoteFileName),
         nullptr,
         nullptr
@@ -153,6 +158,7 @@ TEST_F(DocumentPropertiesTests, TestDeleteDocumentPropertyOnline) {
     std::shared_ptr<requests::DeleteDocumentPropertyOnlineRequest> request(new requests::DeleteDocumentPropertyOnlineRequest(
         requestDocument,
         std::make_shared< std::wstring >(L"testProp"),
+        nullptr,
         nullptr,
         nullptr,
         nullptr,
@@ -184,6 +190,7 @@ TEST_F(DocumentPropertiesTests, TestUpdateDocumentProperty) {
         nullptr,
         nullptr,
         nullptr,
+        nullptr,
         std::make_shared< std::wstring >(baseTestOutPath + L"/" + remoteFileName),
         nullptr,
         nullptr
@@ -206,6 +213,7 @@ TEST_F(DocumentPropertiesTests, TestUpdateDocumentPropertyOnline) {
         requestDocument,
         std::make_shared< std::wstring >(L"AsposeAuthor"),
         requestProperty,
+        nullptr,
         nullptr,
         nullptr,
         nullptr,

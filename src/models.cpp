@@ -1,6 +1,6 @@
 ﻿/** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="models.cpp">
-*   Copyright (c) 2021 Aspose.Words for Cloud
+*   Copyright (c) 2022 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -2250,6 +2250,9 @@ namespace aspose::words::cloud::models {
         if (m_ImportFormatMode) {
             json["ImportFormatMode"] = convertUtf16(*m_ImportFormatMode);
         }
+        if (m_Password) {
+            json["Password"] = convertUtf16(*m_Password);
+        }
     }
 
     void DocumentEntry::fromJson(const void* jsonIfc)
@@ -2263,6 +2266,11 @@ namespace aspose::words::cloud::models {
         if (json.contains("ImportFormatMode") && !json["ImportFormatMode"].is_null()) {
             m_ImportFormatMode = std::make_shared< std::wstring >(
                 convertUtf8( json["ImportFormatMode"].get< std::string >() )
+            );
+        }
+        if (json.contains("Password") && !json["Password"].is_null()) {
+            m_Password = std::make_shared< std::wstring >(
+                convertUtf8( json["Password"].get< std::string >() )
             );
         }
     }
@@ -2285,6 +2293,16 @@ namespace aspose::words::cloud::models {
     void DocumentEntry::setImportFormatMode(std::shared_ptr< std::wstring > value)
     {
         m_ImportFormatMode = value;
+    }
+
+    std::shared_ptr< std::wstring > DocumentEntry::getPassword() const
+    {
+        return m_Password;
+    }
+
+    void DocumentEntry::setPassword(std::shared_ptr< std::wstring > value)
+    {
+        m_Password = value;
     }
 
 

@@ -1,6 +1,6 @@
 ﻿/** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="paragraph_test.h">
-*   Copyright (c) 2021 Aspose.Words for Cloud
+*   Copyright (c) 2022 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -56,6 +56,7 @@ TEST_F(ParagraphTests, TestGetDocumentParagraphByIndex) {
         std::make_shared< std::wstring >(remoteDataFolder),
         nullptr,
         nullptr,
+        nullptr,
         nullptr
     ));
 
@@ -73,6 +74,7 @@ TEST_F(ParagraphTests, TestGetDocumentParagraphOnline) {
         requestDocument,
         std::make_shared< int32_t >(0),
         std::make_shared< std::wstring >(L"sections/0"),
+        nullptr,
         nullptr,
         nullptr
     ));
@@ -96,6 +98,7 @@ TEST_F(ParagraphTests, TestGetDocumentParagraphByIndexWithoutNodePath) {
         std::make_shared< int32_t >(0),
         nullptr,
         std::make_shared< std::wstring >(remoteDataFolder),
+        nullptr,
         nullptr,
         nullptr,
         nullptr
@@ -123,6 +126,7 @@ TEST_F(ParagraphTests, TestGetDocumentParagraphs) {
         std::make_shared< std::wstring >(remoteDataFolder),
         nullptr,
         nullptr,
+        nullptr,
         nullptr
     ));
 
@@ -141,6 +145,7 @@ TEST_F(ParagraphTests, TestGetDocumentParagraphsOnline) {
     std::shared_ptr<requests::GetParagraphsOnlineRequest> request(new requests::GetParagraphsOnlineRequest(
         requestDocument,
         std::make_shared< std::wstring >(L"sections/0"),
+        nullptr,
         nullptr,
         nullptr
     ));
@@ -163,6 +168,7 @@ TEST_F(ParagraphTests, TestGetDocumentParagraphsWithoutNodePath) {
         std::make_shared< std::wstring >(remoteFileName),
         nullptr,
         std::make_shared< std::wstring >(remoteDataFolder),
+        nullptr,
         nullptr,
         nullptr,
         nullptr
@@ -193,6 +199,7 @@ TEST_F(ParagraphTests, TestGetDocumentParagraphRun) {
         std::make_shared< std::wstring >(remoteDataFolder),
         nullptr,
         nullptr,
+        nullptr,
         nullptr
     ));
 
@@ -210,6 +217,7 @@ TEST_F(ParagraphTests, TestGetDocumentParagraphRunOnline) {
         requestDocument,
         std::make_shared< std::wstring >(L"paragraphs/0"),
         std::make_shared< int32_t >(0),
+        nullptr,
         nullptr,
         nullptr
     ));
@@ -235,6 +243,7 @@ TEST_F(ParagraphTests, TestGetDocumentParagraphRunFont) {
         std::make_shared< std::wstring >(remoteDataFolder),
         nullptr,
         nullptr,
+        nullptr,
         nullptr
     ));
 
@@ -252,6 +261,7 @@ TEST_F(ParagraphTests, TestGetDocumentParagraphRunFontOnline) {
         requestDocument,
         std::make_shared< std::wstring >(L"paragraphs/0"),
         std::make_shared< int32_t >(0),
+        nullptr,
         nullptr,
         nullptr
     ));
@@ -276,6 +286,7 @@ TEST_F(ParagraphTests, TestGetParagraphRuns) {
         std::make_shared< std::wstring >(remoteDataFolder),
         nullptr,
         nullptr,
+        nullptr,
         nullptr
     ));
 
@@ -294,6 +305,7 @@ TEST_F(ParagraphTests, TestGetParagraphRunsOnline) {
     std::shared_ptr<requests::GetRunsOnlineRequest> request(new requests::GetRunsOnlineRequest(
         requestDocument,
         std::make_shared< std::wstring >(L"sections/0/paragraphs/0"),
+        nullptr,
         nullptr,
         nullptr
     ));
@@ -323,6 +335,7 @@ TEST_F(ParagraphTests, TestUpdateRunFont) {
         nullptr,
         nullptr,
         nullptr,
+        nullptr,
         std::make_shared< std::wstring >(baseTestOutPath + L"/" + remoteFileName),
         nullptr,
         nullptr
@@ -345,6 +358,7 @@ TEST_F(ParagraphTests, TestUpdateRunFontOnline) {
         std::make_shared< std::wstring >(L"paragraphs/0"),
         requestFontDto,
         std::make_shared< int32_t >(0),
+        nullptr,
         nullptr,
         nullptr,
         nullptr,
@@ -379,6 +393,7 @@ TEST_F(ParagraphTests, TestInsertParagraph) {
         nullptr,
         nullptr,
         nullptr,
+        nullptr,
         nullptr
     ));
 
@@ -398,6 +413,7 @@ TEST_F(ParagraphTests, TestInsertParagraphOnline) {
         requestDocument,
         requestParagraph,
         std::make_shared< std::wstring >(L"sections/0"),
+        nullptr,
         nullptr,
         nullptr,
         nullptr,
@@ -433,6 +449,7 @@ TEST_F(ParagraphTests, TestInsertParagraphWithoutNodePath) {
         nullptr,
         nullptr,
         nullptr,
+        nullptr,
         nullptr
     ));
 
@@ -462,6 +479,7 @@ TEST_F(ParagraphTests, TestRenderParagraph) {
         nullptr,
         nullptr,
         nullptr,
+        nullptr,
         nullptr
     ));
 
@@ -478,6 +496,7 @@ TEST_F(ParagraphTests, TestRenderParagraphOnline) {
         std::make_shared< std::wstring >(L"png"),
         std::make_shared< int32_t >(0),
         std::make_shared< std::wstring >(L""),
+        nullptr,
         nullptr,
         nullptr,
         nullptr,
@@ -508,6 +527,7 @@ TEST_F(ParagraphTests, TestRenderParagraphWithoutNodePath) {
         nullptr,
         nullptr,
         nullptr,
+        nullptr,
         nullptr
     ));
 
@@ -532,6 +552,7 @@ TEST_F(ParagraphTests, TestGetParagraphFormat) {
         std::make_shared< std::wstring >(remoteDataFolder),
         nullptr,
         nullptr,
+        nullptr,
         nullptr
     ));
 
@@ -549,6 +570,7 @@ TEST_F(ParagraphTests, TestGetParagraphFormatOnline) {
         requestDocument,
         std::make_shared< int32_t >(0),
         std::make_shared< std::wstring >(L""),
+        nullptr,
         nullptr,
         nullptr
     ));
@@ -572,6 +594,7 @@ TEST_F(ParagraphTests, TestGetParagraphFormatWithoutNodePath) {
         std::make_shared< int32_t >(0),
         nullptr,
         std::make_shared< std::wstring >(remoteDataFolder),
+        nullptr,
         nullptr,
         nullptr,
         nullptr
@@ -606,6 +629,7 @@ TEST_F(ParagraphTests, TestUpdateParagraphFormat) {
         nullptr,
         nullptr,
         nullptr,
+        nullptr,
         nullptr
     ));
 
@@ -626,6 +650,7 @@ TEST_F(ParagraphTests, TestUpdateParagraphFormatOnline) {
         requestParagraphFormatDto,
         std::make_shared< int32_t >(0),
         std::make_shared< std::wstring >(L""),
+        nullptr,
         nullptr,
         nullptr,
         nullptr,
@@ -657,6 +682,7 @@ TEST_F(ParagraphTests, TestDeleteParagraph) {
         nullptr,
         nullptr,
         nullptr,
+        nullptr,
         nullptr
     ));
 
@@ -672,6 +698,7 @@ TEST_F(ParagraphTests, TestDeleteParagraphOnline) {
         requestDocument,
         std::make_shared< int32_t >(0),
         std::make_shared< std::wstring >(L""),
+        nullptr,
         nullptr,
         nullptr,
         nullptr,
@@ -703,6 +730,7 @@ TEST_F(ParagraphTests, TestDeleteParagraphWithoutNodePath) {
         nullptr,
         nullptr,
         nullptr,
+        nullptr,
         nullptr
     ));
 
@@ -727,6 +755,7 @@ TEST_F(ParagraphTests, TestGetParagraphListFormat) {
         std::make_shared< std::wstring >(remoteDataFolder),
         nullptr,
         nullptr,
+        nullptr,
         nullptr
     ));
 
@@ -744,6 +773,7 @@ TEST_F(ParagraphTests, TestGetParagraphListFormatOnline) {
         requestDocument,
         std::make_shared< int32_t >(0),
         std::make_shared< std::wstring >(L""),
+        nullptr,
         nullptr,
         nullptr
     ));
@@ -767,6 +797,7 @@ TEST_F(ParagraphTests, TestGetParagraphListFormatWithoutNodePath) {
         std::make_shared< int32_t >(0),
         nullptr,
         std::make_shared< std::wstring >(remoteDataFolder),
+        nullptr,
         nullptr,
         nullptr,
         nullptr
@@ -801,6 +832,7 @@ TEST_F(ParagraphTests, TestUpdateParagraphListFormat) {
         nullptr,
         nullptr,
         nullptr,
+        nullptr,
         nullptr
     ));
 
@@ -821,6 +853,7 @@ TEST_F(ParagraphTests, TestUpdateParagraphListFormatOnline) {
         requestListFormatDto,
         std::make_shared< int32_t >(0),
         std::make_shared< std::wstring >(L""),
+        nullptr,
         nullptr,
         nullptr,
         nullptr,
@@ -855,6 +888,7 @@ TEST_F(ParagraphTests, TestUpdateParagraphListFormatWithoutNodePath) {
         nullptr,
         nullptr,
         nullptr,
+        nullptr,
         nullptr
     ));
 
@@ -884,6 +918,7 @@ TEST_F(ParagraphTests, TestDeleteParagraphListFormat) {
         nullptr,
         nullptr,
         nullptr,
+        nullptr,
         nullptr
     ));
 
@@ -899,6 +934,7 @@ TEST_F(ParagraphTests, TestDeleteParagraphListFormatOnline) {
         requestDocument,
         std::make_shared< int32_t >(0),
         std::make_shared< std::wstring >(L""),
+        nullptr,
         nullptr,
         nullptr,
         nullptr,
@@ -930,6 +966,7 @@ TEST_F(ParagraphTests, TestDeleteParagraphListFormatWithoutNodePath) {
         nullptr,
         nullptr,
         nullptr,
+        nullptr,
         nullptr
     ));
 
@@ -954,6 +991,7 @@ TEST_F(ParagraphTests, TestGetParagraphTabStops) {
         std::make_shared< std::wstring >(remoteDataFolder),
         nullptr,
         nullptr,
+        nullptr,
         nullptr
     ));
 
@@ -972,6 +1010,7 @@ TEST_F(ParagraphTests, TestGetParagraphTabStopsOnline) {
         requestDocument,
         std::make_shared< int32_t >(0),
         std::make_shared< std::wstring >(L""),
+        nullptr,
         nullptr,
         nullptr
     ));
@@ -995,6 +1034,7 @@ TEST_F(ParagraphTests, TestGetParagraphTabStopsWithoutNodePath) {
         std::make_shared< int32_t >(0),
         nullptr,
         std::make_shared< std::wstring >(remoteDataFolder),
+        nullptr,
         nullptr,
         nullptr,
         nullptr
@@ -1030,6 +1070,7 @@ TEST_F(ParagraphTests, TestInsertParagraphTabStops) {
         nullptr,
         nullptr,
         nullptr,
+        nullptr,
         nullptr
     ));
 
@@ -1055,6 +1096,7 @@ TEST_F(ParagraphTests, TestInsertParagraphTabStopsOnline) {
         requestTabStopInsertDto,
         std::make_shared< int32_t >(0),
         std::make_shared< std::wstring >(L""),
+        nullptr,
         nullptr,
         nullptr,
         nullptr
@@ -1084,6 +1126,7 @@ TEST_F(ParagraphTests, TestInsertParagraphTabStopsWithoutNodePath) {
         requestTabStopInsertDto,
         nullptr,
         std::make_shared< std::wstring >(remoteDataFolder),
+        nullptr,
         nullptr,
         nullptr,
         nullptr,
@@ -1117,6 +1160,7 @@ TEST_F(ParagraphTests, TestDeleteAllParagraphTabStops) {
         nullptr,
         nullptr,
         nullptr,
+        nullptr,
         nullptr
     ));
 
@@ -1134,6 +1178,7 @@ TEST_F(ParagraphTests, TestDeleteAllParagraphTabStopsOnline) {
         requestDocument,
         std::make_shared< int32_t >(0),
         std::make_shared< std::wstring >(L""),
+        nullptr,
         nullptr,
         nullptr,
         nullptr
@@ -1158,6 +1203,7 @@ TEST_F(ParagraphTests, TestDeleteAllParagraphTabStopsWithoutNodePath) {
         std::make_shared< int32_t >(0),
         nullptr,
         std::make_shared< std::wstring >(remoteDataFolder),
+        nullptr,
         nullptr,
         nullptr,
         nullptr,
@@ -1189,6 +1235,7 @@ TEST_F(ParagraphTests, TestDeleteParagraphTabStop) {
         nullptr,
         nullptr,
         nullptr,
+        nullptr,
         nullptr
     ));
 
@@ -1207,6 +1254,7 @@ TEST_F(ParagraphTests, TestDeleteParagraphTabStopOnline) {
         std::make_shared< double >(72.0),
         std::make_shared< int32_t >(0),
         std::make_shared< std::wstring >(L""),
+        nullptr,
         nullptr,
         nullptr,
         nullptr
@@ -1232,6 +1280,7 @@ TEST_F(ParagraphTests, TestDeleteParagraphTabStopWithoutNodePath) {
         std::make_shared< int32_t >(0),
         nullptr,
         std::make_shared< std::wstring >(remoteDataFolder),
+        nullptr,
         nullptr,
         nullptr,
         nullptr,

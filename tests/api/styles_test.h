@@ -1,6 +1,6 @@
 ﻿/** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="styles_test.h">
-*   Copyright (c) 2021 Aspose.Words for Cloud
+*   Copyright (c) 2022 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -52,6 +52,7 @@ TEST_F(StylesTests, TestGetStyles) {
         std::make_shared< std::wstring >(remoteDataFolder),
         nullptr,
         nullptr,
+        nullptr,
         nullptr
     ));
 
@@ -68,6 +69,7 @@ TEST_F(StylesTests, TestGetStylesOnline) {
     auto requestDocument = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(localFile)), std::istream::binary));
     std::shared_ptr<requests::GetStylesOnlineRequest> request(new requests::GetStylesOnlineRequest(
         requestDocument,
+        nullptr,
         nullptr,
         nullptr
     ));
@@ -92,6 +94,7 @@ TEST_F(StylesTests, TestGetStyle) {
         std::make_shared< std::wstring >(remoteDataFolder),
         nullptr,
         nullptr,
+        nullptr,
         nullptr
     ));
 
@@ -108,6 +111,7 @@ TEST_F(StylesTests, TestGetStyleOnline) {
     std::shared_ptr<requests::GetStyleOnlineRequest> request(new requests::GetStyleOnlineRequest(
         requestDocument,
         std::make_shared< std::wstring >(L"Heading 1"),
+        nullptr,
         nullptr,
         nullptr
     ));
@@ -138,6 +142,7 @@ TEST_F(StylesTests, TestUpdateStyle) {
         nullptr,
         nullptr,
         nullptr,
+        nullptr,
         nullptr
     ));
 
@@ -157,6 +162,7 @@ TEST_F(StylesTests, TestUpdateStyleOnline) {
         requestDocument,
         std::make_shared< std::wstring >(L"Heading 1"),
         requestStyleUpdate,
+        nullptr,
         nullptr,
         nullptr,
         nullptr,
@@ -190,6 +196,7 @@ TEST_F(StylesTests, TestInsertStyle) {
         nullptr,
         nullptr,
         nullptr,
+        nullptr,
         nullptr
     ));
 
@@ -209,6 +216,7 @@ TEST_F(StylesTests, TestInsertStyleOnline) {
     std::shared_ptr<requests::InsertStyleOnlineRequest> request(new requests::InsertStyleOnlineRequest(
         requestDocument,
         requestStyleInsert,
+        nullptr,
         nullptr,
         nullptr,
         nullptr,
@@ -241,6 +249,7 @@ TEST_F(StylesTests, TestCopyStyle) {
         nullptr,
         nullptr,
         nullptr,
+        nullptr,
         nullptr
     ));
 
@@ -259,6 +268,7 @@ TEST_F(StylesTests, TestCopyStyleOnline) {
     std::shared_ptr<requests::CopyStyleOnlineRequest> request(new requests::CopyStyleOnlineRequest(
         requestDocument,
         requestStyleCopy,
+        nullptr,
         nullptr,
         nullptr,
         nullptr,
@@ -286,6 +296,7 @@ TEST_F(StylesTests, TestGetStyleFromDocumentElement) {
         std::make_shared< std::wstring >(remoteDataFolder),
         nullptr,
         nullptr,
+        nullptr,
         nullptr
     ));
 
@@ -302,6 +313,7 @@ TEST_F(StylesTests, TestGetStyleFromDocumentElementOnline) {
     std::shared_ptr<requests::GetStyleFromDocumentElementOnlineRequest> request(new requests::GetStyleFromDocumentElementOnlineRequest(
         requestDocument,
         std::make_shared< std::wstring >(L"paragraphs/1/paragraphFormat"),
+        nullptr,
         nullptr,
         nullptr
     ));
@@ -332,6 +344,7 @@ TEST_F(StylesTests, TestApplyStyleToDocumentElement) {
         nullptr,
         nullptr,
         nullptr,
+        nullptr,
         nullptr
     ));
 
@@ -349,6 +362,7 @@ TEST_F(StylesTests, TestApplyStyleToDocumentElementOnline) {
         requestDocument,
         std::make_shared< std::wstring >(L"paragraphs/1/paragraphFormat"),
         requestStyleApply,
+        nullptr,
         nullptr,
         nullptr,
         nullptr,

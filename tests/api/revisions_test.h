@@ -1,6 +1,6 @@
 ﻿/** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="revisions_test.h">
-*   Copyright (c) 2021 Aspose.Words for Cloud
+*   Copyright (c) 2022 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -53,6 +53,7 @@ TEST_F(RevisionsTests, TestAcceptAllRevisions) {
         nullptr,
         nullptr,
         nullptr,
+        nullptr,
         std::make_shared< std::wstring >(baseTestOutPath + L"/" + remoteFileName)
     ));
 
@@ -68,6 +69,7 @@ TEST_F(RevisionsTests, TestAcceptAllRevisionsOnline) {
     auto requestDocument = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(localFile)), std::istream::binary));
     std::shared_ptr<requests::AcceptAllRevisionsOnlineRequest> request(new requests::AcceptAllRevisionsOnlineRequest(
         requestDocument,
+        nullptr,
         nullptr,
         nullptr,
         nullptr
@@ -97,6 +99,7 @@ TEST_F(RevisionsTests, TestRejectAllRevisions) {
         nullptr,
         nullptr,
         nullptr,
+        nullptr,
         std::make_shared< std::wstring >(baseTestOutPath + L"/" + remoteFileName)
     ));
 
@@ -112,6 +115,7 @@ TEST_F(RevisionsTests, TestRejectAllRevisionsOnline) {
     auto requestDocument = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(localFile)), std::istream::binary));
     std::shared_ptr<requests::RejectAllRevisionsOnlineRequest> request(new requests::RejectAllRevisionsOnlineRequest(
         requestDocument,
+        nullptr,
         nullptr,
         nullptr,
         nullptr

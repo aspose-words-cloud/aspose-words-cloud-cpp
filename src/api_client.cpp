@@ -1,6 +1,6 @@
 ﻿/** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="api_client.cpp">
-*   Copyright (c) 2021 Aspose.Words for Cloud
+*   Copyright (c) 2022 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -168,7 +168,7 @@ namespace aspose::words::cloud {
 
         ::httplib::Headers headers;
         headers.emplace("Authorization", m_AccessToken);
-        headers.emplace("x-aspose-client-version", "21.12");
+        headers.emplace("x-aspose-client-version", "22.1");
         headers.emplace("x-aspose-client", "C++ SDK");
 
         for (auto& pair : httpRequest->getHeaders()) {

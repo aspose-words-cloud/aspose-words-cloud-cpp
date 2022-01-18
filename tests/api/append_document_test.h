@@ -1,6 +1,6 @@
 ﻿/** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="append_document_test.h">
-*   Copyright (c) 2021 Aspose.Words for Cloud
+*   Copyright (c) 2022 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -61,6 +61,7 @@ TEST_F(AppendDocumentTests, TestAppendDocument) {
         nullptr,
         nullptr,
         nullptr,
+        nullptr,
         std::make_shared< std::wstring >(baseTestOutPath + L"/" + remoteFileName),
         nullptr,
         nullptr
@@ -93,6 +94,7 @@ TEST_F(AppendDocumentTests, TestAppendDocumentOnline) {
     std::shared_ptr<requests::AppendDocumentOnlineRequest> request(new requests::AppendDocumentOnlineRequest(
         requestDocument,
         requestDocumentList,
+        nullptr,
         nullptr,
         nullptr,
         nullptr,

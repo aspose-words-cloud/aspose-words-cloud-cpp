@@ -1,6 +1,6 @@
 ﻿/** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="save_as_tiff_request.h">
-*   Copyright (c) 2021 Aspose.Words for Cloud
+*   Copyright (c) 2022 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -37,6 +37,7 @@ namespace aspose::words::cloud::requests {
             const std::shared_ptr< std::wstring > storage = nullptr,
             const std::shared_ptr< std::wstring > loadEncoding = nullptr,
             const std::shared_ptr< std::wstring > password = nullptr,
+            const std::shared_ptr< std::wstring > encryptedPassword = nullptr,
             const std::shared_ptr< bool > useAntiAliasing = nullptr,
             const std::shared_ptr< bool > useHighQualityRendering = nullptr,
             const std::shared_ptr< double > imageBrightness = nullptr,
@@ -63,6 +64,7 @@ namespace aspose::words::cloud::requests {
         ASPOSE_WORDS_CLOUD_EXPORT const std::shared_ptr< std::wstring > getStorage() const;
         ASPOSE_WORDS_CLOUD_EXPORT const std::shared_ptr< std::wstring > getLoadEncoding() const;
         ASPOSE_WORDS_CLOUD_EXPORT const std::shared_ptr< std::wstring > getPassword() const;
+        ASPOSE_WORDS_CLOUD_EXPORT const std::shared_ptr< std::wstring > getEncryptedPassword() const;
         ASPOSE_WORDS_CLOUD_EXPORT const std::shared_ptr< bool > getUseAntiAliasing() const;
         ASPOSE_WORDS_CLOUD_EXPORT const std::shared_ptr< bool > getUseHighQualityRendering() const;
         ASPOSE_WORDS_CLOUD_EXPORT const std::shared_ptr< double > getImageBrightness() const;
@@ -92,6 +94,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > m_Storage;
         const std::shared_ptr< std::wstring > m_LoadEncoding;
         const std::shared_ptr< std::wstring > m_Password;
+        const std::shared_ptr< std::wstring > m_EncryptedPassword;
         const std::shared_ptr< bool > m_UseAntiAliasing;
         const std::shared_ptr< bool > m_UseHighQualityRendering;
         const std::shared_ptr< double > m_ImageBrightness;

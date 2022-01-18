@@ -1,6 +1,6 @@
 ﻿/** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="range_test.h">
-*   Copyright (c) 2021 Aspose.Words for Cloud
+*   Copyright (c) 2022 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -54,6 +54,7 @@ TEST_F(RangeTests, TestGetRangeText) {
         std::make_shared< std::wstring >(remoteDataFolder),
         nullptr,
         nullptr,
+        nullptr,
         nullptr
     ));
 
@@ -70,6 +71,7 @@ TEST_F(RangeTests, TestGetRangeTextOnline) {
         requestDocument,
         std::make_shared< std::wstring >(L"id0.0.0"),
         std::make_shared< std::wstring >(L"id0.0.1"),
+        nullptr,
         nullptr,
         nullptr
     ));
@@ -96,6 +98,7 @@ TEST_F(RangeTests, TestRemoveRange) {
         nullptr,
         nullptr,
         nullptr,
+        nullptr,
         nullptr
     ));
 
@@ -111,6 +114,7 @@ TEST_F(RangeTests, TestRemoveRangeOnline) {
         requestDocument,
         std::make_shared< std::wstring >(L"id0.0.0"),
         std::make_shared< std::wstring >(L"id0.0.1"),
+        nullptr,
         nullptr,
         nullptr,
         nullptr
@@ -140,6 +144,7 @@ TEST_F(RangeTests, TestSaveAsRange) {
         std::make_shared< std::wstring >(remoteDataFolder),
         nullptr,
         nullptr,
+        nullptr,
         nullptr
     ));
 
@@ -160,6 +165,7 @@ TEST_F(RangeTests, TestSaveAsRangeOnline) {
         std::make_shared< std::wstring >(L"id0.0.0"),
         requestDocumentParameters,
         std::make_shared< std::wstring >(L"id0.0.1"),
+        nullptr,
         nullptr,
         nullptr
     ));
@@ -189,6 +195,7 @@ TEST_F(RangeTests, TestReplaceWithText) {
         nullptr,
         nullptr,
         nullptr,
+        nullptr,
         nullptr
     ));
 
@@ -209,6 +216,7 @@ TEST_F(RangeTests, TestReplaceWithTextOnline) {
         std::make_shared< std::wstring >(L"id0.0.0"),
         requestRangeText,
         std::make_shared< std::wstring >(L"id0.0.1"),
+        nullptr,
         nullptr,
         nullptr,
         nullptr
