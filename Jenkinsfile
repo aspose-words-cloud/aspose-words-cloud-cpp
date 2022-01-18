@@ -6,6 +6,7 @@ properties([
 			[$class: 'StringParameterDefinition', name: 'apiUrl', defaultValue: 'https://api-qa.aspose.cloud', description: 'api url'],
             [$class: 'BooleanParameterDefinition', name: 'ignoreCiSkip', defaultValue: false, description: 'ignore CI Skip'],
             [$class: 'StringParameterDefinition', name: 'credentialsId', defaultValue: '6839cbe8-39fa-40c0-86ce-90706f0bae5d', description: 'credentials id'],
+            [$class: 'BooleanParameterDefinition', name: 'packageTesting', defaultValue: false, description: 'Testing package from repository without local sources. Used for prodhealthcheck'],
 		]
 	]
 ])
@@ -13,17 +14,27 @@ properties([
 def buildCacheImage = "git.auckland.dynabic.com:4567/words-cloud/api/cpp"
 def needToBuildWindows = false
 def needToBuildLinux = false
+def packageTestingWindows = false
+def packageTestingLinux = false
 
 parallel windows: {
     node('windows2016') {
         try {
             gitlabCommitStatus("windows_checkout") {
                 stage('windows_checkout'){
-                    checkout([$class: 'GitSCM', branches: [[name: params.branch]], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: '361885ba-9425-4230-950e-0af201d90547', url: 'https://git.auckland.dynabic.com/words-cloud/words-cloud-cpp.git']]])
-                    bat 'git show -s HEAD > gitMessage'
-                    def commitMessage = readFile('gitMessage').trim()
-                    echo commitMessage
-                    needToBuildWindows = params.ignoreCiSkip || !commitMessage.contains('[ci skip]')               
+                    packageTestingWindows = params.packageTesting
+                    if (packageTestingWindows) {
+                        needToBuildWindows = true
+                        checkout([$class: 'GitSCM', branches: [[name: 'release']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[url: 'https://github.com/aspose-words-cloud/aspose-words-cloud-cpp.git']]])
+                    }
+                    else {
+                        checkout([$class: 'GitSCM', branches: [[name: params.branch]], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: '361885ba-9425-4230-950e-0af201d90547', url: 'https://git.auckland.dynabic.com/words-cloud/words-cloud-cpp.git']]])
+                        bat 'git show -s HEAD > gitMessage'
+                        def commitMessage = readFile('gitMessage').trim()
+                        echo commitMessage
+                        needToBuildWindows = params.ignoreCiSkip || !commitMessage.contains('[ci skip]')
+                    }
+                    
                     bat 'git clean -fdx'
                 }
             }
@@ -81,13 +92,20 @@ parallel windows: {
     node('words-linux') {
         try {
             gitlabCommitStatus("linux_checkout") {
-                stage('linux_checkout'){                    
-                    checkout([$class: 'GitSCM', branches: [[name: params.branch]], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: '361885ba-9425-4230-950e-0af201d90547', url: 'https://git.auckland.dynabic.com/words-cloud/words-cloud-cpp.git']]])
-
-                    sh 'git show -s HEAD > gitMessage'
-                    def commitMessage = readFile('gitMessage').trim()
-                    echo commitMessage
-                    needToBuildLinux = params.ignoreCiSkip || !commitMessage.contains('[ci skip]')               
+                stage('linux_checkout'){
+                    packageTestingLinux = params.packageTesting
+                    if (packageTestingLinux) {
+                        needToBuildLinux = true
+                        checkout([$class: 'GitSCM', branches: [[name: 'release']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[url: 'https://github.com/aspose-words-cloud/aspose-words-cloud-cpp.git']]])
+                    }
+                    else {
+                        checkout([$class: 'GitSCM', branches: [[name: params.branch]], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: '361885ba-9425-4230-950e-0af201d90547', url: 'https://git.auckland.dynabic.com/words-cloud/words-cloud-cpp.git']]])
+                        sh 'git show -s HEAD > gitMessage'
+                        def commitMessage = readFile('gitMessage').trim()
+                        echo commitMessage
+                        needToBuildLinux = params.ignoreCiSkip || !commitMessage.contains('[ci skip]')
+                    }
+                    
                     sh 'git clean -fdx'
                 }
             }
