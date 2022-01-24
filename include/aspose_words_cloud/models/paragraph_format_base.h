@@ -481,264 +481,290 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets a value indicating whether inter-character spacing is automatically adjusted between regions of Latin text and regions of East Asian text in the current paragraph.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< bool > getAddSpaceBetweenFarEastAndAlpha() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< bool > getAddSpaceBetweenFarEastAndAlpha() const;
 
         /// <summary>
         /// Gets or sets a value indicating whether inter-character spacing is automatically adjusted between regions of Latin text and regions of East Asian text in the current paragraph.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setAddSpaceBetweenFarEastAndAlpha(std::shared_ptr< bool > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setAddSpaceBetweenFarEastAndAlpha(std::shared_ptr< bool > value);
+
 
         /// <summary>
         /// Gets or sets a value indicating whether inter-character spacing is automatically adjusted between regions of numbers and regions of East Asian text in the current paragraph.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< bool > getAddSpaceBetweenFarEastAndDigit() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< bool > getAddSpaceBetweenFarEastAndDigit() const;
 
         /// <summary>
         /// Gets or sets a value indicating whether inter-character spacing is automatically adjusted between regions of numbers and regions of East Asian text in the current paragraph.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setAddSpaceBetweenFarEastAndDigit(std::shared_ptr< bool > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setAddSpaceBetweenFarEastAndDigit(std::shared_ptr< bool > value);
+
 
         /// <summary>
         /// Gets or sets text alignment for the paragraph.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::ParagraphFormatBase::Alignment > getAlignment() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< aspose::words::cloud::models::ParagraphFormatBase::Alignment > getAlignment() const;
 
         /// <summary>
         /// Gets or sets text alignment for the paragraph.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setAlignment(std::shared_ptr< aspose::words::cloud::models::ParagraphFormatBase::Alignment > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setAlignment(std::shared_ptr< aspose::words::cloud::models::ParagraphFormatBase::Alignment > value);
+
 
         /// <summary>
         /// Gets or sets a value indicating whether this is a right-to-left paragraph.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< bool > getBidi() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< bool > getBidi() const;
 
         /// <summary>
         /// Gets or sets a value indicating whether this is a right-to-left paragraph.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setBidi(std::shared_ptr< bool > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setBidi(std::shared_ptr< bool > value);
+
 
         /// <summary>
         /// Gets or sets the position for a drop cap text.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::ParagraphFormatBase::DropCapPosition > getDropCapPosition() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< aspose::words::cloud::models::ParagraphFormatBase::DropCapPosition > getDropCapPosition() const;
 
         /// <summary>
         /// Gets or sets the position for a drop cap text.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setDropCapPosition(std::shared_ptr< aspose::words::cloud::models::ParagraphFormatBase::DropCapPosition > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setDropCapPosition(std::shared_ptr< aspose::words::cloud::models::ParagraphFormatBase::DropCapPosition > value);
+
 
         /// <summary>
         /// Gets or sets the value (in points) for a first line or hanging indent.
         /// Use a positive value to set a first-line indent, and use a negative value to set a hanging indent.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< double > getFirstLineIndent() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< double > getFirstLineIndent() const;
 
         /// <summary>
         /// Gets or sets the value (in points) for a first line or hanging indent.
         /// Use a positive value to set a first-line indent, and use a negative value to set a hanging indent.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setFirstLineIndent(std::shared_ptr< double > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setFirstLineIndent(std::shared_ptr< double > value);
+
 
         /// <summary>
         /// Gets or sets a value indicating whether all lines in the paragraph are to remain on the same page.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< bool > getKeepTogether() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< bool > getKeepTogether() const;
 
         /// <summary>
         /// Gets or sets a value indicating whether all lines in the paragraph are to remain on the same page.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setKeepTogether(std::shared_ptr< bool > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setKeepTogether(std::shared_ptr< bool > value);
+
 
         /// <summary>
         /// Gets or sets a value indicating whether the paragraph is to remains on the same page as the paragraph that follows it.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< bool > getKeepWithNext() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< bool > getKeepWithNext() const;
 
         /// <summary>
         /// Gets or sets a value indicating whether the paragraph is to remains on the same page as the paragraph that follows it.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setKeepWithNext(std::shared_ptr< bool > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setKeepWithNext(std::shared_ptr< bool > value);
+
 
         /// <summary>
         /// Gets or sets the value (in points), that represents the left indent for paragraph.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< double > getLeftIndent() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< double > getLeftIndent() const;
 
         /// <summary>
         /// Gets or sets the value (in points), that represents the left indent for paragraph.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setLeftIndent(std::shared_ptr< double > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setLeftIndent(std::shared_ptr< double > value);
+
 
         /// <summary>
         /// Gets or sets the line spacing (in points) for the paragraph.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< double > getLineSpacing() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< double > getLineSpacing() const;
 
         /// <summary>
         /// Gets or sets the line spacing (in points) for the paragraph.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setLineSpacing(std::shared_ptr< double > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setLineSpacing(std::shared_ptr< double > value);
+
 
         /// <summary>
         /// Gets or sets the line spacing for the paragraph.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::ParagraphFormatBase::LineSpacingRule > getLineSpacingRule() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< aspose::words::cloud::models::ParagraphFormatBase::LineSpacingRule > getLineSpacingRule() const;
 
         /// <summary>
         /// Gets or sets the line spacing for the paragraph.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setLineSpacingRule(std::shared_ptr< aspose::words::cloud::models::ParagraphFormatBase::LineSpacingRule > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setLineSpacingRule(std::shared_ptr< aspose::words::cloud::models::ParagraphFormatBase::LineSpacingRule > value);
+
 
         /// <summary>
         /// Gets or sets the number of lines of the paragraph text used to calculate the drop cap height.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< int32_t > getLinesToDrop() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< int32_t > getLinesToDrop() const;
 
         /// <summary>
         /// Gets or sets the number of lines of the paragraph text used to calculate the drop cap height.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setLinesToDrop(std::shared_ptr< int32_t > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setLinesToDrop(std::shared_ptr< int32_t > value);
+
 
         /// <summary>
         /// Gets or sets a value indicating whether SpaceBefore and SpaceAfter will be ignored between the paragraphs of the same style.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< bool > getNoSpaceBetweenParagraphsOfSameStyle() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< bool > getNoSpaceBetweenParagraphsOfSameStyle() const;
 
         /// <summary>
         /// Gets or sets a value indicating whether SpaceBefore and SpaceAfter will be ignored between the paragraphs of the same style.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setNoSpaceBetweenParagraphsOfSameStyle(std::shared_ptr< bool > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setNoSpaceBetweenParagraphsOfSameStyle(std::shared_ptr< bool > value);
+
 
         /// <summary>
         /// Gets or sets the outline level of the paragraph in the document.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::ParagraphFormatBase::OutlineLevel > getOutlineLevel() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< aspose::words::cloud::models::ParagraphFormatBase::OutlineLevel > getOutlineLevel() const;
 
         /// <summary>
         /// Gets or sets the outline level of the paragraph in the document.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setOutlineLevel(std::shared_ptr< aspose::words::cloud::models::ParagraphFormatBase::OutlineLevel > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setOutlineLevel(std::shared_ptr< aspose::words::cloud::models::ParagraphFormatBase::OutlineLevel > value);
+
 
         /// <summary>
         /// Gets or sets a value indicating whether a page break is forced before the paragraph.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< bool > getPageBreakBefore() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< bool > getPageBreakBefore() const;
 
         /// <summary>
         /// Gets or sets a value indicating whether a page break is forced before the paragraph.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setPageBreakBefore(std::shared_ptr< bool > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setPageBreakBefore(std::shared_ptr< bool > value);
+
 
         /// <summary>
         /// Gets or sets the value (in points) that represents the right indent for paragraph.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< double > getRightIndent() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< double > getRightIndent() const;
 
         /// <summary>
         /// Gets or sets the value (in points) that represents the right indent for paragraph.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setRightIndent(std::shared_ptr< double > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setRightIndent(std::shared_ptr< double > value);
+
 
         /// <summary>
         /// Gets or sets the Shading object, that refers to the shading formatting for the paragraph.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::Shading > getShading() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< aspose::words::cloud::models::Shading > getShading() const;
 
         /// <summary>
         /// Gets or sets the Shading object, that refers to the shading formatting for the paragraph.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setShading(std::shared_ptr< aspose::words::cloud::models::Shading > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setShading(std::shared_ptr< aspose::words::cloud::models::Shading > value);
+
 
         /// <summary>
         /// Gets or sets the amount of spacing (in points) after the paragraph.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< double > getSpaceAfter() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< double > getSpaceAfter() const;
 
         /// <summary>
         /// Gets or sets the amount of spacing (in points) after the paragraph.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setSpaceAfter(std::shared_ptr< double > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setSpaceAfter(std::shared_ptr< double > value);
+
 
         /// <summary>
         /// Gets or sets a value indicating whether the amount of spacing after the paragraph is set automatically.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< bool > getSpaceAfterAuto() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< bool > getSpaceAfterAuto() const;
 
         /// <summary>
         /// Gets or sets a value indicating whether the amount of spacing after the paragraph is set automatically.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setSpaceAfterAuto(std::shared_ptr< bool > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setSpaceAfterAuto(std::shared_ptr< bool > value);
+
 
         /// <summary>
         /// Gets or sets the amount of spacing (in points) before the paragraph.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< double > getSpaceBefore() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< double > getSpaceBefore() const;
 
         /// <summary>
         /// Gets or sets the amount of spacing (in points) before the paragraph.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setSpaceBefore(std::shared_ptr< double > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setSpaceBefore(std::shared_ptr< double > value);
+
 
         /// <summary>
         /// Gets or sets a value indicating whether the amount of spacing before the paragraph is set automatically.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< bool > getSpaceBeforeAuto() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< bool > getSpaceBeforeAuto() const;
 
         /// <summary>
         /// Gets or sets a value indicating whether the amount of spacing before the paragraph is set automatically.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setSpaceBeforeAuto(std::shared_ptr< bool > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setSpaceBeforeAuto(std::shared_ptr< bool > value);
+
 
         /// <summary>
         /// Gets or sets the locale independent style identifier of the paragraph style applied to this formatting.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::ParagraphFormatBase::StyleIdentifier > getStyleIdentifier() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< aspose::words::cloud::models::ParagraphFormatBase::StyleIdentifier > getStyleIdentifier() const;
 
         /// <summary>
         /// Gets or sets the locale independent style identifier of the paragraph style applied to this formatting.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setStyleIdentifier(std::shared_ptr< aspose::words::cloud::models::ParagraphFormatBase::StyleIdentifier > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setStyleIdentifier(std::shared_ptr< aspose::words::cloud::models::ParagraphFormatBase::StyleIdentifier > value);
+
 
         /// <summary>
         /// Gets or sets the name of the paragraph style applied to this formatting.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getStyleName() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< std::wstring > getStyleName() const;
 
         /// <summary>
         /// Gets or sets the name of the paragraph style applied to this formatting.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setStyleName(std::shared_ptr< std::wstring > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setStyleName(std::shared_ptr< std::wstring > value);
+
 
         /// <summary>
         /// Gets or sets a value indicating whether the current paragraph should be exempted from any hyphenation which is applied in the document settings.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< bool > getSuppressAutoHyphens() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< bool > getSuppressAutoHyphens() const;
 
         /// <summary>
         /// Gets or sets a value indicating whether the current paragraph should be exempted from any hyphenation which is applied in the document settings.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setSuppressAutoHyphens(std::shared_ptr< bool > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setSuppressAutoHyphens(std::shared_ptr< bool > value);
+
 
         /// <summary>
         /// Gets or sets a value indicating whether the current paragraph's lines should be exempted from line numbering which is applied in the parent section.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< bool > getSuppressLineNumbers() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< bool > getSuppressLineNumbers() const;
 
         /// <summary>
         /// Gets or sets a value indicating whether the current paragraph's lines should be exempted from line numbering which is applied in the parent section.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setSuppressLineNumbers(std::shared_ptr< bool > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setSuppressLineNumbers(std::shared_ptr< bool > value);
+
 
         /// <summary>
         /// Gets or sets a value indicating whether the first and last lines in the paragraph are to remain on the same page as the rest of the paragraph.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< bool > getWidowControl() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< bool > getWidowControl() const;
 
         /// <summary>
         /// Gets or sets a value indicating whether the first and last lines in the paragraph are to remain on the same page as the rest of the paragraph.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setWidowControl(std::shared_ptr< bool > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setWidowControl(std::shared_ptr< bool > value);
+
 
     protected:
         std::shared_ptr< bool > m_AddSpaceBetweenFarEastAndAlpha;

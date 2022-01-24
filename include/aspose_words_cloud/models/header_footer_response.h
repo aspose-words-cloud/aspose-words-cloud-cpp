@@ -43,12 +43,13 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the HeaderFooter.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::HeaderFooter > getHeaderFooter() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< aspose::words::cloud::models::HeaderFooter > getHeaderFooter() const;
 
         /// <summary>
         /// Gets or sets the HeaderFooter.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setHeaderFooter(std::shared_ptr< aspose::words::cloud::models::HeaderFooter > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setHeaderFooter(std::shared_ptr< aspose::words::cloud::models::HeaderFooter > value);
+
 
     protected:
         std::shared_ptr< aspose::words::cloud::models::HeaderFooter > m_HeaderFooter;

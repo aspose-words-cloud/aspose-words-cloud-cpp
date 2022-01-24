@@ -43,12 +43,13 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the collection of paragraphs.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::ParagraphLinkCollection > getParagraphs() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< aspose::words::cloud::models::ParagraphLinkCollection > getParagraphs() const;
 
         /// <summary>
         /// Gets or sets the collection of paragraphs.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setParagraphs(std::shared_ptr< aspose::words::cloud::models::ParagraphLinkCollection > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setParagraphs(std::shared_ptr< aspose::words::cloud::models::ParagraphLinkCollection > value);
+
 
     protected:
         std::shared_ptr< aspose::words::cloud::models::ParagraphLinkCollection > m_Paragraphs;

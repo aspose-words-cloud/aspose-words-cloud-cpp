@@ -42,47 +42,59 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets a value indicating whether to make output RTF documents smaller in size, but if they contain RTL (right-to-left) text, it will not be displayed correctly.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< bool > getExportCompactSize() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< bool > getExportCompactSize() const;
 
         /// <summary>
         /// Gets or sets a value indicating whether to make output RTF documents smaller in size, but if they contain RTL (right-to-left) text, it will not be displayed correctly.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setExportCompactSize(std::shared_ptr< bool > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setExportCompactSize(std::shared_ptr< bool > value);
+
 
         /// <summary>
         /// Gets or sets a value indicating whether the keywords for "old readers" are written to RTF or not.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< bool > getExportImagesForOldReaders() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< bool > getExportImagesForOldReaders() const;
 
         /// <summary>
         /// Gets or sets a value indicating whether the keywords for "old readers" are written to RTF or not.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setExportImagesForOldReaders(std::shared_ptr< bool > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setExportImagesForOldReaders(std::shared_ptr< bool > value);
+
 
         /// <summary>
         /// Gets or sets a value indicating whether to use pretty formats output.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< bool > getPrettyFormat() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< bool > getPrettyFormat() const;
 
         /// <summary>
         /// Gets or sets a value indicating whether to use pretty formats output.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setPrettyFormat(std::shared_ptr< bool > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setPrettyFormat(std::shared_ptr< bool > value);
+
+
+        /// <summary>
+        /// Gets or sets the format of save.
+        /// </summary>
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< std::wstring > getSaveFormat() const override;
+
+
 
         /// <summary>
         /// Gets or sets a value indicating whether when true all images will be saved as WMF. This option might help to avoid WordPad warning messages.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< bool > getSaveImagesAsWmf() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< bool > getSaveImagesAsWmf() const;
 
         /// <summary>
         /// Gets or sets a value indicating whether when true all images will be saved as WMF. This option might help to avoid WordPad warning messages.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setSaveImagesAsWmf(std::shared_ptr< bool > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setSaveImagesAsWmf(std::shared_ptr< bool > value);
+
 
     protected:
         std::shared_ptr< bool > m_ExportCompactSize;
         std::shared_ptr< bool > m_ExportImagesForOldReaders;
         std::shared_ptr< bool > m_PrettyFormat;
+        std::shared_ptr< std::wstring > m_SaveFormat = std::make_shared<std::wstring>(L"rtf");
         std::shared_ptr< bool > m_SaveImagesAsWmf;
     };
 }

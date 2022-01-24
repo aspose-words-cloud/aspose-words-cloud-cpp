@@ -43,12 +43,13 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the collection of fields.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::FieldCollection > getFields() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< aspose::words::cloud::models::FieldCollection > getFields() const;
 
         /// <summary>
         /// Gets or sets the collection of fields.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setFields(std::shared_ptr< aspose::words::cloud::models::FieldCollection > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setFields(std::shared_ptr< aspose::words::cloud::models::FieldCollection > value);
+
 
     protected:
         std::shared_ptr< aspose::words::cloud::models::FieldCollection > m_Fields;

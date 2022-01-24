@@ -55,12 +55,13 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the paragraph's text.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::HeaderFooterLink::Type > getType() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< aspose::words::cloud::models::HeaderFooterLink::Type > getType() const;
 
         /// <summary>
         /// Gets or sets the paragraph's text.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setType(std::shared_ptr< aspose::words::cloud::models::HeaderFooterLink::Type > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setType(std::shared_ptr< aspose::words::cloud::models::HeaderFooterLink::Type > value);
+
 
     protected:
         std::shared_ptr< aspose::words::cloud::models::HeaderFooterLink::Type > m_Type;

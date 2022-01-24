@@ -41,32 +41,35 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the new password.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getNewPassword() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< std::wstring > getNewPassword() const;
 
         /// <summary>
         /// Gets or sets the new password.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setNewPassword(std::shared_ptr< std::wstring > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setNewPassword(std::shared_ptr< std::wstring > value);
+
 
         /// <summary>
         /// Gets or sets the current password.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getPassword() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< std::wstring > getPassword() const;
 
         /// <summary>
         /// Gets or sets the current password.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setPassword(std::shared_ptr< std::wstring > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setPassword(std::shared_ptr< std::wstring > value);
+
 
         /// <summary>
         /// Gets or sets the new type of protection.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getProtectionType() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< std::wstring > getProtectionType() const;
 
         /// <summary>
         /// Gets or sets the new type of protection.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setProtectionType(std::shared_ptr< std::wstring > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setProtectionType(std::shared_ptr< std::wstring > value);
+
 
     protected:
         std::shared_ptr< std::wstring > m_NewPassword;

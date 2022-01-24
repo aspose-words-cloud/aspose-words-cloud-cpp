@@ -42,26 +42,36 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the font name, that will be used if no expected font is found in printer and built-in fonts collections.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getFalllbackFontName() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< std::wstring > getFalllbackFontName() const;
 
         /// <summary>
         /// Gets or sets the font name, that will be used if no expected font is found in printer and built-in fonts collections.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setFalllbackFontName(std::shared_ptr< std::wstring > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setFalllbackFontName(std::shared_ptr< std::wstring > value);
+
 
         /// <summary>
         /// Gets or sets a value indicating whether complex transformed elements should be rasterized before saving to PCL document.. The default value is true.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< bool > getRasterizeTransformedElements() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< bool > getRasterizeTransformedElements() const;
 
         /// <summary>
         /// Gets or sets a value indicating whether complex transformed elements should be rasterized before saving to PCL document.. The default value is true.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setRasterizeTransformedElements(std::shared_ptr< bool > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setRasterizeTransformedElements(std::shared_ptr< bool > value);
+
+
+        /// <summary>
+        /// Gets or sets the format of save.
+        /// </summary>
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< std::wstring > getSaveFormat() const override;
+
+
 
     protected:
         std::shared_ptr< std::wstring > m_FalllbackFontName;
         std::shared_ptr< bool > m_RasterizeTransformedElements;
+        std::shared_ptr< std::wstring > m_SaveFormat = std::make_shared<std::wstring>(L"pcl");
     };
 }
 

@@ -43,12 +43,13 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the OfficeMath object.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::OfficeMathObject > getOfficeMathObject() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< aspose::words::cloud::models::OfficeMathObject > getOfficeMathObject() const;
 
         /// <summary>
         /// Gets or sets the OfficeMath object.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setOfficeMathObject(std::shared_ptr< aspose::words::cloud::models::OfficeMathObject > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setOfficeMathObject(std::shared_ptr< aspose::words::cloud::models::OfficeMathObject > value);
+
 
     protected:
         std::shared_ptr< aspose::words::cloud::models::OfficeMathObject > m_OfficeMathObject;

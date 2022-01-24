@@ -43,12 +43,13 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the collection of document properties.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::DocumentProperties > getDocumentProperties() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< aspose::words::cloud::models::DocumentProperties > getDocumentProperties() const;
 
         /// <summary>
         /// Gets or sets the collection of document properties.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setDocumentProperties(std::shared_ptr< aspose::words::cloud::models::DocumentProperties > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setDocumentProperties(std::shared_ptr< aspose::words::cloud::models::DocumentProperties > value);
+
 
     protected:
         std::shared_ptr< aspose::words::cloud::models::DocumentProperties > m_DocumentProperties;

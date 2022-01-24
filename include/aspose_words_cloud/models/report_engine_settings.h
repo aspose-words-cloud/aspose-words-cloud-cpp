@@ -55,62 +55,68 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the options for parsing CSV data.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::CsvDataLoadOptions > getCsvDataLoadOptions() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< aspose::words::cloud::models::CsvDataLoadOptions > getCsvDataLoadOptions() const;
 
         /// <summary>
         /// Gets or sets the options for parsing CSV data.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setCsvDataLoadOptions(std::shared_ptr< aspose::words::cloud::models::CsvDataLoadOptions > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setCsvDataLoadOptions(std::shared_ptr< aspose::words::cloud::models::CsvDataLoadOptions > value);
+
 
         /// <summary>
         /// Gets or sets the name to reference the data source object in the template.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getDataSourceName() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< std::wstring > getDataSourceName() const;
 
         /// <summary>
         /// Gets or sets the name to reference the data source object in the template.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setDataSourceName(std::shared_ptr< std::wstring > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setDataSourceName(std::shared_ptr< std::wstring > value);
+
 
         /// <summary>
         /// Gets or sets type of datasource.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::ReportEngineSettings::DataSourceType > getDataSourceType() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< aspose::words::cloud::models::ReportEngineSettings::DataSourceType > getDataSourceType() const;
 
         /// <summary>
         /// Gets or sets type of datasource.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setDataSourceType(std::shared_ptr< aspose::words::cloud::models::ReportEngineSettings::DataSourceType > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setDataSourceType(std::shared_ptr< aspose::words::cloud::models::ReportEngineSettings::DataSourceType > value);
+
 
         /// <summary>
         /// Gets or sets the options for parsing JSON data.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::JsonDataLoadOptions > getJsonDataLoadOptions() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< aspose::words::cloud::models::JsonDataLoadOptions > getJsonDataLoadOptions() const;
 
         /// <summary>
         /// Gets or sets the options for parsing JSON data.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setJsonDataLoadOptions(std::shared_ptr< aspose::words::cloud::models::JsonDataLoadOptions > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setJsonDataLoadOptions(std::shared_ptr< aspose::words::cloud::models::JsonDataLoadOptions > value);
+
 
         /// <summary>
         /// Gets or sets type of options to build report.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::vector<std::shared_ptr<aspose::words::cloud::models::ReportBuildOptions>> > getReportBuildOptions() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< std::vector<std::shared_ptr<aspose::words::cloud::models::ReportBuildOptions>> > getReportBuildOptions() const;
 
         /// <summary>
         /// Gets or sets type of options to build report.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setReportBuildOptions(std::shared_ptr< std::vector<std::shared_ptr<aspose::words::cloud::models::ReportBuildOptions>> > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setReportBuildOptions(std::shared_ptr< std::vector<std::shared_ptr<aspose::words::cloud::models::ReportBuildOptions>> > value);
+
 
         /// <summary>
         /// Gets or sets the options for parsing XML data.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::XmlDataLoadOptions > getXmlDataLoadOptions() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< aspose::words::cloud::models::XmlDataLoadOptions > getXmlDataLoadOptions() const;
 
         /// <summary>
         /// Gets or sets the options for parsing XML data.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setXmlDataLoadOptions(std::shared_ptr< aspose::words::cloud::models::XmlDataLoadOptions > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setXmlDataLoadOptions(std::shared_ptr< aspose::words::cloud::models::XmlDataLoadOptions > value);
+
 
     protected:
         std::shared_ptr< aspose::words::cloud::models::CsvDataLoadOptions > m_CsvDataLoadOptions;

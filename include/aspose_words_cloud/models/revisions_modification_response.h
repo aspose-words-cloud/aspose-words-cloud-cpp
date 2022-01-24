@@ -43,12 +43,13 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the result of the modification operations for the revisions collection.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::ModificationOperationResult > getResult() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< aspose::words::cloud::models::ModificationOperationResult > getResult() const;
 
         /// <summary>
         /// Gets or sets the result of the modification operations for the revisions collection.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setResult(std::shared_ptr< aspose::words::cloud::models::ModificationOperationResult > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setResult(std::shared_ptr< aspose::words::cloud::models::ModificationOperationResult > value);
+
 
     protected:
         std::shared_ptr< aspose::words::cloud::models::ModificationOperationResult > m_Result;

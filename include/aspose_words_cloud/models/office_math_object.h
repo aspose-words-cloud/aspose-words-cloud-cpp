@@ -102,42 +102,46 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the content of a footnote.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::StoryChildNodes > getContent() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< aspose::words::cloud::models::StoryChildNodes > getContent() const;
 
         /// <summary>
         /// Gets or sets the content of a footnote.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setContent(std::shared_ptr< aspose::words::cloud::models::StoryChildNodes > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setContent(std::shared_ptr< aspose::words::cloud::models::StoryChildNodes > value);
+
 
         /// <summary>
         /// Gets or sets the display format type of the OfficeMath object. This display format defines whether an equation is displayed inline with the text or displayed on its own line.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::OfficeMathObject::DisplayType > getDisplayType() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< aspose::words::cloud::models::OfficeMathObject::DisplayType > getDisplayType() const;
 
         /// <summary>
         /// Gets or sets the display format type of the OfficeMath object. This display format defines whether an equation is displayed inline with the text or displayed on its own line.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setDisplayType(std::shared_ptr< aspose::words::cloud::models::OfficeMathObject::DisplayType > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setDisplayType(std::shared_ptr< aspose::words::cloud::models::OfficeMathObject::DisplayType > value);
+
 
         /// <summary>
         /// Gets or sets the justification of the OfficeMath object.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::OfficeMathObject::Justification > getJustification() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< aspose::words::cloud::models::OfficeMathObject::Justification > getJustification() const;
 
         /// <summary>
         /// Gets or sets the justification of the OfficeMath object.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setJustification(std::shared_ptr< aspose::words::cloud::models::OfficeMathObject::Justification > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setJustification(std::shared_ptr< aspose::words::cloud::models::OfficeMathObject::Justification > value);
+
 
         /// <summary>
         /// Gets or sets the type of the OfficeMath object.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::OfficeMathObject::MathObjectType > getMathObjectType() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< aspose::words::cloud::models::OfficeMathObject::MathObjectType > getMathObjectType() const;
 
         /// <summary>
         /// Gets or sets the type of the OfficeMath object.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setMathObjectType(std::shared_ptr< aspose::words::cloud::models::OfficeMathObject::MathObjectType > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setMathObjectType(std::shared_ptr< aspose::words::cloud::models::OfficeMathObject::MathObjectType > value);
+
 
     protected:
         std::shared_ptr< aspose::words::cloud::models::StoryChildNodes > m_Content;

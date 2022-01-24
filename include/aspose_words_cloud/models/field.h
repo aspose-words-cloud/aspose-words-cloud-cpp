@@ -42,22 +42,24 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the LCID of the field.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getLocaleId() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< std::wstring > getLocaleId() const;
 
         /// <summary>
         /// Gets or sets the LCID of the field.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setLocaleId(std::shared_ptr< std::wstring > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setLocaleId(std::shared_ptr< std::wstring > value);
+
 
         /// <summary>
         /// Gets or sets the field result.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getResult() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< std::wstring > getResult() const;
 
         /// <summary>
         /// Gets or sets the field result.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setResult(std::shared_ptr< std::wstring > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setResult(std::shared_ptr< std::wstring > value);
+
 
     protected:
         std::shared_ptr< std::wstring > m_LocaleId;

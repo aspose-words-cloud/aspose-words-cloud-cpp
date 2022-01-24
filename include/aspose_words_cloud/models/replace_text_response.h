@@ -43,22 +43,24 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the link to the document.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::FileLink > getDocumentLink() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< aspose::words::cloud::models::FileLink > getDocumentLink() const;
 
         /// <summary>
         /// Gets or sets the link to the document.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setDocumentLink(std::shared_ptr< aspose::words::cloud::models::FileLink > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setDocumentLink(std::shared_ptr< aspose::words::cloud::models::FileLink > value);
+
 
         /// <summary>
         /// Gets or sets the number of occurrences of the captured text in the document.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< int32_t > getMatches() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< int32_t > getMatches() const;
 
         /// <summary>
         /// Gets or sets the number of occurrences of the captured text in the document.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setMatches(std::shared_ptr< int32_t > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setMatches(std::shared_ptr< int32_t > value);
+
 
     protected:
         std::shared_ptr< aspose::words::cloud::models::FileLink > m_DocumentLink;

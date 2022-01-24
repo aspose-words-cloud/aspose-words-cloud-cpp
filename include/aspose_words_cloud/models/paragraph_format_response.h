@@ -43,12 +43,13 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the formatting properties of a paragraph.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::ParagraphFormat > getParagraphFormat() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< aspose::words::cloud::models::ParagraphFormat > getParagraphFormat() const;
 
         /// <summary>
         /// Gets or sets the formatting properties of a paragraph.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setParagraphFormat(std::shared_ptr< aspose::words::cloud::models::ParagraphFormat > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setParagraphFormat(std::shared_ptr< aspose::words::cloud::models::ParagraphFormat > value);
+
 
     protected:
         std::shared_ptr< aspose::words::cloud::models::ParagraphFormat > m_ParagraphFormat;

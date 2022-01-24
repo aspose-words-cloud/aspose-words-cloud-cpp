@@ -43,12 +43,13 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the save result.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::SaveResult > getSaveResult() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< aspose::words::cloud::models::SaveResult > getSaveResult() const;
 
         /// <summary>
         /// Gets or sets the save result.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setSaveResult(std::shared_ptr< aspose::words::cloud::models::SaveResult > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setSaveResult(std::shared_ptr< aspose::words::cloud::models::SaveResult > value);
+
 
     protected:
         std::shared_ptr< aspose::words::cloud::models::SaveResult > m_SaveResult;

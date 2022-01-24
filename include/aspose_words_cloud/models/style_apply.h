@@ -41,12 +41,13 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the case sensitive name of the style to apply.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getStyleName() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< std::wstring > getStyleName() const;
 
         /// <summary>
         /// Gets or sets the case sensitive name of the style to apply.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setStyleName(std::shared_ptr< std::wstring > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setStyleName(std::shared_ptr< std::wstring > value);
+
 
     protected:
         std::shared_ptr< std::wstring > m_StyleName;

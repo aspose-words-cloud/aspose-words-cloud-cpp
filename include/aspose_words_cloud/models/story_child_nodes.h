@@ -42,12 +42,13 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the list of child nodes.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::vector<std::shared_ptr<aspose::words::cloud::models::NodeLink>> > getChildNodes() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< std::vector<std::shared_ptr<aspose::words::cloud::models::NodeLink>> > getChildNodes() const;
 
         /// <summary>
         /// Gets or sets the list of child nodes.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setChildNodes(std::shared_ptr< std::vector<std::shared_ptr<aspose::words::cloud::models::NodeLink>> > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setChildNodes(std::shared_ptr< std::vector<std::shared_ptr<aspose::words::cloud::models::NodeLink>> > value);
+
 
     protected:
         std::shared_ptr< std::vector<std::shared_ptr<aspose::words::cloud::models::NodeLink>> > m_ChildNodes;

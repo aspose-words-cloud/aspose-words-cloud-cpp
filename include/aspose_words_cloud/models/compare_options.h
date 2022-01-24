@@ -50,102 +50,112 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets whether accept revisions before comparison or not.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< bool > getAcceptAllRevisionsBeforeComparison() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< bool > getAcceptAllRevisionsBeforeComparison() const;
 
         /// <summary>
         /// Gets or sets whether accept revisions before comparison or not.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setAcceptAllRevisionsBeforeComparison(std::shared_ptr< bool > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setAcceptAllRevisionsBeforeComparison(std::shared_ptr< bool > value);
+
 
         /// <summary>
         /// Gets or sets a value indicating whether documents comparison is case insensitive. By default comparison is case sensitive.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< bool > getIgnoreCaseChanges() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< bool > getIgnoreCaseChanges() const;
 
         /// <summary>
         /// Gets or sets a value indicating whether documents comparison is case insensitive. By default comparison is case sensitive.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setIgnoreCaseChanges(std::shared_ptr< bool > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setIgnoreCaseChanges(std::shared_ptr< bool > value);
+
 
         /// <summary>
         /// Gets or sets a value indicating whether comments content is ignored. By default comments are not ignored.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< bool > getIgnoreComments() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< bool > getIgnoreComments() const;
 
         /// <summary>
         /// Gets or sets a value indicating whether comments content is ignored. By default comments are not ignored.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setIgnoreComments(std::shared_ptr< bool > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setIgnoreComments(std::shared_ptr< bool > value);
+
 
         /// <summary>
         /// Gets or sets a value indicating whether fields content is ignored. By default fields are not ignored.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< bool > getIgnoreFields() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< bool > getIgnoreFields() const;
 
         /// <summary>
         /// Gets or sets a value indicating whether fields content is ignored. By default fields are not ignored.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setIgnoreFields(std::shared_ptr< bool > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setIgnoreFields(std::shared_ptr< bool > value);
+
 
         /// <summary>
         /// Gets or sets a value indicating whether footnotes/endnotes content is ignored. By default footnotes/endnotes are not ignored.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< bool > getIgnoreFootnotes() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< bool > getIgnoreFootnotes() const;
 
         /// <summary>
         /// Gets or sets a value indicating whether footnotes/endnotes content is ignored. By default footnotes/endnotes are not ignored.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setIgnoreFootnotes(std::shared_ptr< bool > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setIgnoreFootnotes(std::shared_ptr< bool > value);
+
 
         /// <summary>
         /// Gets or sets a value indicating whether formatting is ignored. By default document formatting is not ignored.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< bool > getIgnoreFormatting() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< bool > getIgnoreFormatting() const;
 
         /// <summary>
         /// Gets or sets a value indicating whether formatting is ignored. By default document formatting is not ignored.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setIgnoreFormatting(std::shared_ptr< bool > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setIgnoreFormatting(std::shared_ptr< bool > value);
+
 
         /// <summary>
         /// Gets or sets a value indicating whether headers and footers content is ignored. By default headers and footers are not ignored.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< bool > getIgnoreHeadersAndFooters() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< bool > getIgnoreHeadersAndFooters() const;
 
         /// <summary>
         /// Gets or sets a value indicating whether headers and footers content is ignored. By default headers and footers are not ignored.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setIgnoreHeadersAndFooters(std::shared_ptr< bool > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setIgnoreHeadersAndFooters(std::shared_ptr< bool > value);
+
 
         /// <summary>
         /// Gets or sets a value indicating whether tables content is ignored. By default tables are not ignored.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< bool > getIgnoreTables() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< bool > getIgnoreTables() const;
 
         /// <summary>
         /// Gets or sets a value indicating whether tables content is ignored. By default tables are not ignored.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setIgnoreTables(std::shared_ptr< bool > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setIgnoreTables(std::shared_ptr< bool > value);
+
 
         /// <summary>
         /// Gets or sets a value indicating whether textboxes content is ignored. By default textboxes are not ignored.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< bool > getIgnoreTextboxes() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< bool > getIgnoreTextboxes() const;
 
         /// <summary>
         /// Gets or sets a value indicating whether textboxes content is ignored. By default textboxes are not ignored.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setIgnoreTextboxes(std::shared_ptr< bool > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setIgnoreTextboxes(std::shared_ptr< bool > value);
+
 
         /// <summary>
         /// Gets or sets the option that controls which document shall be used as a target during comparison.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::CompareOptions::Target > getTarget() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< aspose::words::cloud::models::CompareOptions::Target > getTarget() const;
 
         /// <summary>
         /// Gets or sets the option that controls which document shall be used as a target during comparison.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setTarget(std::shared_ptr< aspose::words::cloud::models::CompareOptions::Target > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setTarget(std::shared_ptr< aspose::words::cloud::models::CompareOptions::Target > value);
+
 
     protected:
         std::shared_ptr< bool > m_AcceptAllRevisionsBeforeComparison;

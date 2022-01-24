@@ -40,38 +40,49 @@ namespace aspose::words::cloud::models {
         ASPOSE_WORDS_CLOUD_EXPORT virtual void fromJson(const void* jsonIfc) override;
 
         /// <summary>
-        /// Gets or sets the threshold that determines the value of the binarization error in the Floyd-Steinberg method. when ImageBinarizationMethod is ImageBinarizationMethod.FloydSteinbergDithering.
-        /// Default value is 128.
+        /// Gets or sets the format of save.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< int32_t > getThresholdForFloydSteinbergDithering() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< std::wstring > getSaveFormat() const override;
+
+
 
         /// <summary>
         /// Gets or sets the threshold that determines the value of the binarization error in the Floyd-Steinberg method. when ImageBinarizationMethod is ImageBinarizationMethod.FloydSteinbergDithering.
         /// Default value is 128.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setThresholdForFloydSteinbergDithering(std::shared_ptr< int32_t > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< int32_t > getThresholdForFloydSteinbergDithering() const;
+
+        /// <summary>
+        /// Gets or sets the threshold that determines the value of the binarization error in the Floyd-Steinberg method. when ImageBinarizationMethod is ImageBinarizationMethod.FloydSteinbergDithering.
+        /// Default value is 128.
+        /// </summary>
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setThresholdForFloydSteinbergDithering(std::shared_ptr< int32_t > value);
+
 
         /// <summary>
         /// Gets or sets the method used while converting images to 1 bpp format.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getTiffBinarizationMethod() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< std::wstring > getTiffBinarizationMethod() const;
 
         /// <summary>
         /// Gets or sets the method used while converting images to 1 bpp format.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setTiffBinarizationMethod(std::shared_ptr< std::wstring > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setTiffBinarizationMethod(std::shared_ptr< std::wstring > value);
+
 
         /// <summary>
         /// Gets or sets the type of compression.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getTiffCompression() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< std::wstring > getTiffCompression() const;
 
         /// <summary>
         /// Gets or sets the type of compression.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setTiffCompression(std::shared_ptr< std::wstring > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setTiffCompression(std::shared_ptr< std::wstring > value);
+
 
     protected:
+        std::shared_ptr< std::wstring > m_SaveFormat = std::make_shared<std::wstring>(L"tiff");
         std::shared_ptr< int32_t > m_ThresholdForFloydSteinbergDithering;
         std::shared_ptr< std::wstring > m_TiffBinarizationMethod;
         std::shared_ptr< std::wstring > m_TiffCompression;

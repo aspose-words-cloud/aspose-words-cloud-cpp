@@ -41,42 +41,46 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the path to the font file if any.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getFilePath() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< std::wstring > getFilePath() const;
 
         /// <summary>
         /// Gets or sets the path to the font file if any.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setFilePath(std::shared_ptr< std::wstring > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setFilePath(std::shared_ptr< std::wstring > value);
+
 
         /// <summary>
         /// Gets or sets the family name of the font.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getFontFamilyName() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< std::wstring > getFontFamilyName() const;
 
         /// <summary>
         /// Gets or sets the family name of the font.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setFontFamilyName(std::shared_ptr< std::wstring > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setFontFamilyName(std::shared_ptr< std::wstring > value);
+
 
         /// <summary>
         /// Gets or sets the full name of the font.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getFullFontName() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< std::wstring > getFullFontName() const;
 
         /// <summary>
         /// Gets or sets the full name of the font.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setFullFontName(std::shared_ptr< std::wstring > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setFullFontName(std::shared_ptr< std::wstring > value);
+
 
         /// <summary>
         /// Gets or sets the version string of the font.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getVersion() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< std::wstring > getVersion() const;
 
         /// <summary>
         /// Gets or sets the version string of the font.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setVersion(std::shared_ptr< std::wstring > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setVersion(std::shared_ptr< std::wstring > value);
+
 
     protected:
         std::shared_ptr< std::wstring > m_FilePath;

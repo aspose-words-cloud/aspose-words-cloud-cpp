@@ -41,42 +41,46 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the encryption algorithm to use.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getEncryptionAlgorithm() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< std::wstring > getEncryptionAlgorithm() const;
 
         /// <summary>
         /// Gets or sets the encryption algorithm to use.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setEncryptionAlgorithm(std::shared_ptr< std::wstring > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setEncryptionAlgorithm(std::shared_ptr< std::wstring > value);
+
 
         /// <summary>
         /// Gets or sets the owner password for the encrypted PDF document.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getOwnerPassword() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< std::wstring > getOwnerPassword() const;
 
         /// <summary>
         /// Gets or sets the owner password for the encrypted PDF document.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setOwnerPassword(std::shared_ptr< std::wstring > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setOwnerPassword(std::shared_ptr< std::wstring > value);
+
 
         /// <summary>
         /// Gets or sets the operations that are allowed to a user on the encrypted PDF document.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getPermissions() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< std::wstring > getPermissions() const;
 
         /// <summary>
         /// Gets or sets the operations that are allowed to a user on the encrypted PDF document.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setPermissions(std::shared_ptr< std::wstring > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setPermissions(std::shared_ptr< std::wstring > value);
+
 
         /// <summary>
         /// Gets or sets the user password required for opening the encrypted PDF document.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getUserPassword() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< std::wstring > getUserPassword() const;
 
         /// <summary>
         /// Gets or sets the user password required for opening the encrypted PDF document.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setUserPassword(std::shared_ptr< std::wstring > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setUserPassword(std::shared_ptr< std::wstring > value);
+
 
     protected:
         std::shared_ptr< std::wstring > m_EncryptionAlgorithm;

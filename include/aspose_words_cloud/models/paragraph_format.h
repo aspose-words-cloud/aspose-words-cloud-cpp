@@ -42,22 +42,24 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets a value indicating whether the paragraph style is one of the built-in Heading styles.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< bool > getIsHeading() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< bool > getIsHeading() const;
 
         /// <summary>
         /// Gets or sets a value indicating whether the paragraph style is one of the built-in Heading styles.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setIsHeading(std::shared_ptr< bool > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setIsHeading(std::shared_ptr< bool > value);
+
 
         /// <summary>
         /// Gets or sets a value indicating whether the paragraph is an item in a bulleted or numbered list.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< bool > getIsListItem() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< bool > getIsListItem() const;
 
         /// <summary>
         /// Gets or sets a value indicating whether the paragraph is an item in a bulleted or numbered list.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setIsListItem(std::shared_ptr< bool > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setIsListItem(std::shared_ptr< bool > value);
+
 
     protected:
         std::shared_ptr< bool > m_IsHeading;

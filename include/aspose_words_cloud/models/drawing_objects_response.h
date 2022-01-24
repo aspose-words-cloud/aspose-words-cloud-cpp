@@ -43,12 +43,13 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the collection of DrawingObjects.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::DrawingObjectCollection > getDrawingObjects() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< aspose::words::cloud::models::DrawingObjectCollection > getDrawingObjects() const;
 
         /// <summary>
         /// Gets or sets the collection of DrawingObjects.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setDrawingObjects(std::shared_ptr< aspose::words::cloud::models::DrawingObjectCollection > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setDrawingObjects(std::shared_ptr< aspose::words::cloud::models::DrawingObjectCollection > value);
+
 
     protected:
         std::shared_ptr< aspose::words::cloud::models::DrawingObjectCollection > m_DrawingObjects;

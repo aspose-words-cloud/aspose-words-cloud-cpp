@@ -196,296 +196,325 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets a value indicating whether this section contains bidirectional (complex scripts) text.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< bool > getBidi() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< bool > getBidi() const;
 
         /// <summary>
         /// Gets or sets a value indicating whether this section contains bidirectional (complex scripts) text.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setBidi(std::shared_ptr< bool > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setBidi(std::shared_ptr< bool > value);
+
 
         /// <summary>
         /// Gets or sets a value indicating whether the page border is positioned relative to intersecting texts and objects.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< bool > getBorderAlwaysInFront() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< bool > getBorderAlwaysInFront() const;
 
         /// <summary>
         /// Gets or sets a value indicating whether the page border is positioned relative to intersecting texts and objects.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setBorderAlwaysInFront(std::shared_ptr< bool > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setBorderAlwaysInFront(std::shared_ptr< bool > value);
+
 
         /// <summary>
         /// Gets or sets the option that controls which pages the page border is printed on.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::PageSetup::BorderAppliesTo > getBorderAppliesTo() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< aspose::words::cloud::models::PageSetup::BorderAppliesTo > getBorderAppliesTo() const;
 
         /// <summary>
         /// Gets or sets the option that controls which pages the page border is printed on.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setBorderAppliesTo(std::shared_ptr< aspose::words::cloud::models::PageSetup::BorderAppliesTo > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setBorderAppliesTo(std::shared_ptr< aspose::words::cloud::models::PageSetup::BorderAppliesTo > value);
+
 
         /// <summary>
         /// Gets or sets the value, that indicates whether the specified page border is measured from the edge of the page or from the text it surrounds.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::PageSetup::BorderDistanceFrom > getBorderDistanceFrom() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< aspose::words::cloud::models::PageSetup::BorderDistanceFrom > getBorderDistanceFrom() const;
 
         /// <summary>
         /// Gets or sets the value, that indicates whether the specified page border is measured from the edge of the page or from the text it surrounds.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setBorderDistanceFrom(std::shared_ptr< aspose::words::cloud::models::PageSetup::BorderDistanceFrom > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setBorderDistanceFrom(std::shared_ptr< aspose::words::cloud::models::PageSetup::BorderDistanceFrom > value);
+
 
         /// <summary>
         /// Gets or sets the distance (in points) between the bottom edge of the page and the bottom boundary of the body text.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< double > getBottomMargin() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< double > getBottomMargin() const;
 
         /// <summary>
         /// Gets or sets the distance (in points) between the bottom edge of the page and the bottom boundary of the body text.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setBottomMargin(std::shared_ptr< double > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setBottomMargin(std::shared_ptr< double > value);
+
 
         /// <summary>
         /// Gets or sets a value indicating whether a different header or footer is used on the first page.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< bool > getDifferentFirstPageHeaderFooter() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< bool > getDifferentFirstPageHeaderFooter() const;
 
         /// <summary>
         /// Gets or sets a value indicating whether a different header or footer is used on the first page.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setDifferentFirstPageHeaderFooter(std::shared_ptr< bool > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setDifferentFirstPageHeaderFooter(std::shared_ptr< bool > value);
+
 
         /// <summary>
         /// Gets or sets the paper tray (bin) to use for the first page of a section.
         /// The value is implementation (printer) specific.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< int32_t > getFirstPageTray() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< int32_t > getFirstPageTray() const;
 
         /// <summary>
         /// Gets or sets the paper tray (bin) to use for the first page of a section.
         /// The value is implementation (printer) specific.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setFirstPageTray(std::shared_ptr< int32_t > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setFirstPageTray(std::shared_ptr< int32_t > value);
+
 
         /// <summary>
         /// Gets or sets the distance (in points) between the footer and the bottom of the page.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< double > getFooterDistance() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< double > getFooterDistance() const;
 
         /// <summary>
         /// Gets or sets the distance (in points) between the footer and the bottom of the page.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setFooterDistance(std::shared_ptr< double > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setFooterDistance(std::shared_ptr< double > value);
+
 
         /// <summary>
         /// Gets or sets the amount of extra space added to the margin for document binding.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< double > getGutter() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< double > getGutter() const;
 
         /// <summary>
         /// Gets or sets the amount of extra space added to the margin for document binding.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setGutter(std::shared_ptr< double > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setGutter(std::shared_ptr< double > value);
+
 
         /// <summary>
         /// Gets or sets the distance (in points) between the header and the top of the page.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< double > getHeaderDistance() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< double > getHeaderDistance() const;
 
         /// <summary>
         /// Gets or sets the distance (in points) between the header and the top of the page.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setHeaderDistance(std::shared_ptr< double > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setHeaderDistance(std::shared_ptr< double > value);
+
 
         /// <summary>
         /// Gets or sets the distance (in points) between the left edge of the page and the left boundary of the body text.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< double > getLeftMargin() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< double > getLeftMargin() const;
 
         /// <summary>
         /// Gets or sets the distance (in points) between the left edge of the page and the left boundary of the body text.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setLeftMargin(std::shared_ptr< double > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setLeftMargin(std::shared_ptr< double > value);
+
 
         /// <summary>
         /// Gets or sets the numeric increment for line numbers.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< int32_t > getLineNumberCountBy() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< int32_t > getLineNumberCountBy() const;
 
         /// <summary>
         /// Gets or sets the numeric increment for line numbers.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setLineNumberCountBy(std::shared_ptr< int32_t > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setLineNumberCountBy(std::shared_ptr< int32_t > value);
+
 
         /// <summary>
         /// Gets or sets the distance between the right edge of line numbers and the left edge of the document.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< double > getLineNumberDistanceFromText() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< double > getLineNumberDistanceFromText() const;
 
         /// <summary>
         /// Gets or sets the distance between the right edge of line numbers and the left edge of the document.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setLineNumberDistanceFromText(std::shared_ptr< double > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setLineNumberDistanceFromText(std::shared_ptr< double > value);
+
 
         /// <summary>
         /// Gets or sets the way line numbering runs  that is, whether it starts over at the beginning of a new page or section or runs continuously.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::PageSetup::LineNumberRestartMode > getLineNumberRestartMode() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< aspose::words::cloud::models::PageSetup::LineNumberRestartMode > getLineNumberRestartMode() const;
 
         /// <summary>
         /// Gets or sets the way line numbering runs  that is, whether it starts over at the beginning of a new page or section or runs continuously.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setLineNumberRestartMode(std::shared_ptr< aspose::words::cloud::models::PageSetup::LineNumberRestartMode > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setLineNumberRestartMode(std::shared_ptr< aspose::words::cloud::models::PageSetup::LineNumberRestartMode > value);
+
 
         /// <summary>
         /// Gets or sets the starting line number.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< int32_t > getLineStartingNumber() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< int32_t > getLineStartingNumber() const;
 
         /// <summary>
         /// Gets or sets the starting line number.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setLineStartingNumber(std::shared_ptr< int32_t > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setLineStartingNumber(std::shared_ptr< int32_t > value);
+
 
         /// <summary>
         /// Gets or sets the orientation of the page.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::PageSetup::Orientation > getOrientation() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< aspose::words::cloud::models::PageSetup::Orientation > getOrientation() const;
 
         /// <summary>
         /// Gets or sets the orientation of the page.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setOrientation(std::shared_ptr< aspose::words::cloud::models::PageSetup::Orientation > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setOrientation(std::shared_ptr< aspose::words::cloud::models::PageSetup::Orientation > value);
+
 
         /// <summary>
         /// Gets or sets the paper tray (bin) to be used for all but the first page of a section.
         /// The value is implementation (printer) specific.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< int32_t > getOtherPagesTray() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< int32_t > getOtherPagesTray() const;
 
         /// <summary>
         /// Gets or sets the paper tray (bin) to be used for all but the first page of a section.
         /// The value is implementation (printer) specific.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setOtherPagesTray(std::shared_ptr< int32_t > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setOtherPagesTray(std::shared_ptr< int32_t > value);
+
 
         /// <summary>
         /// Gets or sets the height of the page in points.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< double > getPageHeight() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< double > getPageHeight() const;
 
         /// <summary>
         /// Gets or sets the height of the page in points.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setPageHeight(std::shared_ptr< double > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setPageHeight(std::shared_ptr< double > value);
+
 
         /// <summary>
         /// Gets or sets the page number format.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::PageSetup::PageNumberStyle > getPageNumberStyle() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< aspose::words::cloud::models::PageSetup::PageNumberStyle > getPageNumberStyle() const;
 
         /// <summary>
         /// Gets or sets the page number format.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setPageNumberStyle(std::shared_ptr< aspose::words::cloud::models::PageSetup::PageNumberStyle > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setPageNumberStyle(std::shared_ptr< aspose::words::cloud::models::PageSetup::PageNumberStyle > value);
+
 
         /// <summary>
         /// Gets or sets the starting page number of the section.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< int32_t > getPageStartingNumber() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< int32_t > getPageStartingNumber() const;
 
         /// <summary>
         /// Gets or sets the starting page number of the section.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setPageStartingNumber(std::shared_ptr< int32_t > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setPageStartingNumber(std::shared_ptr< int32_t > value);
+
 
         /// <summary>
         /// Gets or sets the width of the page in points.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< double > getPageWidth() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< double > getPageWidth() const;
 
         /// <summary>
         /// Gets or sets the width of the page in points.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setPageWidth(std::shared_ptr< double > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setPageWidth(std::shared_ptr< double > value);
+
 
         /// <summary>
         /// Gets or sets the paper size.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::PageSetup::PaperSize > getPaperSize() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< aspose::words::cloud::models::PageSetup::PaperSize > getPaperSize() const;
 
         /// <summary>
         /// Gets or sets the paper size.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setPaperSize(std::shared_ptr< aspose::words::cloud::models::PageSetup::PaperSize > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setPaperSize(std::shared_ptr< aspose::words::cloud::models::PageSetup::PaperSize > value);
+
 
         /// <summary>
         /// Gets or sets a value indicating whether page numbering restarts at the beginning of the section.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< bool > getRestartPageNumbering() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< bool > getRestartPageNumbering() const;
 
         /// <summary>
         /// Gets or sets a value indicating whether page numbering restarts at the beginning of the section.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setRestartPageNumbering(std::shared_ptr< bool > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setRestartPageNumbering(std::shared_ptr< bool > value);
+
 
         /// <summary>
         /// Gets or sets the distance (in points) between the right edge of the page and the right boundary of the body text.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< double > getRightMargin() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< double > getRightMargin() const;
 
         /// <summary>
         /// Gets or sets the distance (in points) between the right edge of the page and the right boundary of the body text.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setRightMargin(std::shared_ptr< double > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setRightMargin(std::shared_ptr< double > value);
+
 
         /// <summary>
         /// Gets or sets a value indicating whether Microsoft Word uses gutters for the section based on a right-to-left language or a left-to-right language.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< bool > getRtlGutter() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< bool > getRtlGutter() const;
 
         /// <summary>
         /// Gets or sets a value indicating whether Microsoft Word uses gutters for the section based on a right-to-left language or a left-to-right language.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setRtlGutter(std::shared_ptr< bool > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setRtlGutter(std::shared_ptr< bool > value);
+
 
         /// <summary>
         /// Gets or sets the type of section break for the specified object.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::PageSetup::SectionStart > getSectionStart() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< aspose::words::cloud::models::PageSetup::SectionStart > getSectionStart() const;
 
         /// <summary>
         /// Gets or sets the type of section break for the specified object.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setSectionStart(std::shared_ptr< aspose::words::cloud::models::PageSetup::SectionStart > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setSectionStart(std::shared_ptr< aspose::words::cloud::models::PageSetup::SectionStart > value);
+
 
         /// <summary>
         /// Gets or sets a value indicating whether endnotes are printed at the end of the next section that doesn't suppress endnotes. Suppressed endnotes are printed before the endnotes in that section.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< bool > getSuppressEndnotes() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< bool > getSuppressEndnotes() const;
 
         /// <summary>
         /// Gets or sets a value indicating whether endnotes are printed at the end of the next section that doesn't suppress endnotes. Suppressed endnotes are printed before the endnotes in that section.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setSuppressEndnotes(std::shared_ptr< bool > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setSuppressEndnotes(std::shared_ptr< bool > value);
+
 
         /// <summary>
         /// Gets or sets the distance (in points) between the top edge of the page and the top boundary of the body text.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< double > getTopMargin() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< double > getTopMargin() const;
 
         /// <summary>
         /// Gets or sets the distance (in points) between the top edge of the page and the top boundary of the body text.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setTopMargin(std::shared_ptr< double > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setTopMargin(std::shared_ptr< double > value);
+
 
         /// <summary>
         /// Gets or sets the vertical alignment of text on each page in the document.or section.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::PageSetup::VerticalAlignment > getVerticalAlignment() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< aspose::words::cloud::models::PageSetup::VerticalAlignment > getVerticalAlignment() const;
 
         /// <summary>
         /// Gets or sets the vertical alignment of text on each page in the document.or section.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setVerticalAlignment(std::shared_ptr< aspose::words::cloud::models::PageSetup::VerticalAlignment > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setVerticalAlignment(std::shared_ptr< aspose::words::cloud::models::PageSetup::VerticalAlignment > value);
+
 
     protected:
         std::shared_ptr< bool > m_Bidi;

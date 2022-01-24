@@ -43,12 +43,13 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the list format for a paragraph.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::ListFormat > getListFormat() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< aspose::words::cloud::models::ListFormat > getListFormat() const;
 
         /// <summary>
         /// Gets or sets the list format for a paragraph.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setListFormat(std::shared_ptr< aspose::words::cloud::models::ListFormat > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setListFormat(std::shared_ptr< aspose::words::cloud::models::ListFormat > value);
+
 
     protected:
         std::shared_ptr< aspose::words::cloud::models::ListFormat > m_ListFormat;

@@ -43,12 +43,13 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the collection of comments.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::CommentsCollection > getComments() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< aspose::words::cloud::models::CommentsCollection > getComments() const;
 
         /// <summary>
         /// Gets or sets the collection of comments.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setComments(std::shared_ptr< aspose::words::cloud::models::CommentsCollection > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setComments(std::shared_ptr< aspose::words::cloud::models::CommentsCollection > value);
+
 
     protected:
         std::shared_ptr< aspose::words::cloud::models::CommentsCollection > m_Comments;

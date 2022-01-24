@@ -51,22 +51,24 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the unit of measure used for this preferred width value.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::PreferredWidth::Type > getType() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< aspose::words::cloud::models::PreferredWidth::Type > getType() const;
 
         /// <summary>
         /// Gets or sets the unit of measure used for this preferred width value.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setType(std::shared_ptr< aspose::words::cloud::models::PreferredWidth::Type > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setType(std::shared_ptr< aspose::words::cloud::models::PreferredWidth::Type > value);
+
 
         /// <summary>
         /// Gets or sets the preferred width value. The unit of measure is specified in the Type property.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< double > getValue() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< double > getValue() const;
 
         /// <summary>
         /// Gets or sets the preferred width value. The unit of measure is specified in the Type property.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setValue(std::shared_ptr< double > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setValue(std::shared_ptr< double > value);
+
 
     protected:
         std::shared_ptr< aspose::words::cloud::models::PreferredWidth::Type > m_Type;

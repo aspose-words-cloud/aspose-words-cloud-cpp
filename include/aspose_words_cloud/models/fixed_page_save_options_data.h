@@ -44,77 +44,84 @@ namespace aspose::words::cloud::models {
         /// Gets or sets the value determining how colors are rendered.
         /// { Normal | Grayscale}.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getColorMode() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< std::wstring > getColorMode() const;
 
         /// <summary>
         /// Gets or sets the value determining how colors are rendered.
         /// { Normal | Grayscale}.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setColorMode(std::shared_ptr< std::wstring > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setColorMode(std::shared_ptr< std::wstring > value);
+
 
         /// <summary>
         /// Gets or sets the quality of the JPEG images inside PDF document.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< int32_t > getJpegQuality() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< int32_t > getJpegQuality() const;
 
         /// <summary>
         /// Gets or sets the quality of the JPEG images inside PDF document.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setJpegQuality(std::shared_ptr< int32_t > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setJpegQuality(std::shared_ptr< int32_t > value);
+
 
         /// <summary>
         /// Gets or sets the metafile rendering options.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::MetafileRenderingOptionsData > getMetafileRenderingOptions() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< aspose::words::cloud::models::MetafileRenderingOptionsData > getMetafileRenderingOptions() const;
 
         /// <summary>
         /// Gets or sets the metafile rendering options.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setMetafileRenderingOptions(std::shared_ptr< aspose::words::cloud::models::MetafileRenderingOptionsData > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setMetafileRenderingOptions(std::shared_ptr< aspose::words::cloud::models::MetafileRenderingOptionsData > value);
+
 
         /// <summary>
         /// Gets or sets the symbol set, that is used to represent numbers while rendering to fixed page formats.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getNumeralFormat() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< std::wstring > getNumeralFormat() const;
 
         /// <summary>
         /// Gets or sets the symbol set, that is used to represent numbers while rendering to fixed page formats.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setNumeralFormat(std::shared_ptr< std::wstring > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setNumeralFormat(std::shared_ptr< std::wstring > value);
+
 
         /// <summary>
         /// Gets or sets a value indicating whether it is required to optimize output of XPS.
         /// If this flag is set redundant nested canvases and empty canvases are removed, also neighbor glyphs with the same formatting are concatenated.
         /// Note: The accuracy of the content display may be affected if this property is set to true.. The default value is false.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< bool > getOptimizeOutput() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< bool > getOptimizeOutput() const;
 
         /// <summary>
         /// Gets or sets a value indicating whether it is required to optimize output of XPS.
         /// If this flag is set redundant nested canvases and empty canvases are removed, also neighbor glyphs with the same formatting are concatenated.
         /// Note: The accuracy of the content display may be affected if this property is set to true.. The default value is false.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setOptimizeOutput(std::shared_ptr< bool > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setOptimizeOutput(std::shared_ptr< bool > value);
+
 
         /// <summary>
         /// Gets or sets the number of pages to render.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< int32_t > getPageCount() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< int32_t > getPageCount() const;
 
         /// <summary>
         /// Gets or sets the number of pages to render.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setPageCount(std::shared_ptr< int32_t > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setPageCount(std::shared_ptr< int32_t > value);
+
 
         /// <summary>
         /// Gets or sets the 0-based index of the first page to render.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< int32_t > getPageIndex() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< int32_t > getPageIndex() const;
 
         /// <summary>
         /// Gets or sets the 0-based index of the first page to render.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setPageIndex(std::shared_ptr< int32_t > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setPageIndex(std::shared_ptr< int32_t > value);
+
 
     protected:
         std::shared_ptr< std::wstring > m_ColorMode;

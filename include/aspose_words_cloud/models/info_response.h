@@ -43,32 +43,35 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets additional info.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::vector<std::shared_ptr<aspose::words::cloud::models::InfoAdditionalItem>> > getAdditionalInfo() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< std::vector<std::shared_ptr<aspose::words::cloud::models::InfoAdditionalItem>> > getAdditionalInfo() const;
 
         /// <summary>
         /// Gets or sets additional info.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setAdditionalInfo(std::shared_ptr< std::vector<std::shared_ptr<aspose::words::cloud::models::InfoAdditionalItem>> > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setAdditionalInfo(std::shared_ptr< std::vector<std::shared_ptr<aspose::words::cloud::models::InfoAdditionalItem>> > value);
+
 
         /// <summary>
         /// Gets or sets application name.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getName() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< std::wstring > getName() const;
 
         /// <summary>
         /// Gets or sets application name.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setName(std::shared_ptr< std::wstring > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setName(std::shared_ptr< std::wstring > value);
+
 
         /// <summary>
         /// Gets or sets version.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getVersion() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< std::wstring > getVersion() const;
 
         /// <summary>
         /// Gets or sets version.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setVersion(std::shared_ptr< std::wstring > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setVersion(std::shared_ptr< std::wstring > value);
+
 
     protected:
         std::shared_ptr< std::vector<std::shared_ptr<aspose::words::cloud::models::InfoAdditionalItem>> > m_AdditionalInfo;

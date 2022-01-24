@@ -42,32 +42,35 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the number of columns. The default value is 2.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< int32_t > getColumnsCount() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< int32_t > getColumnsCount() const;
 
         /// <summary>
         /// Gets or sets the number of columns. The default value is 2.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setColumnsCount(std::shared_ptr< int32_t > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setColumnsCount(std::shared_ptr< int32_t > value);
+
 
         /// <summary>
         /// Gets or sets the position to insert the table. The table will be inserted before the specified position.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::DocumentPosition > getPosition() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< aspose::words::cloud::models::DocumentPosition > getPosition() const;
 
         /// <summary>
         /// Gets or sets the position to insert the table. The table will be inserted before the specified position.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setPosition(std::shared_ptr< aspose::words::cloud::models::DocumentPosition > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setPosition(std::shared_ptr< aspose::words::cloud::models::DocumentPosition > value);
+
 
         /// <summary>
         /// Gets or sets the number of rows. The default value is 2.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< int32_t > getRowsCount() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< int32_t > getRowsCount() const;
 
         /// <summary>
         /// Gets or sets the number of rows. The default value is 2.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setRowsCount(std::shared_ptr< int32_t > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setRowsCount(std::shared_ptr< int32_t > value);
+
 
     protected:
         std::shared_ptr< int32_t > m_ColumnsCount;

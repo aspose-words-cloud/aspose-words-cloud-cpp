@@ -43,12 +43,13 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the API error.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::ApiError > getError() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< aspose::words::cloud::models::ApiError > getError() const;
 
         /// <summary>
         /// Gets or sets the API error.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setError(std::shared_ptr< aspose::words::cloud::models::ApiError > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setError(std::shared_ptr< aspose::words::cloud::models::ApiError > value);
+
 
     protected:
         std::shared_ptr< aspose::words::cloud::models::ApiError > m_Error;

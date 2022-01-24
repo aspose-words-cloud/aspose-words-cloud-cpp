@@ -42,52 +42,57 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the initials of the author to use for revisions.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getAuthor() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< std::wstring > getAuthor() const;
 
         /// <summary>
         /// Gets or sets the initials of the author to use for revisions.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setAuthor(std::shared_ptr< std::wstring > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setAuthor(std::shared_ptr< std::wstring > value);
+
 
         /// <summary>
         /// Gets or sets the compare options.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::CompareOptions > getCompareOptions() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< aspose::words::cloud::models::CompareOptions > getCompareOptions() const;
 
         /// <summary>
         /// Gets or sets the compare options.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setCompareOptions(std::shared_ptr< aspose::words::cloud::models::CompareOptions > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setCompareOptions(std::shared_ptr< aspose::words::cloud::models::CompareOptions > value);
+
 
         /// <summary>
         /// Gets or sets the path to document to compare at the server.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getComparingWithDocument() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< std::wstring > getComparingWithDocument() const;
 
         /// <summary>
         /// Gets or sets the path to document to compare at the server.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setComparingWithDocument(std::shared_ptr< std::wstring > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setComparingWithDocument(std::shared_ptr< std::wstring > value);
+
 
         /// <summary>
         /// Gets or sets the date and time to use for revisions.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getDateTime() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< std::wstring > getDateTime() const;
 
         /// <summary>
         /// Gets or sets the date and time to use for revisions.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setDateTime(std::shared_ptr< std::wstring > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setDateTime(std::shared_ptr< std::wstring > value);
+
 
         /// <summary>
         /// Gets or sets the result document format.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getResultDocumentFormat() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< std::wstring > getResultDocumentFormat() const;
 
         /// <summary>
         /// Gets or sets the result document format.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setResultDocumentFormat(std::shared_ptr< std::wstring > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setResultDocumentFormat(std::shared_ptr< std::wstring > value);
+
 
     protected:
         std::shared_ptr< std::wstring > m_Author;

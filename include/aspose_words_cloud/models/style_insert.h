@@ -52,22 +52,24 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the case sensitive name of the style to create.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getStyleName() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< std::wstring > getStyleName() const;
 
         /// <summary>
         /// Gets or sets the case sensitive name of the style to create.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setStyleName(std::shared_ptr< std::wstring > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setStyleName(std::shared_ptr< std::wstring > value);
+
 
         /// <summary>
         /// Gets or sets the StyleType value that specifies the type of the style to create.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::StyleInsert::StyleType > getStyleType() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< aspose::words::cloud::models::StyleInsert::StyleType > getStyleType() const;
 
         /// <summary>
         /// Gets or sets the StyleType value that specifies the type of the style to create.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setStyleType(std::shared_ptr< aspose::words::cloud::models::StyleInsert::StyleType > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setStyleType(std::shared_ptr< aspose::words::cloud::models::StyleInsert::StyleType > value);
+
 
     protected:
         std::shared_ptr< std::wstring > m_StyleName;

@@ -42,12 +42,13 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Files and folders contained by folder StorageFile.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::vector<std::shared_ptr<aspose::words::cloud::models::StorageFile>> > getValue() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< std::vector<std::shared_ptr<aspose::words::cloud::models::StorageFile>> > getValue() const;
 
         /// <summary>
         /// Files and folders contained by folder StorageFile.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setValue(std::shared_ptr< std::vector<std::shared_ptr<aspose::words::cloud::models::StorageFile>> > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setValue(std::shared_ptr< std::vector<std::shared_ptr<aspose::words::cloud::models::StorageFile>> > value);
+
 
     protected:
         std::shared_ptr< std::vector<std::shared_ptr<aspose::words::cloud::models::StorageFile>> > m_Value;

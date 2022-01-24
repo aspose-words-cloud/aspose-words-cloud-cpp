@@ -37,9 +37,8 @@ protected:
 /// Test for loading web document.
 /// </summary>
 TEST_F(LoadWebDocumentTests, TestLoadWebDocument) {
-    auto requestDataSaveOptions = std::make_shared< aspose::words::cloud::models::SaveOptionsData >();
+    auto requestDataSaveOptions = std::make_shared< aspose::words::cloud::models::DocSaveOptionsData >();
     requestDataSaveOptions->setFileName(std::make_shared< std::wstring >(L"google.doc"));
-    requestDataSaveOptions->setSaveFormat(std::make_shared< std::wstring >(L"doc"));
     requestDataSaveOptions->setDmlEffectsRenderingMode(std::make_shared< std::wstring >(L"1"));
     requestDataSaveOptions->setDmlRenderingMode(std::make_shared< std::wstring >(L"1"));
     requestDataSaveOptions->setUpdateSdtContent(std::make_shared< bool >(false));

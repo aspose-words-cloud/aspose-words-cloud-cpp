@@ -42,32 +42,35 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the list of pages.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::vector<std::shared_ptr<aspose::words::cloud::models::FileLink>> > getPages() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< std::vector<std::shared_ptr<aspose::words::cloud::models::FileLink>> > getPages() const;
 
         /// <summary>
         /// Gets or sets the list of pages.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setPages(std::shared_ptr< std::vector<std::shared_ptr<aspose::words::cloud::models::FileLink>> > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setPages(std::shared_ptr< std::vector<std::shared_ptr<aspose::words::cloud::models::FileLink>> > value);
+
 
         /// <summary>
         /// Gets or sets the link to the source document.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::FileLink > getSourceDocument() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< aspose::words::cloud::models::FileLink > getSourceDocument() const;
 
         /// <summary>
         /// Gets or sets the link to the source document.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setSourceDocument(std::shared_ptr< aspose::words::cloud::models::FileLink > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setSourceDocument(std::shared_ptr< aspose::words::cloud::models::FileLink > value);
+
 
         /// <summary>
         /// Gets or sets the link to the file archive with pages.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::FileLink > getZippedPages() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< aspose::words::cloud::models::FileLink > getZippedPages() const;
 
         /// <summary>
         /// Gets or sets the link to the file archive with pages.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setZippedPages(std::shared_ptr< aspose::words::cloud::models::FileLink > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setZippedPages(std::shared_ptr< aspose::words::cloud::models::FileLink > value);
+
 
     protected:
         std::shared_ptr< std::vector<std::shared_ptr<aspose::words::cloud::models::FileLink>> > m_Pages;

@@ -43,50 +43,62 @@ namespace aspose::words::cloud::models {
         /// Gets or sets a value indicating whether to add bi-directional marks before each BiDi run when exporting in plain text format.
         /// The default value is true.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< bool > getAddBidiMarks() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< bool > getAddBidiMarks() const;
 
         /// <summary>
         /// Gets or sets a value indicating whether to add bi-directional marks before each BiDi run when exporting in plain text format.
         /// The default value is true.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setAddBidiMarks(std::shared_ptr< bool > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setAddBidiMarks(std::shared_ptr< bool > value);
+
 
         /// <summary>
         /// Gets or sets an integer value that specifies the maximum number of characters per one line.
         /// The default value is 0, that means no limit.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< int32_t > getMaxCharactersPerLine() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< int32_t > getMaxCharactersPerLine() const;
 
         /// <summary>
         /// Gets or sets an integer value that specifies the maximum number of characters per one line.
         /// The default value is 0, that means no limit.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setMaxCharactersPerLine(std::shared_ptr< int32_t > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setMaxCharactersPerLine(std::shared_ptr< int32_t > value);
+
 
         /// <summary>
         /// Gets or sets a value indicating whether the program should attempt to preserve layout of tables when saving in the plain text format.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< bool > getPreserveTableLayout() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< bool > getPreserveTableLayout() const;
 
         /// <summary>
         /// Gets or sets a value indicating whether the program should attempt to preserve layout of tables when saving in the plain text format.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setPreserveTableLayout(std::shared_ptr< bool > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setPreserveTableLayout(std::shared_ptr< bool > value);
+
+
+        /// <summary>
+        /// Gets or sets the format of save.
+        /// </summary>
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< std::wstring > getSaveFormat() const override;
+
+
 
         /// <summary>
         /// Gets or sets a value indicating whether the program should simplify list labels in case of complex label formatting not being adequately represented by plain text.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< bool > getSimplifyListLabels() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< bool > getSimplifyListLabels() const;
 
         /// <summary>
         /// Gets or sets a value indicating whether the program should simplify list labels in case of complex label formatting not being adequately represented by plain text.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setSimplifyListLabels(std::shared_ptr< bool > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setSimplifyListLabels(std::shared_ptr< bool > value);
+
 
     protected:
         std::shared_ptr< bool > m_AddBidiMarks;
         std::shared_ptr< int32_t > m_MaxCharactersPerLine;
         std::shared_ptr< bool > m_PreserveTableLayout;
+        std::shared_ptr< std::wstring > m_SaveFormat = std::make_shared<std::wstring>(L"txt");
         std::shared_ptr< bool > m_SimplifyListLabels;
     };
 }

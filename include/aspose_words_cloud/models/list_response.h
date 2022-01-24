@@ -43,12 +43,13 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the list information.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::ListInfo > getList() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< aspose::words::cloud::models::ListInfo > getList() const;
 
         /// <summary>
         /// Gets or sets the list information.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setList(std::shared_ptr< aspose::words::cloud::models::ListInfo > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setList(std::shared_ptr< aspose::words::cloud::models::ListInfo > value);
+
 
     protected:
         std::shared_ptr< aspose::words::cloud::models::ListInfo > m_List;

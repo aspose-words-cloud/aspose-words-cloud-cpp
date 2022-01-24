@@ -43,12 +43,13 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the table row.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::TableRow > getRow() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< aspose::words::cloud::models::TableRow > getRow() const;
 
         /// <summary>
         /// Gets or sets the table row.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setRow(std::shared_ptr< aspose::words::cloud::models::TableRow > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setRow(std::shared_ptr< aspose::words::cloud::models::TableRow > value);
+
 
     protected:
         std::shared_ptr< aspose::words::cloud::models::TableRow > m_Row;

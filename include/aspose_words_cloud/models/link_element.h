@@ -42,12 +42,13 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the link to the document.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::WordsApiLink > getLink() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< aspose::words::cloud::models::WordsApiLink > getLink() const;
 
         /// <summary>
         /// Gets or sets the link to the document.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setLink(std::shared_ptr< aspose::words::cloud::models::WordsApiLink > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setLink(std::shared_ptr< aspose::words::cloud::models::WordsApiLink > value);
+
 
     protected:
         std::shared_ptr< aspose::words::cloud::models::WordsApiLink > m_Link;

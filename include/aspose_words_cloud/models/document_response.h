@@ -43,12 +43,13 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the document description.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::Document > getDocument() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< aspose::words::cloud::models::Document > getDocument() const;
 
         /// <summary>
         /// Gets or sets the document description.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setDocument(std::shared_ptr< aspose::words::cloud::models::Document > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setDocument(std::shared_ptr< aspose::words::cloud::models::Document > value);
+
 
     protected:
         std::shared_ptr< aspose::words::cloud::models::Document > m_Document;

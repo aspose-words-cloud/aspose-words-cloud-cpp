@@ -56,12 +56,13 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the specific MSWord version.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::OptimizationOptions::MsWordVersion > getMsWordVersion() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< aspose::words::cloud::models::OptimizationOptions::MsWordVersion > getMsWordVersion() const;
 
         /// <summary>
         /// Gets or sets the specific MSWord version.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setMsWordVersion(std::shared_ptr< aspose::words::cloud::models::OptimizationOptions::MsWordVersion > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setMsWordVersion(std::shared_ptr< aspose::words::cloud::models::OptimizationOptions::MsWordVersion > value);
+
 
     protected:
         std::shared_ptr< aspose::words::cloud::models::OptimizationOptions::MsWordVersion > m_MsWordVersion;

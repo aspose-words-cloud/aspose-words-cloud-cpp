@@ -42,12 +42,13 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets a value indicating whether this tab stop clears any existing tab stops in this position.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< bool > getIsClear() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< bool > getIsClear() const;
 
         /// <summary>
         /// Gets or sets a value indicating whether this tab stop clears any existing tab stops in this position.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setIsClear(std::shared_ptr< bool > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setIsClear(std::shared_ptr< bool > value);
+
 
     protected:
         std::shared_ptr< bool > m_IsClear;

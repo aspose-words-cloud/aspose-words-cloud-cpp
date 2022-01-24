@@ -43,12 +43,13 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the hyperlink.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::Hyperlink > getHyperlink() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< aspose::words::cloud::models::Hyperlink > getHyperlink() const;
 
         /// <summary>
         /// Gets or sets the hyperlink.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setHyperlink(std::shared_ptr< aspose::words::cloud::models::Hyperlink > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setHyperlink(std::shared_ptr< aspose::words::cloud::models::Hyperlink > value);
+
 
     protected:
         std::shared_ptr< aspose::words::cloud::models::Hyperlink > m_Hyperlink;
