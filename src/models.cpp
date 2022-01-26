@@ -12365,6 +12365,37 @@ namespace aspose::words::cloud::models {
 
 
     /*
+     * OpenXpsSaveOptionsData implementation
+     */
+    void OpenXpsSaveOptionsData::toJson(void* jsonIfc) const
+    {
+        XpsSaveOptionsData::toJson(jsonIfc);
+        ::nlohmann::json& json = *((::nlohmann::json*)jsonIfc);
+        if (this->m_SaveFormat) {
+            json["SaveFormat"] = convertUtf16(*(this->m_SaveFormat));
+        }
+    }
+
+    void OpenXpsSaveOptionsData::fromJson(const void* jsonIfc)
+    {
+        XpsSaveOptionsData::fromJson(jsonIfc);
+        ::nlohmann::json& json = *((::nlohmann::json*)jsonIfc);
+        if (json.contains("SaveFormat") && !json["SaveFormat"].is_null()) {
+            this->m_SaveFormat = std::make_shared< std::wstring >(
+                convertUtf8( json["SaveFormat"].get< std::string >() )
+            );
+        }
+    }
+
+    std::shared_ptr< std::wstring > OpenXpsSaveOptionsData::getSaveFormat() const
+    {
+        return this->m_SaveFormat;
+    }
+
+
+
+
+    /*
      * OptimizationOptions implementation
      */
     inline std::string optimizationOptionsMsWordVersionToString(aspose::words::cloud::models::OptimizationOptions::MsWordVersion value)

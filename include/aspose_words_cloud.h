@@ -172,6 +172,7 @@
 #include "./aspose_words_cloud/models/office_math_objects_collection.h"
 #include "./aspose_words_cloud/models/office_math_objects_response.h"
 #include "./aspose_words_cloud/models/ooxml_save_options_data.h"
+#include "./aspose_words_cloud/models/open_xps_save_options_data.h"
 #include "./aspose_words_cloud/models/optimization_options.h"
 #include "./aspose_words_cloud/models/ott_save_options_data.h"
 #include "./aspose_words_cloud/models/outline_options_data.h"
