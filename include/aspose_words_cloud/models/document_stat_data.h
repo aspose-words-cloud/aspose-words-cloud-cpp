@@ -43,52 +43,57 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the detailed statistics on footnotes.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::FootnotesStatData > getFootnotesStatData() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< aspose::words::cloud::models::FootnotesStatData > getFootnotesStatData() const;
 
         /// <summary>
         /// Gets or sets the detailed statistics on footnotes.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setFootnotesStatData(std::shared_ptr< aspose::words::cloud::models::FootnotesStatData > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setFootnotesStatData(std::shared_ptr< aspose::words::cloud::models::FootnotesStatData > value);
+
 
         /// <summary>
         /// Gets or sets the total count of pages in the document.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< int32_t > getPageCount() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< int32_t > getPageCount() const;
 
         /// <summary>
         /// Gets or sets the total count of pages in the document.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setPageCount(std::shared_ptr< int32_t > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setPageCount(std::shared_ptr< int32_t > value);
+
 
         /// <summary>
         /// Gets or sets the detailed statistics on all pages.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::vector<std::shared_ptr<aspose::words::cloud::models::PageStatData>> > getPageStatData() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< std::vector<std::shared_ptr<aspose::words::cloud::models::PageStatData>> > getPageStatData() const;
 
         /// <summary>
         /// Gets or sets the detailed statistics on all pages.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setPageStatData(std::shared_ptr< std::vector<std::shared_ptr<aspose::words::cloud::models::PageStatData>> > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setPageStatData(std::shared_ptr< std::vector<std::shared_ptr<aspose::words::cloud::models::PageStatData>> > value);
+
 
         /// <summary>
         /// Gets or sets the total count of paragraphs in the document.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< int32_t > getParagraphCount() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< int32_t > getParagraphCount() const;
 
         /// <summary>
         /// Gets or sets the total count of paragraphs in the document.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setParagraphCount(std::shared_ptr< int32_t > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setParagraphCount(std::shared_ptr< int32_t > value);
+
 
         /// <summary>
         /// Gets or sets the total count of words in the document.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< int32_t > getWordCount() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< int32_t > getWordCount() const;
 
         /// <summary>
         /// Gets or sets the total count of words in the document.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setWordCount(std::shared_ptr< int32_t > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setWordCount(std::shared_ptr< int32_t > value);
+
 
     protected:
         std::shared_ptr< aspose::words::cloud::models::FootnotesStatData > m_FootnotesStatData;

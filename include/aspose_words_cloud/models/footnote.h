@@ -53,54 +53,59 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the content of the footnote.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::StoryChildNodes > getContent() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< aspose::words::cloud::models::StoryChildNodes > getContent() const;
 
         /// <summary>
         /// Gets or sets the content of the footnote.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setContent(std::shared_ptr< aspose::words::cloud::models::StoryChildNodes > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setContent(std::shared_ptr< aspose::words::cloud::models::StoryChildNodes > value);
+
 
         /// <summary>
         /// Gets or sets the value, that specifies whether this is a footnote or endnote.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::Footnote::FootnoteType > getFootnoteType() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< aspose::words::cloud::models::Footnote::FootnoteType > getFootnoteType() const;
 
         /// <summary>
         /// Gets or sets the value, that specifies whether this is a footnote or endnote.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setFootnoteType(std::shared_ptr< aspose::words::cloud::models::Footnote::FootnoteType > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setFootnoteType(std::shared_ptr< aspose::words::cloud::models::Footnote::FootnoteType > value);
+
 
         /// <summary>
         /// Gets or sets the link to comment range start node.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::DocumentPosition > getPosition() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< aspose::words::cloud::models::DocumentPosition > getPosition() const;
 
         /// <summary>
         /// Gets or sets the link to comment range start node.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setPosition(std::shared_ptr< aspose::words::cloud::models::DocumentPosition > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setPosition(std::shared_ptr< aspose::words::cloud::models::DocumentPosition > value);
+
 
         /// <summary>
         /// Gets or sets the custom reference mark to be used for this footnote.
         /// Default value is Empty, meaning auto-numbered footnotes are used.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getReferenceMark() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< std::wstring > getReferenceMark() const;
 
         /// <summary>
         /// Gets or sets the custom reference mark to be used for this footnote.
         /// Default value is Empty, meaning auto-numbered footnotes are used.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setReferenceMark(std::shared_ptr< std::wstring > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setReferenceMark(std::shared_ptr< std::wstring > value);
+
 
         /// <summary>
         /// Gets or sets text of the footnote.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getText() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< std::wstring > getText() const;
 
         /// <summary>
         /// Gets or sets text of the footnote.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setText(std::shared_ptr< std::wstring > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setText(std::shared_ptr< std::wstring > value);
+
 
     protected:
         std::shared_ptr< aspose::words::cloud::models::StoryChildNodes > m_Content;

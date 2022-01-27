@@ -42,12 +42,13 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the run's text.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getText() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< std::wstring > getText() const;
 
         /// <summary>
         /// Gets or sets the run's text.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setText(std::shared_ptr< std::wstring > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setText(std::shared_ptr< std::wstring > value);
+
 
     protected:
         std::shared_ptr< std::wstring > m_Text;

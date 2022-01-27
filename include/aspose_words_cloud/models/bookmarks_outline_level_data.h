@@ -41,22 +41,24 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the bookmark's level.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< int32_t > getBookmarksOutlineLevel() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< int32_t > getBookmarksOutlineLevel() const;
 
         /// <summary>
         /// Gets or sets the bookmark's level.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setBookmarksOutlineLevel(std::shared_ptr< int32_t > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setBookmarksOutlineLevel(std::shared_ptr< int32_t > value);
+
 
         /// <summary>
         /// Gets or sets the bookmark's name.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getName() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< std::wstring > getName() const;
 
         /// <summary>
         /// Gets or sets the bookmark's name.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setName(std::shared_ptr< std::wstring > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setName(std::shared_ptr< std::wstring > value);
+
 
     protected:
         std::shared_ptr< int32_t > m_BookmarksOutlineLevel;

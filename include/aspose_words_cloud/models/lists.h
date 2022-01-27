@@ -43,12 +43,13 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the array of document lists.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::vector<std::shared_ptr<aspose::words::cloud::models::ListInfo>> > getListInfo() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< std::vector<std::shared_ptr<aspose::words::cloud::models::ListInfo>> > getListInfo() const;
 
         /// <summary>
         /// Gets or sets the array of document lists.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setListInfo(std::shared_ptr< std::vector<std::shared_ptr<aspose::words::cloud::models::ListInfo>> > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setListInfo(std::shared_ptr< std::vector<std::shared_ptr<aspose::words::cloud::models::ListInfo>> > value);
+
 
     protected:
         std::shared_ptr< std::vector<std::shared_ptr<aspose::words::cloud::models::ListInfo>> > m_ListInfo;

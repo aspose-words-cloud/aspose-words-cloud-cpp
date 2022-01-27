@@ -41,32 +41,35 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the path to document to append at the server.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getHref() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< std::wstring > getHref() const;
 
         /// <summary>
         /// Gets or sets the path to document to append at the server.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setHref(std::shared_ptr< std::wstring > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setHref(std::shared_ptr< std::wstring > value);
+
 
         /// <summary>
         /// Gets or sets the option that controls formatting will be used: appended or destination document. Can be KeepSourceFormatting or UseDestinationStyles.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getImportFormatMode() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< std::wstring > getImportFormatMode() const;
 
         /// <summary>
         /// Gets or sets the option that controls formatting will be used: appended or destination document. Can be KeepSourceFormatting or UseDestinationStyles.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setImportFormatMode(std::shared_ptr< std::wstring > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setImportFormatMode(std::shared_ptr< std::wstring > value);
+
 
         /// <summary>
         /// Gets or sets document password encrypted on API public key. The default value is null (the document has no password).
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getPassword() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< std::wstring > getPassword() const;
 
         /// <summary>
         /// Gets or sets document password encrypted on API public key. The default value is null (the document has no password).
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setPassword(std::shared_ptr< std::wstring > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setPassword(std::shared_ptr< std::wstring > value);
+
 
     protected:
         std::shared_ptr< std::wstring > m_Href;

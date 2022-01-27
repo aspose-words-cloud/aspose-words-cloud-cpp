@@ -50,22 +50,24 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the range's text.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getText() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< std::wstring > getText() const;
 
         /// <summary>
         /// Gets or sets the range's text.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setText(std::shared_ptr< std::wstring > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setText(std::shared_ptr< std::wstring > value);
+
 
         /// <summary>
         /// Gets or sets the range's text type.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::ReplaceRangeDto::TextType > getTextType() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< aspose::words::cloud::models::ReplaceRangeDto::TextType > getTextType() const;
 
         /// <summary>
         /// Gets or sets the range's text type.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setTextType(std::shared_ptr< aspose::words::cloud::models::ReplaceRangeDto::TextType > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setTextType(std::shared_ptr< aspose::words::cloud::models::ReplaceRangeDto::TextType > value);
+
 
     protected:
         std::shared_ptr< std::wstring > m_Text;

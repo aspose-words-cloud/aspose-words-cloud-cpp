@@ -42,42 +42,46 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Code.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getCode() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< std::wstring > getCode() const;
 
         /// <summary>
         /// Code.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setCode(std::shared_ptr< std::wstring > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setCode(std::shared_ptr< std::wstring > value);
+
 
         /// <summary>
         /// Description.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getDescription() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< std::wstring > getDescription() const;
 
         /// <summary>
         /// Description.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setDescription(std::shared_ptr< std::wstring > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setDescription(std::shared_ptr< std::wstring > value);
+
 
         /// <summary>
         /// Inner Error.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::ErrorDetails > getInnerError() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< aspose::words::cloud::models::ErrorDetails > getInnerError() const;
 
         /// <summary>
         /// Inner Error.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setInnerError(std::shared_ptr< aspose::words::cloud::models::ErrorDetails > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setInnerError(std::shared_ptr< aspose::words::cloud::models::ErrorDetails > value);
+
 
         /// <summary>
         /// Message.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getMessage() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< std::wstring > getMessage() const;
 
         /// <summary>
         /// Message.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setMessage(std::shared_ptr< std::wstring > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setMessage(std::shared_ptr< std::wstring > value);
+
 
     protected:
         std::shared_ptr< std::wstring > m_Code;

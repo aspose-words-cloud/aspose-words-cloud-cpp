@@ -71,62 +71,68 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the document properties.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::DocumentProperties > getDocumentProperties() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< aspose::words::cloud::models::DocumentProperties > getDocumentProperties() const;
 
         /// <summary>
         /// Gets or sets the document properties.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setDocumentProperties(std::shared_ptr< aspose::words::cloud::models::DocumentProperties > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setDocumentProperties(std::shared_ptr< aspose::words::cloud::models::DocumentProperties > value);
+
 
         /// <summary>
         /// Gets or sets the name of the file.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getFileName() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< std::wstring > getFileName() const;
 
         /// <summary>
         /// Gets or sets the name of the file.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setFileName(std::shared_ptr< std::wstring > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setFileName(std::shared_ptr< std::wstring > value);
+
 
         /// <summary>
         /// Gets or sets a value indicating whether the document is encrypted and requires a password to open.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< bool > getIsEncrypted() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< bool > getIsEncrypted() const;
 
         /// <summary>
         /// Gets or sets a value indicating whether the document is encrypted and requires a password to open.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setIsEncrypted(std::shared_ptr< bool > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setIsEncrypted(std::shared_ptr< bool > value);
+
 
         /// <summary>
         /// Gets or sets a value indicating whether the document contains a digital signature. This property merely informs that a digital signature is present on a document, but it does not specify whether the signature is valid or not.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< bool > getIsSigned() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< bool > getIsSigned() const;
 
         /// <summary>
         /// Gets or sets a value indicating whether the document contains a digital signature. This property merely informs that a digital signature is present on a document, but it does not specify whether the signature is valid or not.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setIsSigned(std::shared_ptr< bool > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setIsSigned(std::shared_ptr< bool > value);
+
 
         /// <summary>
         /// Gets or sets the list of links that originate from this document.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::vector<std::shared_ptr<aspose::words::cloud::models::Link>> > getLinks() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< std::vector<std::shared_ptr<aspose::words::cloud::models::Link>> > getLinks() const;
 
         /// <summary>
         /// Gets or sets the list of links that originate from this document.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setLinks(std::shared_ptr< std::vector<std::shared_ptr<aspose::words::cloud::models::Link>> > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setLinks(std::shared_ptr< std::vector<std::shared_ptr<aspose::words::cloud::models::Link>> > value);
+
 
         /// <summary>
         /// Gets or sets the original format of the document.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::Document::SourceFormat > getSourceFormat() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< aspose::words::cloud::models::Document::SourceFormat > getSourceFormat() const;
 
         /// <summary>
         /// Gets or sets the original format of the document.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setSourceFormat(std::shared_ptr< aspose::words::cloud::models::Document::SourceFormat > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setSourceFormat(std::shared_ptr< aspose::words::cloud::models::Document::SourceFormat > value);
+
 
     protected:
         std::shared_ptr< aspose::words::cloud::models::DocumentProperties > m_DocumentProperties;

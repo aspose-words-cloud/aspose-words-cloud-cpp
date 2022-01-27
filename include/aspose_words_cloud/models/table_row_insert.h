@@ -41,22 +41,24 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the count of columns. The default value is 1.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< int32_t > getColumnsCount() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< int32_t > getColumnsCount() const;
 
         /// <summary>
         /// Gets or sets the count of columns. The default value is 1.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setColumnsCount(std::shared_ptr< int32_t > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setColumnsCount(std::shared_ptr< int32_t > value);
+
 
         /// <summary>
         /// Gets or sets table row will be inserted after row with specified 0-based index.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< int32_t > getInsertAfter() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< int32_t > getInsertAfter() const;
 
         /// <summary>
         /// Gets or sets table row will be inserted after row with specified 0-based index.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setInsertAfter(std::shared_ptr< int32_t > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setInsertAfter(std::shared_ptr< int32_t > value);
+
 
     protected:
         std::shared_ptr< int32_t > m_ColumnsCount;

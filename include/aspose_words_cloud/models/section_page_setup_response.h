@@ -43,12 +43,13 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the page setup of a section.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::PageSetup > getPageSetup() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< aspose::words::cloud::models::PageSetup > getPageSetup() const;
 
         /// <summary>
         /// Gets or sets the page setup of a section.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setPageSetup(std::shared_ptr< aspose::words::cloud::models::PageSetup > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setPageSetup(std::shared_ptr< aspose::words::cloud::models::PageSetup > value);
+
 
     protected:
         std::shared_ptr< aspose::words::cloud::models::PageSetup > m_PageSetup;

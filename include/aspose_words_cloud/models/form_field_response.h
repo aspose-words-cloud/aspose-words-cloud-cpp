@@ -43,12 +43,13 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the form field.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::FormField > getFormField() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< aspose::words::cloud::models::FormField > getFormField() const;
 
         /// <summary>
         /// Gets or sets the form field.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setFormField(std::shared_ptr< aspose::words::cloud::models::FormField > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setFormField(std::shared_ptr< aspose::words::cloud::models::FormField > value);
+
 
     protected:
         std::shared_ptr< aspose::words::cloud::models::FormField > m_FormField;

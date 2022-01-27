@@ -52,50 +52,62 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets a value indicating whether export should correspond to ODT specification 1.1 strictly.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< bool > getIsStrictSchema11() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< bool > getIsStrictSchema11() const;
 
         /// <summary>
         /// Gets or sets a value indicating whether export should correspond to ODT specification 1.1 strictly.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setIsStrictSchema11(std::shared_ptr< bool > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setIsStrictSchema11(std::shared_ptr< bool > value);
+
 
         /// <summary>
         /// Gets or sets the units of measure to apply to document content. The default value is Aspose.Words.Saving.OdtSaveMeasureUnit.Centimeters.
         /// Open Office uses centimeters when specifying lengths, widths and other measurable formatting and content properties in documents whereas MS Office uses inches.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::OdtSaveOptionsData::MeasureUnit > getMeasureUnit() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< aspose::words::cloud::models::OdtSaveOptionsData::MeasureUnit > getMeasureUnit() const;
 
         /// <summary>
         /// Gets or sets the units of measure to apply to document content. The default value is Aspose.Words.Saving.OdtSaveMeasureUnit.Centimeters.
         /// Open Office uses centimeters when specifying lengths, widths and other measurable formatting and content properties in documents whereas MS Office uses inches.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setMeasureUnit(std::shared_ptr< aspose::words::cloud::models::OdtSaveOptionsData::MeasureUnit > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setMeasureUnit(std::shared_ptr< aspose::words::cloud::models::OdtSaveOptionsData::MeasureUnit > value);
+
 
         /// <summary>
         /// Gets or sets the password to encrypt document.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getPassword() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< std::wstring > getPassword() const;
 
         /// <summary>
         /// Gets or sets the password to encrypt document.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setPassword(std::shared_ptr< std::wstring > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setPassword(std::shared_ptr< std::wstring > value);
+
 
         /// <summary>
         /// Gets or sets a value indicating whether to use pretty formats output.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< bool > getPrettyFormat() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< bool > getPrettyFormat() const;
 
         /// <summary>
         /// Gets or sets a value indicating whether to use pretty formats output.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setPrettyFormat(std::shared_ptr< bool > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setPrettyFormat(std::shared_ptr< bool > value);
+
+
+        /// <summary>
+        /// Gets or sets the format of save.
+        /// </summary>
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< std::wstring > getSaveFormat() const override;
+
+
 
     protected:
         std::shared_ptr< bool > m_IsStrictSchema11;
         std::shared_ptr< aspose::words::cloud::models::OdtSaveOptionsData::MeasureUnit > m_MeasureUnit;
         std::shared_ptr< std::wstring > m_Password;
         std::shared_ptr< bool > m_PrettyFormat;
+        std::shared_ptr< std::wstring > m_SaveFormat = std::make_shared<std::wstring>(L"odt");
     };
 }
 

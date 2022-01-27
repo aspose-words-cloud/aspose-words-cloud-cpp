@@ -43,49 +43,61 @@ namespace aspose::words::cloud::models {
         /// Gets or sets a value indicating when False, that small metafiles are not compressed for performance reason.
         /// The default value is true, all metafiles are compressed regardless of its size.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< bool > getAlwaysCompressMetafiles() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< bool > getAlwaysCompressMetafiles() const;
 
         /// <summary>
         /// Gets or sets a value indicating when False, that small metafiles are not compressed for performance reason.
         /// The default value is true, all metafiles are compressed regardless of its size.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setAlwaysCompressMetafiles(std::shared_ptr< bool > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setAlwaysCompressMetafiles(std::shared_ptr< bool > value);
+
 
         /// <summary>
         /// Gets or sets the password.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getPassword() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< std::wstring > getPassword() const;
 
         /// <summary>
         /// Gets or sets the password.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setPassword(std::shared_ptr< std::wstring > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setPassword(std::shared_ptr< std::wstring > value);
+
+
+        /// <summary>
+        /// Gets or sets the format of save.
+        /// </summary>
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< std::wstring > getSaveFormat() const override;
+
+
 
         /// <summary>
         /// Gets or sets a value indicating when False, that PictureBullet data is not saved to the output document.
         /// The default value is true.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< bool > getSavePictureBullet() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< bool > getSavePictureBullet() const;
 
         /// <summary>
         /// Gets or sets a value indicating when False, that PictureBullet data is not saved to the output document.
         /// The default value is true.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setSavePictureBullet(std::shared_ptr< bool > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setSavePictureBullet(std::shared_ptr< bool > value);
+
 
         /// <summary>
         /// Gets or sets a value indicating whether to save RoutingSlip data to output document.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< bool > getSaveRoutingSlip() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< bool > getSaveRoutingSlip() const;
 
         /// <summary>
         /// Gets or sets a value indicating whether to save RoutingSlip data to output document.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setSaveRoutingSlip(std::shared_ptr< bool > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setSaveRoutingSlip(std::shared_ptr< bool > value);
+
 
     protected:
         std::shared_ptr< bool > m_AlwaysCompressMetafiles;
         std::shared_ptr< std::wstring > m_Password;
+        std::shared_ptr< std::wstring > m_SaveFormat = std::make_shared<std::wstring>(L"doc");
         std::shared_ptr< bool > m_SavePictureBullet;
         std::shared_ptr< bool > m_SaveRoutingSlip;
     };

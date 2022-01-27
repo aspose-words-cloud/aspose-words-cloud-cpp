@@ -41,22 +41,24 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the total count of paragraphs in footnotes.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< int32_t > getParagraphCount() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< int32_t > getParagraphCount() const;
 
         /// <summary>
         /// Gets or sets the total count of paragraphs in footnotes.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setParagraphCount(std::shared_ptr< int32_t > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setParagraphCount(std::shared_ptr< int32_t > value);
+
 
         /// <summary>
         /// Gets or sets the total count of words in footnotes.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< int32_t > getWordCount() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< int32_t > getWordCount() const;
 
         /// <summary>
         /// Gets or sets the total count of words in footnotes.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setWordCount(std::shared_ptr< int32_t > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setWordCount(std::shared_ptr< int32_t > value);
+
 
     protected:
         std::shared_ptr< int32_t > m_ParagraphCount;

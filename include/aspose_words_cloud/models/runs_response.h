@@ -43,12 +43,13 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the collection of Run elements.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::Runs > getRuns() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< aspose::words::cloud::models::Runs > getRuns() const;
 
         /// <summary>
         /// Gets or sets the collection of Run elements.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setRuns(std::shared_ptr< aspose::words::cloud::models::Runs > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setRuns(std::shared_ptr< aspose::words::cloud::models::Runs > value);
+
 
     protected:
         std::shared_ptr< aspose::words::cloud::models::Runs > m_Runs;

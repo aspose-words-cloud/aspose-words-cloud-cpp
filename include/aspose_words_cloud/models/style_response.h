@@ -43,12 +43,13 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the style, containded in the document.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::Style > getStyle() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< aspose::words::cloud::models::Style > getStyle() const;
 
         /// <summary>
         /// Gets or sets the style, containded in the document.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setStyle(std::shared_ptr< aspose::words::cloud::models::Style > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setStyle(std::shared_ptr< aspose::words::cloud::models::Style > value);
+
 
     protected:
         std::shared_ptr< aspose::words::cloud::models::Style > m_Style;

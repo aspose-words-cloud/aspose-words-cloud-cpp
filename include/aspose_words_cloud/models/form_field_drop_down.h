@@ -42,22 +42,24 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the items array of a dropdown form field.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::vector<std::shared_ptr<std::wstring>> > getDropDownItems() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< std::vector<std::shared_ptr<std::wstring>> > getDropDownItems() const;
 
         /// <summary>
         /// Gets or sets the items array of a dropdown form field.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setDropDownItems(std::shared_ptr< std::vector<std::shared_ptr<std::wstring>> > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setDropDownItems(std::shared_ptr< std::vector<std::shared_ptr<std::wstring>> > value);
+
 
         /// <summary>
         /// Gets or sets the index specifying the currently selected item in a dropdown form field.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< int32_t > getDropDownSelectedIndex() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< int32_t > getDropDownSelectedIndex() const;
 
         /// <summary>
         /// Gets or sets the index specifying the currently selected item in a dropdown form field.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setDropDownSelectedIndex(std::shared_ptr< int32_t > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setDropDownSelectedIndex(std::shared_ptr< int32_t > value);
+
 
     protected:
         std::shared_ptr< std::vector<std::shared_ptr<std::wstring>> > m_DropDownItems;

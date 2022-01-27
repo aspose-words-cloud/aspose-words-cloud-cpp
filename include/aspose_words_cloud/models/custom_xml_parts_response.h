@@ -43,12 +43,13 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the collection of comments.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::CustomXmlPartsCollection > getCustomXmlParts() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< aspose::words::cloud::models::CustomXmlPartsCollection > getCustomXmlParts() const;
 
         /// <summary>
         /// Gets or sets the collection of comments.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setCustomXmlParts(std::shared_ptr< aspose::words::cloud::models::CustomXmlPartsCollection > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setCustomXmlParts(std::shared_ptr< aspose::words::cloud::models::CustomXmlPartsCollection > value);
+
 
     protected:
         std::shared_ptr< aspose::words::cloud::models::CustomXmlPartsCollection > m_CustomXmlParts;

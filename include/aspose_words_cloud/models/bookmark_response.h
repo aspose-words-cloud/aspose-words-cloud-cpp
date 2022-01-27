@@ -43,12 +43,13 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the bookmark.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::Bookmark > getBookmark() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< aspose::words::cloud::models::Bookmark > getBookmark() const;
 
         /// <summary>
         /// Gets or sets the bookmark.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setBookmark(std::shared_ptr< aspose::words::cloud::models::Bookmark > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setBookmark(std::shared_ptr< aspose::words::cloud::models::Bookmark > value);
+
 
     protected:
         std::shared_ptr< aspose::words::cloud::models::Bookmark > m_Bookmark;

@@ -44,72 +44,79 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets a value indicating whether this list is a definition of a list style.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< bool > getIsListStyleDefinition() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< bool > getIsListStyleDefinition() const;
 
         /// <summary>
         /// Gets or sets a value indicating whether this list is a definition of a list style.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setIsListStyleDefinition(std::shared_ptr< bool > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setIsListStyleDefinition(std::shared_ptr< bool > value);
+
 
         /// <summary>
         /// Gets or sets a value indicating whether this list is a reference to a list style.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< bool > getIsListStyleReference() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< bool > getIsListStyleReference() const;
 
         /// <summary>
         /// Gets or sets a value indicating whether this list is a reference to a list style.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setIsListStyleReference(std::shared_ptr< bool > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setIsListStyleReference(std::shared_ptr< bool > value);
+
 
         /// <summary>
         /// Gets or sets a value indicating whether the list contains 9 levels; false when 1 level.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< bool > getIsMultiLevel() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< bool > getIsMultiLevel() const;
 
         /// <summary>
         /// Gets or sets a value indicating whether the list contains 9 levels; false when 1 level.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setIsMultiLevel(std::shared_ptr< bool > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setIsMultiLevel(std::shared_ptr< bool > value);
+
 
         /// <summary>
         /// Gets or sets a value indicating whether list should be restarted at each section. The default value is false.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< bool > getIsRestartAtEachSection() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< bool > getIsRestartAtEachSection() const;
 
         /// <summary>
         /// Gets or sets a value indicating whether list should be restarted at each section. The default value is false.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setIsRestartAtEachSection(std::shared_ptr< bool > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setIsRestartAtEachSection(std::shared_ptr< bool > value);
+
 
         /// <summary>
         /// Gets or sets the unique identifier of the list.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< int32_t > getListId() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< int32_t > getListId() const;
 
         /// <summary>
         /// Gets or sets the unique identifier of the list.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setListId(std::shared_ptr< int32_t > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setListId(std::shared_ptr< int32_t > value);
+
 
         /// <summary>
         /// Gets or sets the collection of list levels for this list.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::ListLevels > getListLevels() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< aspose::words::cloud::models::ListLevels > getListLevels() const;
 
         /// <summary>
         /// Gets or sets the collection of list levels for this list.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setListLevels(std::shared_ptr< aspose::words::cloud::models::ListLevels > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setListLevels(std::shared_ptr< aspose::words::cloud::models::ListLevels > value);
+
 
         /// <summary>
         /// Gets or sets the list style that this list references or defines.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::Style > getStyle() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< aspose::words::cloud::models::Style > getStyle() const;
 
         /// <summary>
         /// Gets or sets the list style that this list references or defines.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setStyle(std::shared_ptr< aspose::words::cloud::models::Style > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setStyle(std::shared_ptr< aspose::words::cloud::models::Style > value);
+
 
     protected:
         std::shared_ptr< bool > m_IsListStyleDefinition;

@@ -43,12 +43,13 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the section.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::Section > getSection() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< aspose::words::cloud::models::Section > getSection() const;
 
         /// <summary>
         /// Gets or sets the section.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setSection(std::shared_ptr< aspose::words::cloud::models::Section > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setSection(std::shared_ptr< aspose::words::cloud::models::Section > value);
+
 
     protected:
         std::shared_ptr< aspose::words::cloud::models::Section > m_Section;

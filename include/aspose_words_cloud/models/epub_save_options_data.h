@@ -42,15 +42,24 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the maximum level of headings populated to the navigation map when exporting.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< int32_t > getEpubNavigationMapLevel() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< int32_t > getEpubNavigationMapLevel() const;
 
         /// <summary>
         /// Gets or sets the maximum level of headings populated to the navigation map when exporting.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setEpubNavigationMapLevel(std::shared_ptr< int32_t > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setEpubNavigationMapLevel(std::shared_ptr< int32_t > value);
+
+
+        /// <summary>
+        /// Gets or sets the format of save.
+        /// </summary>
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< std::wstring > getSaveFormat() const override;
+
+
 
     protected:
         std::shared_ptr< int32_t > m_EpubNavigationMapLevel;
+        std::shared_ptr< std::wstring > m_SaveFormat = std::make_shared<std::wstring>(L"epub");
     };
 }
 

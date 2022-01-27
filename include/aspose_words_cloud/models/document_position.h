@@ -42,22 +42,24 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the link to a node.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::NodeLink > getNode() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< aspose::words::cloud::models::NodeLink > getNode() const;
 
         /// <summary>
         /// Gets or sets the link to a node.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setNode(std::shared_ptr< aspose::words::cloud::models::NodeLink > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setNode(std::shared_ptr< aspose::words::cloud::models::NodeLink > value);
+
 
         /// <summary>
         /// Gets or sets the offset in the node.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< int32_t > getOffset() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< int32_t > getOffset() const;
 
         /// <summary>
         /// Gets or sets the offset in the node.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setOffset(std::shared_ptr< int32_t > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setOffset(std::shared_ptr< int32_t > value);
+
 
     protected:
         std::shared_ptr< aspose::words::cloud::models::NodeLink > m_Node;

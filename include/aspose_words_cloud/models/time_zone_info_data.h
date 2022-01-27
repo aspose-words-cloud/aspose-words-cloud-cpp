@@ -41,42 +41,46 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets base utc offset in hh:mm:ss format.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getBaseUtcOffset() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< std::wstring > getBaseUtcOffset() const;
 
         /// <summary>
         /// Gets or sets base utc offset in hh:mm:ss format.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setBaseUtcOffset(std::shared_ptr< std::wstring > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setBaseUtcOffset(std::shared_ptr< std::wstring > value);
+
 
         /// <summary>
         /// Gets or sets display name.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getDisplayName() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< std::wstring > getDisplayName() const;
 
         /// <summary>
         /// Gets or sets display name.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setDisplayName(std::shared_ptr< std::wstring > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setDisplayName(std::shared_ptr< std::wstring > value);
+
 
         /// <summary>
         /// Gets or sets an Id string for CustomTimeZoneInfo.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getId() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< std::wstring > getId() const;
 
         /// <summary>
         /// Gets or sets an Id string for CustomTimeZoneInfo.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setId(std::shared_ptr< std::wstring > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setId(std::shared_ptr< std::wstring > value);
+
 
         /// <summary>
         /// Gets or sets standard display name.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getStandardDisplayName() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< std::wstring > getStandardDisplayName() const;
 
         /// <summary>
         /// Gets or sets standard display name.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setStandardDisplayName(std::shared_ptr< std::wstring > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setStandardDisplayName(std::shared_ptr< std::wstring > value);
+
 
     protected:
         std::shared_ptr< std::wstring > m_BaseUtcOffset;
