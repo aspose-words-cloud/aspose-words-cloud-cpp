@@ -73,7 +73,7 @@ namespace aspose::words::cloud::models {
 
 
         /// <summary>
-        /// Gets or sets the format of save.
+        /// Gets the format of save.
         /// </summary>
         ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< std::wstring > getSaveFormat() const override;
 
