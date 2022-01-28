@@ -39,6 +39,9 @@ namespace aspose::words::cloud::models {
         ASPOSE_WORDS_CLOUD_EXPORT virtual void toJson(void* jsonIfc) const override;
         ASPOSE_WORDS_CLOUD_EXPORT virtual void fromJson(const void* jsonIfc) override;
 
+        void abstractFixedPageSaveOptionsData() override {}
+        void abstractSaveOptionsData() override {}
+
         /// <summary>
         /// Gets or sets the prefix which is added to all class names in style.css file.
         /// Default value is "aw".

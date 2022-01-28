@@ -39,6 +39,10 @@ namespace aspose::words::cloud::models {
         ASPOSE_WORDS_CLOUD_EXPORT virtual void toJson(void* jsonIfc) const override;
         ASPOSE_WORDS_CLOUD_EXPORT virtual void fromJson(const void* jsonIfc) override;
 
+        virtual void abstractImageSaveOptionsData() = 0;
+        void abstractFixedPageSaveOptionsData() override {}
+        void abstractSaveOptionsData() override {}
+
         /// <summary>
         /// Gets or sets the horizontal resolution in dots per inch for the generated images.
         /// This property has effect only when saving to raster image formats.

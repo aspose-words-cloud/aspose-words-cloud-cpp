@@ -39,6 +39,9 @@ namespace aspose::words::cloud::models {
         ASPOSE_WORDS_CLOUD_EXPORT virtual void toJson(void* jsonIfc) const override;
         ASPOSE_WORDS_CLOUD_EXPORT virtual void fromJson(const void* jsonIfc) override;
 
+        void abstractTxtSaveOptionsBaseData() override {}
+        void abstractSaveOptionsData() override {}
+
         /// <summary>
         /// Gets or sets a value indicating whether to add bi-directional marks before each BiDi run when exporting in plain text format.
         /// The default value is true.

@@ -100,6 +100,7 @@ namespace aspose::words::cloud::models {
         ASPOSE_WORDS_CLOUD_EXPORT virtual void toJson(void* jsonIfc) const override;
         ASPOSE_WORDS_CLOUD_EXPORT virtual void fromJson(const void* jsonIfc) override;
 
+
         /// <summary>
         /// Gets or sets the color that's applied to the background of the Shading object.
         /// </summary>

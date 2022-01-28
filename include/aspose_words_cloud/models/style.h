@@ -436,6 +436,7 @@ namespace aspose::words::cloud::models {
         ASPOSE_WORDS_CLOUD_EXPORT virtual void toJson(void* jsonIfc) const override;
         ASPOSE_WORDS_CLOUD_EXPORT virtual void fromJson(const void* jsonIfc) override;
 
+
         /// <summary>
         /// Gets or sets all aliases of this style. If style has no aliases then empty array of string is returned.
         /// </summary>
