@@ -48,6 +48,8 @@ namespace aspose::words::cloud::models {
         ASPOSE_WORDS_CLOUD_EXPORT virtual void toJson(void* jsonIfc) const override;
         ASPOSE_WORDS_CLOUD_EXPORT virtual void fromJson(const void* jsonIfc) override;
 
+        virtual void abstractFootnoteBase() = 0;
+
         /// <summary>
         /// Gets or sets the option, that specifies whether this is a footnote or endnote.
         /// </summary>

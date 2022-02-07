@@ -39,6 +39,7 @@ namespace aspose::words::cloud::models {
         ASPOSE_WORDS_CLOUD_EXPORT virtual void toJson(void* jsonIfc) const override;
         ASPOSE_WORDS_CLOUD_EXPORT virtual void fromJson(const void* jsonIfc) override;
 
+
         /// <summary>
         /// Gets or sets the initials of the author to use for revisions.
         /// </summary>

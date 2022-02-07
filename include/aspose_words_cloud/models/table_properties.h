@@ -461,6 +461,7 @@ namespace aspose::words::cloud::models {
         ASPOSE_WORDS_CLOUD_EXPORT virtual void toJson(void* jsonIfc) const override;
         ASPOSE_WORDS_CLOUD_EXPORT virtual void fromJson(const void* jsonIfc) override;
 
+
         /// <summary>
         /// Gets or sets the option that controls how an inline table is aligned in the document.
         /// </summary>

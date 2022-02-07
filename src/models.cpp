@@ -11477,8 +11477,7 @@ namespace aspose::words::cloud::models {
             );
         }
         if (json.contains("SaveOptions") && !json["SaveOptions"].is_null()) {
-            this->m_SaveOptions = std::make_shared< aspose::words::cloud::models::SaveOptionsData >();
-            this->m_SaveOptions->fromJson(&json["SaveOptions"]);
+            throw aspose::words::cloud::ApiException(400, L"Cannot deserialize abstract data model SaveOptionsData.");
         }
     }
 

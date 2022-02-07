@@ -39,6 +39,8 @@ namespace aspose::words::cloud::models {
         ASPOSE_WORDS_CLOUD_EXPORT virtual void toJson(void* jsonIfc) const override;
         ASPOSE_WORDS_CLOUD_EXPORT virtual void fromJson(const void* jsonIfc) override;
 
+        void abstractSaveOptionsData() override {}
+
         /// <summary>
         /// Gets or sets a value indicating when False, that small metafiles are not compressed for performance reason.
         /// The default value is true, all metafiles are compressed regardless of its size.

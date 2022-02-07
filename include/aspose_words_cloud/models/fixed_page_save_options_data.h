@@ -40,6 +40,9 @@ namespace aspose::words::cloud::models {
         ASPOSE_WORDS_CLOUD_EXPORT virtual void toJson(void* jsonIfc) const override;
         ASPOSE_WORDS_CLOUD_EXPORT virtual void fromJson(const void* jsonIfc) override;
 
+        virtual void abstractFixedPageSaveOptionsData() = 0;
+        void abstractSaveOptionsData() override {}
+
         /// <summary>
         /// Gets or sets the value determining how colors are rendered.
         /// { Normal | Grayscale}.

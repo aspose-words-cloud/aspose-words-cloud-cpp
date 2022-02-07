@@ -50,6 +50,9 @@ namespace aspose::words::cloud::models {
         ASPOSE_WORDS_CLOUD_EXPORT virtual void toJson(void* jsonIfc) const override;
         ASPOSE_WORDS_CLOUD_EXPORT virtual void fromJson(const void* jsonIfc) override;
 
+        virtual void abstractTxtSaveOptionsBaseData() = 0;
+        void abstractSaveOptionsData() override {}
+
         /// <summary>
         /// Gets or sets the character encoding to use when exporting in plain text format.
         /// </summary>

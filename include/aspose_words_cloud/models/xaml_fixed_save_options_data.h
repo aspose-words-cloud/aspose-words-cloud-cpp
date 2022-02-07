@@ -39,6 +39,9 @@ namespace aspose::words::cloud::models {
         ASPOSE_WORDS_CLOUD_EXPORT virtual void toJson(void* jsonIfc) const override;
         ASPOSE_WORDS_CLOUD_EXPORT virtual void fromJson(const void* jsonIfc) override;
 
+        void abstractFixedPageSaveOptionsData() override {}
+        void abstractSaveOptionsData() override {}
+
         /// <summary>
         /// Gets or sets the physical folder where resources (images and fonts) are saved when exporting a document to fixed page Xaml format.
         /// The default value is null.
