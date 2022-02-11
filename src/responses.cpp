@@ -82,7 +82,7 @@ namespace aspose::words::cloud::responses {
                     if (partNameIndex == std::string_view::npos)
                         throw ApiException(400, L"Failed to parse multipart data.");
 
-                    auto partName = headerValue.substr(partNameIndex + 5, headerValue.find(";", partNameIndex + 5));
+                    auto partName = headerValue.substr(partNameIndex + 5, headerValue.find(";", partNameIndex + 5) - (partNameIndex + 5));
                     result.emplace(partName, bodyData);
                     break;
                 }
