@@ -90,65 +90,72 @@ namespace aspose::words::cloud::models {
         ASPOSE_WORDS_CLOUD_EXPORT virtual void toJson(void* jsonIfc) const override;
         ASPOSE_WORDS_CLOUD_EXPORT virtual void fromJson(const void* jsonIfc) override;
 
-        /// <summary>
-        /// Gets or sets the border type.
-        /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::Border::BorderType > getBorderType() const;
 
         /// <summary>
         /// Gets or sets the border type.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setBorderType(std::shared_ptr< aspose::words::cloud::models::Border::BorderType > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< aspose::words::cloud::models::Border::BorderType > getBorderType() const;
+
+        /// <summary>
+        /// Gets or sets the border type.
+        /// </summary>
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setBorderType(std::shared_ptr< aspose::words::cloud::models::Border::BorderType > value);
+
 
         /// <summary>
         /// Gets or sets the border color.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::XmlColor > getColor() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< aspose::words::cloud::models::XmlColor > getColor() const;
 
         /// <summary>
         /// Gets or sets the border color.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setColor(std::shared_ptr< aspose::words::cloud::models::XmlColor > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setColor(std::shared_ptr< aspose::words::cloud::models::XmlColor > value);
+
 
         /// <summary>
         /// Gets or sets the distance of the border from text or from the page edge in points.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< double > getDistanceFromText() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< double > getDistanceFromText() const;
 
         /// <summary>
         /// Gets or sets the distance of the border from text or from the page edge in points.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setDistanceFromText(std::shared_ptr< double > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setDistanceFromText(std::shared_ptr< double > value);
+
 
         /// <summary>
         /// Gets or sets the border style.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::Border::LineStyle > getLineStyle() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< aspose::words::cloud::models::Border::LineStyle > getLineStyle() const;
 
         /// <summary>
         /// Gets or sets the border style.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setLineStyle(std::shared_ptr< aspose::words::cloud::models::Border::LineStyle > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setLineStyle(std::shared_ptr< aspose::words::cloud::models::Border::LineStyle > value);
+
 
         /// <summary>
         /// Gets or sets the border width in points.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< double > getLineWidth() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< double > getLineWidth() const;
 
         /// <summary>
         /// Gets or sets the border width in points.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setLineWidth(std::shared_ptr< double > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setLineWidth(std::shared_ptr< double > value);
+
 
         /// <summary>
         /// Gets or sets a value indicating whether the border has a shadow.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< bool > getShadow() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< bool > getShadow() const;
 
         /// <summary>
         /// Gets or sets a value indicating whether the border has a shadow.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setShadow(std::shared_ptr< bool > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setShadow(std::shared_ptr< bool > value);
+
 
     protected:
         std::shared_ptr< aspose::words::cloud::models::Border::BorderType > m_BorderType;

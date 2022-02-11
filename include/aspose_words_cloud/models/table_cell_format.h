@@ -83,125 +83,138 @@ namespace aspose::words::cloud::models {
         ASPOSE_WORDS_CLOUD_EXPORT virtual void toJson(void* jsonIfc) const override;
         ASPOSE_WORDS_CLOUD_EXPORT virtual void fromJson(const void* jsonIfc) override;
 
-        /// <summary>
-        /// Gets or sets the amount of space (in points) to add below the contents of the cell.
-        /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< double > getBottomPadding() const;
 
         /// <summary>
         /// Gets or sets the amount of space (in points) to add below the contents of the cell.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setBottomPadding(std::shared_ptr< double > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< double > getBottomPadding() const;
+
+        /// <summary>
+        /// Gets or sets the amount of space (in points) to add below the contents of the cell.
+        /// </summary>
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setBottomPadding(std::shared_ptr< double > value);
+
 
         /// <summary>
         /// Gets or sets a value indicating whether to fit text in the cell, compress each paragraph to the width of the cell.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< bool > getFitText() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< bool > getFitText() const;
 
         /// <summary>
         /// Gets or sets a value indicating whether to fit text in the cell, compress each paragraph to the width of the cell.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setFitText(std::shared_ptr< bool > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setFitText(std::shared_ptr< bool > value);
+
 
         /// <summary>
         /// Gets or sets the option that controls how the cell is merged horizontally with other cells in the row.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::TableCellFormat::HorizontalMerge > getHorizontalMerge() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< aspose::words::cloud::models::TableCellFormat::HorizontalMerge > getHorizontalMerge() const;
 
         /// <summary>
         /// Gets or sets the option that controls how the cell is merged horizontally with other cells in the row.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setHorizontalMerge(std::shared_ptr< aspose::words::cloud::models::TableCellFormat::HorizontalMerge > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setHorizontalMerge(std::shared_ptr< aspose::words::cloud::models::TableCellFormat::HorizontalMerge > value);
+
 
         /// <summary>
         /// Gets or sets the amount of space (in points) to add to the left of the contents of the cell.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< double > getLeftPadding() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< double > getLeftPadding() const;
 
         /// <summary>
         /// Gets or sets the amount of space (in points) to add to the left of the contents of the cell.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setLeftPadding(std::shared_ptr< double > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setLeftPadding(std::shared_ptr< double > value);
+
 
         /// <summary>
         /// Gets or sets the orientation of text in a table cell.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::TableCellFormat::Orientation > getOrientation() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< aspose::words::cloud::models::TableCellFormat::Orientation > getOrientation() const;
 
         /// <summary>
         /// Gets or sets the orientation of text in a table cell.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setOrientation(std::shared_ptr< aspose::words::cloud::models::TableCellFormat::Orientation > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setOrientation(std::shared_ptr< aspose::words::cloud::models::TableCellFormat::Orientation > value);
+
 
         /// <summary>
         /// Gets or sets the preferred width of the cell.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::PreferredWidth > getPreferredWidth() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< aspose::words::cloud::models::PreferredWidth > getPreferredWidth() const;
 
         /// <summary>
         /// Gets or sets the preferred width of the cell.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setPreferredWidth(std::shared_ptr< aspose::words::cloud::models::PreferredWidth > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setPreferredWidth(std::shared_ptr< aspose::words::cloud::models::PreferredWidth > value);
+
 
         /// <summary>
         /// Gets or sets the amount of space (in points) to add to the right of the contents of the cell.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< double > getRightPadding() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< double > getRightPadding() const;
 
         /// <summary>
         /// Gets or sets the amount of space (in points) to add to the right of the contents of the cell.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setRightPadding(std::shared_ptr< double > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setRightPadding(std::shared_ptr< double > value);
+
 
         /// <summary>
         /// Gets or sets the amount of space (in points) to add above the contents of the cell.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< double > getTopPadding() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< double > getTopPadding() const;
 
         /// <summary>
         /// Gets or sets the amount of space (in points) to add above the contents of the cell.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setTopPadding(std::shared_ptr< double > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setTopPadding(std::shared_ptr< double > value);
+
 
         /// <summary>
         /// Gets or sets the vertical alignment of text in the cell.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::TableCellFormat::VerticalAlignment > getVerticalAlignment() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< aspose::words::cloud::models::TableCellFormat::VerticalAlignment > getVerticalAlignment() const;
 
         /// <summary>
         /// Gets or sets the vertical alignment of text in the cell.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setVerticalAlignment(std::shared_ptr< aspose::words::cloud::models::TableCellFormat::VerticalAlignment > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setVerticalAlignment(std::shared_ptr< aspose::words::cloud::models::TableCellFormat::VerticalAlignment > value);
+
 
         /// <summary>
         /// Gets or sets the option that controls how the cell is merged with other cells vertically.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::TableCellFormat::VerticalMerge > getVerticalMerge() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< aspose::words::cloud::models::TableCellFormat::VerticalMerge > getVerticalMerge() const;
 
         /// <summary>
         /// Gets or sets the option that controls how the cell is merged with other cells vertically.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setVerticalMerge(std::shared_ptr< aspose::words::cloud::models::TableCellFormat::VerticalMerge > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setVerticalMerge(std::shared_ptr< aspose::words::cloud::models::TableCellFormat::VerticalMerge > value);
+
 
         /// <summary>
         /// Gets or sets the width of the cell in points.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< double > getWidth() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< double > getWidth() const;
 
         /// <summary>
         /// Gets or sets the width of the cell in points.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setWidth(std::shared_ptr< double > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setWidth(std::shared_ptr< double > value);
+
 
         /// <summary>
         /// Gets or sets a value indicating whether to wrap text in the cell.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< bool > getWrapText() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< bool > getWrapText() const;
 
         /// <summary>
         /// Gets or sets a value indicating whether to wrap text in the cell.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setWrapText(std::shared_ptr< bool > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setWrapText(std::shared_ptr< bool > value);
+
 
     protected:
         std::shared_ptr< double > m_BottomPadding;

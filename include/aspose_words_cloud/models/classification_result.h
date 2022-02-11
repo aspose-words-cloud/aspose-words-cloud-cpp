@@ -38,25 +38,28 @@ namespace aspose::words::cloud::models {
         ASPOSE_WORDS_CLOUD_EXPORT virtual void toJson(void* jsonIfc) const override;
         ASPOSE_WORDS_CLOUD_EXPORT virtual void fromJson(const void* jsonIfc) override;
 
-        /// <summary>
-        /// Gets or sets the name of the class.
-        /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getClassName() const;
 
         /// <summary>
         /// Gets or sets the name of the class.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setClassName(std::shared_ptr< std::wstring > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< std::wstring > getClassName() const;
+
+        /// <summary>
+        /// Gets or sets the name of the class.
+        /// </summary>
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setClassName(std::shared_ptr< std::wstring > value);
+
 
         /// <summary>
         /// Gets or sets the probability of class.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< double > getClassProbability() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< double > getClassProbability() const;
 
         /// <summary>
         /// Gets or sets the probability of class.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setClassProbability(std::shared_ptr< double > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setClassProbability(std::shared_ptr< double > value);
+
 
     protected:
         std::shared_ptr< std::wstring > m_ClassName;

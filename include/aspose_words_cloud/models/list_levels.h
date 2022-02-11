@@ -40,15 +40,17 @@ namespace aspose::words::cloud::models {
         ASPOSE_WORDS_CLOUD_EXPORT virtual void toJson(void* jsonIfc) const override;
         ASPOSE_WORDS_CLOUD_EXPORT virtual void fromJson(const void* jsonIfc) override;
 
-        /// <summary>
-        /// Gets or sets the collection of list levels for this list.
-        /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::vector<std::shared_ptr<aspose::words::cloud::models::ListLevel>> > getListLevel() const;
 
         /// <summary>
         /// Gets or sets the collection of list levels for this list.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setListLevel(std::shared_ptr< std::vector<std::shared_ptr<aspose::words::cloud::models::ListLevel>> > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< std::vector<std::shared_ptr<aspose::words::cloud::models::ListLevel>> > getListLevel() const;
+
+        /// <summary>
+        /// Gets or sets the collection of list levels for this list.
+        /// </summary>
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setListLevel(std::shared_ptr< std::vector<std::shared_ptr<aspose::words::cloud::models::ListLevel>> > value);
+
 
     protected:
         std::shared_ptr< std::vector<std::shared_ptr<aspose::words::cloud::models::ListLevel>> > m_ListLevel;

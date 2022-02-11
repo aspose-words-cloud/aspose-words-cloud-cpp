@@ -40,15 +40,17 @@ namespace aspose::words::cloud::models {
         ASPOSE_WORDS_CLOUD_EXPORT virtual void toJson(void* jsonIfc) const override;
         ASPOSE_WORDS_CLOUD_EXPORT virtual void fromJson(const void* jsonIfc) override;
 
-        /// <summary>
-        /// Gets or sets the footnote.
-        /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::Footnote > getFootnote() const;
 
         /// <summary>
         /// Gets or sets the footnote.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setFootnote(std::shared_ptr< aspose::words::cloud::models::Footnote > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< aspose::words::cloud::models::Footnote > getFootnote() const;
+
+        /// <summary>
+        /// Gets or sets the footnote.
+        /// </summary>
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setFootnote(std::shared_ptr< aspose::words::cloud::models::Footnote > value);
+
 
     protected:
         std::shared_ptr< aspose::words::cloud::models::Footnote > m_Footnote;

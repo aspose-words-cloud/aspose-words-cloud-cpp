@@ -38,25 +38,28 @@ namespace aspose::words::cloud::models {
         ASPOSE_WORDS_CLOUD_EXPORT virtual void toJson(void* jsonIfc) const override;
         ASPOSE_WORDS_CLOUD_EXPORT virtual void fromJson(const void* jsonIfc) override;
 
-        /// <summary>
-        /// Gets or sets the Alpha component of color structure.
-        /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< int32_t > getAlpha() const;
 
         /// <summary>
         /// Gets or sets the Alpha component of color structure.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setAlpha(std::shared_ptr< int32_t > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< int32_t > getAlpha() const;
+
+        /// <summary>
+        /// Gets or sets the Alpha component of color structure.
+        /// </summary>
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setAlpha(std::shared_ptr< int32_t > value);
+
 
         /// <summary>
         /// Gets or sets the HTML string color representation.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getWeb() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< std::wstring > getWeb() const;
 
         /// <summary>
         /// Gets or sets the HTML string color representation.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setWeb(std::shared_ptr< std::wstring > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setWeb(std::shared_ptr< std::wstring > value);
+
 
     protected:
         std::shared_ptr< int32_t > m_Alpha;

@@ -39,71 +39,88 @@ namespace aspose::words::cloud::models {
         ASPOSE_WORDS_CLOUD_EXPORT virtual void toJson(void* jsonIfc) const override;
         ASPOSE_WORDS_CLOUD_EXPORT virtual void fromJson(const void* jsonIfc) override;
 
-        /// <summary>
-        /// Gets or sets a value indicating whether images should be embedded into SVG document as base64.
-        /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< bool > getExportEmbeddedImages() const;
+        void abstractFixedPageSaveOptionsData() override {}
+        void abstractSaveOptionsData() override {}
 
         /// <summary>
         /// Gets or sets a value indicating whether images should be embedded into SVG document as base64.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setExportEmbeddedImages(std::shared_ptr< bool > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< bool > getExportEmbeddedImages() const;
+
+        /// <summary>
+        /// Gets or sets a value indicating whether images should be embedded into SVG document as base64.
+        /// </summary>
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setExportEmbeddedImages(std::shared_ptr< bool > value);
+
 
         /// <summary>
         /// Gets or sets a value indicating whether the output SVG should fill the available viewport area (browser window or container). When set to true width and height of output SVG are set to 100%.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< bool > getFitToViewPort() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< bool > getFitToViewPort() const;
 
         /// <summary>
         /// Gets or sets a value indicating whether the output SVG should fill the available viewport area (browser window or container). When set to true width and height of output SVG are set to 100%.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setFitToViewPort(std::shared_ptr< bool > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setFitToViewPort(std::shared_ptr< bool > value);
+
 
         /// <summary>
         /// Gets or sets the physical folder where resources (images) are saved when exporting.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getResourcesFolder() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< std::wstring > getResourcesFolder() const;
 
         /// <summary>
         /// Gets or sets the physical folder where resources (images) are saved when exporting.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setResourcesFolder(std::shared_ptr< std::wstring > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setResourcesFolder(std::shared_ptr< std::wstring > value);
+
 
         /// <summary>
         /// Gets or sets the name of the folder used to construct image URIs.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getResourcesFolderAlias() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< std::wstring > getResourcesFolderAlias() const;
 
         /// <summary>
         /// Gets or sets the name of the folder used to construct image URIs.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setResourcesFolderAlias(std::shared_ptr< std::wstring > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setResourcesFolderAlias(std::shared_ptr< std::wstring > value);
+
+
+        /// <summary>
+        /// Gets the format of save.
+        /// </summary>
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< std::wstring > getSaveFormat() const override;
+
+
 
         /// <summary>
         /// Gets or sets a value indicating whether to show or hide page stepper.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< bool > getShowPageBorder() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< bool > getShowPageBorder() const;
 
         /// <summary>
         /// Gets or sets a value indicating whether to show or hide page stepper.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setShowPageBorder(std::shared_ptr< bool > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setShowPageBorder(std::shared_ptr< bool > value);
+
 
         /// <summary>
         /// Gets or sets the option that controls how text should be rendered.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getTextOutputMode() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< std::wstring > getTextOutputMode() const;
 
         /// <summary>
         /// Gets or sets the option that controls how text should be rendered.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setTextOutputMode(std::shared_ptr< std::wstring > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setTextOutputMode(std::shared_ptr< std::wstring > value);
+
 
     protected:
         std::shared_ptr< bool > m_ExportEmbeddedImages;
         std::shared_ptr< bool > m_FitToViewPort;
         std::shared_ptr< std::wstring > m_ResourcesFolder;
         std::shared_ptr< std::wstring > m_ResourcesFolderAlias;
+        std::shared_ptr< std::wstring > m_SaveFormat = std::make_shared<std::wstring>(L"svg");
         std::shared_ptr< bool > m_ShowPageBorder;
         std::shared_ptr< std::wstring > m_TextOutputMode;
     };

@@ -49,45 +49,49 @@ namespace aspose::words::cloud::models {
         ASPOSE_WORDS_CLOUD_EXPORT virtual void toJson(void* jsonIfc) const override;
         ASPOSE_WORDS_CLOUD_EXPORT virtual void fromJson(const void* jsonIfc) override;
 
-        /// <summary>
-        /// Gets or sets a value indicating whether a generated data source will always contain
-        /// an object for a JSON root element. If a JSON root element contains a single complex
-        /// property, such an object is not created by default.
-        /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< bool > getAlwaysGenerateRootObject() const;
 
         /// <summary>
         /// Gets or sets a value indicating whether a generated data source will always contain
         /// an object for a JSON root element. If a JSON root element contains a single complex
         /// property, such an object is not created by default.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setAlwaysGenerateRootObject(std::shared_ptr< bool > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< bool > getAlwaysGenerateRootObject() const;
+
+        /// <summary>
+        /// Gets or sets a value indicating whether a generated data source will always contain
+        /// an object for a JSON root element. If a JSON root element contains a single complex
+        /// property, such an object is not created by default.
+        /// </summary>
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setAlwaysGenerateRootObject(std::shared_ptr< bool > value);
+
 
         /// <summary>
         /// Gets or sets exact formats for parsing JSON date-time values while loading JSON.
         /// The default is null.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::vector<std::shared_ptr<std::wstring>> > getExactDateTimeParseFormats() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< std::vector<std::shared_ptr<std::wstring>> > getExactDateTimeParseFormats() const;
 
         /// <summary>
         /// Gets or sets exact formats for parsing JSON date-time values while loading JSON.
         /// The default is null.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setExactDateTimeParseFormats(std::shared_ptr< std::vector<std::shared_ptr<std::wstring>> > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setExactDateTimeParseFormats(std::shared_ptr< std::vector<std::shared_ptr<std::wstring>> > value);
+
 
         /// <summary>
         /// Gets or sets a mode for parsing JSON simple values (null, boolean, number, integer,
         /// and string) while loading JSON. Such a mode does not affect parsing of date-time
         /// values. The default is Aspose.Words.Reporting.JsonSimpleValueParseMode.Loose.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::JsonDataLoadOptions::SimpleValueParseMode > getSimpleValueParseMode() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< aspose::words::cloud::models::JsonDataLoadOptions::SimpleValueParseMode > getSimpleValueParseMode() const;
 
         /// <summary>
         /// Gets or sets a mode for parsing JSON simple values (null, boolean, number, integer,
         /// and string) while loading JSON. Such a mode does not affect parsing of date-time
         /// values. The default is Aspose.Words.Reporting.JsonSimpleValueParseMode.Loose.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setSimpleValueParseMode(std::shared_ptr< aspose::words::cloud::models::JsonDataLoadOptions::SimpleValueParseMode > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setSimpleValueParseMode(std::shared_ptr< aspose::words::cloud::models::JsonDataLoadOptions::SimpleValueParseMode > value);
+
 
     protected:
         std::shared_ptr< bool > m_AlwaysGenerateRootObject;

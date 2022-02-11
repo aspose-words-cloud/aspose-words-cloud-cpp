@@ -62,139 +62,153 @@ namespace aspose::words::cloud::models {
         ASPOSE_WORDS_CLOUD_EXPORT virtual void toJson(void* jsonIfc) const override;
         ASPOSE_WORDS_CLOUD_EXPORT virtual void fromJson(const void* jsonIfc) override;
 
-        /// <summary>
-        /// Gets or sets BuiltIn Templates Paths.
-        /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::vector<std::shared_ptr<std::wstring>> > getBuiltInTemplatesPaths() const;
 
         /// <summary>
         /// Gets or sets BuiltIn Templates Paths.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setBuiltInTemplatesPaths(std::shared_ptr< std::vector<std::shared_ptr<std::wstring>> > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< std::vector<std::shared_ptr<std::wstring>> > getBuiltInTemplatesPaths() const;
+
+        /// <summary>
+        /// Gets or sets BuiltIn Templates Paths.
+        /// </summary>
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setBuiltInTemplatesPaths(std::shared_ptr< std::vector<std::shared_ptr<std::wstring>> > value);
+
 
         /// <summary>
         /// Gets or sets Curren tUser.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::UserInformation > getCurrentUser() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< aspose::words::cloud::models::UserInformation > getCurrentUser() const;
 
         /// <summary>
         /// Gets or sets Curren tUser.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setCurrentUser(std::shared_ptr< aspose::words::cloud::models::UserInformation > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setCurrentUser(std::shared_ptr< aspose::words::cloud::models::UserInformation > value);
+
 
         /// <summary>
         /// Gets or sets Custom Toc Style Separator.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getCustomTocStyleSeparator() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< std::wstring > getCustomTocStyleSeparator() const;
 
         /// <summary>
         /// Gets or sets Custom Toc Style Separator.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setCustomTocStyleSeparator(std::shared_ptr< std::wstring > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setCustomTocStyleSeparator(std::shared_ptr< std::wstring > value);
+
 
         /// <summary>
         /// Gets or sets Default Document Author.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getDefaultDocumentAuthor() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< std::wstring > getDefaultDocumentAuthor() const;
 
         /// <summary>
         /// Gets or sets Default Document Author.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setDefaultDocumentAuthor(std::shared_ptr< std::wstring > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setDefaultDocumentAuthor(std::shared_ptr< std::wstring > value);
+
 
         /// <summary>
         /// Gets or sets Field Index Format.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::FieldOptions::FieldIndexFormat > getFieldIndexFormat() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< aspose::words::cloud::models::FieldOptions::FieldIndexFormat > getFieldIndexFormat() const;
 
         /// <summary>
         /// Gets or sets Field Index Format.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setFieldIndexFormat(std::shared_ptr< aspose::words::cloud::models::FieldOptions::FieldIndexFormat > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setFieldIndexFormat(std::shared_ptr< aspose::words::cloud::models::FieldOptions::FieldIndexFormat > value);
+
 
         /// <summary>
         /// Gets or sets Field Update Culture Name.
         /// It is used for all fields if FieldUpdateCultureSource is FieldCode.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getFieldUpdateCultureName() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< std::wstring > getFieldUpdateCultureName() const;
 
         /// <summary>
         /// Gets or sets Field Update Culture Name.
         /// It is used for all fields if FieldUpdateCultureSource is FieldCode.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setFieldUpdateCultureName(std::shared_ptr< std::wstring > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setFieldUpdateCultureName(std::shared_ptr< std::wstring > value);
+
 
         /// <summary>
         /// Gets or sets Field Update Culture Source.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::FieldOptions::FieldUpdateCultureSource > getFieldUpdateCultureSource() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< aspose::words::cloud::models::FieldOptions::FieldUpdateCultureSource > getFieldUpdateCultureSource() const;
 
         /// <summary>
         /// Gets or sets Field Update Culture Source.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setFieldUpdateCultureSource(std::shared_ptr< aspose::words::cloud::models::FieldOptions::FieldUpdateCultureSource > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setFieldUpdateCultureSource(std::shared_ptr< aspose::words::cloud::models::FieldOptions::FieldUpdateCultureSource > value);
+
 
         /// <summary>
         /// Gets or sets File Name.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getFileName() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< std::wstring > getFileName() const;
 
         /// <summary>
         /// Gets or sets File Name.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setFileName(std::shared_ptr< std::wstring > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setFileName(std::shared_ptr< std::wstring > value);
+
 
         /// <summary>
         /// Gets or sets if Bidi Text Supported OnUpdate.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< bool > getIsBidiTextSupportedOnUpdate() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< bool > getIsBidiTextSupportedOnUpdate() const;
 
         /// <summary>
         /// Gets or sets if Bidi Text Supported OnUpdate.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setIsBidiTextSupportedOnUpdate(std::shared_ptr< bool > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setIsBidiTextSupportedOnUpdate(std::shared_ptr< bool > value);
+
 
         /// <summary>
         /// Gets or sets if Legacy Number Format.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< bool > getLegacyNumberFormat() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< bool > getLegacyNumberFormat() const;
 
         /// <summary>
         /// Gets or sets if Legacy Number Format.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setLegacyNumberFormat(std::shared_ptr< bool > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setLegacyNumberFormat(std::shared_ptr< bool > value);
+
 
         /// <summary>
         /// Gets or sets PreProcess Culture Name.
         /// It is a culture code for DOC fields.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getPreProcessCultureName() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< std::wstring > getPreProcessCultureName() const;
 
         /// <summary>
         /// Gets or sets PreProcess Culture Name.
         /// It is a culture code for DOC fields.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setPreProcessCultureName(std::shared_ptr< std::wstring > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setPreProcessCultureName(std::shared_ptr< std::wstring > value);
+
 
         /// <summary>
         /// Gets or sets Template Name.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getTemplateName() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< std::wstring > getTemplateName() const;
 
         /// <summary>
         /// Gets or sets Template Name.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setTemplateName(std::shared_ptr< std::wstring > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setTemplateName(std::shared_ptr< std::wstring > value);
+
 
         /// <summary>
         /// Gets or sets if Use Invariant Culture Number Format.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< bool > getUseInvariantCultureNumberFormat() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< bool > getUseInvariantCultureNumberFormat() const;
 
         /// <summary>
         /// Gets or sets if Use Invariant Culture Number Format.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setUseInvariantCultureNumberFormat(std::shared_ptr< bool > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setUseInvariantCultureNumberFormat(std::shared_ptr< bool > value);
+
 
     protected:
         std::shared_ptr< std::vector<std::shared_ptr<std::wstring>> > m_BuiltInTemplatesPaths;

@@ -40,15 +40,17 @@ namespace aspose::words::cloud::models {
         ASPOSE_WORDS_CLOUD_EXPORT virtual void toJson(void* jsonIfc) const override;
         ASPOSE_WORDS_CLOUD_EXPORT virtual void fromJson(const void* jsonIfc) override;
 
-        /// <summary>
-        /// Gets or sets the paragraph.
-        /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::Paragraph > getParagraph() const;
 
         /// <summary>
         /// Gets or sets the paragraph.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setParagraph(std::shared_ptr< aspose::words::cloud::models::Paragraph > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< aspose::words::cloud::models::Paragraph > getParagraph() const;
+
+        /// <summary>
+        /// Gets or sets the paragraph.
+        /// </summary>
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setParagraph(std::shared_ptr< aspose::words::cloud::models::Paragraph > value);
+
 
     protected:
         std::shared_ptr< aspose::words::cloud::models::Paragraph > m_Paragraph;

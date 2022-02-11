@@ -38,45 +38,50 @@ namespace aspose::words::cloud::models {
         ASPOSE_WORDS_CLOUD_EXPORT virtual void toJson(void* jsonIfc) const override;
         ASPOSE_WORDS_CLOUD_EXPORT virtual void fromJson(const void* jsonIfc) override;
 
-        /// <summary>
-        /// Gets or sets text alignment, possible values are left, right, center or justify.
-        /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getAlignment() const;
 
         /// <summary>
         /// Gets or sets text alignment, possible values are left, right, center or justify.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setAlignment(std::shared_ptr< std::wstring > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< std::wstring > getAlignment() const;
+
+        /// <summary>
+        /// Gets or sets text alignment, possible values are left, right, center or justify.
+        /// </summary>
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setAlignment(std::shared_ptr< std::wstring > value);
+
 
         /// <summary>
         /// Gets or sets the page number format, e.g. "{PAGE} of {NUMPAGES}".
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getFormat() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< std::wstring > getFormat() const;
 
         /// <summary>
         /// Gets or sets the page number format, e.g. "{PAGE} of {NUMPAGES}".
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setFormat(std::shared_ptr< std::wstring > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setFormat(std::shared_ptr< std::wstring > value);
+
 
         /// <summary>
         /// Gets or sets a value indicating whether if true the page number is added at the top of the page, else at the bottom.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< bool > getIsTop() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< bool > getIsTop() const;
 
         /// <summary>
         /// Gets or sets a value indicating whether if true the page number is added at the top of the page, else at the bottom.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setIsTop(std::shared_ptr< bool > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setIsTop(std::shared_ptr< bool > value);
+
 
         /// <summary>
         /// Gets or sets a value indicating whether if true the page number is added on first page too.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< bool > getSetPageNumberOnFirstPage() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< bool > getSetPageNumberOnFirstPage() const;
 
         /// <summary>
         /// Gets or sets a value indicating whether if true the page number is added on first page too.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setSetPageNumberOnFirstPage(std::shared_ptr< bool > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setSetPageNumberOnFirstPage(std::shared_ptr< bool > value);
+
 
     protected:
         std::shared_ptr< std::wstring > m_Alignment;

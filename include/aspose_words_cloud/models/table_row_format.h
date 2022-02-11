@@ -49,45 +49,50 @@ namespace aspose::words::cloud::models {
         ASPOSE_WORDS_CLOUD_EXPORT virtual void toJson(void* jsonIfc) const override;
         ASPOSE_WORDS_CLOUD_EXPORT virtual void fromJson(const void* jsonIfc) override;
 
-        /// <summary>
-        /// Gets or sets a value indicating whether the text in a table row is allowed to split across a page break.
-        /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< bool > getAllowBreakAcrossPages() const;
 
         /// <summary>
         /// Gets or sets a value indicating whether the text in a table row is allowed to split across a page break.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setAllowBreakAcrossPages(std::shared_ptr< bool > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< bool > getAllowBreakAcrossPages() const;
+
+        /// <summary>
+        /// Gets or sets a value indicating whether the text in a table row is allowed to split across a page break.
+        /// </summary>
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setAllowBreakAcrossPages(std::shared_ptr< bool > value);
+
 
         /// <summary>
         /// Gets or sets a value indicating whether the row is repeated as a table heading on every page when the table spans more than one page.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< bool > getHeadingFormat() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< bool > getHeadingFormat() const;
 
         /// <summary>
         /// Gets or sets a value indicating whether the row is repeated as a table heading on every page when the table spans more than one page.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setHeadingFormat(std::shared_ptr< bool > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setHeadingFormat(std::shared_ptr< bool > value);
+
 
         /// <summary>
         /// Gets or sets the height of the table row in points.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< double > getHeight() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< double > getHeight() const;
 
         /// <summary>
         /// Gets or sets the height of the table row in points.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setHeight(std::shared_ptr< double > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setHeight(std::shared_ptr< double > value);
+
 
         /// <summary>
         /// Gets or sets the rule for determining the height of the table row.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::TableRowFormat::HeightRule > getHeightRule() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< aspose::words::cloud::models::TableRowFormat::HeightRule > getHeightRule() const;
 
         /// <summary>
         /// Gets or sets the rule for determining the height of the table row.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setHeightRule(std::shared_ptr< aspose::words::cloud::models::TableRowFormat::HeightRule > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setHeightRule(std::shared_ptr< aspose::words::cloud::models::TableRowFormat::HeightRule > value);
+
 
     protected:
         std::shared_ptr< bool > m_AllowBreakAcrossPages;

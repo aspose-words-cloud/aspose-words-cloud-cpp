@@ -40,15 +40,17 @@ namespace aspose::words::cloud::models {
         ASPOSE_WORDS_CLOUD_EXPORT virtual void toJson(void* jsonIfc) const override;
         ASPOSE_WORDS_CLOUD_EXPORT virtual void fromJson(const void* jsonIfc) override;
 
-        /// <summary>
-        /// Gets or sets the collection of mail merge fields.
-        /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::FieldNames > getFieldNames() const;
 
         /// <summary>
         /// Gets or sets the collection of mail merge fields.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setFieldNames(std::shared_ptr< aspose::words::cloud::models::FieldNames > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< aspose::words::cloud::models::FieldNames > getFieldNames() const;
+
+        /// <summary>
+        /// Gets or sets the collection of mail merge fields.
+        /// </summary>
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setFieldNames(std::shared_ptr< aspose::words::cloud::models::FieldNames > value);
+
 
     protected:
         std::shared_ptr< aspose::words::cloud::models::FieldNames > m_FieldNames;

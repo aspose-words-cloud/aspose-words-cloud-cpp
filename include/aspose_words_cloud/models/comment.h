@@ -41,75 +41,83 @@ namespace aspose::words::cloud::models {
         ASPOSE_WORDS_CLOUD_EXPORT virtual void toJson(void* jsonIfc) const override;
         ASPOSE_WORDS_CLOUD_EXPORT virtual void fromJson(const void* jsonIfc) override;
 
-        /// <summary>
-        /// Gets or sets the author name for a comment.
-        /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getAuthor() const;
 
         /// <summary>
         /// Gets or sets the author name for a comment.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setAuthor(std::shared_ptr< std::wstring > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< std::wstring > getAuthor() const;
+
+        /// <summary>
+        /// Gets or sets the author name for a comment.
+        /// </summary>
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setAuthor(std::shared_ptr< std::wstring > value);
+
 
         /// <summary>
         /// Gets or sets the content of the comment.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::StoryChildNodes > getContent() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< aspose::words::cloud::models::StoryChildNodes > getContent() const;
 
         /// <summary>
         /// Gets or sets the content of the comment.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setContent(std::shared_ptr< aspose::words::cloud::models::StoryChildNodes > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setContent(std::shared_ptr< aspose::words::cloud::models::StoryChildNodes > value);
+
 
         /// <summary>
         /// Gets or sets the date and time that the comment was made.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getDateTime() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< std::wstring > getDateTime() const;
 
         /// <summary>
         /// Gets or sets the date and time that the comment was made.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setDateTime(std::shared_ptr< std::wstring > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setDateTime(std::shared_ptr< std::wstring > value);
+
 
         /// <summary>
         /// Gets or sets the initials of the user associated with a specific comment.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getInitial() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< std::wstring > getInitial() const;
 
         /// <summary>
         /// Gets or sets the initials of the user associated with a specific comment.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setInitial(std::shared_ptr< std::wstring > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setInitial(std::shared_ptr< std::wstring > value);
+
 
         /// <summary>
         /// Gets or sets the link to comment range end node.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::DocumentPosition > getRangeEnd() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< aspose::words::cloud::models::DocumentPosition > getRangeEnd() const;
 
         /// <summary>
         /// Gets or sets the link to comment range end node.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setRangeEnd(std::shared_ptr< aspose::words::cloud::models::DocumentPosition > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setRangeEnd(std::shared_ptr< aspose::words::cloud::models::DocumentPosition > value);
+
 
         /// <summary>
         /// Gets or sets the link to comment range start node.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::DocumentPosition > getRangeStart() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< aspose::words::cloud::models::DocumentPosition > getRangeStart() const;
 
         /// <summary>
         /// Gets or sets the link to comment range start node.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setRangeStart(std::shared_ptr< aspose::words::cloud::models::DocumentPosition > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setRangeStart(std::shared_ptr< aspose::words::cloud::models::DocumentPosition > value);
+
 
         /// <summary>
         /// Gets or sets text of the comment.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getText() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< std::wstring > getText() const;
 
         /// <summary>
         /// Gets or sets text of the comment.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setText(std::shared_ptr< std::wstring > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setText(std::shared_ptr< std::wstring > value);
+
 
     protected:
         std::shared_ptr< std::wstring > m_Author;

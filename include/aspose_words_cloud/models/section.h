@@ -40,55 +40,61 @@ namespace aspose::words::cloud::models {
         ASPOSE_WORDS_CLOUD_EXPORT virtual void toJson(void* jsonIfc) const override;
         ASPOSE_WORDS_CLOUD_EXPORT virtual void fromJson(const void* jsonIfc) override;
 
-        /// <summary>
-        /// Gets or sets the list of child nodes.
-        /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::vector<std::shared_ptr<aspose::words::cloud::models::NodeLink>> > getChildNodes() const;
 
         /// <summary>
         /// Gets or sets the list of child nodes.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setChildNodes(std::shared_ptr< std::vector<std::shared_ptr<aspose::words::cloud::models::NodeLink>> > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< std::vector<std::shared_ptr<aspose::words::cloud::models::NodeLink>> > getChildNodes() const;
+
+        /// <summary>
+        /// Gets or sets the list of child nodes.
+        /// </summary>
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setChildNodes(std::shared_ptr< std::vector<std::shared_ptr<aspose::words::cloud::models::NodeLink>> > value);
+
 
         /// <summary>
         /// Gets or sets the link to HeaderFooters resource.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::LinkElement > getHeaderFooters() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< aspose::words::cloud::models::LinkElement > getHeaderFooters() const;
 
         /// <summary>
         /// Gets or sets the link to HeaderFooters resource.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setHeaderFooters(std::shared_ptr< aspose::words::cloud::models::LinkElement > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setHeaderFooters(std::shared_ptr< aspose::words::cloud::models::LinkElement > value);
+
 
         /// <summary>
         /// Gets or sets the link to PageSetup resource.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::LinkElement > getPageSetup() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< aspose::words::cloud::models::LinkElement > getPageSetup() const;
 
         /// <summary>
         /// Gets or sets the link to PageSetup resource.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setPageSetup(std::shared_ptr< aspose::words::cloud::models::LinkElement > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setPageSetup(std::shared_ptr< aspose::words::cloud::models::LinkElement > value);
+
 
         /// <summary>
         /// Gets or sets the link to Paragraphs resource.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::LinkElement > getParagraphs() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< aspose::words::cloud::models::LinkElement > getParagraphs() const;
 
         /// <summary>
         /// Gets or sets the link to Paragraphs resource.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setParagraphs(std::shared_ptr< aspose::words::cloud::models::LinkElement > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setParagraphs(std::shared_ptr< aspose::words::cloud::models::LinkElement > value);
+
 
         /// <summary>
         /// Gets or sets the link to Tables resource.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::LinkElement > getTables() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< aspose::words::cloud::models::LinkElement > getTables() const;
 
         /// <summary>
         /// Gets or sets the link to Tables resource.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setTables(std::shared_ptr< aspose::words::cloud::models::LinkElement > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setTables(std::shared_ptr< aspose::words::cloud::models::LinkElement > value);
+
 
     protected:
         std::shared_ptr< std::vector<std::shared_ptr<aspose::words::cloud::models::NodeLink>> > m_ChildNodes;

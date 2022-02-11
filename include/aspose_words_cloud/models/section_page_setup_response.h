@@ -40,15 +40,17 @@ namespace aspose::words::cloud::models {
         ASPOSE_WORDS_CLOUD_EXPORT virtual void toJson(void* jsonIfc) const override;
         ASPOSE_WORDS_CLOUD_EXPORT virtual void fromJson(const void* jsonIfc) override;
 
-        /// <summary>
-        /// Gets or sets the page setup of a section.
-        /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::PageSetup > getPageSetup() const;
 
         /// <summary>
         /// Gets or sets the page setup of a section.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setPageSetup(std::shared_ptr< aspose::words::cloud::models::PageSetup > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< aspose::words::cloud::models::PageSetup > getPageSetup() const;
+
+        /// <summary>
+        /// Gets or sets the page setup of a section.
+        /// </summary>
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setPageSetup(std::shared_ptr< aspose::words::cloud::models::PageSetup > value);
+
 
     protected:
         std::shared_ptr< aspose::words::cloud::models::PageSetup > m_PageSetup;

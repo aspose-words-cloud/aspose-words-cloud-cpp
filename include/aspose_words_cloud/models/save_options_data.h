@@ -48,163 +48,176 @@ namespace aspose::words::cloud::models {
         ASPOSE_WORDS_CLOUD_EXPORT virtual void toJson(void* jsonIfc) const override;
         ASPOSE_WORDS_CLOUD_EXPORT virtual void fromJson(const void* jsonIfc) override;
 
-        /// <summary>
-        /// Gets or sets a boolean value indicating whether to allow embedding fonts with PostScript outlines when embedding TrueType fonts in a document upon it is saved. The default value is false..
-        /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< bool > getAllowEmbeddingPostScriptFonts() const;
+        virtual void abstractSaveOptionsData() = 0;
 
         /// <summary>
         /// Gets or sets a boolean value indicating whether to allow embedding fonts with PostScript outlines when embedding TrueType fonts in a document upon it is saved. The default value is false..
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setAllowEmbeddingPostScriptFonts(std::shared_ptr< bool > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< bool > getAllowEmbeddingPostScriptFonts() const;
+
+        /// <summary>
+        /// Gets or sets a boolean value indicating whether to allow embedding fonts with PostScript outlines when embedding TrueType fonts in a document upon it is saved. The default value is false..
+        /// </summary>
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setAllowEmbeddingPostScriptFonts(std::shared_ptr< bool > value);
+
 
         /// <summary>
         /// Gets or sets CustomTimeZoneInfo.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::TimeZoneInfoData > getCustomTimeZoneInfoData() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< aspose::words::cloud::models::TimeZoneInfoData > getCustomTimeZoneInfoData() const;
 
         /// <summary>
         /// Gets or sets CustomTimeZoneInfo.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setCustomTimeZoneInfoData(std::shared_ptr< aspose::words::cloud::models::TimeZoneInfoData > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setCustomTimeZoneInfoData(std::shared_ptr< aspose::words::cloud::models::TimeZoneInfoData > value);
+
 
         /// <summary>
         /// Gets or sets the value determining how 3D effects are rendered.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::SaveOptionsData::Dml3DEffectsRenderingMode > getDml3DEffectsRenderingMode() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< aspose::words::cloud::models::SaveOptionsData::Dml3DEffectsRenderingMode > getDml3DEffectsRenderingMode() const;
 
         /// <summary>
         /// Gets or sets the value determining how 3D effects are rendered.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setDml3DEffectsRenderingMode(std::shared_ptr< aspose::words::cloud::models::SaveOptionsData::Dml3DEffectsRenderingMode > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setDml3DEffectsRenderingMode(std::shared_ptr< aspose::words::cloud::models::SaveOptionsData::Dml3DEffectsRenderingMode > value);
+
 
         /// <summary>
         /// Gets or sets the value determining how DrawingML effects are rendered.
         /// { Simplified | None | Fine }.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getDmlEffectsRenderingMode() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< std::wstring > getDmlEffectsRenderingMode() const;
 
         /// <summary>
         /// Gets or sets the value determining how DrawingML effects are rendered.
         /// { Simplified | None | Fine }.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setDmlEffectsRenderingMode(std::shared_ptr< std::wstring > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setDmlEffectsRenderingMode(std::shared_ptr< std::wstring > value);
+
 
         /// <summary>
         /// Gets or sets the option that controls how DrawingML shapes are rendered.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getDmlRenderingMode() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< std::wstring > getDmlRenderingMode() const;
 
         /// <summary>
         /// Gets or sets the option that controls how DrawingML shapes are rendered.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setDmlRenderingMode(std::shared_ptr< std::wstring > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setDmlRenderingMode(std::shared_ptr< std::wstring > value);
+
 
         /// <summary>
         /// Gets or sets the name of destination file.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getFileName() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< std::wstring > getFileName() const;
 
         /// <summary>
         /// Gets or sets the name of destination file.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setFileName(std::shared_ptr< std::wstring > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setFileName(std::shared_ptr< std::wstring > value);
+
 
         /// <summary>
         /// Gets or sets value determining which document formats are allowed to be mapped by Aspose.Words.Markup.StructuredDocumentTag.XmlMapping.
         /// By default only Aspose.Words.LoadFormat.FlatOpc document format is allowed to be mapped.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< bool > getFlatOpcXmlMappingOnly() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< bool > getFlatOpcXmlMappingOnly() const;
 
         /// <summary>
         /// Gets or sets value determining which document formats are allowed to be mapped by Aspose.Words.Markup.StructuredDocumentTag.XmlMapping.
         /// By default only Aspose.Words.LoadFormat.FlatOpc document format is allowed to be mapped.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setFlatOpcXmlMappingOnly(std::shared_ptr< bool > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setFlatOpcXmlMappingOnly(std::shared_ptr< bool > value);
+
 
         /// <summary>
         /// Gets or sets the value determining how ink (InkML) objects are rendered.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getImlRenderingMode() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< std::wstring > getImlRenderingMode() const;
 
         /// <summary>
         /// Gets or sets the value determining how ink (InkML) objects are rendered.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setImlRenderingMode(std::shared_ptr< std::wstring > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setImlRenderingMode(std::shared_ptr< std::wstring > value);
+
 
         /// <summary>
-        /// Gets or sets the format of save.
+        /// Gets the format of save.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getSaveFormat() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< std::wstring > getSaveFormat() const;
 
-        /// <summary>
-        /// Gets or sets the format of save.
-        /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setSaveFormat(std::shared_ptr< std::wstring > value);
+
 
         /// <summary>
         /// Gets or sets a value determining whether the Aspose.Words.Properties.BuiltInDocumentProperties.CreatedTime property is updated before saving.
         /// Default value is false.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< bool > getUpdateCreatedTimeProperty() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< bool > getUpdateCreatedTimeProperty() const;
 
         /// <summary>
         /// Gets or sets a value determining whether the Aspose.Words.Properties.BuiltInDocumentProperties.CreatedTime property is updated before saving.
         /// Default value is false.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setUpdateCreatedTimeProperty(std::shared_ptr< bool > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setUpdateCreatedTimeProperty(std::shared_ptr< bool > value);
+
 
         /// <summary>
         /// Gets or sets a value indicating whether fields should be updated before saving the document to a fixed page format. The default value is true.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< bool > getUpdateFields() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< bool > getUpdateFields() const;
 
         /// <summary>
         /// Gets or sets a value indicating whether fields should be updated before saving the document to a fixed page format. The default value is true.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setUpdateFields(std::shared_ptr< bool > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setUpdateFields(std::shared_ptr< bool > value);
+
 
         /// <summary>
         /// Gets or sets a value indicating whether the Aspose.Words.Properties.BuiltInDocumentProperties.LastPrinted property is updated before saving.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< bool > getUpdateLastPrintedProperty() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< bool > getUpdateLastPrintedProperty() const;
 
         /// <summary>
         /// Gets or sets a value indicating whether the Aspose.Words.Properties.BuiltInDocumentProperties.LastPrinted property is updated before saving.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setUpdateLastPrintedProperty(std::shared_ptr< bool > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setUpdateLastPrintedProperty(std::shared_ptr< bool > value);
+
 
         /// <summary>
         /// Gets or sets a value indicating whether the Aspose.Words.Properties.BuiltInDocumentProperties.LastSavedTime property is updated before saving.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< bool > getUpdateLastSavedTimeProperty() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< bool > getUpdateLastSavedTimeProperty() const;
 
         /// <summary>
         /// Gets or sets a value indicating whether the Aspose.Words.Properties.BuiltInDocumentProperties.LastSavedTime property is updated before saving.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setUpdateLastSavedTimeProperty(std::shared_ptr< bool > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setUpdateLastSavedTimeProperty(std::shared_ptr< bool > value);
+
 
         /// <summary>
         /// Gets or sets a value indicating whether content of StructuredDocumentTag is updated before saving.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< bool > getUpdateSdtContent() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< bool > getUpdateSdtContent() const;
 
         /// <summary>
         /// Gets or sets a value indicating whether content of StructuredDocumentTag is updated before saving.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setUpdateSdtContent(std::shared_ptr< bool > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setUpdateSdtContent(std::shared_ptr< bool > value);
+
 
         /// <summary>
         /// Gets or sets a value indicating whether to zip output or not.
         /// The default value is false.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< bool > getZipOutput() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< bool > getZipOutput() const;
 
         /// <summary>
         /// Gets or sets a value indicating whether to zip output or not.
         /// The default value is false.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setZipOutput(std::shared_ptr< bool > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setZipOutput(std::shared_ptr< bool > value);
+
 
     protected:
         std::shared_ptr< bool > m_AllowEmbeddingPostScriptFonts;

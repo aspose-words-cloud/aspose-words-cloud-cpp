@@ -38,55 +38,61 @@ namespace aspose::words::cloud::models {
         ASPOSE_WORDS_CLOUD_EXPORT virtual void toJson(void* jsonIfc) const override;
         ASPOSE_WORDS_CLOUD_EXPORT virtual void fromJson(const void* jsonIfc) override;
 
-        /// <summary>
-        /// Gets or sets the certificate's filename using for signing.
-        /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getCertificateFilename() const;
 
         /// <summary>
         /// Gets or sets the certificate's filename using for signing.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setCertificateFilename(std::shared_ptr< std::wstring > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< std::wstring > getCertificateFilename() const;
+
+        /// <summary>
+        /// Gets or sets the certificate's filename using for signing.
+        /// </summary>
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setCertificateFilename(std::shared_ptr< std::wstring > value);
+
 
         /// <summary>
         /// Gets or sets the hash algorithm.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getHashAlgorithm() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< std::wstring > getHashAlgorithm() const;
 
         /// <summary>
         /// Gets or sets the hash algorithm.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setHashAlgorithm(std::shared_ptr< std::wstring > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setHashAlgorithm(std::shared_ptr< std::wstring > value);
+
 
         /// <summary>
         /// Gets or sets the location of the signing.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getLocation() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< std::wstring > getLocation() const;
 
         /// <summary>
         /// Gets or sets the location of the signing.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setLocation(std::shared_ptr< std::wstring > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setLocation(std::shared_ptr< std::wstring > value);
+
 
         /// <summary>
         /// Gets or sets the reason for the signing.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getReason() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< std::wstring > getReason() const;
 
         /// <summary>
         /// Gets or sets the reason for the signing.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setReason(std::shared_ptr< std::wstring > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setReason(std::shared_ptr< std::wstring > value);
+
 
         /// <summary>
         /// Gets or sets the date of the signing.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getSignatureDate() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< std::wstring > getSignatureDate() const;
 
         /// <summary>
         /// Gets or sets the date of the signing.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setSignatureDate(std::shared_ptr< std::wstring > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setSignatureDate(std::shared_ptr< std::wstring > value);
+
 
     protected:
         std::shared_ptr< std::wstring > m_CertificateFilename;

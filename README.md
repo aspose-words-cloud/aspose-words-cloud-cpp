@@ -17,6 +17,13 @@ Feel free to explore the [Developer's Guide](https://docs.aspose.cloud/display/w
 - Read & write access to Document Object Model.
 - Thread safe
 
+## Enhancements in Version 22.2
+
+- Made 'SaveOprionsData.SaveFormat' property readonly with default value.
+- Added subclasses for all formats of SaveOprionsData with specified SaveFormat.
+- 'SaveOptionsData', 'FixedPageSaveOptionsData', 'ImageSaveOptionsData', 'OoxmlSaveOptionsData', 'TxtSaveOptionsBaseData' classes now is abstract.
+
+
 ## Enhancements in Version 22.1
 
 - Added 'FieldOptions.FieldUpdateCultureName' to set Culture for fields

@@ -40,50 +40,65 @@ namespace aspose::words::cloud::models {
         ASPOSE_WORDS_CLOUD_EXPORT virtual void toJson(void* jsonIfc) const override;
         ASPOSE_WORDS_CLOUD_EXPORT virtual void fromJson(const void* jsonIfc) override;
 
-        /// <summary>
-        /// Gets or sets the level in the XPS document outline at which to display Word bookmarks.
-        /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< int32_t > getBookmarksOutlineLevel() const;
+        void abstractFixedPageSaveOptionsData() override {}
+        void abstractSaveOptionsData() override {}
 
         /// <summary>
         /// Gets or sets the level in the XPS document outline at which to display Word bookmarks.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setBookmarksOutlineLevel(std::shared_ptr< int32_t > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< int32_t > getBookmarksOutlineLevel() const;
+
+        /// <summary>
+        /// Gets or sets the level in the XPS document outline at which to display Word bookmarks.
+        /// </summary>
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setBookmarksOutlineLevel(std::shared_ptr< int32_t > value);
+
 
         /// <summary>
         /// Gets or sets the number of heading levels (paragraphs formatted with the Heading styles) to include in the XPS document outline.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< int32_t > getHeadingsOutlineLevels() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< int32_t > getHeadingsOutlineLevels() const;
 
         /// <summary>
         /// Gets or sets the number of heading levels (paragraphs formatted with the Heading styles) to include in the XPS document outline.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setHeadingsOutlineLevels(std::shared_ptr< int32_t > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setHeadingsOutlineLevels(std::shared_ptr< int32_t > value);
+
 
         /// <summary>
         /// Gets or sets the outline options.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::OutlineOptionsData > getOutlineOptions() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< aspose::words::cloud::models::OutlineOptionsData > getOutlineOptions() const;
 
         /// <summary>
         /// Gets or sets the outline options.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setOutlineOptions(std::shared_ptr< aspose::words::cloud::models::OutlineOptionsData > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setOutlineOptions(std::shared_ptr< aspose::words::cloud::models::OutlineOptionsData > value);
+
+
+        /// <summary>
+        /// Gets the format of save.
+        /// </summary>
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< std::wstring > getSaveFormat() const override;
+
+
 
         /// <summary>
         /// Gets or sets a value indicating whether the document should be saved using a booklet printing layout.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< bool > getUseBookFoldPrintingSettings() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< bool > getUseBookFoldPrintingSettings() const;
 
         /// <summary>
         /// Gets or sets a value indicating whether the document should be saved using a booklet printing layout.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setUseBookFoldPrintingSettings(std::shared_ptr< bool > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setUseBookFoldPrintingSettings(std::shared_ptr< bool > value);
+
 
     protected:
         std::shared_ptr< int32_t > m_BookmarksOutlineLevel;
         std::shared_ptr< int32_t > m_HeadingsOutlineLevels;
         std::shared_ptr< aspose::words::cloud::models::OutlineOptionsData > m_OutlineOptions;
+        std::shared_ptr< std::wstring > m_SaveFormat = std::make_shared<std::wstring>(L"xps");
         std::shared_ptr< bool > m_UseBookFoldPrintingSettings;
     };
 }

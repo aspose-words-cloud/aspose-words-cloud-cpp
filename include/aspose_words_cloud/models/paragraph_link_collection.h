@@ -40,15 +40,17 @@ namespace aspose::words::cloud::models {
         ASPOSE_WORDS_CLOUD_EXPORT virtual void toJson(void* jsonIfc) const override;
         ASPOSE_WORDS_CLOUD_EXPORT virtual void fromJson(const void* jsonIfc) override;
 
-        /// <summary>
-        /// Gets or sets the collection of paragraph's links.
-        /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::vector<std::shared_ptr<aspose::words::cloud::models::ParagraphLink>> > getParagraphLinkList() const;
 
         /// <summary>
         /// Gets or sets the collection of paragraph's links.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setParagraphLinkList(std::shared_ptr< std::vector<std::shared_ptr<aspose::words::cloud::models::ParagraphLink>> > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< std::vector<std::shared_ptr<aspose::words::cloud::models::ParagraphLink>> > getParagraphLinkList() const;
+
+        /// <summary>
+        /// Gets or sets the collection of paragraph's links.
+        /// </summary>
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setParagraphLinkList(std::shared_ptr< std::vector<std::shared_ptr<aspose::words::cloud::models::ParagraphLink>> > value);
+
 
     protected:
         std::shared_ptr< std::vector<std::shared_ptr<aspose::words::cloud::models::ParagraphLink>> > m_ParagraphLinkList;

@@ -40,15 +40,17 @@ namespace aspose::words::cloud::models {
         ASPOSE_WORDS_CLOUD_EXPORT virtual void toJson(void* jsonIfc) const override;
         ASPOSE_WORDS_CLOUD_EXPORT virtual void fromJson(const void* jsonIfc) override;
 
-        /// <summary>
-        /// Gets or sets the collection of section's links.
-        /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::vector<std::shared_ptr<aspose::words::cloud::models::SectionLink>> > getSectionLinkList() const;
 
         /// <summary>
         /// Gets or sets the collection of section's links.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setSectionLinkList(std::shared_ptr< std::vector<std::shared_ptr<aspose::words::cloud::models::SectionLink>> > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< std::vector<std::shared_ptr<aspose::words::cloud::models::SectionLink>> > getSectionLinkList() const;
+
+        /// <summary>
+        /// Gets or sets the collection of section's links.
+        /// </summary>
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setSectionLinkList(std::shared_ptr< std::vector<std::shared_ptr<aspose::words::cloud::models::SectionLink>> > value);
+
 
     protected:
         std::shared_ptr< std::vector<std::shared_ptr<aspose::words::cloud::models::SectionLink>> > m_SectionLinkList;

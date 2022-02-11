@@ -50,49 +50,56 @@ namespace aspose::words::cloud::models {
         ASPOSE_WORDS_CLOUD_EXPORT virtual void toJson(void* jsonIfc) const override;
         ASPOSE_WORDS_CLOUD_EXPORT virtual void fromJson(const void* jsonIfc) override;
 
-        /// <summary>
-        /// Gets or sets the character encoding to use when exporting in plain text format.
-        /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getEncoding() const;
+        virtual void abstractTxtSaveOptionsBaseData() = 0;
+        void abstractSaveOptionsData() override {}
 
         /// <summary>
         /// Gets or sets the character encoding to use when exporting in plain text format.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setEncoding(std::shared_ptr< std::wstring > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< std::wstring > getEncoding() const;
+
+        /// <summary>
+        /// Gets or sets the character encoding to use when exporting in plain text format.
+        /// </summary>
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setEncoding(std::shared_ptr< std::wstring > value);
+
 
         /// <summary>
         /// Gets or sets the option that controls whether to output headers and footers when exporting in plain text format.
         /// default value is TxtExportHeadersFootersMode.PrimaryOnly.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::TxtSaveOptionsBaseData::ExportHeadersFootersMode > getExportHeadersFootersMode() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< aspose::words::cloud::models::TxtSaveOptionsBaseData::ExportHeadersFootersMode > getExportHeadersFootersMode() const;
 
         /// <summary>
         /// Gets or sets the option that controls whether to output headers and footers when exporting in plain text format.
         /// default value is TxtExportHeadersFootersMode.PrimaryOnly.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setExportHeadersFootersMode(std::shared_ptr< aspose::words::cloud::models::TxtSaveOptionsBaseData::ExportHeadersFootersMode > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setExportHeadersFootersMode(std::shared_ptr< aspose::words::cloud::models::TxtSaveOptionsBaseData::ExportHeadersFootersMode > value);
+
 
         /// <summary>
         /// Gets or sets a value indicating whether the page breaks should be preserved during export.
         /// The default value is false.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< bool > getForcePageBreaks() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< bool > getForcePageBreaks() const;
 
         /// <summary>
         /// Gets or sets a value indicating whether the page breaks should be preserved during export.
         /// The default value is false.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setForcePageBreaks(std::shared_ptr< bool > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setForcePageBreaks(std::shared_ptr< bool > value);
+
 
         /// <summary>
         /// Gets or sets the string to use as a paragraph break when exporting in plain text format.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getParagraphBreak() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< std::wstring > getParagraphBreak() const;
 
         /// <summary>
         /// Gets or sets the string to use as a paragraph break when exporting in plain text format.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setParagraphBreak(std::shared_ptr< std::wstring > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setParagraphBreak(std::shared_ptr< std::wstring > value);
+
 
     protected:
         std::shared_ptr< std::wstring > m_Encoding;

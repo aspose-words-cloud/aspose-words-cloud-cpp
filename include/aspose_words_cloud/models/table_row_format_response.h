@@ -40,15 +40,17 @@ namespace aspose::words::cloud::models {
         ASPOSE_WORDS_CLOUD_EXPORT virtual void toJson(void* jsonIfc) const override;
         ASPOSE_WORDS_CLOUD_EXPORT virtual void fromJson(const void* jsonIfc) override;
 
-        /// <summary>
-        /// Gets or sets the formatting properties of a table row.
-        /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::TableRowFormat > getRowFormat() const;
 
         /// <summary>
         /// Gets or sets the formatting properties of a table row.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setRowFormat(std::shared_ptr< aspose::words::cloud::models::TableRowFormat > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< aspose::words::cloud::models::TableRowFormat > getRowFormat() const;
+
+        /// <summary>
+        /// Gets or sets the formatting properties of a table row.
+        /// </summary>
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setRowFormat(std::shared_ptr< aspose::words::cloud::models::TableRowFormat > value);
+
 
     protected:
         std::shared_ptr< aspose::words::cloud::models::TableRowFormat > m_RowFormat;

@@ -52,45 +52,50 @@ namespace aspose::words::cloud::models {
         ASPOSE_WORDS_CLOUD_EXPORT virtual void toJson(void* jsonIfc) const override;
         ASPOSE_WORDS_CLOUD_EXPORT virtual void fromJson(const void* jsonIfc) override;
 
-        /// <summary>
-        /// Gets or sets the maximum length for the text field. Zero when the length is not limited.
-        /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< int32_t > getMaxLength() const;
 
         /// <summary>
         /// Gets or sets the maximum length for the text field. Zero when the length is not limited.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setMaxLength(std::shared_ptr< int32_t > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< int32_t > getMaxLength() const;
+
+        /// <summary>
+        /// Gets or sets the maximum length for the text field. Zero when the length is not limited.
+        /// </summary>
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setMaxLength(std::shared_ptr< int32_t > value);
+
 
         /// <summary>
         /// Gets or sets the default string or a calculation expression of the text form field.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getTextInputDefault() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< std::wstring > getTextInputDefault() const;
 
         /// <summary>
         /// Gets or sets the default string or a calculation expression of the text form field.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setTextInputDefault(std::shared_ptr< std::wstring > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setTextInputDefault(std::shared_ptr< std::wstring > value);
+
 
         /// <summary>
         /// Gets or sets text formatting for the text form field.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getTextInputFormat() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< std::wstring > getTextInputFormat() const;
 
         /// <summary>
         /// Gets or sets text formatting for the text form field.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setTextInputFormat(std::shared_ptr< std::wstring > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setTextInputFormat(std::shared_ptr< std::wstring > value);
+
 
         /// <summary>
         /// Gets or sets the type of the text form field.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::FormFieldTextInput::TextInputType > getTextInputType() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< aspose::words::cloud::models::FormFieldTextInput::TextInputType > getTextInputType() const;
 
         /// <summary>
         /// Gets or sets the type of the text form field.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setTextInputType(std::shared_ptr< aspose::words::cloud::models::FormFieldTextInput::TextInputType > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setTextInputType(std::shared_ptr< aspose::words::cloud::models::FormFieldTextInput::TextInputType > value);
+
 
     protected:
         std::shared_ptr< int32_t > m_MaxLength;

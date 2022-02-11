@@ -40,35 +40,39 @@ namespace aspose::words::cloud::models {
         ASPOSE_WORDS_CLOUD_EXPORT virtual void toJson(void* jsonIfc) const override;
         ASPOSE_WORDS_CLOUD_EXPORT virtual void fromJson(const void* jsonIfc) override;
 
-        /// <summary>
-        /// Gets or sets the best class name.
-        /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getBestClassName() const;
 
         /// <summary>
         /// Gets or sets the best class name.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setBestClassName(std::shared_ptr< std::wstring > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< std::wstring > getBestClassName() const;
+
+        /// <summary>
+        /// Gets or sets the best class name.
+        /// </summary>
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setBestClassName(std::shared_ptr< std::wstring > value);
+
 
         /// <summary>
         /// Gets or sets the best class probability.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< double > getBestClassProbability() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< double > getBestClassProbability() const;
 
         /// <summary>
         /// Gets or sets the best class probability.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setBestClassProbability(std::shared_ptr< double > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setBestClassProbability(std::shared_ptr< double > value);
+
 
         /// <summary>
         /// Gets or sets the array of best classes results.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::vector<std::shared_ptr<aspose::words::cloud::models::ClassificationResult>> > getBestResults() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< std::vector<std::shared_ptr<aspose::words::cloud::models::ClassificationResult>> > getBestResults() const;
 
         /// <summary>
         /// Gets or sets the array of best classes results.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setBestResults(std::shared_ptr< std::vector<std::shared_ptr<aspose::words::cloud::models::ClassificationResult>> > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setBestResults(std::shared_ptr< std::vector<std::shared_ptr<aspose::words::cloud::models::ClassificationResult>> > value);
+
 
     protected:
         std::shared_ptr< std::wstring > m_BestClassName;

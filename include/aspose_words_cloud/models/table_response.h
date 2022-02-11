@@ -40,15 +40,17 @@ namespace aspose::words::cloud::models {
         ASPOSE_WORDS_CLOUD_EXPORT virtual void toJson(void* jsonIfc) const override;
         ASPOSE_WORDS_CLOUD_EXPORT virtual void fromJson(const void* jsonIfc) override;
 
-        /// <summary>
-        /// Gets or sets the table.
-        /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::Table > getTable() const;
 
         /// <summary>
         /// Gets or sets the table.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setTable(std::shared_ptr< aspose::words::cloud::models::Table > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< aspose::words::cloud::models::Table > getTable() const;
+
+        /// <summary>
+        /// Gets or sets the table.
+        /// </summary>
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setTable(std::shared_ptr< aspose::words::cloud::models::Table > value);
+
 
     protected:
         std::shared_ptr< aspose::words::cloud::models::Table > m_Table;

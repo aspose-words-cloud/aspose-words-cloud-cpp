@@ -39,18 +39,29 @@ namespace aspose::words::cloud::models {
         ASPOSE_WORDS_CLOUD_EXPORT virtual void toJson(void* jsonIfc) const override;
         ASPOSE_WORDS_CLOUD_EXPORT virtual void fromJson(const void* jsonIfc) override;
 
-        /// <summary>
-        /// Gets or sets a value indicating whether to use pretty formats output.
-        /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< bool > getPrettyFormat() const;
+        void abstractSaveOptionsData() override {}
 
         /// <summary>
         /// Gets or sets a value indicating whether to use pretty formats output.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setPrettyFormat(std::shared_ptr< bool > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< bool > getPrettyFormat() const;
+
+        /// <summary>
+        /// Gets or sets a value indicating whether to use pretty formats output.
+        /// </summary>
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setPrettyFormat(std::shared_ptr< bool > value);
+
+
+        /// <summary>
+        /// Gets the format of save.
+        /// </summary>
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< std::wstring > getSaveFormat() const override;
+
+
 
     protected:
         std::shared_ptr< bool > m_PrettyFormat;
+        std::shared_ptr< std::wstring > m_SaveFormat = std::make_shared<std::wstring>(L"wml");
     };
 }
 

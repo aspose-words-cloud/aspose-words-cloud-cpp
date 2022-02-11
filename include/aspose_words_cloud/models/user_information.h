@@ -38,35 +38,39 @@ namespace aspose::words::cloud::models {
         ASPOSE_WORDS_CLOUD_EXPORT virtual void toJson(void* jsonIfc) const override;
         ASPOSE_WORDS_CLOUD_EXPORT virtual void fromJson(const void* jsonIfc) override;
 
-        /// <summary>
-        /// Gets or sets user address.
-        /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getAddress() const;
 
         /// <summary>
         /// Gets or sets user address.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setAddress(std::shared_ptr< std::wstring > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< std::wstring > getAddress() const;
+
+        /// <summary>
+        /// Gets or sets user address.
+        /// </summary>
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setAddress(std::shared_ptr< std::wstring > value);
+
 
         /// <summary>
         /// Gets or sets user initials.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getInitials() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< std::wstring > getInitials() const;
 
         /// <summary>
         /// Gets or sets user initials.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setInitials(std::shared_ptr< std::wstring > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setInitials(std::shared_ptr< std::wstring > value);
+
 
         /// <summary>
         /// Gets or sets user name.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getName() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< std::wstring > getName() const;
 
         /// <summary>
         /// Gets or sets user name.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setName(std::shared_ptr< std::wstring > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setName(std::shared_ptr< std::wstring > value);
+
 
     protected:
         std::shared_ptr< std::wstring > m_Address;

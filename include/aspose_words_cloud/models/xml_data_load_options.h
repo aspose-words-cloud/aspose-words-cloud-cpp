@@ -38,19 +38,21 @@ namespace aspose::words::cloud::models {
         ASPOSE_WORDS_CLOUD_EXPORT virtual void toJson(void* jsonIfc) const override;
         ASPOSE_WORDS_CLOUD_EXPORT virtual void fromJson(const void* jsonIfc) override;
 
-        /// <summary>
-        /// Gets or sets a flag indicating whether a generated data source will always contain an object for an XML root
-        /// element. If an XML root element has no attributes and all its child elements have same names, such an object
-        /// is not created by default.
-        /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< bool > getAlwaysGenerateRootObject() const;
 
         /// <summary>
         /// Gets or sets a flag indicating whether a generated data source will always contain an object for an XML root
         /// element. If an XML root element has no attributes and all its child elements have same names, such an object
         /// is not created by default.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setAlwaysGenerateRootObject(std::shared_ptr< bool > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< bool > getAlwaysGenerateRootObject() const;
+
+        /// <summary>
+        /// Gets or sets a flag indicating whether a generated data source will always contain an object for an XML root
+        /// element. If an XML root element has no attributes and all its child elements have same names, such an object
+        /// is not created by default.
+        /// </summary>
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setAlwaysGenerateRootObject(std::shared_ptr< bool > value);
+
 
     protected:
         std::shared_ptr< bool > m_AlwaysGenerateRootObject;

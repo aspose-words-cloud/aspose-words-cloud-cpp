@@ -40,15 +40,17 @@ namespace aspose::words::cloud::models {
         ASPOSE_WORDS_CLOUD_EXPORT virtual void toJson(void* jsonIfc) const override;
         ASPOSE_WORDS_CLOUD_EXPORT virtual void fromJson(const void* jsonIfc) override;
 
-        /// <summary>
-        /// Gets or sets the array of tab stops.
-        /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::vector<std::shared_ptr<aspose::words::cloud::models::TabStop>> > getTabStops() const;
 
         /// <summary>
         /// Gets or sets the array of tab stops.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setTabStops(std::shared_ptr< std::vector<std::shared_ptr<aspose::words::cloud::models::TabStop>> > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< std::vector<std::shared_ptr<aspose::words::cloud::models::TabStop>> > getTabStops() const;
+
+        /// <summary>
+        /// Gets or sets the array of tab stops.
+        /// </summary>
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setTabStops(std::shared_ptr< std::vector<std::shared_ptr<aspose::words::cloud::models::TabStop>> > value);
+
 
     protected:
         std::shared_ptr< std::vector<std::shared_ptr<aspose::words::cloud::models::TabStop>> > m_TabStops;

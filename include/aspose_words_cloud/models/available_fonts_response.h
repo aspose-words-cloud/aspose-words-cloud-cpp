@@ -40,35 +40,39 @@ namespace aspose::words::cloud::models {
         ASPOSE_WORDS_CLOUD_EXPORT virtual void toJson(void* jsonIfc) const override;
         ASPOSE_WORDS_CLOUD_EXPORT virtual void fromJson(const void* jsonIfc) override;
 
-        /// <summary>
-        /// Gets or sets the list of additional fonts, provided by Aspose team.
-        /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::vector<std::shared_ptr<aspose::words::cloud::models::FontInfo>> > getAdditionalFonts() const;
 
         /// <summary>
         /// Gets or sets the list of additional fonts, provided by Aspose team.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setAdditionalFonts(std::shared_ptr< std::vector<std::shared_ptr<aspose::words::cloud::models::FontInfo>> > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< std::vector<std::shared_ptr<aspose::words::cloud::models::FontInfo>> > getAdditionalFonts() const;
+
+        /// <summary>
+        /// Gets or sets the list of additional fonts, provided by Aspose team.
+        /// </summary>
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setAdditionalFonts(std::shared_ptr< std::vector<std::shared_ptr<aspose::words::cloud::models::FontInfo>> > value);
+
 
         /// <summary>
         /// Gets or sets the list of custom user fonts from user cloud storage. To use them, you should specify "fontsLocation" parameter in any request.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::vector<std::shared_ptr<aspose::words::cloud::models::FontInfo>> > getCustomFonts() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< std::vector<std::shared_ptr<aspose::words::cloud::models::FontInfo>> > getCustomFonts() const;
 
         /// <summary>
         /// Gets or sets the list of custom user fonts from user cloud storage. To use them, you should specify "fontsLocation" parameter in any request.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setCustomFonts(std::shared_ptr< std::vector<std::shared_ptr<aspose::words::cloud::models::FontInfo>> > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setCustomFonts(std::shared_ptr< std::vector<std::shared_ptr<aspose::words::cloud::models::FontInfo>> > value);
+
 
         /// <summary>
         /// Gets or sets the list of system fonts, available on the server.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::vector<std::shared_ptr<aspose::words::cloud::models::FontInfo>> > getSystemFonts() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< std::vector<std::shared_ptr<aspose::words::cloud::models::FontInfo>> > getSystemFonts() const;
 
         /// <summary>
         /// Gets or sets the list of system fonts, available on the server.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setSystemFonts(std::shared_ptr< std::vector<std::shared_ptr<aspose::words::cloud::models::FontInfo>> > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setSystemFonts(std::shared_ptr< std::vector<std::shared_ptr<aspose::words::cloud::models::FontInfo>> > value);
+
 
     protected:
         std::shared_ptr< std::vector<std::shared_ptr<aspose::words::cloud::models::FontInfo>> > m_AdditionalFonts;

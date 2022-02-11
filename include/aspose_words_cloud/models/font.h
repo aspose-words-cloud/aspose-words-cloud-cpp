@@ -465,407 +465,448 @@ namespace aspose::words::cloud::models {
         ASPOSE_WORDS_CLOUD_EXPORT virtual void toJson(void* jsonIfc) const override;
         ASPOSE_WORDS_CLOUD_EXPORT virtual void fromJson(const void* jsonIfc) override;
 
-        /// <summary>
-        /// Gets or sets a value indicating whether the font is formatted as all capital letters.
-        /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< bool > getAllCaps() const;
 
         /// <summary>
         /// Gets or sets a value indicating whether the font is formatted as all capital letters.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setAllCaps(std::shared_ptr< bool > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< bool > getAllCaps() const;
+
+        /// <summary>
+        /// Gets or sets a value indicating whether the font is formatted as all capital letters.
+        /// </summary>
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setAllCaps(std::shared_ptr< bool > value);
+
 
         /// <summary>
         /// Gets or sets a value indicating whether the contents of this run shall have right-to-left characteristics.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< bool > getBidi() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< bool > getBidi() const;
 
         /// <summary>
         /// Gets or sets a value indicating whether the contents of this run shall have right-to-left characteristics.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setBidi(std::shared_ptr< bool > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setBidi(std::shared_ptr< bool > value);
+
 
         /// <summary>
         /// Gets or sets a value indicating whether the font is formatted as bold.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< bool > getBold() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< bool > getBold() const;
 
         /// <summary>
         /// Gets or sets a value indicating whether the font is formatted as bold.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setBold(std::shared_ptr< bool > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setBold(std::shared_ptr< bool > value);
+
 
         /// <summary>
         /// Gets or sets a value indicating whether the right-to-left text is formatted as bold.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< bool > getBoldBi() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< bool > getBoldBi() const;
 
         /// <summary>
         /// Gets or sets a value indicating whether the right-to-left text is formatted as bold.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setBoldBi(std::shared_ptr< bool > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setBoldBi(std::shared_ptr< bool > value);
+
 
         /// <summary>
         /// Gets or sets the border object, that specifies border for the font.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::Border > getBorder() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< aspose::words::cloud::models::Border > getBorder() const;
 
         /// <summary>
         /// Gets or sets the border object, that specifies border for the font.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setBorder(std::shared_ptr< aspose::words::cloud::models::Border > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setBorder(std::shared_ptr< aspose::words::cloud::models::Border > value);
+
 
         /// <summary>
         /// Gets or sets the color of the font.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::XmlColor > getColor() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< aspose::words::cloud::models::XmlColor > getColor() const;
 
         /// <summary>
         /// Gets or sets the color of the font.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setColor(std::shared_ptr< aspose::words::cloud::models::XmlColor > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setColor(std::shared_ptr< aspose::words::cloud::models::XmlColor > value);
+
 
         /// <summary>
         /// Gets or sets a value indicating whether the contents of this run shall be treated as complex script text regardless of their Unicode character values when determining the formatting for this run.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< bool > getComplexScript() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< bool > getComplexScript() const;
 
         /// <summary>
         /// Gets or sets a value indicating whether the contents of this run shall be treated as complex script text regardless of their Unicode character values when determining the formatting for this run.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setComplexScript(std::shared_ptr< bool > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setComplexScript(std::shared_ptr< bool > value);
+
 
         /// <summary>
         /// Gets or sets a value indicating whether the font is formatted as double strikethrough text.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< bool > getDoubleStrikeThrough() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< bool > getDoubleStrikeThrough() const;
 
         /// <summary>
         /// Gets or sets a value indicating whether the font is formatted as double strikethrough text.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setDoubleStrikeThrough(std::shared_ptr< bool > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setDoubleStrikeThrough(std::shared_ptr< bool > value);
+
 
         /// <summary>
         /// Gets or sets a value indicating whether the font is formatted as embossed.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< bool > getEmboss() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< bool > getEmboss() const;
 
         /// <summary>
         /// Gets or sets a value indicating whether the font is formatted as embossed.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setEmboss(std::shared_ptr< bool > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setEmboss(std::shared_ptr< bool > value);
+
 
         /// <summary>
         /// Gets or sets a value indicating whether the font is formatted as engraved.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< bool > getEngrave() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< bool > getEngrave() const;
 
         /// <summary>
         /// Gets or sets a value indicating whether the font is formatted as engraved.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setEngrave(std::shared_ptr< bool > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setEngrave(std::shared_ptr< bool > value);
+
 
         /// <summary>
         /// Gets or sets a value indicating whether the font is formatted as hidden text.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< bool > getHidden() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< bool > getHidden() const;
 
         /// <summary>
         /// Gets or sets a value indicating whether the font is formatted as hidden text.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setHidden(std::shared_ptr< bool > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setHidden(std::shared_ptr< bool > value);
+
 
         /// <summary>
         /// Gets or sets the highlight (marker) color.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::XmlColor > getHighlightColor() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< aspose::words::cloud::models::XmlColor > getHighlightColor() const;
 
         /// <summary>
         /// Gets or sets the highlight (marker) color.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setHighlightColor(std::shared_ptr< aspose::words::cloud::models::XmlColor > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setHighlightColor(std::shared_ptr< aspose::words::cloud::models::XmlColor > value);
+
 
         /// <summary>
         /// Gets or sets a value indicating whether the font is formatted as italic.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< bool > getItalic() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< bool > getItalic() const;
 
         /// <summary>
         /// Gets or sets a value indicating whether the font is formatted as italic.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setItalic(std::shared_ptr< bool > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setItalic(std::shared_ptr< bool > value);
+
 
         /// <summary>
         /// Gets or sets a value indicating whether the right-to-left text is formatted as italic.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< bool > getItalicBi() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< bool > getItalicBi() const;
 
         /// <summary>
         /// Gets or sets a value indicating whether the right-to-left text is formatted as italic.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setItalicBi(std::shared_ptr< bool > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setItalicBi(std::shared_ptr< bool > value);
+
 
         /// <summary>
         /// Gets or sets the font size at which kerning starts.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< double > getKerning() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< double > getKerning() const;
 
         /// <summary>
         /// Gets or sets the font size at which kerning starts.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setKerning(std::shared_ptr< double > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setKerning(std::shared_ptr< double > value);
+
 
         /// <summary>
         /// Gets or sets the locale identifier (language) of the formatted characters.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< int32_t > getLocaleId() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< int32_t > getLocaleId() const;
 
         /// <summary>
         /// Gets or sets the locale identifier (language) of the formatted characters.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setLocaleId(std::shared_ptr< int32_t > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setLocaleId(std::shared_ptr< int32_t > value);
+
 
         /// <summary>
         /// Gets or sets the locale identifier (language) of the formatted right-to-left characters.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< int32_t > getLocaleIdBi() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< int32_t > getLocaleIdBi() const;
 
         /// <summary>
         /// Gets or sets the locale identifier (language) of the formatted right-to-left characters.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setLocaleIdBi(std::shared_ptr< int32_t > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setLocaleIdBi(std::shared_ptr< int32_t > value);
+
 
         /// <summary>
         /// Gets or sets the locale identifier (language) of the formatted Asian characters.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< int32_t > getLocaleIdFarEast() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< int32_t > getLocaleIdFarEast() const;
 
         /// <summary>
         /// Gets or sets the locale identifier (language) of the formatted Asian characters.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setLocaleIdFarEast(std::shared_ptr< int32_t > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setLocaleIdFarEast(std::shared_ptr< int32_t > value);
+
 
         /// <summary>
         /// Gets or sets the name of the font.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getName() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< std::wstring > getName() const;
 
         /// <summary>
         /// Gets or sets the name of the font.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setName(std::shared_ptr< std::wstring > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setName(std::shared_ptr< std::wstring > value);
+
 
         /// <summary>
         /// Gets or sets the font used for Latin text (characters with character codes from 0 (zero) through 127).
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getNameAscii() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< std::wstring > getNameAscii() const;
 
         /// <summary>
         /// Gets or sets the font used for Latin text (characters with character codes from 0 (zero) through 127).
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setNameAscii(std::shared_ptr< std::wstring > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setNameAscii(std::shared_ptr< std::wstring > value);
+
 
         /// <summary>
         /// Gets or sets the name of the font in a right-to-left language document.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getNameBi() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< std::wstring > getNameBi() const;
 
         /// <summary>
         /// Gets or sets the name of the font in a right-to-left language document.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setNameBi(std::shared_ptr< std::wstring > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setNameBi(std::shared_ptr< std::wstring > value);
+
 
         /// <summary>
         /// Gets or sets the East Asian font name.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getNameFarEast() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< std::wstring > getNameFarEast() const;
 
         /// <summary>
         /// Gets or sets the East Asian font name.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setNameFarEast(std::shared_ptr< std::wstring > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setNameFarEast(std::shared_ptr< std::wstring > value);
+
 
         /// <summary>
         /// Gets or sets the font used for characters with character codes from 128 through 255.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getNameOther() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< std::wstring > getNameOther() const;
 
         /// <summary>
         /// Gets or sets the font used for characters with character codes from 128 through 255.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setNameOther(std::shared_ptr< std::wstring > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setNameOther(std::shared_ptr< std::wstring > value);
+
 
         /// <summary>
         /// Gets or sets a value indicating whether the formatted characters are not to be spell checked.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< bool > getNoProofing() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< bool > getNoProofing() const;
 
         /// <summary>
         /// Gets or sets a value indicating whether the formatted characters are not to be spell checked.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setNoProofing(std::shared_ptr< bool > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setNoProofing(std::shared_ptr< bool > value);
+
 
         /// <summary>
         /// Gets or sets a value indicating whether the font is formatted as outline.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< bool > getOutline() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< bool > getOutline() const;
 
         /// <summary>
         /// Gets or sets a value indicating whether the font is formatted as outline.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setOutline(std::shared_ptr< bool > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setOutline(std::shared_ptr< bool > value);
+
 
         /// <summary>
         /// Gets or sets the position of text (in points) relative to the base line.
         /// A positive number raises the text, and a negative number lowers it.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< double > getPosition() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< double > getPosition() const;
 
         /// <summary>
         /// Gets or sets the position of text (in points) relative to the base line.
         /// A positive number raises the text, and a negative number lowers it.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setPosition(std::shared_ptr< double > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setPosition(std::shared_ptr< double > value);
+
 
         /// <summary>
         /// Gets or sets character width scaling in percent.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< int32_t > getScaling() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< int32_t > getScaling() const;
 
         /// <summary>
         /// Gets or sets character width scaling in percent.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setScaling(std::shared_ptr< int32_t > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setScaling(std::shared_ptr< int32_t > value);
+
 
         /// <summary>
         /// Gets or sets a value indicating whether the font is formatted as shadowed.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< bool > getShadow() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< bool > getShadow() const;
 
         /// <summary>
         /// Gets or sets a value indicating whether the font is formatted as shadowed.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setShadow(std::shared_ptr< bool > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setShadow(std::shared_ptr< bool > value);
+
 
         /// <summary>
         /// Gets or sets the font size in points.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< double > getSize() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< double > getSize() const;
 
         /// <summary>
         /// Gets or sets the font size in points.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setSize(std::shared_ptr< double > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setSize(std::shared_ptr< double > value);
+
 
         /// <summary>
         /// Gets or sets the font size in points used in a right-to-left document.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< double > getSizeBi() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< double > getSizeBi() const;
 
         /// <summary>
         /// Gets or sets the font size in points used in a right-to-left document.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setSizeBi(std::shared_ptr< double > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setSizeBi(std::shared_ptr< double > value);
+
 
         /// <summary>
         /// Gets or sets a value indicating whether the font is formatted as small capital letters.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< bool > getSmallCaps() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< bool > getSmallCaps() const;
 
         /// <summary>
         /// Gets or sets a value indicating whether the font is formatted as small capital letters.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setSmallCaps(std::shared_ptr< bool > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setSmallCaps(std::shared_ptr< bool > value);
+
 
         /// <summary>
         /// Gets or sets the spacing (in points) between characters.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< double > getSpacing() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< double > getSpacing() const;
 
         /// <summary>
         /// Gets or sets the spacing (in points) between characters.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setSpacing(std::shared_ptr< double > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setSpacing(std::shared_ptr< double > value);
+
 
         /// <summary>
         /// Gets or sets a value indicating whether the font is formatted as strikethrough text.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< bool > getStrikeThrough() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< bool > getStrikeThrough() const;
 
         /// <summary>
         /// Gets or sets a value indicating whether the font is formatted as strikethrough text.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setStrikeThrough(std::shared_ptr< bool > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setStrikeThrough(std::shared_ptr< bool > value);
+
 
         /// <summary>
         /// Gets or sets the locale independent style identifier of the character style applied to this formatting.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::Font::StyleIdentifier > getStyleIdentifier() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< aspose::words::cloud::models::Font::StyleIdentifier > getStyleIdentifier() const;
 
         /// <summary>
         /// Gets or sets the locale independent style identifier of the character style applied to this formatting.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setStyleIdentifier(std::shared_ptr< aspose::words::cloud::models::Font::StyleIdentifier > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setStyleIdentifier(std::shared_ptr< aspose::words::cloud::models::Font::StyleIdentifier > value);
+
 
         /// <summary>
         /// Gets or sets the name of the character style applied to this formatting.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getStyleName() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< std::wstring > getStyleName() const;
 
         /// <summary>
         /// Gets or sets the name of the character style applied to this formatting.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setStyleName(std::shared_ptr< std::wstring > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setStyleName(std::shared_ptr< std::wstring > value);
+
 
         /// <summary>
         /// Gets or sets a value indicating whether the font is formatted as subscript.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< bool > getSubscript() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< bool > getSubscript() const;
 
         /// <summary>
         /// Gets or sets a value indicating whether the font is formatted as subscript.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setSubscript(std::shared_ptr< bool > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setSubscript(std::shared_ptr< bool > value);
+
 
         /// <summary>
         /// Gets or sets a value indicating whether the font is formatted as superscript.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< bool > getSuperscript() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< bool > getSuperscript() const;
 
         /// <summary>
         /// Gets or sets a value indicating whether the font is formatted as superscript.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setSuperscript(std::shared_ptr< bool > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setSuperscript(std::shared_ptr< bool > value);
+
 
         /// <summary>
         /// Gets or sets the font animation effect.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::Font::TextEffect > getTextEffect() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< aspose::words::cloud::models::Font::TextEffect > getTextEffect() const;
 
         /// <summary>
         /// Gets or sets the font animation effect.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setTextEffect(std::shared_ptr< aspose::words::cloud::models::Font::TextEffect > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setTextEffect(std::shared_ptr< aspose::words::cloud::models::Font::TextEffect > value);
+
 
         /// <summary>
         /// Gets or sets the type of underline applied to the font.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::Font::Underline > getUnderline() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< aspose::words::cloud::models::Font::Underline > getUnderline() const;
 
         /// <summary>
         /// Gets or sets the type of underline applied to the font.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setUnderline(std::shared_ptr< aspose::words::cloud::models::Font::Underline > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setUnderline(std::shared_ptr< aspose::words::cloud::models::Font::Underline > value);
+
 
         /// <summary>
         /// Gets or sets the color of the underline applied to the font.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::XmlColor > getUnderlineColor() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< aspose::words::cloud::models::XmlColor > getUnderlineColor() const;
 
         /// <summary>
         /// Gets or sets the color of the underline applied to the font.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setUnderlineColor(std::shared_ptr< aspose::words::cloud::models::XmlColor > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setUnderlineColor(std::shared_ptr< aspose::words::cloud::models::XmlColor > value);
+
 
     protected:
         std::shared_ptr< bool > m_AllCaps;

@@ -100,35 +100,39 @@ namespace aspose::words::cloud::models {
         ASPOSE_WORDS_CLOUD_EXPORT virtual void toJson(void* jsonIfc) const override;
         ASPOSE_WORDS_CLOUD_EXPORT virtual void fromJson(const void* jsonIfc) override;
 
-        /// <summary>
-        /// Gets or sets the color that's applied to the background of the Shading object.
-        /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::XmlColor > getBackgroundPatternColor() const;
 
         /// <summary>
         /// Gets or sets the color that's applied to the background of the Shading object.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setBackgroundPatternColor(std::shared_ptr< aspose::words::cloud::models::XmlColor > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< aspose::words::cloud::models::XmlColor > getBackgroundPatternColor() const;
+
+        /// <summary>
+        /// Gets or sets the color that's applied to the background of the Shading object.
+        /// </summary>
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setBackgroundPatternColor(std::shared_ptr< aspose::words::cloud::models::XmlColor > value);
+
 
         /// <summary>
         /// Gets or sets the color that's applied to the foreground of the Shading object.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::XmlColor > getForegroundPatternColor() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< aspose::words::cloud::models::XmlColor > getForegroundPatternColor() const;
 
         /// <summary>
         /// Gets or sets the color that's applied to the foreground of the Shading object.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setForegroundPatternColor(std::shared_ptr< aspose::words::cloud::models::XmlColor > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setForegroundPatternColor(std::shared_ptr< aspose::words::cloud::models::XmlColor > value);
+
 
         /// <summary>
         /// Gets or sets the shading texture.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::Shading::Texture > getTexture() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< aspose::words::cloud::models::Shading::Texture > getTexture() const;
 
         /// <summary>
         /// Gets or sets the shading texture.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setTexture(std::shared_ptr< aspose::words::cloud::models::Shading::Texture > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setTexture(std::shared_ptr< aspose::words::cloud::models::Shading::Texture > value);
+
 
     protected:
         std::shared_ptr< aspose::words::cloud::models::XmlColor > m_BackgroundPatternColor;

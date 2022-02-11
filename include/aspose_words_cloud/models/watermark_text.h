@@ -38,25 +38,28 @@ namespace aspose::words::cloud::models {
         ASPOSE_WORDS_CLOUD_EXPORT virtual void toJson(void* jsonIfc) const override;
         ASPOSE_WORDS_CLOUD_EXPORT virtual void fromJson(const void* jsonIfc) override;
 
-        /// <summary>
-        /// Gets or sets the watermark rotation angle.
-        /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< double > getRotationAngle() const;
 
         /// <summary>
         /// Gets or sets the watermark rotation angle.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setRotationAngle(std::shared_ptr< double > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< double > getRotationAngle() const;
+
+        /// <summary>
+        /// Gets or sets the watermark rotation angle.
+        /// </summary>
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setRotationAngle(std::shared_ptr< double > value);
+
 
         /// <summary>
         /// Gets or sets the watermark text.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getText() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< std::wstring > getText() const;
 
         /// <summary>
         /// Gets or sets the watermark text.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setText(std::shared_ptr< std::wstring > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setText(std::shared_ptr< std::wstring > value);
+
 
     protected:
         std::shared_ptr< double > m_RotationAngle;

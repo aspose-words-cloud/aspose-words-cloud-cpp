@@ -65,35 +65,39 @@ namespace aspose::words::cloud::models {
         ASPOSE_WORDS_CLOUD_EXPORT virtual void toJson(void* jsonIfc) const override;
         ASPOSE_WORDS_CLOUD_EXPORT virtual void fromJson(const void* jsonIfc) override;
 
-        /// <summary>
-        /// Gets or sets the alignment of text at this tab stop.
-        /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::TabStopBase::Alignment > getAlignment() const;
 
         /// <summary>
         /// Gets or sets the alignment of text at this tab stop.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setAlignment(std::shared_ptr< aspose::words::cloud::models::TabStopBase::Alignment > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< aspose::words::cloud::models::TabStopBase::Alignment > getAlignment() const;
+
+        /// <summary>
+        /// Gets or sets the alignment of text at this tab stop.
+        /// </summary>
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setAlignment(std::shared_ptr< aspose::words::cloud::models::TabStopBase::Alignment > value);
+
 
         /// <summary>
         /// Gets or sets the type of the leader line displayed under the tab character.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::TabStopBase::Leader > getLeader() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< aspose::words::cloud::models::TabStopBase::Leader > getLeader() const;
 
         /// <summary>
         /// Gets or sets the type of the leader line displayed under the tab character.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setLeader(std::shared_ptr< aspose::words::cloud::models::TabStopBase::Leader > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setLeader(std::shared_ptr< aspose::words::cloud::models::TabStopBase::Leader > value);
+
 
         /// <summary>
         /// Gets or sets the position of the tab stop in points.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< double > getPosition() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< double > getPosition() const;
 
         /// <summary>
         /// Gets or sets the position of the tab stop in points.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setPosition(std::shared_ptr< double > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setPosition(std::shared_ptr< double > value);
+
 
     protected:
         std::shared_ptr< aspose::words::cloud::models::TabStopBase::Alignment > m_Alignment;

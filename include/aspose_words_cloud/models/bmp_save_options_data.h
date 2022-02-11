@@ -39,8 +39,19 @@ namespace aspose::words::cloud::models {
         ASPOSE_WORDS_CLOUD_EXPORT virtual void toJson(void* jsonIfc) const override;
         ASPOSE_WORDS_CLOUD_EXPORT virtual void fromJson(const void* jsonIfc) override;
 
+        void abstractImageSaveOptionsData() override {}
+        void abstractFixedPageSaveOptionsData() override {}
+        void abstractSaveOptionsData() override {}
+
+        /// <summary>
+        /// Gets the format of save.
+        /// </summary>
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< std::wstring > getSaveFormat() const override;
+
+
 
     protected:
+        std::shared_ptr< std::wstring > m_SaveFormat = std::make_shared<std::wstring>(L"bmp");
     };
 }
 

@@ -38,57 +38,63 @@ namespace aspose::words::cloud::models {
         ASPOSE_WORDS_CLOUD_EXPORT virtual void toJson(void* jsonIfc) const override;
         ASPOSE_WORDS_CLOUD_EXPORT virtual void fromJson(const void* jsonIfc) override;
 
-        /// <summary>
-        /// Gets or sets the option that controls how EMF+ Dual metafiles should be rendered.
-        /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getEmfPlusDualRenderingMode() const;
 
         /// <summary>
         /// Gets or sets the option that controls how EMF+ Dual metafiles should be rendered.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setEmfPlusDualRenderingMode(std::shared_ptr< std::wstring > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< std::wstring > getEmfPlusDualRenderingMode() const;
+
+        /// <summary>
+        /// Gets or sets the option that controls how EMF+ Dual metafiles should be rendered.
+        /// </summary>
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setEmfPlusDualRenderingMode(std::shared_ptr< std::wstring > value);
+
 
         /// <summary>
         /// Gets or sets a value indicating whether the raster operations should be emulated.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< bool > getEmulateRasterOperations() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< bool > getEmulateRasterOperations() const;
 
         /// <summary>
         /// Gets or sets a value indicating whether the raster operations should be emulated.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setEmulateRasterOperations(std::shared_ptr< bool > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setEmulateRasterOperations(std::shared_ptr< bool > value);
+
 
         /// <summary>
         /// Gets or sets the option that controls how metafile images should be rendered.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getRenderingMode() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< std::wstring > getRenderingMode() const;
 
         /// <summary>
         /// Gets or sets the option that controls how metafile images should be rendered.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setRenderingMode(std::shared_ptr< std::wstring > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setRenderingMode(std::shared_ptr< std::wstring > value);
+
 
         /// <summary>
         /// Gets or sets a value indicating whether to scale fonts in WMF metafile according to metafile size on the page.
         /// The default value is true.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< bool > getScaleWmfFontsToMetafileSize() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< bool > getScaleWmfFontsToMetafileSize() const;
 
         /// <summary>
         /// Gets or sets a value indicating whether to scale fonts in WMF metafile according to metafile size on the page.
         /// The default value is true.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setScaleWmfFontsToMetafileSize(std::shared_ptr< bool > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setScaleWmfFontsToMetafileSize(std::shared_ptr< bool > value);
+
 
         /// <summary>
         /// Gets or sets the flag, that controls how WMF metafiles with embedded EMF metafiles should be rendered.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< bool > getUseEmfEmbeddedToWmf() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< bool > getUseEmfEmbeddedToWmf() const;
 
         /// <summary>
         /// Gets or sets the flag, that controls how WMF metafiles with embedded EMF metafiles should be rendered.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setUseEmfEmbeddedToWmf(std::shared_ptr< bool > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setUseEmfEmbeddedToWmf(std::shared_ptr< bool > value);
+
 
     protected:
         std::shared_ptr< std::wstring > m_EmfPlusDualRenderingMode;

@@ -40,25 +40,28 @@ namespace aspose::words::cloud::models {
         ASPOSE_WORDS_CLOUD_EXPORT virtual void toJson(void* jsonIfc) const override;
         ASPOSE_WORDS_CLOUD_EXPORT virtual void fromJson(const void* jsonIfc) override;
 
-        /// <summary>
-        /// Gets or sets the regular expression pattern used to find matches.
-        /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getSearchingPattern() const;
 
         /// <summary>
         /// Gets or sets the regular expression pattern used to find matches.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setSearchingPattern(std::shared_ptr< std::wstring > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< std::wstring > getSearchingPattern() const;
+
+        /// <summary>
+        /// Gets or sets the regular expression pattern used to find matches.
+        /// </summary>
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setSearchingPattern(std::shared_ptr< std::wstring > value);
+
 
         /// <summary>
         /// Gets or sets the collection of search results.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::SearchResultsCollection > getSearchResults() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< aspose::words::cloud::models::SearchResultsCollection > getSearchResults() const;
 
         /// <summary>
         /// Gets or sets the collection of search results.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setSearchResults(std::shared_ptr< aspose::words::cloud::models::SearchResultsCollection > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setSearchResults(std::shared_ptr< aspose::words::cloud::models::SearchResultsCollection > value);
+
 
     protected:
         std::shared_ptr< std::wstring > m_SearchingPattern;

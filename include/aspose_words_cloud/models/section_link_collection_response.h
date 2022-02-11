@@ -40,15 +40,17 @@ namespace aspose::words::cloud::models {
         ASPOSE_WORDS_CLOUD_EXPORT virtual void toJson(void* jsonIfc) const override;
         ASPOSE_WORDS_CLOUD_EXPORT virtual void fromJson(const void* jsonIfc) override;
 
-        /// <summary>
-        /// Gets or sets the collection of sections.
-        /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::SectionLinkCollection > getSections() const;
 
         /// <summary>
         /// Gets or sets the collection of sections.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setSections(std::shared_ptr< aspose::words::cloud::models::SectionLinkCollection > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< aspose::words::cloud::models::SectionLinkCollection > getSections() const;
+
+        /// <summary>
+        /// Gets or sets the collection of sections.
+        /// </summary>
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setSections(std::shared_ptr< aspose::words::cloud::models::SectionLinkCollection > value);
+
 
     protected:
         std::shared_ptr< aspose::words::cloud::models::SectionLinkCollection > m_Sections;

@@ -40,15 +40,17 @@ namespace aspose::words::cloud::models {
         ASPOSE_WORDS_CLOUD_EXPORT virtual void toJson(void* jsonIfc) const override;
         ASPOSE_WORDS_CLOUD_EXPORT virtual void fromJson(const void* jsonIfc) override;
 
-        /// <summary>
-        /// Gets or sets the array of bookmarks.
-        /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::vector<std::shared_ptr<aspose::words::cloud::models::Bookmark>> > getBookmarkList() const;
 
         /// <summary>
         /// Gets or sets the array of bookmarks.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setBookmarkList(std::shared_ptr< std::vector<std::shared_ptr<aspose::words::cloud::models::Bookmark>> > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< std::vector<std::shared_ptr<aspose::words::cloud::models::Bookmark>> > getBookmarkList() const;
+
+        /// <summary>
+        /// Gets or sets the array of bookmarks.
+        /// </summary>
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setBookmarkList(std::shared_ptr< std::vector<std::shared_ptr<aspose::words::cloud::models::Bookmark>> > value);
+
 
     protected:
         std::shared_ptr< std::vector<std::shared_ptr<aspose::words::cloud::models::Bookmark>> > m_BookmarkList;

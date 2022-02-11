@@ -38,55 +38,61 @@ namespace aspose::words::cloud::models {
         ASPOSE_WORDS_CLOUD_EXPORT virtual void toJson(void* jsonIfc) const override;
         ASPOSE_WORDS_CLOUD_EXPORT virtual void fromJson(const void* jsonIfc) override;
 
-        /// <summary>
-        /// True if it is a folder.
-        /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< bool > getIsFolder() const;
 
         /// <summary>
         /// True if it is a folder.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setIsFolder(std::shared_ptr< bool > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< bool > getIsFolder() const;
+
+        /// <summary>
+        /// True if it is a folder.
+        /// </summary>
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setIsFolder(std::shared_ptr< bool > value);
+
 
         /// <summary>
         /// File or folder last modified DateTime.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getModifiedDate() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< std::wstring > getModifiedDate() const;
 
         /// <summary>
         /// File or folder last modified DateTime.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setModifiedDate(std::shared_ptr< std::wstring > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setModifiedDate(std::shared_ptr< std::wstring > value);
+
 
         /// <summary>
         /// File or folder name.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getName() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< std::wstring > getName() const;
 
         /// <summary>
         /// File or folder name.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setName(std::shared_ptr< std::wstring > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setName(std::shared_ptr< std::wstring > value);
+
 
         /// <summary>
         /// File or folder path.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getPath() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< std::wstring > getPath() const;
 
         /// <summary>
         /// File or folder path.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setPath(std::shared_ptr< std::wstring > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setPath(std::shared_ptr< std::wstring > value);
+
 
         /// <summary>
         /// File or folder size.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< int32_t > getSize() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< int32_t > getSize() const;
 
         /// <summary>
         /// File or folder size.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setSize(std::shared_ptr< int32_t > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setSize(std::shared_ptr< int32_t > value);
+
 
     protected:
         std::shared_ptr< bool > m_IsFolder;

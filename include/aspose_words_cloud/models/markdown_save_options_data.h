@@ -51,19 +51,31 @@ namespace aspose::words::cloud::models {
         ASPOSE_WORDS_CLOUD_EXPORT virtual void toJson(void* jsonIfc) const override;
         ASPOSE_WORDS_CLOUD_EXPORT virtual void fromJson(const void* jsonIfc) override;
 
+        void abstractTxtSaveOptionsBaseData() override {}
+        void abstractSaveOptionsData() override {}
+
         /// <summary>
-        /// Gets or sets the value, that specifies how to align contents in tables when exporting into the Markdown format.
-        /// The default value is Auto.
+        /// Gets the format of save.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::MarkdownSaveOptionsData::TableContentAlignment > getTableContentAlignment() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< std::wstring > getSaveFormat() const override;
+
+
 
         /// <summary>
         /// Gets or sets the value, that specifies how to align contents in tables when exporting into the Markdown format.
         /// The default value is Auto.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setTableContentAlignment(std::shared_ptr< aspose::words::cloud::models::MarkdownSaveOptionsData::TableContentAlignment > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< aspose::words::cloud::models::MarkdownSaveOptionsData::TableContentAlignment > getTableContentAlignment() const;
+
+        /// <summary>
+        /// Gets or sets the value, that specifies how to align contents in tables when exporting into the Markdown format.
+        /// The default value is Auto.
+        /// </summary>
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setTableContentAlignment(std::shared_ptr< aspose::words::cloud::models::MarkdownSaveOptionsData::TableContentAlignment > value);
+
 
     protected:
+        std::shared_ptr< std::wstring > m_SaveFormat = std::make_shared<std::wstring>(L"md");
         std::shared_ptr< aspose::words::cloud::models::MarkdownSaveOptionsData::TableContentAlignment > m_TableContentAlignment;
     };
 }

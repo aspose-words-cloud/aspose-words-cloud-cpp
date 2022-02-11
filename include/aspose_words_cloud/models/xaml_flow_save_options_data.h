@@ -39,29 +39,41 @@ namespace aspose::words::cloud::models {
         ASPOSE_WORDS_CLOUD_EXPORT virtual void toJson(void* jsonIfc) const override;
         ASPOSE_WORDS_CLOUD_EXPORT virtual void fromJson(const void* jsonIfc) override;
 
-        /// <summary>
-        /// Gets or sets the physical folder where images are saved when exporting.
-        /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getImagesFolder() const;
+        void abstractSaveOptionsData() override {}
 
         /// <summary>
         /// Gets or sets the physical folder where images are saved when exporting.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setImagesFolder(std::shared_ptr< std::wstring > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< std::wstring > getImagesFolder() const;
+
+        /// <summary>
+        /// Gets or sets the physical folder where images are saved when exporting.
+        /// </summary>
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setImagesFolder(std::shared_ptr< std::wstring > value);
+
 
         /// <summary>
         /// Gets or sets the name of the folder used to construct image URIs.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getImagesFolderAlias() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< std::wstring > getImagesFolderAlias() const;
 
         /// <summary>
         /// Gets or sets the name of the folder used to construct image URIs.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setImagesFolderAlias(std::shared_ptr< std::wstring > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setImagesFolderAlias(std::shared_ptr< std::wstring > value);
+
+
+        /// <summary>
+        /// Gets the format of save.
+        /// </summary>
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< std::wstring > getSaveFormat() const override;
+
+
 
     protected:
         std::shared_ptr< std::wstring > m_ImagesFolder;
         std::shared_ptr< std::wstring > m_ImagesFolderAlias;
+        std::shared_ptr< std::wstring > m_SaveFormat = std::make_shared<std::wstring>(L"xamlflow");
     };
 }
 

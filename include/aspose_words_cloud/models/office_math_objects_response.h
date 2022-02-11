@@ -40,15 +40,17 @@ namespace aspose::words::cloud::models {
         ASPOSE_WORDS_CLOUD_EXPORT virtual void toJson(void* jsonIfc) const override;
         ASPOSE_WORDS_CLOUD_EXPORT virtual void fromJson(const void* jsonIfc) override;
 
-        /// <summary>
-        /// Gets or sets the collection of OfficeMath objects.
-        /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::OfficeMathObjectsCollection > getOfficeMathObjects() const;
 
         /// <summary>
         /// Gets or sets the collection of OfficeMath objects.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setOfficeMathObjects(std::shared_ptr< aspose::words::cloud::models::OfficeMathObjectsCollection > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< aspose::words::cloud::models::OfficeMathObjectsCollection > getOfficeMathObjects() const;
+
+        /// <summary>
+        /// Gets or sets the collection of OfficeMath objects.
+        /// </summary>
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setOfficeMathObjects(std::shared_ptr< aspose::words::cloud::models::OfficeMathObjectsCollection > value);
+
 
     protected:
         std::shared_ptr< aspose::words::cloud::models::OfficeMathObjectsCollection > m_OfficeMathObjects;

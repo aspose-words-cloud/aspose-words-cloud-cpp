@@ -39,137 +39,153 @@ namespace aspose::words::cloud::models {
         ASPOSE_WORDS_CLOUD_EXPORT virtual void toJson(void* jsonIfc) const override;
         ASPOSE_WORDS_CLOUD_EXPORT virtual void fromJson(const void* jsonIfc) override;
 
-        /// <summary>
-        /// Gets or sets the horizontal resolution in dots per inch for the generated images.
-        /// This property has effect only when saving to raster image formats.
-        /// The default value is 96.
-        /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< double > getHorizontalResolution() const;
+        virtual void abstractImageSaveOptionsData() = 0;
+        void abstractFixedPageSaveOptionsData() override {}
+        void abstractSaveOptionsData() override {}
 
         /// <summary>
         /// Gets or sets the horizontal resolution in dots per inch for the generated images.
         /// This property has effect only when saving to raster image formats.
         /// The default value is 96.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setHorizontalResolution(std::shared_ptr< double > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< double > getHorizontalResolution() const;
+
+        /// <summary>
+        /// Gets or sets the horizontal resolution in dots per inch for the generated images.
+        /// This property has effect only when saving to raster image formats.
+        /// The default value is 96.
+        /// </summary>
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setHorizontalResolution(std::shared_ptr< double > value);
+
 
         /// <summary>
         /// Gets or sets the brightness level of the image.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< double > getImageBrightness() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< double > getImageBrightness() const;
 
         /// <summary>
         /// Gets or sets the brightness level of the image.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setImageBrightness(std::shared_ptr< double > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setImageBrightness(std::shared_ptr< double > value);
+
 
         /// <summary>
         /// Gets or sets the color mode of the image.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getImageColorMode() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< std::wstring > getImageColorMode() const;
 
         /// <summary>
         /// Gets or sets the color mode of the image.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setImageColorMode(std::shared_ptr< std::wstring > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setImageColorMode(std::shared_ptr< std::wstring > value);
+
 
         /// <summary>
         /// Gets or sets the contrast level of the image.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< double > getImageContrast() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< double > getImageContrast() const;
 
         /// <summary>
         /// Gets or sets the contrast level of the image.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setImageContrast(std::shared_ptr< double > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setImageContrast(std::shared_ptr< double > value);
+
 
         /// <summary>
         /// Gets or sets the background (paper) color of the image.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getPaperColor() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< std::wstring > getPaperColor() const;
 
         /// <summary>
         /// Gets or sets the background (paper) color of the image.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setPaperColor(std::shared_ptr< std::wstring > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setPaperColor(std::shared_ptr< std::wstring > value);
+
 
         /// <summary>
         /// Gets or sets the pixel format of the image.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::wstring > getPixelFormat() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< std::wstring > getPixelFormat() const;
 
         /// <summary>
         /// Gets or sets the pixel format of the image.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setPixelFormat(std::shared_ptr< std::wstring > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setPixelFormat(std::shared_ptr< std::wstring > value);
+
 
         /// <summary>
         /// Gets or sets both horizontal and vertical resolution in dots per inch for the generated images.
         /// This property has effect only when saving to raster image formats.
         /// The default value is 96.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< double > getResolution() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< double > getResolution() const;
 
         /// <summary>
         /// Gets or sets both horizontal and vertical resolution in dots per inch for the generated images.
         /// This property has effect only when saving to raster image formats.
         /// The default value is 96.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setResolution(std::shared_ptr< double > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setResolution(std::shared_ptr< double > value);
+
 
         /// <summary>
         /// Gets or sets the zoom factor of the image.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< double > getScale() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< double > getScale() const;
 
         /// <summary>
         /// Gets or sets the zoom factor of the image.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setScale(std::shared_ptr< double > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setScale(std::shared_ptr< double > value);
+
 
         /// <summary>
         /// Gets or sets a value indicating whether to use anti-aliasing for rendering.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< bool > getUseAntiAliasing() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< bool > getUseAntiAliasing() const;
 
         /// <summary>
         /// Gets or sets a value indicating whether to use anti-aliasing for rendering.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setUseAntiAliasing(std::shared_ptr< bool > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setUseAntiAliasing(std::shared_ptr< bool > value);
+
 
         /// <summary>
         /// Gets or sets a value indicating whether to use GDI+ or Aspose.Words metafile renderer when saving to EMF.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< bool > getUseGdiEmfRenderer() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< bool > getUseGdiEmfRenderer() const;
 
         /// <summary>
         /// Gets or sets a value indicating whether to use GDI+ or Aspose.Words metafile renderer when saving to EMF.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setUseGdiEmfRenderer(std::shared_ptr< bool > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setUseGdiEmfRenderer(std::shared_ptr< bool > value);
+
 
         /// <summary>
         /// Gets or sets a value indicating whether to use high quality (i.e. slow) rendering algorithms.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< bool > getUseHighQualityRendering() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< bool > getUseHighQualityRendering() const;
 
         /// <summary>
         /// Gets or sets a value indicating whether to use high quality (i.e. slow) rendering algorithms.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setUseHighQualityRendering(std::shared_ptr< bool > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setUseHighQualityRendering(std::shared_ptr< bool > value);
+
 
         /// <summary>
         /// Gets or sets the vertical resolution in dots per inch for the generated images.
         /// This property has effect only when saving to raster image formats.
         /// The default value is 96.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< double > getVerticalResolution() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< double > getVerticalResolution() const;
 
         /// <summary>
         /// Gets or sets the vertical resolution in dots per inch for the generated images.
         /// This property has effect only when saving to raster image formats.
         /// The default value is 96.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setVerticalResolution(std::shared_ptr< double > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setVerticalResolution(std::shared_ptr< double > value);
+
 
     protected:
         std::shared_ptr< double > m_HorizontalResolution;

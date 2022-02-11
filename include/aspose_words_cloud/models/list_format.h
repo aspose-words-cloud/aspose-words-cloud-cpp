@@ -39,35 +39,39 @@ namespace aspose::words::cloud::models {
         ASPOSE_WORDS_CLOUD_EXPORT virtual void toJson(void* jsonIfc) const override;
         ASPOSE_WORDS_CLOUD_EXPORT virtual void fromJson(const void* jsonIfc) override;
 
-        /// <summary>
-        /// Gets or sets a value indicating whether the paragraph has bulleted or numbered formatting applied to it.
-        /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< bool > getIsListItem() const;
 
         /// <summary>
         /// Gets or sets a value indicating whether the paragraph has bulleted or numbered formatting applied to it.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setIsListItem(std::shared_ptr< bool > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< bool > getIsListItem() const;
+
+        /// <summary>
+        /// Gets or sets a value indicating whether the paragraph has bulleted or numbered formatting applied to it.
+        /// </summary>
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setIsListItem(std::shared_ptr< bool > value);
+
 
         /// <summary>
         /// Gets or sets the list id of this paragraph.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< int32_t > getListId() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< int32_t > getListId() const;
 
         /// <summary>
         /// Gets or sets the list id of this paragraph.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setListId(std::shared_ptr< int32_t > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setListId(std::shared_ptr< int32_t > value);
+
 
         /// <summary>
         /// Gets or sets the list level number (0 to 8) for the paragraph.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< int32_t > getListLevelNumber() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< int32_t > getListLevelNumber() const;
 
         /// <summary>
         /// Gets or sets the list level number (0 to 8) for the paragraph.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT void setListLevelNumber(std::shared_ptr< int32_t > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setListLevelNumber(std::shared_ptr< int32_t > value);
+
 
     protected:
         std::shared_ptr< bool > m_IsListItem;
