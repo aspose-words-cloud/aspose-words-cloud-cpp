@@ -35,6 +35,16 @@ namespace aspose::words::cloud::models {
     {
     public:
         /// <summary>
+        /// Gets or sets the option that controls how the CSS styles are exported.
+        /// </summary>
+        enum class CssStyleSheetType
+        { 
+            INLINE,
+            EMBEDDED,
+            EXTERNAL
+        };
+
+        /// <summary>
         /// Gets or sets the version of HTML standard, that should be used when saving the document to HTML or MHTML.
         /// Default value is Aspose.Words.Saving.HtmlVersion.Xhtml.
         /// </summary>
@@ -114,12 +124,12 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the option that controls how the CSS styles are exported.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< std::wstring > getCssStyleSheetType() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< aspose::words::cloud::models::HtmlSaveOptionsData::CssStyleSheetType > getCssStyleSheetType() const;
 
         /// <summary>
         /// Gets or sets the option that controls how the CSS styles are exported.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT virtual void setCssStyleSheetType(std::shared_ptr< std::wstring > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setCssStyleSheetType(std::shared_ptr< aspose::words::cloud::models::HtmlSaveOptionsData::CssStyleSheetType > value);
 
 
         /// <summary>
@@ -536,7 +546,7 @@ namespace aspose::words::cloud::models {
         std::shared_ptr< bool > m_AllowNegativeIndent;
         std::shared_ptr< std::wstring > m_CssClassNamePrefix;
         std::shared_ptr< std::wstring > m_CssStyleSheetFileName;
-        std::shared_ptr< std::wstring > m_CssStyleSheetType;
+        std::shared_ptr< aspose::words::cloud::models::HtmlSaveOptionsData::CssStyleSheetType > m_CssStyleSheetType;
         std::shared_ptr< std::wstring > m_DocumentSplitCriteria;
         std::shared_ptr< int32_t > m_DocumentSplitHeadingLevel;
         std::shared_ptr< std::wstring > m_Encoding;
