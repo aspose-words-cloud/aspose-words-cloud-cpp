@@ -230,7 +230,11 @@ namespace aspose::words::cloud {
         response.setStatusCode(httpResponse->status);
         if (httpResponse->status == 200)
         {
-            response.deserialize(httpResponse->body);
+            std::string contentType;
+            if (httpResponse->has_header("Content-Type")) {
+                contentType = httpResponse->get_header_value("Content-Type");
+            }
+            response.deserialize(contentType, httpResponse->body);
         }
         else
         {

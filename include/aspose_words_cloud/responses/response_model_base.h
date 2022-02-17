@@ -35,7 +35,7 @@ namespace aspose::words::cloud::responses {
     {
     public:
         ASPOSE_WORDS_CLOUD_EXPORT virtual ~ResponseModelBase() = default;
-        ASPOSE_WORDS_CLOUD_EXPORT virtual void deserialize(const std::string_view& response) = 0;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void deserialize(const std::string& contentType, const std::string_view& response) = 0;
         ASPOSE_WORDS_CLOUD_EXPORT void setStatusCode(int statusCode);
         ASPOSE_WORDS_CLOUD_EXPORT int getStatusCode() const;
         ASPOSE_WORDS_CLOUD_EXPORT void setErrorData(const std::string_view& errorData);

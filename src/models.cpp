@@ -8552,6 +8552,22 @@ namespace aspose::words::cloud::models {
     /*
      * HtmlSaveOptionsData implementation
      */
+    inline std::string htmlSaveOptionsDataCssStyleSheetTypeToString(aspose::words::cloud::models::HtmlSaveOptionsData::CssStyleSheetType value)
+    {
+        if (value == aspose::words::cloud::models::HtmlSaveOptionsData::CssStyleSheetType::INLINE) return "Inline";
+        if (value == aspose::words::cloud::models::HtmlSaveOptionsData::CssStyleSheetType::EMBEDDED) return "Embedded";
+        if (value == aspose::words::cloud::models::HtmlSaveOptionsData::CssStyleSheetType::EXTERNAL) return "External";
+        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
+    }
+
+    inline aspose::words::cloud::models::HtmlSaveOptionsData::CssStyleSheetType htmlSaveOptionsDataCssStyleSheetTypeFromString(const std::string& value)
+    {
+        if (value == "Inline") return aspose::words::cloud::models::HtmlSaveOptionsData::CssStyleSheetType::INLINE;
+        if (value == "Embedded") return aspose::words::cloud::models::HtmlSaveOptionsData::CssStyleSheetType::EMBEDDED;
+        if (value == "External") return aspose::words::cloud::models::HtmlSaveOptionsData::CssStyleSheetType::EXTERNAL;
+        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
+    }
+
     inline std::string htmlSaveOptionsDataHtmlVersionToString(aspose::words::cloud::models::HtmlSaveOptionsData::HtmlVersion value)
     {
         if (value == aspose::words::cloud::models::HtmlSaveOptionsData::HtmlVersion::XHTML) return "Xhtml";
@@ -8611,7 +8627,7 @@ namespace aspose::words::cloud::models {
             json["CssStyleSheetFileName"] = convertUtf16(*(this->m_CssStyleSheetFileName));
         }
         if (this->m_CssStyleSheetType) {
-            json["CssStyleSheetType"] = convertUtf16(*(this->m_CssStyleSheetType));
+            json["CssStyleSheetType"] = htmlSaveOptionsDataCssStyleSheetTypeToString(*(this->m_CssStyleSheetType));
         }
         if (this->m_DocumentSplitCriteria) {
             json["DocumentSplitCriteria"] = convertUtf16(*(this->m_DocumentSplitCriteria));
@@ -8743,8 +8759,8 @@ namespace aspose::words::cloud::models {
             );
         }
         if (json.contains("CssStyleSheetType") && !json["CssStyleSheetType"].is_null()) {
-            this->m_CssStyleSheetType = std::make_shared< std::wstring >(
-                convertUtf8( json["CssStyleSheetType"].get< std::string >() )
+            this->m_CssStyleSheetType = std::make_shared< aspose::words::cloud::models::HtmlSaveOptionsData::CssStyleSheetType >(
+                htmlSaveOptionsDataCssStyleSheetTypeFromString(json["CssStyleSheetType"].get< std::string >())
             );
         }
         if (json.contains("DocumentSplitCriteria") && !json["DocumentSplitCriteria"].is_null()) {
@@ -8962,12 +8978,12 @@ namespace aspose::words::cloud::models {
     }
 
 
-    std::shared_ptr< std::wstring > HtmlSaveOptionsData::getCssStyleSheetType() const
+    std::shared_ptr< aspose::words::cloud::models::HtmlSaveOptionsData::CssStyleSheetType > HtmlSaveOptionsData::getCssStyleSheetType() const
     {
         return this->m_CssStyleSheetType;
     }
 
-    void HtmlSaveOptionsData::setCssStyleSheetType(std::shared_ptr< std::wstring > value)
+    void HtmlSaveOptionsData::setCssStyleSheetType(std::shared_ptr< aspose::words::cloud::models::HtmlSaveOptionsData::CssStyleSheetType > value)
     {
         this->m_CssStyleSheetType = value;
     }

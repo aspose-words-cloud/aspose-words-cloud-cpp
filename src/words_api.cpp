@@ -340,7 +340,7 @@ namespace aspose::words::cloud::api {
         }
     }
 
-    std::shared_ptr< std::istream > WordsApi::deleteCommentOnline(std::shared_ptr<aspose::words::cloud::requests::DeleteCommentOnlineRequest> request)
+    std::shared_ptr< std::map<std::wstring, std::shared_ptr<std::istream>> > WordsApi::deleteCommentOnline(std::shared_ptr<aspose::words::cloud::requests::DeleteCommentOnlineRequest> request)
     {
         auto response = std::make_shared< aspose::words::cloud::responses::DeleteCommentOnlineResponse >();
         m_ApiClient->call( request->createHttpRequest(), *response);
@@ -360,7 +360,7 @@ namespace aspose::words::cloud::api {
         }
     }
 
-    std::shared_ptr< std::istream > WordsApi::deleteCommentsOnline(std::shared_ptr<aspose::words::cloud::requests::DeleteCommentsOnlineRequest> request)
+    std::shared_ptr< std::map<std::wstring, std::shared_ptr<std::istream>> > WordsApi::deleteCommentsOnline(std::shared_ptr<aspose::words::cloud::requests::DeleteCommentsOnlineRequest> request)
     {
         auto response = std::make_shared< aspose::words::cloud::responses::DeleteCommentsOnlineResponse >();
         m_ApiClient->call( request->createHttpRequest(), *response);
@@ -380,7 +380,7 @@ namespace aspose::words::cloud::api {
         }
     }
 
-    std::shared_ptr< std::istream > WordsApi::deleteCustomXmlPartOnline(std::shared_ptr<aspose::words::cloud::requests::DeleteCustomXmlPartOnlineRequest> request)
+    std::shared_ptr< std::map<std::wstring, std::shared_ptr<std::istream>> > WordsApi::deleteCustomXmlPartOnline(std::shared_ptr<aspose::words::cloud::requests::DeleteCustomXmlPartOnlineRequest> request)
     {
         auto response = std::make_shared< aspose::words::cloud::responses::DeleteCustomXmlPartOnlineResponse >();
         m_ApiClient->call( request->createHttpRequest(), *response);
@@ -400,7 +400,7 @@ namespace aspose::words::cloud::api {
         }
     }
 
-    std::shared_ptr< std::istream > WordsApi::deleteCustomXmlPartsOnline(std::shared_ptr<aspose::words::cloud::requests::DeleteCustomXmlPartsOnlineRequest> request)
+    std::shared_ptr< std::map<std::wstring, std::shared_ptr<std::istream>> > WordsApi::deleteCustomXmlPartsOnline(std::shared_ptr<aspose::words::cloud::requests::DeleteCustomXmlPartsOnlineRequest> request)
     {
         auto response = std::make_shared< aspose::words::cloud::responses::DeleteCustomXmlPartsOnlineResponse >();
         m_ApiClient->call( request->createHttpRequest(), *response);
@@ -420,7 +420,7 @@ namespace aspose::words::cloud::api {
         }
     }
 
-    std::shared_ptr< std::istream > WordsApi::deleteDocumentPropertyOnline(std::shared_ptr<aspose::words::cloud::requests::DeleteDocumentPropertyOnlineRequest> request)
+    std::shared_ptr< std::map<std::wstring, std::shared_ptr<std::istream>> > WordsApi::deleteDocumentPropertyOnline(std::shared_ptr<aspose::words::cloud::requests::DeleteDocumentPropertyOnlineRequest> request)
     {
         auto response = std::make_shared< aspose::words::cloud::responses::DeleteDocumentPropertyOnlineResponse >();
         m_ApiClient->call( request->createHttpRequest(), *response);
@@ -440,7 +440,7 @@ namespace aspose::words::cloud::api {
         }
     }
 
-    std::shared_ptr< std::istream > WordsApi::deleteDrawingObjectOnline(std::shared_ptr<aspose::words::cloud::requests::DeleteDrawingObjectOnlineRequest> request)
+    std::shared_ptr< std::map<std::wstring, std::shared_ptr<std::istream>> > WordsApi::deleteDrawingObjectOnline(std::shared_ptr<aspose::words::cloud::requests::DeleteDrawingObjectOnlineRequest> request)
     {
         auto response = std::make_shared< aspose::words::cloud::responses::DeleteDrawingObjectOnlineResponse >();
         m_ApiClient->call( request->createHttpRequest(), *response);
@@ -460,7 +460,7 @@ namespace aspose::words::cloud::api {
         }
     }
 
-    std::shared_ptr< std::istream > WordsApi::deleteFieldOnline(std::shared_ptr<aspose::words::cloud::requests::DeleteFieldOnlineRequest> request)
+    std::shared_ptr< std::map<std::wstring, std::shared_ptr<std::istream>> > WordsApi::deleteFieldOnline(std::shared_ptr<aspose::words::cloud::requests::DeleteFieldOnlineRequest> request)
     {
         auto response = std::make_shared< aspose::words::cloud::responses::DeleteFieldOnlineResponse >();
         m_ApiClient->call( request->createHttpRequest(), *response);
@@ -480,7 +480,7 @@ namespace aspose::words::cloud::api {
         }
     }
 
-    std::shared_ptr< std::istream > WordsApi::deleteFieldsOnline(std::shared_ptr<aspose::words::cloud::requests::DeleteFieldsOnlineRequest> request)
+    std::shared_ptr< std::map<std::wstring, std::shared_ptr<std::istream>> > WordsApi::deleteFieldsOnline(std::shared_ptr<aspose::words::cloud::requests::DeleteFieldsOnlineRequest> request)
     {
         auto response = std::make_shared< aspose::words::cloud::responses::DeleteFieldsOnlineResponse >();
         m_ApiClient->call( request->createHttpRequest(), *response);
@@ -518,7 +518,7 @@ namespace aspose::words::cloud::api {
         }
     }
 
-    std::shared_ptr< std::istream > WordsApi::deleteFootnoteOnline(std::shared_ptr<aspose::words::cloud::requests::DeleteFootnoteOnlineRequest> request)
+    std::shared_ptr< std::map<std::wstring, std::shared_ptr<std::istream>> > WordsApi::deleteFootnoteOnline(std::shared_ptr<aspose::words::cloud::requests::DeleteFootnoteOnlineRequest> request)
     {
         auto response = std::make_shared< aspose::words::cloud::responses::DeleteFootnoteOnlineResponse >();
         m_ApiClient->call( request->createHttpRequest(), *response);
@@ -538,7 +538,7 @@ namespace aspose::words::cloud::api {
         }
     }
 
-    std::shared_ptr< std::istream > WordsApi::deleteFormFieldOnline(std::shared_ptr<aspose::words::cloud::requests::DeleteFormFieldOnlineRequest> request)
+    std::shared_ptr< std::map<std::wstring, std::shared_ptr<std::istream>> > WordsApi::deleteFormFieldOnline(std::shared_ptr<aspose::words::cloud::requests::DeleteFormFieldOnlineRequest> request)
     {
         auto response = std::make_shared< aspose::words::cloud::responses::DeleteFormFieldOnlineResponse >();
         m_ApiClient->call( request->createHttpRequest(), *response);
@@ -558,7 +558,7 @@ namespace aspose::words::cloud::api {
         }
     }
 
-    std::shared_ptr< std::istream > WordsApi::deleteHeaderFooterOnline(std::shared_ptr<aspose::words::cloud::requests::DeleteHeaderFooterOnlineRequest> request)
+    std::shared_ptr< std::map<std::wstring, std::shared_ptr<std::istream>> > WordsApi::deleteHeaderFooterOnline(std::shared_ptr<aspose::words::cloud::requests::DeleteHeaderFooterOnlineRequest> request)
     {
         auto response = std::make_shared< aspose::words::cloud::responses::DeleteHeaderFooterOnlineResponse >();
         m_ApiClient->call( request->createHttpRequest(), *response);
@@ -578,7 +578,7 @@ namespace aspose::words::cloud::api {
         }
     }
 
-    std::shared_ptr< std::istream > WordsApi::deleteHeadersFootersOnline(std::shared_ptr<aspose::words::cloud::requests::DeleteHeadersFootersOnlineRequest> request)
+    std::shared_ptr< std::map<std::wstring, std::shared_ptr<std::istream>> > WordsApi::deleteHeadersFootersOnline(std::shared_ptr<aspose::words::cloud::requests::DeleteHeadersFootersOnlineRequest> request)
     {
         auto response = std::make_shared< aspose::words::cloud::responses::DeleteHeadersFootersOnlineResponse >();
         m_ApiClient->call( request->createHttpRequest(), *response);
@@ -598,7 +598,7 @@ namespace aspose::words::cloud::api {
         }
     }
 
-    std::shared_ptr< std::istream > WordsApi::deleteMacrosOnline(std::shared_ptr<aspose::words::cloud::requests::DeleteMacrosOnlineRequest> request)
+    std::shared_ptr< std::map<std::wstring, std::shared_ptr<std::istream>> > WordsApi::deleteMacrosOnline(std::shared_ptr<aspose::words::cloud::requests::DeleteMacrosOnlineRequest> request)
     {
         auto response = std::make_shared< aspose::words::cloud::responses::DeleteMacrosOnlineResponse >();
         m_ApiClient->call( request->createHttpRequest(), *response);
@@ -618,7 +618,7 @@ namespace aspose::words::cloud::api {
         }
     }
 
-    std::shared_ptr< std::istream > WordsApi::deleteOfficeMathObjectOnline(std::shared_ptr<aspose::words::cloud::requests::DeleteOfficeMathObjectOnlineRequest> request)
+    std::shared_ptr< std::map<std::wstring, std::shared_ptr<std::istream>> > WordsApi::deleteOfficeMathObjectOnline(std::shared_ptr<aspose::words::cloud::requests::DeleteOfficeMathObjectOnlineRequest> request)
     {
         auto response = std::make_shared< aspose::words::cloud::responses::DeleteOfficeMathObjectOnlineResponse >();
         m_ApiClient->call( request->createHttpRequest(), *response);
@@ -660,7 +660,7 @@ namespace aspose::words::cloud::api {
         return response;
     }
 
-    std::shared_ptr< std::istream > WordsApi::deleteParagraphOnline(std::shared_ptr<aspose::words::cloud::requests::DeleteParagraphOnlineRequest> request)
+    std::shared_ptr< std::map<std::wstring, std::shared_ptr<std::istream>> > WordsApi::deleteParagraphOnline(std::shared_ptr<aspose::words::cloud::requests::DeleteParagraphOnlineRequest> request)
     {
         auto response = std::make_shared< aspose::words::cloud::responses::DeleteParagraphOnlineResponse >();
         m_ApiClient->call( request->createHttpRequest(), *response);
@@ -702,7 +702,7 @@ namespace aspose::words::cloud::api {
         }
     }
 
-    std::shared_ptr< std::istream > WordsApi::deleteRunOnline(std::shared_ptr<aspose::words::cloud::requests::DeleteRunOnlineRequest> request)
+    std::shared_ptr< std::map<std::wstring, std::shared_ptr<std::istream>> > WordsApi::deleteRunOnline(std::shared_ptr<aspose::words::cloud::requests::DeleteRunOnlineRequest> request)
     {
         auto response = std::make_shared< aspose::words::cloud::responses::DeleteRunOnlineResponse >();
         m_ApiClient->call( request->createHttpRequest(), *response);
@@ -722,7 +722,7 @@ namespace aspose::words::cloud::api {
         }
     }
 
-    std::shared_ptr< std::istream > WordsApi::deleteSectionOnline(std::shared_ptr<aspose::words::cloud::requests::DeleteSectionOnlineRequest> request)
+    std::shared_ptr< std::map<std::wstring, std::shared_ptr<std::istream>> > WordsApi::deleteSectionOnline(std::shared_ptr<aspose::words::cloud::requests::DeleteSectionOnlineRequest> request)
     {
         auto response = std::make_shared< aspose::words::cloud::responses::DeleteSectionOnlineResponse >();
         m_ApiClient->call( request->createHttpRequest(), *response);
@@ -751,7 +751,7 @@ namespace aspose::words::cloud::api {
         }
     }
 
-    std::shared_ptr< std::istream > WordsApi::deleteTableCellOnline(std::shared_ptr<aspose::words::cloud::requests::DeleteTableCellOnlineRequest> request)
+    std::shared_ptr< std::map<std::wstring, std::shared_ptr<std::istream>> > WordsApi::deleteTableCellOnline(std::shared_ptr<aspose::words::cloud::requests::DeleteTableCellOnlineRequest> request)
     {
         auto response = std::make_shared< aspose::words::cloud::responses::DeleteTableCellOnlineResponse >();
         m_ApiClient->call( request->createHttpRequest(), *response);
@@ -762,7 +762,7 @@ namespace aspose::words::cloud::api {
         return response->getDocument();
     }
 
-    std::shared_ptr< std::istream > WordsApi::deleteTableOnline(std::shared_ptr<aspose::words::cloud::requests::DeleteTableOnlineRequest> request)
+    std::shared_ptr< std::map<std::wstring, std::shared_ptr<std::istream>> > WordsApi::deleteTableOnline(std::shared_ptr<aspose::words::cloud::requests::DeleteTableOnlineRequest> request)
     {
         auto response = std::make_shared< aspose::words::cloud::responses::DeleteTableOnlineResponse >();
         m_ApiClient->call( request->createHttpRequest(), *response);
@@ -782,7 +782,7 @@ namespace aspose::words::cloud::api {
         }
     }
 
-    std::shared_ptr< std::istream > WordsApi::deleteTableRowOnline(std::shared_ptr<aspose::words::cloud::requests::DeleteTableRowOnlineRequest> request)
+    std::shared_ptr< std::map<std::wstring, std::shared_ptr<std::istream>> > WordsApi::deleteTableRowOnline(std::shared_ptr<aspose::words::cloud::requests::DeleteTableRowOnlineRequest> request)
     {
         auto response = std::make_shared< aspose::words::cloud::responses::DeleteTableRowOnlineResponse >();
         m_ApiClient->call( request->createHttpRequest(), *response);
@@ -2536,7 +2536,7 @@ namespace aspose::words::cloud::api {
         }
     }
 
-    std::shared_ptr< std::istream > WordsApi::optimizeDocumentOnline(std::shared_ptr<aspose::words::cloud::requests::OptimizeDocumentOnlineRequest> request)
+    std::shared_ptr< std::map<std::wstring, std::shared_ptr<std::istream>> > WordsApi::optimizeDocumentOnline(std::shared_ptr<aspose::words::cloud::requests::OptimizeDocumentOnlineRequest> request)
     {
         auto response = std::make_shared< aspose::words::cloud::responses::OptimizeDocumentOnlineResponse >();
         m_ApiClient->call( request->createHttpRequest(), *response);

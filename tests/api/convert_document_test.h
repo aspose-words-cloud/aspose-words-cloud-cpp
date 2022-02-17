@@ -88,6 +88,29 @@ TEST_F(ConvertDocumentTests, TestSaveAsOnline) {
 }
 
 /// <summary>
+/// Test for converting document online to html with additional files like css and images.
+/// </summary>
+TEST_F(ConvertDocumentTests, TestSaveAsOnlineHtmlMultifile) {
+    std::wstring localName = L"test_multi_pages.docx";
+
+    auto requestDocument = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(L"Common/" + localName)), std::istream::binary));
+    auto requestSaveOptionsData = std::make_shared< aspose::words::cloud::models::HtmlSaveOptionsData >();
+    requestSaveOptionsData->setFileName(std::make_shared< std::wstring >(baseTestOutPath + L"/TestSaveAsHtml.html"));
+    requestSaveOptionsData->setCssStyleSheetType(std::make_shared< aspose::words::cloud::models::HtmlSaveOptionsData::CssStyleSheetType >(aspose::words::cloud::models::HtmlSaveOptionsData::CssStyleSheetType::EXTERNAL));
+    requestSaveOptionsData->setCssStyleSheetFileName(std::make_shared< std::wstring >(baseTestOutPath + L"/TestSaveAsHtml.css"));
+    std::shared_ptr<requests::SaveAsOnlineRequest> request(new requests::SaveAsOnlineRequest(
+        requestDocument,
+        requestSaveOptionsData,
+        nullptr,
+        nullptr,
+        nullptr,
+        nullptr
+    ));
+
+    auto actual = getApi()->saveAsOnline(request);
+}
+
+/// <summary>
 /// Test for converting document to one of the available formats.
 /// </summary>
 TEST_F(ConvertDocumentTests, TestSaveAsDocx) {
