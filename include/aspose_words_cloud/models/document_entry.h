@@ -40,6 +40,17 @@ namespace aspose::words::cloud::models {
 
 
         /// <summary>
+        /// Gets or sets document password encrypted on API public key. The default value is null (the document has no password).
+        /// </summary>
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< std::wstring > getEncryptedPassword() const;
+
+        /// <summary>
+        /// Gets or sets document password encrypted on API public key. The default value is null (the document has no password).
+        /// </summary>
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setEncryptedPassword(std::shared_ptr< std::wstring > value);
+
+
+        /// <summary>
         /// Gets or sets the path to document to append at the server.
         /// </summary>
         ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< std::wstring > getHref() const;
@@ -61,21 +72,10 @@ namespace aspose::words::cloud::models {
         ASPOSE_WORDS_CLOUD_EXPORT virtual void setImportFormatMode(std::shared_ptr< std::wstring > value);
 
 
-        /// <summary>
-        /// Gets or sets document password encrypted on API public key. The default value is null (the document has no password).
-        /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< std::wstring > getPassword() const;
-
-        /// <summary>
-        /// Gets or sets document password encrypted on API public key. The default value is null (the document has no password).
-        /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT virtual void setPassword(std::shared_ptr< std::wstring > value);
-
-
     protected:
+        std::shared_ptr< std::wstring > m_EncryptedPassword;
         std::shared_ptr< std::wstring > m_Href;
         std::shared_ptr< std::wstring > m_ImportFormatMode;
-        std::shared_ptr< std::wstring > m_Password;
     };
 }
 

@@ -2386,20 +2386,25 @@ namespace aspose::words::cloud::models {
     void DocumentEntry::toJson(void* jsonIfc) const
     {
         ::nlohmann::json& json = *((::nlohmann::json*)jsonIfc);
+        if (this->m_EncryptedPassword) {
+            json["EncryptedPassword"] = convertUtf16(*(this->m_EncryptedPassword));
+        }
         if (this->m_Href) {
             json["Href"] = convertUtf16(*(this->m_Href));
         }
         if (this->m_ImportFormatMode) {
             json["ImportFormatMode"] = convertUtf16(*(this->m_ImportFormatMode));
         }
-        if (this->m_Password) {
-            json["Password"] = convertUtf16(*(this->m_Password));
-        }
     }
 
     void DocumentEntry::fromJson(const void* jsonIfc)
     {
         ::nlohmann::json& json = *((::nlohmann::json*)jsonIfc);
+        if (json.contains("EncryptedPassword") && !json["EncryptedPassword"].is_null()) {
+            this->m_EncryptedPassword = std::make_shared< std::wstring >(
+                convertUtf8( json["EncryptedPassword"].get< std::string >() )
+            );
+        }
         if (json.contains("Href") && !json["Href"].is_null()) {
             this->m_Href = std::make_shared< std::wstring >(
                 convertUtf8( json["Href"].get< std::string >() )
@@ -2410,12 +2415,18 @@ namespace aspose::words::cloud::models {
                 convertUtf8( json["ImportFormatMode"].get< std::string >() )
             );
         }
-        if (json.contains("Password") && !json["Password"].is_null()) {
-            this->m_Password = std::make_shared< std::wstring >(
-                convertUtf8( json["Password"].get< std::string >() )
-            );
-        }
     }
+
+    std::shared_ptr< std::wstring > DocumentEntry::getEncryptedPassword() const
+    {
+        return this->m_EncryptedPassword;
+    }
+
+    void DocumentEntry::setEncryptedPassword(std::shared_ptr< std::wstring > value)
+    {
+        this->m_EncryptedPassword = value;
+    }
+
 
     std::shared_ptr< std::wstring > DocumentEntry::getHref() const
     {
@@ -2436,17 +2447,6 @@ namespace aspose::words::cloud::models {
     void DocumentEntry::setImportFormatMode(std::shared_ptr< std::wstring > value)
     {
         this->m_ImportFormatMode = value;
-    }
-
-
-    std::shared_ptr< std::wstring > DocumentEntry::getPassword() const
-    {
-        return this->m_Password;
-    }
-
-    void DocumentEntry::setPassword(std::shared_ptr< std::wstring > value)
-    {
-        this->m_Password = value;
     }
 
 
