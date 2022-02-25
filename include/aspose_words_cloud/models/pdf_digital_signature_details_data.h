@@ -33,6 +33,18 @@ namespace aspose::words::cloud::models {
     class PdfDigitalSignatureDetailsData : public ModelBase
     {
     public:
+        /// <summary>
+        /// Gets or sets the hash algorithm.
+        /// </summary>
+        enum class HashAlgorithm
+        { 
+            SHA1,
+            SHA256,
+            SHA384,
+            SHA512,
+            MD5
+        };
+
 
         ASPOSE_WORDS_CLOUD_EXPORT virtual ~PdfDigitalSignatureDetailsData() = default;
         ASPOSE_WORDS_CLOUD_EXPORT virtual void toJson(void* jsonIfc) const override;
@@ -53,12 +65,12 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the hash algorithm.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< std::wstring > getHashAlgorithm() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< aspose::words::cloud::models::PdfDigitalSignatureDetailsData::HashAlgorithm > getHashAlgorithm() const;
 
         /// <summary>
         /// Gets or sets the hash algorithm.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT virtual void setHashAlgorithm(std::shared_ptr< std::wstring > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setHashAlgorithm(std::shared_ptr< aspose::words::cloud::models::PdfDigitalSignatureDetailsData::HashAlgorithm > value);
 
 
         /// <summary>
@@ -96,7 +108,7 @@ namespace aspose::words::cloud::models {
 
     protected:
         std::shared_ptr< std::wstring > m_CertificateFilename;
-        std::shared_ptr< std::wstring > m_HashAlgorithm;
+        std::shared_ptr< aspose::words::cloud::models::PdfDigitalSignatureDetailsData::HashAlgorithm > m_HashAlgorithm;
         std::shared_ptr< std::wstring > m_Location;
         std::shared_ptr< std::wstring > m_Reason;
         std::shared_ptr< std::wstring > m_SignatureDate;

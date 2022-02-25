@@ -35,6 +35,28 @@ namespace aspose::words::cloud::models {
     class FixedPageSaveOptionsData : public SaveOptionsData
     {
     public:
+        /// <summary>
+        /// Gets or sets the value determining how colors are rendered.
+        /// { Normal | Grayscale}.
+        /// </summary>
+        enum class ColorMode
+        { 
+            NORMAL,
+            GRAYSCALE
+        };
+
+        /// <summary>
+        /// Gets or sets the symbol set, that is used to represent numbers while rendering to fixed page formats.
+        /// </summary>
+        enum class NumeralFormat
+        { 
+            EUROPEAN,
+            ARABIC_INDIC,
+            EASTERN_ARABIC_INDIC,
+            CONTEXT,
+            SYSTEM
+        };
+
 
         ASPOSE_WORDS_CLOUD_EXPORT virtual ~FixedPageSaveOptionsData() = default;
         ASPOSE_WORDS_CLOUD_EXPORT virtual void toJson(void* jsonIfc) const override;
@@ -47,13 +69,13 @@ namespace aspose::words::cloud::models {
         /// Gets or sets the value determining how colors are rendered.
         /// { Normal | Grayscale}.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< std::wstring > getColorMode() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< aspose::words::cloud::models::FixedPageSaveOptionsData::ColorMode > getColorMode() const;
 
         /// <summary>
         /// Gets or sets the value determining how colors are rendered.
         /// { Normal | Grayscale}.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT virtual void setColorMode(std::shared_ptr< std::wstring > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setColorMode(std::shared_ptr< aspose::words::cloud::models::FixedPageSaveOptionsData::ColorMode > value);
 
 
         /// <summary>
@@ -81,12 +103,12 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the symbol set, that is used to represent numbers while rendering to fixed page formats.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< std::wstring > getNumeralFormat() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< aspose::words::cloud::models::FixedPageSaveOptionsData::NumeralFormat > getNumeralFormat() const;
 
         /// <summary>
         /// Gets or sets the symbol set, that is used to represent numbers while rendering to fixed page formats.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT virtual void setNumeralFormat(std::shared_ptr< std::wstring > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setNumeralFormat(std::shared_ptr< aspose::words::cloud::models::FixedPageSaveOptionsData::NumeralFormat > value);
 
 
         /// <summary>
@@ -127,10 +149,10 @@ namespace aspose::words::cloud::models {
 
 
     protected:
-        std::shared_ptr< std::wstring > m_ColorMode;
+        std::shared_ptr< aspose::words::cloud::models::FixedPageSaveOptionsData::ColorMode > m_ColorMode;
         std::shared_ptr< int32_t > m_JpegQuality;
         std::shared_ptr< aspose::words::cloud::models::MetafileRenderingOptionsData > m_MetafileRenderingOptions;
-        std::shared_ptr< std::wstring > m_NumeralFormat;
+        std::shared_ptr< aspose::words::cloud::models::FixedPageSaveOptionsData::NumeralFormat > m_NumeralFormat;
         std::shared_ptr< bool > m_OptimizeOutput;
         std::shared_ptr< int32_t > m_PageCount;
         std::shared_ptr< int32_t > m_PageIndex;

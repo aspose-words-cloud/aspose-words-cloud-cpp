@@ -25,6 +25,7 @@
 
 #pragma once
 #include "./model_base.h"
+#include "pdf_permissions.h"
 
 namespace aspose::words::cloud::models {
     /// <summary>
@@ -33,6 +34,15 @@ namespace aspose::words::cloud::models {
     class PdfEncryptionDetailsData : public ModelBase
     {
     public:
+        /// <summary>
+        /// Gets or sets the encryption algorithm to use.
+        /// </summary>
+        enum class EncryptionAlgorithm
+        { 
+            R_C4_40,
+            R_C4_128
+        };
+
 
         ASPOSE_WORDS_CLOUD_EXPORT virtual ~PdfEncryptionDetailsData() = default;
         ASPOSE_WORDS_CLOUD_EXPORT virtual void toJson(void* jsonIfc) const override;
@@ -42,12 +52,12 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the encryption algorithm to use.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< std::wstring > getEncryptionAlgorithm() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< aspose::words::cloud::models::PdfEncryptionDetailsData::EncryptionAlgorithm > getEncryptionAlgorithm() const;
 
         /// <summary>
         /// Gets or sets the encryption algorithm to use.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT virtual void setEncryptionAlgorithm(std::shared_ptr< std::wstring > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setEncryptionAlgorithm(std::shared_ptr< aspose::words::cloud::models::PdfEncryptionDetailsData::EncryptionAlgorithm > value);
 
 
         /// <summary>
@@ -64,12 +74,12 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the operations that are allowed to a user on the encrypted PDF document.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< std::wstring > getPermissions() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< std::vector<std::shared_ptr<aspose::words::cloud::models::PdfPermissions>> > getPermissions() const;
 
         /// <summary>
         /// Gets or sets the operations that are allowed to a user on the encrypted PDF document.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT virtual void setPermissions(std::shared_ptr< std::wstring > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setPermissions(std::shared_ptr< std::vector<std::shared_ptr<aspose::words::cloud::models::PdfPermissions>> > value);
 
 
         /// <summary>
@@ -84,9 +94,9 @@ namespace aspose::words::cloud::models {
 
 
     protected:
-        std::shared_ptr< std::wstring > m_EncryptionAlgorithm;
+        std::shared_ptr< aspose::words::cloud::models::PdfEncryptionDetailsData::EncryptionAlgorithm > m_EncryptionAlgorithm;
         std::shared_ptr< std::wstring > m_OwnerPassword;
-        std::shared_ptr< std::wstring > m_Permissions;
+        std::shared_ptr< std::vector<std::shared_ptr<aspose::words::cloud::models::PdfPermissions>> > m_Permissions;
         std::shared_ptr< std::wstring > m_UserPassword;
     };
 }

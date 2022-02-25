@@ -193,6 +193,7 @@
 #include "./aspose_words_cloud/models/pcl_save_options_data.h"
 #include "./aspose_words_cloud/models/pdf_digital_signature_details_data.h"
 #include "./aspose_words_cloud/models/pdf_encryption_details_data.h"
+#include "./aspose_words_cloud/models/pdf_permissions.h"
 #include "./aspose_words_cloud/models/pdf_save_options_data.h"
 #include "./aspose_words_cloud/models/png_save_options_data.h"
 #include "./aspose_words_cloud/models/preferred_width.h"

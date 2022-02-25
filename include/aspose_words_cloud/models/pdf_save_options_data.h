@@ -39,6 +39,41 @@ namespace aspose::words::cloud::models {
     {
     public:
         /// <summary>
+        /// Gets or sets the PDF standards compliance level for output documents.
+        /// </summary>
+        enum class Compliance
+        { 
+            PDF17,
+            PDF15,
+            PDF_A1A,
+            PDF_A1B,
+            PDF_A2A,
+            PDF_A2U,
+            PDF_UA1
+        };
+
+        /// <summary>
+        /// Gets or sets the option that controls the way CustomDocumentProperties are exported to PDF file.
+        /// The default value is None.
+        /// </summary>
+        enum class CustomPropertiesExport
+        { 
+            NONE,
+            STANDARD,
+            METADATA
+        };
+
+        /// <summary>
+        /// Gets or sets the font embedding mode.
+        /// </summary>
+        enum class FontEmbeddingMode
+        { 
+            EMBED_ALL,
+            EMBED_NONSTANDARD,
+            EMBED_NONE
+        };
+
+        /// <summary>
         /// Gets or sets the option that controls how bookmarks in headers/footers are exported.
         /// The default value is Aspose.Words.Saving.HeaderFooterBookmarksExportMode.All.
         /// </summary>
@@ -47,6 +82,50 @@ namespace aspose::words::cloud::models {
             NONE,
             FIRST,
             ALL
+        };
+
+        /// <summary>
+        /// Gets or sets the option that controls how the color space will be selected for the images in PDF document.
+        /// </summary>
+        enum class ImageColorSpaceExportMode
+        { 
+            AUTO,
+            SIMPLE_CMYK
+        };
+
+        /// <summary>
+        /// Gets or sets the option that controls how the PDF document should be displayed when opened in the PDF reader.
+        /// </summary>
+        enum class PageMode
+        { 
+            USE_NONE,
+            USE_OUTLINES,
+            USE_THUMBS,
+            FULL_SCREEN,
+            USE_OC,
+            USE_ATTACHMENTS
+        };
+
+        /// <summary>
+        /// Gets or sets the compression type to be used for all textual content in the document.
+        /// </summary>
+        enum class TextCompression
+        { 
+            NONE,
+            FLATE
+        };
+
+        /// <summary>
+        /// Gets or sets the option that controls what type of zoom should be applied when a document is opened with a PDF viewer.
+        /// </summary>
+        enum class ZoomBehavior
+        { 
+            NONE,
+            ZOOM_FACTOR,
+            FIT_PAGE,
+            FIT_WIDTH,
+            FIT_HEIGHT,
+            FIT_BOX
         };
 
 
@@ -60,12 +139,12 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the PDF standards compliance level for output documents.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< std::wstring > getCompliance() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< aspose::words::cloud::models::PdfSaveOptionsData::Compliance > getCompliance() const;
 
         /// <summary>
         /// Gets or sets the PDF standards compliance level for output documents.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT virtual void setCompliance(std::shared_ptr< std::wstring > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setCompliance(std::shared_ptr< aspose::words::cloud::models::PdfSaveOptionsData::Compliance > value);
 
 
         /// <summary>
@@ -87,13 +166,13 @@ namespace aspose::words::cloud::models {
         /// Gets or sets the option that controls the way CustomDocumentProperties are exported to PDF file.
         /// The default value is None.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< std::wstring > getCustomPropertiesExport() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< aspose::words::cloud::models::PdfSaveOptionsData::CustomPropertiesExport > getCustomPropertiesExport() const;
 
         /// <summary>
         /// Gets or sets the option that controls the way CustomDocumentProperties are exported to PDF file.
         /// The default value is None.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT virtual void setCustomPropertiesExport(std::shared_ptr< std::wstring > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setCustomPropertiesExport(std::shared_ptr< aspose::words::cloud::models::PdfSaveOptionsData::CustomPropertiesExport > value);
 
 
         /// <summary>
@@ -176,12 +255,12 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the font embedding mode.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< std::wstring > getFontEmbeddingMode() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< aspose::words::cloud::models::PdfSaveOptionsData::FontEmbeddingMode > getFontEmbeddingMode() const;
 
         /// <summary>
         /// Gets or sets the font embedding mode.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT virtual void setFontEmbeddingMode(std::shared_ptr< std::wstring > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setFontEmbeddingMode(std::shared_ptr< aspose::words::cloud::models::PdfSaveOptionsData::FontEmbeddingMode > value);
 
 
         /// <summary>
@@ -200,12 +279,12 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the option that controls how the color space will be selected for the images in PDF document.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< std::wstring > getImageColorSpaceExportMode() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< aspose::words::cloud::models::PdfSaveOptionsData::ImageColorSpaceExportMode > getImageColorSpaceExportMode() const;
 
         /// <summary>
         /// Gets or sets the option that controls how the color space will be selected for the images in PDF document.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT virtual void setImageColorSpaceExportMode(std::shared_ptr< std::wstring > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setImageColorSpaceExportMode(std::shared_ptr< aspose::words::cloud::models::PdfSaveOptionsData::ImageColorSpaceExportMode > value);
 
 
         /// <summary>
@@ -255,12 +334,12 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the option that controls how the PDF document should be displayed when opened in the PDF reader.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< std::wstring > getPageMode() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< aspose::words::cloud::models::PdfSaveOptionsData::PageMode > getPageMode() const;
 
         /// <summary>
         /// Gets or sets the option that controls how the PDF document should be displayed when opened in the PDF reader.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT virtual void setPageMode(std::shared_ptr< std::wstring > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setPageMode(std::shared_ptr< aspose::words::cloud::models::PdfSaveOptionsData::PageMode > value);
 
 
         /// <summary>
@@ -295,12 +374,12 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the compression type to be used for all textual content in the document.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< std::wstring > getTextCompression() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< aspose::words::cloud::models::PdfSaveOptionsData::TextCompression > getTextCompression() const;
 
         /// <summary>
         /// Gets or sets the compression type to be used for all textual content in the document.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT virtual void setTextCompression(std::shared_ptr< std::wstring > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setTextCompression(std::shared_ptr< aspose::words::cloud::models::PdfSaveOptionsData::TextCompression > value);
 
 
         /// <summary>
@@ -328,12 +407,12 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the option that controls what type of zoom should be applied when a document is opened with a PDF viewer.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< std::wstring > getZoomBehavior() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< aspose::words::cloud::models::PdfSaveOptionsData::ZoomBehavior > getZoomBehavior() const;
 
         /// <summary>
         /// Gets or sets the option that controls what type of zoom should be applied when a document is opened with a PDF viewer.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT virtual void setZoomBehavior(std::shared_ptr< std::wstring > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setZoomBehavior(std::shared_ptr< aspose::words::cloud::models::PdfSaveOptionsData::ZoomBehavior > value);
 
 
         /// <summary>
@@ -348,9 +427,9 @@ namespace aspose::words::cloud::models {
 
 
     protected:
-        std::shared_ptr< std::wstring > m_Compliance;
+        std::shared_ptr< aspose::words::cloud::models::PdfSaveOptionsData::Compliance > m_Compliance;
         std::shared_ptr< bool > m_CreateNoteHyperlinks;
-        std::shared_ptr< std::wstring > m_CustomPropertiesExport;
+        std::shared_ptr< aspose::words::cloud::models::PdfSaveOptionsData::CustomPropertiesExport > m_CustomPropertiesExport;
         std::shared_ptr< aspose::words::cloud::models::PdfDigitalSignatureDetailsData > m_DigitalSignatureDetails;
         std::shared_ptr< bool > m_DisplayDocTitle;
         std::shared_ptr< aspose::words::cloud::models::DownsampleOptionsData > m_DownsampleOptions;
@@ -358,21 +437,21 @@ namespace aspose::words::cloud::models {
         std::shared_ptr< aspose::words::cloud::models::PdfEncryptionDetailsData > m_EncryptionDetails;
         std::shared_ptr< bool > m_ExportDocumentStructure;
         std::shared_ptr< bool > m_ExportLanguageToSpanTag;
-        std::shared_ptr< std::wstring > m_FontEmbeddingMode;
+        std::shared_ptr< aspose::words::cloud::models::PdfSaveOptionsData::FontEmbeddingMode > m_FontEmbeddingMode;
         std::shared_ptr< aspose::words::cloud::models::PdfSaveOptionsData::HeaderFooterBookmarksExportMode > m_HeaderFooterBookmarksExportMode;
-        std::shared_ptr< std::wstring > m_ImageColorSpaceExportMode;
+        std::shared_ptr< aspose::words::cloud::models::PdfSaveOptionsData::ImageColorSpaceExportMode > m_ImageColorSpaceExportMode;
         std::shared_ptr< std::wstring > m_ImageCompression;
         std::shared_ptr< bool > m_InterpolateImages;
         std::shared_ptr< bool > m_OpenHyperlinksInNewWindow;
         std::shared_ptr< aspose::words::cloud::models::OutlineOptionsData > m_OutlineOptions;
-        std::shared_ptr< std::wstring > m_PageMode;
+        std::shared_ptr< aspose::words::cloud::models::PdfSaveOptionsData::PageMode > m_PageMode;
         std::shared_ptr< bool > m_PreblendImages;
         std::shared_ptr< bool > m_PreserveFormFields;
         std::shared_ptr< std::wstring > m_SaveFormat = std::make_shared<std::wstring>(L"pdf");
-        std::shared_ptr< std::wstring > m_TextCompression;
+        std::shared_ptr< aspose::words::cloud::models::PdfSaveOptionsData::TextCompression > m_TextCompression;
         std::shared_ptr< bool > m_UseBookFoldPrintingSettings;
         std::shared_ptr< bool > m_UseCoreFonts;
-        std::shared_ptr< std::wstring > m_ZoomBehavior;
+        std::shared_ptr< aspose::words::cloud::models::PdfSaveOptionsData::ZoomBehavior > m_ZoomBehavior;
         std::shared_ptr< int32_t > m_ZoomFactor;
     };
 }
