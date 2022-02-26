@@ -34,6 +34,16 @@ namespace aspose::words::cloud::models {
     class SvgSaveOptionsData : public FixedPageSaveOptionsData
     {
     public:
+        /// <summary>
+        /// Gets or sets the option that controls how text should be rendered.
+        /// </summary>
+        enum class TextOutputMode
+        { 
+            USE_SVG_FONTS,
+            USE_TARGET_MACHINE_FONTS,
+            USE_PLACED_GLYPHS
+        };
+
 
         ASPOSE_WORDS_CLOUD_EXPORT virtual ~SvgSaveOptionsData() = default;
         ASPOSE_WORDS_CLOUD_EXPORT virtual void toJson(void* jsonIfc) const override;
@@ -107,12 +117,12 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the option that controls how text should be rendered.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< std::wstring > getTextOutputMode() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< aspose::words::cloud::models::SvgSaveOptionsData::TextOutputMode > getTextOutputMode() const;
 
         /// <summary>
         /// Gets or sets the option that controls how text should be rendered.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT virtual void setTextOutputMode(std::shared_ptr< std::wstring > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setTextOutputMode(std::shared_ptr< aspose::words::cloud::models::SvgSaveOptionsData::TextOutputMode > value);
 
 
     protected:
@@ -122,7 +132,7 @@ namespace aspose::words::cloud::models {
         std::shared_ptr< std::wstring > m_ResourcesFolderAlias;
         std::shared_ptr< std::wstring > m_SaveFormat = std::make_shared<std::wstring>(L"svg");
         std::shared_ptr< bool > m_ShowPageBorder;
-        std::shared_ptr< std::wstring > m_TextOutputMode;
+        std::shared_ptr< aspose::words::cloud::models::SvgSaveOptionsData::TextOutputMode > m_TextOutputMode;
     };
 }
 

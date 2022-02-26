@@ -43,6 +43,37 @@ namespace aspose::words::cloud::models {
         return result;
     }
 
+    inline std::string pdfPermissionsToString(PdfPermissions value)
+    {
+        if (value == PdfPermissions::DISALLOW_ALL) return "DisallowAll";
+        if (value == PdfPermissions::PRINTING) return "Printing";
+        if (value == PdfPermissions::MODIFY_CONTENTS) return "ModifyContents";
+        if (value == PdfPermissions::CONTENT_COPY) return "ContentCopy";
+        if (value == PdfPermissions::MODIFY_ANNOTATIONS) return "ModifyAnnotations";
+        if (value == PdfPermissions::FILL_IN) return "FillIn";
+        if (value == PdfPermissions::CONTENT_COPY_FOR_ACCESSIBILITY) return "ContentCopyForAccessibility";
+        if (value == PdfPermissions::DOCUMENT_ASSEMBLY) return "DocumentAssembly";
+        if (value == PdfPermissions::HIGH_RESOLUTION_PRINTING) return "HighResolutionPrinting";
+        if (value == PdfPermissions::ALLOW_ALL) return "AllowAll";
+        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
+    }
+
+    inline PdfPermissions pdfPermissionsFromString(const std::string& value)
+    {
+        if (value == "DisallowAll") return PdfPermissions::DISALLOW_ALL;
+        if (value == "Printing") return PdfPermissions::PRINTING;
+        if (value == "ModifyContents") return PdfPermissions::MODIFY_CONTENTS;
+        if (value == "ContentCopy") return PdfPermissions::CONTENT_COPY;
+        if (value == "ModifyAnnotations") return PdfPermissions::MODIFY_ANNOTATIONS;
+        if (value == "FillIn") return PdfPermissions::FILL_IN;
+        if (value == "ContentCopyForAccessibility") return PdfPermissions::CONTENT_COPY_FOR_ACCESSIBILITY;
+        if (value == "DocumentAssembly") return PdfPermissions::DOCUMENT_ASSEMBLY;
+        if (value == "HighResolutionPrinting") return PdfPermissions::HIGH_RESOLUTION_PRINTING;
+        if (value == "AllowAll") return PdfPermissions::ALLOW_ALL;
+        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
+    }
+
+
     inline std::string reportBuildOptionsToString(ReportBuildOptions value)
     {
         if (value == ReportBuildOptions::NONE) return "None";
@@ -2386,20 +2417,25 @@ namespace aspose::words::cloud::models {
     void DocumentEntry::toJson(void* jsonIfc) const
     {
         ::nlohmann::json& json = *((::nlohmann::json*)jsonIfc);
+        if (this->m_EncryptedPassword) {
+            json["EncryptedPassword"] = convertUtf16(*(this->m_EncryptedPassword));
+        }
         if (this->m_Href) {
             json["Href"] = convertUtf16(*(this->m_Href));
         }
         if (this->m_ImportFormatMode) {
             json["ImportFormatMode"] = convertUtf16(*(this->m_ImportFormatMode));
         }
-        if (this->m_Password) {
-            json["Password"] = convertUtf16(*(this->m_Password));
-        }
     }
 
     void DocumentEntry::fromJson(const void* jsonIfc)
     {
         ::nlohmann::json& json = *((::nlohmann::json*)jsonIfc);
+        if (json.contains("EncryptedPassword") && !json["EncryptedPassword"].is_null()) {
+            this->m_EncryptedPassword = std::make_shared< std::wstring >(
+                convertUtf8( json["EncryptedPassword"].get< std::string >() )
+            );
+        }
         if (json.contains("Href") && !json["Href"].is_null()) {
             this->m_Href = std::make_shared< std::wstring >(
                 convertUtf8( json["Href"].get< std::string >() )
@@ -2410,12 +2446,18 @@ namespace aspose::words::cloud::models {
                 convertUtf8( json["ImportFormatMode"].get< std::string >() )
             );
         }
-        if (json.contains("Password") && !json["Password"].is_null()) {
-            this->m_Password = std::make_shared< std::wstring >(
-                convertUtf8( json["Password"].get< std::string >() )
-            );
-        }
     }
+
+    std::shared_ptr< std::wstring > DocumentEntry::getEncryptedPassword() const
+    {
+        return this->m_EncryptedPassword;
+    }
+
+    void DocumentEntry::setEncryptedPassword(std::shared_ptr< std::wstring > value)
+    {
+        this->m_EncryptedPassword = value;
+    }
+
 
     std::shared_ptr< std::wstring > DocumentEntry::getHref() const
     {
@@ -2436,17 +2478,6 @@ namespace aspose::words::cloud::models {
     void DocumentEntry::setImportFormatMode(std::shared_ptr< std::wstring > value)
     {
         this->m_ImportFormatMode = value;
-    }
-
-
-    std::shared_ptr< std::wstring > DocumentEntry::getPassword() const
-    {
-        return this->m_Password;
-    }
-
-    void DocumentEntry::setPassword(std::shared_ptr< std::wstring > value)
-    {
-        this->m_Password = value;
     }
 
 
@@ -5000,12 +5031,45 @@ namespace aspose::words::cloud::models {
     /*
      * FixedPageSaveOptionsData implementation
      */
+    inline std::string fixedPageSaveOptionsDataColorModeToString(aspose::words::cloud::models::FixedPageSaveOptionsData::ColorMode value)
+    {
+        if (value == aspose::words::cloud::models::FixedPageSaveOptionsData::ColorMode::NORMAL) return "Normal";
+        if (value == aspose::words::cloud::models::FixedPageSaveOptionsData::ColorMode::GRAYSCALE) return "Grayscale";
+        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
+    }
+
+    inline aspose::words::cloud::models::FixedPageSaveOptionsData::ColorMode fixedPageSaveOptionsDataColorModeFromString(const std::string& value)
+    {
+        if (value == "Normal") return aspose::words::cloud::models::FixedPageSaveOptionsData::ColorMode::NORMAL;
+        if (value == "Grayscale") return aspose::words::cloud::models::FixedPageSaveOptionsData::ColorMode::GRAYSCALE;
+        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
+    }
+
+    inline std::string fixedPageSaveOptionsDataNumeralFormatToString(aspose::words::cloud::models::FixedPageSaveOptionsData::NumeralFormat value)
+    {
+        if (value == aspose::words::cloud::models::FixedPageSaveOptionsData::NumeralFormat::EUROPEAN) return "European";
+        if (value == aspose::words::cloud::models::FixedPageSaveOptionsData::NumeralFormat::ARABIC_INDIC) return "ArabicIndic";
+        if (value == aspose::words::cloud::models::FixedPageSaveOptionsData::NumeralFormat::EASTERN_ARABIC_INDIC) return "EasternArabicIndic";
+        if (value == aspose::words::cloud::models::FixedPageSaveOptionsData::NumeralFormat::CONTEXT) return "Context";
+        if (value == aspose::words::cloud::models::FixedPageSaveOptionsData::NumeralFormat::SYSTEM) return "System";
+        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
+    }
+
+    inline aspose::words::cloud::models::FixedPageSaveOptionsData::NumeralFormat fixedPageSaveOptionsDataNumeralFormatFromString(const std::string& value)
+    {
+        if (value == "European") return aspose::words::cloud::models::FixedPageSaveOptionsData::NumeralFormat::EUROPEAN;
+        if (value == "ArabicIndic") return aspose::words::cloud::models::FixedPageSaveOptionsData::NumeralFormat::ARABIC_INDIC;
+        if (value == "EasternArabicIndic") return aspose::words::cloud::models::FixedPageSaveOptionsData::NumeralFormat::EASTERN_ARABIC_INDIC;
+        if (value == "Context") return aspose::words::cloud::models::FixedPageSaveOptionsData::NumeralFormat::CONTEXT;
+        if (value == "System") return aspose::words::cloud::models::FixedPageSaveOptionsData::NumeralFormat::SYSTEM;
+        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
+    }
     void FixedPageSaveOptionsData::toJson(void* jsonIfc) const
     {
         SaveOptionsData::toJson(jsonIfc);
         ::nlohmann::json& json = *((::nlohmann::json*)jsonIfc);
         if (this->m_ColorMode) {
-            json["ColorMode"] = convertUtf16(*(this->m_ColorMode));
+            json["ColorMode"] = fixedPageSaveOptionsDataColorModeToString(*(this->m_ColorMode));
         }
         if (this->m_JpegQuality) {
             json["JpegQuality"] = *(this->m_JpegQuality);
@@ -5014,7 +5078,7 @@ namespace aspose::words::cloud::models {
             this->m_MetafileRenderingOptions->toJson(&json["MetafileRenderingOptions"]);
         }
         if (this->m_NumeralFormat) {
-            json["NumeralFormat"] = convertUtf16(*(this->m_NumeralFormat));
+            json["NumeralFormat"] = fixedPageSaveOptionsDataNumeralFormatToString(*(this->m_NumeralFormat));
         }
         if (this->m_OptimizeOutput) {
             json["OptimizeOutput"] = *(this->m_OptimizeOutput);
@@ -5032,8 +5096,8 @@ namespace aspose::words::cloud::models {
         SaveOptionsData::fromJson(jsonIfc);
         ::nlohmann::json& json = *((::nlohmann::json*)jsonIfc);
         if (json.contains("ColorMode") && !json["ColorMode"].is_null()) {
-            this->m_ColorMode = std::make_shared< std::wstring >(
-                convertUtf8( json["ColorMode"].get< std::string >() )
+            this->m_ColorMode = std::make_shared< aspose::words::cloud::models::FixedPageSaveOptionsData::ColorMode >(
+                fixedPageSaveOptionsDataColorModeFromString(json["ColorMode"].get< std::string >())
             );
         }
         if (json.contains("JpegQuality") && !json["JpegQuality"].is_null()) {
@@ -5046,8 +5110,8 @@ namespace aspose::words::cloud::models {
             this->m_MetafileRenderingOptions->fromJson(&json["MetafileRenderingOptions"]);
         }
         if (json.contains("NumeralFormat") && !json["NumeralFormat"].is_null()) {
-            this->m_NumeralFormat = std::make_shared< std::wstring >(
-                convertUtf8( json["NumeralFormat"].get< std::string >() )
+            this->m_NumeralFormat = std::make_shared< aspose::words::cloud::models::FixedPageSaveOptionsData::NumeralFormat >(
+                fixedPageSaveOptionsDataNumeralFormatFromString(json["NumeralFormat"].get< std::string >())
             );
         }
         if (json.contains("OptimizeOutput") && !json["OptimizeOutput"].is_null()) {
@@ -5067,12 +5131,12 @@ namespace aspose::words::cloud::models {
         }
     }
 
-    std::shared_ptr< std::wstring > FixedPageSaveOptionsData::getColorMode() const
+    std::shared_ptr< aspose::words::cloud::models::FixedPageSaveOptionsData::ColorMode > FixedPageSaveOptionsData::getColorMode() const
     {
         return this->m_ColorMode;
     }
 
-    void FixedPageSaveOptionsData::setColorMode(std::shared_ptr< std::wstring > value)
+    void FixedPageSaveOptionsData::setColorMode(std::shared_ptr< aspose::words::cloud::models::FixedPageSaveOptionsData::ColorMode > value)
     {
         this->m_ColorMode = value;
     }
@@ -5100,12 +5164,12 @@ namespace aspose::words::cloud::models {
     }
 
 
-    std::shared_ptr< std::wstring > FixedPageSaveOptionsData::getNumeralFormat() const
+    std::shared_ptr< aspose::words::cloud::models::FixedPageSaveOptionsData::NumeralFormat > FixedPageSaveOptionsData::getNumeralFormat() const
     {
         return this->m_NumeralFormat;
     }
 
-    void FixedPageSaveOptionsData::setNumeralFormat(std::shared_ptr< std::wstring > value)
+    void FixedPageSaveOptionsData::setNumeralFormat(std::shared_ptr< aspose::words::cloud::models::FixedPageSaveOptionsData::NumeralFormat > value)
     {
         this->m_NumeralFormat = value;
     }
@@ -8255,6 +8319,35 @@ namespace aspose::words::cloud::models {
     /*
      * HtmlFixedSaveOptionsData implementation
      */
+    inline std::string htmlFixedSaveOptionsDataFontFormatToString(aspose::words::cloud::models::HtmlFixedSaveOptionsData::FontFormat value)
+    {
+        if (value == aspose::words::cloud::models::HtmlFixedSaveOptionsData::FontFormat::WOFF) return "Woff";
+        if (value == aspose::words::cloud::models::HtmlFixedSaveOptionsData::FontFormat::TTF) return "Ttf";
+        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
+    }
+
+    inline aspose::words::cloud::models::HtmlFixedSaveOptionsData::FontFormat htmlFixedSaveOptionsDataFontFormatFromString(const std::string& value)
+    {
+        if (value == "Woff") return aspose::words::cloud::models::HtmlFixedSaveOptionsData::FontFormat::WOFF;
+        if (value == "Ttf") return aspose::words::cloud::models::HtmlFixedSaveOptionsData::FontFormat::TTF;
+        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
+    }
+
+    inline std::string htmlFixedSaveOptionsDataPageHorizontalAlignmentToString(aspose::words::cloud::models::HtmlFixedSaveOptionsData::PageHorizontalAlignment value)
+    {
+        if (value == aspose::words::cloud::models::HtmlFixedSaveOptionsData::PageHorizontalAlignment::LEFT) return "Left";
+        if (value == aspose::words::cloud::models::HtmlFixedSaveOptionsData::PageHorizontalAlignment::CENTER) return "Center";
+        if (value == aspose::words::cloud::models::HtmlFixedSaveOptionsData::PageHorizontalAlignment::RIGHT) return "Right";
+        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
+    }
+
+    inline aspose::words::cloud::models::HtmlFixedSaveOptionsData::PageHorizontalAlignment htmlFixedSaveOptionsDataPageHorizontalAlignmentFromString(const std::string& value)
+    {
+        if (value == "Left") return aspose::words::cloud::models::HtmlFixedSaveOptionsData::PageHorizontalAlignment::LEFT;
+        if (value == "Center") return aspose::words::cloud::models::HtmlFixedSaveOptionsData::PageHorizontalAlignment::CENTER;
+        if (value == "Right") return aspose::words::cloud::models::HtmlFixedSaveOptionsData::PageHorizontalAlignment::RIGHT;
+        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
+    }
     void HtmlFixedSaveOptionsData::toJson(void* jsonIfc) const
     {
         FixedPageSaveOptionsData::toJson(jsonIfc);
@@ -8278,10 +8371,10 @@ namespace aspose::words::cloud::models {
             json["ExportFormFields"] = *(this->m_ExportFormFields);
         }
         if (this->m_FontFormat) {
-            json["FontFormat"] = convertUtf16(*(this->m_FontFormat));
+            json["FontFormat"] = htmlFixedSaveOptionsDataFontFormatToString(*(this->m_FontFormat));
         }
         if (this->m_PageHorizontalAlignment) {
-            json["PageHorizontalAlignment"] = convertUtf16(*(this->m_PageHorizontalAlignment));
+            json["PageHorizontalAlignment"] = htmlFixedSaveOptionsDataPageHorizontalAlignmentToString(*(this->m_PageHorizontalAlignment));
         }
         if (this->m_PageMargins) {
             json["PageMargins"] = *(this->m_PageMargins);
@@ -8341,13 +8434,13 @@ namespace aspose::words::cloud::models {
             );
         }
         if (json.contains("FontFormat") && !json["FontFormat"].is_null()) {
-            this->m_FontFormat = std::make_shared< std::wstring >(
-                convertUtf8( json["FontFormat"].get< std::string >() )
+            this->m_FontFormat = std::make_shared< aspose::words::cloud::models::HtmlFixedSaveOptionsData::FontFormat >(
+                htmlFixedSaveOptionsDataFontFormatFromString(json["FontFormat"].get< std::string >())
             );
         }
         if (json.contains("PageHorizontalAlignment") && !json["PageHorizontalAlignment"].is_null()) {
-            this->m_PageHorizontalAlignment = std::make_shared< std::wstring >(
-                convertUtf8( json["PageHorizontalAlignment"].get< std::string >() )
+            this->m_PageHorizontalAlignment = std::make_shared< aspose::words::cloud::models::HtmlFixedSaveOptionsData::PageHorizontalAlignment >(
+                htmlFixedSaveOptionsDataPageHorizontalAlignmentFromString(json["PageHorizontalAlignment"].get< std::string >())
             );
         }
         if (json.contains("PageMargins") && !json["PageMargins"].is_null()) {
@@ -8453,23 +8546,23 @@ namespace aspose::words::cloud::models {
     }
 
 
-    std::shared_ptr< std::wstring > HtmlFixedSaveOptionsData::getFontFormat() const
+    std::shared_ptr< aspose::words::cloud::models::HtmlFixedSaveOptionsData::FontFormat > HtmlFixedSaveOptionsData::getFontFormat() const
     {
         return this->m_FontFormat;
     }
 
-    void HtmlFixedSaveOptionsData::setFontFormat(std::shared_ptr< std::wstring > value)
+    void HtmlFixedSaveOptionsData::setFontFormat(std::shared_ptr< aspose::words::cloud::models::HtmlFixedSaveOptionsData::FontFormat > value)
     {
         this->m_FontFormat = value;
     }
 
 
-    std::shared_ptr< std::wstring > HtmlFixedSaveOptionsData::getPageHorizontalAlignment() const
+    std::shared_ptr< aspose::words::cloud::models::HtmlFixedSaveOptionsData::PageHorizontalAlignment > HtmlFixedSaveOptionsData::getPageHorizontalAlignment() const
     {
         return this->m_PageHorizontalAlignment;
     }
 
-    void HtmlFixedSaveOptionsData::setPageHorizontalAlignment(std::shared_ptr< std::wstring > value)
+    void HtmlFixedSaveOptionsData::setPageHorizontalAlignment(std::shared_ptr< aspose::words::cloud::models::HtmlFixedSaveOptionsData::PageHorizontalAlignment > value)
     {
         this->m_PageHorizontalAlignment = value;
     }
@@ -8568,6 +8661,60 @@ namespace aspose::words::cloud::models {
         throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
     }
 
+    inline std::string htmlSaveOptionsDataDocumentSplitCriteriaToString(aspose::words::cloud::models::HtmlSaveOptionsData::DocumentSplitCriteria value)
+    {
+        if (value == aspose::words::cloud::models::HtmlSaveOptionsData::DocumentSplitCriteria::NONE) return "None";
+        if (value == aspose::words::cloud::models::HtmlSaveOptionsData::DocumentSplitCriteria::PAGE_BREAK) return "PageBreak";
+        if (value == aspose::words::cloud::models::HtmlSaveOptionsData::DocumentSplitCriteria::COLUMN_BREAK) return "ColumnBreak";
+        if (value == aspose::words::cloud::models::HtmlSaveOptionsData::DocumentSplitCriteria::SECTION_BREAK) return "SectionBreak";
+        if (value == aspose::words::cloud::models::HtmlSaveOptionsData::DocumentSplitCriteria::HEADING_PARAGRAPH) return "HeadingParagraph";
+        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
+    }
+
+    inline aspose::words::cloud::models::HtmlSaveOptionsData::DocumentSplitCriteria htmlSaveOptionsDataDocumentSplitCriteriaFromString(const std::string& value)
+    {
+        if (value == "None") return aspose::words::cloud::models::HtmlSaveOptionsData::DocumentSplitCriteria::NONE;
+        if (value == "PageBreak") return aspose::words::cloud::models::HtmlSaveOptionsData::DocumentSplitCriteria::PAGE_BREAK;
+        if (value == "ColumnBreak") return aspose::words::cloud::models::HtmlSaveOptionsData::DocumentSplitCriteria::COLUMN_BREAK;
+        if (value == "SectionBreak") return aspose::words::cloud::models::HtmlSaveOptionsData::DocumentSplitCriteria::SECTION_BREAK;
+        if (value == "HeadingParagraph") return aspose::words::cloud::models::HtmlSaveOptionsData::DocumentSplitCriteria::HEADING_PARAGRAPH;
+        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
+    }
+
+    inline std::string htmlSaveOptionsDataExportHeadersFootersModeToString(aspose::words::cloud::models::HtmlSaveOptionsData::ExportHeadersFootersMode value)
+    {
+        if (value == aspose::words::cloud::models::HtmlSaveOptionsData::ExportHeadersFootersMode::NONE) return "None";
+        if (value == aspose::words::cloud::models::HtmlSaveOptionsData::ExportHeadersFootersMode::PER_SECTION) return "PerSection";
+        if (value == aspose::words::cloud::models::HtmlSaveOptionsData::ExportHeadersFootersMode::FIRST_SECTION_HEADER_LAST_SECTION_FOOTER) return "FirstSectionHeaderLastSectionFooter";
+        if (value == aspose::words::cloud::models::HtmlSaveOptionsData::ExportHeadersFootersMode::FIRST_PAGE_HEADER_FOOTER_PER_SECTION) return "FirstPageHeaderFooterPerSection";
+        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
+    }
+
+    inline aspose::words::cloud::models::HtmlSaveOptionsData::ExportHeadersFootersMode htmlSaveOptionsDataExportHeadersFootersModeFromString(const std::string& value)
+    {
+        if (value == "None") return aspose::words::cloud::models::HtmlSaveOptionsData::ExportHeadersFootersMode::NONE;
+        if (value == "PerSection") return aspose::words::cloud::models::HtmlSaveOptionsData::ExportHeadersFootersMode::PER_SECTION;
+        if (value == "FirstSectionHeaderLastSectionFooter") return aspose::words::cloud::models::HtmlSaveOptionsData::ExportHeadersFootersMode::FIRST_SECTION_HEADER_LAST_SECTION_FOOTER;
+        if (value == "FirstPageHeaderFooterPerSection") return aspose::words::cloud::models::HtmlSaveOptionsData::ExportHeadersFootersMode::FIRST_PAGE_HEADER_FOOTER_PER_SECTION;
+        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
+    }
+
+    inline std::string htmlSaveOptionsDataExportListLabelsToString(aspose::words::cloud::models::HtmlSaveOptionsData::ExportListLabels value)
+    {
+        if (value == aspose::words::cloud::models::HtmlSaveOptionsData::ExportListLabels::AUTO) return "Auto";
+        if (value == aspose::words::cloud::models::HtmlSaveOptionsData::ExportListLabels::AS_INLINE_TEXT) return "AsInlineText";
+        if (value == aspose::words::cloud::models::HtmlSaveOptionsData::ExportListLabels::BY_HTML_TAGS) return "ByHtmlTags";
+        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
+    }
+
+    inline aspose::words::cloud::models::HtmlSaveOptionsData::ExportListLabels htmlSaveOptionsDataExportListLabelsFromString(const std::string& value)
+    {
+        if (value == "Auto") return aspose::words::cloud::models::HtmlSaveOptionsData::ExportListLabels::AUTO;
+        if (value == "AsInlineText") return aspose::words::cloud::models::HtmlSaveOptionsData::ExportListLabels::AS_INLINE_TEXT;
+        if (value == "ByHtmlTags") return aspose::words::cloud::models::HtmlSaveOptionsData::ExportListLabels::BY_HTML_TAGS;
+        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
+    }
+
     inline std::string htmlSaveOptionsDataHtmlVersionToString(aspose::words::cloud::models::HtmlSaveOptionsData::HtmlVersion value)
     {
         if (value == aspose::words::cloud::models::HtmlSaveOptionsData::HtmlVersion::XHTML) return "Xhtml";
@@ -8613,6 +8760,22 @@ namespace aspose::words::cloud::models {
         if (value == "Text") return aspose::words::cloud::models::HtmlSaveOptionsData::OfficeMathOutputMode::TEXT;
         throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
     }
+
+    inline std::string htmlSaveOptionsDataTableWidthOutputModeToString(aspose::words::cloud::models::HtmlSaveOptionsData::TableWidthOutputMode value)
+    {
+        if (value == aspose::words::cloud::models::HtmlSaveOptionsData::TableWidthOutputMode::ALL) return "All";
+        if (value == aspose::words::cloud::models::HtmlSaveOptionsData::TableWidthOutputMode::RELATIVE_ONLY) return "RelativeOnly";
+        if (value == aspose::words::cloud::models::HtmlSaveOptionsData::TableWidthOutputMode::NONE) return "None";
+        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
+    }
+
+    inline aspose::words::cloud::models::HtmlSaveOptionsData::TableWidthOutputMode htmlSaveOptionsDataTableWidthOutputModeFromString(const std::string& value)
+    {
+        if (value == "All") return aspose::words::cloud::models::HtmlSaveOptionsData::TableWidthOutputMode::ALL;
+        if (value == "RelativeOnly") return aspose::words::cloud::models::HtmlSaveOptionsData::TableWidthOutputMode::RELATIVE_ONLY;
+        if (value == "None") return aspose::words::cloud::models::HtmlSaveOptionsData::TableWidthOutputMode::NONE;
+        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
+    }
     void HtmlSaveOptionsData::toJson(void* jsonIfc) const
     {
         SaveOptionsData::toJson(jsonIfc);
@@ -8630,7 +8793,7 @@ namespace aspose::words::cloud::models {
             json["CssStyleSheetType"] = htmlSaveOptionsDataCssStyleSheetTypeToString(*(this->m_CssStyleSheetType));
         }
         if (this->m_DocumentSplitCriteria) {
-            json["DocumentSplitCriteria"] = convertUtf16(*(this->m_DocumentSplitCriteria));
+            json["DocumentSplitCriteria"] = htmlSaveOptionsDataDocumentSplitCriteriaToString(*(this->m_DocumentSplitCriteria));
         }
         if (this->m_DocumentSplitHeadingLevel) {
             json["DocumentSplitHeadingLevel"] = *(this->m_DocumentSplitHeadingLevel);
@@ -8651,7 +8814,7 @@ namespace aspose::words::cloud::models {
             json["ExportFontsAsBase64"] = *(this->m_ExportFontsAsBase64);
         }
         if (this->m_ExportHeadersFootersMode) {
-            json["ExportHeadersFootersMode"] = convertUtf16(*(this->m_ExportHeadersFootersMode));
+            json["ExportHeadersFootersMode"] = htmlSaveOptionsDataExportHeadersFootersModeToString(*(this->m_ExportHeadersFootersMode));
         }
         if (this->m_ExportImagesAsBase64) {
             json["ExportImagesAsBase64"] = *(this->m_ExportImagesAsBase64);
@@ -8660,7 +8823,7 @@ namespace aspose::words::cloud::models {
             json["ExportLanguageInformation"] = *(this->m_ExportLanguageInformation);
         }
         if (this->m_ExportListLabels) {
-            json["ExportListLabels"] = convertUtf16(*(this->m_ExportListLabels));
+            json["ExportListLabels"] = htmlSaveOptionsDataExportListLabelsToString(*(this->m_ExportListLabels));
         }
         if (this->m_ExportOriginalUrlForLinkedImages) {
             json["ExportOriginalUrlForLinkedImages"] = *(this->m_ExportOriginalUrlForLinkedImages);
@@ -8735,7 +8898,7 @@ namespace aspose::words::cloud::models {
             json["ScaleImageToShapeSize"] = *(this->m_ScaleImageToShapeSize);
         }
         if (this->m_TableWidthOutputMode) {
-            json["TableWidthOutputMode"] = convertUtf16(*(this->m_TableWidthOutputMode));
+            json["TableWidthOutputMode"] = htmlSaveOptionsDataTableWidthOutputModeToString(*(this->m_TableWidthOutputMode));
         }
     }
 
@@ -8764,8 +8927,8 @@ namespace aspose::words::cloud::models {
             );
         }
         if (json.contains("DocumentSplitCriteria") && !json["DocumentSplitCriteria"].is_null()) {
-            this->m_DocumentSplitCriteria = std::make_shared< std::wstring >(
-                convertUtf8( json["DocumentSplitCriteria"].get< std::string >() )
+            this->m_DocumentSplitCriteria = std::make_shared< aspose::words::cloud::models::HtmlSaveOptionsData::DocumentSplitCriteria >(
+                htmlSaveOptionsDataDocumentSplitCriteriaFromString(json["DocumentSplitCriteria"].get< std::string >())
             );
         }
         if (json.contains("DocumentSplitHeadingLevel") && !json["DocumentSplitHeadingLevel"].is_null()) {
@@ -8799,8 +8962,8 @@ namespace aspose::words::cloud::models {
             );
         }
         if (json.contains("ExportHeadersFootersMode") && !json["ExportHeadersFootersMode"].is_null()) {
-            this->m_ExportHeadersFootersMode = std::make_shared< std::wstring >(
-                convertUtf8( json["ExportHeadersFootersMode"].get< std::string >() )
+            this->m_ExportHeadersFootersMode = std::make_shared< aspose::words::cloud::models::HtmlSaveOptionsData::ExportHeadersFootersMode >(
+                htmlSaveOptionsDataExportHeadersFootersModeFromString(json["ExportHeadersFootersMode"].get< std::string >())
             );
         }
         if (json.contains("ExportImagesAsBase64") && !json["ExportImagesAsBase64"].is_null()) {
@@ -8814,8 +8977,8 @@ namespace aspose::words::cloud::models {
             );
         }
         if (json.contains("ExportListLabels") && !json["ExportListLabels"].is_null()) {
-            this->m_ExportListLabels = std::make_shared< std::wstring >(
-                convertUtf8( json["ExportListLabels"].get< std::string >() )
+            this->m_ExportListLabels = std::make_shared< aspose::words::cloud::models::HtmlSaveOptionsData::ExportListLabels >(
+                htmlSaveOptionsDataExportListLabelsFromString(json["ExportListLabels"].get< std::string >())
             );
         }
         if (json.contains("ExportOriginalUrlForLinkedImages") && !json["ExportOriginalUrlForLinkedImages"].is_null()) {
@@ -8939,8 +9102,8 @@ namespace aspose::words::cloud::models {
             );
         }
         if (json.contains("TableWidthOutputMode") && !json["TableWidthOutputMode"].is_null()) {
-            this->m_TableWidthOutputMode = std::make_shared< std::wstring >(
-                convertUtf8( json["TableWidthOutputMode"].get< std::string >() )
+            this->m_TableWidthOutputMode = std::make_shared< aspose::words::cloud::models::HtmlSaveOptionsData::TableWidthOutputMode >(
+                htmlSaveOptionsDataTableWidthOutputModeFromString(json["TableWidthOutputMode"].get< std::string >())
             );
         }
     }
@@ -8989,12 +9152,12 @@ namespace aspose::words::cloud::models {
     }
 
 
-    std::shared_ptr< std::wstring > HtmlSaveOptionsData::getDocumentSplitCriteria() const
+    std::shared_ptr< aspose::words::cloud::models::HtmlSaveOptionsData::DocumentSplitCriteria > HtmlSaveOptionsData::getDocumentSplitCriteria() const
     {
         return this->m_DocumentSplitCriteria;
     }
 
-    void HtmlSaveOptionsData::setDocumentSplitCriteria(std::shared_ptr< std::wstring > value)
+    void HtmlSaveOptionsData::setDocumentSplitCriteria(std::shared_ptr< aspose::words::cloud::models::HtmlSaveOptionsData::DocumentSplitCriteria > value)
     {
         this->m_DocumentSplitCriteria = value;
     }
@@ -9066,12 +9229,12 @@ namespace aspose::words::cloud::models {
     }
 
 
-    std::shared_ptr< std::wstring > HtmlSaveOptionsData::getExportHeadersFootersMode() const
+    std::shared_ptr< aspose::words::cloud::models::HtmlSaveOptionsData::ExportHeadersFootersMode > HtmlSaveOptionsData::getExportHeadersFootersMode() const
     {
         return this->m_ExportHeadersFootersMode;
     }
 
-    void HtmlSaveOptionsData::setExportHeadersFootersMode(std::shared_ptr< std::wstring > value)
+    void HtmlSaveOptionsData::setExportHeadersFootersMode(std::shared_ptr< aspose::words::cloud::models::HtmlSaveOptionsData::ExportHeadersFootersMode > value)
     {
         this->m_ExportHeadersFootersMode = value;
     }
@@ -9099,12 +9262,12 @@ namespace aspose::words::cloud::models {
     }
 
 
-    std::shared_ptr< std::wstring > HtmlSaveOptionsData::getExportListLabels() const
+    std::shared_ptr< aspose::words::cloud::models::HtmlSaveOptionsData::ExportListLabels > HtmlSaveOptionsData::getExportListLabels() const
     {
         return this->m_ExportListLabels;
     }
 
-    void HtmlSaveOptionsData::setExportListLabels(std::shared_ptr< std::wstring > value)
+    void HtmlSaveOptionsData::setExportListLabels(std::shared_ptr< aspose::words::cloud::models::HtmlSaveOptionsData::ExportListLabels > value)
     {
         this->m_ExportListLabels = value;
     }
@@ -9370,12 +9533,12 @@ namespace aspose::words::cloud::models {
     }
 
 
-    std::shared_ptr< std::wstring > HtmlSaveOptionsData::getTableWidthOutputMode() const
+    std::shared_ptr< aspose::words::cloud::models::HtmlSaveOptionsData::TableWidthOutputMode > HtmlSaveOptionsData::getTableWidthOutputMode() const
     {
         return this->m_TableWidthOutputMode;
     }
 
-    void HtmlSaveOptionsData::setTableWidthOutputMode(std::shared_ptr< std::wstring > value)
+    void HtmlSaveOptionsData::setTableWidthOutputMode(std::shared_ptr< aspose::words::cloud::models::HtmlSaveOptionsData::TableWidthOutputMode > value)
     {
         this->m_TableWidthOutputMode = value;
     }
@@ -9546,6 +9709,53 @@ namespace aspose::words::cloud::models {
     /*
      * ImageSaveOptionsData implementation
      */
+    inline std::string imageSaveOptionsDataImageColorModeToString(aspose::words::cloud::models::ImageSaveOptionsData::ImageColorMode value)
+    {
+        if (value == aspose::words::cloud::models::ImageSaveOptionsData::ImageColorMode::NONE) return "None";
+        if (value == aspose::words::cloud::models::ImageSaveOptionsData::ImageColorMode::GRAYSCALE) return "Grayscale";
+        if (value == aspose::words::cloud::models::ImageSaveOptionsData::ImageColorMode::BLACK_AND_WHITE) return "BlackAndWhite";
+        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
+    }
+
+    inline aspose::words::cloud::models::ImageSaveOptionsData::ImageColorMode imageSaveOptionsDataImageColorModeFromString(const std::string& value)
+    {
+        if (value == "None") return aspose::words::cloud::models::ImageSaveOptionsData::ImageColorMode::NONE;
+        if (value == "Grayscale") return aspose::words::cloud::models::ImageSaveOptionsData::ImageColorMode::GRAYSCALE;
+        if (value == "BlackAndWhite") return aspose::words::cloud::models::ImageSaveOptionsData::ImageColorMode::BLACK_AND_WHITE;
+        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
+    }
+
+    inline std::string imageSaveOptionsDataPixelFormatToString(aspose::words::cloud::models::ImageSaveOptionsData::PixelFormat value)
+    {
+        if (value == aspose::words::cloud::models::ImageSaveOptionsData::PixelFormat::FORMAT16_BPP_RGB555) return "Format16BppRgb555";
+        if (value == aspose::words::cloud::models::ImageSaveOptionsData::PixelFormat::FORMAT16_BPP_RGB565) return "Format16BppRgb565";
+        if (value == aspose::words::cloud::models::ImageSaveOptionsData::PixelFormat::FORMAT16_BPP_ARGB1555) return "Format16BppArgb1555";
+        if (value == aspose::words::cloud::models::ImageSaveOptionsData::PixelFormat::FORMAT24_BPP_RGB) return "Format24BppRgb";
+        if (value == aspose::words::cloud::models::ImageSaveOptionsData::PixelFormat::FORMAT32_BPP_RGB) return "Format32BppRgb";
+        if (value == aspose::words::cloud::models::ImageSaveOptionsData::PixelFormat::FORMAT32_BPP_ARGB) return "Format32BppArgb";
+        if (value == aspose::words::cloud::models::ImageSaveOptionsData::PixelFormat::FORMAT32_BPP_P_ARGB) return "Format32BppPArgb";
+        if (value == aspose::words::cloud::models::ImageSaveOptionsData::PixelFormat::FORMAT48_BPP_RGB) return "Format48BppRgb";
+        if (value == aspose::words::cloud::models::ImageSaveOptionsData::PixelFormat::FORMAT64_BPP_ARGB) return "Format64BppArgb";
+        if (value == aspose::words::cloud::models::ImageSaveOptionsData::PixelFormat::FORMAT64_BPP_P_ARGB) return "Format64BppPArgb";
+        if (value == aspose::words::cloud::models::ImageSaveOptionsData::PixelFormat::FORMAT1BPP_INDEXED) return "Format1bppIndexed";
+        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
+    }
+
+    inline aspose::words::cloud::models::ImageSaveOptionsData::PixelFormat imageSaveOptionsDataPixelFormatFromString(const std::string& value)
+    {
+        if (value == "Format16BppRgb555") return aspose::words::cloud::models::ImageSaveOptionsData::PixelFormat::FORMAT16_BPP_RGB555;
+        if (value == "Format16BppRgb565") return aspose::words::cloud::models::ImageSaveOptionsData::PixelFormat::FORMAT16_BPP_RGB565;
+        if (value == "Format16BppArgb1555") return aspose::words::cloud::models::ImageSaveOptionsData::PixelFormat::FORMAT16_BPP_ARGB1555;
+        if (value == "Format24BppRgb") return aspose::words::cloud::models::ImageSaveOptionsData::PixelFormat::FORMAT24_BPP_RGB;
+        if (value == "Format32BppRgb") return aspose::words::cloud::models::ImageSaveOptionsData::PixelFormat::FORMAT32_BPP_RGB;
+        if (value == "Format32BppArgb") return aspose::words::cloud::models::ImageSaveOptionsData::PixelFormat::FORMAT32_BPP_ARGB;
+        if (value == "Format32BppPArgb") return aspose::words::cloud::models::ImageSaveOptionsData::PixelFormat::FORMAT32_BPP_P_ARGB;
+        if (value == "Format48BppRgb") return aspose::words::cloud::models::ImageSaveOptionsData::PixelFormat::FORMAT48_BPP_RGB;
+        if (value == "Format64BppArgb") return aspose::words::cloud::models::ImageSaveOptionsData::PixelFormat::FORMAT64_BPP_ARGB;
+        if (value == "Format64BppPArgb") return aspose::words::cloud::models::ImageSaveOptionsData::PixelFormat::FORMAT64_BPP_P_ARGB;
+        if (value == "Format1bppIndexed") return aspose::words::cloud::models::ImageSaveOptionsData::PixelFormat::FORMAT1BPP_INDEXED;
+        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
+    }
     void ImageSaveOptionsData::toJson(void* jsonIfc) const
     {
         FixedPageSaveOptionsData::toJson(jsonIfc);
@@ -9557,7 +9767,7 @@ namespace aspose::words::cloud::models {
             json["ImageBrightness"] = *(this->m_ImageBrightness);
         }
         if (this->m_ImageColorMode) {
-            json["ImageColorMode"] = convertUtf16(*(this->m_ImageColorMode));
+            json["ImageColorMode"] = imageSaveOptionsDataImageColorModeToString(*(this->m_ImageColorMode));
         }
         if (this->m_ImageContrast) {
             json["ImageContrast"] = *(this->m_ImageContrast);
@@ -9566,7 +9776,7 @@ namespace aspose::words::cloud::models {
             json["PaperColor"] = convertUtf16(*(this->m_PaperColor));
         }
         if (this->m_PixelFormat) {
-            json["PixelFormat"] = convertUtf16(*(this->m_PixelFormat));
+            json["PixelFormat"] = imageSaveOptionsDataPixelFormatToString(*(this->m_PixelFormat));
         }
         if (this->m_Resolution) {
             json["Resolution"] = *(this->m_Resolution);
@@ -9603,8 +9813,8 @@ namespace aspose::words::cloud::models {
             );
         }
         if (json.contains("ImageColorMode") && !json["ImageColorMode"].is_null()) {
-            this->m_ImageColorMode = std::make_shared< std::wstring >(
-                convertUtf8( json["ImageColorMode"].get< std::string >() )
+            this->m_ImageColorMode = std::make_shared< aspose::words::cloud::models::ImageSaveOptionsData::ImageColorMode >(
+                imageSaveOptionsDataImageColorModeFromString(json["ImageColorMode"].get< std::string >())
             );
         }
         if (json.contains("ImageContrast") && !json["ImageContrast"].is_null()) {
@@ -9618,8 +9828,8 @@ namespace aspose::words::cloud::models {
             );
         }
         if (json.contains("PixelFormat") && !json["PixelFormat"].is_null()) {
-            this->m_PixelFormat = std::make_shared< std::wstring >(
-                convertUtf8( json["PixelFormat"].get< std::string >() )
+            this->m_PixelFormat = std::make_shared< aspose::words::cloud::models::ImageSaveOptionsData::PixelFormat >(
+                imageSaveOptionsDataPixelFormatFromString(json["PixelFormat"].get< std::string >())
             );
         }
         if (json.contains("Resolution") && !json["Resolution"].is_null()) {
@@ -9676,12 +9886,12 @@ namespace aspose::words::cloud::models {
     }
 
 
-    std::shared_ptr< std::wstring > ImageSaveOptionsData::getImageColorMode() const
+    std::shared_ptr< aspose::words::cloud::models::ImageSaveOptionsData::ImageColorMode > ImageSaveOptionsData::getImageColorMode() const
     {
         return this->m_ImageColorMode;
     }
 
-    void ImageSaveOptionsData::setImageColorMode(std::shared_ptr< std::wstring > value)
+    void ImageSaveOptionsData::setImageColorMode(std::shared_ptr< aspose::words::cloud::models::ImageSaveOptionsData::ImageColorMode > value)
     {
         this->m_ImageColorMode = value;
     }
@@ -9709,12 +9919,12 @@ namespace aspose::words::cloud::models {
     }
 
 
-    std::shared_ptr< std::wstring > ImageSaveOptionsData::getPixelFormat() const
+    std::shared_ptr< aspose::words::cloud::models::ImageSaveOptionsData::PixelFormat > ImageSaveOptionsData::getPixelFormat() const
     {
         return this->m_PixelFormat;
     }
 
-    void ImageSaveOptionsData::setPixelFormat(std::shared_ptr< std::wstring > value)
+    void ImageSaveOptionsData::setPixelFormat(std::shared_ptr< aspose::words::cloud::models::ImageSaveOptionsData::PixelFormat > value)
     {
         this->m_PixelFormat = value;
     }
@@ -11590,17 +11800,48 @@ namespace aspose::words::cloud::models {
     /*
      * MetafileRenderingOptionsData implementation
      */
+    inline std::string metafileRenderingOptionsDataEmfPlusDualRenderingModeToString(aspose::words::cloud::models::MetafileRenderingOptionsData::EmfPlusDualRenderingMode value)
+    {
+        if (value == aspose::words::cloud::models::MetafileRenderingOptionsData::EmfPlusDualRenderingMode::EMF_PLUS_WITH_FALLBACK) return "EmfPlusWithFallback";
+        if (value == aspose::words::cloud::models::MetafileRenderingOptionsData::EmfPlusDualRenderingMode::EMF_PLUS) return "EmfPlus";
+        if (value == aspose::words::cloud::models::MetafileRenderingOptionsData::EmfPlusDualRenderingMode::EMF) return "Emf";
+        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
+    }
+
+    inline aspose::words::cloud::models::MetafileRenderingOptionsData::EmfPlusDualRenderingMode metafileRenderingOptionsDataEmfPlusDualRenderingModeFromString(const std::string& value)
+    {
+        if (value == "EmfPlusWithFallback") return aspose::words::cloud::models::MetafileRenderingOptionsData::EmfPlusDualRenderingMode::EMF_PLUS_WITH_FALLBACK;
+        if (value == "EmfPlus") return aspose::words::cloud::models::MetafileRenderingOptionsData::EmfPlusDualRenderingMode::EMF_PLUS;
+        if (value == "Emf") return aspose::words::cloud::models::MetafileRenderingOptionsData::EmfPlusDualRenderingMode::EMF;
+        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
+    }
+
+    inline std::string metafileRenderingOptionsDataRenderingModeToString(aspose::words::cloud::models::MetafileRenderingOptionsData::RenderingMode value)
+    {
+        if (value == aspose::words::cloud::models::MetafileRenderingOptionsData::RenderingMode::VECTOR_WITH_FALLBACK) return "VectorWithFallback";
+        if (value == aspose::words::cloud::models::MetafileRenderingOptionsData::RenderingMode::VECTOR) return "Vector";
+        if (value == aspose::words::cloud::models::MetafileRenderingOptionsData::RenderingMode::BITMAP) return "Bitmap";
+        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
+    }
+
+    inline aspose::words::cloud::models::MetafileRenderingOptionsData::RenderingMode metafileRenderingOptionsDataRenderingModeFromString(const std::string& value)
+    {
+        if (value == "VectorWithFallback") return aspose::words::cloud::models::MetafileRenderingOptionsData::RenderingMode::VECTOR_WITH_FALLBACK;
+        if (value == "Vector") return aspose::words::cloud::models::MetafileRenderingOptionsData::RenderingMode::VECTOR;
+        if (value == "Bitmap") return aspose::words::cloud::models::MetafileRenderingOptionsData::RenderingMode::BITMAP;
+        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
+    }
     void MetafileRenderingOptionsData::toJson(void* jsonIfc) const
     {
         ::nlohmann::json& json = *((::nlohmann::json*)jsonIfc);
         if (this->m_EmfPlusDualRenderingMode) {
-            json["EmfPlusDualRenderingMode"] = convertUtf16(*(this->m_EmfPlusDualRenderingMode));
+            json["EmfPlusDualRenderingMode"] = metafileRenderingOptionsDataEmfPlusDualRenderingModeToString(*(this->m_EmfPlusDualRenderingMode));
         }
         if (this->m_EmulateRasterOperations) {
             json["EmulateRasterOperations"] = *(this->m_EmulateRasterOperations);
         }
         if (this->m_RenderingMode) {
-            json["RenderingMode"] = convertUtf16(*(this->m_RenderingMode));
+            json["RenderingMode"] = metafileRenderingOptionsDataRenderingModeToString(*(this->m_RenderingMode));
         }
         if (this->m_ScaleWmfFontsToMetafileSize) {
             json["ScaleWmfFontsToMetafileSize"] = *(this->m_ScaleWmfFontsToMetafileSize);
@@ -11614,8 +11855,8 @@ namespace aspose::words::cloud::models {
     {
         ::nlohmann::json& json = *((::nlohmann::json*)jsonIfc);
         if (json.contains("EmfPlusDualRenderingMode") && !json["EmfPlusDualRenderingMode"].is_null()) {
-            this->m_EmfPlusDualRenderingMode = std::make_shared< std::wstring >(
-                convertUtf8( json["EmfPlusDualRenderingMode"].get< std::string >() )
+            this->m_EmfPlusDualRenderingMode = std::make_shared< aspose::words::cloud::models::MetafileRenderingOptionsData::EmfPlusDualRenderingMode >(
+                metafileRenderingOptionsDataEmfPlusDualRenderingModeFromString(json["EmfPlusDualRenderingMode"].get< std::string >())
             );
         }
         if (json.contains("EmulateRasterOperations") && !json["EmulateRasterOperations"].is_null()) {
@@ -11624,8 +11865,8 @@ namespace aspose::words::cloud::models {
             );
         }
         if (json.contains("RenderingMode") && !json["RenderingMode"].is_null()) {
-            this->m_RenderingMode = std::make_shared< std::wstring >(
-                convertUtf8( json["RenderingMode"].get< std::string >() )
+            this->m_RenderingMode = std::make_shared< aspose::words::cloud::models::MetafileRenderingOptionsData::RenderingMode >(
+                metafileRenderingOptionsDataRenderingModeFromString(json["RenderingMode"].get< std::string >())
             );
         }
         if (json.contains("ScaleWmfFontsToMetafileSize") && !json["ScaleWmfFontsToMetafileSize"].is_null()) {
@@ -11640,12 +11881,12 @@ namespace aspose::words::cloud::models {
         }
     }
 
-    std::shared_ptr< std::wstring > MetafileRenderingOptionsData::getEmfPlusDualRenderingMode() const
+    std::shared_ptr< aspose::words::cloud::models::MetafileRenderingOptionsData::EmfPlusDualRenderingMode > MetafileRenderingOptionsData::getEmfPlusDualRenderingMode() const
     {
         return this->m_EmfPlusDualRenderingMode;
     }
 
-    void MetafileRenderingOptionsData::setEmfPlusDualRenderingMode(std::shared_ptr< std::wstring > value)
+    void MetafileRenderingOptionsData::setEmfPlusDualRenderingMode(std::shared_ptr< aspose::words::cloud::models::MetafileRenderingOptionsData::EmfPlusDualRenderingMode > value)
     {
         this->m_EmfPlusDualRenderingMode = value;
     }
@@ -11662,12 +11903,12 @@ namespace aspose::words::cloud::models {
     }
 
 
-    std::shared_ptr< std::wstring > MetafileRenderingOptionsData::getRenderingMode() const
+    std::shared_ptr< aspose::words::cloud::models::MetafileRenderingOptionsData::RenderingMode > MetafileRenderingOptionsData::getRenderingMode() const
     {
         return this->m_RenderingMode;
     }
 
-    void MetafileRenderingOptionsData::setRenderingMode(std::shared_ptr< std::wstring > value)
+    void MetafileRenderingOptionsData::setRenderingMode(std::shared_ptr< aspose::words::cloud::models::MetafileRenderingOptionsData::RenderingMode > value)
     {
         this->m_RenderingMode = value;
     }
@@ -12273,6 +12514,22 @@ namespace aspose::words::cloud::models {
     /*
      * OoxmlSaveOptionsData implementation
      */
+    inline std::string ooxmlSaveOptionsDataComplianceToString(aspose::words::cloud::models::OoxmlSaveOptionsData::Compliance value)
+    {
+        if (value == aspose::words::cloud::models::OoxmlSaveOptionsData::Compliance::ECMA376_2006) return "Ecma376_2006";
+        if (value == aspose::words::cloud::models::OoxmlSaveOptionsData::Compliance::ISO29500_2008__TRANSITIONAL) return "Iso29500_2008_Transitional";
+        if (value == aspose::words::cloud::models::OoxmlSaveOptionsData::Compliance::ISO29500_2008__STRICT) return "Iso29500_2008_Strict";
+        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
+    }
+
+    inline aspose::words::cloud::models::OoxmlSaveOptionsData::Compliance ooxmlSaveOptionsDataComplianceFromString(const std::string& value)
+    {
+        if (value == "Ecma376_2006") return aspose::words::cloud::models::OoxmlSaveOptionsData::Compliance::ECMA376_2006;
+        if (value == "Iso29500_2008_Transitional") return aspose::words::cloud::models::OoxmlSaveOptionsData::Compliance::ISO29500_2008__TRANSITIONAL;
+        if (value == "Iso29500_2008_Strict") return aspose::words::cloud::models::OoxmlSaveOptionsData::Compliance::ISO29500_2008__STRICT;
+        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
+    }
+
     inline std::string ooxmlSaveOptionsDataCompressionLevelToString(aspose::words::cloud::models::OoxmlSaveOptionsData::CompressionLevel value)
     {
         if (value == aspose::words::cloud::models::OoxmlSaveOptionsData::CompressionLevel::NORMAL) return "Normal";
@@ -12295,7 +12552,7 @@ namespace aspose::words::cloud::models {
         SaveOptionsData::toJson(jsonIfc);
         ::nlohmann::json& json = *((::nlohmann::json*)jsonIfc);
         if (this->m_Compliance) {
-            json["Compliance"] = convertUtf16(*(this->m_Compliance));
+            json["Compliance"] = ooxmlSaveOptionsDataComplianceToString(*(this->m_Compliance));
         }
         if (this->m_CompressionLevel) {
             json["CompressionLevel"] = ooxmlSaveOptionsDataCompressionLevelToString(*(this->m_CompressionLevel));
@@ -12313,8 +12570,8 @@ namespace aspose::words::cloud::models {
         SaveOptionsData::fromJson(jsonIfc);
         ::nlohmann::json& json = *((::nlohmann::json*)jsonIfc);
         if (json.contains("Compliance") && !json["Compliance"].is_null()) {
-            this->m_Compliance = std::make_shared< std::wstring >(
-                convertUtf8( json["Compliance"].get< std::string >() )
+            this->m_Compliance = std::make_shared< aspose::words::cloud::models::OoxmlSaveOptionsData::Compliance >(
+                ooxmlSaveOptionsDataComplianceFromString(json["Compliance"].get< std::string >())
             );
         }
         if (json.contains("CompressionLevel") && !json["CompressionLevel"].is_null()) {
@@ -12334,12 +12591,12 @@ namespace aspose::words::cloud::models {
         }
     }
 
-    std::shared_ptr< std::wstring > OoxmlSaveOptionsData::getCompliance() const
+    std::shared_ptr< aspose::words::cloud::models::OoxmlSaveOptionsData::Compliance > OoxmlSaveOptionsData::getCompliance() const
     {
         return this->m_Compliance;
     }
 
-    void OoxmlSaveOptionsData::setCompliance(std::shared_ptr< std::wstring > value)
+    void OoxmlSaveOptionsData::setCompliance(std::shared_ptr< aspose::words::cloud::models::OoxmlSaveOptionsData::Compliance > value)
     {
         this->m_Compliance = value;
     }
@@ -15440,6 +15697,25 @@ namespace aspose::words::cloud::models {
     /*
      * PdfDigitalSignatureDetailsData implementation
      */
+    inline std::string pdfDigitalSignatureDetailsDataHashAlgorithmToString(aspose::words::cloud::models::PdfDigitalSignatureDetailsData::HashAlgorithm value)
+    {
+        if (value == aspose::words::cloud::models::PdfDigitalSignatureDetailsData::HashAlgorithm::SHA1) return "Sha1";
+        if (value == aspose::words::cloud::models::PdfDigitalSignatureDetailsData::HashAlgorithm::SHA256) return "Sha256";
+        if (value == aspose::words::cloud::models::PdfDigitalSignatureDetailsData::HashAlgorithm::SHA384) return "Sha384";
+        if (value == aspose::words::cloud::models::PdfDigitalSignatureDetailsData::HashAlgorithm::SHA512) return "Sha512";
+        if (value == aspose::words::cloud::models::PdfDigitalSignatureDetailsData::HashAlgorithm::MD5) return "Md5";
+        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
+    }
+
+    inline aspose::words::cloud::models::PdfDigitalSignatureDetailsData::HashAlgorithm pdfDigitalSignatureDetailsDataHashAlgorithmFromString(const std::string& value)
+    {
+        if (value == "Sha1") return aspose::words::cloud::models::PdfDigitalSignatureDetailsData::HashAlgorithm::SHA1;
+        if (value == "Sha256") return aspose::words::cloud::models::PdfDigitalSignatureDetailsData::HashAlgorithm::SHA256;
+        if (value == "Sha384") return aspose::words::cloud::models::PdfDigitalSignatureDetailsData::HashAlgorithm::SHA384;
+        if (value == "Sha512") return aspose::words::cloud::models::PdfDigitalSignatureDetailsData::HashAlgorithm::SHA512;
+        if (value == "Md5") return aspose::words::cloud::models::PdfDigitalSignatureDetailsData::HashAlgorithm::MD5;
+        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
+    }
     void PdfDigitalSignatureDetailsData::toJson(void* jsonIfc) const
     {
         ::nlohmann::json& json = *((::nlohmann::json*)jsonIfc);
@@ -15447,7 +15723,7 @@ namespace aspose::words::cloud::models {
             json["CertificateFilename"] = convertUtf16(*(this->m_CertificateFilename));
         }
         if (this->m_HashAlgorithm) {
-            json["HashAlgorithm"] = convertUtf16(*(this->m_HashAlgorithm));
+            json["HashAlgorithm"] = pdfDigitalSignatureDetailsDataHashAlgorithmToString(*(this->m_HashAlgorithm));
         }
         if (this->m_Location) {
             json["Location"] = convertUtf16(*(this->m_Location));
@@ -15469,8 +15745,8 @@ namespace aspose::words::cloud::models {
             );
         }
         if (json.contains("HashAlgorithm") && !json["HashAlgorithm"].is_null()) {
-            this->m_HashAlgorithm = std::make_shared< std::wstring >(
-                convertUtf8( json["HashAlgorithm"].get< std::string >() )
+            this->m_HashAlgorithm = std::make_shared< aspose::words::cloud::models::PdfDigitalSignatureDetailsData::HashAlgorithm >(
+                pdfDigitalSignatureDetailsDataHashAlgorithmFromString(json["HashAlgorithm"].get< std::string >())
             );
         }
         if (json.contains("Location") && !json["Location"].is_null()) {
@@ -15501,12 +15777,12 @@ namespace aspose::words::cloud::models {
     }
 
 
-    std::shared_ptr< std::wstring > PdfDigitalSignatureDetailsData::getHashAlgorithm() const
+    std::shared_ptr< aspose::words::cloud::models::PdfDigitalSignatureDetailsData::HashAlgorithm > PdfDigitalSignatureDetailsData::getHashAlgorithm() const
     {
         return this->m_HashAlgorithm;
     }
 
-    void PdfDigitalSignatureDetailsData::setHashAlgorithm(std::shared_ptr< std::wstring > value)
+    void PdfDigitalSignatureDetailsData::setHashAlgorithm(std::shared_ptr< aspose::words::cloud::models::PdfDigitalSignatureDetailsData::HashAlgorithm > value)
     {
         this->m_HashAlgorithm = value;
     }
@@ -15549,17 +15825,63 @@ namespace aspose::words::cloud::models {
     /*
      * PdfEncryptionDetailsData implementation
      */
+    inline std::string pdfEncryptionDetailsDataEncryptionAlgorithmToString(aspose::words::cloud::models::PdfEncryptionDetailsData::EncryptionAlgorithm value)
+    {
+        if (value == aspose::words::cloud::models::PdfEncryptionDetailsData::EncryptionAlgorithm::R_C4_40) return "RC4_40";
+        if (value == aspose::words::cloud::models::PdfEncryptionDetailsData::EncryptionAlgorithm::R_C4_128) return "RC4_128";
+        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
+    }
+
+    inline aspose::words::cloud::models::PdfEncryptionDetailsData::EncryptionAlgorithm pdfEncryptionDetailsDataEncryptionAlgorithmFromString(const std::string& value)
+    {
+        if (value == "RC4_40") return aspose::words::cloud::models::PdfEncryptionDetailsData::EncryptionAlgorithm::R_C4_40;
+        if (value == "RC4_128") return aspose::words::cloud::models::PdfEncryptionDetailsData::EncryptionAlgorithm::R_C4_128;
+        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
+    }
+
+    inline std::string pdfEncryptionDetailsDataPdfPermissionsToString(aspose::words::cloud::models::PdfPermissions value)
+    {
+        if (value == aspose::words::cloud::models::PdfPermissions::DISALLOW_ALL) return "DisallowAll";
+        if (value == aspose::words::cloud::models::PdfPermissions::PRINTING) return "Printing";
+        if (value == aspose::words::cloud::models::PdfPermissions::MODIFY_CONTENTS) return "ModifyContents";
+        if (value == aspose::words::cloud::models::PdfPermissions::CONTENT_COPY) return "ContentCopy";
+        if (value == aspose::words::cloud::models::PdfPermissions::MODIFY_ANNOTATIONS) return "ModifyAnnotations";
+        if (value == aspose::words::cloud::models::PdfPermissions::FILL_IN) return "FillIn";
+        if (value == aspose::words::cloud::models::PdfPermissions::CONTENT_COPY_FOR_ACCESSIBILITY) return "ContentCopyForAccessibility";
+        if (value == aspose::words::cloud::models::PdfPermissions::DOCUMENT_ASSEMBLY) return "DocumentAssembly";
+        if (value == aspose::words::cloud::models::PdfPermissions::HIGH_RESOLUTION_PRINTING) return "HighResolutionPrinting";
+        if (value == aspose::words::cloud::models::PdfPermissions::ALLOW_ALL) return "AllowAll";
+        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
+    }
+
+    inline aspose::words::cloud::models::PdfPermissions pdfEncryptionDetailsDataPdfPermissionsFromString(const std::string& value)
+    {
+        if (value == "DisallowAll") return aspose::words::cloud::models::PdfPermissions::DISALLOW_ALL;
+        if (value == "Printing") return aspose::words::cloud::models::PdfPermissions::PRINTING;
+        if (value == "ModifyContents") return aspose::words::cloud::models::PdfPermissions::MODIFY_CONTENTS;
+        if (value == "ContentCopy") return aspose::words::cloud::models::PdfPermissions::CONTENT_COPY;
+        if (value == "ModifyAnnotations") return aspose::words::cloud::models::PdfPermissions::MODIFY_ANNOTATIONS;
+        if (value == "FillIn") return aspose::words::cloud::models::PdfPermissions::FILL_IN;
+        if (value == "ContentCopyForAccessibility") return aspose::words::cloud::models::PdfPermissions::CONTENT_COPY_FOR_ACCESSIBILITY;
+        if (value == "DocumentAssembly") return aspose::words::cloud::models::PdfPermissions::DOCUMENT_ASSEMBLY;
+        if (value == "HighResolutionPrinting") return aspose::words::cloud::models::PdfPermissions::HIGH_RESOLUTION_PRINTING;
+        if (value == "AllowAll") return aspose::words::cloud::models::PdfPermissions::ALLOW_ALL;
+        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
+    }
     void PdfEncryptionDetailsData::toJson(void* jsonIfc) const
     {
         ::nlohmann::json& json = *((::nlohmann::json*)jsonIfc);
         if (this->m_EncryptionAlgorithm) {
-            json["EncryptionAlgorithm"] = convertUtf16(*(this->m_EncryptionAlgorithm));
+            json["EncryptionAlgorithm"] = pdfEncryptionDetailsDataEncryptionAlgorithmToString(*(this->m_EncryptionAlgorithm));
         }
         if (this->m_OwnerPassword) {
             json["OwnerPassword"] = convertUtf16(*(this->m_OwnerPassword));
         }
         if (this->m_Permissions) {
-            json["Permissions"] = convertUtf16(*(this->m_Permissions));
+            json["Permissions"] = ::nlohmann::json::array();
+            for (auto& element : *(this->m_Permissions)) {
+                json["Permissions"].push_back(pdfPermissionsToString(*element));
+            }
         }
         if (this->m_UserPassword) {
             json["UserPassword"] = convertUtf16(*(this->m_UserPassword));
@@ -15570,8 +15892,8 @@ namespace aspose::words::cloud::models {
     {
         ::nlohmann::json& json = *((::nlohmann::json*)jsonIfc);
         if (json.contains("EncryptionAlgorithm") && !json["EncryptionAlgorithm"].is_null()) {
-            this->m_EncryptionAlgorithm = std::make_shared< std::wstring >(
-                convertUtf8( json["EncryptionAlgorithm"].get< std::string >() )
+            this->m_EncryptionAlgorithm = std::make_shared< aspose::words::cloud::models::PdfEncryptionDetailsData::EncryptionAlgorithm >(
+                pdfEncryptionDetailsDataEncryptionAlgorithmFromString(json["EncryptionAlgorithm"].get< std::string >())
             );
         }
         if (json.contains("OwnerPassword") && !json["OwnerPassword"].is_null()) {
@@ -15580,9 +15902,10 @@ namespace aspose::words::cloud::models {
             );
         }
         if (json.contains("Permissions") && !json["Permissions"].is_null()) {
-            this->m_Permissions = std::make_shared< std::wstring >(
-                convertUtf8( json["Permissions"].get< std::string >() )
-            );
+            this->m_Permissions = std::make_shared< std::vector<std::shared_ptr<aspose::words::cloud::models::PdfPermissions>> >();
+            for (auto& element : json["Permissions"]) {
+                this->m_Permissions->push_back(std::make_shared< aspose::words::cloud::models::PdfPermissions >(pdfPermissionsFromString(element.get< std::string >())));
+            }
         }
         if (json.contains("UserPassword") && !json["UserPassword"].is_null()) {
             this->m_UserPassword = std::make_shared< std::wstring >(
@@ -15591,12 +15914,12 @@ namespace aspose::words::cloud::models {
         }
     }
 
-    std::shared_ptr< std::wstring > PdfEncryptionDetailsData::getEncryptionAlgorithm() const
+    std::shared_ptr< aspose::words::cloud::models::PdfEncryptionDetailsData::EncryptionAlgorithm > PdfEncryptionDetailsData::getEncryptionAlgorithm() const
     {
         return this->m_EncryptionAlgorithm;
     }
 
-    void PdfEncryptionDetailsData::setEncryptionAlgorithm(std::shared_ptr< std::wstring > value)
+    void PdfEncryptionDetailsData::setEncryptionAlgorithm(std::shared_ptr< aspose::words::cloud::models::PdfEncryptionDetailsData::EncryptionAlgorithm > value)
     {
         this->m_EncryptionAlgorithm = value;
     }
@@ -15613,12 +15936,12 @@ namespace aspose::words::cloud::models {
     }
 
 
-    std::shared_ptr< std::wstring > PdfEncryptionDetailsData::getPermissions() const
+    std::shared_ptr< std::vector<std::shared_ptr<aspose::words::cloud::models::PdfPermissions>> > PdfEncryptionDetailsData::getPermissions() const
     {
         return this->m_Permissions;
     }
 
-    void PdfEncryptionDetailsData::setPermissions(std::shared_ptr< std::wstring > value)
+    void PdfEncryptionDetailsData::setPermissions(std::shared_ptr< std::vector<std::shared_ptr<aspose::words::cloud::models::PdfPermissions>> > value)
     {
         this->m_Permissions = value;
     }
@@ -15639,6 +15962,62 @@ namespace aspose::words::cloud::models {
     /*
      * PdfSaveOptionsData implementation
      */
+    inline std::string pdfSaveOptionsDataComplianceToString(aspose::words::cloud::models::PdfSaveOptionsData::Compliance value)
+    {
+        if (value == aspose::words::cloud::models::PdfSaveOptionsData::Compliance::PDF17) return "Pdf17";
+        if (value == aspose::words::cloud::models::PdfSaveOptionsData::Compliance::PDF15) return "Pdf15";
+        if (value == aspose::words::cloud::models::PdfSaveOptionsData::Compliance::PDF_A1A) return "PdfA1a";
+        if (value == aspose::words::cloud::models::PdfSaveOptionsData::Compliance::PDF_A1B) return "PdfA1b";
+        if (value == aspose::words::cloud::models::PdfSaveOptionsData::Compliance::PDF_A2A) return "PdfA2a";
+        if (value == aspose::words::cloud::models::PdfSaveOptionsData::Compliance::PDF_A2U) return "PdfA2u";
+        if (value == aspose::words::cloud::models::PdfSaveOptionsData::Compliance::PDF_UA1) return "PdfUa1";
+        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
+    }
+
+    inline aspose::words::cloud::models::PdfSaveOptionsData::Compliance pdfSaveOptionsDataComplianceFromString(const std::string& value)
+    {
+        if (value == "Pdf17") return aspose::words::cloud::models::PdfSaveOptionsData::Compliance::PDF17;
+        if (value == "Pdf15") return aspose::words::cloud::models::PdfSaveOptionsData::Compliance::PDF15;
+        if (value == "PdfA1a") return aspose::words::cloud::models::PdfSaveOptionsData::Compliance::PDF_A1A;
+        if (value == "PdfA1b") return aspose::words::cloud::models::PdfSaveOptionsData::Compliance::PDF_A1B;
+        if (value == "PdfA2a") return aspose::words::cloud::models::PdfSaveOptionsData::Compliance::PDF_A2A;
+        if (value == "PdfA2u") return aspose::words::cloud::models::PdfSaveOptionsData::Compliance::PDF_A2U;
+        if (value == "PdfUa1") return aspose::words::cloud::models::PdfSaveOptionsData::Compliance::PDF_UA1;
+        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
+    }
+
+    inline std::string pdfSaveOptionsDataCustomPropertiesExportToString(aspose::words::cloud::models::PdfSaveOptionsData::CustomPropertiesExport value)
+    {
+        if (value == aspose::words::cloud::models::PdfSaveOptionsData::CustomPropertiesExport::NONE) return "None";
+        if (value == aspose::words::cloud::models::PdfSaveOptionsData::CustomPropertiesExport::STANDARD) return "Standard";
+        if (value == aspose::words::cloud::models::PdfSaveOptionsData::CustomPropertiesExport::METADATA) return "Metadata";
+        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
+    }
+
+    inline aspose::words::cloud::models::PdfSaveOptionsData::CustomPropertiesExport pdfSaveOptionsDataCustomPropertiesExportFromString(const std::string& value)
+    {
+        if (value == "None") return aspose::words::cloud::models::PdfSaveOptionsData::CustomPropertiesExport::NONE;
+        if (value == "Standard") return aspose::words::cloud::models::PdfSaveOptionsData::CustomPropertiesExport::STANDARD;
+        if (value == "Metadata") return aspose::words::cloud::models::PdfSaveOptionsData::CustomPropertiesExport::METADATA;
+        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
+    }
+
+    inline std::string pdfSaveOptionsDataFontEmbeddingModeToString(aspose::words::cloud::models::PdfSaveOptionsData::FontEmbeddingMode value)
+    {
+        if (value == aspose::words::cloud::models::PdfSaveOptionsData::FontEmbeddingMode::EMBED_ALL) return "EmbedAll";
+        if (value == aspose::words::cloud::models::PdfSaveOptionsData::FontEmbeddingMode::EMBED_NONSTANDARD) return "EmbedNonstandard";
+        if (value == aspose::words::cloud::models::PdfSaveOptionsData::FontEmbeddingMode::EMBED_NONE) return "EmbedNone";
+        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
+    }
+
+    inline aspose::words::cloud::models::PdfSaveOptionsData::FontEmbeddingMode pdfSaveOptionsDataFontEmbeddingModeFromString(const std::string& value)
+    {
+        if (value == "EmbedAll") return aspose::words::cloud::models::PdfSaveOptionsData::FontEmbeddingMode::EMBED_ALL;
+        if (value == "EmbedNonstandard") return aspose::words::cloud::models::PdfSaveOptionsData::FontEmbeddingMode::EMBED_NONSTANDARD;
+        if (value == "EmbedNone") return aspose::words::cloud::models::PdfSaveOptionsData::FontEmbeddingMode::EMBED_NONE;
+        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
+    }
+
     inline std::string pdfSaveOptionsDataHeaderFooterBookmarksExportModeToString(aspose::words::cloud::models::PdfSaveOptionsData::HeaderFooterBookmarksExportMode value)
     {
         if (value == aspose::words::cloud::models::PdfSaveOptionsData::HeaderFooterBookmarksExportMode::NONE) return "None";
@@ -15654,18 +16033,90 @@ namespace aspose::words::cloud::models {
         if (value == "All") return aspose::words::cloud::models::PdfSaveOptionsData::HeaderFooterBookmarksExportMode::ALL;
         throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
     }
+
+    inline std::string pdfSaveOptionsDataImageColorSpaceExportModeToString(aspose::words::cloud::models::PdfSaveOptionsData::ImageColorSpaceExportMode value)
+    {
+        if (value == aspose::words::cloud::models::PdfSaveOptionsData::ImageColorSpaceExportMode::AUTO) return "Auto";
+        if (value == aspose::words::cloud::models::PdfSaveOptionsData::ImageColorSpaceExportMode::SIMPLE_CMYK) return "SimpleCmyk";
+        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
+    }
+
+    inline aspose::words::cloud::models::PdfSaveOptionsData::ImageColorSpaceExportMode pdfSaveOptionsDataImageColorSpaceExportModeFromString(const std::string& value)
+    {
+        if (value == "Auto") return aspose::words::cloud::models::PdfSaveOptionsData::ImageColorSpaceExportMode::AUTO;
+        if (value == "SimpleCmyk") return aspose::words::cloud::models::PdfSaveOptionsData::ImageColorSpaceExportMode::SIMPLE_CMYK;
+        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
+    }
+
+    inline std::string pdfSaveOptionsDataPageModeToString(aspose::words::cloud::models::PdfSaveOptionsData::PageMode value)
+    {
+        if (value == aspose::words::cloud::models::PdfSaveOptionsData::PageMode::USE_NONE) return "UseNone";
+        if (value == aspose::words::cloud::models::PdfSaveOptionsData::PageMode::USE_OUTLINES) return "UseOutlines";
+        if (value == aspose::words::cloud::models::PdfSaveOptionsData::PageMode::USE_THUMBS) return "UseThumbs";
+        if (value == aspose::words::cloud::models::PdfSaveOptionsData::PageMode::FULL_SCREEN) return "FullScreen";
+        if (value == aspose::words::cloud::models::PdfSaveOptionsData::PageMode::USE_OC) return "UseOC";
+        if (value == aspose::words::cloud::models::PdfSaveOptionsData::PageMode::USE_ATTACHMENTS) return "UseAttachments";
+        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
+    }
+
+    inline aspose::words::cloud::models::PdfSaveOptionsData::PageMode pdfSaveOptionsDataPageModeFromString(const std::string& value)
+    {
+        if (value == "UseNone") return aspose::words::cloud::models::PdfSaveOptionsData::PageMode::USE_NONE;
+        if (value == "UseOutlines") return aspose::words::cloud::models::PdfSaveOptionsData::PageMode::USE_OUTLINES;
+        if (value == "UseThumbs") return aspose::words::cloud::models::PdfSaveOptionsData::PageMode::USE_THUMBS;
+        if (value == "FullScreen") return aspose::words::cloud::models::PdfSaveOptionsData::PageMode::FULL_SCREEN;
+        if (value == "UseOC") return aspose::words::cloud::models::PdfSaveOptionsData::PageMode::USE_OC;
+        if (value == "UseAttachments") return aspose::words::cloud::models::PdfSaveOptionsData::PageMode::USE_ATTACHMENTS;
+        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
+    }
+
+    inline std::string pdfSaveOptionsDataTextCompressionToString(aspose::words::cloud::models::PdfSaveOptionsData::TextCompression value)
+    {
+        if (value == aspose::words::cloud::models::PdfSaveOptionsData::TextCompression::NONE) return "None";
+        if (value == aspose::words::cloud::models::PdfSaveOptionsData::TextCompression::FLATE) return "Flate";
+        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
+    }
+
+    inline aspose::words::cloud::models::PdfSaveOptionsData::TextCompression pdfSaveOptionsDataTextCompressionFromString(const std::string& value)
+    {
+        if (value == "None") return aspose::words::cloud::models::PdfSaveOptionsData::TextCompression::NONE;
+        if (value == "Flate") return aspose::words::cloud::models::PdfSaveOptionsData::TextCompression::FLATE;
+        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
+    }
+
+    inline std::string pdfSaveOptionsDataZoomBehaviorToString(aspose::words::cloud::models::PdfSaveOptionsData::ZoomBehavior value)
+    {
+        if (value == aspose::words::cloud::models::PdfSaveOptionsData::ZoomBehavior::NONE) return "None";
+        if (value == aspose::words::cloud::models::PdfSaveOptionsData::ZoomBehavior::ZOOM_FACTOR) return "ZoomFactor";
+        if (value == aspose::words::cloud::models::PdfSaveOptionsData::ZoomBehavior::FIT_PAGE) return "FitPage";
+        if (value == aspose::words::cloud::models::PdfSaveOptionsData::ZoomBehavior::FIT_WIDTH) return "FitWidth";
+        if (value == aspose::words::cloud::models::PdfSaveOptionsData::ZoomBehavior::FIT_HEIGHT) return "FitHeight";
+        if (value == aspose::words::cloud::models::PdfSaveOptionsData::ZoomBehavior::FIT_BOX) return "FitBox";
+        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
+    }
+
+    inline aspose::words::cloud::models::PdfSaveOptionsData::ZoomBehavior pdfSaveOptionsDataZoomBehaviorFromString(const std::string& value)
+    {
+        if (value == "None") return aspose::words::cloud::models::PdfSaveOptionsData::ZoomBehavior::NONE;
+        if (value == "ZoomFactor") return aspose::words::cloud::models::PdfSaveOptionsData::ZoomBehavior::ZOOM_FACTOR;
+        if (value == "FitPage") return aspose::words::cloud::models::PdfSaveOptionsData::ZoomBehavior::FIT_PAGE;
+        if (value == "FitWidth") return aspose::words::cloud::models::PdfSaveOptionsData::ZoomBehavior::FIT_WIDTH;
+        if (value == "FitHeight") return aspose::words::cloud::models::PdfSaveOptionsData::ZoomBehavior::FIT_HEIGHT;
+        if (value == "FitBox") return aspose::words::cloud::models::PdfSaveOptionsData::ZoomBehavior::FIT_BOX;
+        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
+    }
     void PdfSaveOptionsData::toJson(void* jsonIfc) const
     {
         FixedPageSaveOptionsData::toJson(jsonIfc);
         ::nlohmann::json& json = *((::nlohmann::json*)jsonIfc);
         if (this->m_Compliance) {
-            json["Compliance"] = convertUtf16(*(this->m_Compliance));
+            json["Compliance"] = pdfSaveOptionsDataComplianceToString(*(this->m_Compliance));
         }
         if (this->m_CreateNoteHyperlinks) {
             json["CreateNoteHyperlinks"] = *(this->m_CreateNoteHyperlinks);
         }
         if (this->m_CustomPropertiesExport) {
-            json["CustomPropertiesExport"] = convertUtf16(*(this->m_CustomPropertiesExport));
+            json["CustomPropertiesExport"] = pdfSaveOptionsDataCustomPropertiesExportToString(*(this->m_CustomPropertiesExport));
         }
         if (this->m_DigitalSignatureDetails) {
             this->m_DigitalSignatureDetails->toJson(&json["DigitalSignatureDetails"]);
@@ -15689,13 +16140,13 @@ namespace aspose::words::cloud::models {
             json["ExportLanguageToSpanTag"] = *(this->m_ExportLanguageToSpanTag);
         }
         if (this->m_FontEmbeddingMode) {
-            json["FontEmbeddingMode"] = convertUtf16(*(this->m_FontEmbeddingMode));
+            json["FontEmbeddingMode"] = pdfSaveOptionsDataFontEmbeddingModeToString(*(this->m_FontEmbeddingMode));
         }
         if (this->m_HeaderFooterBookmarksExportMode) {
             json["HeaderFooterBookmarksExportMode"] = pdfSaveOptionsDataHeaderFooterBookmarksExportModeToString(*(this->m_HeaderFooterBookmarksExportMode));
         }
         if (this->m_ImageColorSpaceExportMode) {
-            json["ImageColorSpaceExportMode"] = convertUtf16(*(this->m_ImageColorSpaceExportMode));
+            json["ImageColorSpaceExportMode"] = pdfSaveOptionsDataImageColorSpaceExportModeToString(*(this->m_ImageColorSpaceExportMode));
         }
         if (this->m_ImageCompression) {
             json["ImageCompression"] = convertUtf16(*(this->m_ImageCompression));
@@ -15710,7 +16161,7 @@ namespace aspose::words::cloud::models {
             this->m_OutlineOptions->toJson(&json["OutlineOptions"]);
         }
         if (this->m_PageMode) {
-            json["PageMode"] = convertUtf16(*(this->m_PageMode));
+            json["PageMode"] = pdfSaveOptionsDataPageModeToString(*(this->m_PageMode));
         }
         if (this->m_PreblendImages) {
             json["PreblendImages"] = *(this->m_PreblendImages);
@@ -15722,7 +16173,7 @@ namespace aspose::words::cloud::models {
             json["SaveFormat"] = convertUtf16(*(this->m_SaveFormat));
         }
         if (this->m_TextCompression) {
-            json["TextCompression"] = convertUtf16(*(this->m_TextCompression));
+            json["TextCompression"] = pdfSaveOptionsDataTextCompressionToString(*(this->m_TextCompression));
         }
         if (this->m_UseBookFoldPrintingSettings) {
             json["UseBookFoldPrintingSettings"] = *(this->m_UseBookFoldPrintingSettings);
@@ -15731,7 +16182,7 @@ namespace aspose::words::cloud::models {
             json["UseCoreFonts"] = *(this->m_UseCoreFonts);
         }
         if (this->m_ZoomBehavior) {
-            json["ZoomBehavior"] = convertUtf16(*(this->m_ZoomBehavior));
+            json["ZoomBehavior"] = pdfSaveOptionsDataZoomBehaviorToString(*(this->m_ZoomBehavior));
         }
         if (this->m_ZoomFactor) {
             json["ZoomFactor"] = *(this->m_ZoomFactor);
@@ -15743,8 +16194,8 @@ namespace aspose::words::cloud::models {
         FixedPageSaveOptionsData::fromJson(jsonIfc);
         ::nlohmann::json& json = *((::nlohmann::json*)jsonIfc);
         if (json.contains("Compliance") && !json["Compliance"].is_null()) {
-            this->m_Compliance = std::make_shared< std::wstring >(
-                convertUtf8( json["Compliance"].get< std::string >() )
+            this->m_Compliance = std::make_shared< aspose::words::cloud::models::PdfSaveOptionsData::Compliance >(
+                pdfSaveOptionsDataComplianceFromString(json["Compliance"].get< std::string >())
             );
         }
         if (json.contains("CreateNoteHyperlinks") && !json["CreateNoteHyperlinks"].is_null()) {
@@ -15753,8 +16204,8 @@ namespace aspose::words::cloud::models {
             );
         }
         if (json.contains("CustomPropertiesExport") && !json["CustomPropertiesExport"].is_null()) {
-            this->m_CustomPropertiesExport = std::make_shared< std::wstring >(
-                convertUtf8( json["CustomPropertiesExport"].get< std::string >() )
+            this->m_CustomPropertiesExport = std::make_shared< aspose::words::cloud::models::PdfSaveOptionsData::CustomPropertiesExport >(
+                pdfSaveOptionsDataCustomPropertiesExportFromString(json["CustomPropertiesExport"].get< std::string >())
             );
         }
         if (json.contains("DigitalSignatureDetails") && !json["DigitalSignatureDetails"].is_null()) {
@@ -15790,8 +16241,8 @@ namespace aspose::words::cloud::models {
             );
         }
         if (json.contains("FontEmbeddingMode") && !json["FontEmbeddingMode"].is_null()) {
-            this->m_FontEmbeddingMode = std::make_shared< std::wstring >(
-                convertUtf8( json["FontEmbeddingMode"].get< std::string >() )
+            this->m_FontEmbeddingMode = std::make_shared< aspose::words::cloud::models::PdfSaveOptionsData::FontEmbeddingMode >(
+                pdfSaveOptionsDataFontEmbeddingModeFromString(json["FontEmbeddingMode"].get< std::string >())
             );
         }
         if (json.contains("HeaderFooterBookmarksExportMode") && !json["HeaderFooterBookmarksExportMode"].is_null()) {
@@ -15800,8 +16251,8 @@ namespace aspose::words::cloud::models {
             );
         }
         if (json.contains("ImageColorSpaceExportMode") && !json["ImageColorSpaceExportMode"].is_null()) {
-            this->m_ImageColorSpaceExportMode = std::make_shared< std::wstring >(
-                convertUtf8( json["ImageColorSpaceExportMode"].get< std::string >() )
+            this->m_ImageColorSpaceExportMode = std::make_shared< aspose::words::cloud::models::PdfSaveOptionsData::ImageColorSpaceExportMode >(
+                pdfSaveOptionsDataImageColorSpaceExportModeFromString(json["ImageColorSpaceExportMode"].get< std::string >())
             );
         }
         if (json.contains("ImageCompression") && !json["ImageCompression"].is_null()) {
@@ -15824,8 +16275,8 @@ namespace aspose::words::cloud::models {
             this->m_OutlineOptions->fromJson(&json["OutlineOptions"]);
         }
         if (json.contains("PageMode") && !json["PageMode"].is_null()) {
-            this->m_PageMode = std::make_shared< std::wstring >(
-                convertUtf8( json["PageMode"].get< std::string >() )
+            this->m_PageMode = std::make_shared< aspose::words::cloud::models::PdfSaveOptionsData::PageMode >(
+                pdfSaveOptionsDataPageModeFromString(json["PageMode"].get< std::string >())
             );
         }
         if (json.contains("PreblendImages") && !json["PreblendImages"].is_null()) {
@@ -15844,8 +16295,8 @@ namespace aspose::words::cloud::models {
             );
         }
         if (json.contains("TextCompression") && !json["TextCompression"].is_null()) {
-            this->m_TextCompression = std::make_shared< std::wstring >(
-                convertUtf8( json["TextCompression"].get< std::string >() )
+            this->m_TextCompression = std::make_shared< aspose::words::cloud::models::PdfSaveOptionsData::TextCompression >(
+                pdfSaveOptionsDataTextCompressionFromString(json["TextCompression"].get< std::string >())
             );
         }
         if (json.contains("UseBookFoldPrintingSettings") && !json["UseBookFoldPrintingSettings"].is_null()) {
@@ -15859,8 +16310,8 @@ namespace aspose::words::cloud::models {
             );
         }
         if (json.contains("ZoomBehavior") && !json["ZoomBehavior"].is_null()) {
-            this->m_ZoomBehavior = std::make_shared< std::wstring >(
-                convertUtf8( json["ZoomBehavior"].get< std::string >() )
+            this->m_ZoomBehavior = std::make_shared< aspose::words::cloud::models::PdfSaveOptionsData::ZoomBehavior >(
+                pdfSaveOptionsDataZoomBehaviorFromString(json["ZoomBehavior"].get< std::string >())
             );
         }
         if (json.contains("ZoomFactor") && !json["ZoomFactor"].is_null()) {
@@ -15870,12 +16321,12 @@ namespace aspose::words::cloud::models {
         }
     }
 
-    std::shared_ptr< std::wstring > PdfSaveOptionsData::getCompliance() const
+    std::shared_ptr< aspose::words::cloud::models::PdfSaveOptionsData::Compliance > PdfSaveOptionsData::getCompliance() const
     {
         return this->m_Compliance;
     }
 
-    void PdfSaveOptionsData::setCompliance(std::shared_ptr< std::wstring > value)
+    void PdfSaveOptionsData::setCompliance(std::shared_ptr< aspose::words::cloud::models::PdfSaveOptionsData::Compliance > value)
     {
         this->m_Compliance = value;
     }
@@ -15892,12 +16343,12 @@ namespace aspose::words::cloud::models {
     }
 
 
-    std::shared_ptr< std::wstring > PdfSaveOptionsData::getCustomPropertiesExport() const
+    std::shared_ptr< aspose::words::cloud::models::PdfSaveOptionsData::CustomPropertiesExport > PdfSaveOptionsData::getCustomPropertiesExport() const
     {
         return this->m_CustomPropertiesExport;
     }
 
-    void PdfSaveOptionsData::setCustomPropertiesExport(std::shared_ptr< std::wstring > value)
+    void PdfSaveOptionsData::setCustomPropertiesExport(std::shared_ptr< aspose::words::cloud::models::PdfSaveOptionsData::CustomPropertiesExport > value)
     {
         this->m_CustomPropertiesExport = value;
     }
@@ -15980,12 +16431,12 @@ namespace aspose::words::cloud::models {
     }
 
 
-    std::shared_ptr< std::wstring > PdfSaveOptionsData::getFontEmbeddingMode() const
+    std::shared_ptr< aspose::words::cloud::models::PdfSaveOptionsData::FontEmbeddingMode > PdfSaveOptionsData::getFontEmbeddingMode() const
     {
         return this->m_FontEmbeddingMode;
     }
 
-    void PdfSaveOptionsData::setFontEmbeddingMode(std::shared_ptr< std::wstring > value)
+    void PdfSaveOptionsData::setFontEmbeddingMode(std::shared_ptr< aspose::words::cloud::models::PdfSaveOptionsData::FontEmbeddingMode > value)
     {
         this->m_FontEmbeddingMode = value;
     }
@@ -16002,12 +16453,12 @@ namespace aspose::words::cloud::models {
     }
 
 
-    std::shared_ptr< std::wstring > PdfSaveOptionsData::getImageColorSpaceExportMode() const
+    std::shared_ptr< aspose::words::cloud::models::PdfSaveOptionsData::ImageColorSpaceExportMode > PdfSaveOptionsData::getImageColorSpaceExportMode() const
     {
         return this->m_ImageColorSpaceExportMode;
     }
 
-    void PdfSaveOptionsData::setImageColorSpaceExportMode(std::shared_ptr< std::wstring > value)
+    void PdfSaveOptionsData::setImageColorSpaceExportMode(std::shared_ptr< aspose::words::cloud::models::PdfSaveOptionsData::ImageColorSpaceExportMode > value)
     {
         this->m_ImageColorSpaceExportMode = value;
     }
@@ -16057,12 +16508,12 @@ namespace aspose::words::cloud::models {
     }
 
 
-    std::shared_ptr< std::wstring > PdfSaveOptionsData::getPageMode() const
+    std::shared_ptr< aspose::words::cloud::models::PdfSaveOptionsData::PageMode > PdfSaveOptionsData::getPageMode() const
     {
         return this->m_PageMode;
     }
 
-    void PdfSaveOptionsData::setPageMode(std::shared_ptr< std::wstring > value)
+    void PdfSaveOptionsData::setPageMode(std::shared_ptr< aspose::words::cloud::models::PdfSaveOptionsData::PageMode > value)
     {
         this->m_PageMode = value;
     }
@@ -16097,12 +16548,12 @@ namespace aspose::words::cloud::models {
 
 
 
-    std::shared_ptr< std::wstring > PdfSaveOptionsData::getTextCompression() const
+    std::shared_ptr< aspose::words::cloud::models::PdfSaveOptionsData::TextCompression > PdfSaveOptionsData::getTextCompression() const
     {
         return this->m_TextCompression;
     }
 
-    void PdfSaveOptionsData::setTextCompression(std::shared_ptr< std::wstring > value)
+    void PdfSaveOptionsData::setTextCompression(std::shared_ptr< aspose::words::cloud::models::PdfSaveOptionsData::TextCompression > value)
     {
         this->m_TextCompression = value;
     }
@@ -16130,12 +16581,12 @@ namespace aspose::words::cloud::models {
     }
 
 
-    std::shared_ptr< std::wstring > PdfSaveOptionsData::getZoomBehavior() const
+    std::shared_ptr< aspose::words::cloud::models::PdfSaveOptionsData::ZoomBehavior > PdfSaveOptionsData::getZoomBehavior() const
     {
         return this->m_ZoomBehavior;
     }
 
-    void PdfSaveOptionsData::setZoomBehavior(std::shared_ptr< std::wstring > value)
+    void PdfSaveOptionsData::setZoomBehavior(std::shared_ptr< aspose::words::cloud::models::PdfSaveOptionsData::ZoomBehavior > value)
     {
         this->m_ZoomBehavior = value;
     }
@@ -17448,6 +17899,50 @@ namespace aspose::words::cloud::models {
         if (value == "Advanced") return aspose::words::cloud::models::SaveOptionsData::Dml3DEffectsRenderingMode::ADVANCED;
         throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
     }
+
+    inline std::string saveOptionsDataDmlEffectsRenderingModeToString(aspose::words::cloud::models::SaveOptionsData::DmlEffectsRenderingMode value)
+    {
+        if (value == aspose::words::cloud::models::SaveOptionsData::DmlEffectsRenderingMode::SIMPLIFIED) return "Simplified";
+        if (value == aspose::words::cloud::models::SaveOptionsData::DmlEffectsRenderingMode::NONE) return "None";
+        if (value == aspose::words::cloud::models::SaveOptionsData::DmlEffectsRenderingMode::FINE) return "Fine";
+        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
+    }
+
+    inline aspose::words::cloud::models::SaveOptionsData::DmlEffectsRenderingMode saveOptionsDataDmlEffectsRenderingModeFromString(const std::string& value)
+    {
+        if (value == "Simplified") return aspose::words::cloud::models::SaveOptionsData::DmlEffectsRenderingMode::SIMPLIFIED;
+        if (value == "None") return aspose::words::cloud::models::SaveOptionsData::DmlEffectsRenderingMode::NONE;
+        if (value == "Fine") return aspose::words::cloud::models::SaveOptionsData::DmlEffectsRenderingMode::FINE;
+        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
+    }
+
+    inline std::string saveOptionsDataDmlRenderingModeToString(aspose::words::cloud::models::SaveOptionsData::DmlRenderingMode value)
+    {
+        if (value == aspose::words::cloud::models::SaveOptionsData::DmlRenderingMode::FALLBACK) return "Fallback";
+        if (value == aspose::words::cloud::models::SaveOptionsData::DmlRenderingMode::DRAWING_ML) return "DrawingML";
+        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
+    }
+
+    inline aspose::words::cloud::models::SaveOptionsData::DmlRenderingMode saveOptionsDataDmlRenderingModeFromString(const std::string& value)
+    {
+        if (value == "Fallback") return aspose::words::cloud::models::SaveOptionsData::DmlRenderingMode::FALLBACK;
+        if (value == "DrawingML") return aspose::words::cloud::models::SaveOptionsData::DmlRenderingMode::DRAWING_ML;
+        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
+    }
+
+    inline std::string saveOptionsDataImlRenderingModeToString(aspose::words::cloud::models::SaveOptionsData::ImlRenderingMode value)
+    {
+        if (value == aspose::words::cloud::models::SaveOptionsData::ImlRenderingMode::FALLBACK) return "Fallback";
+        if (value == aspose::words::cloud::models::SaveOptionsData::ImlRenderingMode::INK_ML) return "InkML";
+        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
+    }
+
+    inline aspose::words::cloud::models::SaveOptionsData::ImlRenderingMode saveOptionsDataImlRenderingModeFromString(const std::string& value)
+    {
+        if (value == "Fallback") return aspose::words::cloud::models::SaveOptionsData::ImlRenderingMode::FALLBACK;
+        if (value == "InkML") return aspose::words::cloud::models::SaveOptionsData::ImlRenderingMode::INK_ML;
+        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
+    }
     void SaveOptionsData::toJson(void* jsonIfc) const
     {
         ::nlohmann::json& json = *((::nlohmann::json*)jsonIfc);
@@ -17461,10 +17956,10 @@ namespace aspose::words::cloud::models {
             json["Dml3DEffectsRenderingMode"] = saveOptionsDataDml3DEffectsRenderingModeToString(*(this->m_Dml3DEffectsRenderingMode));
         }
         if (this->m_DmlEffectsRenderingMode) {
-            json["DmlEffectsRenderingMode"] = convertUtf16(*(this->m_DmlEffectsRenderingMode));
+            json["DmlEffectsRenderingMode"] = saveOptionsDataDmlEffectsRenderingModeToString(*(this->m_DmlEffectsRenderingMode));
         }
         if (this->m_DmlRenderingMode) {
-            json["DmlRenderingMode"] = convertUtf16(*(this->m_DmlRenderingMode));
+            json["DmlRenderingMode"] = saveOptionsDataDmlRenderingModeToString(*(this->m_DmlRenderingMode));
         }
         if (this->m_FileName) {
             json["FileName"] = convertUtf16(*(this->m_FileName));
@@ -17473,7 +17968,7 @@ namespace aspose::words::cloud::models {
             json["FlatOpcXmlMappingOnly"] = *(this->m_FlatOpcXmlMappingOnly);
         }
         if (this->m_ImlRenderingMode) {
-            json["ImlRenderingMode"] = convertUtf16(*(this->m_ImlRenderingMode));
+            json["ImlRenderingMode"] = saveOptionsDataImlRenderingModeToString(*(this->m_ImlRenderingMode));
         }
         if (this->m_SaveFormat) {
             json["SaveFormat"] = convertUtf16(*(this->m_SaveFormat));
@@ -17516,13 +18011,13 @@ namespace aspose::words::cloud::models {
             );
         }
         if (json.contains("DmlEffectsRenderingMode") && !json["DmlEffectsRenderingMode"].is_null()) {
-            this->m_DmlEffectsRenderingMode = std::make_shared< std::wstring >(
-                convertUtf8( json["DmlEffectsRenderingMode"].get< std::string >() )
+            this->m_DmlEffectsRenderingMode = std::make_shared< aspose::words::cloud::models::SaveOptionsData::DmlEffectsRenderingMode >(
+                saveOptionsDataDmlEffectsRenderingModeFromString(json["DmlEffectsRenderingMode"].get< std::string >())
             );
         }
         if (json.contains("DmlRenderingMode") && !json["DmlRenderingMode"].is_null()) {
-            this->m_DmlRenderingMode = std::make_shared< std::wstring >(
-                convertUtf8( json["DmlRenderingMode"].get< std::string >() )
+            this->m_DmlRenderingMode = std::make_shared< aspose::words::cloud::models::SaveOptionsData::DmlRenderingMode >(
+                saveOptionsDataDmlRenderingModeFromString(json["DmlRenderingMode"].get< std::string >())
             );
         }
         if (json.contains("FileName") && !json["FileName"].is_null()) {
@@ -17536,8 +18031,8 @@ namespace aspose::words::cloud::models {
             );
         }
         if (json.contains("ImlRenderingMode") && !json["ImlRenderingMode"].is_null()) {
-            this->m_ImlRenderingMode = std::make_shared< std::wstring >(
-                convertUtf8( json["ImlRenderingMode"].get< std::string >() )
+            this->m_ImlRenderingMode = std::make_shared< aspose::words::cloud::models::SaveOptionsData::ImlRenderingMode >(
+                saveOptionsDataImlRenderingModeFromString(json["ImlRenderingMode"].get< std::string >())
             );
         }
         if (json.contains("SaveFormat") && !json["SaveFormat"].is_null()) {
@@ -17610,23 +18105,23 @@ namespace aspose::words::cloud::models {
     }
 
 
-    std::shared_ptr< std::wstring > SaveOptionsData::getDmlEffectsRenderingMode() const
+    std::shared_ptr< aspose::words::cloud::models::SaveOptionsData::DmlEffectsRenderingMode > SaveOptionsData::getDmlEffectsRenderingMode() const
     {
         return this->m_DmlEffectsRenderingMode;
     }
 
-    void SaveOptionsData::setDmlEffectsRenderingMode(std::shared_ptr< std::wstring > value)
+    void SaveOptionsData::setDmlEffectsRenderingMode(std::shared_ptr< aspose::words::cloud::models::SaveOptionsData::DmlEffectsRenderingMode > value)
     {
         this->m_DmlEffectsRenderingMode = value;
     }
 
 
-    std::shared_ptr< std::wstring > SaveOptionsData::getDmlRenderingMode() const
+    std::shared_ptr< aspose::words::cloud::models::SaveOptionsData::DmlRenderingMode > SaveOptionsData::getDmlRenderingMode() const
     {
         return this->m_DmlRenderingMode;
     }
 
-    void SaveOptionsData::setDmlRenderingMode(std::shared_ptr< std::wstring > value)
+    void SaveOptionsData::setDmlRenderingMode(std::shared_ptr< aspose::words::cloud::models::SaveOptionsData::DmlRenderingMode > value)
     {
         this->m_DmlRenderingMode = value;
     }
@@ -17654,12 +18149,12 @@ namespace aspose::words::cloud::models {
     }
 
 
-    std::shared_ptr< std::wstring > SaveOptionsData::getImlRenderingMode() const
+    std::shared_ptr< aspose::words::cloud::models::SaveOptionsData::ImlRenderingMode > SaveOptionsData::getImlRenderingMode() const
     {
         return this->m_ImlRenderingMode;
     }
 
-    void SaveOptionsData::setImlRenderingMode(std::shared_ptr< std::wstring > value)
+    void SaveOptionsData::setImlRenderingMode(std::shared_ptr< aspose::words::cloud::models::SaveOptionsData::ImlRenderingMode > value)
     {
         this->m_ImlRenderingMode = value;
     }
@@ -20059,6 +20554,21 @@ namespace aspose::words::cloud::models {
     /*
      * SvgSaveOptionsData implementation
      */
+    inline std::string svgSaveOptionsDataTextOutputModeToString(aspose::words::cloud::models::SvgSaveOptionsData::TextOutputMode value)
+    {
+        if (value == aspose::words::cloud::models::SvgSaveOptionsData::TextOutputMode::USE_SVG_FONTS) return "UseSvgFonts";
+        if (value == aspose::words::cloud::models::SvgSaveOptionsData::TextOutputMode::USE_TARGET_MACHINE_FONTS) return "UseTargetMachineFonts";
+        if (value == aspose::words::cloud::models::SvgSaveOptionsData::TextOutputMode::USE_PLACED_GLYPHS) return "UsePlacedGlyphs";
+        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
+    }
+
+    inline aspose::words::cloud::models::SvgSaveOptionsData::TextOutputMode svgSaveOptionsDataTextOutputModeFromString(const std::string& value)
+    {
+        if (value == "UseSvgFonts") return aspose::words::cloud::models::SvgSaveOptionsData::TextOutputMode::USE_SVG_FONTS;
+        if (value == "UseTargetMachineFonts") return aspose::words::cloud::models::SvgSaveOptionsData::TextOutputMode::USE_TARGET_MACHINE_FONTS;
+        if (value == "UsePlacedGlyphs") return aspose::words::cloud::models::SvgSaveOptionsData::TextOutputMode::USE_PLACED_GLYPHS;
+        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
+    }
     void SvgSaveOptionsData::toJson(void* jsonIfc) const
     {
         FixedPageSaveOptionsData::toJson(jsonIfc);
@@ -20082,7 +20592,7 @@ namespace aspose::words::cloud::models {
             json["ShowPageBorder"] = *(this->m_ShowPageBorder);
         }
         if (this->m_TextOutputMode) {
-            json["TextOutputMode"] = convertUtf16(*(this->m_TextOutputMode));
+            json["TextOutputMode"] = svgSaveOptionsDataTextOutputModeToString(*(this->m_TextOutputMode));
         }
     }
 
@@ -20121,8 +20631,8 @@ namespace aspose::words::cloud::models {
             );
         }
         if (json.contains("TextOutputMode") && !json["TextOutputMode"].is_null()) {
-            this->m_TextOutputMode = std::make_shared< std::wstring >(
-                convertUtf8( json["TextOutputMode"].get< std::string >() )
+            this->m_TextOutputMode = std::make_shared< aspose::words::cloud::models::SvgSaveOptionsData::TextOutputMode >(
+                svgSaveOptionsDataTextOutputModeFromString(json["TextOutputMode"].get< std::string >())
             );
         }
     }
@@ -20189,12 +20699,12 @@ namespace aspose::words::cloud::models {
     }
 
 
-    std::shared_ptr< std::wstring > SvgSaveOptionsData::getTextOutputMode() const
+    std::shared_ptr< aspose::words::cloud::models::SvgSaveOptionsData::TextOutputMode > SvgSaveOptionsData::getTextOutputMode() const
     {
         return this->m_TextOutputMode;
     }
 
-    void SvgSaveOptionsData::setTextOutputMode(std::shared_ptr< std::wstring > value)
+    void SvgSaveOptionsData::setTextOutputMode(std::shared_ptr< aspose::words::cloud::models::SvgSaveOptionsData::TextOutputMode > value)
     {
         this->m_TextOutputMode = value;
     }
@@ -22840,6 +23350,39 @@ namespace aspose::words::cloud::models {
     /*
      * TiffSaveOptionsData implementation
      */
+    inline std::string tiffSaveOptionsDataTiffBinarizationMethodToString(aspose::words::cloud::models::TiffSaveOptionsData::TiffBinarizationMethod value)
+    {
+        if (value == aspose::words::cloud::models::TiffSaveOptionsData::TiffBinarizationMethod::THRESHOLD) return "Threshold";
+        if (value == aspose::words::cloud::models::TiffSaveOptionsData::TiffBinarizationMethod::FLOYD_STEINBERG_DITHERING) return "FloydSteinbergDithering";
+        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
+    }
+
+    inline aspose::words::cloud::models::TiffSaveOptionsData::TiffBinarizationMethod tiffSaveOptionsDataTiffBinarizationMethodFromString(const std::string& value)
+    {
+        if (value == "Threshold") return aspose::words::cloud::models::TiffSaveOptionsData::TiffBinarizationMethod::THRESHOLD;
+        if (value == "FloydSteinbergDithering") return aspose::words::cloud::models::TiffSaveOptionsData::TiffBinarizationMethod::FLOYD_STEINBERG_DITHERING;
+        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
+    }
+
+    inline std::string tiffSaveOptionsDataTiffCompressionToString(aspose::words::cloud::models::TiffSaveOptionsData::TiffCompression value)
+    {
+        if (value == aspose::words::cloud::models::TiffSaveOptionsData::TiffCompression::NONE) return "None";
+        if (value == aspose::words::cloud::models::TiffSaveOptionsData::TiffCompression::RLE) return "Rle";
+        if (value == aspose::words::cloud::models::TiffSaveOptionsData::TiffCompression::LZW) return "Lzw";
+        if (value == aspose::words::cloud::models::TiffSaveOptionsData::TiffCompression::CCITT3) return "Ccitt3";
+        if (value == aspose::words::cloud::models::TiffSaveOptionsData::TiffCompression::CCITT4) return "Ccitt4";
+        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
+    }
+
+    inline aspose::words::cloud::models::TiffSaveOptionsData::TiffCompression tiffSaveOptionsDataTiffCompressionFromString(const std::string& value)
+    {
+        if (value == "None") return aspose::words::cloud::models::TiffSaveOptionsData::TiffCompression::NONE;
+        if (value == "Rle") return aspose::words::cloud::models::TiffSaveOptionsData::TiffCompression::RLE;
+        if (value == "Lzw") return aspose::words::cloud::models::TiffSaveOptionsData::TiffCompression::LZW;
+        if (value == "Ccitt3") return aspose::words::cloud::models::TiffSaveOptionsData::TiffCompression::CCITT3;
+        if (value == "Ccitt4") return aspose::words::cloud::models::TiffSaveOptionsData::TiffCompression::CCITT4;
+        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
+    }
     void TiffSaveOptionsData::toJson(void* jsonIfc) const
     {
         ImageSaveOptionsData::toJson(jsonIfc);
@@ -22851,10 +23394,10 @@ namespace aspose::words::cloud::models {
             json["ThresholdForFloydSteinbergDithering"] = *(this->m_ThresholdForFloydSteinbergDithering);
         }
         if (this->m_TiffBinarizationMethod) {
-            json["TiffBinarizationMethod"] = convertUtf16(*(this->m_TiffBinarizationMethod));
+            json["TiffBinarizationMethod"] = tiffSaveOptionsDataTiffBinarizationMethodToString(*(this->m_TiffBinarizationMethod));
         }
         if (this->m_TiffCompression) {
-            json["TiffCompression"] = convertUtf16(*(this->m_TiffCompression));
+            json["TiffCompression"] = tiffSaveOptionsDataTiffCompressionToString(*(this->m_TiffCompression));
         }
     }
 
@@ -22873,13 +23416,13 @@ namespace aspose::words::cloud::models {
             );
         }
         if (json.contains("TiffBinarizationMethod") && !json["TiffBinarizationMethod"].is_null()) {
-            this->m_TiffBinarizationMethod = std::make_shared< std::wstring >(
-                convertUtf8( json["TiffBinarizationMethod"].get< std::string >() )
+            this->m_TiffBinarizationMethod = std::make_shared< aspose::words::cloud::models::TiffSaveOptionsData::TiffBinarizationMethod >(
+                tiffSaveOptionsDataTiffBinarizationMethodFromString(json["TiffBinarizationMethod"].get< std::string >())
             );
         }
         if (json.contains("TiffCompression") && !json["TiffCompression"].is_null()) {
-            this->m_TiffCompression = std::make_shared< std::wstring >(
-                convertUtf8( json["TiffCompression"].get< std::string >() )
+            this->m_TiffCompression = std::make_shared< aspose::words::cloud::models::TiffSaveOptionsData::TiffCompression >(
+                tiffSaveOptionsDataTiffCompressionFromString(json["TiffCompression"].get< std::string >())
             );
         }
     }
@@ -22902,23 +23445,23 @@ namespace aspose::words::cloud::models {
     }
 
 
-    std::shared_ptr< std::wstring > TiffSaveOptionsData::getTiffBinarizationMethod() const
+    std::shared_ptr< aspose::words::cloud::models::TiffSaveOptionsData::TiffBinarizationMethod > TiffSaveOptionsData::getTiffBinarizationMethod() const
     {
         return this->m_TiffBinarizationMethod;
     }
 
-    void TiffSaveOptionsData::setTiffBinarizationMethod(std::shared_ptr< std::wstring > value)
+    void TiffSaveOptionsData::setTiffBinarizationMethod(std::shared_ptr< aspose::words::cloud::models::TiffSaveOptionsData::TiffBinarizationMethod > value)
     {
         this->m_TiffBinarizationMethod = value;
     }
 
 
-    std::shared_ptr< std::wstring > TiffSaveOptionsData::getTiffCompression() const
+    std::shared_ptr< aspose::words::cloud::models::TiffSaveOptionsData::TiffCompression > TiffSaveOptionsData::getTiffCompression() const
     {
         return this->m_TiffCompression;
     }
 
-    void TiffSaveOptionsData::setTiffCompression(std::shared_ptr< std::wstring > value)
+    void TiffSaveOptionsData::setTiffCompression(std::shared_ptr< aspose::words::cloud::models::TiffSaveOptionsData::TiffCompression > value)
     {
         this->m_TiffCompression = value;
     }

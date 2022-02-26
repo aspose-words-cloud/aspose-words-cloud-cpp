@@ -34,6 +34,34 @@ namespace aspose::words::cloud::models {
     class ImageSaveOptionsData : public FixedPageSaveOptionsData
     {
     public:
+        /// <summary>
+        /// Gets or sets the color mode of the image.
+        /// </summary>
+        enum class ImageColorMode
+        { 
+            NONE,
+            GRAYSCALE,
+            BLACK_AND_WHITE
+        };
+
+        /// <summary>
+        /// Gets or sets the pixel format of the image.
+        /// </summary>
+        enum class PixelFormat
+        { 
+            FORMAT16_BPP_RGB555,
+            FORMAT16_BPP_RGB565,
+            FORMAT16_BPP_ARGB1555,
+            FORMAT24_BPP_RGB,
+            FORMAT32_BPP_RGB,
+            FORMAT32_BPP_ARGB,
+            FORMAT32_BPP_P_ARGB,
+            FORMAT48_BPP_RGB,
+            FORMAT64_BPP_ARGB,
+            FORMAT64_BPP_P_ARGB,
+            FORMAT1BPP_INDEXED
+        };
+
 
         ASPOSE_WORDS_CLOUD_EXPORT virtual ~ImageSaveOptionsData() = default;
         ASPOSE_WORDS_CLOUD_EXPORT virtual void toJson(void* jsonIfc) const override;
@@ -72,12 +100,12 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the color mode of the image.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< std::wstring > getImageColorMode() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< aspose::words::cloud::models::ImageSaveOptionsData::ImageColorMode > getImageColorMode() const;
 
         /// <summary>
         /// Gets or sets the color mode of the image.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT virtual void setImageColorMode(std::shared_ptr< std::wstring > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setImageColorMode(std::shared_ptr< aspose::words::cloud::models::ImageSaveOptionsData::ImageColorMode > value);
 
 
         /// <summary>
@@ -105,12 +133,12 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the pixel format of the image.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< std::wstring > getPixelFormat() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< aspose::words::cloud::models::ImageSaveOptionsData::PixelFormat > getPixelFormat() const;
 
         /// <summary>
         /// Gets or sets the pixel format of the image.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT virtual void setPixelFormat(std::shared_ptr< std::wstring > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setPixelFormat(std::shared_ptr< aspose::words::cloud::models::ImageSaveOptionsData::PixelFormat > value);
 
 
         /// <summary>
@@ -190,10 +218,10 @@ namespace aspose::words::cloud::models {
     protected:
         std::shared_ptr< double > m_HorizontalResolution;
         std::shared_ptr< double > m_ImageBrightness;
-        std::shared_ptr< std::wstring > m_ImageColorMode;
+        std::shared_ptr< aspose::words::cloud::models::ImageSaveOptionsData::ImageColorMode > m_ImageColorMode;
         std::shared_ptr< double > m_ImageContrast;
         std::shared_ptr< std::wstring > m_PaperColor;
-        std::shared_ptr< std::wstring > m_PixelFormat;
+        std::shared_ptr< aspose::words::cloud::models::ImageSaveOptionsData::PixelFormat > m_PixelFormat;
         std::shared_ptr< double > m_Resolution;
         std::shared_ptr< double > m_Scale;
         std::shared_ptr< bool > m_UseAntiAliasing;

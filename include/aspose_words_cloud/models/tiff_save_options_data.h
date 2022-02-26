@@ -34,6 +34,27 @@ namespace aspose::words::cloud::models {
     class TiffSaveOptionsData : public ImageSaveOptionsData
     {
     public:
+        /// <summary>
+        /// Gets or sets the method used while converting images to 1 bpp format.
+        /// </summary>
+        enum class TiffBinarizationMethod
+        { 
+            THRESHOLD,
+            FLOYD_STEINBERG_DITHERING
+        };
+
+        /// <summary>
+        /// Gets or sets the type of compression.
+        /// </summary>
+        enum class TiffCompression
+        { 
+            NONE,
+            RLE,
+            LZW,
+            CCITT3,
+            CCITT4
+        };
+
 
         ASPOSE_WORDS_CLOUD_EXPORT virtual ~TiffSaveOptionsData() = default;
         ASPOSE_WORDS_CLOUD_EXPORT virtual void toJson(void* jsonIfc) const override;
@@ -66,30 +87,30 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the method used while converting images to 1 bpp format.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< std::wstring > getTiffBinarizationMethod() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< aspose::words::cloud::models::TiffSaveOptionsData::TiffBinarizationMethod > getTiffBinarizationMethod() const;
 
         /// <summary>
         /// Gets or sets the method used while converting images to 1 bpp format.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT virtual void setTiffBinarizationMethod(std::shared_ptr< std::wstring > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setTiffBinarizationMethod(std::shared_ptr< aspose::words::cloud::models::TiffSaveOptionsData::TiffBinarizationMethod > value);
 
 
         /// <summary>
         /// Gets or sets the type of compression.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< std::wstring > getTiffCompression() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< aspose::words::cloud::models::TiffSaveOptionsData::TiffCompression > getTiffCompression() const;
 
         /// <summary>
         /// Gets or sets the type of compression.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT virtual void setTiffCompression(std::shared_ptr< std::wstring > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setTiffCompression(std::shared_ptr< aspose::words::cloud::models::TiffSaveOptionsData::TiffCompression > value);
 
 
     protected:
         std::shared_ptr< std::wstring > m_SaveFormat = std::make_shared<std::wstring>(L"tiff");
         std::shared_ptr< int32_t > m_ThresholdForFloydSteinbergDithering;
-        std::shared_ptr< std::wstring > m_TiffBinarizationMethod;
-        std::shared_ptr< std::wstring > m_TiffCompression;
+        std::shared_ptr< aspose::words::cloud::models::TiffSaveOptionsData::TiffBinarizationMethod > m_TiffBinarizationMethod;
+        std::shared_ptr< aspose::words::cloud::models::TiffSaveOptionsData::TiffCompression > m_TiffCompression;
     };
 }
 
