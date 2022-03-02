@@ -34,30 +34,10 @@ namespace aspose::words::cloud::models {
     class PdfEncryptionDetailsData : public ModelBase
     {
     public:
-        /// <summary>
-        /// Gets or sets the encryption algorithm to use.
-        /// </summary>
-        enum class EncryptionAlgorithm
-        { 
-            R_C4_40,
-            R_C4_128
-        };
-
 
         ASPOSE_WORDS_CLOUD_EXPORT virtual ~PdfEncryptionDetailsData() = default;
         ASPOSE_WORDS_CLOUD_EXPORT virtual void toJson(void* jsonIfc) const override;
         ASPOSE_WORDS_CLOUD_EXPORT virtual void fromJson(const void* jsonIfc) override;
-
-
-        /// <summary>
-        /// Gets or sets the encryption algorithm to use.
-        /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< aspose::words::cloud::models::PdfEncryptionDetailsData::EncryptionAlgorithm > getEncryptionAlgorithm() const;
-
-        /// <summary>
-        /// Gets or sets the encryption algorithm to use.
-        /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT virtual void setEncryptionAlgorithm(std::shared_ptr< aspose::words::cloud::models::PdfEncryptionDetailsData::EncryptionAlgorithm > value);
 
 
         /// <summary>
@@ -94,7 +74,6 @@ namespace aspose::words::cloud::models {
 
 
     protected:
-        std::shared_ptr< aspose::words::cloud::models::PdfEncryptionDetailsData::EncryptionAlgorithm > m_EncryptionAlgorithm;
         std::shared_ptr< std::wstring > m_OwnerPassword;
         std::shared_ptr< std::vector<std::shared_ptr<aspose::words::cloud::models::PdfPermissions>> > m_Permissions;
         std::shared_ptr< std::wstring > m_UserPassword;

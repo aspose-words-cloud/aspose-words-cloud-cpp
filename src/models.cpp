@@ -15704,6 +15704,7 @@ namespace aspose::words::cloud::models {
         if (value == aspose::words::cloud::models::PdfDigitalSignatureDetailsData::HashAlgorithm::SHA384) return "Sha384";
         if (value == aspose::words::cloud::models::PdfDigitalSignatureDetailsData::HashAlgorithm::SHA512) return "Sha512";
         if (value == aspose::words::cloud::models::PdfDigitalSignatureDetailsData::HashAlgorithm::MD5) return "Md5";
+        if (value == aspose::words::cloud::models::PdfDigitalSignatureDetailsData::HashAlgorithm::RIPE_M_D160) return "RipeMD160";
         throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
     }
 
@@ -15714,6 +15715,7 @@ namespace aspose::words::cloud::models {
         if (value == "Sha384") return aspose::words::cloud::models::PdfDigitalSignatureDetailsData::HashAlgorithm::SHA384;
         if (value == "Sha512") return aspose::words::cloud::models::PdfDigitalSignatureDetailsData::HashAlgorithm::SHA512;
         if (value == "Md5") return aspose::words::cloud::models::PdfDigitalSignatureDetailsData::HashAlgorithm::MD5;
+        if (value == "RipeMD160") return aspose::words::cloud::models::PdfDigitalSignatureDetailsData::HashAlgorithm::RIPE_M_D160;
         throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
     }
     void PdfDigitalSignatureDetailsData::toJson(void* jsonIfc) const
@@ -15825,20 +15827,6 @@ namespace aspose::words::cloud::models {
     /*
      * PdfEncryptionDetailsData implementation
      */
-    inline std::string pdfEncryptionDetailsDataEncryptionAlgorithmToString(aspose::words::cloud::models::PdfEncryptionDetailsData::EncryptionAlgorithm value)
-    {
-        if (value == aspose::words::cloud::models::PdfEncryptionDetailsData::EncryptionAlgorithm::R_C4_40) return "RC4_40";
-        if (value == aspose::words::cloud::models::PdfEncryptionDetailsData::EncryptionAlgorithm::R_C4_128) return "RC4_128";
-        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
-    }
-
-    inline aspose::words::cloud::models::PdfEncryptionDetailsData::EncryptionAlgorithm pdfEncryptionDetailsDataEncryptionAlgorithmFromString(const std::string& value)
-    {
-        if (value == "RC4_40") return aspose::words::cloud::models::PdfEncryptionDetailsData::EncryptionAlgorithm::R_C4_40;
-        if (value == "RC4_128") return aspose::words::cloud::models::PdfEncryptionDetailsData::EncryptionAlgorithm::R_C4_128;
-        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
-    }
-
     inline std::string pdfEncryptionDetailsDataPdfPermissionsToString(aspose::words::cloud::models::PdfPermissions value)
     {
         if (value == aspose::words::cloud::models::PdfPermissions::DISALLOW_ALL) return "DisallowAll";
@@ -15871,9 +15859,6 @@ namespace aspose::words::cloud::models {
     void PdfEncryptionDetailsData::toJson(void* jsonIfc) const
     {
         ::nlohmann::json& json = *((::nlohmann::json*)jsonIfc);
-        if (this->m_EncryptionAlgorithm) {
-            json["EncryptionAlgorithm"] = pdfEncryptionDetailsDataEncryptionAlgorithmToString(*(this->m_EncryptionAlgorithm));
-        }
         if (this->m_OwnerPassword) {
             json["OwnerPassword"] = convertUtf16(*(this->m_OwnerPassword));
         }
@@ -15891,11 +15876,6 @@ namespace aspose::words::cloud::models {
     void PdfEncryptionDetailsData::fromJson(const void* jsonIfc)
     {
         ::nlohmann::json& json = *((::nlohmann::json*)jsonIfc);
-        if (json.contains("EncryptionAlgorithm") && !json["EncryptionAlgorithm"].is_null()) {
-            this->m_EncryptionAlgorithm = std::make_shared< aspose::words::cloud::models::PdfEncryptionDetailsData::EncryptionAlgorithm >(
-                pdfEncryptionDetailsDataEncryptionAlgorithmFromString(json["EncryptionAlgorithm"].get< std::string >())
-            );
-        }
         if (json.contains("OwnerPassword") && !json["OwnerPassword"].is_null()) {
             this->m_OwnerPassword = std::make_shared< std::wstring >(
                 convertUtf8( json["OwnerPassword"].get< std::string >() )
@@ -15913,17 +15893,6 @@ namespace aspose::words::cloud::models {
             );
         }
     }
-
-    std::shared_ptr< aspose::words::cloud::models::PdfEncryptionDetailsData::EncryptionAlgorithm > PdfEncryptionDetailsData::getEncryptionAlgorithm() const
-    {
-        return this->m_EncryptionAlgorithm;
-    }
-
-    void PdfEncryptionDetailsData::setEncryptionAlgorithm(std::shared_ptr< aspose::words::cloud::models::PdfEncryptionDetailsData::EncryptionAlgorithm > value)
-    {
-        this->m_EncryptionAlgorithm = value;
-    }
-
 
     std::shared_ptr< std::wstring > PdfEncryptionDetailsData::getOwnerPassword() const
     {
@@ -15965,7 +15934,7 @@ namespace aspose::words::cloud::models {
     inline std::string pdfSaveOptionsDataComplianceToString(aspose::words::cloud::models::PdfSaveOptionsData::Compliance value)
     {
         if (value == aspose::words::cloud::models::PdfSaveOptionsData::Compliance::PDF17) return "Pdf17";
-        if (value == aspose::words::cloud::models::PdfSaveOptionsData::Compliance::PDF15) return "Pdf15";
+        if (value == aspose::words::cloud::models::PdfSaveOptionsData::Compliance::PDF20) return "Pdf20";
         if (value == aspose::words::cloud::models::PdfSaveOptionsData::Compliance::PDF_A1A) return "PdfA1a";
         if (value == aspose::words::cloud::models::PdfSaveOptionsData::Compliance::PDF_A1B) return "PdfA1b";
         if (value == aspose::words::cloud::models::PdfSaveOptionsData::Compliance::PDF_A2A) return "PdfA2a";
@@ -15977,7 +15946,7 @@ namespace aspose::words::cloud::models {
     inline aspose::words::cloud::models::PdfSaveOptionsData::Compliance pdfSaveOptionsDataComplianceFromString(const std::string& value)
     {
         if (value == "Pdf17") return aspose::words::cloud::models::PdfSaveOptionsData::Compliance::PDF17;
-        if (value == "Pdf15") return aspose::words::cloud::models::PdfSaveOptionsData::Compliance::PDF15;
+        if (value == "Pdf20") return aspose::words::cloud::models::PdfSaveOptionsData::Compliance::PDF20;
         if (value == "PdfA1a") return aspose::words::cloud::models::PdfSaveOptionsData::Compliance::PDF_A1A;
         if (value == "PdfA1b") return aspose::words::cloud::models::PdfSaveOptionsData::Compliance::PDF_A1B;
         if (value == "PdfA2a") return aspose::words::cloud::models::PdfSaveOptionsData::Compliance::PDF_A2A;

@@ -44,7 +44,7 @@ namespace aspose::words::cloud::models {
         enum class Compliance
         { 
             PDF17,
-            PDF15,
+            PDF20,
             PDF_A1A,
             PDF_A1B,
             PDF_A2A,
