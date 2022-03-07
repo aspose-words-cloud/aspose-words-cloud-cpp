@@ -39,7 +39,7 @@ namespace aspose::words::cloud::responses {
         ASPOSE_WORDS_CLOUD_EXPORT virtual ~BatchResponse() = default;
 
         ASPOSE_WORDS_CLOUD_EXPORT void initialize(const std::vector<aspose::words::cloud::requests::BatchRequest>& requests);
-        ASPOSE_WORDS_CLOUD_EXPORT virtual void deserialize(const std::string_view& response) override;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void deserialize(const std::string& contentType, const std::string_view& response) override;
 
         const std::shared_ptr< ResponseModelBase > getResult(size_t index) const {
             if (!m_Result || m_Result->size() <= index) return nullptr;

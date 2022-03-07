@@ -75,10 +75,11 @@ TEST_F(ExamplesTest, TestExampleAcceptAllRevisionsOnline) {
     {
         char buffer[1024];
         std::ofstream fileWriter("test_result.docx", std::ofstream::binary);
-        while(acceptAllRevisionsOnlineResult->getDocument()->read(buffer, sizeof(buffer))) {
+        const auto& fileData = *acceptAllRevisionsOnlineResult->getDocument()->begin();
+        while(fileData.second->read(buffer, sizeof(buffer))) {
             fileWriter.write(buffer, sizeof(buffer));
         }
-        fileWriter.write(buffer, acceptAllRevisionsOnlineResult->getDocument()->gcount());
+        fileWriter.write(buffer, fileData.second->gcount());
         fileWriter.close();
     }
 }

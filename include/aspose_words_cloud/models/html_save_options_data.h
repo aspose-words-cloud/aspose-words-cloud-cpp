@@ -35,6 +35,49 @@ namespace aspose::words::cloud::models {
     {
     public:
         /// <summary>
+        /// Gets or sets the option that controls how the CSS styles are exported.
+        /// </summary>
+        enum class CssStyleSheetType
+        { 
+            INLINE,
+            EMBEDDED,
+            EXTERNAL
+        };
+
+        /// <summary>
+        /// Gets or sets the option that controls how the document should be split when saving.
+        /// </summary>
+        enum class DocumentSplitCriteria
+        { 
+            NONE,
+            PAGE_BREAK,
+            COLUMN_BREAK,
+            SECTION_BREAK,
+            HEADING_PARAGRAPH
+        };
+
+        /// <summary>
+        /// Gets or sets the option that controls how headers and footers are exported.
+        /// </summary>
+        enum class ExportHeadersFootersMode
+        { 
+            NONE,
+            PER_SECTION,
+            FIRST_SECTION_HEADER_LAST_SECTION_FOOTER,
+            FIRST_PAGE_HEADER_FOOTER_PER_SECTION
+        };
+
+        /// <summary>
+        /// Gets or sets the option that controls how list labels are exported.
+        /// </summary>
+        enum class ExportListLabels
+        { 
+            AUTO,
+            AS_INLINE_TEXT,
+            BY_HTML_TAGS
+        };
+
+        /// <summary>
         /// Gets or sets the version of HTML standard, that should be used when saving the document to HTML or MHTML.
         /// Default value is Aspose.Words.Saving.HtmlVersion.Xhtml.
         /// </summary>
@@ -65,6 +108,16 @@ namespace aspose::words::cloud::models {
             IMAGE,
             MATH_ML,
             TEXT
+        };
+
+        /// <summary>
+        /// Gets or sets the option that controls how table, row and cell widths are exported.
+        /// </summary>
+        enum class TableWidthOutputMode
+        { 
+            ALL,
+            RELATIVE_ONLY,
+            NONE
         };
 
 
@@ -114,23 +167,23 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the option that controls how the CSS styles are exported.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< std::wstring > getCssStyleSheetType() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< aspose::words::cloud::models::HtmlSaveOptionsData::CssStyleSheetType > getCssStyleSheetType() const;
 
         /// <summary>
         /// Gets or sets the option that controls how the CSS styles are exported.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT virtual void setCssStyleSheetType(std::shared_ptr< std::wstring > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setCssStyleSheetType(std::shared_ptr< aspose::words::cloud::models::HtmlSaveOptionsData::CssStyleSheetType > value);
 
 
         /// <summary>
         /// Gets or sets the option that controls how the document should be split when saving.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< std::wstring > getDocumentSplitCriteria() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< aspose::words::cloud::models::HtmlSaveOptionsData::DocumentSplitCriteria > getDocumentSplitCriteria() const;
 
         /// <summary>
         /// Gets or sets the option that controls how the document should be split when saving.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT virtual void setDocumentSplitCriteria(std::shared_ptr< std::wstring > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setDocumentSplitCriteria(std::shared_ptr< aspose::words::cloud::models::HtmlSaveOptionsData::DocumentSplitCriteria > value);
 
 
         /// <summary>
@@ -204,12 +257,12 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the option that controls how headers and footers are exported.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< std::wstring > getExportHeadersFootersMode() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< aspose::words::cloud::models::HtmlSaveOptionsData::ExportHeadersFootersMode > getExportHeadersFootersMode() const;
 
         /// <summary>
         /// Gets or sets the option that controls how headers and footers are exported.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT virtual void setExportHeadersFootersMode(std::shared_ptr< std::wstring > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setExportHeadersFootersMode(std::shared_ptr< aspose::words::cloud::models::HtmlSaveOptionsData::ExportHeadersFootersMode > value);
 
 
         /// <summary>
@@ -237,12 +290,12 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the option that controls how list labels are exported.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< std::wstring > getExportListLabels() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< aspose::words::cloud::models::HtmlSaveOptionsData::ExportListLabels > getExportListLabels() const;
 
         /// <summary>
         /// Gets or sets the option that controls how list labels are exported.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT virtual void setExportListLabels(std::shared_ptr< std::wstring > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setExportListLabels(std::shared_ptr< aspose::words::cloud::models::HtmlSaveOptionsData::ExportListLabels > value);
 
 
         /// <summary>
@@ -524,30 +577,30 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the option that controls how table, row and cell widths are exported.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< std::wstring > getTableWidthOutputMode() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< aspose::words::cloud::models::HtmlSaveOptionsData::TableWidthOutputMode > getTableWidthOutputMode() const;
 
         /// <summary>
         /// Gets or sets the option that controls how table, row and cell widths are exported.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT virtual void setTableWidthOutputMode(std::shared_ptr< std::wstring > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setTableWidthOutputMode(std::shared_ptr< aspose::words::cloud::models::HtmlSaveOptionsData::TableWidthOutputMode > value);
 
 
     protected:
         std::shared_ptr< bool > m_AllowNegativeIndent;
         std::shared_ptr< std::wstring > m_CssClassNamePrefix;
         std::shared_ptr< std::wstring > m_CssStyleSheetFileName;
-        std::shared_ptr< std::wstring > m_CssStyleSheetType;
-        std::shared_ptr< std::wstring > m_DocumentSplitCriteria;
+        std::shared_ptr< aspose::words::cloud::models::HtmlSaveOptionsData::CssStyleSheetType > m_CssStyleSheetType;
+        std::shared_ptr< aspose::words::cloud::models::HtmlSaveOptionsData::DocumentSplitCriteria > m_DocumentSplitCriteria;
         std::shared_ptr< int32_t > m_DocumentSplitHeadingLevel;
         std::shared_ptr< std::wstring > m_Encoding;
         std::shared_ptr< bool > m_ExportDocumentProperties;
         std::shared_ptr< bool > m_ExportDropDownFormFieldAsText;
         std::shared_ptr< bool > m_ExportFontResources;
         std::shared_ptr< bool > m_ExportFontsAsBase64;
-        std::shared_ptr< std::wstring > m_ExportHeadersFootersMode;
+        std::shared_ptr< aspose::words::cloud::models::HtmlSaveOptionsData::ExportHeadersFootersMode > m_ExportHeadersFootersMode;
         std::shared_ptr< bool > m_ExportImagesAsBase64;
         std::shared_ptr< bool > m_ExportLanguageInformation;
-        std::shared_ptr< std::wstring > m_ExportListLabels;
+        std::shared_ptr< aspose::words::cloud::models::HtmlSaveOptionsData::ExportListLabels > m_ExportListLabels;
         std::shared_ptr< bool > m_ExportOriginalUrlForLinkedImages;
         std::shared_ptr< bool > m_ExportPageMargins;
         std::shared_ptr< bool > m_ExportPageSetup;
@@ -572,7 +625,7 @@ namespace aspose::words::cloud::models {
         std::shared_ptr< std::wstring > m_ResourceFolderAlias;
         std::shared_ptr< std::wstring > m_SaveFormat = std::make_shared<std::wstring>(L"html");
         std::shared_ptr< bool > m_ScaleImageToShapeSize;
-        std::shared_ptr< std::wstring > m_TableWidthOutputMode;
+        std::shared_ptr< aspose::words::cloud::models::HtmlSaveOptionsData::TableWidthOutputMode > m_TableWidthOutputMode;
     };
 }
 

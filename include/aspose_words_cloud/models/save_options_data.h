@@ -43,6 +43,35 @@ namespace aspose::words::cloud::models {
             ADVANCED
         };
 
+        /// <summary>
+        /// Gets or sets the value determining how DrawingML effects are rendered.
+        /// { Simplified | None | Fine }.
+        /// </summary>
+        enum class DmlEffectsRenderingMode
+        { 
+            SIMPLIFIED,
+            NONE,
+            FINE
+        };
+
+        /// <summary>
+        /// Gets or sets the option that controls how DrawingML shapes are rendered.
+        /// </summary>
+        enum class DmlRenderingMode
+        { 
+            FALLBACK,
+            DRAWING_ML
+        };
+
+        /// <summary>
+        /// Gets or sets the value determining how ink (InkML) objects are rendered.
+        /// </summary>
+        enum class ImlRenderingMode
+        { 
+            FALLBACK,
+            INK_ML
+        };
+
 
         ASPOSE_WORDS_CLOUD_EXPORT virtual ~SaveOptionsData() = default;
         ASPOSE_WORDS_CLOUD_EXPORT virtual void toJson(void* jsonIfc) const override;
@@ -87,24 +116,24 @@ namespace aspose::words::cloud::models {
         /// Gets or sets the value determining how DrawingML effects are rendered.
         /// { Simplified | None | Fine }.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< std::wstring > getDmlEffectsRenderingMode() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< aspose::words::cloud::models::SaveOptionsData::DmlEffectsRenderingMode > getDmlEffectsRenderingMode() const;
 
         /// <summary>
         /// Gets or sets the value determining how DrawingML effects are rendered.
         /// { Simplified | None | Fine }.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT virtual void setDmlEffectsRenderingMode(std::shared_ptr< std::wstring > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setDmlEffectsRenderingMode(std::shared_ptr< aspose::words::cloud::models::SaveOptionsData::DmlEffectsRenderingMode > value);
 
 
         /// <summary>
         /// Gets or sets the option that controls how DrawingML shapes are rendered.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< std::wstring > getDmlRenderingMode() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< aspose::words::cloud::models::SaveOptionsData::DmlRenderingMode > getDmlRenderingMode() const;
 
         /// <summary>
         /// Gets or sets the option that controls how DrawingML shapes are rendered.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT virtual void setDmlRenderingMode(std::shared_ptr< std::wstring > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setDmlRenderingMode(std::shared_ptr< aspose::words::cloud::models::SaveOptionsData::DmlRenderingMode > value);
 
 
         /// <summary>
@@ -134,12 +163,12 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the value determining how ink (InkML) objects are rendered.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< std::wstring > getImlRenderingMode() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< aspose::words::cloud::models::SaveOptionsData::ImlRenderingMode > getImlRenderingMode() const;
 
         /// <summary>
         /// Gets or sets the value determining how ink (InkML) objects are rendered.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT virtual void setImlRenderingMode(std::shared_ptr< std::wstring > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setImlRenderingMode(std::shared_ptr< aspose::words::cloud::models::SaveOptionsData::ImlRenderingMode > value);
 
 
         /// <summary>
@@ -223,11 +252,11 @@ namespace aspose::words::cloud::models {
         std::shared_ptr< bool > m_AllowEmbeddingPostScriptFonts;
         std::shared_ptr< aspose::words::cloud::models::TimeZoneInfoData > m_CustomTimeZoneInfoData;
         std::shared_ptr< aspose::words::cloud::models::SaveOptionsData::Dml3DEffectsRenderingMode > m_Dml3DEffectsRenderingMode;
-        std::shared_ptr< std::wstring > m_DmlEffectsRenderingMode;
-        std::shared_ptr< std::wstring > m_DmlRenderingMode;
+        std::shared_ptr< aspose::words::cloud::models::SaveOptionsData::DmlEffectsRenderingMode > m_DmlEffectsRenderingMode;
+        std::shared_ptr< aspose::words::cloud::models::SaveOptionsData::DmlRenderingMode > m_DmlRenderingMode;
         std::shared_ptr< std::wstring > m_FileName;
         std::shared_ptr< bool > m_FlatOpcXmlMappingOnly;
-        std::shared_ptr< std::wstring > m_ImlRenderingMode;
+        std::shared_ptr< aspose::words::cloud::models::SaveOptionsData::ImlRenderingMode > m_ImlRenderingMode;
         std::shared_ptr< std::wstring > m_SaveFormat;
         std::shared_ptr< bool > m_UpdateCreatedTimeProperty;
         std::shared_ptr< bool > m_UpdateFields;

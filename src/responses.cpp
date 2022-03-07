@@ -34,6 +34,23 @@
 #include "../thirdparty/utf8.h"
 
 namespace aspose::words::cloud::responses {
+    inline void string_ltrim(std::string& s) {
+        s.erase(s.begin(), std::find_if(s.begin(), s.end(), [](unsigned char ch) {
+            return ch != ' ' && ch != '"';
+        }));
+    }
+
+    inline void string_rtrim(std::string& s) {
+        s.erase(std::find_if(s.rbegin(), s.rend(), [](unsigned char ch) {
+            return ch != ' ' && ch != '"';
+        }).base(), s.end());
+    }
+
+    inline void string_trim(std::string& s) {
+        string_ltrim(s);
+        string_rtrim(s);
+    }
+
     void parseMultipart(const std::string_view& data, std::vector<std::string_view>& result) {
         auto boundaryIndex = data.find("\r\n");
         if (boundaryIndex == std::string_view::npos)
@@ -52,7 +69,7 @@ namespace aspose::words::cloud::responses {
         }
     }
 
-    void parseMultipart(const std::string_view& data, std::unordered_map<std::string, std::string_view>& result) {
+    void parseMultipart(const std::string_view& data, std::unordered_map<std::string, std::tuple<std::string, std::string, std::string_view> >& result) {
         std::vector<std::string_view> parts;
         parseMultipart(data, parts);
         for (auto& part : parts) {
@@ -63,8 +80,9 @@ namespace aspose::words::cloud::responses {
             auto headersData = part.substr(0, bodyIndex + 2);
             auto bodyData = part.substr(bodyIndex + 4);
 
+            std::string partName, partFileName, partContentType;
             size_t headerIndex = 0;
-            while (true) {
+            while (headerIndex < headersData.length()) {
                 auto headerLastIndex = headerIndex;
                 headerIndex = headersData.find("\r\n", headerIndex);
                 if (headerIndex == std::string_view::npos)
@@ -82,14 +100,53 @@ namespace aspose::words::cloud::responses {
                     if (partNameIndex == std::string_view::npos)
                         throw ApiException(400, L"Failed to parse multipart data.");
 
-                    auto partName = headerValue.substr(partNameIndex + 5, headerValue.find(";", partNameIndex + 5) - (partNameIndex + 5));
-                    result.emplace(partName, bodyData);
-                    break;
+                    partName = headerValue.substr(partNameIndex + 5, headerValue.find(";", partNameIndex + 5) - (partNameIndex + 5));
+
+                    auto partFileNameIndex = headerValue.find("filename=");
+                    if (partFileNameIndex != std::string_view::npos) {
+                        partFileName = headerValue.substr(partFileNameIndex + 9, headerValue.find(";", partFileNameIndex + 9) - (partFileNameIndex + 9));
+                    }
+                }
+                else if (headerName == "Content-Type") {
+                    partContentType = header.substr(headerDelimilter + 1);
                 }
 
                 headerIndex = headerIndex + 2;
             }
+
+            if (partName.empty()) {
+                throw ApiException(400, L"Failed to parse multipart data.");
+            }
+
+            string_trim(partName);
+            string_trim(partFileName);
+            result.emplace(partName, std::make_tuple(partFileName, partContentType, bodyData));
         }
+    }
+
+    std::shared_ptr<std::map<std::wstring, std::shared_ptr<std::istream> > > parseFilesCollection(const std::tuple<std::string, std::string, std::string_view>& multipart) {
+        std::shared_ptr<std::map<std::wstring, std::shared_ptr<std::istream> > > result = std::make_shared<std::map<std::wstring, std::shared_ptr<std::istream> > >();
+        if (std::get<1>(multipart).find("multipart/mixed") != std::string::npos)
+        {
+            std::unordered_map<std::string, std::tuple<std::string, std::string, std::string_view> > parts;
+            parseMultipart(std::get<2>(multipart), parts);
+
+            for (const auto& pair : parts)
+            {
+                std::wstring filename;
+                ::utf8::utf8to16(pair.first.begin(), pair.first.end(), back_inserter(filename));
+                result->emplace(filename, std::shared_ptr<std::istream>(new std::istringstream(std::string(std::get<2>(pair.second)), std::ios_base::in)));
+            }
+        }
+        else
+        {
+            std::wstring filename;
+            const auto& filenameRaw = std::get<0>(multipart);
+            ::utf8::utf8to16(filenameRaw.begin(), filenameRaw.end(), back_inserter(filename));
+            result->emplace(filename, std::shared_ptr<std::istream>(new std::istringstream(std::string(std::get<2>(multipart)), std::ios_base::in)));
+        }
+
+        return result;
     }
 
     void ResponseModelBase::setStatusCode(int statusCode)
@@ -140,7 +197,7 @@ namespace aspose::words::cloud::responses {
         }
     }
 
-    void BatchResponse::deserialize(const std::string_view& response)
+    void BatchResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
         std::vector<std::string_view> parts;
         parseMultipart(response, parts);
@@ -152,7 +209,7 @@ namespace aspose::words::cloud::responses {
             if (bodyIndex == std::string::npos)
                 throw aspose::words::cloud::ApiException(400, L"Failed to parse batch response");
 
-            std::string requestId;
+            std::string requestId, contentType;
             auto metadata = part.substr(0, bodyIndex + 2);
             size_t lastMetadataIndex = 0;
             while (true) {
@@ -187,6 +244,22 @@ namespace aspose::words::cloud::responses {
             if (std::from_chars(statusCodeStr.data(), statusCodeStr.data() + statusCodeStr.size(), statusCode).ec == std::errc::invalid_argument)
                 throw aspose::words::cloud::ApiException(400, L"Failed to parse batch response");
 
+            size_t lastHeaderIndex = 0;
+            while (true) {
+                auto headerIndex = headersData.find("\r\n", lastHeaderIndex);
+                if (headerIndex == std::string::npos) {
+                    break;
+                }
+
+                auto headerPart = headersData.substr(lastHeaderIndex, headerIndex - lastHeaderIndex);
+                if (headerPart.find("Content-Type") == 0) {
+                    auto requestIdIndex = headerPart.find(": ");
+                    contentType = headerPart.substr(requestIdIndex + 2);
+                }
+
+                lastHeaderIndex = headerIndex + 2;
+            }
+
             auto contentData = bodyData.substr(contentIndex + 4);
 
             if (m_Order->find(requestId) == m_Order->end())
@@ -196,7 +269,7 @@ namespace aspose::words::cloud::responses {
             auto result = request.get()->createResponse();
             result->setStatusCode(statusCode);
             if (statusCode == 200) {
-                result->deserialize(contentData);
+                result->deserialize(contentType, contentData);
             }
             else {
                 result->setErrorData(contentData);
@@ -219,7 +292,7 @@ namespace aspose::words::cloud::responses {
         return m_Result;
     }
 
-    void AcceptAllRevisionsResponse::deserialize(const std::string_view& response)
+    void AcceptAllRevisionsResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
         auto json = ::nlohmann::json::parse(response);
         m_Result = std::make_shared< aspose::words::cloud::models::RevisionsModificationResponse >();
@@ -234,24 +307,24 @@ namespace aspose::words::cloud::responses {
         return m_Model;
     }
 
-    std::shared_ptr< std::istream > AcceptAllRevisionsOnlineResponse::getDocument() const
+    std::shared_ptr< std::map<std::wstring, std::shared_ptr<std::istream>> > AcceptAllRevisionsOnlineResponse::getDocument() const
     {
         return m_Document;
     }
 
-    void AcceptAllRevisionsOnlineResponse::deserialize(const std::string_view& response)
+    void AcceptAllRevisionsOnlineResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
-        std::unordered_map<std::string, std::string_view> parts;
+        std::unordered_map<std::string, std::tuple<std::string, std::string, std::string_view> > parts;
         parseMultipart(response, parts);
         if (parts.find("Model") != parts.end()) {
-            const std::string_view& part = parts.at("Model");
-            auto json = ::nlohmann::json::parse(part);
+            const auto& part = parts.at("Model");
+            auto json = ::nlohmann::json::parse(std::get<2>(part));
             m_Model = std::make_shared< aspose::words::cloud::models::RevisionsModificationResponse >();
             m_Model->fromJson(&json);
         }
         if (parts.find("Document") != parts.end()) {
-            const std::string_view& part = parts.at("Document");
-            m_Document = std::shared_ptr< std::istream >(new std::istringstream(std::string(part), std::ios_base::in));
+            const auto& part = parts.at("Document");
+            m_Document = parseFilesCollection(part);
         }
     }
 
@@ -263,7 +336,7 @@ namespace aspose::words::cloud::responses {
         return m_Result;
     }
 
-    void AppendDocumentResponse::deserialize(const std::string_view& response)
+    void AppendDocumentResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
         auto json = ::nlohmann::json::parse(response);
         m_Result = std::make_shared< aspose::words::cloud::models::DocumentResponse >();
@@ -278,24 +351,24 @@ namespace aspose::words::cloud::responses {
         return m_Model;
     }
 
-    std::shared_ptr< std::istream > AppendDocumentOnlineResponse::getDocument() const
+    std::shared_ptr< std::map<std::wstring, std::shared_ptr<std::istream>> > AppendDocumentOnlineResponse::getDocument() const
     {
         return m_Document;
     }
 
-    void AppendDocumentOnlineResponse::deserialize(const std::string_view& response)
+    void AppendDocumentOnlineResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
-        std::unordered_map<std::string, std::string_view> parts;
+        std::unordered_map<std::string, std::tuple<std::string, std::string, std::string_view> > parts;
         parseMultipart(response, parts);
         if (parts.find("Model") != parts.end()) {
-            const std::string_view& part = parts.at("Model");
-            auto json = ::nlohmann::json::parse(part);
+            const auto& part = parts.at("Model");
+            auto json = ::nlohmann::json::parse(std::get<2>(part));
             m_Model = std::make_shared< aspose::words::cloud::models::DocumentResponse >();
             m_Model->fromJson(&json);
         }
         if (parts.find("Document") != parts.end()) {
-            const std::string_view& part = parts.at("Document");
-            m_Document = std::shared_ptr< std::istream >(new std::istringstream(std::string(part), std::ios_base::in));
+            const auto& part = parts.at("Document");
+            m_Document = parseFilesCollection(part);
         }
     }
 
@@ -307,7 +380,7 @@ namespace aspose::words::cloud::responses {
         return m_Result;
     }
 
-    void ApplyStyleToDocumentElementResponse::deserialize(const std::string_view& response)
+    void ApplyStyleToDocumentElementResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
         auto json = ::nlohmann::json::parse(response);
         m_Result = std::make_shared< aspose::words::cloud::models::WordsResponse >();
@@ -322,24 +395,24 @@ namespace aspose::words::cloud::responses {
         return m_Model;
     }
 
-    std::shared_ptr< std::istream > ApplyStyleToDocumentElementOnlineResponse::getDocument() const
+    std::shared_ptr< std::map<std::wstring, std::shared_ptr<std::istream>> > ApplyStyleToDocumentElementOnlineResponse::getDocument() const
     {
         return m_Document;
     }
 
-    void ApplyStyleToDocumentElementOnlineResponse::deserialize(const std::string_view& response)
+    void ApplyStyleToDocumentElementOnlineResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
-        std::unordered_map<std::string, std::string_view> parts;
+        std::unordered_map<std::string, std::tuple<std::string, std::string, std::string_view> > parts;
         parseMultipart(response, parts);
         if (parts.find("Model") != parts.end()) {
-            const std::string_view& part = parts.at("Model");
-            auto json = ::nlohmann::json::parse(part);
+            const auto& part = parts.at("Model");
+            auto json = ::nlohmann::json::parse(std::get<2>(part));
             m_Model = std::make_shared< aspose::words::cloud::models::WordsResponse >();
             m_Model->fromJson(&json);
         }
         if (parts.find("Document") != parts.end()) {
-            const std::string_view& part = parts.at("Document");
-            m_Document = std::shared_ptr< std::istream >(new std::istringstream(std::string(part), std::ios_base::in));
+            const auto& part = parts.at("Document");
+            m_Document = parseFilesCollection(part);
         }
     }
 
@@ -351,7 +424,7 @@ namespace aspose::words::cloud::responses {
         return m_Result;
     }
 
-    void BuildReportResponse::deserialize(const std::string_view& response)
+    void BuildReportResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
         auto json = ::nlohmann::json::parse(response);
         m_Result = std::make_shared< aspose::words::cloud::models::DocumentResponse >();
@@ -366,7 +439,7 @@ namespace aspose::words::cloud::responses {
         return m_Result;
     }
 
-    void BuildReportOnlineResponse::deserialize(const std::string_view& response)
+    void BuildReportOnlineResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
         m_Result = std::shared_ptr< std::istream >(new std::istringstream(std::string(response), std::ios_base::in));
     }
@@ -379,7 +452,7 @@ namespace aspose::words::cloud::responses {
         return m_Result;
     }
 
-    void ClassifyResponse::deserialize(const std::string_view& response)
+    void ClassifyResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
         auto json = ::nlohmann::json::parse(response);
         m_Result = std::make_shared< aspose::words::cloud::models::ClassificationResponse >();
@@ -394,7 +467,7 @@ namespace aspose::words::cloud::responses {
         return m_Result;
     }
 
-    void ClassifyDocumentResponse::deserialize(const std::string_view& response)
+    void ClassifyDocumentResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
         auto json = ::nlohmann::json::parse(response);
         m_Result = std::make_shared< aspose::words::cloud::models::ClassificationResponse >();
@@ -409,7 +482,7 @@ namespace aspose::words::cloud::responses {
         return m_Result;
     }
 
-    void ClassifyDocumentOnlineResponse::deserialize(const std::string_view& response)
+    void ClassifyDocumentOnlineResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
         auto json = ::nlohmann::json::parse(response);
         m_Result = std::make_shared< aspose::words::cloud::models::ClassificationResponse >();
@@ -424,7 +497,7 @@ namespace aspose::words::cloud::responses {
         return m_Result;
     }
 
-    void CompareDocumentResponse::deserialize(const std::string_view& response)
+    void CompareDocumentResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
         auto json = ::nlohmann::json::parse(response);
         m_Result = std::make_shared< aspose::words::cloud::models::DocumentResponse >();
@@ -439,24 +512,24 @@ namespace aspose::words::cloud::responses {
         return m_Model;
     }
 
-    std::shared_ptr< std::istream > CompareDocumentOnlineResponse::getDocument() const
+    std::shared_ptr< std::map<std::wstring, std::shared_ptr<std::istream>> > CompareDocumentOnlineResponse::getDocument() const
     {
         return m_Document;
     }
 
-    void CompareDocumentOnlineResponse::deserialize(const std::string_view& response)
+    void CompareDocumentOnlineResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
-        std::unordered_map<std::string, std::string_view> parts;
+        std::unordered_map<std::string, std::tuple<std::string, std::string, std::string_view> > parts;
         parseMultipart(response, parts);
         if (parts.find("Model") != parts.end()) {
-            const std::string_view& part = parts.at("Model");
-            auto json = ::nlohmann::json::parse(part);
+            const auto& part = parts.at("Model");
+            auto json = ::nlohmann::json::parse(std::get<2>(part));
             m_Model = std::make_shared< aspose::words::cloud::models::DocumentResponse >();
             m_Model->fromJson(&json);
         }
         if (parts.find("Document") != parts.end()) {
-            const std::string_view& part = parts.at("Document");
-            m_Document = std::shared_ptr< std::istream >(new std::istringstream(std::string(part), std::ios_base::in));
+            const auto& part = parts.at("Document");
+            m_Document = parseFilesCollection(part);
         }
     }
 
@@ -468,7 +541,7 @@ namespace aspose::words::cloud::responses {
         return m_Result;
     }
 
-    void ConvertDocumentResponse::deserialize(const std::string_view& response)
+    void ConvertDocumentResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
         m_Result = std::shared_ptr< std::istream >(new std::istringstream(std::string(response), std::ios_base::in));
     }
@@ -477,7 +550,7 @@ namespace aspose::words::cloud::responses {
      * CopyFile request implementation
      */
 
-    void CopyFileResponse::deserialize(const std::string_view& response)
+    void CopyFileResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
     }
 
@@ -485,7 +558,7 @@ namespace aspose::words::cloud::responses {
      * CopyFolder request implementation
      */
 
-    void CopyFolderResponse::deserialize(const std::string_view& response)
+    void CopyFolderResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
     }
 
@@ -497,7 +570,7 @@ namespace aspose::words::cloud::responses {
         return m_Result;
     }
 
-    void CopyStyleResponse::deserialize(const std::string_view& response)
+    void CopyStyleResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
         auto json = ::nlohmann::json::parse(response);
         m_Result = std::make_shared< aspose::words::cloud::models::StyleResponse >();
@@ -512,24 +585,24 @@ namespace aspose::words::cloud::responses {
         return m_Model;
     }
 
-    std::shared_ptr< std::istream > CopyStyleOnlineResponse::getDocument() const
+    std::shared_ptr< std::map<std::wstring, std::shared_ptr<std::istream>> > CopyStyleOnlineResponse::getDocument() const
     {
         return m_Document;
     }
 
-    void CopyStyleOnlineResponse::deserialize(const std::string_view& response)
+    void CopyStyleOnlineResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
-        std::unordered_map<std::string, std::string_view> parts;
+        std::unordered_map<std::string, std::tuple<std::string, std::string, std::string_view> > parts;
         parseMultipart(response, parts);
         if (parts.find("Model") != parts.end()) {
-            const std::string_view& part = parts.at("Model");
-            auto json = ::nlohmann::json::parse(part);
+            const auto& part = parts.at("Model");
+            auto json = ::nlohmann::json::parse(std::get<2>(part));
             m_Model = std::make_shared< aspose::words::cloud::models::StyleResponse >();
             m_Model->fromJson(&json);
         }
         if (parts.find("Document") != parts.end()) {
-            const std::string_view& part = parts.at("Document");
-            m_Document = std::shared_ptr< std::istream >(new std::istringstream(std::string(part), std::ios_base::in));
+            const auto& part = parts.at("Document");
+            m_Document = parseFilesCollection(part);
         }
     }
 
@@ -541,7 +614,7 @@ namespace aspose::words::cloud::responses {
         return m_Result;
     }
 
-    void CreateDocumentResponse::deserialize(const std::string_view& response)
+    void CreateDocumentResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
         auto json = ::nlohmann::json::parse(response);
         m_Result = std::make_shared< aspose::words::cloud::models::DocumentResponse >();
@@ -552,7 +625,7 @@ namespace aspose::words::cloud::responses {
      * CreateFolder request implementation
      */
 
-    void CreateFolderResponse::deserialize(const std::string_view& response)
+    void CreateFolderResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
     }
 
@@ -564,7 +637,7 @@ namespace aspose::words::cloud::responses {
         return m_Result;
     }
 
-    void CreateOrUpdateDocumentPropertyResponse::deserialize(const std::string_view& response)
+    void CreateOrUpdateDocumentPropertyResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
         auto json = ::nlohmann::json::parse(response);
         m_Result = std::make_shared< aspose::words::cloud::models::DocumentPropertyResponse >();
@@ -579,24 +652,24 @@ namespace aspose::words::cloud::responses {
         return m_Model;
     }
 
-    std::shared_ptr< std::istream > CreateOrUpdateDocumentPropertyOnlineResponse::getDocument() const
+    std::shared_ptr< std::map<std::wstring, std::shared_ptr<std::istream>> > CreateOrUpdateDocumentPropertyOnlineResponse::getDocument() const
     {
         return m_Document;
     }
 
-    void CreateOrUpdateDocumentPropertyOnlineResponse::deserialize(const std::string_view& response)
+    void CreateOrUpdateDocumentPropertyOnlineResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
-        std::unordered_map<std::string, std::string_view> parts;
+        std::unordered_map<std::string, std::tuple<std::string, std::string, std::string_view> > parts;
         parseMultipart(response, parts);
         if (parts.find("Model") != parts.end()) {
-            const std::string_view& part = parts.at("Model");
-            auto json = ::nlohmann::json::parse(part);
+            const auto& part = parts.at("Model");
+            auto json = ::nlohmann::json::parse(std::get<2>(part));
             m_Model = std::make_shared< aspose::words::cloud::models::DocumentPropertyResponse >();
             m_Model->fromJson(&json);
         }
         if (parts.find("Document") != parts.end()) {
-            const std::string_view& part = parts.at("Document");
-            m_Document = std::shared_ptr< std::istream >(new std::istringstream(std::string(part), std::ios_base::in));
+            const auto& part = parts.at("Document");
+            m_Document = parseFilesCollection(part);
         }
     }
 
@@ -608,7 +681,7 @@ namespace aspose::words::cloud::responses {
         return m_Result;
     }
 
-    void DeleteAllParagraphTabStopsResponse::deserialize(const std::string_view& response)
+    void DeleteAllParagraphTabStopsResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
         auto json = ::nlohmann::json::parse(response);
         m_Result = std::make_shared< aspose::words::cloud::models::TabStopsResponse >();
@@ -623,24 +696,24 @@ namespace aspose::words::cloud::responses {
         return m_Model;
     }
 
-    std::shared_ptr< std::istream > DeleteAllParagraphTabStopsOnlineResponse::getDocument() const
+    std::shared_ptr< std::map<std::wstring, std::shared_ptr<std::istream>> > DeleteAllParagraphTabStopsOnlineResponse::getDocument() const
     {
         return m_Document;
     }
 
-    void DeleteAllParagraphTabStopsOnlineResponse::deserialize(const std::string_view& response)
+    void DeleteAllParagraphTabStopsOnlineResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
-        std::unordered_map<std::string, std::string_view> parts;
+        std::unordered_map<std::string, std::tuple<std::string, std::string, std::string_view> > parts;
         parseMultipart(response, parts);
         if (parts.find("Model") != parts.end()) {
-            const std::string_view& part = parts.at("Model");
-            auto json = ::nlohmann::json::parse(part);
+            const auto& part = parts.at("Model");
+            auto json = ::nlohmann::json::parse(std::get<2>(part));
             m_Model = std::make_shared< aspose::words::cloud::models::TabStopsResponse >();
             m_Model->fromJson(&json);
         }
         if (parts.find("Document") != parts.end()) {
-            const std::string_view& part = parts.at("Document");
-            m_Document = std::shared_ptr< std::istream >(new std::istringstream(std::string(part), std::ios_base::in));
+            const auto& part = parts.at("Document");
+            m_Document = parseFilesCollection(part);
         }
     }
 
@@ -652,7 +725,7 @@ namespace aspose::words::cloud::responses {
         return m_Result;
     }
 
-    void DeleteBorderResponse::deserialize(const std::string_view& response)
+    void DeleteBorderResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
         auto json = ::nlohmann::json::parse(response);
         m_Result = std::make_shared< aspose::words::cloud::models::BorderResponse >();
@@ -667,24 +740,24 @@ namespace aspose::words::cloud::responses {
         return m_Model;
     }
 
-    std::shared_ptr< std::istream > DeleteBorderOnlineResponse::getDocument() const
+    std::shared_ptr< std::map<std::wstring, std::shared_ptr<std::istream>> > DeleteBorderOnlineResponse::getDocument() const
     {
         return m_Document;
     }
 
-    void DeleteBorderOnlineResponse::deserialize(const std::string_view& response)
+    void DeleteBorderOnlineResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
-        std::unordered_map<std::string, std::string_view> parts;
+        std::unordered_map<std::string, std::tuple<std::string, std::string, std::string_view> > parts;
         parseMultipart(response, parts);
         if (parts.find("Model") != parts.end()) {
-            const std::string_view& part = parts.at("Model");
-            auto json = ::nlohmann::json::parse(part);
+            const auto& part = parts.at("Model");
+            auto json = ::nlohmann::json::parse(std::get<2>(part));
             m_Model = std::make_shared< aspose::words::cloud::models::BorderResponse >();
             m_Model->fromJson(&json);
         }
         if (parts.find("Document") != parts.end()) {
-            const std::string_view& part = parts.at("Document");
-            m_Document = std::shared_ptr< std::istream >(new std::istringstream(std::string(part), std::ios_base::in));
+            const auto& part = parts.at("Document");
+            m_Document = parseFilesCollection(part);
         }
     }
 
@@ -696,7 +769,7 @@ namespace aspose::words::cloud::responses {
         return m_Result;
     }
 
-    void DeleteBordersResponse::deserialize(const std::string_view& response)
+    void DeleteBordersResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
         auto json = ::nlohmann::json::parse(response);
         m_Result = std::make_shared< aspose::words::cloud::models::BordersResponse >();
@@ -711,24 +784,24 @@ namespace aspose::words::cloud::responses {
         return m_Model;
     }
 
-    std::shared_ptr< std::istream > DeleteBordersOnlineResponse::getDocument() const
+    std::shared_ptr< std::map<std::wstring, std::shared_ptr<std::istream>> > DeleteBordersOnlineResponse::getDocument() const
     {
         return m_Document;
     }
 
-    void DeleteBordersOnlineResponse::deserialize(const std::string_view& response)
+    void DeleteBordersOnlineResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
-        std::unordered_map<std::string, std::string_view> parts;
+        std::unordered_map<std::string, std::tuple<std::string, std::string, std::string_view> > parts;
         parseMultipart(response, parts);
         if (parts.find("Model") != parts.end()) {
-            const std::string_view& part = parts.at("Model");
-            auto json = ::nlohmann::json::parse(part);
+            const auto& part = parts.at("Model");
+            auto json = ::nlohmann::json::parse(std::get<2>(part));
             m_Model = std::make_shared< aspose::words::cloud::models::BordersResponse >();
             m_Model->fromJson(&json);
         }
         if (parts.find("Document") != parts.end()) {
-            const std::string_view& part = parts.at("Document");
-            m_Document = std::shared_ptr< std::istream >(new std::istringstream(std::string(part), std::ios_base::in));
+            const auto& part = parts.at("Document");
+            m_Document = parseFilesCollection(part);
         }
     }
 
@@ -736,175 +809,175 @@ namespace aspose::words::cloud::responses {
      * DeleteComment request implementation
      */
 
-    void DeleteCommentResponse::deserialize(const std::string_view& response)
+    void DeleteCommentResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
     }
 
     /*
      * DeleteCommentOnline request implementation
      */
-    std::shared_ptr< std::istream > DeleteCommentOnlineResponse::getDocument() const
+    std::shared_ptr< std::map<std::wstring, std::shared_ptr<std::istream>> > DeleteCommentOnlineResponse::getDocument() const
     {
         return m_Document;
     }
 
-    void DeleteCommentOnlineResponse::deserialize(const std::string_view& response)
+    void DeleteCommentOnlineResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
-        m_Document = std::shared_ptr< std::istream >(new std::istringstream(std::string(response), std::ios_base::in));
+        m_Document = parseFilesCollection(std::make_tuple("", contentType, response));
     }
 
     /*
      * DeleteComments request implementation
      */
 
-    void DeleteCommentsResponse::deserialize(const std::string_view& response)
+    void DeleteCommentsResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
     }
 
     /*
      * DeleteCommentsOnline request implementation
      */
-    std::shared_ptr< std::istream > DeleteCommentsOnlineResponse::getDocument() const
+    std::shared_ptr< std::map<std::wstring, std::shared_ptr<std::istream>> > DeleteCommentsOnlineResponse::getDocument() const
     {
         return m_Document;
     }
 
-    void DeleteCommentsOnlineResponse::deserialize(const std::string_view& response)
+    void DeleteCommentsOnlineResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
-        m_Document = std::shared_ptr< std::istream >(new std::istringstream(std::string(response), std::ios_base::in));
+        m_Document = parseFilesCollection(std::make_tuple("", contentType, response));
     }
 
     /*
      * DeleteCustomXmlPart request implementation
      */
 
-    void DeleteCustomXmlPartResponse::deserialize(const std::string_view& response)
+    void DeleteCustomXmlPartResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
     }
 
     /*
      * DeleteCustomXmlPartOnline request implementation
      */
-    std::shared_ptr< std::istream > DeleteCustomXmlPartOnlineResponse::getDocument() const
+    std::shared_ptr< std::map<std::wstring, std::shared_ptr<std::istream>> > DeleteCustomXmlPartOnlineResponse::getDocument() const
     {
         return m_Document;
     }
 
-    void DeleteCustomXmlPartOnlineResponse::deserialize(const std::string_view& response)
+    void DeleteCustomXmlPartOnlineResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
-        m_Document = std::shared_ptr< std::istream >(new std::istringstream(std::string(response), std::ios_base::in));
+        m_Document = parseFilesCollection(std::make_tuple("", contentType, response));
     }
 
     /*
      * DeleteCustomXmlParts request implementation
      */
 
-    void DeleteCustomXmlPartsResponse::deserialize(const std::string_view& response)
+    void DeleteCustomXmlPartsResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
     }
 
     /*
      * DeleteCustomXmlPartsOnline request implementation
      */
-    std::shared_ptr< std::istream > DeleteCustomXmlPartsOnlineResponse::getDocument() const
+    std::shared_ptr< std::map<std::wstring, std::shared_ptr<std::istream>> > DeleteCustomXmlPartsOnlineResponse::getDocument() const
     {
         return m_Document;
     }
 
-    void DeleteCustomXmlPartsOnlineResponse::deserialize(const std::string_view& response)
+    void DeleteCustomXmlPartsOnlineResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
-        m_Document = std::shared_ptr< std::istream >(new std::istringstream(std::string(response), std::ios_base::in));
+        m_Document = parseFilesCollection(std::make_tuple("", contentType, response));
     }
 
     /*
      * DeleteDocumentProperty request implementation
      */
 
-    void DeleteDocumentPropertyResponse::deserialize(const std::string_view& response)
+    void DeleteDocumentPropertyResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
     }
 
     /*
      * DeleteDocumentPropertyOnline request implementation
      */
-    std::shared_ptr< std::istream > DeleteDocumentPropertyOnlineResponse::getDocument() const
+    std::shared_ptr< std::map<std::wstring, std::shared_ptr<std::istream>> > DeleteDocumentPropertyOnlineResponse::getDocument() const
     {
         return m_Document;
     }
 
-    void DeleteDocumentPropertyOnlineResponse::deserialize(const std::string_view& response)
+    void DeleteDocumentPropertyOnlineResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
-        m_Document = std::shared_ptr< std::istream >(new std::istringstream(std::string(response), std::ios_base::in));
+        m_Document = parseFilesCollection(std::make_tuple("", contentType, response));
     }
 
     /*
      * DeleteDrawingObject request implementation
      */
 
-    void DeleteDrawingObjectResponse::deserialize(const std::string_view& response)
+    void DeleteDrawingObjectResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
     }
 
     /*
      * DeleteDrawingObjectOnline request implementation
      */
-    std::shared_ptr< std::istream > DeleteDrawingObjectOnlineResponse::getDocument() const
+    std::shared_ptr< std::map<std::wstring, std::shared_ptr<std::istream>> > DeleteDrawingObjectOnlineResponse::getDocument() const
     {
         return m_Document;
     }
 
-    void DeleteDrawingObjectOnlineResponse::deserialize(const std::string_view& response)
+    void DeleteDrawingObjectOnlineResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
-        m_Document = std::shared_ptr< std::istream >(new std::istringstream(std::string(response), std::ios_base::in));
+        m_Document = parseFilesCollection(std::make_tuple("", contentType, response));
     }
 
     /*
      * DeleteField request implementation
      */
 
-    void DeleteFieldResponse::deserialize(const std::string_view& response)
+    void DeleteFieldResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
     }
 
     /*
      * DeleteFieldOnline request implementation
      */
-    std::shared_ptr< std::istream > DeleteFieldOnlineResponse::getDocument() const
+    std::shared_ptr< std::map<std::wstring, std::shared_ptr<std::istream>> > DeleteFieldOnlineResponse::getDocument() const
     {
         return m_Document;
     }
 
-    void DeleteFieldOnlineResponse::deserialize(const std::string_view& response)
+    void DeleteFieldOnlineResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
-        m_Document = std::shared_ptr< std::istream >(new std::istringstream(std::string(response), std::ios_base::in));
+        m_Document = parseFilesCollection(std::make_tuple("", contentType, response));
     }
 
     /*
      * DeleteFields request implementation
      */
 
-    void DeleteFieldsResponse::deserialize(const std::string_view& response)
+    void DeleteFieldsResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
     }
 
     /*
      * DeleteFieldsOnline request implementation
      */
-    std::shared_ptr< std::istream > DeleteFieldsOnlineResponse::getDocument() const
+    std::shared_ptr< std::map<std::wstring, std::shared_ptr<std::istream>> > DeleteFieldsOnlineResponse::getDocument() const
     {
         return m_Document;
     }
 
-    void DeleteFieldsOnlineResponse::deserialize(const std::string_view& response)
+    void DeleteFieldsOnlineResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
-        m_Document = std::shared_ptr< std::istream >(new std::istringstream(std::string(response), std::ios_base::in));
+        m_Document = parseFilesCollection(std::make_tuple("", contentType, response));
     }
 
     /*
      * DeleteFile request implementation
      */
 
-    void DeleteFileResponse::deserialize(const std::string_view& response)
+    void DeleteFileResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
     }
 
@@ -912,7 +985,7 @@ namespace aspose::words::cloud::responses {
      * DeleteFolder request implementation
      */
 
-    void DeleteFolderResponse::deserialize(const std::string_view& response)
+    void DeleteFolderResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
     }
 
@@ -920,133 +993,133 @@ namespace aspose::words::cloud::responses {
      * DeleteFootnote request implementation
      */
 
-    void DeleteFootnoteResponse::deserialize(const std::string_view& response)
+    void DeleteFootnoteResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
     }
 
     /*
      * DeleteFootnoteOnline request implementation
      */
-    std::shared_ptr< std::istream > DeleteFootnoteOnlineResponse::getDocument() const
+    std::shared_ptr< std::map<std::wstring, std::shared_ptr<std::istream>> > DeleteFootnoteOnlineResponse::getDocument() const
     {
         return m_Document;
     }
 
-    void DeleteFootnoteOnlineResponse::deserialize(const std::string_view& response)
+    void DeleteFootnoteOnlineResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
-        m_Document = std::shared_ptr< std::istream >(new std::istringstream(std::string(response), std::ios_base::in));
+        m_Document = parseFilesCollection(std::make_tuple("", contentType, response));
     }
 
     /*
      * DeleteFormField request implementation
      */
 
-    void DeleteFormFieldResponse::deserialize(const std::string_view& response)
+    void DeleteFormFieldResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
     }
 
     /*
      * DeleteFormFieldOnline request implementation
      */
-    std::shared_ptr< std::istream > DeleteFormFieldOnlineResponse::getDocument() const
+    std::shared_ptr< std::map<std::wstring, std::shared_ptr<std::istream>> > DeleteFormFieldOnlineResponse::getDocument() const
     {
         return m_Document;
     }
 
-    void DeleteFormFieldOnlineResponse::deserialize(const std::string_view& response)
+    void DeleteFormFieldOnlineResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
-        m_Document = std::shared_ptr< std::istream >(new std::istringstream(std::string(response), std::ios_base::in));
+        m_Document = parseFilesCollection(std::make_tuple("", contentType, response));
     }
 
     /*
      * DeleteHeaderFooter request implementation
      */
 
-    void DeleteHeaderFooterResponse::deserialize(const std::string_view& response)
+    void DeleteHeaderFooterResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
     }
 
     /*
      * DeleteHeaderFooterOnline request implementation
      */
-    std::shared_ptr< std::istream > DeleteHeaderFooterOnlineResponse::getDocument() const
+    std::shared_ptr< std::map<std::wstring, std::shared_ptr<std::istream>> > DeleteHeaderFooterOnlineResponse::getDocument() const
     {
         return m_Document;
     }
 
-    void DeleteHeaderFooterOnlineResponse::deserialize(const std::string_view& response)
+    void DeleteHeaderFooterOnlineResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
-        m_Document = std::shared_ptr< std::istream >(new std::istringstream(std::string(response), std::ios_base::in));
+        m_Document = parseFilesCollection(std::make_tuple("", contentType, response));
     }
 
     /*
      * DeleteHeadersFooters request implementation
      */
 
-    void DeleteHeadersFootersResponse::deserialize(const std::string_view& response)
+    void DeleteHeadersFootersResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
     }
 
     /*
      * DeleteHeadersFootersOnline request implementation
      */
-    std::shared_ptr< std::istream > DeleteHeadersFootersOnlineResponse::getDocument() const
+    std::shared_ptr< std::map<std::wstring, std::shared_ptr<std::istream>> > DeleteHeadersFootersOnlineResponse::getDocument() const
     {
         return m_Document;
     }
 
-    void DeleteHeadersFootersOnlineResponse::deserialize(const std::string_view& response)
+    void DeleteHeadersFootersOnlineResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
-        m_Document = std::shared_ptr< std::istream >(new std::istringstream(std::string(response), std::ios_base::in));
+        m_Document = parseFilesCollection(std::make_tuple("", contentType, response));
     }
 
     /*
      * DeleteMacros request implementation
      */
 
-    void DeleteMacrosResponse::deserialize(const std::string_view& response)
+    void DeleteMacrosResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
     }
 
     /*
      * DeleteMacrosOnline request implementation
      */
-    std::shared_ptr< std::istream > DeleteMacrosOnlineResponse::getDocument() const
+    std::shared_ptr< std::map<std::wstring, std::shared_ptr<std::istream>> > DeleteMacrosOnlineResponse::getDocument() const
     {
         return m_Document;
     }
 
-    void DeleteMacrosOnlineResponse::deserialize(const std::string_view& response)
+    void DeleteMacrosOnlineResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
-        m_Document = std::shared_ptr< std::istream >(new std::istringstream(std::string(response), std::ios_base::in));
+        m_Document = parseFilesCollection(std::make_tuple("", contentType, response));
     }
 
     /*
      * DeleteOfficeMathObject request implementation
      */
 
-    void DeleteOfficeMathObjectResponse::deserialize(const std::string_view& response)
+    void DeleteOfficeMathObjectResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
     }
 
     /*
      * DeleteOfficeMathObjectOnline request implementation
      */
-    std::shared_ptr< std::istream > DeleteOfficeMathObjectOnlineResponse::getDocument() const
+    std::shared_ptr< std::map<std::wstring, std::shared_ptr<std::istream>> > DeleteOfficeMathObjectOnlineResponse::getDocument() const
     {
         return m_Document;
     }
 
-    void DeleteOfficeMathObjectOnlineResponse::deserialize(const std::string_view& response)
+    void DeleteOfficeMathObjectOnlineResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
-        m_Document = std::shared_ptr< std::istream >(new std::istringstream(std::string(response), std::ios_base::in));
+        m_Document = parseFilesCollection(std::make_tuple("", contentType, response));
     }
 
     /*
      * DeleteParagraph request implementation
      */
 
-    void DeleteParagraphResponse::deserialize(const std::string_view& response)
+    void DeleteParagraphResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
     }
 
@@ -1058,7 +1131,7 @@ namespace aspose::words::cloud::responses {
         return m_Result;
     }
 
-    void DeleteParagraphListFormatResponse::deserialize(const std::string_view& response)
+    void DeleteParagraphListFormatResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
         auto json = ::nlohmann::json::parse(response);
         m_Result = std::make_shared< aspose::words::cloud::models::ParagraphListFormatResponse >();
@@ -1073,38 +1146,38 @@ namespace aspose::words::cloud::responses {
         return m_Model;
     }
 
-    std::shared_ptr< std::istream > DeleteParagraphListFormatOnlineResponse::getDocument() const
+    std::shared_ptr< std::map<std::wstring, std::shared_ptr<std::istream>> > DeleteParagraphListFormatOnlineResponse::getDocument() const
     {
         return m_Document;
     }
 
-    void DeleteParagraphListFormatOnlineResponse::deserialize(const std::string_view& response)
+    void DeleteParagraphListFormatOnlineResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
-        std::unordered_map<std::string, std::string_view> parts;
+        std::unordered_map<std::string, std::tuple<std::string, std::string, std::string_view> > parts;
         parseMultipart(response, parts);
         if (parts.find("Model") != parts.end()) {
-            const std::string_view& part = parts.at("Model");
-            auto json = ::nlohmann::json::parse(part);
+            const auto& part = parts.at("Model");
+            auto json = ::nlohmann::json::parse(std::get<2>(part));
             m_Model = std::make_shared< aspose::words::cloud::models::ParagraphListFormatResponse >();
             m_Model->fromJson(&json);
         }
         if (parts.find("Document") != parts.end()) {
-            const std::string_view& part = parts.at("Document");
-            m_Document = std::shared_ptr< std::istream >(new std::istringstream(std::string(part), std::ios_base::in));
+            const auto& part = parts.at("Document");
+            m_Document = parseFilesCollection(part);
         }
     }
 
     /*
      * DeleteParagraphOnline request implementation
      */
-    std::shared_ptr< std::istream > DeleteParagraphOnlineResponse::getDocument() const
+    std::shared_ptr< std::map<std::wstring, std::shared_ptr<std::istream>> > DeleteParagraphOnlineResponse::getDocument() const
     {
         return m_Document;
     }
 
-    void DeleteParagraphOnlineResponse::deserialize(const std::string_view& response)
+    void DeleteParagraphOnlineResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
-        m_Document = std::shared_ptr< std::istream >(new std::istringstream(std::string(response), std::ios_base::in));
+        m_Document = parseFilesCollection(std::make_tuple("", contentType, response));
     }
 
     /*
@@ -1115,7 +1188,7 @@ namespace aspose::words::cloud::responses {
         return m_Result;
     }
 
-    void DeleteParagraphTabStopResponse::deserialize(const std::string_view& response)
+    void DeleteParagraphTabStopResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
         auto json = ::nlohmann::json::parse(response);
         m_Result = std::make_shared< aspose::words::cloud::models::TabStopsResponse >();
@@ -1130,24 +1203,24 @@ namespace aspose::words::cloud::responses {
         return m_Model;
     }
 
-    std::shared_ptr< std::istream > DeleteParagraphTabStopOnlineResponse::getDocument() const
+    std::shared_ptr< std::map<std::wstring, std::shared_ptr<std::istream>> > DeleteParagraphTabStopOnlineResponse::getDocument() const
     {
         return m_Document;
     }
 
-    void DeleteParagraphTabStopOnlineResponse::deserialize(const std::string_view& response)
+    void DeleteParagraphTabStopOnlineResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
-        std::unordered_map<std::string, std::string_view> parts;
+        std::unordered_map<std::string, std::tuple<std::string, std::string, std::string_view> > parts;
         parseMultipart(response, parts);
         if (parts.find("Model") != parts.end()) {
-            const std::string_view& part = parts.at("Model");
-            auto json = ::nlohmann::json::parse(part);
+            const auto& part = parts.at("Model");
+            auto json = ::nlohmann::json::parse(std::get<2>(part));
             m_Model = std::make_shared< aspose::words::cloud::models::TabStopsResponse >();
             m_Model->fromJson(&json);
         }
         if (parts.find("Document") != parts.end()) {
-            const std::string_view& part = parts.at("Document");
-            m_Document = std::shared_ptr< std::istream >(new std::istringstream(std::string(part), std::ios_base::in));
+            const auto& part = parts.at("Document");
+            m_Document = parseFilesCollection(part);
         }
     }
 
@@ -1155,49 +1228,49 @@ namespace aspose::words::cloud::responses {
      * DeleteRun request implementation
      */
 
-    void DeleteRunResponse::deserialize(const std::string_view& response)
+    void DeleteRunResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
     }
 
     /*
      * DeleteRunOnline request implementation
      */
-    std::shared_ptr< std::istream > DeleteRunOnlineResponse::getDocument() const
+    std::shared_ptr< std::map<std::wstring, std::shared_ptr<std::istream>> > DeleteRunOnlineResponse::getDocument() const
     {
         return m_Document;
     }
 
-    void DeleteRunOnlineResponse::deserialize(const std::string_view& response)
+    void DeleteRunOnlineResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
-        m_Document = std::shared_ptr< std::istream >(new std::istringstream(std::string(response), std::ios_base::in));
+        m_Document = parseFilesCollection(std::make_tuple("", contentType, response));
     }
 
     /*
      * DeleteSection request implementation
      */
 
-    void DeleteSectionResponse::deserialize(const std::string_view& response)
+    void DeleteSectionResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
     }
 
     /*
      * DeleteSectionOnline request implementation
      */
-    std::shared_ptr< std::istream > DeleteSectionOnlineResponse::getDocument() const
+    std::shared_ptr< std::map<std::wstring, std::shared_ptr<std::istream>> > DeleteSectionOnlineResponse::getDocument() const
     {
         return m_Document;
     }
 
-    void DeleteSectionOnlineResponse::deserialize(const std::string_view& response)
+    void DeleteSectionOnlineResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
-        m_Document = std::shared_ptr< std::istream >(new std::istringstream(std::string(response), std::ios_base::in));
+        m_Document = parseFilesCollection(std::make_tuple("", contentType, response));
     }
 
     /*
      * DeleteTable request implementation
      */
 
-    void DeleteTableResponse::deserialize(const std::string_view& response)
+    void DeleteTableResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
     }
 
@@ -1205,55 +1278,55 @@ namespace aspose::words::cloud::responses {
      * DeleteTableCell request implementation
      */
 
-    void DeleteTableCellResponse::deserialize(const std::string_view& response)
+    void DeleteTableCellResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
     }
 
     /*
      * DeleteTableCellOnline request implementation
      */
-    std::shared_ptr< std::istream > DeleteTableCellOnlineResponse::getDocument() const
+    std::shared_ptr< std::map<std::wstring, std::shared_ptr<std::istream>> > DeleteTableCellOnlineResponse::getDocument() const
     {
         return m_Document;
     }
 
-    void DeleteTableCellOnlineResponse::deserialize(const std::string_view& response)
+    void DeleteTableCellOnlineResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
-        m_Document = std::shared_ptr< std::istream >(new std::istringstream(std::string(response), std::ios_base::in));
+        m_Document = parseFilesCollection(std::make_tuple("", contentType, response));
     }
 
     /*
      * DeleteTableOnline request implementation
      */
-    std::shared_ptr< std::istream > DeleteTableOnlineResponse::getDocument() const
+    std::shared_ptr< std::map<std::wstring, std::shared_ptr<std::istream>> > DeleteTableOnlineResponse::getDocument() const
     {
         return m_Document;
     }
 
-    void DeleteTableOnlineResponse::deserialize(const std::string_view& response)
+    void DeleteTableOnlineResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
-        m_Document = std::shared_ptr< std::istream >(new std::istringstream(std::string(response), std::ios_base::in));
+        m_Document = parseFilesCollection(std::make_tuple("", contentType, response));
     }
 
     /*
      * DeleteTableRow request implementation
      */
 
-    void DeleteTableRowResponse::deserialize(const std::string_view& response)
+    void DeleteTableRowResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
     }
 
     /*
      * DeleteTableRowOnline request implementation
      */
-    std::shared_ptr< std::istream > DeleteTableRowOnlineResponse::getDocument() const
+    std::shared_ptr< std::map<std::wstring, std::shared_ptr<std::istream>> > DeleteTableRowOnlineResponse::getDocument() const
     {
         return m_Document;
     }
 
-    void DeleteTableRowOnlineResponse::deserialize(const std::string_view& response)
+    void DeleteTableRowOnlineResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
-        m_Document = std::shared_ptr< std::istream >(new std::istringstream(std::string(response), std::ios_base::in));
+        m_Document = parseFilesCollection(std::make_tuple("", contentType, response));
     }
 
     /*
@@ -1264,7 +1337,7 @@ namespace aspose::words::cloud::responses {
         return m_Result;
     }
 
-    void DeleteWatermarkResponse::deserialize(const std::string_view& response)
+    void DeleteWatermarkResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
         auto json = ::nlohmann::json::parse(response);
         m_Result = std::make_shared< aspose::words::cloud::models::DocumentResponse >();
@@ -1279,24 +1352,24 @@ namespace aspose::words::cloud::responses {
         return m_Model;
     }
 
-    std::shared_ptr< std::istream > DeleteWatermarkOnlineResponse::getDocument() const
+    std::shared_ptr< std::map<std::wstring, std::shared_ptr<std::istream>> > DeleteWatermarkOnlineResponse::getDocument() const
     {
         return m_Document;
     }
 
-    void DeleteWatermarkOnlineResponse::deserialize(const std::string_view& response)
+    void DeleteWatermarkOnlineResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
-        std::unordered_map<std::string, std::string_view> parts;
+        std::unordered_map<std::string, std::tuple<std::string, std::string, std::string_view> > parts;
         parseMultipart(response, parts);
         if (parts.find("Model") != parts.end()) {
-            const std::string_view& part = parts.at("Model");
-            auto json = ::nlohmann::json::parse(part);
+            const auto& part = parts.at("Model");
+            auto json = ::nlohmann::json::parse(std::get<2>(part));
             m_Model = std::make_shared< aspose::words::cloud::models::DocumentResponse >();
             m_Model->fromJson(&json);
         }
         if (parts.find("Document") != parts.end()) {
-            const std::string_view& part = parts.at("Document");
-            m_Document = std::shared_ptr< std::istream >(new std::istringstream(std::string(part), std::ios_base::in));
+            const auto& part = parts.at("Document");
+            m_Document = parseFilesCollection(part);
         }
     }
 
@@ -1308,7 +1381,7 @@ namespace aspose::words::cloud::responses {
         return m_Result;
     }
 
-    void DownloadFileResponse::deserialize(const std::string_view& response)
+    void DownloadFileResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
         m_Result = std::shared_ptr< std::istream >(new std::istringstream(std::string(response), std::ios_base::in));
     }
@@ -1321,7 +1394,7 @@ namespace aspose::words::cloud::responses {
         return m_Result;
     }
 
-    void ExecuteMailMergeResponse::deserialize(const std::string_view& response)
+    void ExecuteMailMergeResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
         auto json = ::nlohmann::json::parse(response);
         m_Result = std::make_shared< aspose::words::cloud::models::DocumentResponse >();
@@ -1336,7 +1409,7 @@ namespace aspose::words::cloud::responses {
         return m_Result;
     }
 
-    void ExecuteMailMergeOnlineResponse::deserialize(const std::string_view& response)
+    void ExecuteMailMergeOnlineResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
         m_Result = std::shared_ptr< std::istream >(new std::istringstream(std::string(response), std::ios_base::in));
     }
@@ -1349,7 +1422,7 @@ namespace aspose::words::cloud::responses {
         return m_Result;
     }
 
-    void GetAvailableFontsResponse::deserialize(const std::string_view& response)
+    void GetAvailableFontsResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
         auto json = ::nlohmann::json::parse(response);
         m_Result = std::make_shared< aspose::words::cloud::models::AvailableFontsResponse >();
@@ -1364,7 +1437,7 @@ namespace aspose::words::cloud::responses {
         return m_Result;
     }
 
-    void GetBookmarkByNameResponse::deserialize(const std::string_view& response)
+    void GetBookmarkByNameResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
         auto json = ::nlohmann::json::parse(response);
         m_Result = std::make_shared< aspose::words::cloud::models::BookmarkResponse >();
@@ -1379,7 +1452,7 @@ namespace aspose::words::cloud::responses {
         return m_Result;
     }
 
-    void GetBookmarkByNameOnlineResponse::deserialize(const std::string_view& response)
+    void GetBookmarkByNameOnlineResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
         auto json = ::nlohmann::json::parse(response);
         m_Result = std::make_shared< aspose::words::cloud::models::BookmarkResponse >();
@@ -1394,7 +1467,7 @@ namespace aspose::words::cloud::responses {
         return m_Result;
     }
 
-    void GetBookmarksResponse::deserialize(const std::string_view& response)
+    void GetBookmarksResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
         auto json = ::nlohmann::json::parse(response);
         m_Result = std::make_shared< aspose::words::cloud::models::BookmarksResponse >();
@@ -1409,7 +1482,7 @@ namespace aspose::words::cloud::responses {
         return m_Result;
     }
 
-    void GetBookmarksOnlineResponse::deserialize(const std::string_view& response)
+    void GetBookmarksOnlineResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
         auto json = ::nlohmann::json::parse(response);
         m_Result = std::make_shared< aspose::words::cloud::models::BookmarksResponse >();
@@ -1424,7 +1497,7 @@ namespace aspose::words::cloud::responses {
         return m_Result;
     }
 
-    void GetBorderResponse::deserialize(const std::string_view& response)
+    void GetBorderResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
         auto json = ::nlohmann::json::parse(response);
         m_Result = std::make_shared< aspose::words::cloud::models::BorderResponse >();
@@ -1439,7 +1512,7 @@ namespace aspose::words::cloud::responses {
         return m_Result;
     }
 
-    void GetBorderOnlineResponse::deserialize(const std::string_view& response)
+    void GetBorderOnlineResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
         auto json = ::nlohmann::json::parse(response);
         m_Result = std::make_shared< aspose::words::cloud::models::BorderResponse >();
@@ -1454,7 +1527,7 @@ namespace aspose::words::cloud::responses {
         return m_Result;
     }
 
-    void GetBordersResponse::deserialize(const std::string_view& response)
+    void GetBordersResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
         auto json = ::nlohmann::json::parse(response);
         m_Result = std::make_shared< aspose::words::cloud::models::BordersResponse >();
@@ -1469,7 +1542,7 @@ namespace aspose::words::cloud::responses {
         return m_Result;
     }
 
-    void GetBordersOnlineResponse::deserialize(const std::string_view& response)
+    void GetBordersOnlineResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
         auto json = ::nlohmann::json::parse(response);
         m_Result = std::make_shared< aspose::words::cloud::models::BordersResponse >();
@@ -1484,7 +1557,7 @@ namespace aspose::words::cloud::responses {
         return m_Result;
     }
 
-    void GetCommentResponse::deserialize(const std::string_view& response)
+    void GetCommentResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
         auto json = ::nlohmann::json::parse(response);
         m_Result = std::make_shared< aspose::words::cloud::models::CommentResponse >();
@@ -1499,7 +1572,7 @@ namespace aspose::words::cloud::responses {
         return m_Result;
     }
 
-    void GetCommentOnlineResponse::deserialize(const std::string_view& response)
+    void GetCommentOnlineResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
         auto json = ::nlohmann::json::parse(response);
         m_Result = std::make_shared< aspose::words::cloud::models::CommentResponse >();
@@ -1514,7 +1587,7 @@ namespace aspose::words::cloud::responses {
         return m_Result;
     }
 
-    void GetCommentsResponse::deserialize(const std::string_view& response)
+    void GetCommentsResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
         auto json = ::nlohmann::json::parse(response);
         m_Result = std::make_shared< aspose::words::cloud::models::CommentsResponse >();
@@ -1529,7 +1602,7 @@ namespace aspose::words::cloud::responses {
         return m_Result;
     }
 
-    void GetCommentsOnlineResponse::deserialize(const std::string_view& response)
+    void GetCommentsOnlineResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
         auto json = ::nlohmann::json::parse(response);
         m_Result = std::make_shared< aspose::words::cloud::models::CommentsResponse >();
@@ -1544,7 +1617,7 @@ namespace aspose::words::cloud::responses {
         return m_Result;
     }
 
-    void GetCustomXmlPartResponse::deserialize(const std::string_view& response)
+    void GetCustomXmlPartResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
         auto json = ::nlohmann::json::parse(response);
         m_Result = std::make_shared< aspose::words::cloud::models::CustomXmlPartResponse >();
@@ -1559,7 +1632,7 @@ namespace aspose::words::cloud::responses {
         return m_Result;
     }
 
-    void GetCustomXmlPartOnlineResponse::deserialize(const std::string_view& response)
+    void GetCustomXmlPartOnlineResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
         auto json = ::nlohmann::json::parse(response);
         m_Result = std::make_shared< aspose::words::cloud::models::CustomXmlPartResponse >();
@@ -1574,7 +1647,7 @@ namespace aspose::words::cloud::responses {
         return m_Result;
     }
 
-    void GetCustomXmlPartsResponse::deserialize(const std::string_view& response)
+    void GetCustomXmlPartsResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
         auto json = ::nlohmann::json::parse(response);
         m_Result = std::make_shared< aspose::words::cloud::models::CustomXmlPartsResponse >();
@@ -1589,7 +1662,7 @@ namespace aspose::words::cloud::responses {
         return m_Result;
     }
 
-    void GetCustomXmlPartsOnlineResponse::deserialize(const std::string_view& response)
+    void GetCustomXmlPartsOnlineResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
         auto json = ::nlohmann::json::parse(response);
         m_Result = std::make_shared< aspose::words::cloud::models::CustomXmlPartsResponse >();
@@ -1604,7 +1677,7 @@ namespace aspose::words::cloud::responses {
         return m_Result;
     }
 
-    void GetDocumentResponse::deserialize(const std::string_view& response)
+    void GetDocumentResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
         auto json = ::nlohmann::json::parse(response);
         m_Result = std::make_shared< aspose::words::cloud::models::DocumentResponse >();
@@ -1619,7 +1692,7 @@ namespace aspose::words::cloud::responses {
         return m_Result;
     }
 
-    void GetDocumentDrawingObjectByIndexResponse::deserialize(const std::string_view& response)
+    void GetDocumentDrawingObjectByIndexResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
         auto json = ::nlohmann::json::parse(response);
         m_Result = std::make_shared< aspose::words::cloud::models::DrawingObjectResponse >();
@@ -1634,7 +1707,7 @@ namespace aspose::words::cloud::responses {
         return m_Result;
     }
 
-    void GetDocumentDrawingObjectByIndexOnlineResponse::deserialize(const std::string_view& response)
+    void GetDocumentDrawingObjectByIndexOnlineResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
         auto json = ::nlohmann::json::parse(response);
         m_Result = std::make_shared< aspose::words::cloud::models::DrawingObjectResponse >();
@@ -1649,7 +1722,7 @@ namespace aspose::words::cloud::responses {
         return m_Result;
     }
 
-    void GetDocumentDrawingObjectImageDataResponse::deserialize(const std::string_view& response)
+    void GetDocumentDrawingObjectImageDataResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
         m_Result = std::shared_ptr< std::istream >(new std::istringstream(std::string(response), std::ios_base::in));
     }
@@ -1662,7 +1735,7 @@ namespace aspose::words::cloud::responses {
         return m_Result;
     }
 
-    void GetDocumentDrawingObjectImageDataOnlineResponse::deserialize(const std::string_view& response)
+    void GetDocumentDrawingObjectImageDataOnlineResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
         m_Result = std::shared_ptr< std::istream >(new std::istringstream(std::string(response), std::ios_base::in));
     }
@@ -1675,7 +1748,7 @@ namespace aspose::words::cloud::responses {
         return m_Result;
     }
 
-    void GetDocumentDrawingObjectOleDataResponse::deserialize(const std::string_view& response)
+    void GetDocumentDrawingObjectOleDataResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
         m_Result = std::shared_ptr< std::istream >(new std::istringstream(std::string(response), std::ios_base::in));
     }
@@ -1688,7 +1761,7 @@ namespace aspose::words::cloud::responses {
         return m_Result;
     }
 
-    void GetDocumentDrawingObjectOleDataOnlineResponse::deserialize(const std::string_view& response)
+    void GetDocumentDrawingObjectOleDataOnlineResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
         m_Result = std::shared_ptr< std::istream >(new std::istringstream(std::string(response), std::ios_base::in));
     }
@@ -1701,7 +1774,7 @@ namespace aspose::words::cloud::responses {
         return m_Result;
     }
 
-    void GetDocumentDrawingObjectsResponse::deserialize(const std::string_view& response)
+    void GetDocumentDrawingObjectsResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
         auto json = ::nlohmann::json::parse(response);
         m_Result = std::make_shared< aspose::words::cloud::models::DrawingObjectsResponse >();
@@ -1716,7 +1789,7 @@ namespace aspose::words::cloud::responses {
         return m_Result;
     }
 
-    void GetDocumentDrawingObjectsOnlineResponse::deserialize(const std::string_view& response)
+    void GetDocumentDrawingObjectsOnlineResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
         auto json = ::nlohmann::json::parse(response);
         m_Result = std::make_shared< aspose::words::cloud::models::DrawingObjectsResponse >();
@@ -1731,7 +1804,7 @@ namespace aspose::words::cloud::responses {
         return m_Result;
     }
 
-    void GetDocumentFieldNamesResponse::deserialize(const std::string_view& response)
+    void GetDocumentFieldNamesResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
         auto json = ::nlohmann::json::parse(response);
         m_Result = std::make_shared< aspose::words::cloud::models::FieldNamesResponse >();
@@ -1746,7 +1819,7 @@ namespace aspose::words::cloud::responses {
         return m_Result;
     }
 
-    void GetDocumentFieldNamesOnlineResponse::deserialize(const std::string_view& response)
+    void GetDocumentFieldNamesOnlineResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
         auto json = ::nlohmann::json::parse(response);
         m_Result = std::make_shared< aspose::words::cloud::models::FieldNamesResponse >();
@@ -1761,7 +1834,7 @@ namespace aspose::words::cloud::responses {
         return m_Result;
     }
 
-    void GetDocumentHyperlinkByIndexResponse::deserialize(const std::string_view& response)
+    void GetDocumentHyperlinkByIndexResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
         auto json = ::nlohmann::json::parse(response);
         m_Result = std::make_shared< aspose::words::cloud::models::HyperlinkResponse >();
@@ -1776,7 +1849,7 @@ namespace aspose::words::cloud::responses {
         return m_Result;
     }
 
-    void GetDocumentHyperlinkByIndexOnlineResponse::deserialize(const std::string_view& response)
+    void GetDocumentHyperlinkByIndexOnlineResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
         auto json = ::nlohmann::json::parse(response);
         m_Result = std::make_shared< aspose::words::cloud::models::HyperlinkResponse >();
@@ -1791,7 +1864,7 @@ namespace aspose::words::cloud::responses {
         return m_Result;
     }
 
-    void GetDocumentHyperlinksResponse::deserialize(const std::string_view& response)
+    void GetDocumentHyperlinksResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
         auto json = ::nlohmann::json::parse(response);
         m_Result = std::make_shared< aspose::words::cloud::models::HyperlinksResponse >();
@@ -1806,7 +1879,7 @@ namespace aspose::words::cloud::responses {
         return m_Result;
     }
 
-    void GetDocumentHyperlinksOnlineResponse::deserialize(const std::string_view& response)
+    void GetDocumentHyperlinksOnlineResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
         auto json = ::nlohmann::json::parse(response);
         m_Result = std::make_shared< aspose::words::cloud::models::HyperlinksResponse >();
@@ -1821,7 +1894,7 @@ namespace aspose::words::cloud::responses {
         return m_Result;
     }
 
-    void GetDocumentPropertiesResponse::deserialize(const std::string_view& response)
+    void GetDocumentPropertiesResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
         auto json = ::nlohmann::json::parse(response);
         m_Result = std::make_shared< aspose::words::cloud::models::DocumentPropertiesResponse >();
@@ -1836,7 +1909,7 @@ namespace aspose::words::cloud::responses {
         return m_Result;
     }
 
-    void GetDocumentPropertiesOnlineResponse::deserialize(const std::string_view& response)
+    void GetDocumentPropertiesOnlineResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
         auto json = ::nlohmann::json::parse(response);
         m_Result = std::make_shared< aspose::words::cloud::models::DocumentPropertiesResponse >();
@@ -1851,7 +1924,7 @@ namespace aspose::words::cloud::responses {
         return m_Result;
     }
 
-    void GetDocumentPropertyResponse::deserialize(const std::string_view& response)
+    void GetDocumentPropertyResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
         auto json = ::nlohmann::json::parse(response);
         m_Result = std::make_shared< aspose::words::cloud::models::DocumentPropertyResponse >();
@@ -1866,7 +1939,7 @@ namespace aspose::words::cloud::responses {
         return m_Result;
     }
 
-    void GetDocumentPropertyOnlineResponse::deserialize(const std::string_view& response)
+    void GetDocumentPropertyOnlineResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
         auto json = ::nlohmann::json::parse(response);
         m_Result = std::make_shared< aspose::words::cloud::models::DocumentPropertyResponse >();
@@ -1881,7 +1954,7 @@ namespace aspose::words::cloud::responses {
         return m_Result;
     }
 
-    void GetDocumentProtectionResponse::deserialize(const std::string_view& response)
+    void GetDocumentProtectionResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
         auto json = ::nlohmann::json::parse(response);
         m_Result = std::make_shared< aspose::words::cloud::models::ProtectionDataResponse >();
@@ -1896,7 +1969,7 @@ namespace aspose::words::cloud::responses {
         return m_Result;
     }
 
-    void GetDocumentProtectionOnlineResponse::deserialize(const std::string_view& response)
+    void GetDocumentProtectionOnlineResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
         auto json = ::nlohmann::json::parse(response);
         m_Result = std::make_shared< aspose::words::cloud::models::ProtectionDataResponse >();
@@ -1911,7 +1984,7 @@ namespace aspose::words::cloud::responses {
         return m_Result;
     }
 
-    void GetDocumentStatisticsResponse::deserialize(const std::string_view& response)
+    void GetDocumentStatisticsResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
         auto json = ::nlohmann::json::parse(response);
         m_Result = std::make_shared< aspose::words::cloud::models::StatDataResponse >();
@@ -1926,7 +1999,7 @@ namespace aspose::words::cloud::responses {
         return m_Result;
     }
 
-    void GetDocumentStatisticsOnlineResponse::deserialize(const std::string_view& response)
+    void GetDocumentStatisticsOnlineResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
         auto json = ::nlohmann::json::parse(response);
         m_Result = std::make_shared< aspose::words::cloud::models::StatDataResponse >();
@@ -1941,7 +2014,7 @@ namespace aspose::words::cloud::responses {
         return m_Result;
     }
 
-    void GetDocumentWithFormatResponse::deserialize(const std::string_view& response)
+    void GetDocumentWithFormatResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
         m_Result = std::shared_ptr< std::istream >(new std::istringstream(std::string(response), std::ios_base::in));
     }
@@ -1954,7 +2027,7 @@ namespace aspose::words::cloud::responses {
         return m_Result;
     }
 
-    void GetFieldResponse::deserialize(const std::string_view& response)
+    void GetFieldResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
         auto json = ::nlohmann::json::parse(response);
         m_Result = std::make_shared< aspose::words::cloud::models::FieldResponse >();
@@ -1969,7 +2042,7 @@ namespace aspose::words::cloud::responses {
         return m_Result;
     }
 
-    void GetFieldOnlineResponse::deserialize(const std::string_view& response)
+    void GetFieldOnlineResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
         auto json = ::nlohmann::json::parse(response);
         m_Result = std::make_shared< aspose::words::cloud::models::FieldResponse >();
@@ -1984,7 +2057,7 @@ namespace aspose::words::cloud::responses {
         return m_Result;
     }
 
-    void GetFieldsResponse::deserialize(const std::string_view& response)
+    void GetFieldsResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
         auto json = ::nlohmann::json::parse(response);
         m_Result = std::make_shared< aspose::words::cloud::models::FieldsResponse >();
@@ -1999,7 +2072,7 @@ namespace aspose::words::cloud::responses {
         return m_Result;
     }
 
-    void GetFieldsOnlineResponse::deserialize(const std::string_view& response)
+    void GetFieldsOnlineResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
         auto json = ::nlohmann::json::parse(response);
         m_Result = std::make_shared< aspose::words::cloud::models::FieldsResponse >();
@@ -2014,7 +2087,7 @@ namespace aspose::words::cloud::responses {
         return m_Result;
     }
 
-    void GetFilesListResponse::deserialize(const std::string_view& response)
+    void GetFilesListResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
         auto json = ::nlohmann::json::parse(response);
         m_Result = std::make_shared< aspose::words::cloud::models::FilesList >();
@@ -2029,7 +2102,7 @@ namespace aspose::words::cloud::responses {
         return m_Result;
     }
 
-    void GetFootnoteResponse::deserialize(const std::string_view& response)
+    void GetFootnoteResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
         auto json = ::nlohmann::json::parse(response);
         m_Result = std::make_shared< aspose::words::cloud::models::FootnoteResponse >();
@@ -2044,7 +2117,7 @@ namespace aspose::words::cloud::responses {
         return m_Result;
     }
 
-    void GetFootnoteOnlineResponse::deserialize(const std::string_view& response)
+    void GetFootnoteOnlineResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
         auto json = ::nlohmann::json::parse(response);
         m_Result = std::make_shared< aspose::words::cloud::models::FootnoteResponse >();
@@ -2059,7 +2132,7 @@ namespace aspose::words::cloud::responses {
         return m_Result;
     }
 
-    void GetFootnotesResponse::deserialize(const std::string_view& response)
+    void GetFootnotesResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
         auto json = ::nlohmann::json::parse(response);
         m_Result = std::make_shared< aspose::words::cloud::models::FootnotesResponse >();
@@ -2074,7 +2147,7 @@ namespace aspose::words::cloud::responses {
         return m_Result;
     }
 
-    void GetFootnotesOnlineResponse::deserialize(const std::string_view& response)
+    void GetFootnotesOnlineResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
         auto json = ::nlohmann::json::parse(response);
         m_Result = std::make_shared< aspose::words::cloud::models::FootnotesResponse >();
@@ -2089,7 +2162,7 @@ namespace aspose::words::cloud::responses {
         return m_Result;
     }
 
-    void GetFormFieldResponse::deserialize(const std::string_view& response)
+    void GetFormFieldResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
         auto json = ::nlohmann::json::parse(response);
         m_Result = std::make_shared< aspose::words::cloud::models::FormFieldResponse >();
@@ -2104,7 +2177,7 @@ namespace aspose::words::cloud::responses {
         return m_Result;
     }
 
-    void GetFormFieldOnlineResponse::deserialize(const std::string_view& response)
+    void GetFormFieldOnlineResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
         auto json = ::nlohmann::json::parse(response);
         m_Result = std::make_shared< aspose::words::cloud::models::FormFieldResponse >();
@@ -2119,7 +2192,7 @@ namespace aspose::words::cloud::responses {
         return m_Result;
     }
 
-    void GetFormFieldsResponse::deserialize(const std::string_view& response)
+    void GetFormFieldsResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
         auto json = ::nlohmann::json::parse(response);
         m_Result = std::make_shared< aspose::words::cloud::models::FormFieldsResponse >();
@@ -2134,7 +2207,7 @@ namespace aspose::words::cloud::responses {
         return m_Result;
     }
 
-    void GetFormFieldsOnlineResponse::deserialize(const std::string_view& response)
+    void GetFormFieldsOnlineResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
         auto json = ::nlohmann::json::parse(response);
         m_Result = std::make_shared< aspose::words::cloud::models::FormFieldsResponse >();
@@ -2149,7 +2222,7 @@ namespace aspose::words::cloud::responses {
         return m_Result;
     }
 
-    void GetHeaderFooterResponse::deserialize(const std::string_view& response)
+    void GetHeaderFooterResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
         auto json = ::nlohmann::json::parse(response);
         m_Result = std::make_shared< aspose::words::cloud::models::HeaderFooterResponse >();
@@ -2164,7 +2237,7 @@ namespace aspose::words::cloud::responses {
         return m_Result;
     }
 
-    void GetHeaderFooterOfSectionResponse::deserialize(const std::string_view& response)
+    void GetHeaderFooterOfSectionResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
         auto json = ::nlohmann::json::parse(response);
         m_Result = std::make_shared< aspose::words::cloud::models::HeaderFooterResponse >();
@@ -2179,7 +2252,7 @@ namespace aspose::words::cloud::responses {
         return m_Result;
     }
 
-    void GetHeaderFooterOfSectionOnlineResponse::deserialize(const std::string_view& response)
+    void GetHeaderFooterOfSectionOnlineResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
         auto json = ::nlohmann::json::parse(response);
         m_Result = std::make_shared< aspose::words::cloud::models::HeaderFooterResponse >();
@@ -2194,7 +2267,7 @@ namespace aspose::words::cloud::responses {
         return m_Result;
     }
 
-    void GetHeaderFooterOnlineResponse::deserialize(const std::string_view& response)
+    void GetHeaderFooterOnlineResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
         auto json = ::nlohmann::json::parse(response);
         m_Result = std::make_shared< aspose::words::cloud::models::HeaderFooterResponse >();
@@ -2209,7 +2282,7 @@ namespace aspose::words::cloud::responses {
         return m_Result;
     }
 
-    void GetHeaderFootersResponse::deserialize(const std::string_view& response)
+    void GetHeaderFootersResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
         auto json = ::nlohmann::json::parse(response);
         m_Result = std::make_shared< aspose::words::cloud::models::HeaderFootersResponse >();
@@ -2224,7 +2297,7 @@ namespace aspose::words::cloud::responses {
         return m_Result;
     }
 
-    void GetHeaderFootersOnlineResponse::deserialize(const std::string_view& response)
+    void GetHeaderFootersOnlineResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
         auto json = ::nlohmann::json::parse(response);
         m_Result = std::make_shared< aspose::words::cloud::models::HeaderFootersResponse >();
@@ -2239,7 +2312,7 @@ namespace aspose::words::cloud::responses {
         return m_Result;
     }
 
-    void GetInfoResponse::deserialize(const std::string_view& response)
+    void GetInfoResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
         auto json = ::nlohmann::json::parse(response);
         m_Result = std::make_shared< aspose::words::cloud::models::InfoResponse >();
@@ -2254,7 +2327,7 @@ namespace aspose::words::cloud::responses {
         return m_Result;
     }
 
-    void GetListResponse::deserialize(const std::string_view& response)
+    void GetListResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
         auto json = ::nlohmann::json::parse(response);
         m_Result = std::make_shared< aspose::words::cloud::models::ListResponse >();
@@ -2269,7 +2342,7 @@ namespace aspose::words::cloud::responses {
         return m_Result;
     }
 
-    void GetListOnlineResponse::deserialize(const std::string_view& response)
+    void GetListOnlineResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
         auto json = ::nlohmann::json::parse(response);
         m_Result = std::make_shared< aspose::words::cloud::models::ListResponse >();
@@ -2284,7 +2357,7 @@ namespace aspose::words::cloud::responses {
         return m_Result;
     }
 
-    void GetListsResponse::deserialize(const std::string_view& response)
+    void GetListsResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
         auto json = ::nlohmann::json::parse(response);
         m_Result = std::make_shared< aspose::words::cloud::models::ListsResponse >();
@@ -2299,7 +2372,7 @@ namespace aspose::words::cloud::responses {
         return m_Result;
     }
 
-    void GetListsOnlineResponse::deserialize(const std::string_view& response)
+    void GetListsOnlineResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
         auto json = ::nlohmann::json::parse(response);
         m_Result = std::make_shared< aspose::words::cloud::models::ListsResponse >();
@@ -2314,7 +2387,7 @@ namespace aspose::words::cloud::responses {
         return m_Result;
     }
 
-    void GetOfficeMathObjectResponse::deserialize(const std::string_view& response)
+    void GetOfficeMathObjectResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
         auto json = ::nlohmann::json::parse(response);
         m_Result = std::make_shared< aspose::words::cloud::models::OfficeMathObjectResponse >();
@@ -2329,7 +2402,7 @@ namespace aspose::words::cloud::responses {
         return m_Result;
     }
 
-    void GetOfficeMathObjectOnlineResponse::deserialize(const std::string_view& response)
+    void GetOfficeMathObjectOnlineResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
         auto json = ::nlohmann::json::parse(response);
         m_Result = std::make_shared< aspose::words::cloud::models::OfficeMathObjectResponse >();
@@ -2344,7 +2417,7 @@ namespace aspose::words::cloud::responses {
         return m_Result;
     }
 
-    void GetOfficeMathObjectsResponse::deserialize(const std::string_view& response)
+    void GetOfficeMathObjectsResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
         auto json = ::nlohmann::json::parse(response);
         m_Result = std::make_shared< aspose::words::cloud::models::OfficeMathObjectsResponse >();
@@ -2359,7 +2432,7 @@ namespace aspose::words::cloud::responses {
         return m_Result;
     }
 
-    void GetOfficeMathObjectsOnlineResponse::deserialize(const std::string_view& response)
+    void GetOfficeMathObjectsOnlineResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
         auto json = ::nlohmann::json::parse(response);
         m_Result = std::make_shared< aspose::words::cloud::models::OfficeMathObjectsResponse >();
@@ -2374,7 +2447,7 @@ namespace aspose::words::cloud::responses {
         return m_Result;
     }
 
-    void GetParagraphResponse::deserialize(const std::string_view& response)
+    void GetParagraphResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
         auto json = ::nlohmann::json::parse(response);
         m_Result = std::make_shared< aspose::words::cloud::models::ParagraphResponse >();
@@ -2389,7 +2462,7 @@ namespace aspose::words::cloud::responses {
         return m_Result;
     }
 
-    void GetParagraphFormatResponse::deserialize(const std::string_view& response)
+    void GetParagraphFormatResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
         auto json = ::nlohmann::json::parse(response);
         m_Result = std::make_shared< aspose::words::cloud::models::ParagraphFormatResponse >();
@@ -2404,7 +2477,7 @@ namespace aspose::words::cloud::responses {
         return m_Result;
     }
 
-    void GetParagraphFormatOnlineResponse::deserialize(const std::string_view& response)
+    void GetParagraphFormatOnlineResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
         auto json = ::nlohmann::json::parse(response);
         m_Result = std::make_shared< aspose::words::cloud::models::ParagraphFormatResponse >();
@@ -2419,7 +2492,7 @@ namespace aspose::words::cloud::responses {
         return m_Result;
     }
 
-    void GetParagraphListFormatResponse::deserialize(const std::string_view& response)
+    void GetParagraphListFormatResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
         auto json = ::nlohmann::json::parse(response);
         m_Result = std::make_shared< aspose::words::cloud::models::ParagraphListFormatResponse >();
@@ -2434,7 +2507,7 @@ namespace aspose::words::cloud::responses {
         return m_Result;
     }
 
-    void GetParagraphListFormatOnlineResponse::deserialize(const std::string_view& response)
+    void GetParagraphListFormatOnlineResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
         auto json = ::nlohmann::json::parse(response);
         m_Result = std::make_shared< aspose::words::cloud::models::ParagraphListFormatResponse >();
@@ -2449,7 +2522,7 @@ namespace aspose::words::cloud::responses {
         return m_Result;
     }
 
-    void GetParagraphOnlineResponse::deserialize(const std::string_view& response)
+    void GetParagraphOnlineResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
         auto json = ::nlohmann::json::parse(response);
         m_Result = std::make_shared< aspose::words::cloud::models::ParagraphResponse >();
@@ -2464,7 +2537,7 @@ namespace aspose::words::cloud::responses {
         return m_Result;
     }
 
-    void GetParagraphsResponse::deserialize(const std::string_view& response)
+    void GetParagraphsResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
         auto json = ::nlohmann::json::parse(response);
         m_Result = std::make_shared< aspose::words::cloud::models::ParagraphLinkCollectionResponse >();
@@ -2479,7 +2552,7 @@ namespace aspose::words::cloud::responses {
         return m_Result;
     }
 
-    void GetParagraphsOnlineResponse::deserialize(const std::string_view& response)
+    void GetParagraphsOnlineResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
         auto json = ::nlohmann::json::parse(response);
         m_Result = std::make_shared< aspose::words::cloud::models::ParagraphLinkCollectionResponse >();
@@ -2494,7 +2567,7 @@ namespace aspose::words::cloud::responses {
         return m_Result;
     }
 
-    void GetParagraphTabStopsResponse::deserialize(const std::string_view& response)
+    void GetParagraphTabStopsResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
         auto json = ::nlohmann::json::parse(response);
         m_Result = std::make_shared< aspose::words::cloud::models::TabStopsResponse >();
@@ -2509,7 +2582,7 @@ namespace aspose::words::cloud::responses {
         return m_Result;
     }
 
-    void GetParagraphTabStopsOnlineResponse::deserialize(const std::string_view& response)
+    void GetParagraphTabStopsOnlineResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
         auto json = ::nlohmann::json::parse(response);
         m_Result = std::make_shared< aspose::words::cloud::models::TabStopsResponse >();
@@ -2524,7 +2597,7 @@ namespace aspose::words::cloud::responses {
         return m_Result;
     }
 
-    void GetPublicKeyResponse::deserialize(const std::string_view& response)
+    void GetPublicKeyResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
         auto json = ::nlohmann::json::parse(response);
         m_Result = std::make_shared< aspose::words::cloud::models::PublicKeyResponse >();
@@ -2539,7 +2612,7 @@ namespace aspose::words::cloud::responses {
         return m_Result;
     }
 
-    void GetRangeTextResponse::deserialize(const std::string_view& response)
+    void GetRangeTextResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
         auto json = ::nlohmann::json::parse(response);
         m_Result = std::make_shared< aspose::words::cloud::models::RangeTextResponse >();
@@ -2554,7 +2627,7 @@ namespace aspose::words::cloud::responses {
         return m_Result;
     }
 
-    void GetRangeTextOnlineResponse::deserialize(const std::string_view& response)
+    void GetRangeTextOnlineResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
         auto json = ::nlohmann::json::parse(response);
         m_Result = std::make_shared< aspose::words::cloud::models::RangeTextResponse >();
@@ -2569,7 +2642,7 @@ namespace aspose::words::cloud::responses {
         return m_Result;
     }
 
-    void GetRunResponse::deserialize(const std::string_view& response)
+    void GetRunResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
         auto json = ::nlohmann::json::parse(response);
         m_Result = std::make_shared< aspose::words::cloud::models::RunResponse >();
@@ -2584,7 +2657,7 @@ namespace aspose::words::cloud::responses {
         return m_Result;
     }
 
-    void GetRunFontResponse::deserialize(const std::string_view& response)
+    void GetRunFontResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
         auto json = ::nlohmann::json::parse(response);
         m_Result = std::make_shared< aspose::words::cloud::models::FontResponse >();
@@ -2599,7 +2672,7 @@ namespace aspose::words::cloud::responses {
         return m_Result;
     }
 
-    void GetRunFontOnlineResponse::deserialize(const std::string_view& response)
+    void GetRunFontOnlineResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
         auto json = ::nlohmann::json::parse(response);
         m_Result = std::make_shared< aspose::words::cloud::models::FontResponse >();
@@ -2614,7 +2687,7 @@ namespace aspose::words::cloud::responses {
         return m_Result;
     }
 
-    void GetRunOnlineResponse::deserialize(const std::string_view& response)
+    void GetRunOnlineResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
         auto json = ::nlohmann::json::parse(response);
         m_Result = std::make_shared< aspose::words::cloud::models::RunResponse >();
@@ -2629,7 +2702,7 @@ namespace aspose::words::cloud::responses {
         return m_Result;
     }
 
-    void GetRunsResponse::deserialize(const std::string_view& response)
+    void GetRunsResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
         auto json = ::nlohmann::json::parse(response);
         m_Result = std::make_shared< aspose::words::cloud::models::RunsResponse >();
@@ -2644,7 +2717,7 @@ namespace aspose::words::cloud::responses {
         return m_Result;
     }
 
-    void GetRunsOnlineResponse::deserialize(const std::string_view& response)
+    void GetRunsOnlineResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
         auto json = ::nlohmann::json::parse(response);
         m_Result = std::make_shared< aspose::words::cloud::models::RunsResponse >();
@@ -2659,7 +2732,7 @@ namespace aspose::words::cloud::responses {
         return m_Result;
     }
 
-    void GetSectionResponse::deserialize(const std::string_view& response)
+    void GetSectionResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
         auto json = ::nlohmann::json::parse(response);
         m_Result = std::make_shared< aspose::words::cloud::models::SectionResponse >();
@@ -2674,7 +2747,7 @@ namespace aspose::words::cloud::responses {
         return m_Result;
     }
 
-    void GetSectionOnlineResponse::deserialize(const std::string_view& response)
+    void GetSectionOnlineResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
         auto json = ::nlohmann::json::parse(response);
         m_Result = std::make_shared< aspose::words::cloud::models::SectionResponse >();
@@ -2689,7 +2762,7 @@ namespace aspose::words::cloud::responses {
         return m_Result;
     }
 
-    void GetSectionPageSetupResponse::deserialize(const std::string_view& response)
+    void GetSectionPageSetupResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
         auto json = ::nlohmann::json::parse(response);
         m_Result = std::make_shared< aspose::words::cloud::models::SectionPageSetupResponse >();
@@ -2704,7 +2777,7 @@ namespace aspose::words::cloud::responses {
         return m_Result;
     }
 
-    void GetSectionPageSetupOnlineResponse::deserialize(const std::string_view& response)
+    void GetSectionPageSetupOnlineResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
         auto json = ::nlohmann::json::parse(response);
         m_Result = std::make_shared< aspose::words::cloud::models::SectionPageSetupResponse >();
@@ -2719,7 +2792,7 @@ namespace aspose::words::cloud::responses {
         return m_Result;
     }
 
-    void GetSectionsResponse::deserialize(const std::string_view& response)
+    void GetSectionsResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
         auto json = ::nlohmann::json::parse(response);
         m_Result = std::make_shared< aspose::words::cloud::models::SectionLinkCollectionResponse >();
@@ -2734,7 +2807,7 @@ namespace aspose::words::cloud::responses {
         return m_Result;
     }
 
-    void GetSectionsOnlineResponse::deserialize(const std::string_view& response)
+    void GetSectionsOnlineResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
         auto json = ::nlohmann::json::parse(response);
         m_Result = std::make_shared< aspose::words::cloud::models::SectionLinkCollectionResponse >();
@@ -2749,7 +2822,7 @@ namespace aspose::words::cloud::responses {
         return m_Result;
     }
 
-    void GetStyleResponse::deserialize(const std::string_view& response)
+    void GetStyleResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
         auto json = ::nlohmann::json::parse(response);
         m_Result = std::make_shared< aspose::words::cloud::models::StyleResponse >();
@@ -2764,7 +2837,7 @@ namespace aspose::words::cloud::responses {
         return m_Result;
     }
 
-    void GetStyleFromDocumentElementResponse::deserialize(const std::string_view& response)
+    void GetStyleFromDocumentElementResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
         auto json = ::nlohmann::json::parse(response);
         m_Result = std::make_shared< aspose::words::cloud::models::StyleResponse >();
@@ -2779,7 +2852,7 @@ namespace aspose::words::cloud::responses {
         return m_Result;
     }
 
-    void GetStyleFromDocumentElementOnlineResponse::deserialize(const std::string_view& response)
+    void GetStyleFromDocumentElementOnlineResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
         auto json = ::nlohmann::json::parse(response);
         m_Result = std::make_shared< aspose::words::cloud::models::StyleResponse >();
@@ -2794,7 +2867,7 @@ namespace aspose::words::cloud::responses {
         return m_Result;
     }
 
-    void GetStyleOnlineResponse::deserialize(const std::string_view& response)
+    void GetStyleOnlineResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
         auto json = ::nlohmann::json::parse(response);
         m_Result = std::make_shared< aspose::words::cloud::models::StyleResponse >();
@@ -2809,7 +2882,7 @@ namespace aspose::words::cloud::responses {
         return m_Result;
     }
 
-    void GetStylesResponse::deserialize(const std::string_view& response)
+    void GetStylesResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
         auto json = ::nlohmann::json::parse(response);
         m_Result = std::make_shared< aspose::words::cloud::models::StylesResponse >();
@@ -2824,7 +2897,7 @@ namespace aspose::words::cloud::responses {
         return m_Result;
     }
 
-    void GetStylesOnlineResponse::deserialize(const std::string_view& response)
+    void GetStylesOnlineResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
         auto json = ::nlohmann::json::parse(response);
         m_Result = std::make_shared< aspose::words::cloud::models::StylesResponse >();
@@ -2839,7 +2912,7 @@ namespace aspose::words::cloud::responses {
         return m_Result;
     }
 
-    void GetTableResponse::deserialize(const std::string_view& response)
+    void GetTableResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
         auto json = ::nlohmann::json::parse(response);
         m_Result = std::make_shared< aspose::words::cloud::models::TableResponse >();
@@ -2854,7 +2927,7 @@ namespace aspose::words::cloud::responses {
         return m_Result;
     }
 
-    void GetTableCellResponse::deserialize(const std::string_view& response)
+    void GetTableCellResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
         auto json = ::nlohmann::json::parse(response);
         m_Result = std::make_shared< aspose::words::cloud::models::TableCellResponse >();
@@ -2869,7 +2942,7 @@ namespace aspose::words::cloud::responses {
         return m_Result;
     }
 
-    void GetTableCellFormatResponse::deserialize(const std::string_view& response)
+    void GetTableCellFormatResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
         auto json = ::nlohmann::json::parse(response);
         m_Result = std::make_shared< aspose::words::cloud::models::TableCellFormatResponse >();
@@ -2884,7 +2957,7 @@ namespace aspose::words::cloud::responses {
         return m_Result;
     }
 
-    void GetTableCellFormatOnlineResponse::deserialize(const std::string_view& response)
+    void GetTableCellFormatOnlineResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
         auto json = ::nlohmann::json::parse(response);
         m_Result = std::make_shared< aspose::words::cloud::models::TableCellFormatResponse >();
@@ -2899,7 +2972,7 @@ namespace aspose::words::cloud::responses {
         return m_Result;
     }
 
-    void GetTableCellOnlineResponse::deserialize(const std::string_view& response)
+    void GetTableCellOnlineResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
         auto json = ::nlohmann::json::parse(response);
         m_Result = std::make_shared< aspose::words::cloud::models::TableCellResponse >();
@@ -2914,7 +2987,7 @@ namespace aspose::words::cloud::responses {
         return m_Result;
     }
 
-    void GetTableOnlineResponse::deserialize(const std::string_view& response)
+    void GetTableOnlineResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
         auto json = ::nlohmann::json::parse(response);
         m_Result = std::make_shared< aspose::words::cloud::models::TableResponse >();
@@ -2929,7 +3002,7 @@ namespace aspose::words::cloud::responses {
         return m_Result;
     }
 
-    void GetTablePropertiesResponse::deserialize(const std::string_view& response)
+    void GetTablePropertiesResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
         auto json = ::nlohmann::json::parse(response);
         m_Result = std::make_shared< aspose::words::cloud::models::TablePropertiesResponse >();
@@ -2944,7 +3017,7 @@ namespace aspose::words::cloud::responses {
         return m_Result;
     }
 
-    void GetTablePropertiesOnlineResponse::deserialize(const std::string_view& response)
+    void GetTablePropertiesOnlineResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
         auto json = ::nlohmann::json::parse(response);
         m_Result = std::make_shared< aspose::words::cloud::models::TablePropertiesResponse >();
@@ -2959,7 +3032,7 @@ namespace aspose::words::cloud::responses {
         return m_Result;
     }
 
-    void GetTableRowResponse::deserialize(const std::string_view& response)
+    void GetTableRowResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
         auto json = ::nlohmann::json::parse(response);
         m_Result = std::make_shared< aspose::words::cloud::models::TableRowResponse >();
@@ -2974,7 +3047,7 @@ namespace aspose::words::cloud::responses {
         return m_Result;
     }
 
-    void GetTableRowFormatResponse::deserialize(const std::string_view& response)
+    void GetTableRowFormatResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
         auto json = ::nlohmann::json::parse(response);
         m_Result = std::make_shared< aspose::words::cloud::models::TableRowFormatResponse >();
@@ -2989,7 +3062,7 @@ namespace aspose::words::cloud::responses {
         return m_Result;
     }
 
-    void GetTableRowFormatOnlineResponse::deserialize(const std::string_view& response)
+    void GetTableRowFormatOnlineResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
         auto json = ::nlohmann::json::parse(response);
         m_Result = std::make_shared< aspose::words::cloud::models::TableRowFormatResponse >();
@@ -3004,7 +3077,7 @@ namespace aspose::words::cloud::responses {
         return m_Result;
     }
 
-    void GetTableRowOnlineResponse::deserialize(const std::string_view& response)
+    void GetTableRowOnlineResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
         auto json = ::nlohmann::json::parse(response);
         m_Result = std::make_shared< aspose::words::cloud::models::TableRowResponse >();
@@ -3019,7 +3092,7 @@ namespace aspose::words::cloud::responses {
         return m_Result;
     }
 
-    void GetTablesResponse::deserialize(const std::string_view& response)
+    void GetTablesResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
         auto json = ::nlohmann::json::parse(response);
         m_Result = std::make_shared< aspose::words::cloud::models::TableLinkCollectionResponse >();
@@ -3034,7 +3107,7 @@ namespace aspose::words::cloud::responses {
         return m_Result;
     }
 
-    void GetTablesOnlineResponse::deserialize(const std::string_view& response)
+    void GetTablesOnlineResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
         auto json = ::nlohmann::json::parse(response);
         m_Result = std::make_shared< aspose::words::cloud::models::TableLinkCollectionResponse >();
@@ -3049,7 +3122,7 @@ namespace aspose::words::cloud::responses {
         return m_Result;
     }
 
-    void InsertCommentResponse::deserialize(const std::string_view& response)
+    void InsertCommentResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
         auto json = ::nlohmann::json::parse(response);
         m_Result = std::make_shared< aspose::words::cloud::models::CommentResponse >();
@@ -3064,24 +3137,24 @@ namespace aspose::words::cloud::responses {
         return m_Model;
     }
 
-    std::shared_ptr< std::istream > InsertCommentOnlineResponse::getDocument() const
+    std::shared_ptr< std::map<std::wstring, std::shared_ptr<std::istream>> > InsertCommentOnlineResponse::getDocument() const
     {
         return m_Document;
     }
 
-    void InsertCommentOnlineResponse::deserialize(const std::string_view& response)
+    void InsertCommentOnlineResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
-        std::unordered_map<std::string, std::string_view> parts;
+        std::unordered_map<std::string, std::tuple<std::string, std::string, std::string_view> > parts;
         parseMultipart(response, parts);
         if (parts.find("Model") != parts.end()) {
-            const std::string_view& part = parts.at("Model");
-            auto json = ::nlohmann::json::parse(part);
+            const auto& part = parts.at("Model");
+            auto json = ::nlohmann::json::parse(std::get<2>(part));
             m_Model = std::make_shared< aspose::words::cloud::models::CommentResponse >();
             m_Model->fromJson(&json);
         }
         if (parts.find("Document") != parts.end()) {
-            const std::string_view& part = parts.at("Document");
-            m_Document = std::shared_ptr< std::istream >(new std::istringstream(std::string(part), std::ios_base::in));
+            const auto& part = parts.at("Document");
+            m_Document = parseFilesCollection(part);
         }
     }
 
@@ -3093,7 +3166,7 @@ namespace aspose::words::cloud::responses {
         return m_Result;
     }
 
-    void InsertCustomXmlPartResponse::deserialize(const std::string_view& response)
+    void InsertCustomXmlPartResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
         auto json = ::nlohmann::json::parse(response);
         m_Result = std::make_shared< aspose::words::cloud::models::CustomXmlPartResponse >();
@@ -3108,24 +3181,24 @@ namespace aspose::words::cloud::responses {
         return m_Model;
     }
 
-    std::shared_ptr< std::istream > InsertCustomXmlPartOnlineResponse::getDocument() const
+    std::shared_ptr< std::map<std::wstring, std::shared_ptr<std::istream>> > InsertCustomXmlPartOnlineResponse::getDocument() const
     {
         return m_Document;
     }
 
-    void InsertCustomXmlPartOnlineResponse::deserialize(const std::string_view& response)
+    void InsertCustomXmlPartOnlineResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
-        std::unordered_map<std::string, std::string_view> parts;
+        std::unordered_map<std::string, std::tuple<std::string, std::string, std::string_view> > parts;
         parseMultipart(response, parts);
         if (parts.find("Model") != parts.end()) {
-            const std::string_view& part = parts.at("Model");
-            auto json = ::nlohmann::json::parse(part);
+            const auto& part = parts.at("Model");
+            auto json = ::nlohmann::json::parse(std::get<2>(part));
             m_Model = std::make_shared< aspose::words::cloud::models::CustomXmlPartResponse >();
             m_Model->fromJson(&json);
         }
         if (parts.find("Document") != parts.end()) {
-            const std::string_view& part = parts.at("Document");
-            m_Document = std::shared_ptr< std::istream >(new std::istringstream(std::string(part), std::ios_base::in));
+            const auto& part = parts.at("Document");
+            m_Document = parseFilesCollection(part);
         }
     }
 
@@ -3137,7 +3210,7 @@ namespace aspose::words::cloud::responses {
         return m_Result;
     }
 
-    void InsertDrawingObjectResponse::deserialize(const std::string_view& response)
+    void InsertDrawingObjectResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
         auto json = ::nlohmann::json::parse(response);
         m_Result = std::make_shared< aspose::words::cloud::models::DrawingObjectResponse >();
@@ -3152,24 +3225,24 @@ namespace aspose::words::cloud::responses {
         return m_Model;
     }
 
-    std::shared_ptr< std::istream > InsertDrawingObjectOnlineResponse::getDocument() const
+    std::shared_ptr< std::map<std::wstring, std::shared_ptr<std::istream>> > InsertDrawingObjectOnlineResponse::getDocument() const
     {
         return m_Document;
     }
 
-    void InsertDrawingObjectOnlineResponse::deserialize(const std::string_view& response)
+    void InsertDrawingObjectOnlineResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
-        std::unordered_map<std::string, std::string_view> parts;
+        std::unordered_map<std::string, std::tuple<std::string, std::string, std::string_view> > parts;
         parseMultipart(response, parts);
         if (parts.find("Model") != parts.end()) {
-            const std::string_view& part = parts.at("Model");
-            auto json = ::nlohmann::json::parse(part);
+            const auto& part = parts.at("Model");
+            auto json = ::nlohmann::json::parse(std::get<2>(part));
             m_Model = std::make_shared< aspose::words::cloud::models::DrawingObjectResponse >();
             m_Model->fromJson(&json);
         }
         if (parts.find("Document") != parts.end()) {
-            const std::string_view& part = parts.at("Document");
-            m_Document = std::shared_ptr< std::istream >(new std::istringstream(std::string(part), std::ios_base::in));
+            const auto& part = parts.at("Document");
+            m_Document = parseFilesCollection(part);
         }
     }
 
@@ -3181,7 +3254,7 @@ namespace aspose::words::cloud::responses {
         return m_Result;
     }
 
-    void InsertFieldResponse::deserialize(const std::string_view& response)
+    void InsertFieldResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
         auto json = ::nlohmann::json::parse(response);
         m_Result = std::make_shared< aspose::words::cloud::models::FieldResponse >();
@@ -3196,24 +3269,24 @@ namespace aspose::words::cloud::responses {
         return m_Model;
     }
 
-    std::shared_ptr< std::istream > InsertFieldOnlineResponse::getDocument() const
+    std::shared_ptr< std::map<std::wstring, std::shared_ptr<std::istream>> > InsertFieldOnlineResponse::getDocument() const
     {
         return m_Document;
     }
 
-    void InsertFieldOnlineResponse::deserialize(const std::string_view& response)
+    void InsertFieldOnlineResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
-        std::unordered_map<std::string, std::string_view> parts;
+        std::unordered_map<std::string, std::tuple<std::string, std::string, std::string_view> > parts;
         parseMultipart(response, parts);
         if (parts.find("Model") != parts.end()) {
-            const std::string_view& part = parts.at("Model");
-            auto json = ::nlohmann::json::parse(part);
+            const auto& part = parts.at("Model");
+            auto json = ::nlohmann::json::parse(std::get<2>(part));
             m_Model = std::make_shared< aspose::words::cloud::models::FieldResponse >();
             m_Model->fromJson(&json);
         }
         if (parts.find("Document") != parts.end()) {
-            const std::string_view& part = parts.at("Document");
-            m_Document = std::shared_ptr< std::istream >(new std::istringstream(std::string(part), std::ios_base::in));
+            const auto& part = parts.at("Document");
+            m_Document = parseFilesCollection(part);
         }
     }
 
@@ -3225,7 +3298,7 @@ namespace aspose::words::cloud::responses {
         return m_Result;
     }
 
-    void InsertFootnoteResponse::deserialize(const std::string_view& response)
+    void InsertFootnoteResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
         auto json = ::nlohmann::json::parse(response);
         m_Result = std::make_shared< aspose::words::cloud::models::FootnoteResponse >();
@@ -3240,24 +3313,24 @@ namespace aspose::words::cloud::responses {
         return m_Model;
     }
 
-    std::shared_ptr< std::istream > InsertFootnoteOnlineResponse::getDocument() const
+    std::shared_ptr< std::map<std::wstring, std::shared_ptr<std::istream>> > InsertFootnoteOnlineResponse::getDocument() const
     {
         return m_Document;
     }
 
-    void InsertFootnoteOnlineResponse::deserialize(const std::string_view& response)
+    void InsertFootnoteOnlineResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
-        std::unordered_map<std::string, std::string_view> parts;
+        std::unordered_map<std::string, std::tuple<std::string, std::string, std::string_view> > parts;
         parseMultipart(response, parts);
         if (parts.find("Model") != parts.end()) {
-            const std::string_view& part = parts.at("Model");
-            auto json = ::nlohmann::json::parse(part);
+            const auto& part = parts.at("Model");
+            auto json = ::nlohmann::json::parse(std::get<2>(part));
             m_Model = std::make_shared< aspose::words::cloud::models::FootnoteResponse >();
             m_Model->fromJson(&json);
         }
         if (parts.find("Document") != parts.end()) {
-            const std::string_view& part = parts.at("Document");
-            m_Document = std::shared_ptr< std::istream >(new std::istringstream(std::string(part), std::ios_base::in));
+            const auto& part = parts.at("Document");
+            m_Document = parseFilesCollection(part);
         }
     }
 
@@ -3269,7 +3342,7 @@ namespace aspose::words::cloud::responses {
         return m_Result;
     }
 
-    void InsertFormFieldResponse::deserialize(const std::string_view& response)
+    void InsertFormFieldResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
         auto json = ::nlohmann::json::parse(response);
         m_Result = std::make_shared< aspose::words::cloud::models::FormFieldResponse >();
@@ -3284,24 +3357,24 @@ namespace aspose::words::cloud::responses {
         return m_Model;
     }
 
-    std::shared_ptr< std::istream > InsertFormFieldOnlineResponse::getDocument() const
+    std::shared_ptr< std::map<std::wstring, std::shared_ptr<std::istream>> > InsertFormFieldOnlineResponse::getDocument() const
     {
         return m_Document;
     }
 
-    void InsertFormFieldOnlineResponse::deserialize(const std::string_view& response)
+    void InsertFormFieldOnlineResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
-        std::unordered_map<std::string, std::string_view> parts;
+        std::unordered_map<std::string, std::tuple<std::string, std::string, std::string_view> > parts;
         parseMultipart(response, parts);
         if (parts.find("Model") != parts.end()) {
-            const std::string_view& part = parts.at("Model");
-            auto json = ::nlohmann::json::parse(part);
+            const auto& part = parts.at("Model");
+            auto json = ::nlohmann::json::parse(std::get<2>(part));
             m_Model = std::make_shared< aspose::words::cloud::models::FormFieldResponse >();
             m_Model->fromJson(&json);
         }
         if (parts.find("Document") != parts.end()) {
-            const std::string_view& part = parts.at("Document");
-            m_Document = std::shared_ptr< std::istream >(new std::istringstream(std::string(part), std::ios_base::in));
+            const auto& part = parts.at("Document");
+            m_Document = parseFilesCollection(part);
         }
     }
 
@@ -3313,7 +3386,7 @@ namespace aspose::words::cloud::responses {
         return m_Result;
     }
 
-    void InsertHeaderFooterResponse::deserialize(const std::string_view& response)
+    void InsertHeaderFooterResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
         auto json = ::nlohmann::json::parse(response);
         m_Result = std::make_shared< aspose::words::cloud::models::HeaderFooterResponse >();
@@ -3328,24 +3401,24 @@ namespace aspose::words::cloud::responses {
         return m_Model;
     }
 
-    std::shared_ptr< std::istream > InsertHeaderFooterOnlineResponse::getDocument() const
+    std::shared_ptr< std::map<std::wstring, std::shared_ptr<std::istream>> > InsertHeaderFooterOnlineResponse::getDocument() const
     {
         return m_Document;
     }
 
-    void InsertHeaderFooterOnlineResponse::deserialize(const std::string_view& response)
+    void InsertHeaderFooterOnlineResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
-        std::unordered_map<std::string, std::string_view> parts;
+        std::unordered_map<std::string, std::tuple<std::string, std::string, std::string_view> > parts;
         parseMultipart(response, parts);
         if (parts.find("Model") != parts.end()) {
-            const std::string_view& part = parts.at("Model");
-            auto json = ::nlohmann::json::parse(part);
+            const auto& part = parts.at("Model");
+            auto json = ::nlohmann::json::parse(std::get<2>(part));
             m_Model = std::make_shared< aspose::words::cloud::models::HeaderFooterResponse >();
             m_Model->fromJson(&json);
         }
         if (parts.find("Document") != parts.end()) {
-            const std::string_view& part = parts.at("Document");
-            m_Document = std::shared_ptr< std::istream >(new std::istringstream(std::string(part), std::ios_base::in));
+            const auto& part = parts.at("Document");
+            m_Document = parseFilesCollection(part);
         }
     }
 
@@ -3357,7 +3430,7 @@ namespace aspose::words::cloud::responses {
         return m_Result;
     }
 
-    void InsertListResponse::deserialize(const std::string_view& response)
+    void InsertListResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
         auto json = ::nlohmann::json::parse(response);
         m_Result = std::make_shared< aspose::words::cloud::models::ListResponse >();
@@ -3372,24 +3445,24 @@ namespace aspose::words::cloud::responses {
         return m_Model;
     }
 
-    std::shared_ptr< std::istream > InsertListOnlineResponse::getDocument() const
+    std::shared_ptr< std::map<std::wstring, std::shared_ptr<std::istream>> > InsertListOnlineResponse::getDocument() const
     {
         return m_Document;
     }
 
-    void InsertListOnlineResponse::deserialize(const std::string_view& response)
+    void InsertListOnlineResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
-        std::unordered_map<std::string, std::string_view> parts;
+        std::unordered_map<std::string, std::tuple<std::string, std::string, std::string_view> > parts;
         parseMultipart(response, parts);
         if (parts.find("Model") != parts.end()) {
-            const std::string_view& part = parts.at("Model");
-            auto json = ::nlohmann::json::parse(part);
+            const auto& part = parts.at("Model");
+            auto json = ::nlohmann::json::parse(std::get<2>(part));
             m_Model = std::make_shared< aspose::words::cloud::models::ListResponse >();
             m_Model->fromJson(&json);
         }
         if (parts.find("Document") != parts.end()) {
-            const std::string_view& part = parts.at("Document");
-            m_Document = std::shared_ptr< std::istream >(new std::istringstream(std::string(part), std::ios_base::in));
+            const auto& part = parts.at("Document");
+            m_Document = parseFilesCollection(part);
         }
     }
 
@@ -3401,7 +3474,7 @@ namespace aspose::words::cloud::responses {
         return m_Result;
     }
 
-    void InsertOrUpdateParagraphTabStopResponse::deserialize(const std::string_view& response)
+    void InsertOrUpdateParagraphTabStopResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
         auto json = ::nlohmann::json::parse(response);
         m_Result = std::make_shared< aspose::words::cloud::models::TabStopsResponse >();
@@ -3416,24 +3489,24 @@ namespace aspose::words::cloud::responses {
         return m_Model;
     }
 
-    std::shared_ptr< std::istream > InsertOrUpdateParagraphTabStopOnlineResponse::getDocument() const
+    std::shared_ptr< std::map<std::wstring, std::shared_ptr<std::istream>> > InsertOrUpdateParagraphTabStopOnlineResponse::getDocument() const
     {
         return m_Document;
     }
 
-    void InsertOrUpdateParagraphTabStopOnlineResponse::deserialize(const std::string_view& response)
+    void InsertOrUpdateParagraphTabStopOnlineResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
-        std::unordered_map<std::string, std::string_view> parts;
+        std::unordered_map<std::string, std::tuple<std::string, std::string, std::string_view> > parts;
         parseMultipart(response, parts);
         if (parts.find("Model") != parts.end()) {
-            const std::string_view& part = parts.at("Model");
-            auto json = ::nlohmann::json::parse(part);
+            const auto& part = parts.at("Model");
+            auto json = ::nlohmann::json::parse(std::get<2>(part));
             m_Model = std::make_shared< aspose::words::cloud::models::TabStopsResponse >();
             m_Model->fromJson(&json);
         }
         if (parts.find("Document") != parts.end()) {
-            const std::string_view& part = parts.at("Document");
-            m_Document = std::shared_ptr< std::istream >(new std::istringstream(std::string(part), std::ios_base::in));
+            const auto& part = parts.at("Document");
+            m_Document = parseFilesCollection(part);
         }
     }
 
@@ -3445,7 +3518,7 @@ namespace aspose::words::cloud::responses {
         return m_Result;
     }
 
-    void InsertPageNumbersResponse::deserialize(const std::string_view& response)
+    void InsertPageNumbersResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
         auto json = ::nlohmann::json::parse(response);
         m_Result = std::make_shared< aspose::words::cloud::models::DocumentResponse >();
@@ -3460,24 +3533,24 @@ namespace aspose::words::cloud::responses {
         return m_Model;
     }
 
-    std::shared_ptr< std::istream > InsertPageNumbersOnlineResponse::getDocument() const
+    std::shared_ptr< std::map<std::wstring, std::shared_ptr<std::istream>> > InsertPageNumbersOnlineResponse::getDocument() const
     {
         return m_Document;
     }
 
-    void InsertPageNumbersOnlineResponse::deserialize(const std::string_view& response)
+    void InsertPageNumbersOnlineResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
-        std::unordered_map<std::string, std::string_view> parts;
+        std::unordered_map<std::string, std::tuple<std::string, std::string, std::string_view> > parts;
         parseMultipart(response, parts);
         if (parts.find("Model") != parts.end()) {
-            const std::string_view& part = parts.at("Model");
-            auto json = ::nlohmann::json::parse(part);
+            const auto& part = parts.at("Model");
+            auto json = ::nlohmann::json::parse(std::get<2>(part));
             m_Model = std::make_shared< aspose::words::cloud::models::DocumentResponse >();
             m_Model->fromJson(&json);
         }
         if (parts.find("Document") != parts.end()) {
-            const std::string_view& part = parts.at("Document");
-            m_Document = std::shared_ptr< std::istream >(new std::istringstream(std::string(part), std::ios_base::in));
+            const auto& part = parts.at("Document");
+            m_Document = parseFilesCollection(part);
         }
     }
 
@@ -3489,7 +3562,7 @@ namespace aspose::words::cloud::responses {
         return m_Result;
     }
 
-    void InsertParagraphResponse::deserialize(const std::string_view& response)
+    void InsertParagraphResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
         auto json = ::nlohmann::json::parse(response);
         m_Result = std::make_shared< aspose::words::cloud::models::ParagraphResponse >();
@@ -3504,24 +3577,24 @@ namespace aspose::words::cloud::responses {
         return m_Model;
     }
 
-    std::shared_ptr< std::istream > InsertParagraphOnlineResponse::getDocument() const
+    std::shared_ptr< std::map<std::wstring, std::shared_ptr<std::istream>> > InsertParagraphOnlineResponse::getDocument() const
     {
         return m_Document;
     }
 
-    void InsertParagraphOnlineResponse::deserialize(const std::string_view& response)
+    void InsertParagraphOnlineResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
-        std::unordered_map<std::string, std::string_view> parts;
+        std::unordered_map<std::string, std::tuple<std::string, std::string, std::string_view> > parts;
         parseMultipart(response, parts);
         if (parts.find("Model") != parts.end()) {
-            const std::string_view& part = parts.at("Model");
-            auto json = ::nlohmann::json::parse(part);
+            const auto& part = parts.at("Model");
+            auto json = ::nlohmann::json::parse(std::get<2>(part));
             m_Model = std::make_shared< aspose::words::cloud::models::ParagraphResponse >();
             m_Model->fromJson(&json);
         }
         if (parts.find("Document") != parts.end()) {
-            const std::string_view& part = parts.at("Document");
-            m_Document = std::shared_ptr< std::istream >(new std::istringstream(std::string(part), std::ios_base::in));
+            const auto& part = parts.at("Document");
+            m_Document = parseFilesCollection(part);
         }
     }
 
@@ -3533,7 +3606,7 @@ namespace aspose::words::cloud::responses {
         return m_Result;
     }
 
-    void InsertRunResponse::deserialize(const std::string_view& response)
+    void InsertRunResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
         auto json = ::nlohmann::json::parse(response);
         m_Result = std::make_shared< aspose::words::cloud::models::RunResponse >();
@@ -3548,24 +3621,24 @@ namespace aspose::words::cloud::responses {
         return m_Model;
     }
 
-    std::shared_ptr< std::istream > InsertRunOnlineResponse::getDocument() const
+    std::shared_ptr< std::map<std::wstring, std::shared_ptr<std::istream>> > InsertRunOnlineResponse::getDocument() const
     {
         return m_Document;
     }
 
-    void InsertRunOnlineResponse::deserialize(const std::string_view& response)
+    void InsertRunOnlineResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
-        std::unordered_map<std::string, std::string_view> parts;
+        std::unordered_map<std::string, std::tuple<std::string, std::string, std::string_view> > parts;
         parseMultipart(response, parts);
         if (parts.find("Model") != parts.end()) {
-            const std::string_view& part = parts.at("Model");
-            auto json = ::nlohmann::json::parse(part);
+            const auto& part = parts.at("Model");
+            auto json = ::nlohmann::json::parse(std::get<2>(part));
             m_Model = std::make_shared< aspose::words::cloud::models::RunResponse >();
             m_Model->fromJson(&json);
         }
         if (parts.find("Document") != parts.end()) {
-            const std::string_view& part = parts.at("Document");
-            m_Document = std::shared_ptr< std::istream >(new std::istringstream(std::string(part), std::ios_base::in));
+            const auto& part = parts.at("Document");
+            m_Document = parseFilesCollection(part);
         }
     }
 
@@ -3577,7 +3650,7 @@ namespace aspose::words::cloud::responses {
         return m_Result;
     }
 
-    void InsertStyleResponse::deserialize(const std::string_view& response)
+    void InsertStyleResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
         auto json = ::nlohmann::json::parse(response);
         m_Result = std::make_shared< aspose::words::cloud::models::StyleResponse >();
@@ -3592,24 +3665,24 @@ namespace aspose::words::cloud::responses {
         return m_Model;
     }
 
-    std::shared_ptr< std::istream > InsertStyleOnlineResponse::getDocument() const
+    std::shared_ptr< std::map<std::wstring, std::shared_ptr<std::istream>> > InsertStyleOnlineResponse::getDocument() const
     {
         return m_Document;
     }
 
-    void InsertStyleOnlineResponse::deserialize(const std::string_view& response)
+    void InsertStyleOnlineResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
-        std::unordered_map<std::string, std::string_view> parts;
+        std::unordered_map<std::string, std::tuple<std::string, std::string, std::string_view> > parts;
         parseMultipart(response, parts);
         if (parts.find("Model") != parts.end()) {
-            const std::string_view& part = parts.at("Model");
-            auto json = ::nlohmann::json::parse(part);
+            const auto& part = parts.at("Model");
+            auto json = ::nlohmann::json::parse(std::get<2>(part));
             m_Model = std::make_shared< aspose::words::cloud::models::StyleResponse >();
             m_Model->fromJson(&json);
         }
         if (parts.find("Document") != parts.end()) {
-            const std::string_view& part = parts.at("Document");
-            m_Document = std::shared_ptr< std::istream >(new std::istringstream(std::string(part), std::ios_base::in));
+            const auto& part = parts.at("Document");
+            m_Document = parseFilesCollection(part);
         }
     }
 
@@ -3621,7 +3694,7 @@ namespace aspose::words::cloud::responses {
         return m_Result;
     }
 
-    void InsertTableResponse::deserialize(const std::string_view& response)
+    void InsertTableResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
         auto json = ::nlohmann::json::parse(response);
         m_Result = std::make_shared< aspose::words::cloud::models::TableResponse >();
@@ -3636,7 +3709,7 @@ namespace aspose::words::cloud::responses {
         return m_Result;
     }
 
-    void InsertTableCellResponse::deserialize(const std::string_view& response)
+    void InsertTableCellResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
         auto json = ::nlohmann::json::parse(response);
         m_Result = std::make_shared< aspose::words::cloud::models::TableCellResponse >();
@@ -3651,24 +3724,24 @@ namespace aspose::words::cloud::responses {
         return m_Model;
     }
 
-    std::shared_ptr< std::istream > InsertTableCellOnlineResponse::getDocument() const
+    std::shared_ptr< std::map<std::wstring, std::shared_ptr<std::istream>> > InsertTableCellOnlineResponse::getDocument() const
     {
         return m_Document;
     }
 
-    void InsertTableCellOnlineResponse::deserialize(const std::string_view& response)
+    void InsertTableCellOnlineResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
-        std::unordered_map<std::string, std::string_view> parts;
+        std::unordered_map<std::string, std::tuple<std::string, std::string, std::string_view> > parts;
         parseMultipart(response, parts);
         if (parts.find("Model") != parts.end()) {
-            const std::string_view& part = parts.at("Model");
-            auto json = ::nlohmann::json::parse(part);
+            const auto& part = parts.at("Model");
+            auto json = ::nlohmann::json::parse(std::get<2>(part));
             m_Model = std::make_shared< aspose::words::cloud::models::TableCellResponse >();
             m_Model->fromJson(&json);
         }
         if (parts.find("Document") != parts.end()) {
-            const std::string_view& part = parts.at("Document");
-            m_Document = std::shared_ptr< std::istream >(new std::istringstream(std::string(part), std::ios_base::in));
+            const auto& part = parts.at("Document");
+            m_Document = parseFilesCollection(part);
         }
     }
 
@@ -3680,24 +3753,24 @@ namespace aspose::words::cloud::responses {
         return m_Model;
     }
 
-    std::shared_ptr< std::istream > InsertTableOnlineResponse::getDocument() const
+    std::shared_ptr< std::map<std::wstring, std::shared_ptr<std::istream>> > InsertTableOnlineResponse::getDocument() const
     {
         return m_Document;
     }
 
-    void InsertTableOnlineResponse::deserialize(const std::string_view& response)
+    void InsertTableOnlineResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
-        std::unordered_map<std::string, std::string_view> parts;
+        std::unordered_map<std::string, std::tuple<std::string, std::string, std::string_view> > parts;
         parseMultipart(response, parts);
         if (parts.find("Model") != parts.end()) {
-            const std::string_view& part = parts.at("Model");
-            auto json = ::nlohmann::json::parse(part);
+            const auto& part = parts.at("Model");
+            auto json = ::nlohmann::json::parse(std::get<2>(part));
             m_Model = std::make_shared< aspose::words::cloud::models::TableResponse >();
             m_Model->fromJson(&json);
         }
         if (parts.find("Document") != parts.end()) {
-            const std::string_view& part = parts.at("Document");
-            m_Document = std::shared_ptr< std::istream >(new std::istringstream(std::string(part), std::ios_base::in));
+            const auto& part = parts.at("Document");
+            m_Document = parseFilesCollection(part);
         }
     }
 
@@ -3709,7 +3782,7 @@ namespace aspose::words::cloud::responses {
         return m_Result;
     }
 
-    void InsertTableRowResponse::deserialize(const std::string_view& response)
+    void InsertTableRowResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
         auto json = ::nlohmann::json::parse(response);
         m_Result = std::make_shared< aspose::words::cloud::models::TableRowResponse >();
@@ -3724,24 +3797,24 @@ namespace aspose::words::cloud::responses {
         return m_Model;
     }
 
-    std::shared_ptr< std::istream > InsertTableRowOnlineResponse::getDocument() const
+    std::shared_ptr< std::map<std::wstring, std::shared_ptr<std::istream>> > InsertTableRowOnlineResponse::getDocument() const
     {
         return m_Document;
     }
 
-    void InsertTableRowOnlineResponse::deserialize(const std::string_view& response)
+    void InsertTableRowOnlineResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
-        std::unordered_map<std::string, std::string_view> parts;
+        std::unordered_map<std::string, std::tuple<std::string, std::string, std::string_view> > parts;
         parseMultipart(response, parts);
         if (parts.find("Model") != parts.end()) {
-            const std::string_view& part = parts.at("Model");
-            auto json = ::nlohmann::json::parse(part);
+            const auto& part = parts.at("Model");
+            auto json = ::nlohmann::json::parse(std::get<2>(part));
             m_Model = std::make_shared< aspose::words::cloud::models::TableRowResponse >();
             m_Model->fromJson(&json);
         }
         if (parts.find("Document") != parts.end()) {
-            const std::string_view& part = parts.at("Document");
-            m_Document = std::shared_ptr< std::istream >(new std::istringstream(std::string(part), std::ios_base::in));
+            const auto& part = parts.at("Document");
+            m_Document = parseFilesCollection(part);
         }
     }
 
@@ -3753,7 +3826,7 @@ namespace aspose::words::cloud::responses {
         return m_Result;
     }
 
-    void InsertWatermarkImageResponse::deserialize(const std::string_view& response)
+    void InsertWatermarkImageResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
         auto json = ::nlohmann::json::parse(response);
         m_Result = std::make_shared< aspose::words::cloud::models::DocumentResponse >();
@@ -3768,24 +3841,24 @@ namespace aspose::words::cloud::responses {
         return m_Model;
     }
 
-    std::shared_ptr< std::istream > InsertWatermarkImageOnlineResponse::getDocument() const
+    std::shared_ptr< std::map<std::wstring, std::shared_ptr<std::istream>> > InsertWatermarkImageOnlineResponse::getDocument() const
     {
         return m_Document;
     }
 
-    void InsertWatermarkImageOnlineResponse::deserialize(const std::string_view& response)
+    void InsertWatermarkImageOnlineResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
-        std::unordered_map<std::string, std::string_view> parts;
+        std::unordered_map<std::string, std::tuple<std::string, std::string, std::string_view> > parts;
         parseMultipart(response, parts);
         if (parts.find("Model") != parts.end()) {
-            const std::string_view& part = parts.at("Model");
-            auto json = ::nlohmann::json::parse(part);
+            const auto& part = parts.at("Model");
+            auto json = ::nlohmann::json::parse(std::get<2>(part));
             m_Model = std::make_shared< aspose::words::cloud::models::DocumentResponse >();
             m_Model->fromJson(&json);
         }
         if (parts.find("Document") != parts.end()) {
-            const std::string_view& part = parts.at("Document");
-            m_Document = std::shared_ptr< std::istream >(new std::istringstream(std::string(part), std::ios_base::in));
+            const auto& part = parts.at("Document");
+            m_Document = parseFilesCollection(part);
         }
     }
 
@@ -3797,7 +3870,7 @@ namespace aspose::words::cloud::responses {
         return m_Result;
     }
 
-    void InsertWatermarkTextResponse::deserialize(const std::string_view& response)
+    void InsertWatermarkTextResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
         auto json = ::nlohmann::json::parse(response);
         m_Result = std::make_shared< aspose::words::cloud::models::DocumentResponse >();
@@ -3812,24 +3885,24 @@ namespace aspose::words::cloud::responses {
         return m_Model;
     }
 
-    std::shared_ptr< std::istream > InsertWatermarkTextOnlineResponse::getDocument() const
+    std::shared_ptr< std::map<std::wstring, std::shared_ptr<std::istream>> > InsertWatermarkTextOnlineResponse::getDocument() const
     {
         return m_Document;
     }
 
-    void InsertWatermarkTextOnlineResponse::deserialize(const std::string_view& response)
+    void InsertWatermarkTextOnlineResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
-        std::unordered_map<std::string, std::string_view> parts;
+        std::unordered_map<std::string, std::tuple<std::string, std::string, std::string_view> > parts;
         parseMultipart(response, parts);
         if (parts.find("Model") != parts.end()) {
-            const std::string_view& part = parts.at("Model");
-            auto json = ::nlohmann::json::parse(part);
+            const auto& part = parts.at("Model");
+            auto json = ::nlohmann::json::parse(std::get<2>(part));
             m_Model = std::make_shared< aspose::words::cloud::models::DocumentResponse >();
             m_Model->fromJson(&json);
         }
         if (parts.find("Document") != parts.end()) {
-            const std::string_view& part = parts.at("Document");
-            m_Document = std::shared_ptr< std::istream >(new std::istringstream(std::string(part), std::ios_base::in));
+            const auto& part = parts.at("Document");
+            m_Document = parseFilesCollection(part);
         }
     }
 
@@ -3841,7 +3914,7 @@ namespace aspose::words::cloud::responses {
         return m_Result;
     }
 
-    void LoadWebDocumentResponse::deserialize(const std::string_view& response)
+    void LoadWebDocumentResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
         auto json = ::nlohmann::json::parse(response);
         m_Result = std::make_shared< aspose::words::cloud::models::SaveResponse >();
@@ -3852,7 +3925,7 @@ namespace aspose::words::cloud::responses {
      * MoveFile request implementation
      */
 
-    void MoveFileResponse::deserialize(const std::string_view& response)
+    void MoveFileResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
     }
 
@@ -3860,7 +3933,7 @@ namespace aspose::words::cloud::responses {
      * MoveFolder request implementation
      */
 
-    void MoveFolderResponse::deserialize(const std::string_view& response)
+    void MoveFolderResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
     }
 
@@ -3868,21 +3941,21 @@ namespace aspose::words::cloud::responses {
      * OptimizeDocument request implementation
      */
 
-    void OptimizeDocumentResponse::deserialize(const std::string_view& response)
+    void OptimizeDocumentResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
     }
 
     /*
      * OptimizeDocumentOnline request implementation
      */
-    std::shared_ptr< std::istream > OptimizeDocumentOnlineResponse::getDocument() const
+    std::shared_ptr< std::map<std::wstring, std::shared_ptr<std::istream>> > OptimizeDocumentOnlineResponse::getDocument() const
     {
         return m_Document;
     }
 
-    void OptimizeDocumentOnlineResponse::deserialize(const std::string_view& response)
+    void OptimizeDocumentOnlineResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
-        m_Document = std::shared_ptr< std::istream >(new std::istringstream(std::string(response), std::ios_base::in));
+        m_Document = parseFilesCollection(std::make_tuple("", contentType, response));
     }
 
     /*
@@ -3893,7 +3966,7 @@ namespace aspose::words::cloud::responses {
         return m_Result;
     }
 
-    void ProtectDocumentResponse::deserialize(const std::string_view& response)
+    void ProtectDocumentResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
         auto json = ::nlohmann::json::parse(response);
         m_Result = std::make_shared< aspose::words::cloud::models::ProtectionDataResponse >();
@@ -3908,24 +3981,24 @@ namespace aspose::words::cloud::responses {
         return m_Model;
     }
 
-    std::shared_ptr< std::istream > ProtectDocumentOnlineResponse::getDocument() const
+    std::shared_ptr< std::map<std::wstring, std::shared_ptr<std::istream>> > ProtectDocumentOnlineResponse::getDocument() const
     {
         return m_Document;
     }
 
-    void ProtectDocumentOnlineResponse::deserialize(const std::string_view& response)
+    void ProtectDocumentOnlineResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
-        std::unordered_map<std::string, std::string_view> parts;
+        std::unordered_map<std::string, std::tuple<std::string, std::string, std::string_view> > parts;
         parseMultipart(response, parts);
         if (parts.find("Model") != parts.end()) {
-            const std::string_view& part = parts.at("Model");
-            auto json = ::nlohmann::json::parse(part);
+            const auto& part = parts.at("Model");
+            auto json = ::nlohmann::json::parse(std::get<2>(part));
             m_Model = std::make_shared< aspose::words::cloud::models::ProtectionDataResponse >();
             m_Model->fromJson(&json);
         }
         if (parts.find("Document") != parts.end()) {
-            const std::string_view& part = parts.at("Document");
-            m_Document = std::shared_ptr< std::istream >(new std::istringstream(std::string(part), std::ios_base::in));
+            const auto& part = parts.at("Document");
+            m_Document = parseFilesCollection(part);
         }
     }
 
@@ -3937,7 +4010,7 @@ namespace aspose::words::cloud::responses {
         return m_Result;
     }
 
-    void RejectAllRevisionsResponse::deserialize(const std::string_view& response)
+    void RejectAllRevisionsResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
         auto json = ::nlohmann::json::parse(response);
         m_Result = std::make_shared< aspose::words::cloud::models::RevisionsModificationResponse >();
@@ -3952,24 +4025,24 @@ namespace aspose::words::cloud::responses {
         return m_Model;
     }
 
-    std::shared_ptr< std::istream > RejectAllRevisionsOnlineResponse::getDocument() const
+    std::shared_ptr< std::map<std::wstring, std::shared_ptr<std::istream>> > RejectAllRevisionsOnlineResponse::getDocument() const
     {
         return m_Document;
     }
 
-    void RejectAllRevisionsOnlineResponse::deserialize(const std::string_view& response)
+    void RejectAllRevisionsOnlineResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
-        std::unordered_map<std::string, std::string_view> parts;
+        std::unordered_map<std::string, std::tuple<std::string, std::string, std::string_view> > parts;
         parseMultipart(response, parts);
         if (parts.find("Model") != parts.end()) {
-            const std::string_view& part = parts.at("Model");
-            auto json = ::nlohmann::json::parse(part);
+            const auto& part = parts.at("Model");
+            auto json = ::nlohmann::json::parse(std::get<2>(part));
             m_Model = std::make_shared< aspose::words::cloud::models::RevisionsModificationResponse >();
             m_Model->fromJson(&json);
         }
         if (parts.find("Document") != parts.end()) {
-            const std::string_view& part = parts.at("Document");
-            m_Document = std::shared_ptr< std::istream >(new std::istringstream(std::string(part), std::ios_base::in));
+            const auto& part = parts.at("Document");
+            m_Document = parseFilesCollection(part);
         }
     }
 
@@ -3981,7 +4054,7 @@ namespace aspose::words::cloud::responses {
         return m_Result;
     }
 
-    void RemoveRangeResponse::deserialize(const std::string_view& response)
+    void RemoveRangeResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
         auto json = ::nlohmann::json::parse(response);
         m_Result = std::make_shared< aspose::words::cloud::models::DocumentResponse >();
@@ -3996,24 +4069,24 @@ namespace aspose::words::cloud::responses {
         return m_Model;
     }
 
-    std::shared_ptr< std::istream > RemoveRangeOnlineResponse::getDocument() const
+    std::shared_ptr< std::map<std::wstring, std::shared_ptr<std::istream>> > RemoveRangeOnlineResponse::getDocument() const
     {
         return m_Document;
     }
 
-    void RemoveRangeOnlineResponse::deserialize(const std::string_view& response)
+    void RemoveRangeOnlineResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
-        std::unordered_map<std::string, std::string_view> parts;
+        std::unordered_map<std::string, std::tuple<std::string, std::string, std::string_view> > parts;
         parseMultipart(response, parts);
         if (parts.find("Model") != parts.end()) {
-            const std::string_view& part = parts.at("Model");
-            auto json = ::nlohmann::json::parse(part);
+            const auto& part = parts.at("Model");
+            auto json = ::nlohmann::json::parse(std::get<2>(part));
             m_Model = std::make_shared< aspose::words::cloud::models::DocumentResponse >();
             m_Model->fromJson(&json);
         }
         if (parts.find("Document") != parts.end()) {
-            const std::string_view& part = parts.at("Document");
-            m_Document = std::shared_ptr< std::istream >(new std::istringstream(std::string(part), std::ios_base::in));
+            const auto& part = parts.at("Document");
+            m_Document = parseFilesCollection(part);
         }
     }
 
@@ -4025,7 +4098,7 @@ namespace aspose::words::cloud::responses {
         return m_Result;
     }
 
-    void RenderDrawingObjectResponse::deserialize(const std::string_view& response)
+    void RenderDrawingObjectResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
         m_Result = std::shared_ptr< std::istream >(new std::istringstream(std::string(response), std::ios_base::in));
     }
@@ -4038,7 +4111,7 @@ namespace aspose::words::cloud::responses {
         return m_Result;
     }
 
-    void RenderDrawingObjectOnlineResponse::deserialize(const std::string_view& response)
+    void RenderDrawingObjectOnlineResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
         m_Result = std::shared_ptr< std::istream >(new std::istringstream(std::string(response), std::ios_base::in));
     }
@@ -4051,7 +4124,7 @@ namespace aspose::words::cloud::responses {
         return m_Result;
     }
 
-    void RenderMathObjectResponse::deserialize(const std::string_view& response)
+    void RenderMathObjectResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
         m_Result = std::shared_ptr< std::istream >(new std::istringstream(std::string(response), std::ios_base::in));
     }
@@ -4064,7 +4137,7 @@ namespace aspose::words::cloud::responses {
         return m_Result;
     }
 
-    void RenderMathObjectOnlineResponse::deserialize(const std::string_view& response)
+    void RenderMathObjectOnlineResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
         m_Result = std::shared_ptr< std::istream >(new std::istringstream(std::string(response), std::ios_base::in));
     }
@@ -4077,7 +4150,7 @@ namespace aspose::words::cloud::responses {
         return m_Result;
     }
 
-    void RenderPageResponse::deserialize(const std::string_view& response)
+    void RenderPageResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
         m_Result = std::shared_ptr< std::istream >(new std::istringstream(std::string(response), std::ios_base::in));
     }
@@ -4090,7 +4163,7 @@ namespace aspose::words::cloud::responses {
         return m_Result;
     }
 
-    void RenderPageOnlineResponse::deserialize(const std::string_view& response)
+    void RenderPageOnlineResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
         m_Result = std::shared_ptr< std::istream >(new std::istringstream(std::string(response), std::ios_base::in));
     }
@@ -4103,7 +4176,7 @@ namespace aspose::words::cloud::responses {
         return m_Result;
     }
 
-    void RenderParagraphResponse::deserialize(const std::string_view& response)
+    void RenderParagraphResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
         m_Result = std::shared_ptr< std::istream >(new std::istringstream(std::string(response), std::ios_base::in));
     }
@@ -4116,7 +4189,7 @@ namespace aspose::words::cloud::responses {
         return m_Result;
     }
 
-    void RenderParagraphOnlineResponse::deserialize(const std::string_view& response)
+    void RenderParagraphOnlineResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
         m_Result = std::shared_ptr< std::istream >(new std::istringstream(std::string(response), std::ios_base::in));
     }
@@ -4129,7 +4202,7 @@ namespace aspose::words::cloud::responses {
         return m_Result;
     }
 
-    void RenderTableResponse::deserialize(const std::string_view& response)
+    void RenderTableResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
         m_Result = std::shared_ptr< std::istream >(new std::istringstream(std::string(response), std::ios_base::in));
     }
@@ -4142,7 +4215,7 @@ namespace aspose::words::cloud::responses {
         return m_Result;
     }
 
-    void RenderTableOnlineResponse::deserialize(const std::string_view& response)
+    void RenderTableOnlineResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
         m_Result = std::shared_ptr< std::istream >(new std::istringstream(std::string(response), std::ios_base::in));
     }
@@ -4155,7 +4228,7 @@ namespace aspose::words::cloud::responses {
         return m_Result;
     }
 
-    void ReplaceTextResponse::deserialize(const std::string_view& response)
+    void ReplaceTextResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
         auto json = ::nlohmann::json::parse(response);
         m_Result = std::make_shared< aspose::words::cloud::models::ReplaceTextResponse >();
@@ -4170,24 +4243,24 @@ namespace aspose::words::cloud::responses {
         return m_Model;
     }
 
-    std::shared_ptr< std::istream > ReplaceTextOnlineResponse::getDocument() const
+    std::shared_ptr< std::map<std::wstring, std::shared_ptr<std::istream>> > ReplaceTextOnlineResponse::getDocument() const
     {
         return m_Document;
     }
 
-    void ReplaceTextOnlineResponse::deserialize(const std::string_view& response)
+    void ReplaceTextOnlineResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
-        std::unordered_map<std::string, std::string_view> parts;
+        std::unordered_map<std::string, std::tuple<std::string, std::string, std::string_view> > parts;
         parseMultipart(response, parts);
         if (parts.find("Model") != parts.end()) {
-            const std::string_view& part = parts.at("Model");
-            auto json = ::nlohmann::json::parse(part);
+            const auto& part = parts.at("Model");
+            auto json = ::nlohmann::json::parse(std::get<2>(part));
             m_Model = std::make_shared< aspose::words::cloud::models::ReplaceTextResponse >();
             m_Model->fromJson(&json);
         }
         if (parts.find("Document") != parts.end()) {
-            const std::string_view& part = parts.at("Document");
-            m_Document = std::shared_ptr< std::istream >(new std::istringstream(std::string(part), std::ios_base::in));
+            const auto& part = parts.at("Document");
+            m_Document = parseFilesCollection(part);
         }
     }
 
@@ -4199,7 +4272,7 @@ namespace aspose::words::cloud::responses {
         return m_Result;
     }
 
-    void ReplaceWithTextResponse::deserialize(const std::string_view& response)
+    void ReplaceWithTextResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
         auto json = ::nlohmann::json::parse(response);
         m_Result = std::make_shared< aspose::words::cloud::models::DocumentResponse >();
@@ -4214,24 +4287,24 @@ namespace aspose::words::cloud::responses {
         return m_Model;
     }
 
-    std::shared_ptr< std::istream > ReplaceWithTextOnlineResponse::getDocument() const
+    std::shared_ptr< std::map<std::wstring, std::shared_ptr<std::istream>> > ReplaceWithTextOnlineResponse::getDocument() const
     {
         return m_Document;
     }
 
-    void ReplaceWithTextOnlineResponse::deserialize(const std::string_view& response)
+    void ReplaceWithTextOnlineResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
-        std::unordered_map<std::string, std::string_view> parts;
+        std::unordered_map<std::string, std::tuple<std::string, std::string, std::string_view> > parts;
         parseMultipart(response, parts);
         if (parts.find("Model") != parts.end()) {
-            const std::string_view& part = parts.at("Model");
-            auto json = ::nlohmann::json::parse(part);
+            const auto& part = parts.at("Model");
+            auto json = ::nlohmann::json::parse(std::get<2>(part));
             m_Model = std::make_shared< aspose::words::cloud::models::DocumentResponse >();
             m_Model->fromJson(&json);
         }
         if (parts.find("Document") != parts.end()) {
-            const std::string_view& part = parts.at("Document");
-            m_Document = std::shared_ptr< std::istream >(new std::istringstream(std::string(part), std::ios_base::in));
+            const auto& part = parts.at("Document");
+            m_Document = parseFilesCollection(part);
         }
     }
 
@@ -4239,7 +4312,7 @@ namespace aspose::words::cloud::responses {
      * ResetCache request implementation
      */
 
-    void ResetCacheResponse::deserialize(const std::string_view& response)
+    void ResetCacheResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
     }
 
@@ -4251,7 +4324,7 @@ namespace aspose::words::cloud::responses {
         return m_Result;
     }
 
-    void SaveAsResponse::deserialize(const std::string_view& response)
+    void SaveAsResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
         auto json = ::nlohmann::json::parse(response);
         m_Result = std::make_shared< aspose::words::cloud::models::SaveResponse >();
@@ -4266,24 +4339,24 @@ namespace aspose::words::cloud::responses {
         return m_Model;
     }
 
-    std::shared_ptr< std::istream > SaveAsOnlineResponse::getDocument() const
+    std::shared_ptr< std::map<std::wstring, std::shared_ptr<std::istream>> > SaveAsOnlineResponse::getDocument() const
     {
         return m_Document;
     }
 
-    void SaveAsOnlineResponse::deserialize(const std::string_view& response)
+    void SaveAsOnlineResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
-        std::unordered_map<std::string, std::string_view> parts;
+        std::unordered_map<std::string, std::tuple<std::string, std::string, std::string_view> > parts;
         parseMultipart(response, parts);
         if (parts.find("Model") != parts.end()) {
-            const std::string_view& part = parts.at("Model");
-            auto json = ::nlohmann::json::parse(part);
+            const auto& part = parts.at("Model");
+            auto json = ::nlohmann::json::parse(std::get<2>(part));
             m_Model = std::make_shared< aspose::words::cloud::models::SaveResponse >();
             m_Model->fromJson(&json);
         }
         if (parts.find("Document") != parts.end()) {
-            const std::string_view& part = parts.at("Document");
-            m_Document = std::shared_ptr< std::istream >(new std::istringstream(std::string(part), std::ios_base::in));
+            const auto& part = parts.at("Document");
+            m_Document = parseFilesCollection(part);
         }
     }
 
@@ -4295,7 +4368,7 @@ namespace aspose::words::cloud::responses {
         return m_Result;
     }
 
-    void SaveAsRangeResponse::deserialize(const std::string_view& response)
+    void SaveAsRangeResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
         auto json = ::nlohmann::json::parse(response);
         m_Result = std::make_shared< aspose::words::cloud::models::DocumentResponse >();
@@ -4310,24 +4383,24 @@ namespace aspose::words::cloud::responses {
         return m_Model;
     }
 
-    std::shared_ptr< std::istream > SaveAsRangeOnlineResponse::getDocument() const
+    std::shared_ptr< std::map<std::wstring, std::shared_ptr<std::istream>> > SaveAsRangeOnlineResponse::getDocument() const
     {
         return m_Document;
     }
 
-    void SaveAsRangeOnlineResponse::deserialize(const std::string_view& response)
+    void SaveAsRangeOnlineResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
-        std::unordered_map<std::string, std::string_view> parts;
+        std::unordered_map<std::string, std::tuple<std::string, std::string, std::string_view> > parts;
         parseMultipart(response, parts);
         if (parts.find("Model") != parts.end()) {
-            const std::string_view& part = parts.at("Model");
-            auto json = ::nlohmann::json::parse(part);
+            const auto& part = parts.at("Model");
+            auto json = ::nlohmann::json::parse(std::get<2>(part));
             m_Model = std::make_shared< aspose::words::cloud::models::DocumentResponse >();
             m_Model->fromJson(&json);
         }
         if (parts.find("Document") != parts.end()) {
-            const std::string_view& part = parts.at("Document");
-            m_Document = std::shared_ptr< std::istream >(new std::istringstream(std::string(part), std::ios_base::in));
+            const auto& part = parts.at("Document");
+            m_Document = parseFilesCollection(part);
         }
     }
 
@@ -4339,7 +4412,7 @@ namespace aspose::words::cloud::responses {
         return m_Result;
     }
 
-    void SaveAsTiffResponse::deserialize(const std::string_view& response)
+    void SaveAsTiffResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
         auto json = ::nlohmann::json::parse(response);
         m_Result = std::make_shared< aspose::words::cloud::models::SaveResponse >();
@@ -4354,24 +4427,24 @@ namespace aspose::words::cloud::responses {
         return m_Model;
     }
 
-    std::shared_ptr< std::istream > SaveAsTiffOnlineResponse::getDocument() const
+    std::shared_ptr< std::map<std::wstring, std::shared_ptr<std::istream>> > SaveAsTiffOnlineResponse::getDocument() const
     {
         return m_Document;
     }
 
-    void SaveAsTiffOnlineResponse::deserialize(const std::string_view& response)
+    void SaveAsTiffOnlineResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
-        std::unordered_map<std::string, std::string_view> parts;
+        std::unordered_map<std::string, std::tuple<std::string, std::string, std::string_view> > parts;
         parseMultipart(response, parts);
         if (parts.find("Model") != parts.end()) {
-            const std::string_view& part = parts.at("Model");
-            auto json = ::nlohmann::json::parse(part);
+            const auto& part = parts.at("Model");
+            auto json = ::nlohmann::json::parse(std::get<2>(part));
             m_Model = std::make_shared< aspose::words::cloud::models::SaveResponse >();
             m_Model->fromJson(&json);
         }
         if (parts.find("Document") != parts.end()) {
-            const std::string_view& part = parts.at("Document");
-            m_Document = std::shared_ptr< std::istream >(new std::istringstream(std::string(part), std::ios_base::in));
+            const auto& part = parts.at("Document");
+            m_Document = parseFilesCollection(part);
         }
     }
 
@@ -4383,7 +4456,7 @@ namespace aspose::words::cloud::responses {
         return m_Result;
     }
 
-    void SearchResponse::deserialize(const std::string_view& response)
+    void SearchResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
         auto json = ::nlohmann::json::parse(response);
         m_Result = std::make_shared< aspose::words::cloud::models::SearchResponse >();
@@ -4398,7 +4471,7 @@ namespace aspose::words::cloud::responses {
         return m_Result;
     }
 
-    void SearchOnlineResponse::deserialize(const std::string_view& response)
+    void SearchOnlineResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
         auto json = ::nlohmann::json::parse(response);
         m_Result = std::make_shared< aspose::words::cloud::models::SearchResponse >();
@@ -4413,7 +4486,7 @@ namespace aspose::words::cloud::responses {
         return m_Result;
     }
 
-    void SplitDocumentResponse::deserialize(const std::string_view& response)
+    void SplitDocumentResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
         auto json = ::nlohmann::json::parse(response);
         m_Result = std::make_shared< aspose::words::cloud::models::SplitDocumentResponse >();
@@ -4428,24 +4501,24 @@ namespace aspose::words::cloud::responses {
         return m_Model;
     }
 
-    std::shared_ptr< std::istream > SplitDocumentOnlineResponse::getDocument() const
+    std::shared_ptr< std::map<std::wstring, std::shared_ptr<std::istream>> > SplitDocumentOnlineResponse::getDocument() const
     {
         return m_Document;
     }
 
-    void SplitDocumentOnlineResponse::deserialize(const std::string_view& response)
+    void SplitDocumentOnlineResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
-        std::unordered_map<std::string, std::string_view> parts;
+        std::unordered_map<std::string, std::tuple<std::string, std::string, std::string_view> > parts;
         parseMultipart(response, parts);
         if (parts.find("Model") != parts.end()) {
-            const std::string_view& part = parts.at("Model");
-            auto json = ::nlohmann::json::parse(part);
+            const auto& part = parts.at("Model");
+            auto json = ::nlohmann::json::parse(std::get<2>(part));
             m_Model = std::make_shared< aspose::words::cloud::models::SplitDocumentResponse >();
             m_Model->fromJson(&json);
         }
         if (parts.find("Document") != parts.end()) {
-            const std::string_view& part = parts.at("Document");
-            m_Document = std::shared_ptr< std::istream >(new std::istringstream(std::string(part), std::ios_base::in));
+            const auto& part = parts.at("Document");
+            m_Document = parseFilesCollection(part);
         }
     }
 
@@ -4457,7 +4530,7 @@ namespace aspose::words::cloud::responses {
         return m_Result;
     }
 
-    void UnprotectDocumentResponse::deserialize(const std::string_view& response)
+    void UnprotectDocumentResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
         auto json = ::nlohmann::json::parse(response);
         m_Result = std::make_shared< aspose::words::cloud::models::ProtectionDataResponse >();
@@ -4472,24 +4545,24 @@ namespace aspose::words::cloud::responses {
         return m_Model;
     }
 
-    std::shared_ptr< std::istream > UnprotectDocumentOnlineResponse::getDocument() const
+    std::shared_ptr< std::map<std::wstring, std::shared_ptr<std::istream>> > UnprotectDocumentOnlineResponse::getDocument() const
     {
         return m_Document;
     }
 
-    void UnprotectDocumentOnlineResponse::deserialize(const std::string_view& response)
+    void UnprotectDocumentOnlineResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
-        std::unordered_map<std::string, std::string_view> parts;
+        std::unordered_map<std::string, std::tuple<std::string, std::string, std::string_view> > parts;
         parseMultipart(response, parts);
         if (parts.find("Model") != parts.end()) {
-            const std::string_view& part = parts.at("Model");
-            auto json = ::nlohmann::json::parse(part);
+            const auto& part = parts.at("Model");
+            auto json = ::nlohmann::json::parse(std::get<2>(part));
             m_Model = std::make_shared< aspose::words::cloud::models::ProtectionDataResponse >();
             m_Model->fromJson(&json);
         }
         if (parts.find("Document") != parts.end()) {
-            const std::string_view& part = parts.at("Document");
-            m_Document = std::shared_ptr< std::istream >(new std::istringstream(std::string(part), std::ios_base::in));
+            const auto& part = parts.at("Document");
+            m_Document = parseFilesCollection(part);
         }
     }
 
@@ -4501,7 +4574,7 @@ namespace aspose::words::cloud::responses {
         return m_Result;
     }
 
-    void UpdateBookmarkResponse::deserialize(const std::string_view& response)
+    void UpdateBookmarkResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
         auto json = ::nlohmann::json::parse(response);
         m_Result = std::make_shared< aspose::words::cloud::models::BookmarkResponse >();
@@ -4516,24 +4589,24 @@ namespace aspose::words::cloud::responses {
         return m_Model;
     }
 
-    std::shared_ptr< std::istream > UpdateBookmarkOnlineResponse::getDocument() const
+    std::shared_ptr< std::map<std::wstring, std::shared_ptr<std::istream>> > UpdateBookmarkOnlineResponse::getDocument() const
     {
         return m_Document;
     }
 
-    void UpdateBookmarkOnlineResponse::deserialize(const std::string_view& response)
+    void UpdateBookmarkOnlineResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
-        std::unordered_map<std::string, std::string_view> parts;
+        std::unordered_map<std::string, std::tuple<std::string, std::string, std::string_view> > parts;
         parseMultipart(response, parts);
         if (parts.find("Model") != parts.end()) {
-            const std::string_view& part = parts.at("Model");
-            auto json = ::nlohmann::json::parse(part);
+            const auto& part = parts.at("Model");
+            auto json = ::nlohmann::json::parse(std::get<2>(part));
             m_Model = std::make_shared< aspose::words::cloud::models::BookmarkResponse >();
             m_Model->fromJson(&json);
         }
         if (parts.find("Document") != parts.end()) {
-            const std::string_view& part = parts.at("Document");
-            m_Document = std::shared_ptr< std::istream >(new std::istringstream(std::string(part), std::ios_base::in));
+            const auto& part = parts.at("Document");
+            m_Document = parseFilesCollection(part);
         }
     }
 
@@ -4545,7 +4618,7 @@ namespace aspose::words::cloud::responses {
         return m_Result;
     }
 
-    void UpdateBorderResponse::deserialize(const std::string_view& response)
+    void UpdateBorderResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
         auto json = ::nlohmann::json::parse(response);
         m_Result = std::make_shared< aspose::words::cloud::models::BorderResponse >();
@@ -4560,24 +4633,24 @@ namespace aspose::words::cloud::responses {
         return m_Model;
     }
 
-    std::shared_ptr< std::istream > UpdateBorderOnlineResponse::getDocument() const
+    std::shared_ptr< std::map<std::wstring, std::shared_ptr<std::istream>> > UpdateBorderOnlineResponse::getDocument() const
     {
         return m_Document;
     }
 
-    void UpdateBorderOnlineResponse::deserialize(const std::string_view& response)
+    void UpdateBorderOnlineResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
-        std::unordered_map<std::string, std::string_view> parts;
+        std::unordered_map<std::string, std::tuple<std::string, std::string, std::string_view> > parts;
         parseMultipart(response, parts);
         if (parts.find("Model") != parts.end()) {
-            const std::string_view& part = parts.at("Model");
-            auto json = ::nlohmann::json::parse(part);
+            const auto& part = parts.at("Model");
+            auto json = ::nlohmann::json::parse(std::get<2>(part));
             m_Model = std::make_shared< aspose::words::cloud::models::BorderResponse >();
             m_Model->fromJson(&json);
         }
         if (parts.find("Document") != parts.end()) {
-            const std::string_view& part = parts.at("Document");
-            m_Document = std::shared_ptr< std::istream >(new std::istringstream(std::string(part), std::ios_base::in));
+            const auto& part = parts.at("Document");
+            m_Document = parseFilesCollection(part);
         }
     }
 
@@ -4589,7 +4662,7 @@ namespace aspose::words::cloud::responses {
         return m_Result;
     }
 
-    void UpdateCommentResponse::deserialize(const std::string_view& response)
+    void UpdateCommentResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
         auto json = ::nlohmann::json::parse(response);
         m_Result = std::make_shared< aspose::words::cloud::models::CommentResponse >();
@@ -4604,24 +4677,24 @@ namespace aspose::words::cloud::responses {
         return m_Model;
     }
 
-    std::shared_ptr< std::istream > UpdateCommentOnlineResponse::getDocument() const
+    std::shared_ptr< std::map<std::wstring, std::shared_ptr<std::istream>> > UpdateCommentOnlineResponse::getDocument() const
     {
         return m_Document;
     }
 
-    void UpdateCommentOnlineResponse::deserialize(const std::string_view& response)
+    void UpdateCommentOnlineResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
-        std::unordered_map<std::string, std::string_view> parts;
+        std::unordered_map<std::string, std::tuple<std::string, std::string, std::string_view> > parts;
         parseMultipart(response, parts);
         if (parts.find("Model") != parts.end()) {
-            const std::string_view& part = parts.at("Model");
-            auto json = ::nlohmann::json::parse(part);
+            const auto& part = parts.at("Model");
+            auto json = ::nlohmann::json::parse(std::get<2>(part));
             m_Model = std::make_shared< aspose::words::cloud::models::CommentResponse >();
             m_Model->fromJson(&json);
         }
         if (parts.find("Document") != parts.end()) {
-            const std::string_view& part = parts.at("Document");
-            m_Document = std::shared_ptr< std::istream >(new std::istringstream(std::string(part), std::ios_base::in));
+            const auto& part = parts.at("Document");
+            m_Document = parseFilesCollection(part);
         }
     }
 
@@ -4633,7 +4706,7 @@ namespace aspose::words::cloud::responses {
         return m_Result;
     }
 
-    void UpdateCustomXmlPartResponse::deserialize(const std::string_view& response)
+    void UpdateCustomXmlPartResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
         auto json = ::nlohmann::json::parse(response);
         m_Result = std::make_shared< aspose::words::cloud::models::CustomXmlPartResponse >();
@@ -4648,24 +4721,24 @@ namespace aspose::words::cloud::responses {
         return m_Model;
     }
 
-    std::shared_ptr< std::istream > UpdateCustomXmlPartOnlineResponse::getDocument() const
+    std::shared_ptr< std::map<std::wstring, std::shared_ptr<std::istream>> > UpdateCustomXmlPartOnlineResponse::getDocument() const
     {
         return m_Document;
     }
 
-    void UpdateCustomXmlPartOnlineResponse::deserialize(const std::string_view& response)
+    void UpdateCustomXmlPartOnlineResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
-        std::unordered_map<std::string, std::string_view> parts;
+        std::unordered_map<std::string, std::tuple<std::string, std::string, std::string_view> > parts;
         parseMultipart(response, parts);
         if (parts.find("Model") != parts.end()) {
-            const std::string_view& part = parts.at("Model");
-            auto json = ::nlohmann::json::parse(part);
+            const auto& part = parts.at("Model");
+            auto json = ::nlohmann::json::parse(std::get<2>(part));
             m_Model = std::make_shared< aspose::words::cloud::models::CustomXmlPartResponse >();
             m_Model->fromJson(&json);
         }
         if (parts.find("Document") != parts.end()) {
-            const std::string_view& part = parts.at("Document");
-            m_Document = std::shared_ptr< std::istream >(new std::istringstream(std::string(part), std::ios_base::in));
+            const auto& part = parts.at("Document");
+            m_Document = parseFilesCollection(part);
         }
     }
 
@@ -4677,7 +4750,7 @@ namespace aspose::words::cloud::responses {
         return m_Result;
     }
 
-    void UpdateDrawingObjectResponse::deserialize(const std::string_view& response)
+    void UpdateDrawingObjectResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
         auto json = ::nlohmann::json::parse(response);
         m_Result = std::make_shared< aspose::words::cloud::models::DrawingObjectResponse >();
@@ -4692,24 +4765,24 @@ namespace aspose::words::cloud::responses {
         return m_Model;
     }
 
-    std::shared_ptr< std::istream > UpdateDrawingObjectOnlineResponse::getDocument() const
+    std::shared_ptr< std::map<std::wstring, std::shared_ptr<std::istream>> > UpdateDrawingObjectOnlineResponse::getDocument() const
     {
         return m_Document;
     }
 
-    void UpdateDrawingObjectOnlineResponse::deserialize(const std::string_view& response)
+    void UpdateDrawingObjectOnlineResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
-        std::unordered_map<std::string, std::string_view> parts;
+        std::unordered_map<std::string, std::tuple<std::string, std::string, std::string_view> > parts;
         parseMultipart(response, parts);
         if (parts.find("Model") != parts.end()) {
-            const std::string_view& part = parts.at("Model");
-            auto json = ::nlohmann::json::parse(part);
+            const auto& part = parts.at("Model");
+            auto json = ::nlohmann::json::parse(std::get<2>(part));
             m_Model = std::make_shared< aspose::words::cloud::models::DrawingObjectResponse >();
             m_Model->fromJson(&json);
         }
         if (parts.find("Document") != parts.end()) {
-            const std::string_view& part = parts.at("Document");
-            m_Document = std::shared_ptr< std::istream >(new std::istringstream(std::string(part), std::ios_base::in));
+            const auto& part = parts.at("Document");
+            m_Document = parseFilesCollection(part);
         }
     }
 
@@ -4721,7 +4794,7 @@ namespace aspose::words::cloud::responses {
         return m_Result;
     }
 
-    void UpdateFieldResponse::deserialize(const std::string_view& response)
+    void UpdateFieldResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
         auto json = ::nlohmann::json::parse(response);
         m_Result = std::make_shared< aspose::words::cloud::models::FieldResponse >();
@@ -4736,24 +4809,24 @@ namespace aspose::words::cloud::responses {
         return m_Model;
     }
 
-    std::shared_ptr< std::istream > UpdateFieldOnlineResponse::getDocument() const
+    std::shared_ptr< std::map<std::wstring, std::shared_ptr<std::istream>> > UpdateFieldOnlineResponse::getDocument() const
     {
         return m_Document;
     }
 
-    void UpdateFieldOnlineResponse::deserialize(const std::string_view& response)
+    void UpdateFieldOnlineResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
-        std::unordered_map<std::string, std::string_view> parts;
+        std::unordered_map<std::string, std::tuple<std::string, std::string, std::string_view> > parts;
         parseMultipart(response, parts);
         if (parts.find("Model") != parts.end()) {
-            const std::string_view& part = parts.at("Model");
-            auto json = ::nlohmann::json::parse(part);
+            const auto& part = parts.at("Model");
+            auto json = ::nlohmann::json::parse(std::get<2>(part));
             m_Model = std::make_shared< aspose::words::cloud::models::FieldResponse >();
             m_Model->fromJson(&json);
         }
         if (parts.find("Document") != parts.end()) {
-            const std::string_view& part = parts.at("Document");
-            m_Document = std::shared_ptr< std::istream >(new std::istringstream(std::string(part), std::ios_base::in));
+            const auto& part = parts.at("Document");
+            m_Document = parseFilesCollection(part);
         }
     }
 
@@ -4765,7 +4838,7 @@ namespace aspose::words::cloud::responses {
         return m_Result;
     }
 
-    void UpdateFieldsResponse::deserialize(const std::string_view& response)
+    void UpdateFieldsResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
         auto json = ::nlohmann::json::parse(response);
         m_Result = std::make_shared< aspose::words::cloud::models::DocumentResponse >();
@@ -4780,24 +4853,24 @@ namespace aspose::words::cloud::responses {
         return m_Model;
     }
 
-    std::shared_ptr< std::istream > UpdateFieldsOnlineResponse::getDocument() const
+    std::shared_ptr< std::map<std::wstring, std::shared_ptr<std::istream>> > UpdateFieldsOnlineResponse::getDocument() const
     {
         return m_Document;
     }
 
-    void UpdateFieldsOnlineResponse::deserialize(const std::string_view& response)
+    void UpdateFieldsOnlineResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
-        std::unordered_map<std::string, std::string_view> parts;
+        std::unordered_map<std::string, std::tuple<std::string, std::string, std::string_view> > parts;
         parseMultipart(response, parts);
         if (parts.find("Model") != parts.end()) {
-            const std::string_view& part = parts.at("Model");
-            auto json = ::nlohmann::json::parse(part);
+            const auto& part = parts.at("Model");
+            auto json = ::nlohmann::json::parse(std::get<2>(part));
             m_Model = std::make_shared< aspose::words::cloud::models::DocumentResponse >();
             m_Model->fromJson(&json);
         }
         if (parts.find("Document") != parts.end()) {
-            const std::string_view& part = parts.at("Document");
-            m_Document = std::shared_ptr< std::istream >(new std::istringstream(std::string(part), std::ios_base::in));
+            const auto& part = parts.at("Document");
+            m_Document = parseFilesCollection(part);
         }
     }
 
@@ -4809,7 +4882,7 @@ namespace aspose::words::cloud::responses {
         return m_Result;
     }
 
-    void UpdateFootnoteResponse::deserialize(const std::string_view& response)
+    void UpdateFootnoteResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
         auto json = ::nlohmann::json::parse(response);
         m_Result = std::make_shared< aspose::words::cloud::models::FootnoteResponse >();
@@ -4824,24 +4897,24 @@ namespace aspose::words::cloud::responses {
         return m_Model;
     }
 
-    std::shared_ptr< std::istream > UpdateFootnoteOnlineResponse::getDocument() const
+    std::shared_ptr< std::map<std::wstring, std::shared_ptr<std::istream>> > UpdateFootnoteOnlineResponse::getDocument() const
     {
         return m_Document;
     }
 
-    void UpdateFootnoteOnlineResponse::deserialize(const std::string_view& response)
+    void UpdateFootnoteOnlineResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
-        std::unordered_map<std::string, std::string_view> parts;
+        std::unordered_map<std::string, std::tuple<std::string, std::string, std::string_view> > parts;
         parseMultipart(response, parts);
         if (parts.find("Model") != parts.end()) {
-            const std::string_view& part = parts.at("Model");
-            auto json = ::nlohmann::json::parse(part);
+            const auto& part = parts.at("Model");
+            auto json = ::nlohmann::json::parse(std::get<2>(part));
             m_Model = std::make_shared< aspose::words::cloud::models::FootnoteResponse >();
             m_Model->fromJson(&json);
         }
         if (parts.find("Document") != parts.end()) {
-            const std::string_view& part = parts.at("Document");
-            m_Document = std::shared_ptr< std::istream >(new std::istringstream(std::string(part), std::ios_base::in));
+            const auto& part = parts.at("Document");
+            m_Document = parseFilesCollection(part);
         }
     }
 
@@ -4853,7 +4926,7 @@ namespace aspose::words::cloud::responses {
         return m_Result;
     }
 
-    void UpdateFormFieldResponse::deserialize(const std::string_view& response)
+    void UpdateFormFieldResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
         auto json = ::nlohmann::json::parse(response);
         m_Result = std::make_shared< aspose::words::cloud::models::FormFieldResponse >();
@@ -4868,24 +4941,24 @@ namespace aspose::words::cloud::responses {
         return m_Model;
     }
 
-    std::shared_ptr< std::istream > UpdateFormFieldOnlineResponse::getDocument() const
+    std::shared_ptr< std::map<std::wstring, std::shared_ptr<std::istream>> > UpdateFormFieldOnlineResponse::getDocument() const
     {
         return m_Document;
     }
 
-    void UpdateFormFieldOnlineResponse::deserialize(const std::string_view& response)
+    void UpdateFormFieldOnlineResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
-        std::unordered_map<std::string, std::string_view> parts;
+        std::unordered_map<std::string, std::tuple<std::string, std::string, std::string_view> > parts;
         parseMultipart(response, parts);
         if (parts.find("Model") != parts.end()) {
-            const std::string_view& part = parts.at("Model");
-            auto json = ::nlohmann::json::parse(part);
+            const auto& part = parts.at("Model");
+            auto json = ::nlohmann::json::parse(std::get<2>(part));
             m_Model = std::make_shared< aspose::words::cloud::models::FormFieldResponse >();
             m_Model->fromJson(&json);
         }
         if (parts.find("Document") != parts.end()) {
-            const std::string_view& part = parts.at("Document");
-            m_Document = std::shared_ptr< std::istream >(new std::istringstream(std::string(part), std::ios_base::in));
+            const auto& part = parts.at("Document");
+            m_Document = parseFilesCollection(part);
         }
     }
 
@@ -4897,7 +4970,7 @@ namespace aspose::words::cloud::responses {
         return m_Result;
     }
 
-    void UpdateListResponse::deserialize(const std::string_view& response)
+    void UpdateListResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
         auto json = ::nlohmann::json::parse(response);
         m_Result = std::make_shared< aspose::words::cloud::models::ListResponse >();
@@ -4912,7 +4985,7 @@ namespace aspose::words::cloud::responses {
         return m_Result;
     }
 
-    void UpdateListLevelResponse::deserialize(const std::string_view& response)
+    void UpdateListLevelResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
         auto json = ::nlohmann::json::parse(response);
         m_Result = std::make_shared< aspose::words::cloud::models::ListResponse >();
@@ -4927,24 +5000,24 @@ namespace aspose::words::cloud::responses {
         return m_Model;
     }
 
-    std::shared_ptr< std::istream > UpdateListLevelOnlineResponse::getDocument() const
+    std::shared_ptr< std::map<std::wstring, std::shared_ptr<std::istream>> > UpdateListLevelOnlineResponse::getDocument() const
     {
         return m_Document;
     }
 
-    void UpdateListLevelOnlineResponse::deserialize(const std::string_view& response)
+    void UpdateListLevelOnlineResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
-        std::unordered_map<std::string, std::string_view> parts;
+        std::unordered_map<std::string, std::tuple<std::string, std::string, std::string_view> > parts;
         parseMultipart(response, parts);
         if (parts.find("Model") != parts.end()) {
-            const std::string_view& part = parts.at("Model");
-            auto json = ::nlohmann::json::parse(part);
+            const auto& part = parts.at("Model");
+            auto json = ::nlohmann::json::parse(std::get<2>(part));
             m_Model = std::make_shared< aspose::words::cloud::models::ListResponse >();
             m_Model->fromJson(&json);
         }
         if (parts.find("Document") != parts.end()) {
-            const std::string_view& part = parts.at("Document");
-            m_Document = std::shared_ptr< std::istream >(new std::istringstream(std::string(part), std::ios_base::in));
+            const auto& part = parts.at("Document");
+            m_Document = parseFilesCollection(part);
         }
     }
 
@@ -4956,24 +5029,24 @@ namespace aspose::words::cloud::responses {
         return m_Model;
     }
 
-    std::shared_ptr< std::istream > UpdateListOnlineResponse::getDocument() const
+    std::shared_ptr< std::map<std::wstring, std::shared_ptr<std::istream>> > UpdateListOnlineResponse::getDocument() const
     {
         return m_Document;
     }
 
-    void UpdateListOnlineResponse::deserialize(const std::string_view& response)
+    void UpdateListOnlineResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
-        std::unordered_map<std::string, std::string_view> parts;
+        std::unordered_map<std::string, std::tuple<std::string, std::string, std::string_view> > parts;
         parseMultipart(response, parts);
         if (parts.find("Model") != parts.end()) {
-            const std::string_view& part = parts.at("Model");
-            auto json = ::nlohmann::json::parse(part);
+            const auto& part = parts.at("Model");
+            auto json = ::nlohmann::json::parse(std::get<2>(part));
             m_Model = std::make_shared< aspose::words::cloud::models::ListResponse >();
             m_Model->fromJson(&json);
         }
         if (parts.find("Document") != parts.end()) {
-            const std::string_view& part = parts.at("Document");
-            m_Document = std::shared_ptr< std::istream >(new std::istringstream(std::string(part), std::ios_base::in));
+            const auto& part = parts.at("Document");
+            m_Document = parseFilesCollection(part);
         }
     }
 
@@ -4985,7 +5058,7 @@ namespace aspose::words::cloud::responses {
         return m_Result;
     }
 
-    void UpdateParagraphFormatResponse::deserialize(const std::string_view& response)
+    void UpdateParagraphFormatResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
         auto json = ::nlohmann::json::parse(response);
         m_Result = std::make_shared< aspose::words::cloud::models::ParagraphFormatResponse >();
@@ -5000,24 +5073,24 @@ namespace aspose::words::cloud::responses {
         return m_Model;
     }
 
-    std::shared_ptr< std::istream > UpdateParagraphFormatOnlineResponse::getDocument() const
+    std::shared_ptr< std::map<std::wstring, std::shared_ptr<std::istream>> > UpdateParagraphFormatOnlineResponse::getDocument() const
     {
         return m_Document;
     }
 
-    void UpdateParagraphFormatOnlineResponse::deserialize(const std::string_view& response)
+    void UpdateParagraphFormatOnlineResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
-        std::unordered_map<std::string, std::string_view> parts;
+        std::unordered_map<std::string, std::tuple<std::string, std::string, std::string_view> > parts;
         parseMultipart(response, parts);
         if (parts.find("Model") != parts.end()) {
-            const std::string_view& part = parts.at("Model");
-            auto json = ::nlohmann::json::parse(part);
+            const auto& part = parts.at("Model");
+            auto json = ::nlohmann::json::parse(std::get<2>(part));
             m_Model = std::make_shared< aspose::words::cloud::models::ParagraphFormatResponse >();
             m_Model->fromJson(&json);
         }
         if (parts.find("Document") != parts.end()) {
-            const std::string_view& part = parts.at("Document");
-            m_Document = std::shared_ptr< std::istream >(new std::istringstream(std::string(part), std::ios_base::in));
+            const auto& part = parts.at("Document");
+            m_Document = parseFilesCollection(part);
         }
     }
 
@@ -5029,7 +5102,7 @@ namespace aspose::words::cloud::responses {
         return m_Result;
     }
 
-    void UpdateParagraphListFormatResponse::deserialize(const std::string_view& response)
+    void UpdateParagraphListFormatResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
         auto json = ::nlohmann::json::parse(response);
         m_Result = std::make_shared< aspose::words::cloud::models::ParagraphListFormatResponse >();
@@ -5044,24 +5117,24 @@ namespace aspose::words::cloud::responses {
         return m_Model;
     }
 
-    std::shared_ptr< std::istream > UpdateParagraphListFormatOnlineResponse::getDocument() const
+    std::shared_ptr< std::map<std::wstring, std::shared_ptr<std::istream>> > UpdateParagraphListFormatOnlineResponse::getDocument() const
     {
         return m_Document;
     }
 
-    void UpdateParagraphListFormatOnlineResponse::deserialize(const std::string_view& response)
+    void UpdateParagraphListFormatOnlineResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
-        std::unordered_map<std::string, std::string_view> parts;
+        std::unordered_map<std::string, std::tuple<std::string, std::string, std::string_view> > parts;
         parseMultipart(response, parts);
         if (parts.find("Model") != parts.end()) {
-            const std::string_view& part = parts.at("Model");
-            auto json = ::nlohmann::json::parse(part);
+            const auto& part = parts.at("Model");
+            auto json = ::nlohmann::json::parse(std::get<2>(part));
             m_Model = std::make_shared< aspose::words::cloud::models::ParagraphListFormatResponse >();
             m_Model->fromJson(&json);
         }
         if (parts.find("Document") != parts.end()) {
-            const std::string_view& part = parts.at("Document");
-            m_Document = std::shared_ptr< std::istream >(new std::istringstream(std::string(part), std::ios_base::in));
+            const auto& part = parts.at("Document");
+            m_Document = parseFilesCollection(part);
         }
     }
 
@@ -5073,7 +5146,7 @@ namespace aspose::words::cloud::responses {
         return m_Result;
     }
 
-    void UpdateRunResponse::deserialize(const std::string_view& response)
+    void UpdateRunResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
         auto json = ::nlohmann::json::parse(response);
         m_Result = std::make_shared< aspose::words::cloud::models::RunResponse >();
@@ -5088,7 +5161,7 @@ namespace aspose::words::cloud::responses {
         return m_Result;
     }
 
-    void UpdateRunFontResponse::deserialize(const std::string_view& response)
+    void UpdateRunFontResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
         auto json = ::nlohmann::json::parse(response);
         m_Result = std::make_shared< aspose::words::cloud::models::FontResponse >();
@@ -5103,24 +5176,24 @@ namespace aspose::words::cloud::responses {
         return m_Model;
     }
 
-    std::shared_ptr< std::istream > UpdateRunFontOnlineResponse::getDocument() const
+    std::shared_ptr< std::map<std::wstring, std::shared_ptr<std::istream>> > UpdateRunFontOnlineResponse::getDocument() const
     {
         return m_Document;
     }
 
-    void UpdateRunFontOnlineResponse::deserialize(const std::string_view& response)
+    void UpdateRunFontOnlineResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
-        std::unordered_map<std::string, std::string_view> parts;
+        std::unordered_map<std::string, std::tuple<std::string, std::string, std::string_view> > parts;
         parseMultipart(response, parts);
         if (parts.find("Model") != parts.end()) {
-            const std::string_view& part = parts.at("Model");
-            auto json = ::nlohmann::json::parse(part);
+            const auto& part = parts.at("Model");
+            auto json = ::nlohmann::json::parse(std::get<2>(part));
             m_Model = std::make_shared< aspose::words::cloud::models::FontResponse >();
             m_Model->fromJson(&json);
         }
         if (parts.find("Document") != parts.end()) {
-            const std::string_view& part = parts.at("Document");
-            m_Document = std::shared_ptr< std::istream >(new std::istringstream(std::string(part), std::ios_base::in));
+            const auto& part = parts.at("Document");
+            m_Document = parseFilesCollection(part);
         }
     }
 
@@ -5132,24 +5205,24 @@ namespace aspose::words::cloud::responses {
         return m_Model;
     }
 
-    std::shared_ptr< std::istream > UpdateRunOnlineResponse::getDocument() const
+    std::shared_ptr< std::map<std::wstring, std::shared_ptr<std::istream>> > UpdateRunOnlineResponse::getDocument() const
     {
         return m_Document;
     }
 
-    void UpdateRunOnlineResponse::deserialize(const std::string_view& response)
+    void UpdateRunOnlineResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
-        std::unordered_map<std::string, std::string_view> parts;
+        std::unordered_map<std::string, std::tuple<std::string, std::string, std::string_view> > parts;
         parseMultipart(response, parts);
         if (parts.find("Model") != parts.end()) {
-            const std::string_view& part = parts.at("Model");
-            auto json = ::nlohmann::json::parse(part);
+            const auto& part = parts.at("Model");
+            auto json = ::nlohmann::json::parse(std::get<2>(part));
             m_Model = std::make_shared< aspose::words::cloud::models::RunResponse >();
             m_Model->fromJson(&json);
         }
         if (parts.find("Document") != parts.end()) {
-            const std::string_view& part = parts.at("Document");
-            m_Document = std::shared_ptr< std::istream >(new std::istringstream(std::string(part), std::ios_base::in));
+            const auto& part = parts.at("Document");
+            m_Document = parseFilesCollection(part);
         }
     }
 
@@ -5161,7 +5234,7 @@ namespace aspose::words::cloud::responses {
         return m_Result;
     }
 
-    void UpdateSectionPageSetupResponse::deserialize(const std::string_view& response)
+    void UpdateSectionPageSetupResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
         auto json = ::nlohmann::json::parse(response);
         m_Result = std::make_shared< aspose::words::cloud::models::SectionPageSetupResponse >();
@@ -5176,24 +5249,24 @@ namespace aspose::words::cloud::responses {
         return m_Model;
     }
 
-    std::shared_ptr< std::istream > UpdateSectionPageSetupOnlineResponse::getDocument() const
+    std::shared_ptr< std::map<std::wstring, std::shared_ptr<std::istream>> > UpdateSectionPageSetupOnlineResponse::getDocument() const
     {
         return m_Document;
     }
 
-    void UpdateSectionPageSetupOnlineResponse::deserialize(const std::string_view& response)
+    void UpdateSectionPageSetupOnlineResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
-        std::unordered_map<std::string, std::string_view> parts;
+        std::unordered_map<std::string, std::tuple<std::string, std::string, std::string_view> > parts;
         parseMultipart(response, parts);
         if (parts.find("Model") != parts.end()) {
-            const std::string_view& part = parts.at("Model");
-            auto json = ::nlohmann::json::parse(part);
+            const auto& part = parts.at("Model");
+            auto json = ::nlohmann::json::parse(std::get<2>(part));
             m_Model = std::make_shared< aspose::words::cloud::models::SectionPageSetupResponse >();
             m_Model->fromJson(&json);
         }
         if (parts.find("Document") != parts.end()) {
-            const std::string_view& part = parts.at("Document");
-            m_Document = std::shared_ptr< std::istream >(new std::istringstream(std::string(part), std::ios_base::in));
+            const auto& part = parts.at("Document");
+            m_Document = parseFilesCollection(part);
         }
     }
 
@@ -5205,7 +5278,7 @@ namespace aspose::words::cloud::responses {
         return m_Result;
     }
 
-    void UpdateStyleResponse::deserialize(const std::string_view& response)
+    void UpdateStyleResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
         auto json = ::nlohmann::json::parse(response);
         m_Result = std::make_shared< aspose::words::cloud::models::StyleResponse >();
@@ -5220,24 +5293,24 @@ namespace aspose::words::cloud::responses {
         return m_Model;
     }
 
-    std::shared_ptr< std::istream > UpdateStyleOnlineResponse::getDocument() const
+    std::shared_ptr< std::map<std::wstring, std::shared_ptr<std::istream>> > UpdateStyleOnlineResponse::getDocument() const
     {
         return m_Document;
     }
 
-    void UpdateStyleOnlineResponse::deserialize(const std::string_view& response)
+    void UpdateStyleOnlineResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
-        std::unordered_map<std::string, std::string_view> parts;
+        std::unordered_map<std::string, std::tuple<std::string, std::string, std::string_view> > parts;
         parseMultipart(response, parts);
         if (parts.find("Model") != parts.end()) {
-            const std::string_view& part = parts.at("Model");
-            auto json = ::nlohmann::json::parse(part);
+            const auto& part = parts.at("Model");
+            auto json = ::nlohmann::json::parse(std::get<2>(part));
             m_Model = std::make_shared< aspose::words::cloud::models::StyleResponse >();
             m_Model->fromJson(&json);
         }
         if (parts.find("Document") != parts.end()) {
-            const std::string_view& part = parts.at("Document");
-            m_Document = std::shared_ptr< std::istream >(new std::istringstream(std::string(part), std::ios_base::in));
+            const auto& part = parts.at("Document");
+            m_Document = parseFilesCollection(part);
         }
     }
 
@@ -5249,7 +5322,7 @@ namespace aspose::words::cloud::responses {
         return m_Result;
     }
 
-    void UpdateTableCellFormatResponse::deserialize(const std::string_view& response)
+    void UpdateTableCellFormatResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
         auto json = ::nlohmann::json::parse(response);
         m_Result = std::make_shared< aspose::words::cloud::models::TableCellFormatResponse >();
@@ -5264,24 +5337,24 @@ namespace aspose::words::cloud::responses {
         return m_Model;
     }
 
-    std::shared_ptr< std::istream > UpdateTableCellFormatOnlineResponse::getDocument() const
+    std::shared_ptr< std::map<std::wstring, std::shared_ptr<std::istream>> > UpdateTableCellFormatOnlineResponse::getDocument() const
     {
         return m_Document;
     }
 
-    void UpdateTableCellFormatOnlineResponse::deserialize(const std::string_view& response)
+    void UpdateTableCellFormatOnlineResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
-        std::unordered_map<std::string, std::string_view> parts;
+        std::unordered_map<std::string, std::tuple<std::string, std::string, std::string_view> > parts;
         parseMultipart(response, parts);
         if (parts.find("Model") != parts.end()) {
-            const std::string_view& part = parts.at("Model");
-            auto json = ::nlohmann::json::parse(part);
+            const auto& part = parts.at("Model");
+            auto json = ::nlohmann::json::parse(std::get<2>(part));
             m_Model = std::make_shared< aspose::words::cloud::models::TableCellFormatResponse >();
             m_Model->fromJson(&json);
         }
         if (parts.find("Document") != parts.end()) {
-            const std::string_view& part = parts.at("Document");
-            m_Document = std::shared_ptr< std::istream >(new std::istringstream(std::string(part), std::ios_base::in));
+            const auto& part = parts.at("Document");
+            m_Document = parseFilesCollection(part);
         }
     }
 
@@ -5293,7 +5366,7 @@ namespace aspose::words::cloud::responses {
         return m_Result;
     }
 
-    void UpdateTablePropertiesResponse::deserialize(const std::string_view& response)
+    void UpdateTablePropertiesResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
         auto json = ::nlohmann::json::parse(response);
         m_Result = std::make_shared< aspose::words::cloud::models::TablePropertiesResponse >();
@@ -5308,24 +5381,24 @@ namespace aspose::words::cloud::responses {
         return m_Model;
     }
 
-    std::shared_ptr< std::istream > UpdateTablePropertiesOnlineResponse::getDocument() const
+    std::shared_ptr< std::map<std::wstring, std::shared_ptr<std::istream>> > UpdateTablePropertiesOnlineResponse::getDocument() const
     {
         return m_Document;
     }
 
-    void UpdateTablePropertiesOnlineResponse::deserialize(const std::string_view& response)
+    void UpdateTablePropertiesOnlineResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
-        std::unordered_map<std::string, std::string_view> parts;
+        std::unordered_map<std::string, std::tuple<std::string, std::string, std::string_view> > parts;
         parseMultipart(response, parts);
         if (parts.find("Model") != parts.end()) {
-            const std::string_view& part = parts.at("Model");
-            auto json = ::nlohmann::json::parse(part);
+            const auto& part = parts.at("Model");
+            auto json = ::nlohmann::json::parse(std::get<2>(part));
             m_Model = std::make_shared< aspose::words::cloud::models::TablePropertiesResponse >();
             m_Model->fromJson(&json);
         }
         if (parts.find("Document") != parts.end()) {
-            const std::string_view& part = parts.at("Document");
-            m_Document = std::shared_ptr< std::istream >(new std::istringstream(std::string(part), std::ios_base::in));
+            const auto& part = parts.at("Document");
+            m_Document = parseFilesCollection(part);
         }
     }
 
@@ -5337,7 +5410,7 @@ namespace aspose::words::cloud::responses {
         return m_Result;
     }
 
-    void UpdateTableRowFormatResponse::deserialize(const std::string_view& response)
+    void UpdateTableRowFormatResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
         auto json = ::nlohmann::json::parse(response);
         m_Result = std::make_shared< aspose::words::cloud::models::TableRowFormatResponse >();
@@ -5352,24 +5425,24 @@ namespace aspose::words::cloud::responses {
         return m_Model;
     }
 
-    std::shared_ptr< std::istream > UpdateTableRowFormatOnlineResponse::getDocument() const
+    std::shared_ptr< std::map<std::wstring, std::shared_ptr<std::istream>> > UpdateTableRowFormatOnlineResponse::getDocument() const
     {
         return m_Document;
     }
 
-    void UpdateTableRowFormatOnlineResponse::deserialize(const std::string_view& response)
+    void UpdateTableRowFormatOnlineResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
-        std::unordered_map<std::string, std::string_view> parts;
+        std::unordered_map<std::string, std::tuple<std::string, std::string, std::string_view> > parts;
         parseMultipart(response, parts);
         if (parts.find("Model") != parts.end()) {
-            const std::string_view& part = parts.at("Model");
-            auto json = ::nlohmann::json::parse(part);
+            const auto& part = parts.at("Model");
+            auto json = ::nlohmann::json::parse(std::get<2>(part));
             m_Model = std::make_shared< aspose::words::cloud::models::TableRowFormatResponse >();
             m_Model->fromJson(&json);
         }
         if (parts.find("Document") != parts.end()) {
-            const std::string_view& part = parts.at("Document");
-            m_Document = std::shared_ptr< std::istream >(new std::istringstream(std::string(part), std::ios_base::in));
+            const auto& part = parts.at("Document");
+            m_Document = parseFilesCollection(part);
         }
     }
 
@@ -5381,7 +5454,7 @@ namespace aspose::words::cloud::responses {
         return m_Result;
     }
 
-    void UploadFileResponse::deserialize(const std::string_view& response)
+    void UploadFileResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
         auto json = ::nlohmann::json::parse(response);
         m_Result = std::make_shared< aspose::words::cloud::models::FilesUploadResult >();

@@ -1,5 +1,5 @@
 ﻿/** --------------------------------------------------------------------------------------------------------------------
-* <copyright company="Aspose" file="get_range_text_online_response.h">
+* <copyright company="Aspose" file="pdf_permissions.h">
 *   Copyright (c) 2022 Aspose.Words for Cloud
 * </copyright>
 * <summary>
@@ -24,18 +24,24 @@
 -------------------------------------------------------------------------------------------------------------------- **/
 
 #pragma once
-#include "./response_model_base.h"
-#include "aspose_words_cloud/models/range_text_response.h"
+#include "./model_base.h"
 
-namespace aspose::words::cloud::responses {
-    class GetRangeTextOnlineResponse : public ResponseModelBase {
-    public: 
-        ASPOSE_WORDS_CLOUD_EXPORT virtual ~GetRangeTextOnlineResponse() = default;
-
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::RangeTextResponse > getResult() const;
-
-        ASPOSE_WORDS_CLOUD_EXPORT virtual void deserialize(const std::string& contentType, const std::string_view& response) override;
-    private:
-        std::shared_ptr< aspose::words::cloud::models::RangeTextResponse > m_Result;
+namespace aspose::words::cloud::models {
+    /// <summary>
+    /// Specifies the operations that are allowed to a user on an encrypted PDF document.
+    /// </summary>
+    enum class PdfPermissions
+    {
+        DISALLOW_ALL,
+        PRINTING,
+        MODIFY_CONTENTS,
+        CONTENT_COPY,
+        MODIFY_ANNOTATIONS,
+        FILL_IN,
+        CONTENT_COPY_FOR_ACCESSIBILITY,
+        DOCUMENT_ASSEMBLY,
+        HIGH_RESOLUTION_PRINTING,
+        ALLOW_ALL
     };
 }
+

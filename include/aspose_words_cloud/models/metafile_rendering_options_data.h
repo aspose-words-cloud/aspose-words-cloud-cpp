@@ -33,6 +33,26 @@ namespace aspose::words::cloud::models {
     class MetafileRenderingOptionsData : public ModelBase
     {
     public:
+        /// <summary>
+        /// Gets or sets the option that controls how EMF+ Dual metafiles should be rendered.
+        /// </summary>
+        enum class EmfPlusDualRenderingMode
+        { 
+            EMF_PLUS_WITH_FALLBACK,
+            EMF_PLUS,
+            EMF
+        };
+
+        /// <summary>
+        /// Gets or sets the option that controls how metafile images should be rendered.
+        /// </summary>
+        enum class RenderingMode
+        { 
+            VECTOR_WITH_FALLBACK,
+            VECTOR,
+            BITMAP
+        };
+
 
         ASPOSE_WORDS_CLOUD_EXPORT virtual ~MetafileRenderingOptionsData() = default;
         ASPOSE_WORDS_CLOUD_EXPORT virtual void toJson(void* jsonIfc) const override;
@@ -42,12 +62,12 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the option that controls how EMF+ Dual metafiles should be rendered.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< std::wstring > getEmfPlusDualRenderingMode() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< aspose::words::cloud::models::MetafileRenderingOptionsData::EmfPlusDualRenderingMode > getEmfPlusDualRenderingMode() const;
 
         /// <summary>
         /// Gets or sets the option that controls how EMF+ Dual metafiles should be rendered.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT virtual void setEmfPlusDualRenderingMode(std::shared_ptr< std::wstring > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setEmfPlusDualRenderingMode(std::shared_ptr< aspose::words::cloud::models::MetafileRenderingOptionsData::EmfPlusDualRenderingMode > value);
 
 
         /// <summary>
@@ -64,12 +84,12 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the option that controls how metafile images should be rendered.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< std::wstring > getRenderingMode() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< aspose::words::cloud::models::MetafileRenderingOptionsData::RenderingMode > getRenderingMode() const;
 
         /// <summary>
         /// Gets or sets the option that controls how metafile images should be rendered.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT virtual void setRenderingMode(std::shared_ptr< std::wstring > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setRenderingMode(std::shared_ptr< aspose::words::cloud::models::MetafileRenderingOptionsData::RenderingMode > value);
 
 
         /// <summary>
@@ -97,9 +117,9 @@ namespace aspose::words::cloud::models {
 
 
     protected:
-        std::shared_ptr< std::wstring > m_EmfPlusDualRenderingMode;
+        std::shared_ptr< aspose::words::cloud::models::MetafileRenderingOptionsData::EmfPlusDualRenderingMode > m_EmfPlusDualRenderingMode;
         std::shared_ptr< bool > m_EmulateRasterOperations;
-        std::shared_ptr< std::wstring > m_RenderingMode;
+        std::shared_ptr< aspose::words::cloud::models::MetafileRenderingOptionsData::RenderingMode > m_RenderingMode;
         std::shared_ptr< bool > m_ScaleWmfFontsToMetafileSize;
         std::shared_ptr< bool > m_UseEmfEmbeddedToWmf;
     };

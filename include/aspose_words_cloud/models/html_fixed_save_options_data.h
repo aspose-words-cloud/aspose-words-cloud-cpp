@@ -34,6 +34,26 @@ namespace aspose::words::cloud::models {
     class HtmlFixedSaveOptionsData : public FixedPageSaveOptionsData
     {
     public:
+        /// <summary>
+        /// Gets or sets the export format of fonts.
+        /// </summary>
+        enum class FontFormat
+        { 
+            WOFF,
+            TTF
+        };
+
+        /// <summary>
+        /// Gets or sets the horizontal alignment of pages in the HTML document.
+        /// The default value is HtmlFixedHorizontalPageAlignment.Center.
+        /// </summary>
+        enum class PageHorizontalAlignment
+        { 
+            LEFT,
+            CENTER,
+            RIGHT
+        };
+
 
         ASPOSE_WORDS_CLOUD_EXPORT virtual ~HtmlFixedSaveOptionsData() = default;
         ASPOSE_WORDS_CLOUD_EXPORT virtual void toJson(void* jsonIfc) const override;
@@ -113,25 +133,25 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the export format of fonts.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< std::wstring > getFontFormat() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< aspose::words::cloud::models::HtmlFixedSaveOptionsData::FontFormat > getFontFormat() const;
 
         /// <summary>
         /// Gets or sets the export format of fonts.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT virtual void setFontFormat(std::shared_ptr< std::wstring > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setFontFormat(std::shared_ptr< aspose::words::cloud::models::HtmlFixedSaveOptionsData::FontFormat > value);
 
 
         /// <summary>
         /// Gets or sets the horizontal alignment of pages in the HTML document.
         /// The default value is HtmlFixedHorizontalPageAlignment.Center.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< std::wstring > getPageHorizontalAlignment() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< aspose::words::cloud::models::HtmlFixedSaveOptionsData::PageHorizontalAlignment > getPageHorizontalAlignment() const;
 
         /// <summary>
         /// Gets or sets the horizontal alignment of pages in the HTML document.
         /// The default value is HtmlFixedHorizontalPageAlignment.Center.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT virtual void setPageHorizontalAlignment(std::shared_ptr< std::wstring > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setPageHorizontalAlignment(std::shared_ptr< aspose::words::cloud::models::HtmlFixedSaveOptionsData::PageHorizontalAlignment > value);
 
 
         /// <summary>
@@ -218,8 +238,8 @@ namespace aspose::words::cloud::models {
         std::shared_ptr< bool > m_ExportEmbeddedFonts;
         std::shared_ptr< bool > m_ExportEmbeddedImages;
         std::shared_ptr< bool > m_ExportFormFields;
-        std::shared_ptr< std::wstring > m_FontFormat;
-        std::shared_ptr< std::wstring > m_PageHorizontalAlignment;
+        std::shared_ptr< aspose::words::cloud::models::HtmlFixedSaveOptionsData::FontFormat > m_FontFormat;
+        std::shared_ptr< aspose::words::cloud::models::HtmlFixedSaveOptionsData::PageHorizontalAlignment > m_PageHorizontalAlignment;
         std::shared_ptr< double > m_PageMargins;
         std::shared_ptr< std::wstring > m_ResourcesFolder;
         std::shared_ptr< std::wstring > m_ResourcesFolderAlias;

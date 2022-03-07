@@ -35,6 +35,16 @@ namespace aspose::words::cloud::models {
     {
     public:
         /// <summary>
+        /// Gets or sets the oOXML version for the output document.
+        /// </summary>
+        enum class Compliance
+        { 
+            ECMA376_2006,
+            ISO29500_2008__TRANSITIONAL,
+            ISO29500_2008__STRICT
+        };
+
+        /// <summary>
         /// Gets or sets the compression level.
         /// </summary>
         enum class CompressionLevel
@@ -56,12 +66,12 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the oOXML version for the output document.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< std::wstring > getCompliance() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< aspose::words::cloud::models::OoxmlSaveOptionsData::Compliance > getCompliance() const;
 
         /// <summary>
         /// Gets or sets the oOXML version for the output document.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT virtual void setCompliance(std::shared_ptr< std::wstring > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setCompliance(std::shared_ptr< aspose::words::cloud::models::OoxmlSaveOptionsData::Compliance > value);
 
 
         /// <summary>
@@ -98,7 +108,7 @@ namespace aspose::words::cloud::models {
 
 
     protected:
-        std::shared_ptr< std::wstring > m_Compliance;
+        std::shared_ptr< aspose::words::cloud::models::OoxmlSaveOptionsData::Compliance > m_Compliance;
         std::shared_ptr< aspose::words::cloud::models::OoxmlSaveOptionsData::CompressionLevel > m_CompressionLevel;
         std::shared_ptr< std::wstring > m_Password;
         std::shared_ptr< bool > m_PrettyFormat;

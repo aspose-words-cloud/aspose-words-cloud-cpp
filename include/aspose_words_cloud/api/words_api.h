@@ -1024,7 +1024,7 @@ namespace aspose::words::cloud::api {
         /// <param name="destFileName">Result path of the document after the operation. If this parameter is omitted then result of the operation will be saved as the source document.</param>
         /// <param name="revisionAuthor">Initials of the author to use for revisions.If you set this parameter and then make some changes to the document programmatically, save the document and later open the document in MS Word you will see these changes as revisions.</param>
         /// <param name="revisionDateTime">The date and time to use for revisions.</param>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::istream > deleteCommentOnline(std::shared_ptr<aspose::words::cloud::requests::DeleteCommentOnlineRequest> request);
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::map<std::wstring, std::shared_ptr<std::istream>> > deleteCommentOnline(std::shared_ptr<aspose::words::cloud::requests::DeleteCommentOnlineRequest> request);
 
         /// <summary>
         /// Removes all comments from the document.
@@ -1050,7 +1050,7 @@ namespace aspose::words::cloud::api {
         /// <param name="destFileName">Result path of the document after the operation. If this parameter is omitted then result of the operation will be saved as the source document.</param>
         /// <param name="revisionAuthor">Initials of the author to use for revisions.If you set this parameter and then make some changes to the document programmatically, save the document and later open the document in MS Word you will see these changes as revisions.</param>
         /// <param name="revisionDateTime">The date and time to use for revisions.</param>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::istream > deleteCommentsOnline(std::shared_ptr<aspose::words::cloud::requests::DeleteCommentsOnlineRequest> request);
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::map<std::wstring, std::shared_ptr<std::istream>> > deleteCommentsOnline(std::shared_ptr<aspose::words::cloud::requests::DeleteCommentsOnlineRequest> request);
 
         /// <summary>
         /// Removes the custom xml part from the document.
@@ -1078,7 +1078,7 @@ namespace aspose::words::cloud::api {
         /// <param name="destFileName">Result path of the document after the operation. If this parameter is omitted then result of the operation will be saved as the source document.</param>
         /// <param name="revisionAuthor">Initials of the author to use for revisions.If you set this parameter and then make some changes to the document programmatically, save the document and later open the document in MS Word you will see these changes as revisions.</param>
         /// <param name="revisionDateTime">The date and time to use for revisions.</param>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::istream > deleteCustomXmlPartOnline(std::shared_ptr<aspose::words::cloud::requests::DeleteCustomXmlPartOnlineRequest> request);
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::map<std::wstring, std::shared_ptr<std::istream>> > deleteCustomXmlPartOnline(std::shared_ptr<aspose::words::cloud::requests::DeleteCustomXmlPartOnlineRequest> request);
 
         /// <summary>
         /// Removes all custom xml parts from the document.
@@ -1104,7 +1104,7 @@ namespace aspose::words::cloud::api {
         /// <param name="destFileName">Result path of the document after the operation. If this parameter is omitted then result of the operation will be saved as the source document.</param>
         /// <param name="revisionAuthor">Initials of the author to use for revisions.If you set this parameter and then make some changes to the document programmatically, save the document and later open the document in MS Word you will see these changes as revisions.</param>
         /// <param name="revisionDateTime">The date and time to use for revisions.</param>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::istream > deleteCustomXmlPartsOnline(std::shared_ptr<aspose::words::cloud::requests::DeleteCustomXmlPartsOnlineRequest> request);
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::map<std::wstring, std::shared_ptr<std::istream>> > deleteCustomXmlPartsOnline(std::shared_ptr<aspose::words::cloud::requests::DeleteCustomXmlPartsOnlineRequest> request);
 
         /// <summary>
         /// Removes a document property.
@@ -1132,7 +1132,7 @@ namespace aspose::words::cloud::api {
         /// <param name="destFileName">Result path of the document after the operation. If this parameter is omitted then result of the operation will be saved as the source document.</param>
         /// <param name="revisionAuthor">Initials of the author to use for revisions.If you set this parameter and then make some changes to the document programmatically, save the document and later open the document in MS Word you will see these changes as revisions.</param>
         /// <param name="revisionDateTime">The date and time to use for revisions.</param>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::istream > deleteDocumentPropertyOnline(std::shared_ptr<aspose::words::cloud::requests::DeleteDocumentPropertyOnlineRequest> request);
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::map<std::wstring, std::shared_ptr<std::istream>> > deleteDocumentPropertyOnline(std::shared_ptr<aspose::words::cloud::requests::DeleteDocumentPropertyOnlineRequest> request);
 
         /// <summary>
         /// Removes a DrawingObject from the document node.
@@ -1162,7 +1162,7 @@ namespace aspose::words::cloud::api {
         /// <param name="destFileName">Result path of the document after the operation. If this parameter is omitted then result of the operation will be saved as the source document.</param>
         /// <param name="revisionAuthor">Initials of the author to use for revisions.If you set this parameter and then make some changes to the document programmatically, save the document and later open the document in MS Word you will see these changes as revisions.</param>
         /// <param name="revisionDateTime">The date and time to use for revisions.</param>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::istream > deleteDrawingObjectOnline(std::shared_ptr<aspose::words::cloud::requests::DeleteDrawingObjectOnlineRequest> request);
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::map<std::wstring, std::shared_ptr<std::istream>> > deleteDrawingObjectOnline(std::shared_ptr<aspose::words::cloud::requests::DeleteDrawingObjectOnlineRequest> request);
 
         /// <summary>
         /// Removes a field from the document node.
@@ -1192,7 +1192,7 @@ namespace aspose::words::cloud::api {
         /// <param name="destFileName">Result path of the document after the operation. If this parameter is omitted then result of the operation will be saved as the source document.</param>
         /// <param name="revisionAuthor">Initials of the author to use for revisions.If you set this parameter and then make some changes to the document programmatically, save the document and later open the document in MS Word you will see these changes as revisions.</param>
         /// <param name="revisionDateTime">The date and time to use for revisions.</param>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::istream > deleteFieldOnline(std::shared_ptr<aspose::words::cloud::requests::DeleteFieldOnlineRequest> request);
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::map<std::wstring, std::shared_ptr<std::istream>> > deleteFieldOnline(std::shared_ptr<aspose::words::cloud::requests::DeleteFieldOnlineRequest> request);
 
         /// <summary>
         /// Removes fields from the document node.
@@ -1220,7 +1220,7 @@ namespace aspose::words::cloud::api {
         /// <param name="destFileName">Result path of the document after the operation. If this parameter is omitted then result of the operation will be saved as the source document.</param>
         /// <param name="revisionAuthor">Initials of the author to use for revisions.If you set this parameter and then make some changes to the document programmatically, save the document and later open the document in MS Word you will see these changes as revisions.</param>
         /// <param name="revisionDateTime">The date and time to use for revisions.</param>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::istream > deleteFieldsOnline(std::shared_ptr<aspose::words::cloud::requests::DeleteFieldsOnlineRequest> request);
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::map<std::wstring, std::shared_ptr<std::istream>> > deleteFieldsOnline(std::shared_ptr<aspose::words::cloud::requests::DeleteFieldsOnlineRequest> request);
 
         /// <summary>
         /// Delete file.
@@ -1266,7 +1266,7 @@ namespace aspose::words::cloud::api {
         /// <param name="destFileName">Result path of the document after the operation. If this parameter is omitted then result of the operation will be saved as the source document.</param>
         /// <param name="revisionAuthor">Initials of the author to use for revisions.If you set this parameter and then make some changes to the document programmatically, save the document and later open the document in MS Word you will see these changes as revisions.</param>
         /// <param name="revisionDateTime">The date and time to use for revisions.</param>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::istream > deleteFootnoteOnline(std::shared_ptr<aspose::words::cloud::requests::DeleteFootnoteOnlineRequest> request);
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::map<std::wstring, std::shared_ptr<std::istream>> > deleteFootnoteOnline(std::shared_ptr<aspose::words::cloud::requests::DeleteFootnoteOnlineRequest> request);
 
         /// <summary>
         /// Removes a form field from the document node.
@@ -1296,7 +1296,7 @@ namespace aspose::words::cloud::api {
         /// <param name="destFileName">Result path of the document after the operation. If this parameter is omitted then result of the operation will be saved as the source document.</param>
         /// <param name="revisionAuthor">Initials of the author to use for revisions.If you set this parameter and then make some changes to the document programmatically, save the document and later open the document in MS Word you will see these changes as revisions.</param>
         /// <param name="revisionDateTime">The date and time to use for revisions.</param>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::istream > deleteFormFieldOnline(std::shared_ptr<aspose::words::cloud::requests::DeleteFormFieldOnlineRequest> request);
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::map<std::wstring, std::shared_ptr<std::istream>> > deleteFormFieldOnline(std::shared_ptr<aspose::words::cloud::requests::DeleteFormFieldOnlineRequest> request);
 
         /// <summary>
         /// Removes a HeaderFooter object from the document section.
@@ -1326,7 +1326,7 @@ namespace aspose::words::cloud::api {
         /// <param name="destFileName">Result path of the document after the operation. If this parameter is omitted then result of the operation will be saved as the source document.</param>
         /// <param name="revisionAuthor">Initials of the author to use for revisions.If you set this parameter and then make some changes to the document programmatically, save the document and later open the document in MS Word you will see these changes as revisions.</param>
         /// <param name="revisionDateTime">The date and time to use for revisions.</param>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::istream > deleteHeaderFooterOnline(std::shared_ptr<aspose::words::cloud::requests::DeleteHeaderFooterOnlineRequest> request);
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::map<std::wstring, std::shared_ptr<std::istream>> > deleteHeaderFooterOnline(std::shared_ptr<aspose::words::cloud::requests::DeleteHeaderFooterOnlineRequest> request);
 
         /// <summary>
         /// Removes HeaderFooter objects from the document section.
@@ -1356,7 +1356,7 @@ namespace aspose::words::cloud::api {
         /// <param name="revisionAuthor">Initials of the author to use for revisions.If you set this parameter and then make some changes to the document programmatically, save the document and later open the document in MS Word you will see these changes as revisions.</param>
         /// <param name="revisionDateTime">The date and time to use for revisions.</param>
         /// <param name="headersFootersTypes">The list of HeaderFooter types.</param>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::istream > deleteHeadersFootersOnline(std::shared_ptr<aspose::words::cloud::requests::DeleteHeadersFootersOnlineRequest> request);
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::map<std::wstring, std::shared_ptr<std::istream>> > deleteHeadersFootersOnline(std::shared_ptr<aspose::words::cloud::requests::DeleteHeadersFootersOnlineRequest> request);
 
         /// <summary>
         /// Removes macros from the document.
@@ -1382,7 +1382,7 @@ namespace aspose::words::cloud::api {
         /// <param name="destFileName">Result path of the document after the operation. If this parameter is omitted then result of the operation will be saved as the source document.</param>
         /// <param name="revisionAuthor">Initials of the author to use for revisions.If you set this parameter and then make some changes to the document programmatically, save the document and later open the document in MS Word you will see these changes as revisions.</param>
         /// <param name="revisionDateTime">The date and time to use for revisions.</param>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::istream > deleteMacrosOnline(std::shared_ptr<aspose::words::cloud::requests::DeleteMacrosOnlineRequest> request);
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::map<std::wstring, std::shared_ptr<std::istream>> > deleteMacrosOnline(std::shared_ptr<aspose::words::cloud::requests::DeleteMacrosOnlineRequest> request);
 
         /// <summary>
         /// Removes an OfficeMath object from the document node.
@@ -1412,7 +1412,7 @@ namespace aspose::words::cloud::api {
         /// <param name="destFileName">Result path of the document after the operation. If this parameter is omitted then result of the operation will be saved as the source document.</param>
         /// <param name="revisionAuthor">Initials of the author to use for revisions.If you set this parameter and then make some changes to the document programmatically, save the document and later open the document in MS Word you will see these changes as revisions.</param>
         /// <param name="revisionDateTime">The date and time to use for revisions.</param>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::istream > deleteOfficeMathObjectOnline(std::shared_ptr<aspose::words::cloud::requests::DeleteOfficeMathObjectOnlineRequest> request);
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::map<std::wstring, std::shared_ptr<std::istream>> > deleteOfficeMathObjectOnline(std::shared_ptr<aspose::words::cloud::requests::DeleteOfficeMathObjectOnlineRequest> request);
 
         /// <summary>
         /// Removes a paragraph from the document node.
@@ -1472,7 +1472,7 @@ namespace aspose::words::cloud::api {
         /// <param name="destFileName">Result path of the document after the operation. If this parameter is omitted then result of the operation will be saved as the source document.</param>
         /// <param name="revisionAuthor">Initials of the author to use for revisions.If you set this parameter and then make some changes to the document programmatically, save the document and later open the document in MS Word you will see these changes as revisions.</param>
         /// <param name="revisionDateTime">The date and time to use for revisions.</param>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::istream > deleteParagraphOnline(std::shared_ptr<aspose::words::cloud::requests::DeleteParagraphOnlineRequest> request);
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::map<std::wstring, std::shared_ptr<std::istream>> > deleteParagraphOnline(std::shared_ptr<aspose::words::cloud::requests::DeleteParagraphOnlineRequest> request);
 
         /// <summary>
         /// Removes a paragraph tab stop from the document node.
@@ -1530,7 +1530,7 @@ namespace aspose::words::cloud::api {
         /// <param name="destFileName">Result path of the document after the operation. If this parameter is omitted then result of the operation will be saved as the source document.</param>
         /// <param name="revisionAuthor">Initials of the author to use for revisions.If you set this parameter and then make some changes to the document programmatically, save the document and later open the document in MS Word you will see these changes as revisions.</param>
         /// <param name="revisionDateTime">The date and time to use for revisions.</param>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::istream > deleteRunOnline(std::shared_ptr<aspose::words::cloud::requests::DeleteRunOnlineRequest> request);
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::map<std::wstring, std::shared_ptr<std::istream>> > deleteRunOnline(std::shared_ptr<aspose::words::cloud::requests::DeleteRunOnlineRequest> request);
 
         /// <summary>
         /// Removes a section from the document.
@@ -1558,7 +1558,7 @@ namespace aspose::words::cloud::api {
         /// <param name="destFileName">Result path of the document after the operation. If this parameter is omitted then result of the operation will be saved as the source document.</param>
         /// <param name="revisionAuthor">Initials of the author to use for revisions.If you set this parameter and then make some changes to the document programmatically, save the document and later open the document in MS Word you will see these changes as revisions.</param>
         /// <param name="revisionDateTime">The date and time to use for revisions.</param>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::istream > deleteSectionOnline(std::shared_ptr<aspose::words::cloud::requests::DeleteSectionOnlineRequest> request);
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::map<std::wstring, std::shared_ptr<std::istream>> > deleteSectionOnline(std::shared_ptr<aspose::words::cloud::requests::DeleteSectionOnlineRequest> request);
 
         /// <summary>
         /// Removes a table from the document node.
@@ -1604,7 +1604,7 @@ namespace aspose::words::cloud::api {
         /// <param name="destFileName">Result path of the document after the operation. If this parameter is omitted then result of the operation will be saved as the source document.</param>
         /// <param name="revisionAuthor">Initials of the author to use for revisions.If you set this parameter and then make some changes to the document programmatically, save the document and later open the document in MS Word you will see these changes as revisions.</param>
         /// <param name="revisionDateTime">The date and time to use for revisions.</param>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::istream > deleteTableCellOnline(std::shared_ptr<aspose::words::cloud::requests::DeleteTableCellOnlineRequest> request);
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::map<std::wstring, std::shared_ptr<std::istream>> > deleteTableCellOnline(std::shared_ptr<aspose::words::cloud::requests::DeleteTableCellOnlineRequest> request);
 
         /// <summary>
         /// Removes a table from the document node.
@@ -1618,7 +1618,7 @@ namespace aspose::words::cloud::api {
         /// <param name="destFileName">Result path of the document after the operation. If this parameter is omitted then result of the operation will be saved as the source document.</param>
         /// <param name="revisionAuthor">Initials of the author to use for revisions.If you set this parameter and then make some changes to the document programmatically, save the document and later open the document in MS Word you will see these changes as revisions.</param>
         /// <param name="revisionDateTime">The date and time to use for revisions.</param>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::istream > deleteTableOnline(std::shared_ptr<aspose::words::cloud::requests::DeleteTableOnlineRequest> request);
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::map<std::wstring, std::shared_ptr<std::istream>> > deleteTableOnline(std::shared_ptr<aspose::words::cloud::requests::DeleteTableOnlineRequest> request);
 
         /// <summary>
         /// Removes a row from the table.
@@ -1648,7 +1648,7 @@ namespace aspose::words::cloud::api {
         /// <param name="destFileName">Result path of the document after the operation. If this parameter is omitted then result of the operation will be saved as the source document.</param>
         /// <param name="revisionAuthor">Initials of the author to use for revisions.If you set this parameter and then make some changes to the document programmatically, save the document and later open the document in MS Word you will see these changes as revisions.</param>
         /// <param name="revisionDateTime">The date and time to use for revisions.</param>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::istream > deleteTableRowOnline(std::shared_ptr<aspose::words::cloud::requests::DeleteTableRowOnlineRequest> request);
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::map<std::wstring, std::shared_ptr<std::istream>> > deleteTableRowOnline(std::shared_ptr<aspose::words::cloud::requests::DeleteTableRowOnlineRequest> request);
 
         /// <summary>
         /// Removes a watermark from the document.
@@ -3575,7 +3575,7 @@ namespace aspose::words::cloud::api {
         /// <param name="destFileName">Result path of the document after the operation. If this parameter is omitted then result of the operation will be saved as the source document.</param>
         /// <param name="revisionAuthor">Initials of the author to use for revisions.If you set this parameter and then make some changes to the document programmatically, save the document and later open the document in MS Word you will see these changes as revisions.</param>
         /// <param name="revisionDateTime">The date and time to use for revisions.</param>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::istream > optimizeDocumentOnline(std::shared_ptr<aspose::words::cloud::requests::OptimizeDocumentOnlineRequest> request);
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::map<std::wstring, std::shared_ptr<std::istream>> > optimizeDocumentOnline(std::shared_ptr<aspose::words::cloud::requests::OptimizeDocumentOnlineRequest> request);
 
         /// <summary>
         /// Adds protection to the document.
