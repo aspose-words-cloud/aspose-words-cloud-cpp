@@ -223,6 +223,17 @@ namespace aspose::words::cloud::api {
         return response;
     }
 
+    std::shared_ptr< aspose::words::cloud::models::WordsResponse > WordsApi::copyStylesFromTemplate(std::shared_ptr<aspose::words::cloud::requests::CopyStylesFromTemplateRequest> request)
+    {
+        auto response = std::make_shared< aspose::words::cloud::responses::CopyStylesFromTemplateResponse >();
+        m_ApiClient->call( request->createHttpRequest(), *response);
+        if (response->getStatusCode() != 200) {
+            throw aspose::words::cloud::ApiException(response->getStatusCode(), response->getErrorMessage());
+        }
+
+        return response->getResult();
+    }
+
     std::shared_ptr< aspose::words::cloud::models::DocumentResponse > WordsApi::createDocument(std::shared_ptr<aspose::words::cloud::requests::CreateDocumentRequest> request)
     {
         auto response = std::make_shared< aspose::words::cloud::responses::CreateDocumentResponse >();
