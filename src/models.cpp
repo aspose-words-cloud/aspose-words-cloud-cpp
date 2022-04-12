@@ -8840,6 +8840,9 @@ namespace aspose::words::cloud::models {
         if (this->m_ExportRoundtripInformation) {
             json["ExportRoundtripInformation"] = *(this->m_ExportRoundtripInformation);
         }
+        if (this->m_ExportShapesAsSvg) {
+            json["ExportShapesAsSvg"] = *(this->m_ExportShapesAsSvg);
+        }
         if (this->m_ExportTextBoxAsSvg) {
             json["ExportTextBoxAsSvg"] = *(this->m_ExportTextBoxAsSvg);
         }
@@ -9004,6 +9007,11 @@ namespace aspose::words::cloud::models {
         if (json.contains("ExportRoundtripInformation") && !json["ExportRoundtripInformation"].is_null()) {
             this->m_ExportRoundtripInformation = std::make_shared< bool >(
                 json["ExportRoundtripInformation"].get< bool >()
+            );
+        }
+        if (json.contains("ExportShapesAsSvg") && !json["ExportShapesAsSvg"].is_null()) {
+            this->m_ExportShapesAsSvg = std::make_shared< bool >(
+                json["ExportShapesAsSvg"].get< bool >()
             );
         }
         if (json.contains("ExportTextBoxAsSvg") && !json["ExportTextBoxAsSvg"].is_null()) {
@@ -9325,6 +9333,17 @@ namespace aspose::words::cloud::models {
     void HtmlSaveOptionsData::setExportRoundtripInformation(std::shared_ptr< bool > value)
     {
         this->m_ExportRoundtripInformation = value;
+    }
+
+
+    std::shared_ptr< bool > HtmlSaveOptionsData::getExportShapesAsSvg() const
+    {
+        return this->m_ExportShapesAsSvg;
+    }
+
+    void HtmlSaveOptionsData::setExportShapesAsSvg(std::shared_ptr< bool > value)
+    {
+        this->m_ExportShapesAsSvg = value;
     }
 
 
