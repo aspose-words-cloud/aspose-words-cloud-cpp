@@ -65,6 +65,8 @@
 #include "aspose_words_cloud/responses/copy_style_response.h"
 #include "aspose_words_cloud/requests/copy_style_online_request.h"
 #include "aspose_words_cloud/responses/copy_style_online_response.h"
+#include "aspose_words_cloud/requests/copy_styles_from_template_request.h"
+#include "aspose_words_cloud/responses/copy_styles_from_template_response.h"
 #include "aspose_words_cloud/requests/create_document_request.h"
 #include "aspose_words_cloud/responses/create_document_response.h"
 #include "aspose_words_cloud/requests/create_folder_request.h"
@@ -868,6 +870,21 @@ namespace aspose::words::cloud::api {
         /// <param name="revisionAuthor">Initials of the author to use for revisions.If you set this parameter and then make some changes to the document programmatically, save the document and later open the document in MS Word you will see these changes as revisions.</param>
         /// <param name="revisionDateTime">The date and time to use for revisions.</param>
         ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr<aspose::words::cloud::responses::CopyStyleOnlineResponse> copyStyleOnline(std::shared_ptr<aspose::words::cloud::requests::CopyStyleOnlineRequest> request);
+
+        /// <summary>
+        /// Copies styles from the origin document to the target document.
+        /// </summary>
+        /// <param name="name">The filename of the target document.</param>
+        /// <param name="templateName">The filename of the origin document.</param>
+        /// <param name="folder">Original document folder.</param>
+        /// <param name="storage">Original document storage.</param>
+        /// <param name="loadEncoding">Encoding that will be used to load an HTML (or TXT) document if the encoding is not specified in HTML.</param>
+        /// <param name="password">Password of protected Word document. Use the parameter to pass a password via SDK. SDK encrypts it automatically. We don't recommend to use the parameter to pass a plain password for direct call of API.</param>
+        /// <param name="encryptedPassword">Password of protected Word document. Use the parameter to pass an encrypted password for direct calls of API. See SDK code for encyption details.</param>
+        /// <param name="destFileName">Result path of the document after the operation. If this parameter is omitted then result of the operation will be saved as the source document.</param>
+        /// <param name="revisionAuthor">Initials of the author to use for revisions.If you set this parameter and then make some changes to the document programmatically, save the document and later open the document in MS Word you will see these changes as revisions.</param>
+        /// <param name="revisionDateTime">The date and time to use for revisions.</param>
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::WordsResponse > copyStylesFromTemplate(std::shared_ptr<aspose::words::cloud::requests::CopyStylesFromTemplateRequest> request);
 
         /// <summary>
         /// Supported extensions: ".doc", ".docx", ".docm", ".dot", ".dotm", ".dotx", ".flatopc", ".fopc", ".flatopc_macro", ".fopc_macro", ".flatopc_template", ".fopc_template", ".flatopc_template_macro", ".fopc_template_macro", ".wordml", ".wml", ".rtf".

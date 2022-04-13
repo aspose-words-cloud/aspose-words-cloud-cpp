@@ -372,3 +372,36 @@ TEST_F(StylesTests, TestApplyStyleToDocumentElementOnline) {
 
     auto actual = getApi()->applyStyleToDocumentElementOnline(request);
 }
+
+/// <summary>
+/// Test for copying styles from a template.
+/// </summary>
+TEST_F(StylesTests, TestCopyStylesFromTemplate) {
+    std::wstring remoteFileName = L"TestCopyStylesFromTemplate.docx";
+    std::wstring templateFolder = L"DocumentElements/Styles";
+    std::wstring templateName = L"StyleTemplate.docx";
+
+    uploadFileToStorage(
+        localTestDataFolder + L"/" + localFile,
+        remoteDataFolder + L"/" + remoteFileName
+    );
+    uploadFileToStorage(
+        localTestDataFolder + L"/" + templateFolder + L"/" + templateName,
+        remoteDataFolder + L"/" + templateName
+    );
+
+    std::shared_ptr<requests::CopyStylesFromTemplateRequest> request(new requests::CopyStylesFromTemplateRequest(
+        std::make_shared< std::wstring >(remoteFileName),
+        std::make_shared< std::wstring >(templateName),
+        std::make_shared< std::wstring >(remoteDataFolder),
+        nullptr,
+        nullptr,
+        nullptr,
+        nullptr,
+        nullptr,
+        nullptr,
+        nullptr
+    ));
+
+    auto actual = getApi()->copyStylesFromTemplate(request);
+}
