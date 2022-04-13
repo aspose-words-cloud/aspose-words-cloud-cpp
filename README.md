@@ -17,6 +17,12 @@ Feel free to explore the [Developer's Guide](https://docs.aspose.cloud/display/w
 - Read & write access to Document Object Model.
 - Thread safe
 
+## Enhancements in Version 22.4
+
+- Added ExportShapesAsSvg to HtmlSaveOption.
+- Added new endpoint '~/styles/copy_from'.
+
+
 ## Enhancements in Version 22.3
 
 - Online methods returns the dictionary of files with included original filename as key instead of single file content in responses.
