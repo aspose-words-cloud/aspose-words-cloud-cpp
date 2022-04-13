@@ -607,6 +607,21 @@ namespace aspose::words::cloud::responses {
     }
 
     /*
+     * CopyStylesFromTemplate request implementation
+     */
+    std::shared_ptr< aspose::words::cloud::models::WordsResponse > CopyStylesFromTemplateResponse::getResult() const
+    {
+        return m_Result;
+    }
+
+    void CopyStylesFromTemplateResponse::deserialize(const std::string& contentType, const std::string_view& response)
+    {
+        auto json = ::nlohmann::json::parse(response);
+        m_Result = std::make_shared< aspose::words::cloud::models::WordsResponse >();
+        m_Result->fromJson(&json);
+    }
+
+    /*
      * CreateDocument request implementation
      */
     std::shared_ptr< aspose::words::cloud::models::DocumentResponse > CreateDocumentResponse::getResult() const
