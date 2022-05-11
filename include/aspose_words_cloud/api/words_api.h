@@ -489,6 +489,8 @@
 #include "aspose_words_cloud/responses/insert_watermark_text_response.h"
 #include "aspose_words_cloud/requests/insert_watermark_text_online_request.h"
 #include "aspose_words_cloud/responses/insert_watermark_text_online_response.h"
+#include "aspose_words_cloud/requests/link_header_footers_to_previous_request.h"
+#include "aspose_words_cloud/responses/link_header_footers_to_previous_response.h"
 #include "aspose_words_cloud/requests/load_web_document_request.h"
 #include "aspose_words_cloud/responses/load_web_document_response.h"
 #include "aspose_words_cloud/requests/move_file_request.h"
@@ -3539,6 +3541,22 @@ namespace aspose::words::cloud::api {
         /// <param name="revisionAuthor">Initials of the author to use for revisions.If you set this parameter and then make some changes to the document programmatically, save the document and later open the document in MS Word you will see these changes as revisions.</param>
         /// <param name="revisionDateTime">The date and time to use for revisions.</param>
         ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr<aspose::words::cloud::responses::InsertWatermarkTextOnlineResponse> insertWatermarkTextOnline(std::shared_ptr<aspose::words::cloud::requests::InsertWatermarkTextOnlineRequest> request);
+
+        /// <summary>
+        /// Links headers / footers of the section to the previous one.
+        /// </summary>
+        /// <param name="name">The filename of the input document.</param>
+        /// <param name="sectionIndex">The index of the section.</param>
+        /// <param name="folder">Original document folder.</param>
+        /// <param name="storage">Original document storage.</param>
+        /// <param name="loadEncoding">Encoding that will be used to load an HTML (or TXT) document if the encoding is not specified in HTML.</param>
+        /// <param name="password">Password of protected Word document. Use the parameter to pass a password via SDK. SDK encrypts it automatically. We don't recommend to use the parameter to pass a plain password for direct call of API.</param>
+        /// <param name="encryptedPassword">Password of protected Word document. Use the parameter to pass an encrypted password for direct calls of API. See SDK code for encyption details.</param>
+        /// <param name="destFileName">Result path of the document after the operation. If this parameter is omitted then result of the operation will be saved as the source document.</param>
+        /// <param name="revisionAuthor">Initials of the author to use for revisions.If you set this parameter and then make some changes to the document programmatically, save the document and later open the document in MS Word you will see these changes as revisions.</param>
+        /// <param name="revisionDateTime">The date and time to use for revisions.</param>
+        /// <param name="mode">Linking mode.</param>
+        ASPOSE_WORDS_CLOUD_EXPORT void linkHeaderFootersToPrevious(std::shared_ptr<aspose::words::cloud::requests::LinkHeaderFootersToPreviousRequest> request);
 
         /// <summary>
         /// Downloads a document from the Web using URL and saves it to cloud storage in the specified format.

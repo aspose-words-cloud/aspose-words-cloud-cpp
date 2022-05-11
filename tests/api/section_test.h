@@ -167,3 +167,24 @@ TEST_F(SectionTests, TestDeleteSectionOnline) {
 
     auto actual = getApi()->deleteSectionOnline(request);
 }
+
+/// <summary>
+/// Test for linking headers and footers to previous section.
+/// </summary>
+TEST_F(SectionTests, TestLinkHeaderFootersToPrevious) {
+    std::shared_ptr<requests::LinkHeaderFootersToPreviousRequest> request(new requests::LinkHeaderFootersToPreviousRequest(
+        std::make_shared< std::wstring >(L"DocumentElements/Sections/Source.docx"),
+        std::make_shared< int32_t >(1),
+        nullptr,
+        nullptr,
+        nullptr,
+        nullptr,
+        nullptr,
+        nullptr,
+        nullptr,
+        nullptr,
+        nullptr
+    ));
+
+getApi()->linkHeaderFootersToPrevious(request);
+}

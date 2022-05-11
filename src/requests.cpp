@@ -19717,6 +19717,119 @@ namespace aspose::words::cloud::requests {
     }
 
     /*
+     * LinkHeaderFootersToPrevious request implementation
+     */
+    LinkHeaderFootersToPreviousRequest::LinkHeaderFootersToPreviousRequest(
+        const std::shared_ptr< std::wstring > name,
+        const std::shared_ptr< int32_t > sectionIndex,
+        const std::shared_ptr< std::wstring > folder,
+        const std::shared_ptr< std::wstring > storage,
+        const std::shared_ptr< std::wstring > loadEncoding,
+        const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< std::wstring > destFileName,
+        const std::shared_ptr< std::wstring > revisionAuthor,
+        const std::shared_ptr< std::wstring > revisionDateTime,
+        const std::shared_ptr< bool > mode
+    ) : 
+        m_Name(name),
+        m_SectionIndex(sectionIndex),
+        m_Folder(folder),
+        m_Storage(storage),
+        m_LoadEncoding(loadEncoding),
+        m_Password(password),
+        m_EncryptedPassword(encryptedPassword),
+        m_DestFileName(destFileName),
+        m_RevisionAuthor(revisionAuthor),
+        m_RevisionDateTime(revisionDateTime),
+        m_Mode(mode)
+    {
+    }
+
+    const std::shared_ptr< std::wstring > LinkHeaderFootersToPreviousRequest::getName() const
+    {
+        return m_Name;
+    }
+
+    const std::shared_ptr< int32_t > LinkHeaderFootersToPreviousRequest::getSectionIndex() const
+    {
+        return m_SectionIndex;
+    }
+
+    const std::shared_ptr< std::wstring > LinkHeaderFootersToPreviousRequest::getFolder() const
+    {
+        return m_Folder;
+    }
+
+    const std::shared_ptr< std::wstring > LinkHeaderFootersToPreviousRequest::getStorage() const
+    {
+        return m_Storage;
+    }
+
+    const std::shared_ptr< std::wstring > LinkHeaderFootersToPreviousRequest::getLoadEncoding() const
+    {
+        return m_LoadEncoding;
+    }
+
+    const std::shared_ptr< std::wstring > LinkHeaderFootersToPreviousRequest::getPassword() const
+    {
+        return m_Password;
+    }
+
+    const std::shared_ptr< std::wstring > LinkHeaderFootersToPreviousRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
+    }
+
+    const std::shared_ptr< std::wstring > LinkHeaderFootersToPreviousRequest::getDestFileName() const
+    {
+        return m_DestFileName;
+    }
+
+    const std::shared_ptr< std::wstring > LinkHeaderFootersToPreviousRequest::getRevisionAuthor() const
+    {
+        return m_RevisionAuthor;
+    }
+
+    const std::shared_ptr< std::wstring > LinkHeaderFootersToPreviousRequest::getRevisionDateTime() const
+    {
+        return m_RevisionDateTime;
+    }
+
+    const std::shared_ptr< bool > LinkHeaderFootersToPreviousRequest::getMode() const
+    {
+        return m_Mode;
+    }
+
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > LinkHeaderFootersToPreviousRequest::createHttpRequest() const
+    {
+        auto result = std::make_shared<HttpRequestData>();
+        result->setMethod(HttpRequestMethod::HttpPOST);
+        result->setPath(L"/words/{name}/sections/{sectionIndex}/link");
+        if (!m_Name) throw aspose::words::cloud::ApiException(400, L"Parameter 'Name' is required.");
+        result->setPathParam(L"{name}", *m_Name);
+        if (!m_SectionIndex) throw aspose::words::cloud::ApiException(400, L"Parameter 'SectionIndex' is required.");
+        result->setPathParam(L"{sectionIndex}", *m_SectionIndex);
+        if (m_Folder) result->addQueryParam(L"folder", *m_Folder);
+        if (m_Storage) result->addQueryParam(L"storage", *m_Storage);
+        if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
+        if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
+        if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
+        if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
+        if (m_Mode) result->addQueryParam(L"mode", *m_Mode);
+        return result;
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > LinkHeaderFootersToPreviousRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::LinkHeaderFootersToPreviousResponse()
+        );
+    }
+
+    /*
      * LoadWebDocument request implementation
      */
     LoadWebDocumentRequest::LoadWebDocumentRequest(

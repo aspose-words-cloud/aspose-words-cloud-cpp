@@ -2509,6 +2509,15 @@ namespace aspose::words::cloud::api {
         return response;
     }
 
+    void WordsApi::linkHeaderFootersToPrevious(std::shared_ptr<aspose::words::cloud::requests::LinkHeaderFootersToPreviousRequest> request)
+    {
+        auto response = std::make_shared< aspose::words::cloud::responses::LinkHeaderFootersToPreviousResponse >();
+        m_ApiClient->call( request->createHttpRequest(), *response);
+        if (response->getStatusCode() != 200) {
+            throw aspose::words::cloud::ApiException(response->getStatusCode(), response->getErrorMessage());
+        }
+    }
+
     std::shared_ptr< aspose::words::cloud::models::SaveResponse > WordsApi::loadWebDocument(std::shared_ptr<aspose::words::cloud::requests::LoadWebDocumentRequest> request)
     {
         auto response = std::make_shared< aspose::words::cloud::responses::LoadWebDocumentResponse >();

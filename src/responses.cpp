@@ -3922,6 +3922,14 @@ namespace aspose::words::cloud::responses {
     }
 
     /*
+     * LinkHeaderFootersToPrevious request implementation
+     */
+
+    void LinkHeaderFootersToPreviousResponse::deserialize(const std::string& contentType, const std::string_view& response)
+    {
+    }
+
+    /*
      * LoadWebDocument request implementation
      */
     std::shared_ptr< aspose::words::cloud::models::SaveResponse > LoadWebDocumentResponse::getResult() const
