@@ -48,7 +48,8 @@ namespace aspose::words::cloud::models {
             ARABIC_MEDIUM_KASHIDA,
             ARABIC_HIGH_KASHIDA,
             ARABIC_LOW_KASHIDA,
-            THAI_DISTRIBUTED
+            THAI_DISTRIBUTED,
+            MATH_ELEMENT_CENTER_AS_GROUP
         };
 
         /// <summary>

@@ -13212,6 +13212,7 @@ namespace aspose::words::cloud::models {
         if (value == aspose::words::cloud::models::PageSetup::PaperSize::TABLOID) return "Tabloid";
         if (value == aspose::words::cloud::models::PageSetup::PaperSize::PAPER10X14) return "Paper10x14";
         if (value == aspose::words::cloud::models::PageSetup::PaperSize::PAPER11X17) return "Paper11x17";
+        if (value == aspose::words::cloud::models::PageSetup::PaperSize::NUMBER10_ENVELOPE) return "Number10Envelope";
         if (value == aspose::words::cloud::models::PageSetup::PaperSize::CUSTOM) return "Custom";
         throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
     }
@@ -13234,6 +13235,7 @@ namespace aspose::words::cloud::models {
         if (value == "Tabloid") return aspose::words::cloud::models::PageSetup::PaperSize::TABLOID;
         if (value == "Paper10x14") return aspose::words::cloud::models::PageSetup::PaperSize::PAPER10X14;
         if (value == "Paper11x17") return aspose::words::cloud::models::PageSetup::PaperSize::PAPER11X17;
+        if (value == "Number10Envelope") return aspose::words::cloud::models::PageSetup::PaperSize::NUMBER10_ENVELOPE;
         if (value == "Custom") return aspose::words::cloud::models::PageSetup::PaperSize::CUSTOM;
         throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
     }
@@ -14035,6 +14037,7 @@ namespace aspose::words::cloud::models {
         if (value == aspose::words::cloud::models::ParagraphFormatBase::Alignment::ARABIC_HIGH_KASHIDA) return "ArabicHighKashida";
         if (value == aspose::words::cloud::models::ParagraphFormatBase::Alignment::ARABIC_LOW_KASHIDA) return "ArabicLowKashida";
         if (value == aspose::words::cloud::models::ParagraphFormatBase::Alignment::THAI_DISTRIBUTED) return "ThaiDistributed";
+        if (value == aspose::words::cloud::models::ParagraphFormatBase::Alignment::MATH_ELEMENT_CENTER_AS_GROUP) return "MathElementCenterAsGroup";
         throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
     }
 
@@ -14049,6 +14052,7 @@ namespace aspose::words::cloud::models {
         if (value == "ArabicHighKashida") return aspose::words::cloud::models::ParagraphFormatBase::Alignment::ARABIC_HIGH_KASHIDA;
         if (value == "ArabicLowKashida") return aspose::words::cloud::models::ParagraphFormatBase::Alignment::ARABIC_LOW_KASHIDA;
         if (value == "ThaiDistributed") return aspose::words::cloud::models::ParagraphFormatBase::Alignment::THAI_DISTRIBUTED;
+        if (value == "MathElementCenterAsGroup") return aspose::words::cloud::models::ParagraphFormatBase::Alignment::MATH_ELEMENT_CENTER_AS_GROUP;
         throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
     }
 
@@ -15718,22 +15722,18 @@ namespace aspose::words::cloud::models {
      */
     inline std::string pdfDigitalSignatureDetailsDataHashAlgorithmToString(aspose::words::cloud::models::PdfDigitalSignatureDetailsData::HashAlgorithm value)
     {
-        if (value == aspose::words::cloud::models::PdfDigitalSignatureDetailsData::HashAlgorithm::SHA1) return "Sha1";
         if (value == aspose::words::cloud::models::PdfDigitalSignatureDetailsData::HashAlgorithm::SHA256) return "Sha256";
         if (value == aspose::words::cloud::models::PdfDigitalSignatureDetailsData::HashAlgorithm::SHA384) return "Sha384";
         if (value == aspose::words::cloud::models::PdfDigitalSignatureDetailsData::HashAlgorithm::SHA512) return "Sha512";
-        if (value == aspose::words::cloud::models::PdfDigitalSignatureDetailsData::HashAlgorithm::MD5) return "Md5";
         if (value == aspose::words::cloud::models::PdfDigitalSignatureDetailsData::HashAlgorithm::RIPE_M_D160) return "RipeMD160";
         throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
     }
 
     inline aspose::words::cloud::models::PdfDigitalSignatureDetailsData::HashAlgorithm pdfDigitalSignatureDetailsDataHashAlgorithmFromString(const std::string& value)
     {
-        if (value == "Sha1") return aspose::words::cloud::models::PdfDigitalSignatureDetailsData::HashAlgorithm::SHA1;
         if (value == "Sha256") return aspose::words::cloud::models::PdfDigitalSignatureDetailsData::HashAlgorithm::SHA256;
         if (value == "Sha384") return aspose::words::cloud::models::PdfDigitalSignatureDetailsData::HashAlgorithm::SHA384;
         if (value == "Sha512") return aspose::words::cloud::models::PdfDigitalSignatureDetailsData::HashAlgorithm::SHA512;
-        if (value == "Md5") return aspose::words::cloud::models::PdfDigitalSignatureDetailsData::HashAlgorithm::MD5;
         if (value == "RipeMD160") return aspose::words::cloud::models::PdfDigitalSignatureDetailsData::HashAlgorithm::RIPE_M_D160;
         throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
     }
