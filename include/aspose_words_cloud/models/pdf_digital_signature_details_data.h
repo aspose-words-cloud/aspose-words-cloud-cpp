@@ -38,11 +38,9 @@ namespace aspose::words::cloud::models {
         /// </summary>
         enum class HashAlgorithm
         { 
-            SHA1,
             SHA256,
             SHA384,
             SHA512,
-            MD5,
             RIPE_M_D160
         };
 

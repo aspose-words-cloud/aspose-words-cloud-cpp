@@ -162,6 +162,7 @@ namespace aspose::words::cloud::models {
             TABLOID,
             PAPER10X14,
             PAPER11X17,
+            NUMBER10_ENVELOPE,
             CUSTOM
         };
 
