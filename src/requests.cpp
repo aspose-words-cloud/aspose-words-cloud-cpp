@@ -19804,7 +19804,7 @@ namespace aspose::words::cloud::requests {
     std::shared_ptr< aspose::words::cloud::HttpRequestData > LinkHeaderFootersToPreviousRequest::createHttpRequest() const
     {
         auto result = std::make_shared<HttpRequestData>();
-        result->setMethod(HttpRequestMethod::HttpPOST);
+        result->setMethod(HttpRequestMethod::HttpPUT);
         result->setPath(L"/words/{name}/sections/{sectionIndex}/link");
         if (!m_Name) throw aspose::words::cloud::ApiException(400, L"Parameter 'Name' is required.");
         result->setPathParam(L"{name}", *m_Name);

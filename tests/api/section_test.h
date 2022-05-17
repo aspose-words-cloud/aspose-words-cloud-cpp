@@ -172,10 +172,17 @@ TEST_F(SectionTests, TestDeleteSectionOnline) {
 /// Test for linking headers and footers to previous section.
 /// </summary>
 TEST_F(SectionTests, TestLinkHeaderFootersToPrevious) {
+    std::wstring remoteFileName = L"TestLinkHeaderFootersToPrevious.docx";
+
+    uploadFileToStorage(
+        localTestDataFolder + L"/" + L"DocumentElements/Sections/Source.docx",
+        remoteDataFolder + L"/" + remoteFileName
+    );
+
     std::shared_ptr<requests::LinkHeaderFootersToPreviousRequest> request(new requests::LinkHeaderFootersToPreviousRequest(
-        std::make_shared< std::wstring >(L"DocumentElements/Sections/Source.docx"),
+        std::make_shared< std::wstring >(remoteFileName),
         std::make_shared< int32_t >(1),
-        nullptr,
+        std::make_shared< std::wstring >(remoteDataFolder),
         nullptr,
         nullptr,
         nullptr,
