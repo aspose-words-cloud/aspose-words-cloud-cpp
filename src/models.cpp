@@ -426,6 +426,58 @@ namespace aspose::words::cloud::models {
 
 
     /*
+     * BookmarkInsert implementation
+     */
+    void BookmarkInsert::toJson(void* jsonIfc) const
+    {
+        BookmarkData::toJson(jsonIfc);
+        ::nlohmann::json& json = *((::nlohmann::json*)jsonIfc);
+        if (this->m_EndRange) {
+            this->m_EndRange->toJson(&json["EndRange"]);
+        }
+        if (this->m_StartRange) {
+            this->m_StartRange->toJson(&json["StartRange"]);
+        }
+    }
+
+    void BookmarkInsert::fromJson(const void* jsonIfc)
+    {
+        BookmarkData::fromJson(jsonIfc);
+        ::nlohmann::json& json = *((::nlohmann::json*)jsonIfc);
+        if (json.contains("EndRange") && !json["EndRange"].is_null()) {
+            this->m_EndRange = std::make_shared< aspose::words::cloud::models::DocumentPosition >();
+            this->m_EndRange->fromJson(&json["EndRange"]);
+        }
+        if (json.contains("StartRange") && !json["StartRange"].is_null()) {
+            this->m_StartRange = std::make_shared< aspose::words::cloud::models::DocumentPosition >();
+            this->m_StartRange->fromJson(&json["StartRange"]);
+        }
+    }
+
+    std::shared_ptr< aspose::words::cloud::models::DocumentPosition > BookmarkInsert::getEndRange() const
+    {
+        return this->m_EndRange;
+    }
+
+    void BookmarkInsert::setEndRange(std::shared_ptr< aspose::words::cloud::models::DocumentPosition > value)
+    {
+        this->m_EndRange = value;
+    }
+
+
+    std::shared_ptr< aspose::words::cloud::models::DocumentPosition > BookmarkInsert::getStartRange() const
+    {
+        return this->m_StartRange;
+    }
+
+    void BookmarkInsert::setStartRange(std::shared_ptr< aspose::words::cloud::models::DocumentPosition > value)
+    {
+        this->m_StartRange = value;
+    }
+
+
+
+    /*
      * BookmarkResponse implementation
      */
     void BookmarkResponse::toJson(void* jsonIfc) const

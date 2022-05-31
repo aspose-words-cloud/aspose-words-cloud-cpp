@@ -2153,6 +2153,376 @@ namespace aspose::words::cloud::requests {
     }
 
     /*
+     * DeleteBookmark request implementation
+     */
+    DeleteBookmarkRequest::DeleteBookmarkRequest(
+        const std::shared_ptr< std::wstring > name,
+        const std::shared_ptr< std::wstring > bookmarkName,
+        const std::shared_ptr< std::wstring > folder,
+        const std::shared_ptr< std::wstring > storage,
+        const std::shared_ptr< std::wstring > loadEncoding,
+        const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< std::wstring > destFileName,
+        const std::shared_ptr< std::wstring > revisionAuthor,
+        const std::shared_ptr< std::wstring > revisionDateTime
+    ) : 
+        m_Name(name),
+        m_BookmarkName(bookmarkName),
+        m_Folder(folder),
+        m_Storage(storage),
+        m_LoadEncoding(loadEncoding),
+        m_Password(password),
+        m_EncryptedPassword(encryptedPassword),
+        m_DestFileName(destFileName),
+        m_RevisionAuthor(revisionAuthor),
+        m_RevisionDateTime(revisionDateTime)
+    {
+    }
+
+    const std::shared_ptr< std::wstring > DeleteBookmarkRequest::getName() const
+    {
+        return m_Name;
+    }
+
+    const std::shared_ptr< std::wstring > DeleteBookmarkRequest::getBookmarkName() const
+    {
+        return m_BookmarkName;
+    }
+
+    const std::shared_ptr< std::wstring > DeleteBookmarkRequest::getFolder() const
+    {
+        return m_Folder;
+    }
+
+    const std::shared_ptr< std::wstring > DeleteBookmarkRequest::getStorage() const
+    {
+        return m_Storage;
+    }
+
+    const std::shared_ptr< std::wstring > DeleteBookmarkRequest::getLoadEncoding() const
+    {
+        return m_LoadEncoding;
+    }
+
+    const std::shared_ptr< std::wstring > DeleteBookmarkRequest::getPassword() const
+    {
+        return m_Password;
+    }
+
+    const std::shared_ptr< std::wstring > DeleteBookmarkRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
+    }
+
+    const std::shared_ptr< std::wstring > DeleteBookmarkRequest::getDestFileName() const
+    {
+        return m_DestFileName;
+    }
+
+    const std::shared_ptr< std::wstring > DeleteBookmarkRequest::getRevisionAuthor() const
+    {
+        return m_RevisionAuthor;
+    }
+
+    const std::shared_ptr< std::wstring > DeleteBookmarkRequest::getRevisionDateTime() const
+    {
+        return m_RevisionDateTime;
+    }
+
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > DeleteBookmarkRequest::createHttpRequest() const
+    {
+        auto result = std::make_shared<HttpRequestData>();
+        result->setMethod(HttpRequestMethod::HttpDELETE);
+        result->setPath(L"/words/{name}/bookmarks/{bookmarkName}");
+        if (!m_Name) throw aspose::words::cloud::ApiException(400, L"Parameter 'Name' is required.");
+        result->setPathParam(L"{name}", *m_Name);
+        if (!m_BookmarkName) throw aspose::words::cloud::ApiException(400, L"Parameter 'BookmarkName' is required.");
+        result->setPathParam(L"{bookmarkName}", *m_BookmarkName);
+        if (m_Folder) result->addQueryParam(L"folder", *m_Folder);
+        if (m_Storage) result->addQueryParam(L"storage", *m_Storage);
+        if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
+        if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
+        if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
+        if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
+        return result;
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > DeleteBookmarkRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::DeleteBookmarkResponse()
+        );
+    }
+
+    /*
+     * DeleteBookmarkOnline request implementation
+     */
+    DeleteBookmarkOnlineRequest::DeleteBookmarkOnlineRequest(
+        const std::shared_ptr< std::istream > document,
+        const std::shared_ptr< std::wstring > bookmarkName,
+        const std::shared_ptr< std::wstring > loadEncoding,
+        const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< std::wstring > destFileName,
+        const std::shared_ptr< std::wstring > revisionAuthor,
+        const std::shared_ptr< std::wstring > revisionDateTime
+    ) : 
+        m_Document(document),
+        m_BookmarkName(bookmarkName),
+        m_LoadEncoding(loadEncoding),
+        m_Password(password),
+        m_EncryptedPassword(encryptedPassword),
+        m_DestFileName(destFileName),
+        m_RevisionAuthor(revisionAuthor),
+        m_RevisionDateTime(revisionDateTime)
+    {
+    }
+
+    const std::shared_ptr< std::istream > DeleteBookmarkOnlineRequest::getDocument() const
+    {
+        return m_Document;
+    }
+
+    const std::shared_ptr< std::wstring > DeleteBookmarkOnlineRequest::getBookmarkName() const
+    {
+        return m_BookmarkName;
+    }
+
+    const std::shared_ptr< std::wstring > DeleteBookmarkOnlineRequest::getLoadEncoding() const
+    {
+        return m_LoadEncoding;
+    }
+
+    const std::shared_ptr< std::wstring > DeleteBookmarkOnlineRequest::getPassword() const
+    {
+        return m_Password;
+    }
+
+    const std::shared_ptr< std::wstring > DeleteBookmarkOnlineRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
+    }
+
+    const std::shared_ptr< std::wstring > DeleteBookmarkOnlineRequest::getDestFileName() const
+    {
+        return m_DestFileName;
+    }
+
+    const std::shared_ptr< std::wstring > DeleteBookmarkOnlineRequest::getRevisionAuthor() const
+    {
+        return m_RevisionAuthor;
+    }
+
+    const std::shared_ptr< std::wstring > DeleteBookmarkOnlineRequest::getRevisionDateTime() const
+    {
+        return m_RevisionDateTime;
+    }
+
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > DeleteBookmarkOnlineRequest::createHttpRequest() const
+    {
+        auto result = std::make_shared<HttpRequestData>();
+        result->setMethod(HttpRequestMethod::HttpPUT);
+        result->setPath(L"/words/online/delete/bookmarks/{bookmarkName}");
+        if (!m_BookmarkName) throw aspose::words::cloud::ApiException(400, L"Parameter 'BookmarkName' is required.");
+        result->setPathParam(L"{bookmarkName}", *m_BookmarkName);
+        if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
+        if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
+        if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
+        if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
+        if (m_Document) result->setBody(*m_Document);
+        else throw aspose::words::cloud::ApiException(400, L"Parameter 'Document' is required.");
+        return result;
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > DeleteBookmarkOnlineRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::DeleteBookmarkOnlineResponse()
+        );
+    }
+
+    /*
+     * DeleteBookmarks request implementation
+     */
+    DeleteBookmarksRequest::DeleteBookmarksRequest(
+        const std::shared_ptr< std::wstring > name,
+        const std::shared_ptr< std::wstring > folder,
+        const std::shared_ptr< std::wstring > storage,
+        const std::shared_ptr< std::wstring > loadEncoding,
+        const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< std::wstring > destFileName,
+        const std::shared_ptr< std::wstring > revisionAuthor,
+        const std::shared_ptr< std::wstring > revisionDateTime
+    ) : 
+        m_Name(name),
+        m_Folder(folder),
+        m_Storage(storage),
+        m_LoadEncoding(loadEncoding),
+        m_Password(password),
+        m_EncryptedPassword(encryptedPassword),
+        m_DestFileName(destFileName),
+        m_RevisionAuthor(revisionAuthor),
+        m_RevisionDateTime(revisionDateTime)
+    {
+    }
+
+    const std::shared_ptr< std::wstring > DeleteBookmarksRequest::getName() const
+    {
+        return m_Name;
+    }
+
+    const std::shared_ptr< std::wstring > DeleteBookmarksRequest::getFolder() const
+    {
+        return m_Folder;
+    }
+
+    const std::shared_ptr< std::wstring > DeleteBookmarksRequest::getStorage() const
+    {
+        return m_Storage;
+    }
+
+    const std::shared_ptr< std::wstring > DeleteBookmarksRequest::getLoadEncoding() const
+    {
+        return m_LoadEncoding;
+    }
+
+    const std::shared_ptr< std::wstring > DeleteBookmarksRequest::getPassword() const
+    {
+        return m_Password;
+    }
+
+    const std::shared_ptr< std::wstring > DeleteBookmarksRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
+    }
+
+    const std::shared_ptr< std::wstring > DeleteBookmarksRequest::getDestFileName() const
+    {
+        return m_DestFileName;
+    }
+
+    const std::shared_ptr< std::wstring > DeleteBookmarksRequest::getRevisionAuthor() const
+    {
+        return m_RevisionAuthor;
+    }
+
+    const std::shared_ptr< std::wstring > DeleteBookmarksRequest::getRevisionDateTime() const
+    {
+        return m_RevisionDateTime;
+    }
+
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > DeleteBookmarksRequest::createHttpRequest() const
+    {
+        auto result = std::make_shared<HttpRequestData>();
+        result->setMethod(HttpRequestMethod::HttpDELETE);
+        result->setPath(L"/words/{name}/bookmarks");
+        if (!m_Name) throw aspose::words::cloud::ApiException(400, L"Parameter 'Name' is required.");
+        result->setPathParam(L"{name}", *m_Name);
+        if (m_Folder) result->addQueryParam(L"folder", *m_Folder);
+        if (m_Storage) result->addQueryParam(L"storage", *m_Storage);
+        if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
+        if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
+        if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
+        if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
+        return result;
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > DeleteBookmarksRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::DeleteBookmarksResponse()
+        );
+    }
+
+    /*
+     * DeleteBookmarksOnline request implementation
+     */
+    DeleteBookmarksOnlineRequest::DeleteBookmarksOnlineRequest(
+        const std::shared_ptr< std::istream > document,
+        const std::shared_ptr< std::wstring > loadEncoding,
+        const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< std::wstring > destFileName,
+        const std::shared_ptr< std::wstring > revisionAuthor,
+        const std::shared_ptr< std::wstring > revisionDateTime
+    ) : 
+        m_Document(document),
+        m_LoadEncoding(loadEncoding),
+        m_Password(password),
+        m_EncryptedPassword(encryptedPassword),
+        m_DestFileName(destFileName),
+        m_RevisionAuthor(revisionAuthor),
+        m_RevisionDateTime(revisionDateTime)
+    {
+    }
+
+    const std::shared_ptr< std::istream > DeleteBookmarksOnlineRequest::getDocument() const
+    {
+        return m_Document;
+    }
+
+    const std::shared_ptr< std::wstring > DeleteBookmarksOnlineRequest::getLoadEncoding() const
+    {
+        return m_LoadEncoding;
+    }
+
+    const std::shared_ptr< std::wstring > DeleteBookmarksOnlineRequest::getPassword() const
+    {
+        return m_Password;
+    }
+
+    const std::shared_ptr< std::wstring > DeleteBookmarksOnlineRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
+    }
+
+    const std::shared_ptr< std::wstring > DeleteBookmarksOnlineRequest::getDestFileName() const
+    {
+        return m_DestFileName;
+    }
+
+    const std::shared_ptr< std::wstring > DeleteBookmarksOnlineRequest::getRevisionAuthor() const
+    {
+        return m_RevisionAuthor;
+    }
+
+    const std::shared_ptr< std::wstring > DeleteBookmarksOnlineRequest::getRevisionDateTime() const
+    {
+        return m_RevisionDateTime;
+    }
+
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > DeleteBookmarksOnlineRequest::createHttpRequest() const
+    {
+        auto result = std::make_shared<HttpRequestData>();
+        result->setMethod(HttpRequestMethod::HttpPUT);
+        result->setPath(L"/words/online/delete/bookmarks");
+        if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
+        if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
+        if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
+        if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
+        if (m_Document) result->setBody(*m_Document);
+        else throw aspose::words::cloud::ApiException(400, L"Parameter 'Document' is required.");
+        return result;
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > DeleteBookmarksOnlineRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::DeleteBookmarksOnlineResponse()
+        );
+    }
+
+    /*
      * DeleteBorder request implementation
      */
     DeleteBorderRequest::DeleteBorderRequest(
@@ -15938,6 +16308,200 @@ namespace aspose::words::cloud::requests {
     {
         return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
             new aspose::words::cloud::responses::GetTablesOnlineResponse()
+        );
+    }
+
+    /*
+     * InsertBookmark request implementation
+     */
+    InsertBookmarkRequest::InsertBookmarkRequest(
+        const std::shared_ptr< std::wstring > name,
+        const std::shared_ptr< aspose::words::cloud::models::BookmarkInsert > bookmark,
+        const std::shared_ptr< std::wstring > folder,
+        const std::shared_ptr< std::wstring > storage,
+        const std::shared_ptr< std::wstring > loadEncoding,
+        const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< std::wstring > destFileName,
+        const std::shared_ptr< std::wstring > revisionAuthor,
+        const std::shared_ptr< std::wstring > revisionDateTime
+    ) : 
+        m_Name(name),
+        m_Bookmark(bookmark),
+        m_Folder(folder),
+        m_Storage(storage),
+        m_LoadEncoding(loadEncoding),
+        m_Password(password),
+        m_EncryptedPassword(encryptedPassword),
+        m_DestFileName(destFileName),
+        m_RevisionAuthor(revisionAuthor),
+        m_RevisionDateTime(revisionDateTime)
+    {
+    }
+
+    const std::shared_ptr< std::wstring > InsertBookmarkRequest::getName() const
+    {
+        return m_Name;
+    }
+
+    const std::shared_ptr< aspose::words::cloud::models::BookmarkInsert > InsertBookmarkRequest::getBookmark() const
+    {
+        return m_Bookmark;
+    }
+
+    const std::shared_ptr< std::wstring > InsertBookmarkRequest::getFolder() const
+    {
+        return m_Folder;
+    }
+
+    const std::shared_ptr< std::wstring > InsertBookmarkRequest::getStorage() const
+    {
+        return m_Storage;
+    }
+
+    const std::shared_ptr< std::wstring > InsertBookmarkRequest::getLoadEncoding() const
+    {
+        return m_LoadEncoding;
+    }
+
+    const std::shared_ptr< std::wstring > InsertBookmarkRequest::getPassword() const
+    {
+        return m_Password;
+    }
+
+    const std::shared_ptr< std::wstring > InsertBookmarkRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
+    }
+
+    const std::shared_ptr< std::wstring > InsertBookmarkRequest::getDestFileName() const
+    {
+        return m_DestFileName;
+    }
+
+    const std::shared_ptr< std::wstring > InsertBookmarkRequest::getRevisionAuthor() const
+    {
+        return m_RevisionAuthor;
+    }
+
+    const std::shared_ptr< std::wstring > InsertBookmarkRequest::getRevisionDateTime() const
+    {
+        return m_RevisionDateTime;
+    }
+
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > InsertBookmarkRequest::createHttpRequest() const
+    {
+        auto result = std::make_shared<HttpRequestData>();
+        result->setMethod(HttpRequestMethod::HttpPOST);
+        result->setPath(L"/words/{name}/bookmarks");
+        if (!m_Name) throw aspose::words::cloud::ApiException(400, L"Parameter 'Name' is required.");
+        result->setPathParam(L"{name}", *m_Name);
+        if (m_Folder) result->addQueryParam(L"folder", *m_Folder);
+        if (m_Storage) result->addQueryParam(L"storage", *m_Storage);
+        if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
+        if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
+        if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
+        if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
+        if (m_Bookmark) result->setBody(*m_Bookmark);
+        else throw aspose::words::cloud::ApiException(400, L"Parameter 'Bookmark' is required.");
+        return result;
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > InsertBookmarkRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::InsertBookmarkResponse()
+        );
+    }
+
+    /*
+     * InsertBookmarkOnline request implementation
+     */
+    InsertBookmarkOnlineRequest::InsertBookmarkOnlineRequest(
+        const std::shared_ptr< std::istream > document,
+        const std::shared_ptr< aspose::words::cloud::models::BookmarkInsert > bookmark,
+        const std::shared_ptr< std::wstring > loadEncoding,
+        const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< std::wstring > destFileName,
+        const std::shared_ptr< std::wstring > revisionAuthor,
+        const std::shared_ptr< std::wstring > revisionDateTime
+    ) : 
+        m_Document(document),
+        m_Bookmark(bookmark),
+        m_LoadEncoding(loadEncoding),
+        m_Password(password),
+        m_EncryptedPassword(encryptedPassword),
+        m_DestFileName(destFileName),
+        m_RevisionAuthor(revisionAuthor),
+        m_RevisionDateTime(revisionDateTime)
+    {
+    }
+
+    const std::shared_ptr< std::istream > InsertBookmarkOnlineRequest::getDocument() const
+    {
+        return m_Document;
+    }
+
+    const std::shared_ptr< aspose::words::cloud::models::BookmarkInsert > InsertBookmarkOnlineRequest::getBookmark() const
+    {
+        return m_Bookmark;
+    }
+
+    const std::shared_ptr< std::wstring > InsertBookmarkOnlineRequest::getLoadEncoding() const
+    {
+        return m_LoadEncoding;
+    }
+
+    const std::shared_ptr< std::wstring > InsertBookmarkOnlineRequest::getPassword() const
+    {
+        return m_Password;
+    }
+
+    const std::shared_ptr< std::wstring > InsertBookmarkOnlineRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
+    }
+
+    const std::shared_ptr< std::wstring > InsertBookmarkOnlineRequest::getDestFileName() const
+    {
+        return m_DestFileName;
+    }
+
+    const std::shared_ptr< std::wstring > InsertBookmarkOnlineRequest::getRevisionAuthor() const
+    {
+        return m_RevisionAuthor;
+    }
+
+    const std::shared_ptr< std::wstring > InsertBookmarkOnlineRequest::getRevisionDateTime() const
+    {
+        return m_RevisionDateTime;
+    }
+
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > InsertBookmarkOnlineRequest::createHttpRequest() const
+    {
+        auto result = std::make_shared<HttpRequestData>();
+        result->setMethod(HttpRequestMethod::HttpPUT);
+        result->setPath(L"/words/online/post/bookmarks");
+        if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
+        if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
+        if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
+        if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
+        if (m_Document) result->addFormDataParam(L"document", *m_Document);
+        else throw aspose::words::cloud::ApiException(400, L"Parameter 'Document' is required.");
+        if (m_Bookmark) result->addFormDataParam(L"bookmark", *m_Bookmark);
+        else throw aspose::words::cloud::ApiException(400, L"Parameter 'Bookmark' is required.");
+        return result;
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > InsertBookmarkOnlineRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::InsertBookmarkOnlineResponse()
         );
     }
 

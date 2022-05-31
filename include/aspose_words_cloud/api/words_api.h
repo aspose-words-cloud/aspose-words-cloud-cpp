@@ -79,6 +79,14 @@
 #include "aspose_words_cloud/responses/delete_all_paragraph_tab_stops_response.h"
 #include "aspose_words_cloud/requests/delete_all_paragraph_tab_stops_online_request.h"
 #include "aspose_words_cloud/responses/delete_all_paragraph_tab_stops_online_response.h"
+#include "aspose_words_cloud/requests/delete_bookmark_request.h"
+#include "aspose_words_cloud/responses/delete_bookmark_response.h"
+#include "aspose_words_cloud/requests/delete_bookmark_online_request.h"
+#include "aspose_words_cloud/responses/delete_bookmark_online_response.h"
+#include "aspose_words_cloud/requests/delete_bookmarks_request.h"
+#include "aspose_words_cloud/responses/delete_bookmarks_response.h"
+#include "aspose_words_cloud/requests/delete_bookmarks_online_request.h"
+#include "aspose_words_cloud/responses/delete_bookmarks_online_response.h"
 #include "aspose_words_cloud/requests/delete_border_request.h"
 #include "aspose_words_cloud/responses/delete_border_response.h"
 #include "aspose_words_cloud/requests/delete_border_online_request.h"
@@ -417,6 +425,10 @@
 #include "aspose_words_cloud/responses/get_tables_response.h"
 #include "aspose_words_cloud/requests/get_tables_online_request.h"
 #include "aspose_words_cloud/responses/get_tables_online_response.h"
+#include "aspose_words_cloud/requests/insert_bookmark_request.h"
+#include "aspose_words_cloud/responses/insert_bookmark_response.h"
+#include "aspose_words_cloud/requests/insert_bookmark_online_request.h"
+#include "aspose_words_cloud/responses/insert_bookmark_online_response.h"
 #include "aspose_words_cloud/requests/insert_comment_request.h"
 #include "aspose_words_cloud/responses/insert_comment_response.h"
 #include "aspose_words_cloud/requests/insert_comment_online_request.h"
@@ -958,6 +970,60 @@ namespace aspose::words::cloud::api {
         /// <param name="encryptedPassword">Password of protected Word document. Use the parameter to pass an encrypted password for direct calls of API. See SDK code for encyption details.</param>
         /// <param name="destFileName">Result path of the document after the operation. If this parameter is omitted then result of the operation will be saved as the source document.</param>
         ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr<aspose::words::cloud::responses::DeleteAllParagraphTabStopsOnlineResponse> deleteAllParagraphTabStopsOnline(std::shared_ptr<aspose::words::cloud::requests::DeleteAllParagraphTabStopsOnlineRequest> request);
+
+        /// <summary>
+        /// Removes a bookmark from the document.
+        /// </summary>
+        /// <param name="name">The filename of the input document.</param>
+        /// <param name="bookmarkName">The name of the bookmark.</param>
+        /// <param name="folder">Original document folder.</param>
+        /// <param name="storage">Original document storage.</param>
+        /// <param name="loadEncoding">Encoding that will be used to load an HTML (or TXT) document if the encoding is not specified in HTML.</param>
+        /// <param name="password">Password of protected Word document. Use the parameter to pass a password via SDK. SDK encrypts it automatically. We don't recommend to use the parameter to pass a plain password for direct call of API.</param>
+        /// <param name="encryptedPassword">Password of protected Word document. Use the parameter to pass an encrypted password for direct calls of API. See SDK code for encyption details.</param>
+        /// <param name="destFileName">Result path of the document after the operation. If this parameter is omitted then result of the operation will be saved as the source document.</param>
+        /// <param name="revisionAuthor">Initials of the author to use for revisions.If you set this parameter and then make some changes to the document programmatically, save the document and later open the document in MS Word you will see these changes as revisions.</param>
+        /// <param name="revisionDateTime">The date and time to use for revisions.</param>
+        ASPOSE_WORDS_CLOUD_EXPORT void deleteBookmark(std::shared_ptr<aspose::words::cloud::requests::DeleteBookmarkRequest> request);
+
+        /// <summary>
+        /// Removes a bookmark from the document.
+        /// </summary>
+        /// <param name="document">The document.</param>
+        /// <param name="bookmarkName">The name of the bookmark.</param>
+        /// <param name="loadEncoding">Encoding that will be used to load an HTML (or TXT) document if the encoding is not specified in HTML.</param>
+        /// <param name="password">Password of protected Word document. Use the parameter to pass a password via SDK. SDK encrypts it automatically. We don't recommend to use the parameter to pass a plain password for direct call of API.</param>
+        /// <param name="encryptedPassword">Password of protected Word document. Use the parameter to pass an encrypted password for direct calls of API. See SDK code for encyption details.</param>
+        /// <param name="destFileName">Result path of the document after the operation. If this parameter is omitted then result of the operation will be saved as the source document.</param>
+        /// <param name="revisionAuthor">Initials of the author to use for revisions.If you set this parameter and then make some changes to the document programmatically, save the document and later open the document in MS Word you will see these changes as revisions.</param>
+        /// <param name="revisionDateTime">The date and time to use for revisions.</param>
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::map<std::wstring, std::shared_ptr<std::istream>> > deleteBookmarkOnline(std::shared_ptr<aspose::words::cloud::requests::DeleteBookmarkOnlineRequest> request);
+
+        /// <summary>
+        /// Removes all bookmarks from the document.
+        /// </summary>
+        /// <param name="name">The filename of the input document.</param>
+        /// <param name="folder">Original document folder.</param>
+        /// <param name="storage">Original document storage.</param>
+        /// <param name="loadEncoding">Encoding that will be used to load an HTML (or TXT) document if the encoding is not specified in HTML.</param>
+        /// <param name="password">Password of protected Word document. Use the parameter to pass a password via SDK. SDK encrypts it automatically. We don't recommend to use the parameter to pass a plain password for direct call of API.</param>
+        /// <param name="encryptedPassword">Password of protected Word document. Use the parameter to pass an encrypted password for direct calls of API. See SDK code for encyption details.</param>
+        /// <param name="destFileName">Result path of the document after the operation. If this parameter is omitted then result of the operation will be saved as the source document.</param>
+        /// <param name="revisionAuthor">Initials of the author to use for revisions.If you set this parameter and then make some changes to the document programmatically, save the document and later open the document in MS Word you will see these changes as revisions.</param>
+        /// <param name="revisionDateTime">The date and time to use for revisions.</param>
+        ASPOSE_WORDS_CLOUD_EXPORT void deleteBookmarks(std::shared_ptr<aspose::words::cloud::requests::DeleteBookmarksRequest> request);
+
+        /// <summary>
+        /// Removes all bookmarks from the document.
+        /// </summary>
+        /// <param name="document">The document.</param>
+        /// <param name="loadEncoding">Encoding that will be used to load an HTML (or TXT) document if the encoding is not specified in HTML.</param>
+        /// <param name="password">Password of protected Word document. Use the parameter to pass a password via SDK. SDK encrypts it automatically. We don't recommend to use the parameter to pass a plain password for direct call of API.</param>
+        /// <param name="encryptedPassword">Password of protected Word document. Use the parameter to pass an encrypted password for direct calls of API. See SDK code for encyption details.</param>
+        /// <param name="destFileName">Result path of the document after the operation. If this parameter is omitted then result of the operation will be saved as the source document.</param>
+        /// <param name="revisionAuthor">Initials of the author to use for revisions.If you set this parameter and then make some changes to the document programmatically, save the document and later open the document in MS Word you will see these changes as revisions.</param>
+        /// <param name="revisionDateTime">The date and time to use for revisions.</param>
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::map<std::wstring, std::shared_ptr<std::istream>> > deleteBookmarksOnline(std::shared_ptr<aspose::words::cloud::requests::DeleteBookmarksOnlineRequest> request);
 
         /// <summary>
         /// The 'nodePath' parameter should refer to a paragraph, a cell or a row.
@@ -3003,6 +3069,34 @@ namespace aspose::words::cloud::api {
         /// <param name="password">Password of protected Word document. Use the parameter to pass a password via SDK. SDK encrypts it automatically. We don't recommend to use the parameter to pass a plain password for direct call of API.</param>
         /// <param name="encryptedPassword">Password of protected Word document. Use the parameter to pass an encrypted password for direct calls of API. See SDK code for encyption details.</param>
         ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::TableLinkCollectionResponse > getTablesOnline(std::shared_ptr<aspose::words::cloud::requests::GetTablesOnlineRequest> request);
+
+        /// <summary>
+        /// Inserts a new bookmark to the document.
+        /// </summary>
+        /// <param name="name">The filename of the input document.</param>
+        /// <param name="bookmark">Bookmark to insert.</param>
+        /// <param name="folder">Original document folder.</param>
+        /// <param name="storage">Original document storage.</param>
+        /// <param name="loadEncoding">Encoding that will be used to load an HTML (or TXT) document if the encoding is not specified in HTML.</param>
+        /// <param name="password">Password of protected Word document. Use the parameter to pass a password via SDK. SDK encrypts it automatically. We don't recommend to use the parameter to pass a plain password for direct call of API.</param>
+        /// <param name="encryptedPassword">Password of protected Word document. Use the parameter to pass an encrypted password for direct calls of API. See SDK code for encyption details.</param>
+        /// <param name="destFileName">Result path of the document after the operation. If this parameter is omitted then result of the operation will be saved as the source document.</param>
+        /// <param name="revisionAuthor">Initials of the author to use for revisions.If you set this parameter and then make some changes to the document programmatically, save the document and later open the document in MS Word you will see these changes as revisions.</param>
+        /// <param name="revisionDateTime">The date and time to use for revisions.</param>
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::BookmarkResponse > insertBookmark(std::shared_ptr<aspose::words::cloud::requests::InsertBookmarkRequest> request);
+
+        /// <summary>
+        /// Inserts a new bookmark to the document.
+        /// </summary>
+        /// <param name="document">The document.</param>
+        /// <param name="bookmark">Bookmark to insert.</param>
+        /// <param name="loadEncoding">Encoding that will be used to load an HTML (or TXT) document if the encoding is not specified in HTML.</param>
+        /// <param name="password">Password of protected Word document. Use the parameter to pass a password via SDK. SDK encrypts it automatically. We don't recommend to use the parameter to pass a plain password for direct call of API.</param>
+        /// <param name="encryptedPassword">Password of protected Word document. Use the parameter to pass an encrypted password for direct calls of API. See SDK code for encyption details.</param>
+        /// <param name="destFileName">Result path of the document after the operation. If this parameter is omitted then result of the operation will be saved as the source document.</param>
+        /// <param name="revisionAuthor">Initials of the author to use for revisions.If you set this parameter and then make some changes to the document programmatically, save the document and later open the document in MS Word you will see these changes as revisions.</param>
+        /// <param name="revisionDateTime">The date and time to use for revisions.</param>
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr<aspose::words::cloud::responses::InsertBookmarkOnlineResponse> insertBookmarkOnline(std::shared_ptr<aspose::words::cloud::requests::InsertBookmarkOnlineRequest> request);
 
         /// <summary>
         /// Inserts a new comment to the document.

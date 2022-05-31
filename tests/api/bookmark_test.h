@@ -171,3 +171,165 @@ TEST_F(BookmarkTests, TestUpdateBookmarkOnline) {
 
     auto actual = getApi()->updateBookmarkOnline(request);
 }
+
+/// <summary>
+/// Test for deleting bookmark by specified name.
+/// </summary>
+TEST_F(BookmarkTests, TestDeleteBookmark) {
+    std::wstring remoteFileName = L"TestDeleteBookmark.docx";
+
+    uploadFileToStorage(
+        localTestDataFolder + L"/" + localFile,
+        remoteDataFolder + L"/" + remoteFileName
+    );
+
+    std::shared_ptr<requests::DeleteBookmarkRequest> request(new requests::DeleteBookmarkRequest(
+        std::make_shared< std::wstring >(remoteFileName),
+        std::make_shared< std::wstring >(bookmarkName),
+        std::make_shared< std::wstring >(remoteDataFolder),
+        nullptr,
+        nullptr,
+        nullptr,
+        nullptr,
+        nullptr,
+        nullptr,
+        nullptr
+    ));
+
+getApi()->deleteBookmark(request);
+}
+
+/// <summary>
+/// Test for deleting bookmark by specified name online.
+/// </summary>
+TEST_F(BookmarkTests, TestDeleteBookmarkOnline) {
+    auto requestDocument = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(localFile)), std::istream::binary));
+    std::shared_ptr<requests::DeleteBookmarkOnlineRequest> request(new requests::DeleteBookmarkOnlineRequest(
+        requestDocument,
+        std::make_shared< std::wstring >(bookmarkName),
+        nullptr,
+        nullptr,
+        nullptr,
+        nullptr,
+        nullptr,
+        nullptr
+    ));
+
+    auto actual = getApi()->deleteBookmarkOnline(request);
+}
+
+/// <summary>
+/// Test for deleting all bookmarks from document.
+/// </summary>
+TEST_F(BookmarkTests, TestDeleteBookmarks) {
+    std::wstring remoteFileName = L"TestDeleteBookmarks.docx";
+
+    uploadFileToStorage(
+        localTestDataFolder + L"/" + localFile,
+        remoteDataFolder + L"/" + remoteFileName
+    );
+
+    std::shared_ptr<requests::DeleteBookmarksRequest> request(new requests::DeleteBookmarksRequest(
+        std::make_shared< std::wstring >(remoteFileName),
+        std::make_shared< std::wstring >(remoteDataFolder),
+        nullptr,
+        nullptr,
+        nullptr,
+        nullptr,
+        nullptr,
+        nullptr,
+        nullptr
+    ));
+
+getApi()->deleteBookmarks(request);
+}
+
+/// <summary>
+/// Test for deleting all bookmarks from document online.
+/// </summary>
+TEST_F(BookmarkTests, TestDeleteBookmarksOnline) {
+    auto requestDocument = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(localFile)), std::istream::binary));
+    std::shared_ptr<requests::DeleteBookmarksOnlineRequest> request(new requests::DeleteBookmarksOnlineRequest(
+        requestDocument,
+        nullptr,
+        nullptr,
+        nullptr,
+        nullptr,
+        nullptr,
+        nullptr
+    ));
+
+    auto actual = getApi()->deleteBookmarksOnline(request);
+}
+
+/// <summary>
+/// Test for inserting new bookmark.
+/// </summary>
+TEST_F(BookmarkTests, TestInsertBookmark) {
+    std::wstring remoteFileName = L"TestInsertBookmark.docx";
+
+    uploadFileToStorage(
+        localTestDataFolder + L"/" + localFile,
+        remoteDataFolder + L"/" + remoteFileName
+    );
+
+    auto requestBookmarkStartRangeNode = std::make_shared< aspose::words::cloud::models::NodeLink >();
+    requestBookmarkStartRangeNode->setNodeId(std::make_shared< std::wstring >(L"0.0.0.0"));
+    auto requestBookmarkStartRange = std::make_shared< aspose::words::cloud::models::DocumentPosition >();
+    requestBookmarkStartRange->setNode(requestBookmarkStartRangeNode);
+    auto requestBookmarkEndRangeNode = std::make_shared< aspose::words::cloud::models::NodeLink >();
+    requestBookmarkEndRangeNode->setNodeId(std::make_shared< std::wstring >(L"0.0.0.0"));
+    auto requestBookmarkEndRange = std::make_shared< aspose::words::cloud::models::DocumentPosition >();
+    requestBookmarkEndRange->setNode(requestBookmarkEndRangeNode);
+    auto requestBookmark = std::make_shared< aspose::words::cloud::models::BookmarkInsert >();
+    requestBookmark->setStartRange(requestBookmarkStartRange);
+    requestBookmark->setEndRange(requestBookmarkEndRange);
+    requestBookmark->setName(std::make_shared< std::wstring >(L"new_bookmark"));
+    requestBookmark->setText(std::make_shared< std::wstring >(L"Some text"));
+    std::shared_ptr<requests::InsertBookmarkRequest> request(new requests::InsertBookmarkRequest(
+        std::make_shared< std::wstring >(remoteFileName),
+        requestBookmark,
+        std::make_shared< std::wstring >(remoteDataFolder),
+        nullptr,
+        nullptr,
+        nullptr,
+        nullptr,
+        nullptr,
+        nullptr,
+        nullptr
+    ));
+
+    auto actual = getApi()->insertBookmark(request);
+}
+
+/// <summary>
+/// Test for inserting new bookmark online.
+/// </summary>
+TEST_F(BookmarkTests, TestInsertBookmarkOnline) {
+    auto requestDocument = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(localFile)), std::istream::binary));
+    auto requestBookmarkStartRangeNode = std::make_shared< aspose::words::cloud::models::NodeLink >();
+    requestBookmarkStartRangeNode->setNodeId(std::make_shared< std::wstring >(L"0.0.0.0"));
+    auto requestBookmarkStartRange = std::make_shared< aspose::words::cloud::models::DocumentPosition >();
+    requestBookmarkStartRange->setNode(requestBookmarkStartRangeNode);
+    auto requestBookmarkEndRangeNode = std::make_shared< aspose::words::cloud::models::NodeLink >();
+    requestBookmarkEndRangeNode->setNodeId(std::make_shared< std::wstring >(L"0.0.0.0"));
+    auto requestBookmarkEndRange = std::make_shared< aspose::words::cloud::models::DocumentPosition >();
+    requestBookmarkEndRange->setNode(requestBookmarkEndRangeNode);
+    auto requestBookmark = std::make_shared< aspose::words::cloud::models::BookmarkInsert >();
+    requestBookmark->setStartRange(requestBookmarkStartRange);
+    requestBookmark->setEndRange(requestBookmarkEndRange);
+    requestBookmark->setName(std::make_shared< std::wstring >(L"new_bookmark"));
+    requestBookmark->setText(std::make_shared< std::wstring >(L"Some text"));
+    std::shared_ptr<requests::InsertBookmarkOnlineRequest> request(new requests::InsertBookmarkOnlineRequest(
+        requestDocument,
+        requestBookmark,
+        nullptr,
+        nullptr,
+        nullptr,
+        nullptr,
+        nullptr,
+        nullptr
+    ));
+
+    auto actual = getApi()->insertBookmarkOnline(request);
+}
