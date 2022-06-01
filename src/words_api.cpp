@@ -298,6 +298,46 @@ namespace aspose::words::cloud::api {
         return response;
     }
 
+    void WordsApi::deleteBookmark(std::shared_ptr<aspose::words::cloud::requests::DeleteBookmarkRequest> request)
+    {
+        auto response = std::make_shared< aspose::words::cloud::responses::DeleteBookmarkResponse >();
+        m_ApiClient->call( request->createHttpRequest(), *response);
+        if (response->getStatusCode() != 200) {
+            throw aspose::words::cloud::ApiException(response->getStatusCode(), response->getErrorMessage());
+        }
+    }
+
+    std::shared_ptr< std::map<std::wstring, std::shared_ptr<std::istream>> > WordsApi::deleteBookmarkOnline(std::shared_ptr<aspose::words::cloud::requests::DeleteBookmarkOnlineRequest> request)
+    {
+        auto response = std::make_shared< aspose::words::cloud::responses::DeleteBookmarkOnlineResponse >();
+        m_ApiClient->call( request->createHttpRequest(), *response);
+        if (response->getStatusCode() != 200) {
+            throw aspose::words::cloud::ApiException(response->getStatusCode(), response->getErrorMessage());
+        }
+
+        return response->getDocument();
+    }
+
+    void WordsApi::deleteBookmarks(std::shared_ptr<aspose::words::cloud::requests::DeleteBookmarksRequest> request)
+    {
+        auto response = std::make_shared< aspose::words::cloud::responses::DeleteBookmarksResponse >();
+        m_ApiClient->call( request->createHttpRequest(), *response);
+        if (response->getStatusCode() != 200) {
+            throw aspose::words::cloud::ApiException(response->getStatusCode(), response->getErrorMessage());
+        }
+    }
+
+    std::shared_ptr< std::map<std::wstring, std::shared_ptr<std::istream>> > WordsApi::deleteBookmarksOnline(std::shared_ptr<aspose::words::cloud::requests::DeleteBookmarksOnlineRequest> request)
+    {
+        auto response = std::make_shared< aspose::words::cloud::responses::DeleteBookmarksOnlineResponse >();
+        m_ApiClient->call( request->createHttpRequest(), *response);
+        if (response->getStatusCode() != 200) {
+            throw aspose::words::cloud::ApiException(response->getStatusCode(), response->getErrorMessage());
+        }
+
+        return response->getDocument();
+    }
+
     std::shared_ptr< aspose::words::cloud::models::BorderResponse > WordsApi::deleteBorder(std::shared_ptr<aspose::words::cloud::requests::DeleteBorderRequest> request)
     {
         auto response = std::make_shared< aspose::words::cloud::responses::DeleteBorderResponse >();
@@ -2111,6 +2151,28 @@ namespace aspose::words::cloud::api {
         }
 
         return response->getResult();
+    }
+
+    std::shared_ptr< aspose::words::cloud::models::BookmarkResponse > WordsApi::insertBookmark(std::shared_ptr<aspose::words::cloud::requests::InsertBookmarkRequest> request)
+    {
+        auto response = std::make_shared< aspose::words::cloud::responses::InsertBookmarkResponse >();
+        m_ApiClient->call( request->createHttpRequest(), *response);
+        if (response->getStatusCode() != 200) {
+            throw aspose::words::cloud::ApiException(response->getStatusCode(), response->getErrorMessage());
+        }
+
+        return response->getResult();
+    }
+
+    std::shared_ptr<aspose::words::cloud::responses::InsertBookmarkOnlineResponse> WordsApi::insertBookmarkOnline(std::shared_ptr<aspose::words::cloud::requests::InsertBookmarkOnlineRequest> request)
+    {
+        auto response = std::make_shared< aspose::words::cloud::responses::InsertBookmarkOnlineResponse >();
+        m_ApiClient->call( request->createHttpRequest(), *response);
+        if (response->getStatusCode() != 200) {
+            throw aspose::words::cloud::ApiException(response->getStatusCode(), response->getErrorMessage());
+        }
+
+        return response;
     }
 
     std::shared_ptr< aspose::words::cloud::models::CommentResponse > WordsApi::insertComment(std::shared_ptr<aspose::words::cloud::requests::InsertCommentRequest> request)
