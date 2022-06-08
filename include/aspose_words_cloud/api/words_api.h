@@ -901,7 +901,7 @@ namespace aspose::words::cloud::api {
         ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::WordsResponse > copyStylesFromTemplate(std::shared_ptr<aspose::words::cloud::requests::CopyStylesFromTemplateRequest> request);
 
         /// <summary>
-        /// Supported extensions: ".doc", ".docx", ".docm", ".dot", ".dotm", ".dotx", ".flatopc", ".fopc", ".flatopc_macro", ".fopc_macro", ".flatopc_template", ".fopc_template", ".flatopc_template_macro", ".fopc_template_macro", ".wordml", ".wml", ".rtf".
+        /// Supported all save format extensions.
         /// </summary>
         /// <param name="fileName">The filename of the document.</param>
         /// <param name="folder">The path to the document folder.</param>
