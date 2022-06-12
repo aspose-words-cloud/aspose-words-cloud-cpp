@@ -358,30 +358,6 @@ namespace aspose::words::cloud::models {
 
 
         /// <summary>
-        /// Gets or sets the flag, that controls whether Aspose.Words.Drawing.Shape nodes are converted to SVG images when saving to HTML, MHTML or EPUB. Default value is false.
-        /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< bool > getExportShapesAsSvg() const;
-
-        /// <summary>
-        /// Gets or sets the flag, that controls whether Aspose.Words.Drawing.Shape nodes are converted to SVG images when saving to HTML, MHTML or EPUB. Default value is false.
-        /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT virtual void setExportShapesAsSvg(std::shared_ptr< bool > value);
-
-
-        /// <summary>
-        /// Gets or sets the flag, that controls how textboxes represented by Aspose.Words.Drawing.Shape are saved to HTML, MHTML or EPUB. The default value is false.
-        /// When set to true, exports textboxes as inline "svg" elements. When false, exports as "image" elements.
-        /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< bool > getExportTextBoxAsSvg() const;
-
-        /// <summary>
-        /// Gets or sets the flag, that controls how textboxes represented by Aspose.Words.Drawing.Shape are saved to HTML, MHTML or EPUB. The default value is false.
-        /// When set to true, exports textboxes as inline "svg" elements. When false, exports as "image" elements.
-        /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT virtual void setExportTextBoxAsSvg(std::shared_ptr< bool > value);
-
-
-        /// <summary>
         /// Gets or sets the flag, that controls how text input form fields are saved.
         /// </summary>
         ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< bool > getExportTextInputFormFieldAsText() const;
@@ -617,8 +593,6 @@ namespace aspose::words::cloud::models {
         std::shared_ptr< bool > m_ExportPageSetup;
         std::shared_ptr< bool > m_ExportRelativeFontSize;
         std::shared_ptr< bool > m_ExportRoundtripInformation;
-        std::shared_ptr< bool > m_ExportShapesAsSvg;
-        std::shared_ptr< bool > m_ExportTextBoxAsSvg;
         std::shared_ptr< bool > m_ExportTextInputFormFieldAsText;
         std::shared_ptr< bool > m_ExportTocPageNumbers;
         std::shared_ptr< bool > m_ExportXhtmlTransitional;

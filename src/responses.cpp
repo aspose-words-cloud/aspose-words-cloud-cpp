@@ -733,6 +733,48 @@ namespace aspose::words::cloud::responses {
     }
 
     /*
+     * DeleteBookmark request implementation
+     */
+
+    void DeleteBookmarkResponse::deserialize(const std::string& contentType, const std::string_view& response)
+    {
+    }
+
+    /*
+     * DeleteBookmarkOnline request implementation
+     */
+    std::shared_ptr< std::map<std::wstring, std::shared_ptr<std::istream>> > DeleteBookmarkOnlineResponse::getDocument() const
+    {
+        return m_Document;
+    }
+
+    void DeleteBookmarkOnlineResponse::deserialize(const std::string& contentType, const std::string_view& response)
+    {
+        m_Document = parseFilesCollection(std::make_tuple("", contentType, response));
+    }
+
+    /*
+     * DeleteBookmarks request implementation
+     */
+
+    void DeleteBookmarksResponse::deserialize(const std::string& contentType, const std::string_view& response)
+    {
+    }
+
+    /*
+     * DeleteBookmarksOnline request implementation
+     */
+    std::shared_ptr< std::map<std::wstring, std::shared_ptr<std::istream>> > DeleteBookmarksOnlineResponse::getDocument() const
+    {
+        return m_Document;
+    }
+
+    void DeleteBookmarksOnlineResponse::deserialize(const std::string& contentType, const std::string_view& response)
+    {
+        m_Document = parseFilesCollection(std::make_tuple("", contentType, response));
+    }
+
+    /*
      * DeleteBorder request implementation
      */
     std::shared_ptr< aspose::words::cloud::models::BorderResponse > DeleteBorderResponse::getResult() const
@@ -3130,6 +3172,50 @@ namespace aspose::words::cloud::responses {
     }
 
     /*
+     * InsertBookmark request implementation
+     */
+    std::shared_ptr< aspose::words::cloud::models::BookmarkResponse > InsertBookmarkResponse::getResult() const
+    {
+        return m_Result;
+    }
+
+    void InsertBookmarkResponse::deserialize(const std::string& contentType, const std::string_view& response)
+    {
+        auto json = ::nlohmann::json::parse(response);
+        m_Result = std::make_shared< aspose::words::cloud::models::BookmarkResponse >();
+        m_Result->fromJson(&json);
+    }
+
+    /*
+     * InsertBookmarkOnline request implementation
+     */
+    std::shared_ptr< aspose::words::cloud::models::BookmarkResponse > InsertBookmarkOnlineResponse::getModel() const
+    {
+        return m_Model;
+    }
+
+    std::shared_ptr< std::map<std::wstring, std::shared_ptr<std::istream>> > InsertBookmarkOnlineResponse::getDocument() const
+    {
+        return m_Document;
+    }
+
+    void InsertBookmarkOnlineResponse::deserialize(const std::string& contentType, const std::string_view& response)
+    {
+        std::unordered_map<std::string, std::tuple<std::string, std::string, std::string_view> > parts;
+        parseMultipart(response, parts);
+        if (parts.find("Model") != parts.end()) {
+            const auto& part = parts.at("Model");
+            auto json = ::nlohmann::json::parse(std::get<2>(part));
+            m_Model = std::make_shared< aspose::words::cloud::models::BookmarkResponse >();
+            m_Model->fromJson(&json);
+        }
+        if (parts.find("Document") != parts.end()) {
+            const auto& part = parts.at("Document");
+            m_Document = parseFilesCollection(part);
+        }
+    }
+
+    /*
      * InsertComment request implementation
      */
     std::shared_ptr< aspose::words::cloud::models::CommentResponse > InsertCommentResponse::getResult() const
@@ -3919,6 +4005,14 @@ namespace aspose::words::cloud::responses {
             const auto& part = parts.at("Document");
             m_Document = parseFilesCollection(part);
         }
+    }
+
+    /*
+     * LinkHeaderFootersToPrevious request implementation
+     */
+
+    void LinkHeaderFootersToPreviousResponse::deserialize(const std::string& contentType, const std::string_view& response)
+    {
     }
 
     /*

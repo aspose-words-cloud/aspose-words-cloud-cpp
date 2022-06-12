@@ -426,6 +426,58 @@ namespace aspose::words::cloud::models {
 
 
     /*
+     * BookmarkInsert implementation
+     */
+    void BookmarkInsert::toJson(void* jsonIfc) const
+    {
+        BookmarkData::toJson(jsonIfc);
+        ::nlohmann::json& json = *((::nlohmann::json*)jsonIfc);
+        if (this->m_EndRange) {
+            this->m_EndRange->toJson(&json["EndRange"]);
+        }
+        if (this->m_StartRange) {
+            this->m_StartRange->toJson(&json["StartRange"]);
+        }
+    }
+
+    void BookmarkInsert::fromJson(const void* jsonIfc)
+    {
+        BookmarkData::fromJson(jsonIfc);
+        ::nlohmann::json& json = *((::nlohmann::json*)jsonIfc);
+        if (json.contains("EndRange") && !json["EndRange"].is_null()) {
+            this->m_EndRange = std::make_shared< aspose::words::cloud::models::DocumentPosition >();
+            this->m_EndRange->fromJson(&json["EndRange"]);
+        }
+        if (json.contains("StartRange") && !json["StartRange"].is_null()) {
+            this->m_StartRange = std::make_shared< aspose::words::cloud::models::DocumentPosition >();
+            this->m_StartRange->fromJson(&json["StartRange"]);
+        }
+    }
+
+    std::shared_ptr< aspose::words::cloud::models::DocumentPosition > BookmarkInsert::getEndRange() const
+    {
+        return this->m_EndRange;
+    }
+
+    void BookmarkInsert::setEndRange(std::shared_ptr< aspose::words::cloud::models::DocumentPosition > value)
+    {
+        this->m_EndRange = value;
+    }
+
+
+    std::shared_ptr< aspose::words::cloud::models::DocumentPosition > BookmarkInsert::getStartRange() const
+    {
+        return this->m_StartRange;
+    }
+
+    void BookmarkInsert::setStartRange(std::shared_ptr< aspose::words::cloud::models::DocumentPosition > value)
+    {
+        this->m_StartRange = value;
+    }
+
+
+
+    /*
      * BookmarkResponse implementation
      */
     void BookmarkResponse::toJson(void* jsonIfc) const
@@ -8840,12 +8892,6 @@ namespace aspose::words::cloud::models {
         if (this->m_ExportRoundtripInformation) {
             json["ExportRoundtripInformation"] = *(this->m_ExportRoundtripInformation);
         }
-        if (this->m_ExportShapesAsSvg) {
-            json["ExportShapesAsSvg"] = *(this->m_ExportShapesAsSvg);
-        }
-        if (this->m_ExportTextBoxAsSvg) {
-            json["ExportTextBoxAsSvg"] = *(this->m_ExportTextBoxAsSvg);
-        }
         if (this->m_ExportTextInputFormFieldAsText) {
             json["ExportTextInputFormFieldAsText"] = *(this->m_ExportTextInputFormFieldAsText);
         }
@@ -9007,16 +9053,6 @@ namespace aspose::words::cloud::models {
         if (json.contains("ExportRoundtripInformation") && !json["ExportRoundtripInformation"].is_null()) {
             this->m_ExportRoundtripInformation = std::make_shared< bool >(
                 json["ExportRoundtripInformation"].get< bool >()
-            );
-        }
-        if (json.contains("ExportShapesAsSvg") && !json["ExportShapesAsSvg"].is_null()) {
-            this->m_ExportShapesAsSvg = std::make_shared< bool >(
-                json["ExportShapesAsSvg"].get< bool >()
-            );
-        }
-        if (json.contains("ExportTextBoxAsSvg") && !json["ExportTextBoxAsSvg"].is_null()) {
-            this->m_ExportTextBoxAsSvg = std::make_shared< bool >(
-                json["ExportTextBoxAsSvg"].get< bool >()
             );
         }
         if (json.contains("ExportTextInputFormFieldAsText") && !json["ExportTextInputFormFieldAsText"].is_null()) {
@@ -9333,28 +9369,6 @@ namespace aspose::words::cloud::models {
     void HtmlSaveOptionsData::setExportRoundtripInformation(std::shared_ptr< bool > value)
     {
         this->m_ExportRoundtripInformation = value;
-    }
-
-
-    std::shared_ptr< bool > HtmlSaveOptionsData::getExportShapesAsSvg() const
-    {
-        return this->m_ExportShapesAsSvg;
-    }
-
-    void HtmlSaveOptionsData::setExportShapesAsSvg(std::shared_ptr< bool > value)
-    {
-        this->m_ExportShapesAsSvg = value;
-    }
-
-
-    std::shared_ptr< bool > HtmlSaveOptionsData::getExportTextBoxAsSvg() const
-    {
-        return this->m_ExportTextBoxAsSvg;
-    }
-
-    void HtmlSaveOptionsData::setExportTextBoxAsSvg(std::shared_ptr< bool > value)
-    {
-        this->m_ExportTextBoxAsSvg = value;
     }
 
 
