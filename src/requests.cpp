@@ -238,7 +238,7 @@ namespace aspose::words::cloud::requests {
      */
     AppendDocumentRequest::AppendDocumentRequest(
         const std::shared_ptr< std::wstring > name,
-        const std::shared_ptr< aspose::words::cloud::models::DocumentEntryList > documentList,
+        const std::shared_ptr< aspose::words::cloud::models::BaseEntryList > documentList,
         const std::shared_ptr< std::wstring > folder,
         const std::shared_ptr< std::wstring > storage,
         const std::shared_ptr< std::wstring > loadEncoding,
@@ -266,7 +266,7 @@ namespace aspose::words::cloud::requests {
         return m_Name;
     }
 
-    const std::shared_ptr< aspose::words::cloud::models::DocumentEntryList > AppendDocumentRequest::getDocumentList() const
+    const std::shared_ptr< aspose::words::cloud::models::BaseEntryList > AppendDocumentRequest::getDocumentList() const
     {
         return m_DocumentList;
     }
@@ -343,7 +343,7 @@ namespace aspose::words::cloud::requests {
      */
     AppendDocumentOnlineRequest::AppendDocumentOnlineRequest(
         const std::shared_ptr< std::istream > document,
-        const std::shared_ptr< aspose::words::cloud::models::DocumentEntryList > documentList,
+        const std::shared_ptr< aspose::words::cloud::models::BaseEntryList > documentList,
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
         const std::shared_ptr< std::wstring > encryptedPassword,
@@ -367,7 +367,7 @@ namespace aspose::words::cloud::requests {
         return m_Document;
     }
 
-    const std::shared_ptr< aspose::words::cloud::models::DocumentEntryList > AppendDocumentOnlineRequest::getDocumentList() const
+    const std::shared_ptr< aspose::words::cloud::models::BaseEntryList > AppendDocumentOnlineRequest::getDocumentList() const
     {
         return m_DocumentList;
     }

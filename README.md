@@ -17,6 +17,11 @@ Feel free to explore the [Developer's Guide](https://docs.aspose.cloud/display/w
 - Read & write access to Document Object Model.
 - Thread safe
 
+## Enhancements in Version 22.7
+
+- Expand 'AppendDocument' API method to support 'ImageEntryList' for directly appending images to documents and another images.
+
+
 ## Enhancements in Version 22.6
 
 - Added 'DeleteBookmark' and 'DeleteBookmarkOnline' API methods for delete bookmarks by name from the document.

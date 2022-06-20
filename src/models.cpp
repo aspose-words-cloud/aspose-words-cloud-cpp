@@ -289,6 +289,53 @@ namespace aspose::words::cloud::models {
 
 
     /*
+     * BaseEntry implementation
+     */
+    void BaseEntry::toJson(void* jsonIfc) const
+    {
+        ::nlohmann::json& json = *((::nlohmann::json*)jsonIfc);
+        if (this->m_Href) {
+            json["Href"] = convertUtf16(*(this->m_Href));
+        }
+    }
+
+    void BaseEntry::fromJson(const void* jsonIfc)
+    {
+        ::nlohmann::json& json = *((::nlohmann::json*)jsonIfc);
+        if (json.contains("Href") && !json["Href"].is_null()) {
+            this->m_Href = std::make_shared< std::wstring >(
+                convertUtf8( json["Href"].get< std::string >() )
+            );
+        }
+    }
+
+    std::shared_ptr< std::wstring > BaseEntry::getHref() const
+    {
+        return this->m_Href;
+    }
+
+    void BaseEntry::setHref(std::shared_ptr< std::wstring > value)
+    {
+        this->m_Href = value;
+    }
+
+
+
+    /*
+     * BaseEntryList implementation
+     */
+    void BaseEntryList::toJson(void* jsonIfc) const
+    {
+    }
+
+    void BaseEntryList::fromJson(const void* jsonIfc)
+    {
+    }
+
+
+
+
+    /*
      * BmpSaveOptionsData implementation
      */
     void BmpSaveOptionsData::toJson(void* jsonIfc) const
@@ -2539,6 +2586,7 @@ namespace aspose::words::cloud::models {
      */
     void DocumentEntryList::toJson(void* jsonIfc) const
     {
+        BaseEntryList::toJson(jsonIfc);
         ::nlohmann::json& json = *((::nlohmann::json*)jsonIfc);
         if (this->m_ApplyBaseDocumentHeadersAndFootersToAppendingDocuments) {
             json["ApplyBaseDocumentHeadersAndFootersToAppendingDocuments"] = *(this->m_ApplyBaseDocumentHeadersAndFootersToAppendingDocuments);
@@ -2553,6 +2601,7 @@ namespace aspose::words::cloud::models {
 
     void DocumentEntryList::fromJson(const void* jsonIfc)
     {
+        BaseEntryList::fromJson(jsonIfc);
         ::nlohmann::json& json = *((::nlohmann::json*)jsonIfc);
         if (json.contains("ApplyBaseDocumentHeadersAndFootersToAppendingDocuments") && !json["ApplyBaseDocumentHeadersAndFootersToAppendingDocuments"].is_null()) {
             this->m_ApplyBaseDocumentHeadersAndFootersToAppendingDocuments = std::make_shared< bool >(
@@ -9735,6 +9784,80 @@ namespace aspose::words::cloud::models {
     void HyperlinksResponse::setHyperlinks(std::shared_ptr< aspose::words::cloud::models::Hyperlinks > value)
     {
         this->m_Hyperlinks = value;
+    }
+
+
+
+    /*
+     * ImageEntry implementation
+     */
+    void ImageEntry::toJson(void* jsonIfc) const
+    {
+        BaseEntry::toJson(jsonIfc);
+    }
+
+    void ImageEntry::fromJson(const void* jsonIfc)
+    {
+        BaseEntry::fromJson(jsonIfc);
+    }
+
+
+
+
+    /*
+     * ImageEntryList implementation
+     */
+    void ImageEntryList::toJson(void* jsonIfc) const
+    {
+        BaseEntryList::toJson(jsonIfc);
+        ::nlohmann::json& json = *((::nlohmann::json*)jsonIfc);
+        if (this->m_AppendEachImageOnNewPage) {
+            json["AppendEachImageOnNewPage"] = *(this->m_AppendEachImageOnNewPage);
+        }
+        if (this->m_ImageEntries) {
+            json["ImageEntries"] = ::nlohmann::json::array();
+            for (auto& element : *(this->m_ImageEntries)) {
+                element->toJson(&json["ImageEntries"].emplace_back());
+            }
+        }
+    }
+
+    void ImageEntryList::fromJson(const void* jsonIfc)
+    {
+        BaseEntryList::fromJson(jsonIfc);
+        ::nlohmann::json& json = *((::nlohmann::json*)jsonIfc);
+        if (json.contains("AppendEachImageOnNewPage") && !json["AppendEachImageOnNewPage"].is_null()) {
+            this->m_AppendEachImageOnNewPage = std::make_shared< bool >(
+                json["AppendEachImageOnNewPage"].get< bool >()
+            );
+        }
+        if (json.contains("ImageEntries") && !json["ImageEntries"].is_null()) {
+            this->m_ImageEntries = std::make_shared< std::vector<std::shared_ptr<aspose::words::cloud::models::ImageEntry>> >();
+            for (auto& element : json["ImageEntries"]) {
+                this->m_ImageEntries->emplace_back(std::make_shared< aspose::words::cloud::models::ImageEntry >())->fromJson(&element);
+            }
+        }
+    }
+
+    std::shared_ptr< bool > ImageEntryList::getAppendEachImageOnNewPage() const
+    {
+        return this->m_AppendEachImageOnNewPage;
+    }
+
+    void ImageEntryList::setAppendEachImageOnNewPage(std::shared_ptr< bool > value)
+    {
+        this->m_AppendEachImageOnNewPage = value;
+    }
+
+
+    std::shared_ptr< std::vector<std::shared_ptr<aspose::words::cloud::models::ImageEntry>> > ImageEntryList::getImageEntries() const
+    {
+        return this->m_ImageEntries;
+    }
+
+    void ImageEntryList::setImageEntries(std::shared_ptr< std::vector<std::shared_ptr<aspose::words::cloud::models::ImageEntry>> > value)
+    {
+        this->m_ImageEntries = value;
     }
 
 

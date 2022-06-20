@@ -692,7 +692,7 @@ namespace aspose::words::cloud::api {
         /// Appends documents to the original document.
         /// </summary>
         /// <param name="name">The filename of the input document.</param>
-        /// <param name="documentList"><see cref="DocumentEntryList"/> with a list of documents to append.</param>
+        /// <param name="documentList"><see cref="BaseEntryList"/> with a list of entries to append.</param>
         /// <param name="folder">Original document folder.</param>
         /// <param name="storage">Original document storage.</param>
         /// <param name="loadEncoding">Encoding that will be used to load an HTML (or TXT) document if the encoding is not specified in HTML.</param>
@@ -707,7 +707,7 @@ namespace aspose::words::cloud::api {
         /// Appends documents to the original document.
         /// </summary>
         /// <param name="document">Original document.</param>
-        /// <param name="documentList"><see cref="DocumentEntryList"/> with a list of documents to append.</param>
+        /// <param name="documentList"><see cref="BaseEntryList"/> with a list of entries to append.</param>
         /// <param name="loadEncoding">Encoding that will be used to load an HTML (or TXT) document if the encoding is not specified in HTML.</param>
         /// <param name="password">Password of protected Word document. Use the parameter to pass a password via SDK. SDK encrypts it automatically. We don't recommend to use the parameter to pass a plain password for direct call of API.</param>
         /// <param name="encryptedPassword">Password of protected Word document. Use the parameter to pass an encrypted password for direct calls of API. See SDK code for encyption details.</param>
