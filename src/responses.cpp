@@ -534,6 +534,50 @@ namespace aspose::words::cloud::responses {
     }
 
     /*
+     * CompressDocument request implementation
+     */
+    std::shared_ptr< aspose::words::cloud::models::CompressResponse > CompressDocumentResponse::getResult() const
+    {
+        return m_Result;
+    }
+
+    void CompressDocumentResponse::deserialize(const std::string& contentType, const std::string_view& response)
+    {
+        auto json = ::nlohmann::json::parse(response);
+        m_Result = std::make_shared< aspose::words::cloud::models::CompressResponse >();
+        m_Result->fromJson(&json);
+    }
+
+    /*
+     * CompressDocumentOnline request implementation
+     */
+    std::shared_ptr< aspose::words::cloud::models::CompressResponse > CompressDocumentOnlineResponse::getModel() const
+    {
+        return m_Model;
+    }
+
+    std::shared_ptr< std::map<std::wstring, std::shared_ptr<std::istream>> > CompressDocumentOnlineResponse::getDocument() const
+    {
+        return m_Document;
+    }
+
+    void CompressDocumentOnlineResponse::deserialize(const std::string& contentType, const std::string_view& response)
+    {
+        std::unordered_map<std::string, std::tuple<std::string, std::string, std::string_view> > parts;
+        parseMultipart(response, parts);
+        if (parts.find("Model") != parts.end()) {
+            const auto& part = parts.at("Model");
+            auto json = ::nlohmann::json::parse(std::get<2>(part));
+            m_Model = std::make_shared< aspose::words::cloud::models::CompressResponse >();
+            m_Model->fromJson(&json);
+        }
+        if (parts.find("Document") != parts.end()) {
+            const auto& part = parts.at("Document");
+            m_Document = parseFilesCollection(part);
+        }
+    }
+
+    /*
      * ConvertDocument request implementation
      */
     std::shared_ptr< std::istream > ConvertDocumentResponse::getResult() const

@@ -30,6 +30,7 @@
 #include "./api/classification_test.h"
 #include "./api/comment_test.h"
 #include "./api/compare_document_test.h"
+#include "./api/compress_document_test.h"
 #include "./api/convert_document_test.h"
 #include "./api/custom_xml_parts_test.h"
 #include "./api/document_test.h"

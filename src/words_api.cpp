@@ -172,6 +172,28 @@ namespace aspose::words::cloud::api {
         return response;
     }
 
+    std::shared_ptr< aspose::words::cloud::models::CompressResponse > WordsApi::compressDocument(std::shared_ptr<aspose::words::cloud::requests::CompressDocumentRequest> request)
+    {
+        auto response = std::make_shared< aspose::words::cloud::responses::CompressDocumentResponse >();
+        m_ApiClient->call( request->createHttpRequest(), *response);
+        if (response->getStatusCode() != 200) {
+            throw aspose::words::cloud::ApiException(response->getStatusCode(), response->getErrorMessage());
+        }
+
+        return response->getResult();
+    }
+
+    std::shared_ptr<aspose::words::cloud::responses::CompressDocumentOnlineResponse> WordsApi::compressDocumentOnline(std::shared_ptr<aspose::words::cloud::requests::CompressDocumentOnlineRequest> request)
+    {
+        auto response = std::make_shared< aspose::words::cloud::responses::CompressDocumentOnlineResponse >();
+        m_ApiClient->call( request->createHttpRequest(), *response);
+        if (response->getStatusCode() != 200) {
+            throw aspose::words::cloud::ApiException(response->getStatusCode(), response->getErrorMessage());
+        }
+
+        return response;
+    }
+
     std::shared_ptr< std::istream > WordsApi::convertDocument(std::shared_ptr<aspose::words::cloud::requests::ConvertDocumentRequest> request)
     {
         auto response = std::make_shared< aspose::words::cloud::responses::ConvertDocumentResponse >();

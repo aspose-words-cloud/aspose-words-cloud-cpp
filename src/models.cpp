@@ -1892,6 +1892,92 @@ namespace aspose::words::cloud::models {
 
 
     /*
+     * CompressOptions implementation
+     */
+    void CompressOptions::toJson(void* jsonIfc) const
+    {
+        ::nlohmann::json& json = *((::nlohmann::json*)jsonIfc);
+        if (this->m_ImagesQuality) {
+            json["ImagesQuality"] = *(this->m_ImagesQuality);
+        }
+        if (this->m_ImagesReduceSizeFactor) {
+            json["ImagesReduceSizeFactor"] = *(this->m_ImagesReduceSizeFactor);
+        }
+    }
+
+    void CompressOptions::fromJson(const void* jsonIfc)
+    {
+        ::nlohmann::json& json = *((::nlohmann::json*)jsonIfc);
+        if (json.contains("ImagesQuality") && !json["ImagesQuality"].is_null()) {
+            this->m_ImagesQuality = std::make_shared< int32_t >(
+                json["ImagesQuality"].get< int32_t >()
+            );
+        }
+        if (json.contains("ImagesReduceSizeFactor") && !json["ImagesReduceSizeFactor"].is_null()) {
+            this->m_ImagesReduceSizeFactor = std::make_shared< int32_t >(
+                json["ImagesReduceSizeFactor"].get< int32_t >()
+            );
+        }
+    }
+
+    std::shared_ptr< int32_t > CompressOptions::getImagesQuality() const
+    {
+        return this->m_ImagesQuality;
+    }
+
+    void CompressOptions::setImagesQuality(std::shared_ptr< int32_t > value)
+    {
+        this->m_ImagesQuality = value;
+    }
+
+
+    std::shared_ptr< int32_t > CompressOptions::getImagesReduceSizeFactor() const
+    {
+        return this->m_ImagesReduceSizeFactor;
+    }
+
+    void CompressOptions::setImagesReduceSizeFactor(std::shared_ptr< int32_t > value)
+    {
+        this->m_ImagesReduceSizeFactor = value;
+    }
+
+
+
+    /*
+     * CompressResponse implementation
+     */
+    void CompressResponse::toJson(void* jsonIfc) const
+    {
+        WordsResponse::toJson(jsonIfc);
+        ::nlohmann::json& json = *((::nlohmann::json*)jsonIfc);
+        if (this->m_Document) {
+            this->m_Document->toJson(&json["Document"]);
+        }
+    }
+
+    void CompressResponse::fromJson(const void* jsonIfc)
+    {
+        WordsResponse::fromJson(jsonIfc);
+        ::nlohmann::json& json = *((::nlohmann::json*)jsonIfc);
+        if (json.contains("Document") && !json["Document"].is_null()) {
+            this->m_Document = std::make_shared< aspose::words::cloud::models::Document >();
+            this->m_Document->fromJson(&json["Document"]);
+        }
+    }
+
+    std::shared_ptr< aspose::words::cloud::models::Document > CompressResponse::getDocument() const
+    {
+        return this->m_Document;
+    }
+
+    void CompressResponse::setDocument(std::shared_ptr< aspose::words::cloud::models::Document > value)
+    {
+        this->m_Document = value;
+    }
+
+
+
+    /*
      * CsvDataLoadOptions implementation
      */
     void CsvDataLoadOptions::toJson(void* jsonIfc) const
