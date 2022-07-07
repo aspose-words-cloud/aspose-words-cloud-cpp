@@ -81,6 +81,7 @@ namespace aspose::words::cloud::models {
         if (value == ReportBuildOptions::REMOVE_EMPTY_PARAGRAPHS) return "RemoveEmptyParagraphs";
         if (value == ReportBuildOptions::INLINE_ERROR_MESSAGES) return "InlineErrorMessages";
         if (value == ReportBuildOptions::USE_LEGACY_HEADER_FOOTER_VISITING) return "UseLegacyHeaderFooterVisiting";
+        if (value == ReportBuildOptions::RESPECT_JPEG_EXIF_ORIENTATION) return "RespectJpegExifOrientation";
         throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
     }
 
@@ -91,6 +92,7 @@ namespace aspose::words::cloud::models {
         if (value == "RemoveEmptyParagraphs") return ReportBuildOptions::REMOVE_EMPTY_PARAGRAPHS;
         if (value == "InlineErrorMessages") return ReportBuildOptions::INLINE_ERROR_MESSAGES;
         if (value == "UseLegacyHeaderFooterVisiting") return ReportBuildOptions::USE_LEGACY_HEADER_FOOTER_VISITING;
+        if (value == "RespectJpegExifOrientation") return ReportBuildOptions::RESPECT_JPEG_EXIF_ORIENTATION;
         throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
     }
 
@@ -1887,6 +1889,92 @@ namespace aspose::words::cloud::models {
     void CompareOptions::setTarget(std::shared_ptr< aspose::words::cloud::models::CompareOptions::Target > value)
     {
         this->m_Target = value;
+    }
+
+
+
+    /*
+     * CompressOptions implementation
+     */
+    void CompressOptions::toJson(void* jsonIfc) const
+    {
+        ::nlohmann::json& json = *((::nlohmann::json*)jsonIfc);
+        if (this->m_ImagesQuality) {
+            json["ImagesQuality"] = *(this->m_ImagesQuality);
+        }
+        if (this->m_ImagesReduceSizeFactor) {
+            json["ImagesReduceSizeFactor"] = *(this->m_ImagesReduceSizeFactor);
+        }
+    }
+
+    void CompressOptions::fromJson(const void* jsonIfc)
+    {
+        ::nlohmann::json& json = *((::nlohmann::json*)jsonIfc);
+        if (json.contains("ImagesQuality") && !json["ImagesQuality"].is_null()) {
+            this->m_ImagesQuality = std::make_shared< int32_t >(
+                json["ImagesQuality"].get< int32_t >()
+            );
+        }
+        if (json.contains("ImagesReduceSizeFactor") && !json["ImagesReduceSizeFactor"].is_null()) {
+            this->m_ImagesReduceSizeFactor = std::make_shared< int32_t >(
+                json["ImagesReduceSizeFactor"].get< int32_t >()
+            );
+        }
+    }
+
+    std::shared_ptr< int32_t > CompressOptions::getImagesQuality() const
+    {
+        return this->m_ImagesQuality;
+    }
+
+    void CompressOptions::setImagesQuality(std::shared_ptr< int32_t > value)
+    {
+        this->m_ImagesQuality = value;
+    }
+
+
+    std::shared_ptr< int32_t > CompressOptions::getImagesReduceSizeFactor() const
+    {
+        return this->m_ImagesReduceSizeFactor;
+    }
+
+    void CompressOptions::setImagesReduceSizeFactor(std::shared_ptr< int32_t > value)
+    {
+        this->m_ImagesReduceSizeFactor = value;
+    }
+
+
+
+    /*
+     * CompressResponse implementation
+     */
+    void CompressResponse::toJson(void* jsonIfc) const
+    {
+        WordsResponse::toJson(jsonIfc);
+        ::nlohmann::json& json = *((::nlohmann::json*)jsonIfc);
+        if (this->m_Document) {
+            this->m_Document->toJson(&json["Document"]);
+        }
+    }
+
+    void CompressResponse::fromJson(const void* jsonIfc)
+    {
+        WordsResponse::fromJson(jsonIfc);
+        ::nlohmann::json& json = *((::nlohmann::json*)jsonIfc);
+        if (json.contains("Document") && !json["Document"].is_null()) {
+            this->m_Document = std::make_shared< aspose::words::cloud::models::Document >();
+            this->m_Document->fromJson(&json["Document"]);
+        }
+    }
+
+    std::shared_ptr< aspose::words::cloud::models::Document > CompressResponse::getDocument() const
+    {
+        return this->m_Document;
+    }
+
+    void CompressResponse::setDocument(std::shared_ptr< aspose::words::cloud::models::Document > value)
+    {
+        this->m_Document = value;
     }
 
 
@@ -17508,6 +17596,7 @@ namespace aspose::words::cloud::models {
         if (value == aspose::words::cloud::models::ReportBuildOptions::REMOVE_EMPTY_PARAGRAPHS) return "RemoveEmptyParagraphs";
         if (value == aspose::words::cloud::models::ReportBuildOptions::INLINE_ERROR_MESSAGES) return "InlineErrorMessages";
         if (value == aspose::words::cloud::models::ReportBuildOptions::USE_LEGACY_HEADER_FOOTER_VISITING) return "UseLegacyHeaderFooterVisiting";
+        if (value == aspose::words::cloud::models::ReportBuildOptions::RESPECT_JPEG_EXIF_ORIENTATION) return "RespectJpegExifOrientation";
         throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
     }
 
@@ -17518,6 +17607,7 @@ namespace aspose::words::cloud::models {
         if (value == "RemoveEmptyParagraphs") return aspose::words::cloud::models::ReportBuildOptions::REMOVE_EMPTY_PARAGRAPHS;
         if (value == "InlineErrorMessages") return aspose::words::cloud::models::ReportBuildOptions::INLINE_ERROR_MESSAGES;
         if (value == "UseLegacyHeaderFooterVisiting") return aspose::words::cloud::models::ReportBuildOptions::USE_LEGACY_HEADER_FOOTER_VISITING;
+        if (value == "RespectJpegExifOrientation") return aspose::words::cloud::models::ReportBuildOptions::RESPECT_JPEG_EXIF_ORIENTATION;
         throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
     }
     void ReportEngineSettings::toJson(void* jsonIfc) const

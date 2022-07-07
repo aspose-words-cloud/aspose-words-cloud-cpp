@@ -1,5 +1,5 @@
 ﻿/** --------------------------------------------------------------------------------------------------------------------
-* <copyright company="Aspose" file="report_build_options.h">
+* <copyright company="Aspose" file="compress_response.h">
 *   Copyright (c) 2022 Aspose.Words for Cloud
 * </copyright>
 * <summary>
@@ -25,19 +25,35 @@
 
 #pragma once
 #include "./model_base.h"
+#include "document.h"
+#include "words_response.h"
 
 namespace aspose::words::cloud::models {
     /// <summary>
-    /// Specifies options controlling behavior of ReportingEngine while building a report.
+    /// The REST response of compressed document.
     /// </summary>
-    enum class ReportBuildOptions
+    class CompressResponse : public WordsResponse
     {
-        NONE,
-        ALLOW_MISSING_MEMBERS,
-        REMOVE_EMPTY_PARAGRAPHS,
-        INLINE_ERROR_MESSAGES,
-        USE_LEGACY_HEADER_FOOTER_VISITING,
-        RESPECT_JPEG_EXIF_ORIENTATION
+    public:
+
+        ASPOSE_WORDS_CLOUD_EXPORT virtual ~CompressResponse() = default;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void toJson(void* jsonIfc) const override;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void fromJson(const void* jsonIfc) override;
+
+
+        /// <summary>
+        /// Gets or sets the destination document info.
+        /// </summary>
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< aspose::words::cloud::models::Document > getDocument() const;
+
+        /// <summary>
+        /// Gets or sets the destination document info.
+        /// </summary>
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setDocument(std::shared_ptr< aspose::words::cloud::models::Document > value);
+
+
+    protected:
+        std::shared_ptr< aspose::words::cloud::models::Document > m_Document;
     };
 }
 

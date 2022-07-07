@@ -55,6 +55,10 @@
 #include "aspose_words_cloud/responses/compare_document_response.h"
 #include "aspose_words_cloud/requests/compare_document_online_request.h"
 #include "aspose_words_cloud/responses/compare_document_online_response.h"
+#include "aspose_words_cloud/requests/compress_document_request.h"
+#include "aspose_words_cloud/responses/compress_document_response.h"
+#include "aspose_words_cloud/requests/compress_document_online_request.h"
+#include "aspose_words_cloud/responses/compress_document_online_response.h"
 #include "aspose_words_cloud/requests/convert_document_request.h"
 #include "aspose_words_cloud/responses/convert_document_response.h"
 #include "aspose_words_cloud/requests/copy_file_request.h"
@@ -826,6 +830,30 @@ namespace aspose::words::cloud::api {
         /// <param name="destFileName">Result path of the document after the operation. If this parameter is omitted then result of the operation will be saved as the source document.</param>
         /// <param name="encryptedPassword2">encrypted password for the second document.</param>
         ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr<aspose::words::cloud::responses::CompareDocumentOnlineResponse> compareDocumentOnline(std::shared_ptr<aspose::words::cloud::requests::CompareDocumentOnlineRequest> request);
+
+        /// <summary>
+        /// The default settings allows to reduce the size of the document without any visible degradation of images quality.
+        /// </summary>
+        /// <param name="name">The filename of the input document.</param>
+        /// <param name="compressOptions">Options for compress the document.</param>
+        /// <param name="folder">Original document folder.</param>
+        /// <param name="storage">Original document storage.</param>
+        /// <param name="loadEncoding">Encoding that will be used to load an HTML (or TXT) document if the encoding is not specified in HTML.</param>
+        /// <param name="password">Password of protected Word document. Use the parameter to pass a password via SDK. SDK encrypts it automatically. We don't recommend to use the parameter to pass a plain password for direct call of API.</param>
+        /// <param name="encryptedPassword">Password of protected Word document. Use the parameter to pass an encrypted password for direct calls of API. See SDK code for encyption details.</param>
+        /// <param name="destFileName">Result path of the document after the operation. If this parameter is omitted then result of the operation will be saved as the source document.</param>
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::CompressResponse > compressDocument(std::shared_ptr<aspose::words::cloud::requests::CompressDocumentRequest> request);
+
+        /// <summary>
+        /// Compress and resize images inside the document.
+        /// </summary>
+        /// <param name="document">The document.</param>
+        /// <param name="compressOptions">Options for compress the document.</param>
+        /// <param name="loadEncoding">Encoding that will be used to load an HTML (or TXT) document if the encoding is not specified in HTML.</param>
+        /// <param name="password">Password of protected Word document. Use the parameter to pass a password via SDK. SDK encrypts it automatically. We don't recommend to use the parameter to pass a plain password for direct call of API.</param>
+        /// <param name="encryptedPassword">Password of protected Word document. Use the parameter to pass an encrypted password for direct calls of API. See SDK code for encyption details.</param>
+        /// <param name="destFileName">Result path of the document after the operation. If this parameter is omitted then result of the operation will be saved as the source document.</param>
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr<aspose::words::cloud::responses::CompressDocumentOnlineResponse> compressDocumentOnline(std::shared_ptr<aspose::words::cloud::requests::CompressDocumentOnlineRequest> request);
 
         /// <summary>
         /// Converts a document on a local drive to the specified format.
