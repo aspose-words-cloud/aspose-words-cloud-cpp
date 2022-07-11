@@ -1,5 +1,5 @@
 ﻿/** --------------------------------------------------------------------------------------------------------------------
-* <copyright company="Aspose" file="append_document_online_request.h">
+* <copyright company="Aspose" file="compress_document_request.h">
 *   Copyright (c) 2022 Aspose.Words for Cloud
 * </copyright>
 * <summary>
@@ -25,42 +25,42 @@
 
 #pragma once
 #include "./request_model_base.h"
-#include "aspose_words_cloud/models/base_entry_list.h"
+#include "aspose_words_cloud/models/compress_options.h"
 
 namespace aspose::words::cloud::requests {
-    class AppendDocumentOnlineRequest : public RequestModelBase {
+    class CompressDocumentRequest : public RequestModelBase {
     public:
-        ASPOSE_WORDS_CLOUD_EXPORT AppendDocumentOnlineRequest(
-            const std::shared_ptr< std::istream > document,
-            const std::shared_ptr< aspose::words::cloud::models::BaseEntryList > documentList,
+        ASPOSE_WORDS_CLOUD_EXPORT CompressDocumentRequest(
+            const std::shared_ptr< std::wstring > name,
+            const std::shared_ptr< aspose::words::cloud::models::CompressOptions > compressOptions,
+            const std::shared_ptr< std::wstring > folder = nullptr,
+            const std::shared_ptr< std::wstring > storage = nullptr,
             const std::shared_ptr< std::wstring > loadEncoding = nullptr,
             const std::shared_ptr< std::wstring > password = nullptr,
             const std::shared_ptr< std::wstring > encryptedPassword = nullptr,
-            const std::shared_ptr< std::wstring > destFileName = nullptr,
-            const std::shared_ptr< std::wstring > revisionAuthor = nullptr,
-            const std::shared_ptr< std::wstring > revisionDateTime = nullptr
+            const std::shared_ptr< std::wstring > destFileName = nullptr
         );
 
-        ASPOSE_WORDS_CLOUD_EXPORT const std::shared_ptr< std::istream > getDocument() const;
-        ASPOSE_WORDS_CLOUD_EXPORT const std::shared_ptr< aspose::words::cloud::models::BaseEntryList > getDocumentList() const;
+        ASPOSE_WORDS_CLOUD_EXPORT const std::shared_ptr< std::wstring > getName() const;
+        ASPOSE_WORDS_CLOUD_EXPORT const std::shared_ptr< aspose::words::cloud::models::CompressOptions > getCompressOptions() const;
+        ASPOSE_WORDS_CLOUD_EXPORT const std::shared_ptr< std::wstring > getFolder() const;
+        ASPOSE_WORDS_CLOUD_EXPORT const std::shared_ptr< std::wstring > getStorage() const;
         ASPOSE_WORDS_CLOUD_EXPORT const std::shared_ptr< std::wstring > getLoadEncoding() const;
         ASPOSE_WORDS_CLOUD_EXPORT const std::shared_ptr< std::wstring > getPassword() const;
         ASPOSE_WORDS_CLOUD_EXPORT const std::shared_ptr< std::wstring > getEncryptedPassword() const;
         ASPOSE_WORDS_CLOUD_EXPORT const std::shared_ptr< std::wstring > getDestFileName() const;
-        ASPOSE_WORDS_CLOUD_EXPORT const std::shared_ptr< std::wstring > getRevisionAuthor() const;
-        ASPOSE_WORDS_CLOUD_EXPORT const std::shared_ptr< std::wstring > getRevisionDateTime() const;
 
         ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< aspose::words::cloud::HttpRequestData > createHttpRequest() const override;
         ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > createResponse() const override;
 
     private:
-        const std::shared_ptr< std::istream > m_Document;
-        const std::shared_ptr< aspose::words::cloud::models::BaseEntryList > m_DocumentList;
+        const std::shared_ptr< std::wstring > m_Name;
+        const std::shared_ptr< aspose::words::cloud::models::CompressOptions > m_CompressOptions;
+        const std::shared_ptr< std::wstring > m_Folder;
+        const std::shared_ptr< std::wstring > m_Storage;
         const std::shared_ptr< std::wstring > m_LoadEncoding;
         const std::shared_ptr< std::wstring > m_Password;
         const std::shared_ptr< std::wstring > m_EncryptedPassword;
         const std::shared_ptr< std::wstring > m_DestFileName;
-        const std::shared_ptr< std::wstring > m_RevisionAuthor;
-        const std::shared_ptr< std::wstring > m_RevisionDateTime;
     };
 }

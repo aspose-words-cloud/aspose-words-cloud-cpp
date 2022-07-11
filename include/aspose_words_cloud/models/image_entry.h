@@ -1,5 +1,5 @@
 ﻿/** --------------------------------------------------------------------------------------------------------------------
-* <copyright company="Aspose" file="report_build_options.h">
+* <copyright company="Aspose" file="image_entry.h">
 *   Copyright (c) 2022 Aspose.Words for Cloud
 * </copyright>
 * <summary>
@@ -25,19 +25,23 @@
 
 #pragma once
 #include "./model_base.h"
+#include "base_entry.h"
 
 namespace aspose::words::cloud::models {
     /// <summary>
-    /// Specifies options controlling behavior of ReportingEngine while building a report.
+    /// Represents a image which will be appended to the original resource image or document.
     /// </summary>
-    enum class ReportBuildOptions
+    class ImageEntry : public BaseEntry
     {
-        NONE,
-        ALLOW_MISSING_MEMBERS,
-        REMOVE_EMPTY_PARAGRAPHS,
-        INLINE_ERROR_MESSAGES,
-        USE_LEGACY_HEADER_FOOTER_VISITING,
-        RESPECT_JPEG_EXIF_ORIENTATION
+    public:
+
+        ASPOSE_WORDS_CLOUD_EXPORT virtual ~ImageEntry() = default;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void toJson(void* jsonIfc) const override;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void fromJson(const void* jsonIfc) override;
+
+
+
+    protected:
     };
 }
 

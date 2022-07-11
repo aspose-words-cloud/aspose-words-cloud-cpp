@@ -1,5 +1,5 @@
 ﻿/** --------------------------------------------------------------------------------------------------------------------
-* <copyright company="Aspose" file="report_build_options.h">
+* <copyright company="Aspose" file="compress_document_online_response.h">
 *   Copyright (c) 2022 Aspose.Words for Cloud
 * </copyright>
 * <summary>
@@ -24,20 +24,20 @@
 -------------------------------------------------------------------------------------------------------------------- **/
 
 #pragma once
-#include "./model_base.h"
+#include "./response_model_base.h"
+#include "aspose_words_cloud/models/compress_response.h"
 
-namespace aspose::words::cloud::models {
-    /// <summary>
-    /// Specifies options controlling behavior of ReportingEngine while building a report.
-    /// </summary>
-    enum class ReportBuildOptions
-    {
-        NONE,
-        ALLOW_MISSING_MEMBERS,
-        REMOVE_EMPTY_PARAGRAPHS,
-        INLINE_ERROR_MESSAGES,
-        USE_LEGACY_HEADER_FOOTER_VISITING,
-        RESPECT_JPEG_EXIF_ORIENTATION
+namespace aspose::words::cloud::responses {
+    class CompressDocumentOnlineResponse : public ResponseModelBase {
+    public: 
+        ASPOSE_WORDS_CLOUD_EXPORT virtual ~CompressDocumentOnlineResponse() = default;
+
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::CompressResponse > getModel() const;
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::map<std::wstring, std::shared_ptr<std::istream>> > getDocument() const;
+
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void deserialize(const std::string& contentType, const std::string_view& response) override;
+    private:
+        std::shared_ptr< aspose::words::cloud::models::CompressResponse > m_Model;
+        std::shared_ptr< std::map<std::wstring, std::shared_ptr<std::istream>> > m_Document;
     };
 }
-

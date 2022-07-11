@@ -1,5 +1,5 @@
 ﻿/** --------------------------------------------------------------------------------------------------------------------
-* <copyright company="Aspose" file="document_entry_list.h">
+* <copyright company="Aspose" file="compress_options.h">
 *   Copyright (c) 2022 Aspose.Words for Cloud
 * </copyright>
 * <summary>
@@ -25,48 +25,49 @@
 
 #pragma once
 #include "./model_base.h"
-#include "base_entry_list.h"
-#include "document_entry.h"
 
 namespace aspose::words::cloud::models {
     /// <summary>
-    /// Represents a list of documents which will be appended to the original resource document.
+    /// Options of document compress.
     /// </summary>
-    class DocumentEntryList : public BaseEntryList
+    class CompressOptions : public ModelBase
     {
     public:
 
-        ASPOSE_WORDS_CLOUD_EXPORT virtual ~DocumentEntryList() = default;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual ~CompressOptions() = default;
         ASPOSE_WORDS_CLOUD_EXPORT virtual void toJson(void* jsonIfc) const override;
         ASPOSE_WORDS_CLOUD_EXPORT virtual void fromJson(const void* jsonIfc) override;
 
-        void abstractBaseEntryList() override {}
 
         /// <summary>
-        /// Gets or sets a value indicating whether to apply headers and footers from base document to appending documents. The default value is true.
+        /// Gets or sets the quality level of images from 0 to 100. Default value is 75.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< bool > getApplyBaseDocumentHeadersAndFootersToAppendingDocuments() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< int32_t > getImagesQuality() const;
 
         /// <summary>
-        /// Gets or sets a value indicating whether to apply headers and footers from base document to appending documents. The default value is true.
+        /// Gets or sets the quality level of images from 0 to 100. Default value is 75.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT virtual void setApplyBaseDocumentHeadersAndFootersToAppendingDocuments(std::shared_ptr< bool > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setImagesQuality(std::shared_ptr< int32_t > value);
 
 
         /// <summary>
-        /// Gets or sets the list of documents.
+        /// Gets or sets the resize factor of images.
+        /// This value determines how many times the size of the images in the document will be reduced.
+        /// The parameter value must be greater than 1 for resizing. Default value is 1 and has no effect on images size.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< std::vector<std::shared_ptr<aspose::words::cloud::models::DocumentEntry>> > getDocumentEntries() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< int32_t > getImagesReduceSizeFactor() const;
 
         /// <summary>
-        /// Gets or sets the list of documents.
+        /// Gets or sets the resize factor of images.
+        /// This value determines how many times the size of the images in the document will be reduced.
+        /// The parameter value must be greater than 1 for resizing. Default value is 1 and has no effect on images size.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT virtual void setDocumentEntries(std::shared_ptr< std::vector<std::shared_ptr<aspose::words::cloud::models::DocumentEntry>> > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setImagesReduceSizeFactor(std::shared_ptr< int32_t > value);
 
 
     protected:
-        std::shared_ptr< bool > m_ApplyBaseDocumentHeadersAndFootersToAppendingDocuments;
-        std::shared_ptr< std::vector<std::shared_ptr<aspose::words::cloud::models::DocumentEntry>> > m_DocumentEntries;
+        std::shared_ptr< int32_t > m_ImagesQuality;
+        std::shared_ptr< int32_t > m_ImagesReduceSizeFactor;
     };
 }
 

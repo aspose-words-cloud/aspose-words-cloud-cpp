@@ -238,7 +238,7 @@ namespace aspose::words::cloud::requests {
      */
     AppendDocumentRequest::AppendDocumentRequest(
         const std::shared_ptr< std::wstring > name,
-        const std::shared_ptr< aspose::words::cloud::models::DocumentEntryList > documentList,
+        const std::shared_ptr< aspose::words::cloud::models::BaseEntryList > documentList,
         const std::shared_ptr< std::wstring > folder,
         const std::shared_ptr< std::wstring > storage,
         const std::shared_ptr< std::wstring > loadEncoding,
@@ -266,7 +266,7 @@ namespace aspose::words::cloud::requests {
         return m_Name;
     }
 
-    const std::shared_ptr< aspose::words::cloud::models::DocumentEntryList > AppendDocumentRequest::getDocumentList() const
+    const std::shared_ptr< aspose::words::cloud::models::BaseEntryList > AppendDocumentRequest::getDocumentList() const
     {
         return m_DocumentList;
     }
@@ -343,7 +343,7 @@ namespace aspose::words::cloud::requests {
      */
     AppendDocumentOnlineRequest::AppendDocumentOnlineRequest(
         const std::shared_ptr< std::istream > document,
-        const std::shared_ptr< aspose::words::cloud::models::DocumentEntryList > documentList,
+        const std::shared_ptr< aspose::words::cloud::models::BaseEntryList > documentList,
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
         const std::shared_ptr< std::wstring > encryptedPassword,
@@ -367,7 +367,7 @@ namespace aspose::words::cloud::requests {
         return m_Document;
     }
 
-    const std::shared_ptr< aspose::words::cloud::models::DocumentEntryList > AppendDocumentOnlineRequest::getDocumentList() const
+    const std::shared_ptr< aspose::words::cloud::models::BaseEntryList > AppendDocumentOnlineRequest::getDocumentList() const
     {
         return m_DocumentList;
     }
@@ -1178,6 +1178,168 @@ namespace aspose::words::cloud::requests {
     {
         return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
             new aspose::words::cloud::responses::CompareDocumentOnlineResponse()
+        );
+    }
+
+    /*
+     * CompressDocument request implementation
+     */
+    CompressDocumentRequest::CompressDocumentRequest(
+        const std::shared_ptr< std::wstring > name,
+        const std::shared_ptr< aspose::words::cloud::models::CompressOptions > compressOptions,
+        const std::shared_ptr< std::wstring > folder,
+        const std::shared_ptr< std::wstring > storage,
+        const std::shared_ptr< std::wstring > loadEncoding,
+        const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< std::wstring > destFileName
+    ) : 
+        m_Name(name),
+        m_CompressOptions(compressOptions),
+        m_Folder(folder),
+        m_Storage(storage),
+        m_LoadEncoding(loadEncoding),
+        m_Password(password),
+        m_EncryptedPassword(encryptedPassword),
+        m_DestFileName(destFileName)
+    {
+    }
+
+    const std::shared_ptr< std::wstring > CompressDocumentRequest::getName() const
+    {
+        return m_Name;
+    }
+
+    const std::shared_ptr< aspose::words::cloud::models::CompressOptions > CompressDocumentRequest::getCompressOptions() const
+    {
+        return m_CompressOptions;
+    }
+
+    const std::shared_ptr< std::wstring > CompressDocumentRequest::getFolder() const
+    {
+        return m_Folder;
+    }
+
+    const std::shared_ptr< std::wstring > CompressDocumentRequest::getStorage() const
+    {
+        return m_Storage;
+    }
+
+    const std::shared_ptr< std::wstring > CompressDocumentRequest::getLoadEncoding() const
+    {
+        return m_LoadEncoding;
+    }
+
+    const std::shared_ptr< std::wstring > CompressDocumentRequest::getPassword() const
+    {
+        return m_Password;
+    }
+
+    const std::shared_ptr< std::wstring > CompressDocumentRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
+    }
+
+    const std::shared_ptr< std::wstring > CompressDocumentRequest::getDestFileName() const
+    {
+        return m_DestFileName;
+    }
+
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > CompressDocumentRequest::createHttpRequest() const
+    {
+        auto result = std::make_shared<HttpRequestData>();
+        result->setMethod(HttpRequestMethod::HttpPUT);
+        result->setPath(L"/words/{name}/compress");
+        if (!m_Name) throw aspose::words::cloud::ApiException(400, L"Parameter 'Name' is required.");
+        result->setPathParam(L"{name}", *m_Name);
+        if (m_Folder) result->addQueryParam(L"folder", *m_Folder);
+        if (m_Storage) result->addQueryParam(L"storage", *m_Storage);
+        if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
+        if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
+        if (m_CompressOptions) result->setBody(*m_CompressOptions);
+        else throw aspose::words::cloud::ApiException(400, L"Parameter 'CompressOptions' is required.");
+        return result;
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > CompressDocumentRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::CompressDocumentResponse()
+        );
+    }
+
+    /*
+     * CompressDocumentOnline request implementation
+     */
+    CompressDocumentOnlineRequest::CompressDocumentOnlineRequest(
+        const std::shared_ptr< std::istream > document,
+        const std::shared_ptr< aspose::words::cloud::models::CompressOptions > compressOptions,
+        const std::shared_ptr< std::wstring > loadEncoding,
+        const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< std::wstring > destFileName
+    ) : 
+        m_Document(document),
+        m_CompressOptions(compressOptions),
+        m_LoadEncoding(loadEncoding),
+        m_Password(password),
+        m_EncryptedPassword(encryptedPassword),
+        m_DestFileName(destFileName)
+    {
+    }
+
+    const std::shared_ptr< std::istream > CompressDocumentOnlineRequest::getDocument() const
+    {
+        return m_Document;
+    }
+
+    const std::shared_ptr< aspose::words::cloud::models::CompressOptions > CompressDocumentOnlineRequest::getCompressOptions() const
+    {
+        return m_CompressOptions;
+    }
+
+    const std::shared_ptr< std::wstring > CompressDocumentOnlineRequest::getLoadEncoding() const
+    {
+        return m_LoadEncoding;
+    }
+
+    const std::shared_ptr< std::wstring > CompressDocumentOnlineRequest::getPassword() const
+    {
+        return m_Password;
+    }
+
+    const std::shared_ptr< std::wstring > CompressDocumentOnlineRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
+    }
+
+    const std::shared_ptr< std::wstring > CompressDocumentOnlineRequest::getDestFileName() const
+    {
+        return m_DestFileName;
+    }
+
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > CompressDocumentOnlineRequest::createHttpRequest() const
+    {
+        auto result = std::make_shared<HttpRequestData>();
+        result->setMethod(HttpRequestMethod::HttpPUT);
+        result->setPath(L"/words/online/put/compress");
+        if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
+        if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
+        if (m_Document) result->addFormDataParam(L"document", *m_Document);
+        else throw aspose::words::cloud::ApiException(400, L"Parameter 'Document' is required.");
+        if (m_CompressOptions) result->addFormDataParam(L"compressOptions", *m_CompressOptions);
+        else throw aspose::words::cloud::ApiException(400, L"Parameter 'CompressOptions' is required.");
+        return result;
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > CompressDocumentOnlineRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::CompressDocumentOnlineResponse()
         );
     }
 

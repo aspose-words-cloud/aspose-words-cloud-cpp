@@ -25,14 +25,14 @@
 
 #pragma once
 #include "./request_model_base.h"
-#include "aspose_words_cloud/models/document_entry_list.h"
+#include "aspose_words_cloud/models/base_entry_list.h"
 
 namespace aspose::words::cloud::requests {
     class AppendDocumentRequest : public RequestModelBase {
     public:
         ASPOSE_WORDS_CLOUD_EXPORT AppendDocumentRequest(
             const std::shared_ptr< std::wstring > name,
-            const std::shared_ptr< aspose::words::cloud::models::DocumentEntryList > documentList,
+            const std::shared_ptr< aspose::words::cloud::models::BaseEntryList > documentList,
             const std::shared_ptr< std::wstring > folder = nullptr,
             const std::shared_ptr< std::wstring > storage = nullptr,
             const std::shared_ptr< std::wstring > loadEncoding = nullptr,
@@ -44,7 +44,7 @@ namespace aspose::words::cloud::requests {
         );
 
         ASPOSE_WORDS_CLOUD_EXPORT const std::shared_ptr< std::wstring > getName() const;
-        ASPOSE_WORDS_CLOUD_EXPORT const std::shared_ptr< aspose::words::cloud::models::DocumentEntryList > getDocumentList() const;
+        ASPOSE_WORDS_CLOUD_EXPORT const std::shared_ptr< aspose::words::cloud::models::BaseEntryList > getDocumentList() const;
         ASPOSE_WORDS_CLOUD_EXPORT const std::shared_ptr< std::wstring > getFolder() const;
         ASPOSE_WORDS_CLOUD_EXPORT const std::shared_ptr< std::wstring > getStorage() const;
         ASPOSE_WORDS_CLOUD_EXPORT const std::shared_ptr< std::wstring > getLoadEncoding() const;
@@ -59,7 +59,7 @@ namespace aspose::words::cloud::requests {
 
     private:
         const std::shared_ptr< std::wstring > m_Name;
-        const std::shared_ptr< aspose::words::cloud::models::DocumentEntryList > m_DocumentList;
+        const std::shared_ptr< aspose::words::cloud::models::BaseEntryList > m_DocumentList;
         const std::shared_ptr< std::wstring > m_Folder;
         const std::shared_ptr< std::wstring > m_Storage;
         const std::shared_ptr< std::wstring > m_LoadEncoding;

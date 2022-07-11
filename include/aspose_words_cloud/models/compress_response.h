@@ -1,5 +1,5 @@
 ﻿/** --------------------------------------------------------------------------------------------------------------------
-* <copyright company="Aspose" file="document_entry_list.h">
+* <copyright company="Aspose" file="compress_response.h">
 *   Copyright (c) 2022 Aspose.Words for Cloud
 * </copyright>
 * <summary>
@@ -25,48 +25,35 @@
 
 #pragma once
 #include "./model_base.h"
-#include "base_entry_list.h"
-#include "document_entry.h"
+#include "document.h"
+#include "words_response.h"
 
 namespace aspose::words::cloud::models {
     /// <summary>
-    /// Represents a list of documents which will be appended to the original resource document.
+    /// The REST response of compressed document.
     /// </summary>
-    class DocumentEntryList : public BaseEntryList
+    class CompressResponse : public WordsResponse
     {
     public:
 
-        ASPOSE_WORDS_CLOUD_EXPORT virtual ~DocumentEntryList() = default;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual ~CompressResponse() = default;
         ASPOSE_WORDS_CLOUD_EXPORT virtual void toJson(void* jsonIfc) const override;
         ASPOSE_WORDS_CLOUD_EXPORT virtual void fromJson(const void* jsonIfc) override;
 
-        void abstractBaseEntryList() override {}
 
         /// <summary>
-        /// Gets or sets a value indicating whether to apply headers and footers from base document to appending documents. The default value is true.
+        /// Gets or sets the destination document info.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< bool > getApplyBaseDocumentHeadersAndFootersToAppendingDocuments() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< aspose::words::cloud::models::Document > getDocument() const;
 
         /// <summary>
-        /// Gets or sets a value indicating whether to apply headers and footers from base document to appending documents. The default value is true.
+        /// Gets or sets the destination document info.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT virtual void setApplyBaseDocumentHeadersAndFootersToAppendingDocuments(std::shared_ptr< bool > value);
-
-
-        /// <summary>
-        /// Gets or sets the list of documents.
-        /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< std::vector<std::shared_ptr<aspose::words::cloud::models::DocumentEntry>> > getDocumentEntries() const;
-
-        /// <summary>
-        /// Gets or sets the list of documents.
-        /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT virtual void setDocumentEntries(std::shared_ptr< std::vector<std::shared_ptr<aspose::words::cloud::models::DocumentEntry>> > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setDocument(std::shared_ptr< aspose::words::cloud::models::Document > value);
 
 
     protected:
-        std::shared_ptr< bool > m_ApplyBaseDocumentHeadersAndFootersToAppendingDocuments;
-        std::shared_ptr< std::vector<std::shared_ptr<aspose::words::cloud::models::DocumentEntry>> > m_DocumentEntries;
+        std::shared_ptr< aspose::words::cloud::models::Document > m_Document;
     };
 }
 

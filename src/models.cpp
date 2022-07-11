@@ -81,6 +81,7 @@ namespace aspose::words::cloud::models {
         if (value == ReportBuildOptions::REMOVE_EMPTY_PARAGRAPHS) return "RemoveEmptyParagraphs";
         if (value == ReportBuildOptions::INLINE_ERROR_MESSAGES) return "InlineErrorMessages";
         if (value == ReportBuildOptions::USE_LEGACY_HEADER_FOOTER_VISITING) return "UseLegacyHeaderFooterVisiting";
+        if (value == ReportBuildOptions::RESPECT_JPEG_EXIF_ORIENTATION) return "RespectJpegExifOrientation";
         throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
     }
 
@@ -91,6 +92,7 @@ namespace aspose::words::cloud::models {
         if (value == "RemoveEmptyParagraphs") return ReportBuildOptions::REMOVE_EMPTY_PARAGRAPHS;
         if (value == "InlineErrorMessages") return ReportBuildOptions::INLINE_ERROR_MESSAGES;
         if (value == "UseLegacyHeaderFooterVisiting") return ReportBuildOptions::USE_LEGACY_HEADER_FOOTER_VISITING;
+        if (value == "RespectJpegExifOrientation") return ReportBuildOptions::RESPECT_JPEG_EXIF_ORIENTATION;
         throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
     }
 
@@ -285,6 +287,53 @@ namespace aspose::words::cloud::models {
     {
         this->m_SystemFonts = value;
     }
+
+
+
+    /*
+     * BaseEntry implementation
+     */
+    void BaseEntry::toJson(void* jsonIfc) const
+    {
+        ::nlohmann::json& json = *((::nlohmann::json*)jsonIfc);
+        if (this->m_Href) {
+            json["Href"] = convertUtf16(*(this->m_Href));
+        }
+    }
+
+    void BaseEntry::fromJson(const void* jsonIfc)
+    {
+        ::nlohmann::json& json = *((::nlohmann::json*)jsonIfc);
+        if (json.contains("Href") && !json["Href"].is_null()) {
+            this->m_Href = std::make_shared< std::wstring >(
+                convertUtf8( json["Href"].get< std::string >() )
+            );
+        }
+    }
+
+    std::shared_ptr< std::wstring > BaseEntry::getHref() const
+    {
+        return this->m_Href;
+    }
+
+    void BaseEntry::setHref(std::shared_ptr< std::wstring > value)
+    {
+        this->m_Href = value;
+    }
+
+
+
+    /*
+     * BaseEntryList implementation
+     */
+    void BaseEntryList::toJson(void* jsonIfc) const
+    {
+    }
+
+    void BaseEntryList::fromJson(const void* jsonIfc)
+    {
+    }
+
 
 
 
@@ -1845,6 +1894,92 @@ namespace aspose::words::cloud::models {
 
 
     /*
+     * CompressOptions implementation
+     */
+    void CompressOptions::toJson(void* jsonIfc) const
+    {
+        ::nlohmann::json& json = *((::nlohmann::json*)jsonIfc);
+        if (this->m_ImagesQuality) {
+            json["ImagesQuality"] = *(this->m_ImagesQuality);
+        }
+        if (this->m_ImagesReduceSizeFactor) {
+            json["ImagesReduceSizeFactor"] = *(this->m_ImagesReduceSizeFactor);
+        }
+    }
+
+    void CompressOptions::fromJson(const void* jsonIfc)
+    {
+        ::nlohmann::json& json = *((::nlohmann::json*)jsonIfc);
+        if (json.contains("ImagesQuality") && !json["ImagesQuality"].is_null()) {
+            this->m_ImagesQuality = std::make_shared< int32_t >(
+                json["ImagesQuality"].get< int32_t >()
+            );
+        }
+        if (json.contains("ImagesReduceSizeFactor") && !json["ImagesReduceSizeFactor"].is_null()) {
+            this->m_ImagesReduceSizeFactor = std::make_shared< int32_t >(
+                json["ImagesReduceSizeFactor"].get< int32_t >()
+            );
+        }
+    }
+
+    std::shared_ptr< int32_t > CompressOptions::getImagesQuality() const
+    {
+        return this->m_ImagesQuality;
+    }
+
+    void CompressOptions::setImagesQuality(std::shared_ptr< int32_t > value)
+    {
+        this->m_ImagesQuality = value;
+    }
+
+
+    std::shared_ptr< int32_t > CompressOptions::getImagesReduceSizeFactor() const
+    {
+        return this->m_ImagesReduceSizeFactor;
+    }
+
+    void CompressOptions::setImagesReduceSizeFactor(std::shared_ptr< int32_t > value)
+    {
+        this->m_ImagesReduceSizeFactor = value;
+    }
+
+
+
+    /*
+     * CompressResponse implementation
+     */
+    void CompressResponse::toJson(void* jsonIfc) const
+    {
+        WordsResponse::toJson(jsonIfc);
+        ::nlohmann::json& json = *((::nlohmann::json*)jsonIfc);
+        if (this->m_Document) {
+            this->m_Document->toJson(&json["Document"]);
+        }
+    }
+
+    void CompressResponse::fromJson(const void* jsonIfc)
+    {
+        WordsResponse::fromJson(jsonIfc);
+        ::nlohmann::json& json = *((::nlohmann::json*)jsonIfc);
+        if (json.contains("Document") && !json["Document"].is_null()) {
+            this->m_Document = std::make_shared< aspose::words::cloud::models::Document >();
+            this->m_Document->fromJson(&json["Document"]);
+        }
+    }
+
+    std::shared_ptr< aspose::words::cloud::models::Document > CompressResponse::getDocument() const
+    {
+        return this->m_Document;
+    }
+
+    void CompressResponse::setDocument(std::shared_ptr< aspose::words::cloud::models::Document > value)
+    {
+        this->m_Document = value;
+    }
+
+
+
+    /*
      * CsvDataLoadOptions implementation
      */
     void CsvDataLoadOptions::toJson(void* jsonIfc) const
@@ -2539,6 +2674,7 @@ namespace aspose::words::cloud::models {
      */
     void DocumentEntryList::toJson(void* jsonIfc) const
     {
+        BaseEntryList::toJson(jsonIfc);
         ::nlohmann::json& json = *((::nlohmann::json*)jsonIfc);
         if (this->m_ApplyBaseDocumentHeadersAndFootersToAppendingDocuments) {
             json["ApplyBaseDocumentHeadersAndFootersToAppendingDocuments"] = *(this->m_ApplyBaseDocumentHeadersAndFootersToAppendingDocuments);
@@ -2553,6 +2689,7 @@ namespace aspose::words::cloud::models {
 
     void DocumentEntryList::fromJson(const void* jsonIfc)
     {
+        BaseEntryList::fromJson(jsonIfc);
         ::nlohmann::json& json = *((::nlohmann::json*)jsonIfc);
         if (json.contains("ApplyBaseDocumentHeadersAndFootersToAppendingDocuments") && !json["ApplyBaseDocumentHeadersAndFootersToAppendingDocuments"].is_null()) {
             this->m_ApplyBaseDocumentHeadersAndFootersToAppendingDocuments = std::make_shared< bool >(
@@ -9735,6 +9872,80 @@ namespace aspose::words::cloud::models {
     void HyperlinksResponse::setHyperlinks(std::shared_ptr< aspose::words::cloud::models::Hyperlinks > value)
     {
         this->m_Hyperlinks = value;
+    }
+
+
+
+    /*
+     * ImageEntry implementation
+     */
+    void ImageEntry::toJson(void* jsonIfc) const
+    {
+        BaseEntry::toJson(jsonIfc);
+    }
+
+    void ImageEntry::fromJson(const void* jsonIfc)
+    {
+        BaseEntry::fromJson(jsonIfc);
+    }
+
+
+
+
+    /*
+     * ImageEntryList implementation
+     */
+    void ImageEntryList::toJson(void* jsonIfc) const
+    {
+        BaseEntryList::toJson(jsonIfc);
+        ::nlohmann::json& json = *((::nlohmann::json*)jsonIfc);
+        if (this->m_AppendEachImageOnNewPage) {
+            json["AppendEachImageOnNewPage"] = *(this->m_AppendEachImageOnNewPage);
+        }
+        if (this->m_ImageEntries) {
+            json["ImageEntries"] = ::nlohmann::json::array();
+            for (auto& element : *(this->m_ImageEntries)) {
+                element->toJson(&json["ImageEntries"].emplace_back());
+            }
+        }
+    }
+
+    void ImageEntryList::fromJson(const void* jsonIfc)
+    {
+        BaseEntryList::fromJson(jsonIfc);
+        ::nlohmann::json& json = *((::nlohmann::json*)jsonIfc);
+        if (json.contains("AppendEachImageOnNewPage") && !json["AppendEachImageOnNewPage"].is_null()) {
+            this->m_AppendEachImageOnNewPage = std::make_shared< bool >(
+                json["AppendEachImageOnNewPage"].get< bool >()
+            );
+        }
+        if (json.contains("ImageEntries") && !json["ImageEntries"].is_null()) {
+            this->m_ImageEntries = std::make_shared< std::vector<std::shared_ptr<aspose::words::cloud::models::ImageEntry>> >();
+            for (auto& element : json["ImageEntries"]) {
+                this->m_ImageEntries->emplace_back(std::make_shared< aspose::words::cloud::models::ImageEntry >())->fromJson(&element);
+            }
+        }
+    }
+
+    std::shared_ptr< bool > ImageEntryList::getAppendEachImageOnNewPage() const
+    {
+        return this->m_AppendEachImageOnNewPage;
+    }
+
+    void ImageEntryList::setAppendEachImageOnNewPage(std::shared_ptr< bool > value)
+    {
+        this->m_AppendEachImageOnNewPage = value;
+    }
+
+
+    std::shared_ptr< std::vector<std::shared_ptr<aspose::words::cloud::models::ImageEntry>> > ImageEntryList::getImageEntries() const
+    {
+        return this->m_ImageEntries;
+    }
+
+    void ImageEntryList::setImageEntries(std::shared_ptr< std::vector<std::shared_ptr<aspose::words::cloud::models::ImageEntry>> > value)
+    {
+        this->m_ImageEntries = value;
     }
 
 
@@ -17385,6 +17596,7 @@ namespace aspose::words::cloud::models {
         if (value == aspose::words::cloud::models::ReportBuildOptions::REMOVE_EMPTY_PARAGRAPHS) return "RemoveEmptyParagraphs";
         if (value == aspose::words::cloud::models::ReportBuildOptions::INLINE_ERROR_MESSAGES) return "InlineErrorMessages";
         if (value == aspose::words::cloud::models::ReportBuildOptions::USE_LEGACY_HEADER_FOOTER_VISITING) return "UseLegacyHeaderFooterVisiting";
+        if (value == aspose::words::cloud::models::ReportBuildOptions::RESPECT_JPEG_EXIF_ORIENTATION) return "RespectJpegExifOrientation";
         throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
     }
 
@@ -17395,6 +17607,7 @@ namespace aspose::words::cloud::models {
         if (value == "RemoveEmptyParagraphs") return aspose::words::cloud::models::ReportBuildOptions::REMOVE_EMPTY_PARAGRAPHS;
         if (value == "InlineErrorMessages") return aspose::words::cloud::models::ReportBuildOptions::INLINE_ERROR_MESSAGES;
         if (value == "UseLegacyHeaderFooterVisiting") return aspose::words::cloud::models::ReportBuildOptions::USE_LEGACY_HEADER_FOOTER_VISITING;
+        if (value == "RespectJpegExifOrientation") return aspose::words::cloud::models::ReportBuildOptions::RESPECT_JPEG_EXIF_ORIENTATION;
         throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
     }
     void ReportEngineSettings::toJson(void* jsonIfc) const

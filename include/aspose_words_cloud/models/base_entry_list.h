@@ -1,5 +1,5 @@
 ﻿/** --------------------------------------------------------------------------------------------------------------------
-* <copyright company="Aspose" file="report_build_options.h">
+* <copyright company="Aspose" file="base_entry_list.h">
 *   Copyright (c) 2022 Aspose.Words for Cloud
 * </copyright>
 * <summary>
@@ -28,16 +28,20 @@
 
 namespace aspose::words::cloud::models {
     /// <summary>
-    /// Specifies options controlling behavior of ReportingEngine while building a report.
+    /// Represents a list of entries which will be appended to the original resource entry.
     /// </summary>
-    enum class ReportBuildOptions
+    class BaseEntryList : public ModelBase
     {
-        NONE,
-        ALLOW_MISSING_MEMBERS,
-        REMOVE_EMPTY_PARAGRAPHS,
-        INLINE_ERROR_MESSAGES,
-        USE_LEGACY_HEADER_FOOTER_VISITING,
-        RESPECT_JPEG_EXIF_ORIENTATION
+    public:
+
+        ASPOSE_WORDS_CLOUD_EXPORT virtual ~BaseEntryList() = default;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void toJson(void* jsonIfc) const override;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void fromJson(const void* jsonIfc) override;
+
+        virtual void abstractBaseEntryList() = 0;
+
+
+    protected:
     };
 }
 
