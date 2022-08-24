@@ -863,6 +863,9 @@ namespace aspose::words::cloud::api {
         /// <param name="outPath">The path to the output document on a local storage.</param>
         /// <param name="fileNameFieldValue">The filename of the output document, that will be used when the resulting document has a dynamic field {filename}. If it is not set, the "sourceFilename" will be used instead.</param>
         /// <param name="storage">Original document storage.</param>
+        /// <param name="loadEncoding">Encoding that will be used to load an HTML (or TXT) document if the encoding is not specified in HTML.</param>
+        /// <param name="password">Password of protected Word document. Use the parameter to pass a password via SDK. SDK encrypts it automatically. We don't recommend to use the parameter to pass a plain password for direct call of API.</param>
+        /// <param name="encryptedPassword">Password of protected Word document. Use the parameter to pass an encrypted password for direct calls of API. See SDK code for encyption details.</param>
         /// <param name="fontsLocation">Folder in filestorage with custom fonts.</param>
         ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::istream > convertDocument(std::shared_ptr<aspose::words::cloud::requests::ConvertDocumentRequest> request);
 

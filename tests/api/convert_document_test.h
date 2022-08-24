@@ -236,6 +236,9 @@ TEST_F(ConvertDocumentTests, TestConvertDocument) {
         nullptr,
         nullptr,
         nullptr,
+        nullptr,
+        nullptr,
+        nullptr,
         nullptr
     ));
 

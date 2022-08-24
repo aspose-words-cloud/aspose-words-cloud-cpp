@@ -1352,6 +1352,9 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > outPath,
         const std::shared_ptr< std::wstring > fileNameFieldValue,
         const std::shared_ptr< std::wstring > storage,
+        const std::shared_ptr< std::wstring > loadEncoding,
+        const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword,
         const std::shared_ptr< std::wstring > fontsLocation
     ) : 
         m_Document(document),
@@ -1359,6 +1362,9 @@ namespace aspose::words::cloud::requests {
         m_OutPath(outPath),
         m_FileNameFieldValue(fileNameFieldValue),
         m_Storage(storage),
+        m_LoadEncoding(loadEncoding),
+        m_Password(password),
+        m_EncryptedPassword(encryptedPassword),
         m_FontsLocation(fontsLocation)
     {
     }
@@ -1388,6 +1394,21 @@ namespace aspose::words::cloud::requests {
         return m_Storage;
     }
 
+    const std::shared_ptr< std::wstring > ConvertDocumentRequest::getLoadEncoding() const
+    {
+        return m_LoadEncoding;
+    }
+
+    const std::shared_ptr< std::wstring > ConvertDocumentRequest::getPassword() const
+    {
+        return m_Password;
+    }
+
+    const std::shared_ptr< std::wstring > ConvertDocumentRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
+    }
+
     const std::shared_ptr< std::wstring > ConvertDocumentRequest::getFontsLocation() const
     {
         return m_FontsLocation;
@@ -1398,11 +1419,14 @@ namespace aspose::words::cloud::requests {
         auto result = std::make_shared<HttpRequestData>();
         result->setMethod(HttpRequestMethod::HttpPUT);
         result->setPath(L"/words/convert");
+        result->setPathParam(L"{outPath}", m_OutPath ? *m_OutPath : L"");
         if (m_Format) result->addQueryParam(L"format", *m_Format);
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Format' is required.");
-        if (m_OutPath) result->addQueryParam(L"outPath", *m_OutPath);
         if (m_FileNameFieldValue) result->addQueryParam(L"fileNameFieldValue", *m_FileNameFieldValue);
         if (m_Storage) result->addQueryParam(L"storage", *m_Storage);
+        if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
+        if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
         if (m_FontsLocation) result->addQueryParam(L"fontsLocation", *m_FontsLocation);
         if (m_Document) result->setBody(*m_Document);
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Document' is required.");
