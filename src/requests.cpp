@@ -1419,9 +1419,9 @@ namespace aspose::words::cloud::requests {
         auto result = std::make_shared<HttpRequestData>();
         result->setMethod(HttpRequestMethod::HttpPUT);
         result->setPath(L"/words/convert");
-        result->setPathParam(L"{outPath}", m_OutPath ? *m_OutPath : L"");
         if (m_Format) result->addQueryParam(L"format", *m_Format);
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Format' is required.");
+        if (m_OutPath) result->addQueryParam(L"outPath", *m_OutPath);
         if (m_FileNameFieldValue) result->addQueryParam(L"fileNameFieldValue", *m_FileNameFieldValue);
         if (m_Storage) result->addQueryParam(L"storage", *m_Storage);
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
