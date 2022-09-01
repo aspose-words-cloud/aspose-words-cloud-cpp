@@ -24,24 +24,35 @@
 -------------------------------------------------------------------------------------------------------------------- **/
 
 #pragma once
-#include "./model_base.h"
-#include "base_entry.h"
+#include "model_base.h"
 
 namespace aspose::words::cloud::models {
     /// <summary>
     /// Represents a image which will be appended to the original resource image or document.
     /// </summary>
-    class ImageEntry : public BaseEntry
+    class ImageEntry : public ModelBase
     {
     public:
 
         ASPOSE_WORDS_CLOUD_EXPORT virtual ~ImageEntry() = default;
         ASPOSE_WORDS_CLOUD_EXPORT virtual void toJson(void* jsonIfc) const override;
         ASPOSE_WORDS_CLOUD_EXPORT virtual void fromJson(const void* jsonIfc) override;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void getFileContent(std::vector< FileContent* >& result) override;
 
+
+        /// <summary>
+        /// Gets or sets the path to entry to append at the server.
+        /// </summary>
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< std::wstring > getHref() const;
+
+        /// <summary>
+        /// Gets or sets the path to entry to append at the server.
+        /// </summary>
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setHref(std::shared_ptr< std::wstring > value);
 
 
     protected:
+        std::shared_ptr< std::wstring > m_Href;
     };
 }
 

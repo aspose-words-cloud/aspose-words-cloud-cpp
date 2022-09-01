@@ -1,5 +1,5 @@
 ﻿/** --------------------------------------------------------------------------------------------------------------------
-* <copyright company="Aspose" file="base_entry.h">
+* <copyright company="Aspose" file="file_content.h">
 *   Copyright (c) 2022 Aspose.Words for Cloud
 * </copyright>
 * <summary>
@@ -24,34 +24,41 @@
 -------------------------------------------------------------------------------------------------------------------- **/
 
 #pragma once
-#include "./model_base.h"
+#include "model_base.h"
 
 namespace aspose::words::cloud::models {
     /// <summary>
-    /// Represents a entry which will be appended to the original resource document.
+    /// Utility class to support multiple files uploading as online documents.
     /// </summary>
-    class BaseEntry : public ModelBase
+    class FileContent : public ModelBase
     {
     public:
-
-        ASPOSE_WORDS_CLOUD_EXPORT virtual ~BaseEntry() = default;
+        FileContent();
+        ASPOSE_WORDS_CLOUD_EXPORT FileContent(const std::shared_ptr< std::wstring > fileName, const std::shared_ptr< std::istream > fileContent);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual ~FileContent() = default;
         ASPOSE_WORDS_CLOUD_EXPORT virtual void toJson(void* jsonIfc) const override;
         ASPOSE_WORDS_CLOUD_EXPORT virtual void fromJson(const void* jsonIfc) override;
-
-
-        /// <summary>
-        /// Gets or sets the path to entry to append at the server.
-        /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< std::wstring > getHref() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void getFileContent(std::vector< FileContent* >& result) override;
 
         /// <summary>
-        /// Gets or sets the path to entry to append at the server.
+        /// Gets the file name.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT virtual void setHref(std::shared_ptr< std::wstring > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< std::wstring > getFilename() const;
 
+        /// <summary>
+        /// Gets the file ID inside the multipart.
+        /// </summary>
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< std::wstring > getId() const;
+
+        /// <summary>
+        /// Gets the file content.
+        /// </summary>
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< std::istream > getContent() const;
 
     protected:
-        std::shared_ptr< std::wstring > m_Href;
+        std::shared_ptr< std::wstring > m_Filename;
+        std::shared_ptr< std::wstring > m_Id;
+        std::shared_ptr< std::istream > m_Content;
     };
 }
 

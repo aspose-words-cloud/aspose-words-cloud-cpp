@@ -26,6 +26,7 @@
 #include "aspose_words_cloud/http_request_data.h"
 #include "aspose_words_cloud/api_client.h"
 #include "aspose_words_cloud/api_exception.h"
+#include "aspose_words_cloud/models/file_content.h"
 
 // USE THIRD PARTY LIBS ONLY IN CPP FILES!!!
 #include "../thirdparty/json.hpp"
@@ -84,91 +85,91 @@ namespace aspose::words::cloud {
          m_Method = method;
     }
 
-    void HttpRequestData::setBody(const aspose::words::cloud::models::ModelBase& model)
-    {
-        ::nlohmann::json json;
-        model.toJson(&json);
-        if (json.empty()) {
-            m_Body = "{}";
-        }
-        else {
-            m_Body = std::move(json.dump());
-        }
-
-        setContentType("application/json; charset=utf-8");
-    }
-
-    void HttpRequestData::setBody(std::istream& stream)
-    {
-        if (!stream.good()) {
-            throw ApiException(400, L"Invalid input stream in operation request.");
-        }
-
-        constexpr size_t BUFFER_SIZE = 1024 * 4;
-        char buffer[BUFFER_SIZE];
-        while (stream.read(buffer, BUFFER_SIZE)) {
-            m_Body.append(buffer, BUFFER_SIZE);
-        }
-        m_Body.append(buffer, stream.gcount());
-        setContentType("application/octet-stream");
-    }
-
     std::string& HttpRequestData::getBodyMutable()
     {
         return m_Body;
     }
 
-    void HttpRequestData::setBodyJson(const std::wstring& value)
-    {
-        m_Body.append("\"");
-        ::utf8::utf16to8(value.begin(), value.end(), back_inserter(m_Body));
-        m_Body.append("\"");
-        setContentType("application/json; charset=utf-8");
-    }
-
-    void HttpRequestData::setBodyText(const std::wstring& value)
-    {
-        ::utf8::utf16to8(value.begin(), value.end(), back_inserter(m_Body));
-        setContentType("application/json; charset=utf-8");
-    }
-
     void HttpRequestData::addFormDataParam(const std::wstring& name, const aspose::words::cloud::models::ModelBase& model)
     {
-        if (m_Boundary.empty()) {
-            m_Boundary = ApiClient::createRandomGuid();
-        }
-
-        if (m_Body.empty())
+        if (m_PartsCount == 0)
         {
+            ::nlohmann::json json;
+            model.toJson(&json);
+            if (json.empty()) {
+                m_Body = "{}";
+            }
+            else {
+                m_Body = std::move(json.dump());
+            }
+
+            setContentType("application/json; charset=utf-8");
+            m_LastName = name;
+        }
+        else if (m_PartsCount == 1)
+        {
+            m_Boundary = ApiClient::createRandomGuid();
+            std::string prepart;
+            prepart.append("--" + m_Boundary + "\r\n");
+            prepart.append("Content-Type: " + getContentType() + "\r\n");
+            prepart.append("Content-Disposition: form-data; name=\"");
+            ::utf8::utf16to8(m_LastName.begin(), m_LastName.end(), back_inserter(prepart));
+            prepart.append("\"\r\n\r\n");
+            m_Body.insert(0, prepart);
+            m_Body.append("\r\n");
             m_Body.append("--");
             m_Body.append(m_Boundary);
             m_Body.append("\r\n");
+
+            m_Body.append("Content-Type: application/json; charset=utf-8\r\n");
+            m_Body.append("Content-Disposition: form-data; name=\"");
+            ::utf8::utf16to8(name.begin(), name.end(), back_inserter(m_Body));
+            m_Body.append("\"\r\n\r\n");
+
+            ::nlohmann::json json;
+            model.toJson(&json);
+            if (json.empty()) {
+                m_Body.append("{}");
+            }
+            else {
+                m_Body.append(std::move(json.dump()));
+            }
+
+            m_Body.append("\r\n");
+            m_Body.append("--");
+            m_Body.append(m_Boundary);
+            m_Body.append("--");
+
+            setContentType("multipart/form-data; boundary=" + m_Boundary);
         }
-        else {
+        else
+        {
             m_Body[m_Body.size() - 2] = '\r';
             m_Body[m_Body.size() - 1] = '\n';
+
+            m_Body.append("Content-Type: application/json; charset=utf-8\r\n");
+            m_Body.append("Content-Disposition: form-data; name=\"");
+            ::utf8::utf16to8(name.begin(), name.end(), back_inserter(m_Body));
+            m_Body.append("\"\r\n\r\n");
+
+            ::nlohmann::json json;
+            model.toJson(&json);
+            if (json.empty()) {
+                m_Body.append("{}");
+            }
+            else {
+                m_Body.append(std::move(json.dump()));
+            }
+
+            m_Body.append("\r\n");
+            m_Body.append("--");
+            m_Body.append(m_Boundary);
+            m_Body.append("--");
+
+            setContentType("multipart/form-data; boundary=" + m_Boundary);
         }
 
-        m_Body.append("Content-Type: application/json; charset=utf-8\r\n");
-        m_Body.append("Content-Disposition: form-data; name=\"");
-        ::utf8::utf16to8(name.begin(), name.end(), back_inserter(m_Body));
-        m_Body.append("\"\r\n\r\n");
-
-        ::nlohmann::json json;
-        model.toJson(&json);
-        if (json.empty()) {
-            m_Body.append("{}");
-        }
-        else {
-            m_Body.append(std::move(json.dump()));
-        }
-
-        m_Body.append("\r\n");
-        m_Body.append("--");
-        m_Body.append(m_Boundary);
-        m_Body.append("--");
-
-        setContentType("multipart/form-data; boundary=" + m_Boundary);
+        m_PartsCount++;
     }
 
     void HttpRequestData::addFormDataParam(const std::wstring& name, std::istream& stream)
@@ -177,71 +178,213 @@ namespace aspose::words::cloud {
             throw ApiException(400, L"Invalid input stream in operation request.");
         }
 
-        if (m_Boundary.empty()) {
-            m_Boundary = ApiClient::createRandomGuid();
-        }
-
-        if (m_Body.empty())
+        if (m_PartsCount == 0)
         {
+            constexpr size_t BUFFER_SIZE = 1024 * 4;
+            char buffer[BUFFER_SIZE];
+            while (stream.read(buffer, BUFFER_SIZE)) {
+                m_Body.append(buffer, BUFFER_SIZE);
+            }
+            m_Body.append(buffer, stream.gcount());
+            setContentType("application/octet-stream");
+            m_LastName = name;
+        }
+        else if (m_PartsCount == 1)
+        {
+            m_Boundary = ApiClient::createRandomGuid();
+            std::string prepart;
+            prepart.append("--" + m_Boundary + "\r\n");
+            prepart.append("Content-Type: " + getContentType() + "\r\n");
+            prepart.append("Content-Disposition: form-data; name=\"");
+            ::utf8::utf16to8(m_LastName.begin(), m_LastName.end(), back_inserter(prepart));
+            prepart.append("\"\r\n\r\n");
+            m_Body.insert(0, prepart);
+            m_Body.append("\r\n");
             m_Body.append("--");
             m_Body.append(m_Boundary);
             m_Body.append("\r\n");
+
+            m_Body.append("Content-Type: application/octet-stream\r\n");
+            m_Body.append("Content-Disposition: form-data; name=\"");
+            ::utf8::utf16to8(name.begin(), name.end(), back_inserter(m_Body));
+            m_Body.append("\"\r\n\r\n");
+
+            constexpr size_t BUFFER_SIZE = 1024 * 4;
+            char buffer[BUFFER_SIZE];
+            while (stream.read(buffer, BUFFER_SIZE)) {
+                m_Body.append(buffer, BUFFER_SIZE);
+            }
+            m_Body.append(buffer, stream.gcount());
+
+            m_Body.append("\r\n");
+            m_Body.append("--");
+            m_Body.append(m_Boundary);
+            m_Body.append("--");
+
+            setContentType("multipart/form-data; boundary=" + m_Boundary);
         }
-        else {
+        else
+        {
             m_Body[m_Body.size() - 2] = '\r';
             m_Body[m_Body.size() - 1] = '\n';
+
+            m_Body.append("Content-Type: application/octet-stream\r\n");
+            m_Body.append("Content-Disposition: form-data; name=\"");
+            ::utf8::utf16to8(name.begin(), name.end(), back_inserter(m_Body));
+            m_Body.append("\"\r\n\r\n");
+
+            constexpr size_t BUFFER_SIZE = 1024 * 4;
+            char buffer[BUFFER_SIZE];
+            while (stream.read(buffer, BUFFER_SIZE)) {
+                m_Body.append(buffer, BUFFER_SIZE);
+            }
+            m_Body.append(buffer, stream.gcount());
+
+            m_Body.append("\r\n");
+            m_Body.append("--");
+            m_Body.append(m_Boundary);
+            m_Body.append("--");
+
+            setContentType("multipart/form-data; boundary=" + m_Boundary);
         }
 
-        m_Body.append("Content-Type: application/octet-stream\r\n");
-        m_Body.append("Content-Disposition: form-data; name=\"");
-        ::utf8::utf16to8(name.begin(), name.end(), back_inserter(m_Body));
-        m_Body.append("\"\r\n\r\n");
+        m_PartsCount++;
+    }
 
-        constexpr size_t BUFFER_SIZE = 1024 * 4;
-        char buffer[BUFFER_SIZE];
-        while (stream.read(buffer, BUFFER_SIZE)) {
-            m_Body.append(buffer, BUFFER_SIZE);
+    void HttpRequestData::addFormDataParam(const models::FileContent* fileContent)
+    {
+        if (!fileContent->getContent()->good()) {
+            throw ApiException(400, L"Invalid input stream in operation request.");
         }
-        m_Body.append(buffer, stream.gcount());
 
-        m_Body.append("\r\n");
-        m_Body.append("--");
-        m_Body.append(m_Boundary);
-        m_Body.append("--");
+        if (m_PartsCount == 0)
+        {
+            throw ApiException(400, L"File content allowed only in mutipart request.");
+        }
+        else if (m_PartsCount == 1)
+        {
+            m_Boundary = ApiClient::createRandomGuid();
+            std::string prepart;
+            prepart.append("--" + m_Boundary + "\r\n");
+            prepart.append("Content-Type: " + getContentType() + "\r\n");
+            prepart.append("Content-Disposition: form-data; name=\"");
+            ::utf8::utf16to8(m_LastName.begin(), m_LastName.end(), back_inserter(prepart));
+            prepart.append("\"\r\n\r\n");
+            m_Body.insert(0, prepart);
+            m_Body.append("\r\n");
+            m_Body.append("--");
+            m_Body.append(m_Boundary);
+            m_Body.append("\r\n");
 
-        setContentType("multipart/form-data; boundary=" + m_Boundary);
+            m_Body.append("Content-Type: application/octet-stream\r\n");
+            m_Body.append("Content-Disposition: form-data; name=\"");
+            ::utf8::utf16to8(fileContent->getId()->begin(), fileContent->getId()->end(), back_inserter(m_Body));
+            m_Body.append("\"; filename=\"");
+            ::utf8::utf16to8(fileContent->getFilename()->begin(), fileContent->getFilename()->end(), back_inserter(m_Body));
+            m_Body.append("\"\r\n\r\n");
+
+            constexpr size_t BUFFER_SIZE = 1024 * 4;
+            char buffer[BUFFER_SIZE];
+            while (fileContent->getContent()->read(buffer, BUFFER_SIZE)) {
+                m_Body.append(buffer, BUFFER_SIZE);
+            }
+            m_Body.append(buffer, fileContent->getContent()->gcount());
+
+            m_Body.append("\r\n");
+            m_Body.append("--");
+            m_Body.append(m_Boundary);
+            m_Body.append("--");
+
+            setContentType("multipart/form-data; boundary=" + m_Boundary);
+        }
+        else
+        {
+            m_Body[m_Body.size() - 2] = '\r';
+            m_Body[m_Body.size() - 1] = '\n';
+
+            m_Body.append("Content-Type: application/octet-stream\r\n");
+            m_Body.append("Content-Disposition: form-data; name=\"");
+            ::utf8::utf16to8(fileContent->getId()->begin(), fileContent->getId()->end(), back_inserter(m_Body));
+            m_Body.append("\"; filename=\"");
+            ::utf8::utf16to8(fileContent->getFilename()->begin(), fileContent->getFilename()->end(), back_inserter(m_Body));
+            m_Body.append("\"\r\n\r\n");
+
+            constexpr size_t BUFFER_SIZE = 1024 * 4;
+            char buffer[BUFFER_SIZE];
+            while (fileContent->getContent()->read(buffer, BUFFER_SIZE)) {
+                m_Body.append(buffer, BUFFER_SIZE);
+            }
+            m_Body.append(buffer, fileContent->getContent()->gcount());
+
+            m_Body.append("\r\n");
+            m_Body.append("--");
+            m_Body.append(m_Boundary);
+            m_Body.append("--");
+
+            setContentType("multipart/form-data; boundary=" + m_Boundary);
+        }
+
+        m_PartsCount++;
     }
 
     void HttpRequestData::addFormDataParam(const std::wstring& name, const std::wstring& value)
     {
-        if (m_Boundary.empty()) {
-            m_Boundary = ApiClient::createRandomGuid();
-        }
-
-        if (m_Body.empty())
+        if (m_PartsCount == 0)
         {
+            ::utf8::utf16to8(value.begin(), value.end(), back_inserter(m_Body));
+            setContentType("text/plain; charset=utf-8");
+            m_LastName = name;
+        }
+        else if (m_PartsCount == 1)
+        {
+            m_Boundary = ApiClient::createRandomGuid();
+            std::string prepart;
+            prepart.append("--" + m_Boundary + "\r\n");
+            prepart.append("Content-Type: " + getContentType() + "\r\n");
+            prepart.append("Content-Disposition: form-data; name=\"");
+            ::utf8::utf16to8(m_LastName.begin(), m_LastName.end(), back_inserter(prepart));
+            prepart.append("\"\r\n\r\n");
+            m_Body.insert(0, prepart);
+            m_Body.append("\r\n");
             m_Body.append("--");
             m_Body.append(m_Boundary);
             m_Body.append("\r\n");
+
+            m_Body.append("Content-Type: text/plain; charset=utf-8\r\n");
+            m_Body.append("Content-Disposition: form-data; name=\"");
+            ::utf8::utf16to8(name.begin(), name.end(), back_inserter(m_Body));
+            m_Body.append("\"\r\n\r\n");
+
+            ::utf8::utf16to8(value.begin(), value.end(), back_inserter(m_Body));
+
+            m_Body.append("\r\n");
+            m_Body.append("--");
+            m_Body.append(m_Boundary);
+            m_Body.append("--");
+
+            setContentType("multipart/form-data; boundary=" + m_Boundary);
         }
-        else {
+        else
+        {
             m_Body[m_Body.size() - 2] = '\r';
             m_Body[m_Body.size() - 1] = '\n';
+
+            m_Body.append("Content-Type: text/plain; charset=utf-8\r\n");
+            m_Body.append("Content-Disposition: form-data; name=\"");
+            ::utf8::utf16to8(name.begin(), name.end(), back_inserter(m_Body));
+            m_Body.append("\"\r\n\r\n");
+
+            ::utf8::utf16to8(value.begin(), value.end(), back_inserter(m_Body));
+
+            m_Body.append("\r\n");
+            m_Body.append("--");
+            m_Body.append(m_Boundary);
+            m_Body.append("--");
+
+            setContentType("multipart/form-data; boundary=" + m_Boundary);
         }
 
-        m_Body.append("Content-Type: application/json; charset=utf-8\r\n");
-        m_Body.append("Content-Disposition: form-data; name=\"");
-        ::utf8::utf16to8(name.begin(), name.end(), back_inserter(m_Body));
-        m_Body.append("\"\r\n\r\n");
-
-        ::utf8::utf16to8(value.begin(), value.end(), back_inserter(m_Body));
-
-        m_Body.append("\r\n");
-        m_Body.append("--");
-        m_Body.append(m_Boundary);
-        m_Body.append("--");
-
-        setContentType("multipart/form-data; boundary=" + m_Boundary);
+        m_PartsCount++;
     }
 
     void HttpRequestData::setContentType(const std::string& value)

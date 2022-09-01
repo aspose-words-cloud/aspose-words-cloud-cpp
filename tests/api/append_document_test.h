@@ -76,21 +76,16 @@ TEST_F(AppendDocumentTests, TestAppendDocument) {
 /// Test for appending document online.
 /// </summary>
 TEST_F(AppendDocumentTests, TestAppendDocumentOnline) {
-    std::wstring remoteFileName = L"TestAppendDocument.docx";
-
-    uploadFileToStorage(
-        localTestDataFolder + L"/" + localFile,
-        remoteDataFolder + L"/" + remoteFileName
-    );
-
     auto requestDocument = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(localFile)), std::istream::binary));
-    auto requestDocumentListDocumentEntries0 = std::make_shared< aspose::words::cloud::models::DocumentEntry >();
-    requestDocumentListDocumentEntries0->setHref(std::make_shared< std::wstring >(remoteDataFolder + L"/" + remoteFileName));
-    requestDocumentListDocumentEntries0->setImportFormatMode(std::make_shared< std::wstring >(L"KeepSourceFormatting"));
-    auto requestDocumentListDocumentEntries = std::make_shared< std::vector<std::shared_ptr<aspose::words::cloud::models::DocumentEntry>> >();
-    requestDocumentListDocumentEntries->push_back(requestDocumentListDocumentEntries0);
-    auto requestDocumentList = std::make_shared< aspose::words::cloud::models::DocumentEntryList >();
-    requestDocumentList->setDocumentEntries(requestDocumentListDocumentEntries);
+    auto requestDocumentListOnlineDocumentEntries0FileStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(localFile)), std::istream::binary));
+    auto requestDocumentListOnlineDocumentEntries0File = std::make_shared< aspose::words::cloud::models::FileContent >(std::make_shared<std::wstring>(localFile), requestDocumentListOnlineDocumentEntries0FileStream);
+    auto requestDocumentListOnlineDocumentEntries0 = std::make_shared< aspose::words::cloud::models::OnlineDocumentEntry >();
+    requestDocumentListOnlineDocumentEntries0->setFile(requestDocumentListOnlineDocumentEntries0File);
+    requestDocumentListOnlineDocumentEntries0->setImportFormatMode(std::make_shared< std::wstring >(L"KeepSourceFormatting"));
+    auto requestDocumentListOnlineDocumentEntries = std::make_shared< std::vector<std::shared_ptr<aspose::words::cloud::models::OnlineDocumentEntry>> >();
+    requestDocumentListOnlineDocumentEntries->push_back(requestDocumentListOnlineDocumentEntries0);
+    auto requestDocumentList = std::make_shared< aspose::words::cloud::models::OnlineDocumentEntryList >();
+    requestDocumentList->setOnlineDocumentEntries(requestDocumentListOnlineDocumentEntries);
     std::shared_ptr<requests::AppendDocumentOnlineRequest> request(new requests::AppendDocumentOnlineRequest(
         requestDocument,
         requestDocumentList,

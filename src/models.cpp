@@ -43,6 +43,56 @@ namespace aspose::words::cloud::models {
         return result;
     }
 
+    FileContent::FileContent() :
+        m_Filename(nullptr),
+        m_Content(nullptr),
+        m_Id(nullptr)
+    { }
+
+    FileContent::FileContent(const std::shared_ptr< std::wstring > fileName, const std::shared_ptr< std::istream > fileContent) :
+        m_Filename(fileName),
+        m_Content(fileContent),
+        m_Id(std::make_shared<std::wstring>(convertUtf8(aspose::words::cloud::ApiClient::createRandomGuid())))
+    { }
+
+    void FileContent::toJson(void* jsonIfc) const
+    {
+        ::nlohmann::json& json = *((::nlohmann::json*)jsonIfc);
+        json["Filename"] = convertUtf16(*(this->m_Filename));
+        json["Id"] = convertUtf16(*(this->m_Id));
+    }
+
+    void FileContent::fromJson(const void* jsonIfc)
+    {
+        ::nlohmann::json& json = *((::nlohmann::json*)jsonIfc);
+        this->m_Filename = std::make_shared< std::wstring >(
+            convertUtf8( json["Filename"].get< std::string >() )
+        );
+        this->m_Id = std::make_shared< std::wstring >(
+            convertUtf8( json["Id"].get< std::string >() )
+        );
+    }
+
+    std::shared_ptr< std::wstring > FileContent::getFilename() const
+    {
+        return this->m_Filename;
+    }
+
+    std::shared_ptr< std::wstring > FileContent::getId() const
+    {
+        return this->m_Id;
+    }
+
+    std::shared_ptr< std::istream > FileContent::getContent() const
+    {
+        return this->m_Content;
+    }
+
+    void FileContent::getFileContent(std::vector< FileContent* >& result)
+    {
+        result.push_back(this);
+    }
+
     inline std::string pdfPermissionsToString(PdfPermissions value)
     {
         if (value == PdfPermissions::DISALLOW_ALL) return "DisallowAll";
@@ -147,6 +197,16 @@ namespace aspose::words::cloud::models {
                 convertUtf8( json["Message"].get< std::string >() )
             );
         }
+    }
+
+    void ApiError::getFileContent(std::vector< FileContent* >& result)
+    {
+        if (getInnerError() != nullptr)
+        {
+            getInnerError()->getFileContent(result);
+        }
+
+
     }
 
     std::shared_ptr< std::wstring > ApiError::getCode() const
@@ -256,6 +316,35 @@ namespace aspose::words::cloud::models {
         }
     }
 
+    void AvailableFontsResponse::getFileContent(std::vector< FileContent* >& result)
+    {
+        WordsResponse::getFileContent(result);
+        if (getAdditionalFonts() != nullptr)
+        {
+            for (auto& element : *getAdditionalFonts())
+            {
+                element->getFileContent(result);
+            }
+        }
+
+        if (getCustomFonts() != nullptr)
+        {
+            for (auto& element : *getCustomFonts())
+            {
+                element->getFileContent(result);
+            }
+        }
+
+        if (getSystemFonts() != nullptr)
+        {
+            for (auto& element : *getSystemFonts())
+            {
+                element->getFileContent(result);
+            }
+        }
+
+    }
+
     std::shared_ptr< std::vector<std::shared_ptr<aspose::words::cloud::models::FontInfo>> > AvailableFontsResponse::getAdditionalFonts() const
     {
         return this->m_AdditionalFonts;
@@ -291,34 +380,97 @@ namespace aspose::words::cloud::models {
 
 
     /*
-     * BaseEntry implementation
+     * BaseDocumentEntry implementation
      */
-    void BaseEntry::toJson(void* jsonIfc) const
+    void BaseDocumentEntry::toJson(void* jsonIfc) const
     {
         ::nlohmann::json& json = *((::nlohmann::json*)jsonIfc);
-        if (this->m_Href) {
-            json["Href"] = convertUtf16(*(this->m_Href));
+        if (this->m_EncryptedPassword) {
+            json["EncryptedPassword"] = convertUtf16(*(this->m_EncryptedPassword));
+        }
+        if (this->m_ImportFormatMode) {
+            json["ImportFormatMode"] = convertUtf16(*(this->m_ImportFormatMode));
         }
     }
 
-    void BaseEntry::fromJson(const void* jsonIfc)
+    void BaseDocumentEntry::fromJson(const void* jsonIfc)
     {
         ::nlohmann::json& json = *((::nlohmann::json*)jsonIfc);
-        if (json.contains("Href") && !json["Href"].is_null()) {
-            this->m_Href = std::make_shared< std::wstring >(
-                convertUtf8( json["Href"].get< std::string >() )
+        if (json.contains("EncryptedPassword") && !json["EncryptedPassword"].is_null()) {
+            this->m_EncryptedPassword = std::make_shared< std::wstring >(
+                convertUtf8( json["EncryptedPassword"].get< std::string >() )
+            );
+        }
+        if (json.contains("ImportFormatMode") && !json["ImportFormatMode"].is_null()) {
+            this->m_ImportFormatMode = std::make_shared< std::wstring >(
+                convertUtf8( json["ImportFormatMode"].get< std::string >() )
             );
         }
     }
 
-    std::shared_ptr< std::wstring > BaseEntry::getHref() const
+    void BaseDocumentEntry::getFileContent(std::vector< FileContent* >& result)
     {
-        return this->m_Href;
     }
 
-    void BaseEntry::setHref(std::shared_ptr< std::wstring > value)
+    std::shared_ptr< std::wstring > BaseDocumentEntry::getEncryptedPassword() const
     {
-        this->m_Href = value;
+        return this->m_EncryptedPassword;
+    }
+
+    void BaseDocumentEntry::setEncryptedPassword(std::shared_ptr< std::wstring > value)
+    {
+        this->m_EncryptedPassword = value;
+    }
+
+
+    std::shared_ptr< std::wstring > BaseDocumentEntry::getImportFormatMode() const
+    {
+        return this->m_ImportFormatMode;
+    }
+
+    void BaseDocumentEntry::setImportFormatMode(std::shared_ptr< std::wstring > value)
+    {
+        this->m_ImportFormatMode = value;
+    }
+
+
+
+    /*
+     * BaseDocumentEntryList implementation
+     */
+    void BaseDocumentEntryList::toJson(void* jsonIfc) const
+    {
+        BaseEntryList::toJson(jsonIfc);
+        ::nlohmann::json& json = *((::nlohmann::json*)jsonIfc);
+        if (this->m_ApplyBaseDocumentHeadersAndFootersToAppendingDocuments) {
+            json["ApplyBaseDocumentHeadersAndFootersToAppendingDocuments"] = *(this->m_ApplyBaseDocumentHeadersAndFootersToAppendingDocuments);
+        }
+    }
+
+    void BaseDocumentEntryList::fromJson(const void* jsonIfc)
+    {
+        BaseEntryList::fromJson(jsonIfc);
+        ::nlohmann::json& json = *((::nlohmann::json*)jsonIfc);
+        if (json.contains("ApplyBaseDocumentHeadersAndFootersToAppendingDocuments") && !json["ApplyBaseDocumentHeadersAndFootersToAppendingDocuments"].is_null()) {
+            this->m_ApplyBaseDocumentHeadersAndFootersToAppendingDocuments = std::make_shared< bool >(
+                json["ApplyBaseDocumentHeadersAndFootersToAppendingDocuments"].get< bool >()
+            );
+        }
+    }
+
+    void BaseDocumentEntryList::getFileContent(std::vector< FileContent* >& result)
+    {
+        BaseEntryList::getFileContent(result);
+    }
+
+    std::shared_ptr< bool > BaseDocumentEntryList::getApplyBaseDocumentHeadersAndFootersToAppendingDocuments() const
+    {
+        return this->m_ApplyBaseDocumentHeadersAndFootersToAppendingDocuments;
+    }
+
+    void BaseDocumentEntryList::setApplyBaseDocumentHeadersAndFootersToAppendingDocuments(std::shared_ptr< bool > value)
+    {
+        this->m_ApplyBaseDocumentHeadersAndFootersToAppendingDocuments = value;
     }
 
 
@@ -334,6 +486,50 @@ namespace aspose::words::cloud::models {
     {
     }
 
+    void BaseEntryList::getFileContent(std::vector< FileContent* >& result)
+    {
+    }
+
+
+
+
+    /*
+     * BaseImageEntryList implementation
+     */
+    void BaseImageEntryList::toJson(void* jsonIfc) const
+    {
+        BaseEntryList::toJson(jsonIfc);
+        ::nlohmann::json& json = *((::nlohmann::json*)jsonIfc);
+        if (this->m_AppendEachImageOnNewPage) {
+            json["AppendEachImageOnNewPage"] = *(this->m_AppendEachImageOnNewPage);
+        }
+    }
+
+    void BaseImageEntryList::fromJson(const void* jsonIfc)
+    {
+        BaseEntryList::fromJson(jsonIfc);
+        ::nlohmann::json& json = *((::nlohmann::json*)jsonIfc);
+        if (json.contains("AppendEachImageOnNewPage") && !json["AppendEachImageOnNewPage"].is_null()) {
+            this->m_AppendEachImageOnNewPage = std::make_shared< bool >(
+                json["AppendEachImageOnNewPage"].get< bool >()
+            );
+        }
+    }
+
+    void BaseImageEntryList::getFileContent(std::vector< FileContent* >& result)
+    {
+        BaseEntryList::getFileContent(result);
+    }
+
+    std::shared_ptr< bool > BaseImageEntryList::getAppendEachImageOnNewPage() const
+    {
+        return this->m_AppendEachImageOnNewPage;
+    }
+
+    void BaseImageEntryList::setAppendEachImageOnNewPage(std::shared_ptr< bool > value)
+    {
+        this->m_AppendEachImageOnNewPage = value;
+    }
 
 
 
@@ -358,6 +554,11 @@ namespace aspose::words::cloud::models {
                 convertUtf8( json["SaveFormat"].get< std::string >() )
             );
         }
+    }
+
+    void BmpSaveOptionsData::getFileContent(std::vector< FileContent* >& result)
+    {
+        ImageSaveOptionsData::getFileContent(result);
     }
 
     std::shared_ptr< std::wstring > BmpSaveOptionsData::getSaveFormat() const
@@ -397,6 +598,11 @@ namespace aspose::words::cloud::models {
                 convertUtf8( json["Text"].get< std::string >() )
             );
         }
+    }
+
+    void Bookmark::getFileContent(std::vector< FileContent* >& result)
+    {
+        LinkElement::getFileContent(result);
     }
 
     std::shared_ptr< std::wstring > Bookmark::getName() const
@@ -451,6 +657,10 @@ namespace aspose::words::cloud::models {
         }
     }
 
+    void BookmarkData::getFileContent(std::vector< FileContent* >& result)
+    {
+    }
+
     std::shared_ptr< std::wstring > BookmarkData::getName() const
     {
         return this->m_Name;
@@ -503,6 +713,21 @@ namespace aspose::words::cloud::models {
         }
     }
 
+    void BookmarkInsert::getFileContent(std::vector< FileContent* >& result)
+    {
+        BookmarkData::getFileContent(result);
+        if (getEndRange() != nullptr)
+        {
+            getEndRange()->getFileContent(result);
+        }
+
+        if (getStartRange() != nullptr)
+        {
+            getStartRange()->getFileContent(result);
+        }
+
+    }
+
     std::shared_ptr< aspose::words::cloud::models::DocumentPosition > BookmarkInsert::getEndRange() const
     {
         return this->m_EndRange;
@@ -548,6 +773,16 @@ namespace aspose::words::cloud::models {
         }
     }
 
+    void BookmarkResponse::getFileContent(std::vector< FileContent* >& result)
+    {
+        WordsResponse::getFileContent(result);
+        if (getBookmark() != nullptr)
+        {
+            getBookmark()->getFileContent(result);
+        }
+
+    }
+
     std::shared_ptr< aspose::words::cloud::models::Bookmark > BookmarkResponse::getBookmark() const
     {
         return this->m_Bookmark;
@@ -585,6 +820,19 @@ namespace aspose::words::cloud::models {
                 this->m_BookmarkList->emplace_back(std::make_shared< aspose::words::cloud::models::Bookmark >())->fromJson(&element);
             }
         }
+    }
+
+    void Bookmarks::getFileContent(std::vector< FileContent* >& result)
+    {
+        LinkElement::getFileContent(result);
+        if (getBookmarkList() != nullptr)
+        {
+            for (auto& element : *getBookmarkList())
+            {
+                element->getFileContent(result);
+            }
+        }
+
     }
 
     std::shared_ptr< std::vector<std::shared_ptr<aspose::words::cloud::models::Bookmark>> > Bookmarks::getBookmarkList() const
@@ -626,6 +874,10 @@ namespace aspose::words::cloud::models {
                 convertUtf8( json["Name"].get< std::string >() )
             );
         }
+    }
+
+    void BookmarksOutlineLevelData::getFileContent(std::vector< FileContent* >& result)
+    {
     }
 
     std::shared_ptr< int32_t > BookmarksOutlineLevelData::getBookmarksOutlineLevel() const
@@ -671,6 +923,16 @@ namespace aspose::words::cloud::models {
             this->m_Bookmarks = std::make_shared< aspose::words::cloud::models::Bookmarks >();
             this->m_Bookmarks->fromJson(&json["Bookmarks"]);
         }
+    }
+
+    void BookmarksResponse::getFileContent(std::vector< FileContent* >& result)
+    {
+        WordsResponse::getFileContent(result);
+        if (getBookmarks() != nullptr)
+        {
+            getBookmarks()->getFileContent(result);
+        }
+
     }
 
     std::shared_ptr< aspose::words::cloud::models::Bookmarks > BookmarksResponse::getBookmarks() const
@@ -838,6 +1100,20 @@ namespace aspose::words::cloud::models {
         }
     }
 
+    void Border::getFileContent(std::vector< FileContent* >& result)
+    {
+        LinkElement::getFileContent(result);
+        if (getColor() != nullptr)
+        {
+            getColor()->getFileContent(result);
+        }
+
+
+
+
+
+    }
+
     std::shared_ptr< aspose::words::cloud::models::Border::BorderType > Border::getBorderType() const
     {
         return this->m_BorderType;
@@ -927,6 +1203,16 @@ namespace aspose::words::cloud::models {
         }
     }
 
+    void BorderResponse::getFileContent(std::vector< FileContent* >& result)
+    {
+        WordsResponse::getFileContent(result);
+        if (getBorder() != nullptr)
+        {
+            getBorder()->getFileContent(result);
+        }
+
+    }
+
     std::shared_ptr< aspose::words::cloud::models::Border > BorderResponse::getBorder() const
     {
         return this->m_Border;
@@ -966,6 +1252,19 @@ namespace aspose::words::cloud::models {
         }
     }
 
+    void BordersCollection::getFileContent(std::vector< FileContent* >& result)
+    {
+        LinkElement::getFileContent(result);
+        if (getList() != nullptr)
+        {
+            for (auto& element : *getList())
+            {
+                element->getFileContent(result);
+            }
+        }
+
+    }
+
     std::shared_ptr< std::vector<std::shared_ptr<aspose::words::cloud::models::Border>> > BordersCollection::getList() const
     {
         return this->m_List;
@@ -998,6 +1297,16 @@ namespace aspose::words::cloud::models {
             this->m_Borders = std::make_shared< aspose::words::cloud::models::BordersCollection >();
             this->m_Borders->fromJson(&json["Borders"]);
         }
+    }
+
+    void BordersResponse::getFileContent(std::vector< FileContent* >& result)
+    {
+        WordsResponse::getFileContent(result);
+        if (getBorders() != nullptr)
+        {
+            getBorders()->getFileContent(result);
+        }
+
     }
 
     std::shared_ptr< aspose::words::cloud::models::BordersCollection > BordersResponse::getBorders() const
@@ -1053,6 +1362,19 @@ namespace aspose::words::cloud::models {
                 this->m_BestResults->emplace_back(std::make_shared< aspose::words::cloud::models::ClassificationResult >())->fromJson(&element);
             }
         }
+    }
+
+    void ClassificationResponse::getFileContent(std::vector< FileContent* >& result)
+    {
+        WordsResponse::getFileContent(result);
+        if (getBestResults() != nullptr)
+        {
+            for (auto& element : *getBestResults())
+            {
+                element->getFileContent(result);
+            }
+        }
+
     }
 
     std::shared_ptr< std::wstring > ClassificationResponse::getBestClassName() const
@@ -1116,6 +1438,10 @@ namespace aspose::words::cloud::models {
                 json["ClassProbability"].get< double >()
             );
         }
+    }
+
+    void ClassificationResult::getFileContent(std::vector< FileContent* >& result)
+    {
     }
 
     std::shared_ptr< std::wstring > ClassificationResult::getClassName() const
@@ -1207,6 +1533,29 @@ namespace aspose::words::cloud::models {
                 convertUtf8( json["Text"].get< std::string >() )
             );
         }
+    }
+
+    void Comment::getFileContent(std::vector< FileContent* >& result)
+    {
+        CommentLink::getFileContent(result);
+        if (getContent() != nullptr)
+        {
+            getContent()->getFileContent(result);
+        }
+
+
+
+        if (getRangeEnd() != nullptr)
+        {
+            getRangeEnd()->getFileContent(result);
+        }
+
+        if (getRangeStart() != nullptr)
+        {
+            getRangeStart()->getFileContent(result);
+        }
+
+
     }
 
     std::shared_ptr< std::wstring > Comment::getAuthor() const
@@ -1346,6 +1695,21 @@ namespace aspose::words::cloud::models {
         }
     }
 
+    void CommentBase::getFileContent(std::vector< FileContent* >& result)
+    {
+        if (getRangeEnd() != nullptr)
+        {
+            getRangeEnd()->getFileContent(result);
+        }
+
+        if (getRangeStart() != nullptr)
+        {
+            getRangeStart()->getFileContent(result);
+        }
+
+
+    }
+
     std::shared_ptr< std::wstring > CommentBase::getAuthor() const
     {
         return this->m_Author;
@@ -1426,6 +1790,11 @@ namespace aspose::words::cloud::models {
         CommentBase::fromJson(jsonIfc);
     }
 
+    void CommentInsert::getFileContent(std::vector< FileContent* >& result)
+    {
+        CommentBase::getFileContent(result);
+    }
+
 
 
 
@@ -1440,6 +1809,11 @@ namespace aspose::words::cloud::models {
     void CommentLink::fromJson(const void* jsonIfc)
     {
         LinkElement::fromJson(jsonIfc);
+    }
+
+    void CommentLink::getFileContent(std::vector< FileContent* >& result)
+    {
+        LinkElement::getFileContent(result);
     }
 
 
@@ -1465,6 +1839,16 @@ namespace aspose::words::cloud::models {
             this->m_Comment = std::make_shared< aspose::words::cloud::models::Comment >();
             this->m_Comment->fromJson(&json["Comment"]);
         }
+    }
+
+    void CommentResponse::getFileContent(std::vector< FileContent* >& result)
+    {
+        WordsResponse::getFileContent(result);
+        if (getComment() != nullptr)
+        {
+            getComment()->getFileContent(result);
+        }
+
     }
 
     std::shared_ptr< aspose::words::cloud::models::Comment > CommentResponse::getComment() const
@@ -1506,6 +1890,19 @@ namespace aspose::words::cloud::models {
         }
     }
 
+    void CommentsCollection::getFileContent(std::vector< FileContent* >& result)
+    {
+        LinkElement::getFileContent(result);
+        if (getCommentList() != nullptr)
+        {
+            for (auto& element : *getCommentList())
+            {
+                element->getFileContent(result);
+            }
+        }
+
+    }
+
     std::shared_ptr< std::vector<std::shared_ptr<aspose::words::cloud::models::Comment>> > CommentsCollection::getCommentList() const
     {
         return this->m_CommentList;
@@ -1540,6 +1937,16 @@ namespace aspose::words::cloud::models {
         }
     }
 
+    void CommentsResponse::getFileContent(std::vector< FileContent* >& result)
+    {
+        WordsResponse::getFileContent(result);
+        if (getComments() != nullptr)
+        {
+            getComments()->getFileContent(result);
+        }
+
+    }
+
     std::shared_ptr< aspose::words::cloud::models::CommentsCollection > CommentsResponse::getComments() const
     {
         return this->m_Comments;
@@ -1563,6 +1970,11 @@ namespace aspose::words::cloud::models {
     void CommentUpdate::fromJson(const void* jsonIfc)
     {
         CommentBase::fromJson(jsonIfc);
+    }
+
+    void CommentUpdate::getFileContent(std::vector< FileContent* >& result)
+    {
+        CommentBase::getFileContent(result);
     }
 
 
@@ -1618,6 +2030,18 @@ namespace aspose::words::cloud::models {
                 convertUtf8( json["ResultDocumentFormat"].get< std::string >() )
             );
         }
+    }
+
+    void CompareData::getFileContent(std::vector< FileContent* >& result)
+    {
+        if (getCompareOptions() != nullptr)
+        {
+            getCompareOptions()->getFileContent(result);
+        }
+
+
+
+
     }
 
     std::shared_ptr< std::wstring > CompareData::getAuthor() const
@@ -1782,6 +2206,10 @@ namespace aspose::words::cloud::models {
         }
     }
 
+    void CompareOptions::getFileContent(std::vector< FileContent* >& result)
+    {
+    }
+
     std::shared_ptr< bool > CompareOptions::getAcceptAllRevisionsBeforeComparison() const
     {
         return this->m_AcceptAllRevisionsBeforeComparison;
@@ -1922,6 +2350,10 @@ namespace aspose::words::cloud::models {
         }
     }
 
+    void CompressOptions::getFileContent(std::vector< FileContent* >& result)
+    {
+    }
+
     std::shared_ptr< int32_t > CompressOptions::getImagesQuality() const
     {
         return this->m_ImagesQuality;
@@ -1965,6 +2397,16 @@ namespace aspose::words::cloud::models {
             this->m_Document = std::make_shared< aspose::words::cloud::models::Document >();
             this->m_Document->fromJson(&json["Document"]);
         }
+    }
+
+    void CompressResponse::getFileContent(std::vector< FileContent* >& result)
+    {
+        WordsResponse::getFileContent(result);
+        if (getDocument() != nullptr)
+        {
+            getDocument()->getFileContent(result);
+        }
+
     }
 
     std::shared_ptr< aspose::words::cloud::models::Document > CompressResponse::getDocument() const
@@ -2022,6 +2464,10 @@ namespace aspose::words::cloud::models {
                 convertUtf8( json["QuoteChar"].get< std::string >() )
             );
         }
+    }
+
+    void CsvDataLoadOptions::getFileContent(std::vector< FileContent* >& result)
+    {
     }
 
     std::shared_ptr< std::wstring > CsvDataLoadOptions::getCommentChar() const
@@ -2100,6 +2546,11 @@ namespace aspose::words::cloud::models {
         }
     }
 
+    void CustomXmlPart::getFileContent(std::vector< FileContent* >& result)
+    {
+        CustomXmlPartLink::getFileContent(result);
+    }
+
     std::shared_ptr< std::wstring > CustomXmlPart::getData() const
     {
         return this->m_Data;
@@ -2136,6 +2587,11 @@ namespace aspose::words::cloud::models {
         CustomXmlPart::fromJson(jsonIfc);
     }
 
+    void CustomXmlPartInsert::getFileContent(std::vector< FileContent* >& result)
+    {
+        CustomXmlPart::getFileContent(result);
+    }
+
 
 
 
@@ -2150,6 +2606,11 @@ namespace aspose::words::cloud::models {
     void CustomXmlPartLink::fromJson(const void* jsonIfc)
     {
         LinkElement::fromJson(jsonIfc);
+    }
+
+    void CustomXmlPartLink::getFileContent(std::vector< FileContent* >& result)
+    {
+        LinkElement::getFileContent(result);
     }
 
 
@@ -2175,6 +2636,16 @@ namespace aspose::words::cloud::models {
             this->m_CustomXmlPart = std::make_shared< aspose::words::cloud::models::CustomXmlPart >();
             this->m_CustomXmlPart->fromJson(&json["CustomXmlPart"]);
         }
+    }
+
+    void CustomXmlPartResponse::getFileContent(std::vector< FileContent* >& result)
+    {
+        WordsResponse::getFileContent(result);
+        if (getCustomXmlPart() != nullptr)
+        {
+            getCustomXmlPart()->getFileContent(result);
+        }
+
     }
 
     std::shared_ptr< aspose::words::cloud::models::CustomXmlPart > CustomXmlPartResponse::getCustomXmlPart() const
@@ -2216,6 +2687,19 @@ namespace aspose::words::cloud::models {
         }
     }
 
+    void CustomXmlPartsCollection::getFileContent(std::vector< FileContent* >& result)
+    {
+        LinkElement::getFileContent(result);
+        if (getCustomXmlPartsList() != nullptr)
+        {
+            for (auto& element : *getCustomXmlPartsList())
+            {
+                element->getFileContent(result);
+            }
+        }
+
+    }
+
     std::shared_ptr< std::vector<std::shared_ptr<aspose::words::cloud::models::CustomXmlPart>> > CustomXmlPartsCollection::getCustomXmlPartsList() const
     {
         return this->m_CustomXmlPartsList;
@@ -2250,6 +2734,16 @@ namespace aspose::words::cloud::models {
         }
     }
 
+    void CustomXmlPartsResponse::getFileContent(std::vector< FileContent* >& result)
+    {
+        WordsResponse::getFileContent(result);
+        if (getCustomXmlParts() != nullptr)
+        {
+            getCustomXmlParts()->getFileContent(result);
+        }
+
+    }
+
     std::shared_ptr< aspose::words::cloud::models::CustomXmlPartsCollection > CustomXmlPartsResponse::getCustomXmlParts() const
     {
         return this->m_CustomXmlParts;
@@ -2273,6 +2767,11 @@ namespace aspose::words::cloud::models {
     void CustomXmlPartUpdate::fromJson(const void* jsonIfc)
     {
         CustomXmlPart::fromJson(jsonIfc);
+    }
+
+    void CustomXmlPartUpdate::getFileContent(std::vector< FileContent* >& result)
+    {
+        CustomXmlPart::getFileContent(result);
     }
 
 
@@ -2299,6 +2798,11 @@ namespace aspose::words::cloud::models {
                 convertUtf8( json["SaveFormat"].get< std::string >() )
             );
         }
+    }
+
+    void DocmSaveOptionsData::getFileContent(std::vector< FileContent* >& result)
+    {
+        OoxmlSaveOptionsData::getFileContent(result);
     }
 
     std::shared_ptr< std::wstring > DocmSaveOptionsData::getSaveFormat() const
@@ -2362,6 +2866,11 @@ namespace aspose::words::cloud::models {
                 json["SaveRoutingSlip"].get< bool >()
             );
         }
+    }
+
+    void DocSaveOptionsData::getFileContent(std::vector< FileContent* >& result)
+    {
+        SaveOptionsData::getFileContent(result);
     }
 
     std::shared_ptr< bool > DocSaveOptionsData::getAlwaysCompressMetafiles() const
@@ -2531,6 +3040,27 @@ namespace aspose::words::cloud::models {
         }
     }
 
+    void Document::getFileContent(std::vector< FileContent* >& result)
+    {
+        if (getDocumentProperties() != nullptr)
+        {
+            getDocumentProperties()->getFileContent(result);
+        }
+
+
+
+
+        if (getLinks() != nullptr)
+        {
+            for (auto& element : *getLinks())
+            {
+                element->getFileContent(result);
+            }
+        }
+
+
+    }
+
     std::shared_ptr< aspose::words::cloud::models::DocumentProperties > Document::getDocumentProperties() const
     {
         return this->m_DocumentProperties;
@@ -2603,48 +3133,28 @@ namespace aspose::words::cloud::models {
      */
     void DocumentEntry::toJson(void* jsonIfc) const
     {
+        BaseDocumentEntry::toJson(jsonIfc);
         ::nlohmann::json& json = *((::nlohmann::json*)jsonIfc);
-        if (this->m_EncryptedPassword) {
-            json["EncryptedPassword"] = convertUtf16(*(this->m_EncryptedPassword));
-        }
         if (this->m_Href) {
             json["Href"] = convertUtf16(*(this->m_Href));
-        }
-        if (this->m_ImportFormatMode) {
-            json["ImportFormatMode"] = convertUtf16(*(this->m_ImportFormatMode));
         }
     }
 
     void DocumentEntry::fromJson(const void* jsonIfc)
     {
+        BaseDocumentEntry::fromJson(jsonIfc);
         ::nlohmann::json& json = *((::nlohmann::json*)jsonIfc);
-        if (json.contains("EncryptedPassword") && !json["EncryptedPassword"].is_null()) {
-            this->m_EncryptedPassword = std::make_shared< std::wstring >(
-                convertUtf8( json["EncryptedPassword"].get< std::string >() )
-            );
-        }
         if (json.contains("Href") && !json["Href"].is_null()) {
             this->m_Href = std::make_shared< std::wstring >(
                 convertUtf8( json["Href"].get< std::string >() )
             );
         }
-        if (json.contains("ImportFormatMode") && !json["ImportFormatMode"].is_null()) {
-            this->m_ImportFormatMode = std::make_shared< std::wstring >(
-                convertUtf8( json["ImportFormatMode"].get< std::string >() )
-            );
-        }
     }
 
-    std::shared_ptr< std::wstring > DocumentEntry::getEncryptedPassword() const
+    void DocumentEntry::getFileContent(std::vector< FileContent* >& result)
     {
-        return this->m_EncryptedPassword;
+        BaseDocumentEntry::getFileContent(result);
     }
-
-    void DocumentEntry::setEncryptedPassword(std::shared_ptr< std::wstring > value)
-    {
-        this->m_EncryptedPassword = value;
-    }
-
 
     std::shared_ptr< std::wstring > DocumentEntry::getHref() const
     {
@@ -2657,28 +3167,14 @@ namespace aspose::words::cloud::models {
     }
 
 
-    std::shared_ptr< std::wstring > DocumentEntry::getImportFormatMode() const
-    {
-        return this->m_ImportFormatMode;
-    }
-
-    void DocumentEntry::setImportFormatMode(std::shared_ptr< std::wstring > value)
-    {
-        this->m_ImportFormatMode = value;
-    }
-
-
 
     /*
      * DocumentEntryList implementation
      */
     void DocumentEntryList::toJson(void* jsonIfc) const
     {
-        BaseEntryList::toJson(jsonIfc);
+        BaseDocumentEntryList::toJson(jsonIfc);
         ::nlohmann::json& json = *((::nlohmann::json*)jsonIfc);
-        if (this->m_ApplyBaseDocumentHeadersAndFootersToAppendingDocuments) {
-            json["ApplyBaseDocumentHeadersAndFootersToAppendingDocuments"] = *(this->m_ApplyBaseDocumentHeadersAndFootersToAppendingDocuments);
-        }
         if (this->m_DocumentEntries) {
             json["DocumentEntries"] = ::nlohmann::json::array();
             for (auto& element : *(this->m_DocumentEntries)) {
@@ -2689,13 +3185,8 @@ namespace aspose::words::cloud::models {
 
     void DocumentEntryList::fromJson(const void* jsonIfc)
     {
-        BaseEntryList::fromJson(jsonIfc);
+        BaseDocumentEntryList::fromJson(jsonIfc);
         ::nlohmann::json& json = *((::nlohmann::json*)jsonIfc);
-        if (json.contains("ApplyBaseDocumentHeadersAndFootersToAppendingDocuments") && !json["ApplyBaseDocumentHeadersAndFootersToAppendingDocuments"].is_null()) {
-            this->m_ApplyBaseDocumentHeadersAndFootersToAppendingDocuments = std::make_shared< bool >(
-                json["ApplyBaseDocumentHeadersAndFootersToAppendingDocuments"].get< bool >()
-            );
-        }
         if (json.contains("DocumentEntries") && !json["DocumentEntries"].is_null()) {
             this->m_DocumentEntries = std::make_shared< std::vector<std::shared_ptr<aspose::words::cloud::models::DocumentEntry>> >();
             for (auto& element : json["DocumentEntries"]) {
@@ -2704,16 +3195,18 @@ namespace aspose::words::cloud::models {
         }
     }
 
-    std::shared_ptr< bool > DocumentEntryList::getApplyBaseDocumentHeadersAndFootersToAppendingDocuments() const
+    void DocumentEntryList::getFileContent(std::vector< FileContent* >& result)
     {
-        return this->m_ApplyBaseDocumentHeadersAndFootersToAppendingDocuments;
-    }
+        BaseDocumentEntryList::getFileContent(result);
+        if (getDocumentEntries() != nullptr)
+        {
+            for (auto& element : *getDocumentEntries())
+            {
+                element->getFileContent(result);
+            }
+        }
 
-    void DocumentEntryList::setApplyBaseDocumentHeadersAndFootersToAppendingDocuments(std::shared_ptr< bool > value)
-    {
-        this->m_ApplyBaseDocumentHeadersAndFootersToAppendingDocuments = value;
     }
-
 
     std::shared_ptr< std::vector<std::shared_ptr<aspose::words::cloud::models::DocumentEntry>> > DocumentEntryList::getDocumentEntries() const
     {
@@ -2753,6 +3246,16 @@ namespace aspose::words::cloud::models {
                 json["Offset"].get< int32_t >()
             );
         }
+    }
+
+    void DocumentPosition::getFileContent(std::vector< FileContent* >& result)
+    {
+        if (getNode() != nullptr)
+        {
+            getNode()->getFileContent(result);
+        }
+
+
     }
 
     std::shared_ptr< aspose::words::cloud::models::NodeLink > DocumentPosition::getNode() const
@@ -2805,6 +3308,19 @@ namespace aspose::words::cloud::models {
         }
     }
 
+    void DocumentProperties::getFileContent(std::vector< FileContent* >& result)
+    {
+        LinkElement::getFileContent(result);
+        if (getList() != nullptr)
+        {
+            for (auto& element : *getList())
+            {
+                element->getFileContent(result);
+            }
+        }
+
+    }
+
     std::shared_ptr< std::vector<std::shared_ptr<aspose::words::cloud::models::DocumentProperty>> > DocumentProperties::getList() const
     {
         return this->m_List;
@@ -2837,6 +3353,16 @@ namespace aspose::words::cloud::models {
             this->m_DocumentProperties = std::make_shared< aspose::words::cloud::models::DocumentProperties >();
             this->m_DocumentProperties->fromJson(&json["DocumentProperties"]);
         }
+    }
+
+    void DocumentPropertiesResponse::getFileContent(std::vector< FileContent* >& result)
+    {
+        WordsResponse::getFileContent(result);
+        if (getDocumentProperties() != nullptr)
+        {
+            getDocumentProperties()->getFileContent(result);
+        }
+
     }
 
     std::shared_ptr< aspose::words::cloud::models::DocumentProperties > DocumentPropertiesResponse::getDocumentProperties() const
@@ -2888,6 +3414,11 @@ namespace aspose::words::cloud::models {
                 convertUtf8( json["Value"].get< std::string >() )
             );
         }
+    }
+
+    void DocumentProperty::getFileContent(std::vector< FileContent* >& result)
+    {
+        LinkElement::getFileContent(result);
     }
 
     std::shared_ptr< bool > DocumentProperty::getBuiltIn() const
@@ -2945,6 +3476,10 @@ namespace aspose::words::cloud::models {
         }
     }
 
+    void DocumentPropertyBase::getFileContent(std::vector< FileContent* >& result)
+    {
+    }
+
     std::shared_ptr< std::wstring > DocumentPropertyBase::getValue() const
     {
         return this->m_Value;
@@ -2970,6 +3505,11 @@ namespace aspose::words::cloud::models {
         DocumentPropertyBase::fromJson(jsonIfc);
     }
 
+    void DocumentPropertyCreateOrUpdate::getFileContent(std::vector< FileContent* >& result)
+    {
+        DocumentPropertyBase::getFileContent(result);
+    }
+
 
 
 
@@ -2993,6 +3533,16 @@ namespace aspose::words::cloud::models {
             this->m_DocumentProperty = std::make_shared< aspose::words::cloud::models::DocumentProperty >();
             this->m_DocumentProperty->fromJson(&json["DocumentProperty"]);
         }
+    }
+
+    void DocumentPropertyResponse::getFileContent(std::vector< FileContent* >& result)
+    {
+        WordsResponse::getFileContent(result);
+        if (getDocumentProperty() != nullptr)
+        {
+            getDocumentProperty()->getFileContent(result);
+        }
+
     }
 
     std::shared_ptr< aspose::words::cloud::models::DocumentProperty > DocumentPropertyResponse::getDocumentProperty() const
@@ -3027,6 +3577,16 @@ namespace aspose::words::cloud::models {
             this->m_Document = std::make_shared< aspose::words::cloud::models::Document >();
             this->m_Document->fromJson(&json["Document"]);
         }
+    }
+
+    void DocumentResponse::getFileContent(std::vector< FileContent* >& result)
+    {
+        WordsResponse::getFileContent(result);
+        if (getDocument() != nullptr)
+        {
+            getDocument()->getFileContent(result);
+        }
+
     }
 
     std::shared_ptr< aspose::words::cloud::models::Document > DocumentResponse::getDocument() const
@@ -3095,6 +3655,26 @@ namespace aspose::words::cloud::models {
                 json["WordCount"].get< int32_t >()
             );
         }
+    }
+
+    void DocumentStatData::getFileContent(std::vector< FileContent* >& result)
+    {
+        if (getFootnotesStatData() != nullptr)
+        {
+            getFootnotesStatData()->getFileContent(result);
+        }
+
+
+        if (getPageStatData() != nullptr)
+        {
+            for (auto& element : *getPageStatData())
+            {
+                element->getFileContent(result);
+            }
+        }
+
+
+
     }
 
     std::shared_ptr< aspose::words::cloud::models::FootnotesStatData > DocumentStatData::getFootnotesStatData() const
@@ -3176,6 +3756,11 @@ namespace aspose::words::cloud::models {
         }
     }
 
+    void DocxSaveOptionsData::getFileContent(std::vector< FileContent* >& result)
+    {
+        OoxmlSaveOptionsData::getFileContent(result);
+    }
+
     std::shared_ptr< std::wstring > DocxSaveOptionsData::getSaveFormat() const
     {
         return this->m_SaveFormat;
@@ -3205,6 +3790,11 @@ namespace aspose::words::cloud::models {
                 convertUtf8( json["SaveFormat"].get< std::string >() )
             );
         }
+    }
+
+    void DotmSaveOptionsData::getFileContent(std::vector< FileContent* >& result)
+    {
+        OoxmlSaveOptionsData::getFileContent(result);
     }
 
     std::shared_ptr< std::wstring > DotmSaveOptionsData::getSaveFormat() const
@@ -3238,6 +3828,11 @@ namespace aspose::words::cloud::models {
         }
     }
 
+    void DotSaveOptionsData::getFileContent(std::vector< FileContent* >& result)
+    {
+        DocSaveOptionsData::getFileContent(result);
+    }
+
     std::shared_ptr< std::wstring > DotSaveOptionsData::getSaveFormat() const
     {
         return this->m_SaveFormat;
@@ -3267,6 +3862,11 @@ namespace aspose::words::cloud::models {
                 convertUtf8( json["SaveFormat"].get< std::string >() )
             );
         }
+    }
+
+    void DotxSaveOptionsData::getFileContent(std::vector< FileContent* >& result)
+    {
+        OoxmlSaveOptionsData::getFileContent(result);
     }
 
     std::shared_ptr< std::wstring > DotxSaveOptionsData::getSaveFormat() const
@@ -3312,6 +3912,10 @@ namespace aspose::words::cloud::models {
                 json["ResolutionThreshold"].get< int32_t >()
             );
         }
+    }
+
+    void DownsampleOptionsData::getFileContent(std::vector< FileContent* >& result)
+    {
     }
 
     std::shared_ptr< bool > DownsampleOptionsData::getDownsampleImages() const
@@ -3524,6 +4128,35 @@ namespace aspose::words::cloud::models {
         }
     }
 
+    void DrawingObject::getFileContent(std::vector< FileContent* >& result)
+    {
+        DrawingObjectLink::getFileContent(result);
+        if (getImageDataLink() != nullptr)
+        {
+            getImageDataLink()->getFileContent(result);
+        }
+
+
+        if (getOleDataLink() != nullptr)
+        {
+            getOleDataLink()->getFileContent(result);
+        }
+
+
+
+        if (getRenderLinks() != nullptr)
+        {
+            for (auto& element : *getRenderLinks())
+            {
+                element->getFileContent(result);
+            }
+        }
+
+
+
+
+    }
+
     std::shared_ptr< double > DrawingObject::getHeight() const
     {
         return this->m_Height;
@@ -3660,6 +4293,19 @@ namespace aspose::words::cloud::models {
                 this->m_List->emplace_back(std::make_shared< aspose::words::cloud::models::LinkElement >())->fromJson(&element);
             }
         }
+    }
+
+    void DrawingObjectCollection::getFileContent(std::vector< FileContent* >& result)
+    {
+        LinkElement::getFileContent(result);
+        if (getList() != nullptr)
+        {
+            for (auto& element : *getList())
+            {
+                element->getFileContent(result);
+            }
+        }
+
     }
 
     std::shared_ptr< std::vector<std::shared_ptr<aspose::words::cloud::models::LinkElement>> > DrawingObjectCollection::getList() const
@@ -3829,6 +4475,20 @@ namespace aspose::words::cloud::models {
         }
     }
 
+    void DrawingObjectInsert::getFileContent(std::vector< FileContent* >& result)
+    {
+        if (getPosition() != nullptr)
+        {
+            getPosition()->getFileContent(result);
+        }
+
+
+
+
+
+
+    }
+
     std::shared_ptr< double > DrawingObjectInsert::getHeight() const
     {
         return this->m_Height;
@@ -3931,6 +4591,11 @@ namespace aspose::words::cloud::models {
         NodeLink::fromJson(jsonIfc);
     }
 
+    void DrawingObjectLink::getFileContent(std::vector< FileContent* >& result)
+    {
+        NodeLink::getFileContent(result);
+    }
+
 
 
 
@@ -3954,6 +4619,16 @@ namespace aspose::words::cloud::models {
             this->m_DrawingObject = std::make_shared< aspose::words::cloud::models::DrawingObject >();
             this->m_DrawingObject->fromJson(&json["DrawingObject"]);
         }
+    }
+
+    void DrawingObjectResponse::getFileContent(std::vector< FileContent* >& result)
+    {
+        WordsResponse::getFileContent(result);
+        if (getDrawingObject() != nullptr)
+        {
+            getDrawingObject()->getFileContent(result);
+        }
+
     }
 
     std::shared_ptr< aspose::words::cloud::models::DrawingObject > DrawingObjectResponse::getDrawingObject() const
@@ -3988,6 +4663,16 @@ namespace aspose::words::cloud::models {
             this->m_DrawingObjects = std::make_shared< aspose::words::cloud::models::DrawingObjectCollection >();
             this->m_DrawingObjects->fromJson(&json["DrawingObjects"]);
         }
+    }
+
+    void DrawingObjectsResponse::getFileContent(std::vector< FileContent* >& result)
+    {
+        WordsResponse::getFileContent(result);
+        if (getDrawingObjects() != nullptr)
+        {
+            getDrawingObjects()->getFileContent(result);
+        }
+
     }
 
     std::shared_ptr< aspose::words::cloud::models::DrawingObjectCollection > DrawingObjectsResponse::getDrawingObjects() const
@@ -4150,6 +4835,10 @@ namespace aspose::words::cloud::models {
         }
     }
 
+    void DrawingObjectUpdate::getFileContent(std::vector< FileContent* >& result)
+    {
+    }
+
     std::shared_ptr< double > DrawingObjectUpdate::getHeight() const
     {
         return this->m_Height;
@@ -4251,6 +4940,11 @@ namespace aspose::words::cloud::models {
         }
     }
 
+    void EmfSaveOptionsData::getFileContent(std::vector< FileContent* >& result)
+    {
+        ImageSaveOptionsData::getFileContent(result);
+    }
+
     std::shared_ptr< std::wstring > EmfSaveOptionsData::getSaveFormat() const
     {
         return this->m_SaveFormat;
@@ -4288,6 +4982,11 @@ namespace aspose::words::cloud::models {
                 convertUtf8( json["SaveFormat"].get< std::string >() )
             );
         }
+    }
+
+    void EpubSaveOptionsData::getFileContent(std::vector< FileContent* >& result)
+    {
+        HtmlSaveOptionsData::getFileContent(result);
     }
 
     std::shared_ptr< int32_t > EpubSaveOptionsData::getEpubNavigationMapLevel() const
@@ -4351,6 +5050,16 @@ namespace aspose::words::cloud::models {
                 convertUtf8( json["Message"].get< std::string >() )
             );
         }
+    }
+
+    void Error::getFileContent(std::vector< FileContent* >& result)
+    {
+        if (getInnerError() != nullptr)
+        {
+            getInnerError()->getFileContent(result);
+        }
+
+
     }
 
     std::shared_ptr< std::wstring > Error::getCode() const
@@ -4427,6 +5136,10 @@ namespace aspose::words::cloud::models {
         }
     }
 
+    void ErrorDetails::getFileContent(std::vector< FileContent* >& result)
+    {
+    }
+
     std::shared_ptr< std::wstring > ErrorDetails::getErrorDateTime() const
     {
         return this->m_ErrorDateTime;
@@ -4481,6 +5194,11 @@ namespace aspose::words::cloud::models {
         }
     }
 
+    void Field::getFileContent(std::vector< FileContent* >& result)
+    {
+        FieldLink::getFileContent(result);
+    }
+
     std::shared_ptr< std::wstring > Field::getLocaleId() const
     {
         return this->m_LocaleId;
@@ -4533,6 +5251,10 @@ namespace aspose::words::cloud::models {
         }
     }
 
+    void FieldBase::getFileContent(std::vector< FileContent* >& result)
+    {
+    }
+
     std::shared_ptr< std::wstring > FieldBase::getFieldCode() const
     {
         return this->m_FieldCode;
@@ -4583,6 +5305,19 @@ namespace aspose::words::cloud::models {
         }
     }
 
+    void FieldCollection::getFileContent(std::vector< FileContent* >& result)
+    {
+        LinkElement::getFileContent(result);
+        if (getList() != nullptr)
+        {
+            for (auto& element : *getList())
+            {
+                element->getFileContent(result);
+            }
+        }
+
+    }
+
     std::shared_ptr< std::vector<std::shared_ptr<aspose::words::cloud::models::Field>> > FieldCollection::getList() const
     {
         return this->m_List;
@@ -4606,6 +5341,11 @@ namespace aspose::words::cloud::models {
     void FieldInsert::fromJson(const void* jsonIfc)
     {
         FieldBase::fromJson(jsonIfc);
+    }
+
+    void FieldInsert::getFileContent(std::vector< FileContent* >& result)
+    {
+        FieldBase::getFileContent(result);
     }
 
 
@@ -4632,6 +5372,11 @@ namespace aspose::words::cloud::models {
                 convertUtf8( json["FieldCode"].get< std::string >() )
             );
         }
+    }
+
+    void FieldLink::getFileContent(std::vector< FileContent* >& result)
+    {
+        NodeLink::getFileContent(result);
     }
 
     std::shared_ptr< std::wstring > FieldLink::getFieldCode() const
@@ -4673,6 +5418,11 @@ namespace aspose::words::cloud::models {
         }
     }
 
+    void FieldNames::getFileContent(std::vector< FileContent* >& result)
+    {
+        LinkElement::getFileContent(result);
+    }
+
     std::shared_ptr< std::vector<std::shared_ptr<std::wstring>> > FieldNames::getNames() const
     {
         return this->m_Names;
@@ -4705,6 +5455,16 @@ namespace aspose::words::cloud::models {
             this->m_FieldNames = std::make_shared< aspose::words::cloud::models::FieldNames >();
             this->m_FieldNames->fromJson(&json["FieldNames"]);
         }
+    }
+
+    void FieldNamesResponse::getFileContent(std::vector< FileContent* >& result)
+    {
+        WordsResponse::getFileContent(result);
+        if (getFieldNames() != nullptr)
+        {
+            getFieldNames()->getFileContent(result);
+        }
+
     }
 
     std::shared_ptr< aspose::words::cloud::models::FieldNames > FieldNamesResponse::getFieldNames() const
@@ -4876,6 +5636,26 @@ namespace aspose::words::cloud::models {
         }
     }
 
+    void FieldOptions::getFileContent(std::vector< FileContent* >& result)
+    {
+        if (getCurrentUser() != nullptr)
+        {
+            getCurrentUser()->getFileContent(result);
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+    }
+
     std::shared_ptr< std::vector<std::shared_ptr<std::wstring>> > FieldOptions::getBuiltInTemplatesPaths() const
     {
         return this->m_BuiltInTemplatesPaths;
@@ -5042,6 +5822,16 @@ namespace aspose::words::cloud::models {
         }
     }
 
+    void FieldResponse::getFileContent(std::vector< FileContent* >& result)
+    {
+        WordsResponse::getFileContent(result);
+        if (getField() != nullptr)
+        {
+            getField()->getFileContent(result);
+        }
+
+    }
+
     std::shared_ptr< aspose::words::cloud::models::Field > FieldResponse::getField() const
     {
         return this->m_Field;
@@ -5076,6 +5866,16 @@ namespace aspose::words::cloud::models {
         }
     }
 
+    void FieldsResponse::getFileContent(std::vector< FileContent* >& result)
+    {
+        WordsResponse::getFileContent(result);
+        if (getFields() != nullptr)
+        {
+            getFields()->getFileContent(result);
+        }
+
+    }
+
     std::shared_ptr< aspose::words::cloud::models::FieldCollection > FieldsResponse::getFields() const
     {
         return this->m_Fields;
@@ -5101,6 +5901,11 @@ namespace aspose::words::cloud::models {
         FieldBase::fromJson(jsonIfc);
     }
 
+    void FieldUpdate::getFileContent(std::vector< FileContent* >& result)
+    {
+        FieldBase::getFileContent(result);
+    }
+
 
 
 
@@ -5115,6 +5920,11 @@ namespace aspose::words::cloud::models {
     void FileLink::fromJson(const void* jsonIfc)
     {
         Link::fromJson(jsonIfc);
+    }
+
+    void FileLink::getFileContent(std::vector< FileContent* >& result)
+    {
+        Link::getFileContent(result);
     }
 
 
@@ -5143,6 +5953,18 @@ namespace aspose::words::cloud::models {
                 this->m_Value->emplace_back(std::make_shared< aspose::words::cloud::models::StorageFile >())->fromJson(&element);
             }
         }
+    }
+
+    void FilesList::getFileContent(std::vector< FileContent* >& result)
+    {
+        if (getValue() != nullptr)
+        {
+            for (auto& element : *getValue())
+            {
+                element->getFileContent(result);
+            }
+        }
+
     }
 
     std::shared_ptr< std::vector<std::shared_ptr<aspose::words::cloud::models::StorageFile>> > FilesList::getValue() const
@@ -5192,6 +6014,19 @@ namespace aspose::words::cloud::models {
                 this->m_Uploaded->push_back(std::make_shared< std::wstring >(convertUtf8( element.get< std::string >() )));
             }
         }
+    }
+
+    void FilesUploadResult::getFileContent(std::vector< FileContent* >& result)
+    {
+        if (getErrors() != nullptr)
+        {
+            for (auto& element : *getErrors())
+            {
+                element->getFileContent(result);
+            }
+        }
+
+
     }
 
     std::shared_ptr< std::vector<std::shared_ptr<aspose::words::cloud::models::Error>> > FilesUploadResult::getErrors() const
@@ -5320,6 +6155,20 @@ namespace aspose::words::cloud::models {
         }
     }
 
+    void FixedPageSaveOptionsData::getFileContent(std::vector< FileContent* >& result)
+    {
+        SaveOptionsData::getFileContent(result);
+        if (getMetafileRenderingOptions() != nullptr)
+        {
+            getMetafileRenderingOptions()->getFileContent(result);
+        }
+
+
+
+
+
+    }
+
     std::shared_ptr< aspose::words::cloud::models::FixedPageSaveOptionsData::ColorMode > FixedPageSaveOptionsData::getColorMode() const
     {
         return this->m_ColorMode;
@@ -5421,6 +6270,11 @@ namespace aspose::words::cloud::models {
         }
     }
 
+    void FlatOpcMacroSaveOptionsData::getFileContent(std::vector< FileContent* >& result)
+    {
+        OoxmlSaveOptionsData::getFileContent(result);
+    }
+
     std::shared_ptr< std::wstring > FlatOpcMacroSaveOptionsData::getSaveFormat() const
     {
         return this->m_SaveFormat;
@@ -5450,6 +6304,11 @@ namespace aspose::words::cloud::models {
                 convertUtf8( json["SaveFormat"].get< std::string >() )
             );
         }
+    }
+
+    void FlatOpcSaveOptionsData::getFileContent(std::vector< FileContent* >& result)
+    {
+        OoxmlSaveOptionsData::getFileContent(result);
     }
 
     std::shared_ptr< std::wstring > FlatOpcSaveOptionsData::getSaveFormat() const
@@ -5483,6 +6342,11 @@ namespace aspose::words::cloud::models {
         }
     }
 
+    void FlatOpcTemplateMacroSaveOptionsData::getFileContent(std::vector< FileContent* >& result)
+    {
+        OoxmlSaveOptionsData::getFileContent(result);
+    }
+
     std::shared_ptr< std::wstring > FlatOpcTemplateMacroSaveOptionsData::getSaveFormat() const
     {
         return this->m_SaveFormat;
@@ -5512,6 +6376,11 @@ namespace aspose::words::cloud::models {
                 convertUtf8( json["SaveFormat"].get< std::string >() )
             );
         }
+    }
+
+    void FlatOpcTemplateSaveOptionsData::getFileContent(std::vector< FileContent* >& result)
+    {
+        OoxmlSaveOptionsData::getFileContent(result);
     }
 
     std::shared_ptr< std::wstring > FlatOpcTemplateSaveOptionsData::getSaveFormat() const
@@ -6688,6 +7557,63 @@ namespace aspose::words::cloud::models {
         }
     }
 
+    void Font::getFileContent(std::vector< FileContent* >& result)
+    {
+        LinkElement::getFileContent(result);
+        if (getBorder() != nullptr)
+        {
+            getBorder()->getFileContent(result);
+        }
+
+        if (getColor() != nullptr)
+        {
+            getColor()->getFileContent(result);
+        }
+
+
+
+
+
+
+        if (getHighlightColor() != nullptr)
+        {
+            getHighlightColor()->getFileContent(result);
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        if (getUnderlineColor() != nullptr)
+        {
+            getUnderlineColor()->getFileContent(result);
+        }
+
+    }
+
     std::shared_ptr< bool > Font::getAllCaps() const
     {
         return this->m_AllCaps;
@@ -7140,6 +8066,10 @@ namespace aspose::words::cloud::models {
     {
     }
 
+    void FontDto::getFileContent(std::vector< FileContent* >& result)
+    {
+    }
+
 
 
 
@@ -7186,6 +8116,10 @@ namespace aspose::words::cloud::models {
                 convertUtf8( json["Version"].get< std::string >() )
             );
         }
+    }
+
+    void FontInfo::getFileContent(std::vector< FileContent* >& result)
+    {
     }
 
     std::shared_ptr< std::wstring > FontInfo::getFilePath() const
@@ -7253,6 +8187,16 @@ namespace aspose::words::cloud::models {
             this->m_Font = std::make_shared< aspose::words::cloud::models::Font >();
             this->m_Font->fromJson(&json["Font"]);
         }
+    }
+
+    void FontResponse::getFileContent(std::vector< FileContent* >& result)
+    {
+        WordsResponse::getFileContent(result);
+        if (getFont() != nullptr)
+        {
+            getFont()->getFileContent(result);
+        }
+
     }
 
     std::shared_ptr< aspose::words::cloud::models::Font > FontResponse::getFont() const
@@ -7331,6 +8275,24 @@ namespace aspose::words::cloud::models {
                 convertUtf8( json["Text"].get< std::string >() )
             );
         }
+    }
+
+    void Footnote::getFileContent(std::vector< FileContent* >& result)
+    {
+        FootnoteLink::getFileContent(result);
+        if (getContent() != nullptr)
+        {
+            getContent()->getFileContent(result);
+        }
+
+
+        if (getPosition() != nullptr)
+        {
+            getPosition()->getFileContent(result);
+        }
+
+
+
     }
 
     std::shared_ptr< aspose::words::cloud::models::StoryChildNodes > Footnote::getContent() const
@@ -7446,6 +8408,17 @@ namespace aspose::words::cloud::models {
         }
     }
 
+    void FootnoteBase::getFileContent(std::vector< FileContent* >& result)
+    {
+        if (getPosition() != nullptr)
+        {
+            getPosition()->getFileContent(result);
+        }
+
+
+
+    }
+
     std::shared_ptr< aspose::words::cloud::models::FootnoteBase::FootnoteType > FootnoteBase::getFootnoteType() const
     {
         return this->m_FootnoteType;
@@ -7518,6 +8491,19 @@ namespace aspose::words::cloud::models {
         }
     }
 
+    void FootnoteCollection::getFileContent(std::vector< FileContent* >& result)
+    {
+        LinkElement::getFileContent(result);
+        if (getList() != nullptr)
+        {
+            for (auto& element : *getList())
+            {
+                element->getFileContent(result);
+            }
+        }
+
+    }
+
     std::shared_ptr< std::vector<std::shared_ptr<aspose::words::cloud::models::Footnote>> > FootnoteCollection::getList() const
     {
         return this->m_List;
@@ -7543,6 +8529,11 @@ namespace aspose::words::cloud::models {
         FootnoteBase::fromJson(jsonIfc);
     }
 
+    void FootnoteInsert::getFileContent(std::vector< FileContent* >& result)
+    {
+        FootnoteBase::getFileContent(result);
+    }
+
 
 
 
@@ -7557,6 +8548,11 @@ namespace aspose::words::cloud::models {
     void FootnoteLink::fromJson(const void* jsonIfc)
     {
         NodeLink::fromJson(jsonIfc);
+    }
+
+    void FootnoteLink::getFileContent(std::vector< FileContent* >& result)
+    {
+        NodeLink::getFileContent(result);
     }
 
 
@@ -7582,6 +8578,16 @@ namespace aspose::words::cloud::models {
             this->m_Footnote = std::make_shared< aspose::words::cloud::models::Footnote >();
             this->m_Footnote->fromJson(&json["Footnote"]);
         }
+    }
+
+    void FootnoteResponse::getFileContent(std::vector< FileContent* >& result)
+    {
+        WordsResponse::getFileContent(result);
+        if (getFootnote() != nullptr)
+        {
+            getFootnote()->getFileContent(result);
+        }
+
     }
 
     std::shared_ptr< aspose::words::cloud::models::Footnote > FootnoteResponse::getFootnote() const
@@ -7616,6 +8622,16 @@ namespace aspose::words::cloud::models {
             this->m_Footnotes = std::make_shared< aspose::words::cloud::models::FootnoteCollection >();
             this->m_Footnotes->fromJson(&json["Footnotes"]);
         }
+    }
+
+    void FootnotesResponse::getFileContent(std::vector< FileContent* >& result)
+    {
+        WordsResponse::getFileContent(result);
+        if (getFootnotes() != nullptr)
+        {
+            getFootnotes()->getFileContent(result);
+        }
+
     }
 
     std::shared_ptr< aspose::words::cloud::models::FootnoteCollection > FootnotesResponse::getFootnotes() const
@@ -7659,6 +8675,10 @@ namespace aspose::words::cloud::models {
         }
     }
 
+    void FootnotesStatData::getFileContent(std::vector< FileContent* >& result)
+    {
+    }
+
     std::shared_ptr< int32_t > FootnotesStatData::getParagraphCount() const
     {
         return this->m_ParagraphCount;
@@ -7693,6 +8713,11 @@ namespace aspose::words::cloud::models {
     void FootnoteUpdate::fromJson(const void* jsonIfc)
     {
         FootnoteBase::fromJson(jsonIfc);
+    }
+
+    void FootnoteUpdate::getFileContent(std::vector< FileContent* >& result)
+    {
+        FootnoteBase::getFileContent(result);
     }
 
 
@@ -7783,6 +8808,11 @@ namespace aspose::words::cloud::models {
                 convertUtf8( json["StatusText"].get< std::string >() )
             );
         }
+    }
+
+    void FormField::getFileContent(std::vector< FileContent* >& result)
+    {
+        NodeLink::getFileContent(result);
     }
 
     std::shared_ptr< bool > FormField::getCalculateOnExit() const
@@ -7924,6 +8954,11 @@ namespace aspose::words::cloud::models {
         }
     }
 
+    void FormFieldCheckbox::getFileContent(std::vector< FileContent* >& result)
+    {
+        FormField::getFileContent(result);
+    }
+
     std::shared_ptr< double > FormFieldCheckbox::getCheckBoxSize() const
     {
         return this->m_CheckBoxSize;
@@ -7985,6 +9020,19 @@ namespace aspose::words::cloud::models {
         }
     }
 
+    void FormFieldCollection::getFileContent(std::vector< FileContent* >& result)
+    {
+        LinkElement::getFileContent(result);
+        if (getList() != nullptr)
+        {
+            for (auto& element : *getList())
+            {
+                element->getFileContent(result);
+            }
+        }
+
+    }
+
     std::shared_ptr< std::vector<std::shared_ptr<aspose::words::cloud::models::FormField>> > FormFieldCollection::getList() const
     {
         return this->m_List;
@@ -8032,6 +9080,11 @@ namespace aspose::words::cloud::models {
         }
     }
 
+    void FormFieldDropDown::getFileContent(std::vector< FileContent* >& result)
+    {
+        FormField::getFileContent(result);
+    }
+
     std::shared_ptr< std::vector<std::shared_ptr<std::wstring>> > FormFieldDropDown::getDropDownItems() const
     {
         return this->m_DropDownItems;
@@ -8077,6 +9130,16 @@ namespace aspose::words::cloud::models {
         }
     }
 
+    void FormFieldResponse::getFileContent(std::vector< FileContent* >& result)
+    {
+        WordsResponse::getFileContent(result);
+        if (getFormField() != nullptr)
+        {
+            getFormField()->getFileContent(result);
+        }
+
+    }
+
     std::shared_ptr< aspose::words::cloud::models::FormField > FormFieldResponse::getFormField() const
     {
         return this->m_FormField;
@@ -8109,6 +9172,16 @@ namespace aspose::words::cloud::models {
             this->m_FormFields = std::make_shared< aspose::words::cloud::models::FormFieldCollection >();
             this->m_FormFields->fromJson(&json["FormFields"]);
         }
+    }
+
+    void FormFieldsResponse::getFileContent(std::vector< FileContent* >& result)
+    {
+        WordsResponse::getFileContent(result);
+        if (getFormFields() != nullptr)
+        {
+            getFormFields()->getFileContent(result);
+        }
+
     }
 
     std::shared_ptr< aspose::words::cloud::models::FormFieldCollection > FormFieldsResponse::getFormFields() const
@@ -8191,6 +9264,11 @@ namespace aspose::words::cloud::models {
         }
     }
 
+    void FormFieldTextInput::getFileContent(std::vector< FileContent* >& result)
+    {
+        FormField::getFileContent(result);
+    }
+
     std::shared_ptr< int32_t > FormFieldTextInput::getMaxLength() const
     {
         return this->m_MaxLength;
@@ -8259,6 +9337,11 @@ namespace aspose::words::cloud::models {
         }
     }
 
+    void GifSaveOptionsData::getFileContent(std::vector< FileContent* >& result)
+    {
+        ImageSaveOptionsData::getFileContent(result);
+    }
+
     std::shared_ptr< std::wstring > GifSaveOptionsData::getSaveFormat() const
     {
         return this->m_SaveFormat;
@@ -8306,6 +9389,29 @@ namespace aspose::words::cloud::models {
             this->m_Paragraphs = std::make_shared< aspose::words::cloud::models::LinkElement >();
             this->m_Paragraphs->fromJson(&json["Paragraphs"]);
         }
+    }
+
+    void HeaderFooter::getFileContent(std::vector< FileContent* >& result)
+    {
+        HeaderFooterLink::getFileContent(result);
+        if (getChildNodes() != nullptr)
+        {
+            for (auto& element : *getChildNodes())
+            {
+                element->getFileContent(result);
+            }
+        }
+
+        if (getDrawingObjects() != nullptr)
+        {
+            getDrawingObjects()->getFileContent(result);
+        }
+
+        if (getParagraphs() != nullptr)
+        {
+            getParagraphs()->getFileContent(result);
+        }
+
     }
 
     std::shared_ptr< std::vector<std::shared_ptr<aspose::words::cloud::models::NodeLink>> > HeaderFooter::getChildNodes() const
@@ -8386,6 +9492,11 @@ namespace aspose::words::cloud::models {
         }
     }
 
+    void HeaderFooterLink::getFileContent(std::vector< FileContent* >& result)
+    {
+        LinkElement::getFileContent(result);
+    }
+
     std::shared_ptr< aspose::words::cloud::models::HeaderFooterLink::Type > HeaderFooterLink::getType() const
     {
         return this->m_Type;
@@ -8425,6 +9536,19 @@ namespace aspose::words::cloud::models {
         }
     }
 
+    void HeaderFooterLinkCollection::getFileContent(std::vector< FileContent* >& result)
+    {
+        LinkElement::getFileContent(result);
+        if (getList() != nullptr)
+        {
+            for (auto& element : *getList())
+            {
+                element->getFileContent(result);
+            }
+        }
+
+    }
+
     std::shared_ptr< std::vector<std::shared_ptr<aspose::words::cloud::models::HeaderFooterLink>> > HeaderFooterLinkCollection::getList() const
     {
         return this->m_List;
@@ -8459,6 +9583,16 @@ namespace aspose::words::cloud::models {
         }
     }
 
+    void HeaderFooterResponse::getFileContent(std::vector< FileContent* >& result)
+    {
+        WordsResponse::getFileContent(result);
+        if (getHeaderFooter() != nullptr)
+        {
+            getHeaderFooter()->getFileContent(result);
+        }
+
+    }
+
     std::shared_ptr< aspose::words::cloud::models::HeaderFooter > HeaderFooterResponse::getHeaderFooter() const
     {
         return this->m_HeaderFooter;
@@ -8491,6 +9625,16 @@ namespace aspose::words::cloud::models {
             this->m_HeaderFooters = std::make_shared< aspose::words::cloud::models::HeaderFooterLinkCollection >();
             this->m_HeaderFooters->fromJson(&json["HeaderFooters"]);
         }
+    }
+
+    void HeaderFootersResponse::getFileContent(std::vector< FileContent* >& result)
+    {
+        WordsResponse::getFileContent(result);
+        if (getHeaderFooters() != nullptr)
+        {
+            getHeaderFooters()->getFileContent(result);
+        }
+
     }
 
     std::shared_ptr< aspose::words::cloud::models::HeaderFooterLinkCollection > HeaderFootersResponse::getHeaderFooters() const
@@ -8667,6 +9811,11 @@ namespace aspose::words::cloud::models {
                 json["UseTargetMachineFonts"].get< bool >()
             );
         }
+    }
+
+    void HtmlFixedSaveOptionsData::getFileContent(std::vector< FileContent* >& result)
+    {
+        FixedPageSaveOptionsData::getFileContent(result);
     }
 
     std::shared_ptr< std::wstring > HtmlFixedSaveOptionsData::getCssClassNamesPrefix() const
@@ -9289,6 +10438,11 @@ namespace aspose::words::cloud::models {
         }
     }
 
+    void HtmlSaveOptionsData::getFileContent(std::vector< FileContent* >& result)
+    {
+        SaveOptionsData::getFileContent(result);
+    }
+
     std::shared_ptr< bool > HtmlSaveOptionsData::getAllowNegativeIndent() const
     {
         return this->m_AllowNegativeIndent;
@@ -9746,6 +10900,11 @@ namespace aspose::words::cloud::models {
         }
     }
 
+    void Hyperlink::getFileContent(std::vector< FileContent* >& result)
+    {
+        LinkElement::getFileContent(result);
+    }
+
     std::shared_ptr< std::wstring > Hyperlink::getDisplayText() const
     {
         return this->m_DisplayText;
@@ -9791,6 +10950,16 @@ namespace aspose::words::cloud::models {
         }
     }
 
+    void HyperlinkResponse::getFileContent(std::vector< FileContent* >& result)
+    {
+        WordsResponse::getFileContent(result);
+        if (getHyperlink() != nullptr)
+        {
+            getHyperlink()->getFileContent(result);
+        }
+
+    }
+
     std::shared_ptr< aspose::words::cloud::models::Hyperlink > HyperlinkResponse::getHyperlink() const
     {
         return this->m_Hyperlink;
@@ -9830,6 +10999,19 @@ namespace aspose::words::cloud::models {
         }
     }
 
+    void Hyperlinks::getFileContent(std::vector< FileContent* >& result)
+    {
+        LinkElement::getFileContent(result);
+        if (getHyperlinkList() != nullptr)
+        {
+            for (auto& element : *getHyperlinkList())
+            {
+                element->getFileContent(result);
+            }
+        }
+
+    }
+
     std::shared_ptr< std::vector<std::shared_ptr<aspose::words::cloud::models::Hyperlink>> > Hyperlinks::getHyperlinkList() const
     {
         return this->m_HyperlinkList;
@@ -9864,6 +11046,16 @@ namespace aspose::words::cloud::models {
         }
     }
 
+    void HyperlinksResponse::getFileContent(std::vector< FileContent* >& result)
+    {
+        WordsResponse::getFileContent(result);
+        if (getHyperlinks() != nullptr)
+        {
+            getHyperlinks()->getFileContent(result);
+        }
+
+    }
+
     std::shared_ptr< aspose::words::cloud::models::Hyperlinks > HyperlinksResponse::getHyperlinks() const
     {
         return this->m_Hyperlinks;
@@ -9881,14 +11073,35 @@ namespace aspose::words::cloud::models {
      */
     void ImageEntry::toJson(void* jsonIfc) const
     {
-        BaseEntry::toJson(jsonIfc);
+        ::nlohmann::json& json = *((::nlohmann::json*)jsonIfc);
+        if (this->m_Href) {
+            json["Href"] = convertUtf16(*(this->m_Href));
+        }
     }
 
     void ImageEntry::fromJson(const void* jsonIfc)
     {
-        BaseEntry::fromJson(jsonIfc);
+        ::nlohmann::json& json = *((::nlohmann::json*)jsonIfc);
+        if (json.contains("Href") && !json["Href"].is_null()) {
+            this->m_Href = std::make_shared< std::wstring >(
+                convertUtf8( json["Href"].get< std::string >() )
+            );
+        }
     }
 
+    void ImageEntry::getFileContent(std::vector< FileContent* >& result)
+    {
+    }
+
+    std::shared_ptr< std::wstring > ImageEntry::getHref() const
+    {
+        return this->m_Href;
+    }
+
+    void ImageEntry::setHref(std::shared_ptr< std::wstring > value)
+    {
+        this->m_Href = value;
+    }
 
 
 
@@ -9897,11 +11110,8 @@ namespace aspose::words::cloud::models {
      */
     void ImageEntryList::toJson(void* jsonIfc) const
     {
-        BaseEntryList::toJson(jsonIfc);
+        BaseImageEntryList::toJson(jsonIfc);
         ::nlohmann::json& json = *((::nlohmann::json*)jsonIfc);
-        if (this->m_AppendEachImageOnNewPage) {
-            json["AppendEachImageOnNewPage"] = *(this->m_AppendEachImageOnNewPage);
-        }
         if (this->m_ImageEntries) {
             json["ImageEntries"] = ::nlohmann::json::array();
             for (auto& element : *(this->m_ImageEntries)) {
@@ -9912,13 +11122,8 @@ namespace aspose::words::cloud::models {
 
     void ImageEntryList::fromJson(const void* jsonIfc)
     {
-        BaseEntryList::fromJson(jsonIfc);
+        BaseImageEntryList::fromJson(jsonIfc);
         ::nlohmann::json& json = *((::nlohmann::json*)jsonIfc);
-        if (json.contains("AppendEachImageOnNewPage") && !json["AppendEachImageOnNewPage"].is_null()) {
-            this->m_AppendEachImageOnNewPage = std::make_shared< bool >(
-                json["AppendEachImageOnNewPage"].get< bool >()
-            );
-        }
         if (json.contains("ImageEntries") && !json["ImageEntries"].is_null()) {
             this->m_ImageEntries = std::make_shared< std::vector<std::shared_ptr<aspose::words::cloud::models::ImageEntry>> >();
             for (auto& element : json["ImageEntries"]) {
@@ -9927,16 +11132,18 @@ namespace aspose::words::cloud::models {
         }
     }
 
-    std::shared_ptr< bool > ImageEntryList::getAppendEachImageOnNewPage() const
+    void ImageEntryList::getFileContent(std::vector< FileContent* >& result)
     {
-        return this->m_AppendEachImageOnNewPage;
-    }
+        BaseImageEntryList::getFileContent(result);
+        if (getImageEntries() != nullptr)
+        {
+            for (auto& element : *getImageEntries())
+            {
+                element->getFileContent(result);
+            }
+        }
 
-    void ImageEntryList::setAppendEachImageOnNewPage(std::shared_ptr< bool > value)
-    {
-        this->m_AppendEachImageOnNewPage = value;
     }
-
 
     std::shared_ptr< std::vector<std::shared_ptr<aspose::words::cloud::models::ImageEntry>> > ImageEntryList::getImageEntries() const
     {
@@ -10108,6 +11315,11 @@ namespace aspose::words::cloud::models {
         }
     }
 
+    void ImageSaveOptionsData::getFileContent(std::vector< FileContent* >& result)
+    {
+        FixedPageSaveOptionsData::getFileContent(result);
+    }
+
     std::shared_ptr< double > ImageSaveOptionsData::getHorizontalResolution() const
     {
         return this->m_HorizontalResolution;
@@ -10270,6 +11482,10 @@ namespace aspose::words::cloud::models {
         }
     }
 
+    void InfoAdditionalItem::getFileContent(std::vector< FileContent* >& result)
+    {
+    }
+
     std::shared_ptr< std::wstring > InfoAdditionalItem::getKey() const
     {
         return this->m_Key;
@@ -10336,6 +11552,21 @@ namespace aspose::words::cloud::models {
         }
     }
 
+    void InfoResponse::getFileContent(std::vector< FileContent* >& result)
+    {
+        WordsResponse::getFileContent(result);
+        if (getAdditionalInfo() != nullptr)
+        {
+            for (auto& element : *getAdditionalInfo())
+            {
+                element->getFileContent(result);
+            }
+        }
+
+
+
+    }
+
     std::shared_ptr< std::vector<std::shared_ptr<aspose::words::cloud::models::InfoAdditionalItem>> > InfoResponse::getAdditionalInfo() const
     {
         return this->m_AdditionalInfo;
@@ -10391,6 +11622,11 @@ namespace aspose::words::cloud::models {
                 convertUtf8( json["SaveFormat"].get< std::string >() )
             );
         }
+    }
+
+    void JpegSaveOptionsData::getFileContent(std::vector< FileContent* >& result)
+    {
+        ImageSaveOptionsData::getFileContent(result);
     }
 
     std::shared_ptr< std::wstring > JpegSaveOptionsData::getSaveFormat() const
@@ -10453,6 +11689,10 @@ namespace aspose::words::cloud::models {
                 jsonDataLoadOptionsSimpleValueParseModeFromString(json["SimpleValueParseMode"].get< std::string >())
             );
         }
+    }
+
+    void JsonDataLoadOptions::getFileContent(std::vector< FileContent* >& result)
+    {
     }
 
     std::shared_ptr< bool > JsonDataLoadOptions::getAlwaysGenerateRootObject() const
@@ -10534,6 +11774,10 @@ namespace aspose::words::cloud::models {
         }
     }
 
+    void Link::getFileContent(std::vector< FileContent* >& result)
+    {
+    }
+
     std::shared_ptr< std::wstring > Link::getHref() const
     {
         return this->m_Href;
@@ -10599,6 +11843,15 @@ namespace aspose::words::cloud::models {
         }
     }
 
+    void LinkElement::getFileContent(std::vector< FileContent* >& result)
+    {
+        if (getLink() != nullptr)
+        {
+            getLink()->getFileContent(result);
+        }
+
+    }
+
     std::shared_ptr< aspose::words::cloud::models::WordsApiLink > LinkElement::getLink() const
     {
         return this->m_Link;
@@ -10648,6 +11901,11 @@ namespace aspose::words::cloud::models {
                 json["ListLevelNumber"].get< int32_t >()
             );
         }
+    }
+
+    void ListFormat::getFileContent(std::vector< FileContent* >& result)
+    {
+        LinkElement::getFileContent(result);
     }
 
     std::shared_ptr< bool > ListFormat::getIsListItem() const
@@ -10711,6 +11969,10 @@ namespace aspose::words::cloud::models {
                 json["ListLevelNumber"].get< int32_t >()
             );
         }
+    }
+
+    void ListFormatUpdate::getFileContent(std::vector< FileContent* >& result)
+    {
     }
 
     std::shared_ptr< int32_t > ListFormatUpdate::getListId() const
@@ -10803,6 +12065,21 @@ namespace aspose::words::cloud::models {
             this->m_Style = std::make_shared< aspose::words::cloud::models::Style >();
             this->m_Style->fromJson(&json["Style"]);
         }
+    }
+
+    void ListInfo::getFileContent(std::vector< FileContent* >& result)
+    {
+        LinkElement::getFileContent(result);
+        if (getListLevels() != nullptr)
+        {
+            getListLevels()->getFileContent(result);
+        }
+
+        if (getStyle() != nullptr)
+        {
+            getStyle()->getFileContent(result);
+        }
+
     }
 
     std::shared_ptr< bool > ListInfo::getIsListStyleDefinition() const
@@ -10955,6 +12232,10 @@ namespace aspose::words::cloud::models {
                 listInsertTemplateFromString(json["Template"].get< std::string >())
             );
         }
+    }
+
+    void ListInsert::getFileContent(std::vector< FileContent* >& result)
+    {
     }
 
     std::shared_ptr< aspose::words::cloud::models::ListInsert::Template > ListInsert::getTemplate() const
@@ -11243,6 +12524,30 @@ namespace aspose::words::cloud::models {
         }
     }
 
+    void ListLevel::getFileContent(std::vector< FileContent* >& result)
+    {
+        LinkElement::getFileContent(result);
+        if (getFont() != nullptr)
+        {
+            getFont()->getFileContent(result);
+        }
+
+
+        if (getLinkedStyle() != nullptr)
+        {
+            getLinkedStyle()->getFileContent(result);
+        }
+
+
+
+
+
+
+
+
+
+    }
+
     std::shared_ptr< aspose::words::cloud::models::ListLevel::Alignment > ListLevel::getAlignment() const
     {
         return this->m_Alignment;
@@ -11401,6 +12706,19 @@ namespace aspose::words::cloud::models {
                 this->m_ListLevel->emplace_back(std::make_shared< aspose::words::cloud::models::ListLevel >())->fromJson(&element);
             }
         }
+    }
+
+    void ListLevels::getFileContent(std::vector< FileContent* >& result)
+    {
+        LinkElement::getFileContent(result);
+        if (getListLevel() != nullptr)
+        {
+            for (auto& element : *getListLevel())
+            {
+                element->getFileContent(result);
+            }
+        }
+
     }
 
     std::shared_ptr< std::vector<std::shared_ptr<aspose::words::cloud::models::ListLevel>> > ListLevels::getListLevel() const
@@ -11673,6 +12991,10 @@ namespace aspose::words::cloud::models {
         }
     }
 
+    void ListLevelUpdate::getFileContent(std::vector< FileContent* >& result)
+    {
+    }
+
     std::shared_ptr< aspose::words::cloud::models::ListLevelUpdate::Alignment > ListLevelUpdate::getAlignment() const
     {
         return this->m_Alignment;
@@ -11806,6 +13128,16 @@ namespace aspose::words::cloud::models {
         }
     }
 
+    void ListResponse::getFileContent(std::vector< FileContent* >& result)
+    {
+        WordsResponse::getFileContent(result);
+        if (getList() != nullptr)
+        {
+            getList()->getFileContent(result);
+        }
+
+    }
+
     std::shared_ptr< aspose::words::cloud::models::ListInfo > ListResponse::getList() const
     {
         return this->m_List;
@@ -11845,6 +13177,19 @@ namespace aspose::words::cloud::models {
         }
     }
 
+    void Lists::getFileContent(std::vector< FileContent* >& result)
+    {
+        LinkElement::getFileContent(result);
+        if (getListInfo() != nullptr)
+        {
+            for (auto& element : *getListInfo())
+            {
+                element->getFileContent(result);
+            }
+        }
+
+    }
+
     std::shared_ptr< std::vector<std::shared_ptr<aspose::words::cloud::models::ListInfo>> > Lists::getListInfo() const
     {
         return this->m_ListInfo;
@@ -11879,6 +13224,16 @@ namespace aspose::words::cloud::models {
         }
     }
 
+    void ListsResponse::getFileContent(std::vector< FileContent* >& result)
+    {
+        WordsResponse::getFileContent(result);
+        if (getLists() != nullptr)
+        {
+            getLists()->getFileContent(result);
+        }
+
+    }
+
     std::shared_ptr< aspose::words::cloud::models::Lists > ListsResponse::getLists() const
     {
         return this->m_Lists;
@@ -11910,6 +13265,10 @@ namespace aspose::words::cloud::models {
                 json["IsRestartAtEachSection"].get< bool >()
             );
         }
+    }
+
+    void ListUpdate::getFileContent(std::vector< FileContent* >& result)
+    {
     }
 
     std::shared_ptr< bool > ListUpdate::getIsRestartAtEachSection() const
@@ -11949,6 +13308,15 @@ namespace aspose::words::cloud::models {
         if (json.contains("SaveOptions") && !json["SaveOptions"].is_null()) {
             throw aspose::words::cloud::ApiException(400, L"Cannot deserialize abstract data model SaveOptionsData.");
         }
+    }
+
+    void LoadWebDocumentData::getFileContent(std::vector< FileContent* >& result)
+    {
+        if (getSaveOptions() != nullptr)
+        {
+            getSaveOptions()->getFileContent(result);
+        }
+
     }
 
     std::shared_ptr< std::wstring > LoadWebDocumentData::getLoadingDocumentUrl() const
@@ -12020,6 +13388,11 @@ namespace aspose::words::cloud::models {
                 markdownSaveOptionsDataTableContentAlignmentFromString(json["TableContentAlignment"].get< std::string >())
             );
         }
+    }
+
+    void MarkdownSaveOptionsData::getFileContent(std::vector< FileContent* >& result)
+    {
+        TxtSaveOptionsBaseData::getFileContent(result);
     }
 
     std::shared_ptr< std::wstring > MarkdownSaveOptionsData::getSaveFormat() const
@@ -12125,6 +13498,10 @@ namespace aspose::words::cloud::models {
         }
     }
 
+    void MetafileRenderingOptionsData::getFileContent(std::vector< FileContent* >& result)
+    {
+    }
+
     std::shared_ptr< aspose::words::cloud::models::MetafileRenderingOptionsData::EmfPlusDualRenderingMode > MetafileRenderingOptionsData::getEmfPlusDualRenderingMode() const
     {
         return this->m_EmfPlusDualRenderingMode;
@@ -12212,6 +13589,11 @@ namespace aspose::words::cloud::models {
         }
     }
 
+    void MhtmlSaveOptionsData::getFileContent(std::vector< FileContent* >& result)
+    {
+        HtmlSaveOptionsData::getFileContent(result);
+    }
+
     std::shared_ptr< bool > MhtmlSaveOptionsData::getExportCidUrlsForMhtmlResources() const
     {
         return this->m_ExportCidUrlsForMhtmlResources;
@@ -12258,6 +13640,20 @@ namespace aspose::words::cloud::models {
         }
     }
 
+    void ModificationOperationResult::getFileContent(std::vector< FileContent* >& result)
+    {
+        if (getDest() != nullptr)
+        {
+            getDest()->getFileContent(result);
+        }
+
+        if (getSource() != nullptr)
+        {
+            getSource()->getFileContent(result);
+        }
+
+    }
+
     std::shared_ptr< aspose::words::cloud::models::FileLink > ModificationOperationResult::getDest() const
     {
         return this->m_Dest;
@@ -12302,6 +13698,11 @@ namespace aspose::words::cloud::models {
                 convertUtf8( json["NodeId"].get< std::string >() )
             );
         }
+    }
+
+    void NodeLink::getFileContent(std::vector< FileContent* >& result)
+    {
+        LinkElement::getFileContent(result);
     }
 
     std::shared_ptr< std::wstring > NodeLink::getNodeId() const
@@ -12384,6 +13785,11 @@ namespace aspose::words::cloud::models {
         }
     }
 
+    void OdtSaveOptionsData::getFileContent(std::vector< FileContent* >& result)
+    {
+        SaveOptionsData::getFileContent(result);
+    }
+
     std::shared_ptr< bool > OdtSaveOptionsData::getIsStrictSchema11() const
     {
         return this->m_IsStrictSchema11;
@@ -12447,6 +13853,11 @@ namespace aspose::words::cloud::models {
     void OfficeMathLink::fromJson(const void* jsonIfc)
     {
         NodeLink::fromJson(jsonIfc);
+    }
+
+    void OfficeMathLink::getFileContent(std::vector< FileContent* >& result)
+    {
+        NodeLink::getFileContent(result);
     }
 
 
@@ -12603,6 +14014,19 @@ namespace aspose::words::cloud::models {
         }
     }
 
+    void OfficeMathObject::getFileContent(std::vector< FileContent* >& result)
+    {
+        OfficeMathLink::getFileContent(result);
+        if (getContent() != nullptr)
+        {
+            getContent()->getFileContent(result);
+        }
+
+
+
+
+    }
+
     std::shared_ptr< aspose::words::cloud::models::StoryChildNodes > OfficeMathObject::getContent() const
     {
         return this->m_Content;
@@ -12670,6 +14094,16 @@ namespace aspose::words::cloud::models {
         }
     }
 
+    void OfficeMathObjectResponse::getFileContent(std::vector< FileContent* >& result)
+    {
+        WordsResponse::getFileContent(result);
+        if (getOfficeMathObject() != nullptr)
+        {
+            getOfficeMathObject()->getFileContent(result);
+        }
+
+    }
+
     std::shared_ptr< aspose::words::cloud::models::OfficeMathObject > OfficeMathObjectResponse::getOfficeMathObject() const
     {
         return this->m_OfficeMathObject;
@@ -12709,6 +14143,19 @@ namespace aspose::words::cloud::models {
         }
     }
 
+    void OfficeMathObjectsCollection::getFileContent(std::vector< FileContent* >& result)
+    {
+        LinkElement::getFileContent(result);
+        if (getList() != nullptr)
+        {
+            for (auto& element : *getList())
+            {
+                element->getFileContent(result);
+            }
+        }
+
+    }
+
     std::shared_ptr< std::vector<std::shared_ptr<aspose::words::cloud::models::OfficeMathObject>> > OfficeMathObjectsCollection::getList() const
     {
         return this->m_List;
@@ -12743,6 +14190,16 @@ namespace aspose::words::cloud::models {
         }
     }
 
+    void OfficeMathObjectsResponse::getFileContent(std::vector< FileContent* >& result)
+    {
+        WordsResponse::getFileContent(result);
+        if (getOfficeMathObjects() != nullptr)
+        {
+            getOfficeMathObjects()->getFileContent(result);
+        }
+
+    }
+
     std::shared_ptr< aspose::words::cloud::models::OfficeMathObjectsCollection > OfficeMathObjectsResponse::getOfficeMathObjects() const
     {
         return this->m_OfficeMathObjects;
@@ -12751,6 +14208,195 @@ namespace aspose::words::cloud::models {
     void OfficeMathObjectsResponse::setOfficeMathObjects(std::shared_ptr< aspose::words::cloud::models::OfficeMathObjectsCollection > value)
     {
         this->m_OfficeMathObjects = value;
+    }
+
+
+
+    /*
+     * OnlineDocumentEntry implementation
+     */
+    void OnlineDocumentEntry::toJson(void* jsonIfc) const
+    {
+        BaseDocumentEntry::toJson(jsonIfc);
+        ::nlohmann::json& json = *((::nlohmann::json*)jsonIfc);
+        if (this->m_File) {
+            this->m_File->toJson(&json["File"]);
+        }
+    }
+
+    void OnlineDocumentEntry::fromJson(const void* jsonIfc)
+    {
+        BaseDocumentEntry::fromJson(jsonIfc);
+        ::nlohmann::json& json = *((::nlohmann::json*)jsonIfc);
+        if (json.contains("File") && !json["File"].is_null()) {
+            this->m_File = std::make_shared< aspose::words::cloud::models::FileContent >();
+            this->m_File->fromJson(&json["File"]);
+        }
+    }
+
+    void OnlineDocumentEntry::getFileContent(std::vector< FileContent* >& result)
+    {
+        BaseDocumentEntry::getFileContent(result);
+        if (getFile() != nullptr)
+        {
+            getFile()->getFileContent(result);
+        }
+
+    }
+
+    std::shared_ptr< aspose::words::cloud::models::FileContent > OnlineDocumentEntry::getFile() const
+    {
+        return this->m_File;
+    }
+
+    void OnlineDocumentEntry::setFile(std::shared_ptr< aspose::words::cloud::models::FileContent > value)
+    {
+        this->m_File = value;
+    }
+
+
+
+    /*
+     * OnlineDocumentEntryList implementation
+     */
+    void OnlineDocumentEntryList::toJson(void* jsonIfc) const
+    {
+        BaseDocumentEntryList::toJson(jsonIfc);
+        ::nlohmann::json& json = *((::nlohmann::json*)jsonIfc);
+        if (this->m_OnlineDocumentEntries) {
+            json["OnlineDocumentEntries"] = ::nlohmann::json::array();
+            for (auto& element : *(this->m_OnlineDocumentEntries)) {
+                element->toJson(&json["OnlineDocumentEntries"].emplace_back());
+            }
+        }
+    }
+
+    void OnlineDocumentEntryList::fromJson(const void* jsonIfc)
+    {
+        BaseDocumentEntryList::fromJson(jsonIfc);
+        ::nlohmann::json& json = *((::nlohmann::json*)jsonIfc);
+        if (json.contains("OnlineDocumentEntries") && !json["OnlineDocumentEntries"].is_null()) {
+            this->m_OnlineDocumentEntries = std::make_shared< std::vector<std::shared_ptr<aspose::words::cloud::models::OnlineDocumentEntry>> >();
+            for (auto& element : json["OnlineDocumentEntries"]) {
+                this->m_OnlineDocumentEntries->emplace_back(std::make_shared< aspose::words::cloud::models::OnlineDocumentEntry >())->fromJson(&element);
+            }
+        }
+    }
+
+    void OnlineDocumentEntryList::getFileContent(std::vector< FileContent* >& result)
+    {
+        BaseDocumentEntryList::getFileContent(result);
+        if (getOnlineDocumentEntries() != nullptr)
+        {
+            for (auto& element : *getOnlineDocumentEntries())
+            {
+                element->getFileContent(result);
+            }
+        }
+
+    }
+
+    std::shared_ptr< std::vector<std::shared_ptr<aspose::words::cloud::models::OnlineDocumentEntry>> > OnlineDocumentEntryList::getOnlineDocumentEntries() const
+    {
+        return this->m_OnlineDocumentEntries;
+    }
+
+    void OnlineDocumentEntryList::setOnlineDocumentEntries(std::shared_ptr< std::vector<std::shared_ptr<aspose::words::cloud::models::OnlineDocumentEntry>> > value)
+    {
+        this->m_OnlineDocumentEntries = value;
+    }
+
+
+
+    /*
+     * OnlineImageEntry implementation
+     */
+    void OnlineImageEntry::toJson(void* jsonIfc) const
+    {
+        ::nlohmann::json& json = *((::nlohmann::json*)jsonIfc);
+        if (this->m_File) {
+            this->m_File->toJson(&json["File"]);
+        }
+    }
+
+    void OnlineImageEntry::fromJson(const void* jsonIfc)
+    {
+        ::nlohmann::json& json = *((::nlohmann::json*)jsonIfc);
+        if (json.contains("File") && !json["File"].is_null()) {
+            this->m_File = std::make_shared< aspose::words::cloud::models::FileContent >();
+            this->m_File->fromJson(&json["File"]);
+        }
+    }
+
+    void OnlineImageEntry::getFileContent(std::vector< FileContent* >& result)
+    {
+        if (getFile() != nullptr)
+        {
+            getFile()->getFileContent(result);
+        }
+
+    }
+
+    std::shared_ptr< aspose::words::cloud::models::FileContent > OnlineImageEntry::getFile() const
+    {
+        return this->m_File;
+    }
+
+    void OnlineImageEntry::setFile(std::shared_ptr< aspose::words::cloud::models::FileContent > value)
+    {
+        this->m_File = value;
+    }
+
+
+
+    /*
+     * OnlineImageEntryList implementation
+     */
+    void OnlineImageEntryList::toJson(void* jsonIfc) const
+    {
+        BaseImageEntryList::toJson(jsonIfc);
+        ::nlohmann::json& json = *((::nlohmann::json*)jsonIfc);
+        if (this->m_OnlineImageEntries) {
+            json["OnlineImageEntries"] = ::nlohmann::json::array();
+            for (auto& element : *(this->m_OnlineImageEntries)) {
+                element->toJson(&json["OnlineImageEntries"].emplace_back());
+            }
+        }
+    }
+
+    void OnlineImageEntryList::fromJson(const void* jsonIfc)
+    {
+        BaseImageEntryList::fromJson(jsonIfc);
+        ::nlohmann::json& json = *((::nlohmann::json*)jsonIfc);
+        if (json.contains("OnlineImageEntries") && !json["OnlineImageEntries"].is_null()) {
+            this->m_OnlineImageEntries = std::make_shared< std::vector<std::shared_ptr<aspose::words::cloud::models::OnlineImageEntry>> >();
+            for (auto& element : json["OnlineImageEntries"]) {
+                this->m_OnlineImageEntries->emplace_back(std::make_shared< aspose::words::cloud::models::OnlineImageEntry >())->fromJson(&element);
+            }
+        }
+    }
+
+    void OnlineImageEntryList::getFileContent(std::vector< FileContent* >& result)
+    {
+        BaseImageEntryList::getFileContent(result);
+        if (getOnlineImageEntries() != nullptr)
+        {
+            for (auto& element : *getOnlineImageEntries())
+            {
+                element->getFileContent(result);
+            }
+        }
+
+    }
+
+    std::shared_ptr< std::vector<std::shared_ptr<aspose::words::cloud::models::OnlineImageEntry>> > OnlineImageEntryList::getOnlineImageEntries() const
+    {
+        return this->m_OnlineImageEntries;
+    }
+
+    void OnlineImageEntryList::setOnlineImageEntries(std::shared_ptr< std::vector<std::shared_ptr<aspose::words::cloud::models::OnlineImageEntry>> > value)
+    {
+        this->m_OnlineImageEntries = value;
     }
 
 
@@ -12835,6 +14481,11 @@ namespace aspose::words::cloud::models {
         }
     }
 
+    void OoxmlSaveOptionsData::getFileContent(std::vector< FileContent* >& result)
+    {
+        SaveOptionsData::getFileContent(result);
+    }
+
     std::shared_ptr< aspose::words::cloud::models::OoxmlSaveOptionsData::Compliance > OoxmlSaveOptionsData::getCompliance() const
     {
         return this->m_Compliance;
@@ -12903,6 +14554,11 @@ namespace aspose::words::cloud::models {
         }
     }
 
+    void OpenXpsSaveOptionsData::getFileContent(std::vector< FileContent* >& result)
+    {
+        XpsSaveOptionsData::getFileContent(result);
+    }
+
     std::shared_ptr< std::wstring > OpenXpsSaveOptionsData::getSaveFormat() const
     {
         return this->m_SaveFormat;
@@ -12957,6 +14613,10 @@ namespace aspose::words::cloud::models {
         }
     }
 
+    void OptimizationOptions::getFileContent(std::vector< FileContent* >& result)
+    {
+    }
+
     std::shared_ptr< aspose::words::cloud::models::OptimizationOptions::MsWordVersion > OptimizationOptions::getMsWordVersion() const
     {
         return this->m_MsWordVersion;
@@ -12990,6 +14650,11 @@ namespace aspose::words::cloud::models {
                 convertUtf8( json["SaveFormat"].get< std::string >() )
             );
         }
+    }
+
+    void OttSaveOptionsData::getFileContent(std::vector< FileContent* >& result)
+    {
+        OdtSaveOptionsData::getFileContent(result);
     }
 
     std::shared_ptr< std::wstring > OttSaveOptionsData::getSaveFormat() const
@@ -13063,6 +14728,23 @@ namespace aspose::words::cloud::models {
                 json["HeadingsOutlineLevels"].get< int32_t >()
             );
         }
+    }
+
+    void OutlineOptionsData::getFileContent(std::vector< FileContent* >& result)
+    {
+        if (getBookmarksOutlineLevels() != nullptr)
+        {
+            for (auto& element : *getBookmarksOutlineLevels())
+            {
+                element->getFileContent(result);
+            }
+        }
+
+
+
+
+
+
     }
 
     std::shared_ptr< std::vector<std::shared_ptr<aspose::words::cloud::models::BookmarksOutlineLevelData>> > OutlineOptionsData::getBookmarksOutlineLevels() const
@@ -13175,6 +14857,10 @@ namespace aspose::words::cloud::models {
                 json["SetPageNumberOnFirstPage"].get< bool >()
             );
         }
+    }
+
+    void PageNumber::getFileContent(std::vector< FileContent* >& result)
+    {
     }
 
     std::shared_ptr< std::wstring > PageNumber::getAlignment() const
@@ -13746,6 +15432,11 @@ namespace aspose::words::cloud::models {
         }
     }
 
+    void PageSetup::getFileContent(std::vector< FileContent* >& result)
+    {
+        LinkElement::getFileContent(result);
+    }
+
     std::shared_ptr< bool > PageSetup::getBidi() const
     {
         return this->m_Bidi;
@@ -14110,6 +15801,18 @@ namespace aspose::words::cloud::models {
         }
     }
 
+    void PageStatData::getFileContent(std::vector< FileContent* >& result)
+    {
+        if (getFootnotesStatData() != nullptr)
+        {
+            getFootnotesStatData()->getFileContent(result);
+        }
+
+
+
+
+    }
+
     std::shared_ptr< aspose::words::cloud::models::FootnotesStatData > PageStatData::getFootnotesStatData() const
     {
         return this->m_FootnotesStatData;
@@ -14182,6 +15885,19 @@ namespace aspose::words::cloud::models {
         }
     }
 
+    void Paragraph::getFileContent(std::vector< FileContent* >& result)
+    {
+        NodeLink::getFileContent(result);
+        if (getChildNodes() != nullptr)
+        {
+            for (auto& element : *getChildNodes())
+            {
+                element->getFileContent(result);
+            }
+        }
+
+    }
+
     std::shared_ptr< std::vector<std::shared_ptr<aspose::words::cloud::models::NodeLink>> > Paragraph::getChildNodes() const
     {
         return this->m_ChildNodes;
@@ -14223,6 +15939,11 @@ namespace aspose::words::cloud::models {
                 json["IsListItem"].get< bool >()
             );
         }
+    }
+
+    void ParagraphFormat::getFileContent(std::vector< FileContent* >& result)
+    {
+        ParagraphFormatBase::getFileContent(result);
     }
 
     std::shared_ptr< bool > ParagraphFormat::getIsHeading() const
@@ -15327,6 +17048,25 @@ namespace aspose::words::cloud::models {
         }
     }
 
+    void ParagraphFormatBase::getFileContent(std::vector< FileContent* >& result)
+    {
+        LinkElement::getFileContent(result);
+        if (getShading() != nullptr)
+        {
+            getShading()->getFileContent(result);
+        }
+
+
+
+
+
+
+
+
+
+
+    }
+
     std::shared_ptr< bool > ParagraphFormatBase::getAddSpaceBetweenFarEastAndAlpha() const
     {
         return this->m_AddSpaceBetweenFarEastAndAlpha;
@@ -15636,6 +17376,16 @@ namespace aspose::words::cloud::models {
         }
     }
 
+    void ParagraphFormatResponse::getFileContent(std::vector< FileContent* >& result)
+    {
+        WordsResponse::getFileContent(result);
+        if (getParagraphFormat() != nullptr)
+        {
+            getParagraphFormat()->getFileContent(result);
+        }
+
+    }
+
     std::shared_ptr< aspose::words::cloud::models::ParagraphFormat > ParagraphFormatResponse::getParagraphFormat() const
     {
         return this->m_ParagraphFormat;
@@ -15661,6 +17411,11 @@ namespace aspose::words::cloud::models {
         ParagraphFormatBase::fromJson(jsonIfc);
     }
 
+    void ParagraphFormatUpdate::getFileContent(std::vector< FileContent* >& result)
+    {
+        ParagraphFormatBase::getFileContent(result);
+    }
+
 
 
 
@@ -15683,6 +17438,10 @@ namespace aspose::words::cloud::models {
                 convertUtf8( json["Text"].get< std::string >() )
             );
         }
+    }
+
+    void ParagraphInsert::getFileContent(std::vector< FileContent* >& result)
+    {
     }
 
     std::shared_ptr< std::wstring > ParagraphInsert::getText() const
@@ -15718,6 +17477,11 @@ namespace aspose::words::cloud::models {
                 convertUtf8( json["Text"].get< std::string >() )
             );
         }
+    }
+
+    void ParagraphLink::getFileContent(std::vector< FileContent* >& result)
+    {
+        NodeLink::getFileContent(result);
     }
 
     std::shared_ptr< std::wstring > ParagraphLink::getText() const
@@ -15759,6 +17523,19 @@ namespace aspose::words::cloud::models {
         }
     }
 
+    void ParagraphLinkCollection::getFileContent(std::vector< FileContent* >& result)
+    {
+        LinkElement::getFileContent(result);
+        if (getParagraphLinkList() != nullptr)
+        {
+            for (auto& element : *getParagraphLinkList())
+            {
+                element->getFileContent(result);
+            }
+        }
+
+    }
+
     std::shared_ptr< std::vector<std::shared_ptr<aspose::words::cloud::models::ParagraphLink>> > ParagraphLinkCollection::getParagraphLinkList() const
     {
         return this->m_ParagraphLinkList;
@@ -15791,6 +17568,16 @@ namespace aspose::words::cloud::models {
             this->m_Paragraphs = std::make_shared< aspose::words::cloud::models::ParagraphLinkCollection >();
             this->m_Paragraphs->fromJson(&json["Paragraphs"]);
         }
+    }
+
+    void ParagraphLinkCollectionResponse::getFileContent(std::vector< FileContent* >& result)
+    {
+        WordsResponse::getFileContent(result);
+        if (getParagraphs() != nullptr)
+        {
+            getParagraphs()->getFileContent(result);
+        }
+
     }
 
     std::shared_ptr< aspose::words::cloud::models::ParagraphLinkCollection > ParagraphLinkCollectionResponse::getParagraphs() const
@@ -15827,6 +17614,16 @@ namespace aspose::words::cloud::models {
         }
     }
 
+    void ParagraphListFormatResponse::getFileContent(std::vector< FileContent* >& result)
+    {
+        WordsResponse::getFileContent(result);
+        if (getListFormat() != nullptr)
+        {
+            getListFormat()->getFileContent(result);
+        }
+
+    }
+
     std::shared_ptr< aspose::words::cloud::models::ListFormat > ParagraphListFormatResponse::getListFormat() const
     {
         return this->m_ListFormat;
@@ -15859,6 +17656,16 @@ namespace aspose::words::cloud::models {
             this->m_Paragraph = std::make_shared< aspose::words::cloud::models::Paragraph >();
             this->m_Paragraph->fromJson(&json["Paragraph"]);
         }
+    }
+
+    void ParagraphResponse::getFileContent(std::vector< FileContent* >& result)
+    {
+        WordsResponse::getFileContent(result);
+        if (getParagraph() != nullptr)
+        {
+            getParagraph()->getFileContent(result);
+        }
+
     }
 
     std::shared_ptr< aspose::words::cloud::models::Paragraph > ParagraphResponse::getParagraph() const
@@ -15910,6 +17717,11 @@ namespace aspose::words::cloud::models {
                 convertUtf8( json["SaveFormat"].get< std::string >() )
             );
         }
+    }
+
+    void PclSaveOptionsData::getFileContent(std::vector< FileContent* >& result)
+    {
+        FixedPageSaveOptionsData::getFileContent(result);
     }
 
     std::shared_ptr< std::wstring > PclSaveOptionsData::getFalllbackFontName() const
@@ -16010,6 +17822,10 @@ namespace aspose::words::cloud::models {
                 convertUtf8( json["SignatureDate"].get< std::string >() )
             );
         }
+    }
+
+    void PdfDigitalSignatureDetailsData::getFileContent(std::vector< FileContent* >& result)
+    {
     }
 
     std::shared_ptr< std::wstring > PdfDigitalSignatureDetailsData::getCertificateFilename() const
@@ -16136,6 +17952,10 @@ namespace aspose::words::cloud::models {
                 convertUtf8( json["UserPassword"].get< std::string >() )
             );
         }
+    }
+
+    void PdfEncryptionDetailsData::getFileContent(std::vector< FileContent* >& result)
+    {
     }
 
     std::shared_ptr< std::wstring > PdfEncryptionDetailsData::getOwnerPassword() const
@@ -16536,6 +18356,50 @@ namespace aspose::words::cloud::models {
         }
     }
 
+    void PdfSaveOptionsData::getFileContent(std::vector< FileContent* >& result)
+    {
+        FixedPageSaveOptionsData::getFileContent(result);
+        if (getDigitalSignatureDetails() != nullptr)
+        {
+            getDigitalSignatureDetails()->getFileContent(result);
+        }
+
+
+        if (getDownsampleOptions() != nullptr)
+        {
+            getDownsampleOptions()->getFileContent(result);
+        }
+
+
+        if (getEncryptionDetails() != nullptr)
+        {
+            getEncryptionDetails()->getFileContent(result);
+        }
+
+
+
+
+
+
+
+
+
+        if (getOutlineOptions() != nullptr)
+        {
+            getOutlineOptions()->getFileContent(result);
+        }
+
+
+
+
+
+
+
+
+
+
+    }
+
     std::shared_ptr< aspose::words::cloud::models::PdfSaveOptionsData::Compliance > PdfSaveOptionsData::getCompliance() const
     {
         return this->m_Compliance;
@@ -16842,6 +18706,11 @@ namespace aspose::words::cloud::models {
         }
     }
 
+    void PngSaveOptionsData::getFileContent(std::vector< FileContent* >& result)
+    {
+        ImageSaveOptionsData::getFileContent(result);
+    }
+
     std::shared_ptr< std::wstring > PngSaveOptionsData::getSaveFormat() const
     {
         return this->m_SaveFormat;
@@ -16894,6 +18763,10 @@ namespace aspose::words::cloud::models {
         }
     }
 
+    void PreferredWidth::getFileContent(std::vector< FileContent* >& result)
+    {
+    }
+
     std::shared_ptr< aspose::words::cloud::models::PreferredWidth::Type > PreferredWidth::getType() const
     {
         return this->m_Type;
@@ -16938,6 +18811,10 @@ namespace aspose::words::cloud::models {
         }
     }
 
+    void ProtectionData::getFileContent(std::vector< FileContent* >& result)
+    {
+    }
+
     std::shared_ptr< std::wstring > ProtectionData::getProtectionType() const
     {
         return this->m_ProtectionType;
@@ -16977,6 +18854,21 @@ namespace aspose::words::cloud::models {
             this->m_ProtectionData = std::make_shared< aspose::words::cloud::models::ProtectionData >();
             this->m_ProtectionData->fromJson(&json["ProtectionData"]);
         }
+    }
+
+    void ProtectionDataResponse::getFileContent(std::vector< FileContent* >& result)
+    {
+        WordsResponse::getFileContent(result);
+        if (getDocumentLink() != nullptr)
+        {
+            getDocumentLink()->getFileContent(result);
+        }
+
+        if (getProtectionData() != nullptr)
+        {
+            getProtectionData()->getFileContent(result);
+        }
+
     }
 
     std::shared_ptr< aspose::words::cloud::models::FileLink > ProtectionDataResponse::getDocumentLink() const
@@ -17037,6 +18929,10 @@ namespace aspose::words::cloud::models {
                 convertUtf8( json["ProtectionType"].get< std::string >() )
             );
         }
+    }
+
+    void ProtectionRequest::getFileContent(std::vector< FileContent* >& result)
+    {
     }
 
     std::shared_ptr< std::wstring > ProtectionRequest::getNewPassword() const
@@ -17104,6 +19000,11 @@ namespace aspose::words::cloud::models {
         }
     }
 
+    void PsSaveOptionsData::getFileContent(std::vector< FileContent* >& result)
+    {
+        FixedPageSaveOptionsData::getFileContent(result);
+    }
+
     std::shared_ptr< std::wstring > PsSaveOptionsData::getSaveFormat() const
     {
         return this->m_SaveFormat;
@@ -17154,6 +19055,11 @@ namespace aspose::words::cloud::models {
         }
     }
 
+    void PublicKeyResponse::getFileContent(std::vector< FileContent* >& result)
+    {
+        WordsResponse::getFileContent(result);
+    }
+
     std::shared_ptr< std::wstring > PublicKeyResponse::getExponent() const
     {
         return this->m_Exponent;
@@ -17198,6 +19104,10 @@ namespace aspose::words::cloud::models {
         }
     }
 
+    void RangeDocument::getFileContent(std::vector< FileContent* >& result)
+    {
+    }
+
     std::shared_ptr< std::wstring > RangeDocument::getDocumentName() const
     {
         return this->m_DocumentName;
@@ -17229,6 +19139,10 @@ namespace aspose::words::cloud::models {
                 convertUtf8( json["DocumentName"].get< std::string >() )
             );
         }
+    }
+
+    void RangeDocumentDto::getFileContent(std::vector< FileContent* >& result)
+    {
     }
 
     std::shared_ptr< std::wstring > RangeDocumentDto::getDocumentName() const
@@ -17264,6 +19178,11 @@ namespace aspose::words::cloud::models {
                 convertUtf8( json["Text"].get< std::string >() )
             );
         }
+    }
+
+    void RangeTextResponse::getFileContent(std::vector< FileContent* >& result)
+    {
+        WordsResponse::getFileContent(result);
     }
 
     std::shared_ptr< std::wstring > RangeTextResponse::getText() const
@@ -17318,6 +19237,10 @@ namespace aspose::words::cloud::models {
                 replaceRangeTextTypeFromString(json["TextType"].get< std::string >())
             );
         }
+    }
+
+    void ReplaceRange::getFileContent(std::vector< FileContent* >& result)
+    {
     }
 
     std::shared_ptr< std::wstring > ReplaceRange::getText() const
@@ -17383,6 +19306,10 @@ namespace aspose::words::cloud::models {
                 replaceRangeDtoTextTypeFromString(json["TextType"].get< std::string >())
             );
         }
+    }
+
+    void ReplaceRangeDto::getFileContent(std::vector< FileContent* >& result)
+    {
     }
 
     std::shared_ptr< std::wstring > ReplaceRangeDto::getText() const
@@ -17459,6 +19386,10 @@ namespace aspose::words::cloud::models {
                 convertUtf8( json["OldValue"].get< std::string >() )
             );
         }
+    }
+
+    void ReplaceTextParameters::getFileContent(std::vector< FileContent* >& result)
+    {
     }
 
     std::shared_ptr< bool > ReplaceTextParameters::getIsMatchCase() const
@@ -17545,6 +19476,17 @@ namespace aspose::words::cloud::models {
                 json["Matches"].get< int32_t >()
             );
         }
+    }
+
+    void ReplaceTextResponse::getFileContent(std::vector< FileContent* >& result)
+    {
+        WordsResponse::getFileContent(result);
+        if (getDocumentLink() != nullptr)
+        {
+            getDocumentLink()->getFileContent(result);
+        }
+
+
     }
 
     std::shared_ptr< aspose::words::cloud::models::FileLink > ReplaceTextResponse::getDocumentLink() const
@@ -17669,6 +19611,28 @@ namespace aspose::words::cloud::models {
         }
     }
 
+    void ReportEngineSettings::getFileContent(std::vector< FileContent* >& result)
+    {
+        if (getCsvDataLoadOptions() != nullptr)
+        {
+            getCsvDataLoadOptions()->getFileContent(result);
+        }
+
+
+
+        if (getJsonDataLoadOptions() != nullptr)
+        {
+            getJsonDataLoadOptions()->getFileContent(result);
+        }
+
+
+        if (getXmlDataLoadOptions() != nullptr)
+        {
+            getXmlDataLoadOptions()->getFileContent(result);
+        }
+
+    }
+
     std::shared_ptr< aspose::words::cloud::models::CsvDataLoadOptions > ReportEngineSettings::getCsvDataLoadOptions() const
     {
         return this->m_CsvDataLoadOptions;
@@ -17758,6 +19722,16 @@ namespace aspose::words::cloud::models {
         }
     }
 
+    void RevisionsModificationResponse::getFileContent(std::vector< FileContent* >& result)
+    {
+        WordsResponse::getFileContent(result);
+        if (getResult() != nullptr)
+        {
+            getResult()->getFileContent(result);
+        }
+
+    }
+
     std::shared_ptr< aspose::words::cloud::models::ModificationOperationResult > RevisionsModificationResponse::getResult() const
     {
         return this->m_Result;
@@ -17825,6 +19799,11 @@ namespace aspose::words::cloud::models {
         }
     }
 
+    void RtfSaveOptionsData::getFileContent(std::vector< FileContent* >& result)
+    {
+        SaveOptionsData::getFileContent(result);
+    }
+
     std::shared_ptr< bool > RtfSaveOptionsData::getExportCompactSize() const
     {
         return this->m_ExportCompactSize;
@@ -17890,6 +19869,11 @@ namespace aspose::words::cloud::models {
         RunLink::fromJson(jsonIfc);
     }
 
+    void Run::getFileContent(std::vector< FileContent* >& result)
+    {
+        RunLink::getFileContent(result);
+    }
+
 
 
 
@@ -17912,6 +19896,10 @@ namespace aspose::words::cloud::models {
                 convertUtf8( json["Text"].get< std::string >() )
             );
         }
+    }
+
+    void RunBase::getFileContent(std::vector< FileContent* >& result)
+    {
     }
 
     std::shared_ptr< std::wstring > RunBase::getText() const
@@ -17939,6 +19927,11 @@ namespace aspose::words::cloud::models {
         RunBase::fromJson(jsonIfc);
     }
 
+    void RunInsert::getFileContent(std::vector< FileContent* >& result)
+    {
+        RunBase::getFileContent(result);
+    }
+
 
 
 
@@ -17963,6 +19956,11 @@ namespace aspose::words::cloud::models {
                 convertUtf8( json["Text"].get< std::string >() )
             );
         }
+    }
+
+    void RunLink::getFileContent(std::vector< FileContent* >& result)
+    {
+        NodeLink::getFileContent(result);
     }
 
     std::shared_ptr< std::wstring > RunLink::getText() const
@@ -17997,6 +19995,16 @@ namespace aspose::words::cloud::models {
             this->m_Run = std::make_shared< aspose::words::cloud::models::Run >();
             this->m_Run->fromJson(&json["Run"]);
         }
+    }
+
+    void RunResponse::getFileContent(std::vector< FileContent* >& result)
+    {
+        WordsResponse::getFileContent(result);
+        if (getRun() != nullptr)
+        {
+            getRun()->getFileContent(result);
+        }
+
     }
 
     std::shared_ptr< aspose::words::cloud::models::Run > RunResponse::getRun() const
@@ -18038,6 +20046,19 @@ namespace aspose::words::cloud::models {
         }
     }
 
+    void Runs::getFileContent(std::vector< FileContent* >& result)
+    {
+        LinkElement::getFileContent(result);
+        if (getList() != nullptr)
+        {
+            for (auto& element : *getList())
+            {
+                element->getFileContent(result);
+            }
+        }
+
+    }
+
     std::shared_ptr< std::vector<std::shared_ptr<aspose::words::cloud::models::Run>> > Runs::getList() const
     {
         return this->m_List;
@@ -18072,6 +20093,16 @@ namespace aspose::words::cloud::models {
         }
     }
 
+    void RunsResponse::getFileContent(std::vector< FileContent* >& result)
+    {
+        WordsResponse::getFileContent(result);
+        if (getRuns() != nullptr)
+        {
+            getRuns()->getFileContent(result);
+        }
+
+    }
+
     std::shared_ptr< aspose::words::cloud::models::Runs > RunsResponse::getRuns() const
     {
         return this->m_Runs;
@@ -18095,6 +20126,11 @@ namespace aspose::words::cloud::models {
     void RunUpdate::fromJson(const void* jsonIfc)
     {
         RunBase::fromJson(jsonIfc);
+    }
+
+    void RunUpdate::getFileContent(std::vector< FileContent* >& result)
+    {
+        RunBase::getFileContent(result);
     }
 
 
@@ -18289,6 +20325,28 @@ namespace aspose::words::cloud::models {
         }
     }
 
+    void SaveOptionsData::getFileContent(std::vector< FileContent* >& result)
+    {
+        if (getCustomTimeZoneInfoData() != nullptr)
+        {
+            getCustomTimeZoneInfoData()->getFileContent(result);
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    }
+
     std::shared_ptr< bool > SaveOptionsData::getAllowEmbeddingPostScriptFonts() const
     {
         return this->m_AllowEmbeddingPostScriptFonts;
@@ -18473,6 +20531,16 @@ namespace aspose::words::cloud::models {
         }
     }
 
+    void SaveResponse::getFileContent(std::vector< FileContent* >& result)
+    {
+        WordsResponse::getFileContent(result);
+        if (getSaveResult() != nullptr)
+        {
+            getSaveResult()->getFileContent(result);
+        }
+
+    }
+
     std::shared_ptr< aspose::words::cloud::models::SaveResult > SaveResponse::getSaveResult() const
     {
         return this->m_SaveResult;
@@ -18522,6 +20590,28 @@ namespace aspose::words::cloud::models {
             this->m_SourceDocument = std::make_shared< aspose::words::cloud::models::FileLink >();
             this->m_SourceDocument->fromJson(&json["SourceDocument"]);
         }
+    }
+
+    void SaveResult::getFileContent(std::vector< FileContent* >& result)
+    {
+        if (getAdditionalItems() != nullptr)
+        {
+            for (auto& element : *getAdditionalItems())
+            {
+                element->getFileContent(result);
+            }
+        }
+
+        if (getDestDocument() != nullptr)
+        {
+            getDestDocument()->getFileContent(result);
+        }
+
+        if (getSourceDocument() != nullptr)
+        {
+            getSourceDocument()->getFileContent(result);
+        }
+
     }
 
     std::shared_ptr< std::vector<std::shared_ptr<aspose::words::cloud::models::FileLink>> > SaveResult::getAdditionalItems() const
@@ -18588,6 +20678,16 @@ namespace aspose::words::cloud::models {
         }
     }
 
+    void SearchResponse::getFileContent(std::vector< FileContent* >& result)
+    {
+        WordsResponse::getFileContent(result);
+        if (getSearchResults() != nullptr)
+        {
+            getSearchResults()->getFileContent(result);
+        }
+
+    }
+
     std::shared_ptr< std::wstring > SearchResponse::getSearchingPattern() const
     {
         return this->m_SearchingPattern;
@@ -18638,6 +20738,20 @@ namespace aspose::words::cloud::models {
         }
     }
 
+    void SearchResult::getFileContent(std::vector< FileContent* >& result)
+    {
+        if (getRangeEnd() != nullptr)
+        {
+            getRangeEnd()->getFileContent(result);
+        }
+
+        if (getRangeStart() != nullptr)
+        {
+            getRangeStart()->getFileContent(result);
+        }
+
+    }
+
     std::shared_ptr< aspose::words::cloud::models::DocumentPosition > SearchResult::getRangeEnd() const
     {
         return this->m_RangeEnd;
@@ -18686,6 +20800,19 @@ namespace aspose::words::cloud::models {
                 this->m_ResultsList->emplace_back(std::make_shared< aspose::words::cloud::models::SearchResult >())->fromJson(&element);
             }
         }
+    }
+
+    void SearchResultsCollection::getFileContent(std::vector< FileContent* >& result)
+    {
+        LinkElement::getFileContent(result);
+        if (getResultsList() != nullptr)
+        {
+            for (auto& element : *getResultsList())
+            {
+                element->getFileContent(result);
+            }
+        }
+
     }
 
     std::shared_ptr< std::vector<std::shared_ptr<aspose::words::cloud::models::SearchResult>> > SearchResultsCollection::getResultsList() const
@@ -18753,6 +20880,39 @@ namespace aspose::words::cloud::models {
             this->m_Tables = std::make_shared< aspose::words::cloud::models::LinkElement >();
             this->m_Tables->fromJson(&json["Tables"]);
         }
+    }
+
+    void Section::getFileContent(std::vector< FileContent* >& result)
+    {
+        LinkElement::getFileContent(result);
+        if (getChildNodes() != nullptr)
+        {
+            for (auto& element : *getChildNodes())
+            {
+                element->getFileContent(result);
+            }
+        }
+
+        if (getHeaderFooters() != nullptr)
+        {
+            getHeaderFooters()->getFileContent(result);
+        }
+
+        if (getPageSetup() != nullptr)
+        {
+            getPageSetup()->getFileContent(result);
+        }
+
+        if (getParagraphs() != nullptr)
+        {
+            getParagraphs()->getFileContent(result);
+        }
+
+        if (getTables() != nullptr)
+        {
+            getTables()->getFileContent(result);
+        }
+
     }
 
     std::shared_ptr< std::vector<std::shared_ptr<aspose::words::cloud::models::NodeLink>> > Section::getChildNodes() const
@@ -18824,6 +20984,11 @@ namespace aspose::words::cloud::models {
         NodeLink::fromJson(jsonIfc);
     }
 
+    void SectionLink::getFileContent(std::vector< FileContent* >& result)
+    {
+        NodeLink::getFileContent(result);
+    }
+
 
 
 
@@ -18852,6 +21017,19 @@ namespace aspose::words::cloud::models {
                 this->m_SectionLinkList->emplace_back(std::make_shared< aspose::words::cloud::models::SectionLink >())->fromJson(&element);
             }
         }
+    }
+
+    void SectionLinkCollection::getFileContent(std::vector< FileContent* >& result)
+    {
+        LinkElement::getFileContent(result);
+        if (getSectionLinkList() != nullptr)
+        {
+            for (auto& element : *getSectionLinkList())
+            {
+                element->getFileContent(result);
+            }
+        }
+
     }
 
     std::shared_ptr< std::vector<std::shared_ptr<aspose::words::cloud::models::SectionLink>> > SectionLinkCollection::getSectionLinkList() const
@@ -18888,6 +21066,16 @@ namespace aspose::words::cloud::models {
         }
     }
 
+    void SectionLinkCollectionResponse::getFileContent(std::vector< FileContent* >& result)
+    {
+        WordsResponse::getFileContent(result);
+        if (getSections() != nullptr)
+        {
+            getSections()->getFileContent(result);
+        }
+
+    }
+
     std::shared_ptr< aspose::words::cloud::models::SectionLinkCollection > SectionLinkCollectionResponse::getSections() const
     {
         return this->m_Sections;
@@ -18922,6 +21110,16 @@ namespace aspose::words::cloud::models {
         }
     }
 
+    void SectionPageSetupResponse::getFileContent(std::vector< FileContent* >& result)
+    {
+        WordsResponse::getFileContent(result);
+        if (getPageSetup() != nullptr)
+        {
+            getPageSetup()->getFileContent(result);
+        }
+
+    }
+
     std::shared_ptr< aspose::words::cloud::models::PageSetup > SectionPageSetupResponse::getPageSetup() const
     {
         return this->m_PageSetup;
@@ -18954,6 +21152,16 @@ namespace aspose::words::cloud::models {
             this->m_Section = std::make_shared< aspose::words::cloud::models::Section >();
             this->m_Section->fromJson(&json["Section"]);
         }
+    }
+
+    void SectionResponse::getFileContent(std::vector< FileContent* >& result)
+    {
+        WordsResponse::getFileContent(result);
+        if (getSection() != nullptr)
+        {
+            getSection()->getFileContent(result);
+        }
+
     }
 
     std::shared_ptr< aspose::words::cloud::models::Section > SectionResponse::getSection() const
@@ -19120,6 +21328,21 @@ namespace aspose::words::cloud::models {
         }
     }
 
+    void Shading::getFileContent(std::vector< FileContent* >& result)
+    {
+        if (getBackgroundPatternColor() != nullptr)
+        {
+            getBackgroundPatternColor()->getFileContent(result);
+        }
+
+        if (getForegroundPatternColor() != nullptr)
+        {
+            getForegroundPatternColor()->getFileContent(result);
+        }
+
+
+    }
+
     std::shared_ptr< aspose::words::cloud::models::XmlColor > Shading::getBackgroundPatternColor() const
     {
         return this->m_BackgroundPatternColor;
@@ -19176,6 +21399,16 @@ namespace aspose::words::cloud::models {
         }
     }
 
+    void SplitDocumentResponse::getFileContent(std::vector< FileContent* >& result)
+    {
+        WordsResponse::getFileContent(result);
+        if (getSplitResult() != nullptr)
+        {
+            getSplitResult()->getFileContent(result);
+        }
+
+    }
+
     std::shared_ptr< aspose::words::cloud::models::SplitDocumentResult > SplitDocumentResponse::getSplitResult() const
     {
         return this->m_SplitResult;
@@ -19225,6 +21458,28 @@ namespace aspose::words::cloud::models {
             this->m_ZippedPages = std::make_shared< aspose::words::cloud::models::FileLink >();
             this->m_ZippedPages->fromJson(&json["ZippedPages"]);
         }
+    }
+
+    void SplitDocumentResult::getFileContent(std::vector< FileContent* >& result)
+    {
+        if (getPages() != nullptr)
+        {
+            for (auto& element : *getPages())
+            {
+                element->getFileContent(result);
+            }
+        }
+
+        if (getSourceDocument() != nullptr)
+        {
+            getSourceDocument()->getFileContent(result);
+        }
+
+        if (getZippedPages() != nullptr)
+        {
+            getZippedPages()->getFileContent(result);
+        }
+
     }
 
     std::shared_ptr< std::vector<std::shared_ptr<aspose::words::cloud::models::FileLink>> > SplitDocumentResult::getPages() const
@@ -19288,6 +21543,21 @@ namespace aspose::words::cloud::models {
             this->m_StatData = std::make_shared< aspose::words::cloud::models::DocumentStatData >();
             this->m_StatData->fromJson(&json["StatData"]);
         }
+    }
+
+    void StatDataResponse::getFileContent(std::vector< FileContent* >& result)
+    {
+        WordsResponse::getFileContent(result);
+        if (getDocumentLink() != nullptr)
+        {
+            getDocumentLink()->getFileContent(result);
+        }
+
+        if (getStatData() != nullptr)
+        {
+            getStatData()->getFileContent(result);
+        }
+
     }
 
     std::shared_ptr< aspose::words::cloud::models::FileLink > StatDataResponse::getDocumentLink() const
@@ -19364,6 +21634,10 @@ namespace aspose::words::cloud::models {
                 json["Size"].get< int32_t >()
             );
         }
+    }
+
+    void StorageFile::getFileContent(std::vector< FileContent* >& result)
+    {
     }
 
     std::shared_ptr< bool > StorageFile::getIsFolder() const
@@ -19445,6 +21719,18 @@ namespace aspose::words::cloud::models {
                 this->m_ChildNodes->emplace_back(std::make_shared< aspose::words::cloud::models::NodeLink >())->fromJson(&element);
             }
         }
+    }
+
+    void StoryChildNodes::getFileContent(std::vector< FileContent* >& result)
+    {
+        if (getChildNodes() != nullptr)
+        {
+            for (auto& element : *getChildNodes())
+            {
+                element->getFileContent(result);
+            }
+        }
+
     }
 
     std::shared_ptr< std::vector<std::shared_ptr<aspose::words::cloud::models::NodeLink>> > StoryChildNodes::getChildNodes() const
@@ -20348,6 +22634,23 @@ namespace aspose::words::cloud::models {
         }
     }
 
+    void Style::getFileContent(std::vector< FileContent* >& result)
+    {
+        LinkElement::getFileContent(result);
+        if (getFont() != nullptr)
+        {
+            getFont()->getFileContent(result);
+        }
+
+
+
+
+
+
+
+
+    }
+
     std::shared_ptr< std::vector<std::shared_ptr<std::wstring>> > Style::getAliases() const
     {
         return this->m_Aliases;
@@ -20491,6 +22794,10 @@ namespace aspose::words::cloud::models {
         }
     }
 
+    void StyleApply::getFileContent(std::vector< FileContent* >& result)
+    {
+    }
+
     std::shared_ptr< std::wstring > StyleApply::getStyleName() const
     {
         return this->m_StyleName;
@@ -20522,6 +22829,10 @@ namespace aspose::words::cloud::models {
                 convertUtf8( json["StyleName"].get< std::string >() )
             );
         }
+    }
+
+    void StyleCopy::getFileContent(std::vector< FileContent* >& result)
+    {
     }
 
     std::shared_ptr< std::wstring > StyleCopy::getStyleName() const
@@ -20582,6 +22893,10 @@ namespace aspose::words::cloud::models {
         }
     }
 
+    void StyleInsert::getFileContent(std::vector< FileContent* >& result)
+    {
+    }
+
     std::shared_ptr< std::wstring > StyleInsert::getStyleName() const
     {
         return this->m_StyleName;
@@ -20627,6 +22942,16 @@ namespace aspose::words::cloud::models {
         }
     }
 
+    void StyleResponse::getFileContent(std::vector< FileContent* >& result)
+    {
+        WordsResponse::getFileContent(result);
+        if (getStyle() != nullptr)
+        {
+            getStyle()->getFileContent(result);
+        }
+
+    }
+
     std::shared_ptr< aspose::words::cloud::models::Style > StyleResponse::getStyle() const
     {
         return this->m_Style;
@@ -20664,6 +22989,19 @@ namespace aspose::words::cloud::models {
                 this->m_Styles->emplace_back(std::make_shared< aspose::words::cloud::models::Style >())->fromJson(&element);
             }
         }
+    }
+
+    void StylesResponse::getFileContent(std::vector< FileContent* >& result)
+    {
+        WordsResponse::getFileContent(result);
+        if (getStyles() != nullptr)
+        {
+            for (auto& element : *getStyles())
+            {
+                element->getFileContent(result);
+            }
+        }
+
     }
 
     std::shared_ptr< std::vector<std::shared_ptr<aspose::words::cloud::models::Style>> > StylesResponse::getStyles() const
@@ -20721,6 +23059,10 @@ namespace aspose::words::cloud::models {
                 convertUtf8( json["NextParagraphStyleName"].get< std::string >() )
             );
         }
+    }
+
+    void StyleUpdate::getFileContent(std::vector< FileContent* >& result)
+    {
     }
 
     std::shared_ptr< std::wstring > StyleUpdate::getBaseStyleName() const
@@ -20854,6 +23196,11 @@ namespace aspose::words::cloud::models {
         }
     }
 
+    void SvgSaveOptionsData::getFileContent(std::vector< FileContent* >& result)
+    {
+        FixedPageSaveOptionsData::getFileContent(result);
+    }
+
     std::shared_ptr< bool > SvgSaveOptionsData::getExportEmbeddedImages() const
     {
         return this->m_ExportEmbeddedImages;
@@ -20962,6 +23309,24 @@ namespace aspose::words::cloud::models {
         }
     }
 
+    void Table::getFileContent(std::vector< FileContent* >& result)
+    {
+        NodeLink::getFileContent(result);
+        if (getTableProperties() != nullptr)
+        {
+            getTableProperties()->getFileContent(result);
+        }
+
+        if (getTableRowList() != nullptr)
+        {
+            for (auto& element : *getTableRowList())
+            {
+                element->getFileContent(result);
+            }
+        }
+
+    }
+
     std::shared_ptr< aspose::words::cloud::models::TableProperties > Table::getTableProperties() const
     {
         return this->m_TableProperties;
@@ -21010,6 +23375,19 @@ namespace aspose::words::cloud::models {
                 this->m_ChildNodes->emplace_back(std::make_shared< aspose::words::cloud::models::NodeLink >())->fromJson(&element);
             }
         }
+    }
+
+    void TableCell::getFileContent(std::vector< FileContent* >& result)
+    {
+        NodeLink::getFileContent(result);
+        if (getChildNodes() != nullptr)
+        {
+            for (auto& element : *getChildNodes())
+            {
+                element->getFileContent(result);
+            }
+        }
+
     }
 
     std::shared_ptr< std::vector<std::shared_ptr<aspose::words::cloud::models::NodeLink>> > TableCell::getChildNodes() const
@@ -21203,6 +23581,22 @@ namespace aspose::words::cloud::models {
         }
     }
 
+    void TableCellFormat::getFileContent(std::vector< FileContent* >& result)
+    {
+        LinkElement::getFileContent(result);
+        if (getPreferredWidth() != nullptr)
+        {
+            getPreferredWidth()->getFileContent(result);
+        }
+
+
+
+
+
+
+
+    }
+
     std::shared_ptr< double > TableCellFormat::getBottomPadding() const
     {
         return this->m_BottomPadding;
@@ -21347,6 +23741,10 @@ namespace aspose::words::cloud::models {
     {
     }
 
+    void TableCellFormatDto::getFileContent(std::vector< FileContent* >& result)
+    {
+    }
+
 
 
 
@@ -21370,6 +23768,16 @@ namespace aspose::words::cloud::models {
             this->m_CellFormat = std::make_shared< aspose::words::cloud::models::TableCellFormat >();
             this->m_CellFormat->fromJson(&json["CellFormat"]);
         }
+    }
+
+    void TableCellFormatResponse::getFileContent(std::vector< FileContent* >& result)
+    {
+        WordsResponse::getFileContent(result);
+        if (getCellFormat() != nullptr)
+        {
+            getCellFormat()->getFileContent(result);
+        }
+
     }
 
     std::shared_ptr< aspose::words::cloud::models::TableCellFormat > TableCellFormatResponse::getCellFormat() const
@@ -21405,6 +23813,10 @@ namespace aspose::words::cloud::models {
         }
     }
 
+    void TableCellInsert::getFileContent(std::vector< FileContent* >& result)
+    {
+    }
+
     std::shared_ptr< int32_t > TableCellInsert::getInsertAfter() const
     {
         return this->m_InsertAfter;
@@ -21436,6 +23848,10 @@ namespace aspose::words::cloud::models {
                 json["InsertAfter"].get< int32_t >()
             );
         }
+    }
+
+    void TableCellInsertDto::getFileContent(std::vector< FileContent* >& result)
+    {
     }
 
     std::shared_ptr< int32_t > TableCellInsertDto::getInsertAfter() const
@@ -21470,6 +23886,16 @@ namespace aspose::words::cloud::models {
             this->m_Cell = std::make_shared< aspose::words::cloud::models::TableCell >();
             this->m_Cell->fromJson(&json["Cell"]);
         }
+    }
+
+    void TableCellResponse::getFileContent(std::vector< FileContent* >& result)
+    {
+        WordsResponse::getFileContent(result);
+        if (getCell() != nullptr)
+        {
+            getCell()->getFileContent(result);
+        }
+
     }
 
     std::shared_ptr< aspose::words::cloud::models::TableCell > TableCellResponse::getCell() const
@@ -21518,6 +23944,16 @@ namespace aspose::words::cloud::models {
                 json["RowsCount"].get< int32_t >()
             );
         }
+    }
+
+    void TableInsert::getFileContent(std::vector< FileContent* >& result)
+    {
+        if (getPosition() != nullptr)
+        {
+            getPosition()->getFileContent(result);
+        }
+
+
     }
 
     std::shared_ptr< int32_t > TableInsert::getColumnsCount() const
@@ -21590,6 +24026,16 @@ namespace aspose::words::cloud::models {
         }
     }
 
+    void TableInsertDto::getFileContent(std::vector< FileContent* >& result)
+    {
+        if (getPosition() != nullptr)
+        {
+            getPosition()->getFileContent(result);
+        }
+
+
+    }
+
     std::shared_ptr< int32_t > TableInsertDto::getColumnsCount() const
     {
         return this->m_ColumnsCount;
@@ -21637,6 +24083,11 @@ namespace aspose::words::cloud::models {
         NodeLink::fromJson(jsonIfc);
     }
 
+    void TableLink::getFileContent(std::vector< FileContent* >& result)
+    {
+        NodeLink::getFileContent(result);
+    }
+
 
 
 
@@ -21665,6 +24116,19 @@ namespace aspose::words::cloud::models {
                 this->m_TableLinkList->emplace_back(std::make_shared< aspose::words::cloud::models::TableLink >())->fromJson(&element);
             }
         }
+    }
+
+    void TableLinkCollection::getFileContent(std::vector< FileContent* >& result)
+    {
+        LinkElement::getFileContent(result);
+        if (getTableLinkList() != nullptr)
+        {
+            for (auto& element : *getTableLinkList())
+            {
+                element->getFileContent(result);
+            }
+        }
+
     }
 
     std::shared_ptr< std::vector<std::shared_ptr<aspose::words::cloud::models::TableLink>> > TableLinkCollection::getTableLinkList() const
@@ -21699,6 +24163,16 @@ namespace aspose::words::cloud::models {
             this->m_Tables = std::make_shared< aspose::words::cloud::models::TableLinkCollection >();
             this->m_Tables->fromJson(&json["Tables"]);
         }
+    }
+
+    void TableLinkCollectionResponse::getFileContent(std::vector< FileContent* >& result)
+    {
+        WordsResponse::getFileContent(result);
+        if (getTables() != nullptr)
+        {
+            getTables()->getFileContent(result);
+        }
+
     }
 
     std::shared_ptr< aspose::words::cloud::models::TableLinkCollection > TableLinkCollectionResponse::getTables() const
@@ -22664,6 +25138,22 @@ namespace aspose::words::cloud::models {
         }
     }
 
+    void TableProperties::getFileContent(std::vector< FileContent* >& result)
+    {
+        LinkElement::getFileContent(result);
+        if (getPreferredWidth() != nullptr)
+        {
+            getPreferredWidth()->getFileContent(result);
+        }
+
+
+
+
+
+
+
+    }
+
     std::shared_ptr< aspose::words::cloud::models::TableProperties::Alignment > TableProperties::getAlignment() const
     {
         return this->m_Alignment;
@@ -22830,6 +25320,10 @@ namespace aspose::words::cloud::models {
     {
     }
 
+    void TablePropertiesDto::getFileContent(std::vector< FileContent* >& result)
+    {
+    }
+
 
 
 
@@ -22853,6 +25347,16 @@ namespace aspose::words::cloud::models {
             this->m_Properties = std::make_shared< aspose::words::cloud::models::TableProperties >();
             this->m_Properties->fromJson(&json["Properties"]);
         }
+    }
+
+    void TablePropertiesResponse::getFileContent(std::vector< FileContent* >& result)
+    {
+        WordsResponse::getFileContent(result);
+        if (getProperties() != nullptr)
+        {
+            getProperties()->getFileContent(result);
+        }
+
     }
 
     std::shared_ptr< aspose::words::cloud::models::TableProperties > TablePropertiesResponse::getProperties() const
@@ -22887,6 +25391,16 @@ namespace aspose::words::cloud::models {
             this->m_Table = std::make_shared< aspose::words::cloud::models::Table >();
             this->m_Table->fromJson(&json["Table"]);
         }
+    }
+
+    void TableResponse::getFileContent(std::vector< FileContent* >& result)
+    {
+        WordsResponse::getFileContent(result);
+        if (getTable() != nullptr)
+        {
+            getTable()->getFileContent(result);
+        }
+
     }
 
     std::shared_ptr< aspose::words::cloud::models::Table > TableResponse::getTable() const
@@ -22933,6 +25447,24 @@ namespace aspose::words::cloud::models {
                 this->m_TableCellList->emplace_back(std::make_shared< aspose::words::cloud::models::TableCell >())->fromJson(&element);
             }
         }
+    }
+
+    void TableRow::getFileContent(std::vector< FileContent* >& result)
+    {
+        NodeLink::getFileContent(result);
+        if (getRowFormat() != nullptr)
+        {
+            getRowFormat()->getFileContent(result);
+        }
+
+        if (getTableCellList() != nullptr)
+        {
+            for (auto& element : *getTableCellList())
+            {
+                element->getFileContent(result);
+            }
+        }
+
     }
 
     std::shared_ptr< aspose::words::cloud::models::TableRowFormat > TableRow::getRowFormat() const
@@ -23020,6 +25552,11 @@ namespace aspose::words::cloud::models {
         }
     }
 
+    void TableRowFormat::getFileContent(std::vector< FileContent* >& result)
+    {
+        LinkElement::getFileContent(result);
+    }
+
     std::shared_ptr< bool > TableRowFormat::getAllowBreakAcrossPages() const
     {
         return this->m_AllowBreakAcrossPages;
@@ -23076,6 +25613,10 @@ namespace aspose::words::cloud::models {
     {
     }
 
+    void TableRowFormatDto::getFileContent(std::vector< FileContent* >& result)
+    {
+    }
+
 
 
 
@@ -23099,6 +25640,16 @@ namespace aspose::words::cloud::models {
             this->m_RowFormat = std::make_shared< aspose::words::cloud::models::TableRowFormat >();
             this->m_RowFormat->fromJson(&json["RowFormat"]);
         }
+    }
+
+    void TableRowFormatResponse::getFileContent(std::vector< FileContent* >& result)
+    {
+        WordsResponse::getFileContent(result);
+        if (getRowFormat() != nullptr)
+        {
+            getRowFormat()->getFileContent(result);
+        }
+
     }
 
     std::shared_ptr< aspose::words::cloud::models::TableRowFormat > TableRowFormatResponse::getRowFormat() const
@@ -23140,6 +25691,10 @@ namespace aspose::words::cloud::models {
                 json["InsertAfter"].get< int32_t >()
             );
         }
+    }
+
+    void TableRowInsert::getFileContent(std::vector< FileContent* >& result)
+    {
     }
 
     std::shared_ptr< int32_t > TableRowInsert::getColumnsCount() const
@@ -23194,6 +25749,10 @@ namespace aspose::words::cloud::models {
         }
     }
 
+    void TableRowInsertDto::getFileContent(std::vector< FileContent* >& result)
+    {
+    }
+
     std::shared_ptr< int32_t > TableRowInsertDto::getColumnsCount() const
     {
         return this->m_ColumnsCount;
@@ -23239,6 +25798,16 @@ namespace aspose::words::cloud::models {
         }
     }
 
+    void TableRowResponse::getFileContent(std::vector< FileContent* >& result)
+    {
+        WordsResponse::getFileContent(result);
+        if (getRow() != nullptr)
+        {
+            getRow()->getFileContent(result);
+        }
+
+    }
+
     std::shared_ptr< aspose::words::cloud::models::TableRow > TableRowResponse::getRow() const
     {
         return this->m_Row;
@@ -23272,6 +25841,11 @@ namespace aspose::words::cloud::models {
                 json["IsClear"].get< bool >()
             );
         }
+    }
+
+    void TabStop::getFileContent(std::vector< FileContent* >& result)
+    {
+        TabStopBase::getFileContent(result);
     }
 
     std::shared_ptr< bool > TabStop::getIsClear() const
@@ -23368,6 +25942,10 @@ namespace aspose::words::cloud::models {
         }
     }
 
+    void TabStopBase::getFileContent(std::vector< FileContent* >& result)
+    {
+    }
+
     std::shared_ptr< aspose::words::cloud::models::TabStopBase::Alignment > TabStopBase::getAlignment() const
     {
         return this->m_Alignment;
@@ -23415,6 +25993,11 @@ namespace aspose::words::cloud::models {
         TabStopBase::fromJson(jsonIfc);
     }
 
+    void TabStopInsert::getFileContent(std::vector< FileContent* >& result)
+    {
+        TabStopBase::getFileContent(result);
+    }
+
 
 
 
@@ -23443,6 +26026,19 @@ namespace aspose::words::cloud::models {
                 this->m_TabStops->emplace_back(std::make_shared< aspose::words::cloud::models::TabStop >())->fromJson(&element);
             }
         }
+    }
+
+    void TabStopsResponse::getFileContent(std::vector< FileContent* >& result)
+    {
+        WordsResponse::getFileContent(result);
+        if (getTabStops() != nullptr)
+        {
+            for (auto& element : *getTabStops())
+            {
+                element->getFileContent(result);
+            }
+        }
+
     }
 
     std::shared_ptr< std::vector<std::shared_ptr<aspose::words::cloud::models::TabStop>> > TabStopsResponse::getTabStops() const
@@ -23510,6 +26106,11 @@ namespace aspose::words::cloud::models {
                 json["SimplifyListLabels"].get< bool >()
             );
         }
+    }
+
+    void TextSaveOptionsData::getFileContent(std::vector< FileContent* >& result)
+    {
+        TxtSaveOptionsBaseData::getFileContent(result);
     }
 
     std::shared_ptr< bool > TextSaveOptionsData::getAddBidiMarks() const
@@ -23644,6 +26245,11 @@ namespace aspose::words::cloud::models {
         }
     }
 
+    void TiffSaveOptionsData::getFileContent(std::vector< FileContent* >& result)
+    {
+        ImageSaveOptionsData::getFileContent(result);
+    }
+
     std::shared_ptr< std::wstring > TiffSaveOptionsData::getSaveFormat() const
     {
         return this->m_SaveFormat;
@@ -23728,6 +26334,10 @@ namespace aspose::words::cloud::models {
                 convertUtf8( json["StandardDisplayName"].get< std::string >() )
             );
         }
+    }
+
+    void TimeZoneInfoData::getFileContent(std::vector< FileContent* >& result)
+    {
     }
 
     std::shared_ptr< std::wstring > TimeZoneInfoData::getBaseUtcOffset() const
@@ -23837,6 +26447,11 @@ namespace aspose::words::cloud::models {
         }
     }
 
+    void TxtSaveOptionsBaseData::getFileContent(std::vector< FileContent* >& result)
+    {
+        SaveOptionsData::getFileContent(result);
+    }
+
     std::shared_ptr< std::wstring > TxtSaveOptionsBaseData::getEncoding() const
     {
         return this->m_Encoding;
@@ -23919,6 +26534,10 @@ namespace aspose::words::cloud::models {
         }
     }
 
+    void UserInformation::getFileContent(std::vector< FileContent* >& result)
+    {
+    }
+
     std::shared_ptr< std::wstring > UserInformation::getAddress() const
     {
         return this->m_Address;
@@ -23982,6 +26601,10 @@ namespace aspose::words::cloud::models {
         }
     }
 
+    void WatermarkText::getFileContent(std::vector< FileContent* >& result)
+    {
+    }
+
     std::shared_ptr< double > WatermarkText::getRotationAngle() const
     {
         return this->m_RotationAngle;
@@ -24036,6 +26659,11 @@ namespace aspose::words::cloud::models {
         }
     }
 
+    void WordMLSaveOptionsData::getFileContent(std::vector< FileContent* >& result)
+    {
+        SaveOptionsData::getFileContent(result);
+    }
+
     std::shared_ptr< bool > WordMLSaveOptionsData::getPrettyFormat() const
     {
         return this->m_PrettyFormat;
@@ -24077,6 +26705,16 @@ namespace aspose::words::cloud::models {
         }
     }
 
+    void WordsApiErrorResponse::getFileContent(std::vector< FileContent* >& result)
+    {
+        WordsResponse::getFileContent(result);
+        if (getError() != nullptr)
+        {
+            getError()->getFileContent(result);
+        }
+
+    }
+
     std::shared_ptr< aspose::words::cloud::models::ApiError > WordsApiErrorResponse::getError() const
     {
         return this->m_Error;
@@ -24102,6 +26740,11 @@ namespace aspose::words::cloud::models {
         Link::fromJson(jsonIfc);
     }
 
+    void WordsApiLink::getFileContent(std::vector< FileContent* >& result)
+    {
+        Link::getFileContent(result);
+    }
+
 
 
 
@@ -24124,6 +26767,10 @@ namespace aspose::words::cloud::models {
                 convertUtf8( json["RequestId"].get< std::string >() )
             );
         }
+    }
+
+    void WordsResponse::getFileContent(std::vector< FileContent* >& result)
+    {
     }
 
     std::shared_ptr< std::wstring > WordsResponse::getRequestId() const
@@ -24175,6 +26822,11 @@ namespace aspose::words::cloud::models {
                 convertUtf8( json["SaveFormat"].get< std::string >() )
             );
         }
+    }
+
+    void XamlFixedSaveOptionsData::getFileContent(std::vector< FileContent* >& result)
+    {
+        FixedPageSaveOptionsData::getFileContent(result);
     }
 
     std::shared_ptr< std::wstring > XamlFixedSaveOptionsData::getResourcesFolder() const
@@ -24230,6 +26882,11 @@ namespace aspose::words::cloud::models {
         }
     }
 
+    void XamlFlowPackSaveOptionsData::getFileContent(std::vector< FileContent* >& result)
+    {
+        XamlFlowSaveOptionsData::getFileContent(result);
+    }
+
     std::shared_ptr< std::wstring > XamlFlowPackSaveOptionsData::getSaveFormat() const
     {
         return this->m_SaveFormat;
@@ -24275,6 +26932,11 @@ namespace aspose::words::cloud::models {
                 convertUtf8( json["SaveFormat"].get< std::string >() )
             );
         }
+    }
+
+    void XamlFlowSaveOptionsData::getFileContent(std::vector< FileContent* >& result)
+    {
+        SaveOptionsData::getFileContent(result);
     }
 
     std::shared_ptr< std::wstring > XamlFlowSaveOptionsData::getImagesFolder() const
@@ -24336,6 +26998,10 @@ namespace aspose::words::cloud::models {
         }
     }
 
+    void XmlColor::getFileContent(std::vector< FileContent* >& result)
+    {
+    }
+
     std::shared_ptr< int32_t > XmlColor::getAlpha() const
     {
         return this->m_Alpha;
@@ -24378,6 +27044,10 @@ namespace aspose::words::cloud::models {
                 json["AlwaysGenerateRootObject"].get< bool >()
             );
         }
+    }
+
+    void XmlDataLoadOptions::getFileContent(std::vector< FileContent* >& result)
+    {
     }
 
     std::shared_ptr< bool > XmlDataLoadOptions::getAlwaysGenerateRootObject() const
@@ -24444,6 +27114,18 @@ namespace aspose::words::cloud::models {
                 json["UseBookFoldPrintingSettings"].get< bool >()
             );
         }
+    }
+
+    void XpsSaveOptionsData::getFileContent(std::vector< FileContent* >& result)
+    {
+        FixedPageSaveOptionsData::getFileContent(result);
+        if (getOutlineOptions() != nullptr)
+        {
+            getOutlineOptions()->getFileContent(result);
+        }
+
+
+
     }
 
     std::shared_ptr< int32_t > XpsSaveOptionsData::getBookmarksOutlineLevel() const
