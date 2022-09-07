@@ -17,6 +17,11 @@ Feel free to explore the [Developer's Guide](https://docs.aspose.cloud/display/w
 - Read & write access to Document Object Model.
 - Thread safe
 
+## Enhancements in Version 22.8
+
+- Added optional loadEncoding and password parameters for ConvertDocument API method.
+
+
 ## Enhancements in Version 22.7
 
 - Expand 'AppendDocument' API method to support 'ImageEntryList' for directly appending images to documents and another images.
