@@ -26,7 +26,7 @@
 #include "aspose_words_cloud/http_request_data.h"
 #include "aspose_words_cloud/api_client.h"
 #include "aspose_words_cloud/api_exception.h"
-#include "aspose_words_cloud/models/file_content.h"
+#include "aspose_words_cloud/models/file_reference.h"
 
 // USE THIRD PARTY LIBS ONLY IN CPP FILES!!!
 #include "../thirdparty/json.hpp"
@@ -251,10 +251,14 @@ namespace aspose::words::cloud {
         m_PartsCount++;
     }
 
-    void HttpRequestData::addFormDataParam(const models::FileContent* fileContent)
+    void HttpRequestData::addFormDataParam(const models::FileReference* fileContent)
     {
         if (!fileContent->getContent()->good()) {
             throw ApiException(400, L"Invalid input stream in operation request.");
+        }
+
+        if (fileContent->getSource() != aspose::words::cloud::models::FileSource::Request) {
+            return;
         }
 
         if (m_PartsCount == 0)
@@ -278,9 +282,7 @@ namespace aspose::words::cloud {
 
             m_Body.append("Content-Type: application/octet-stream\r\n");
             m_Body.append("Content-Disposition: form-data; name=\"");
-            ::utf8::utf16to8(fileContent->getId()->begin(), fileContent->getId()->end(), back_inserter(m_Body));
-            m_Body.append("\"; filename=\"");
-            ::utf8::utf16to8(fileContent->getFilename()->begin(), fileContent->getFilename()->end(), back_inserter(m_Body));
+            ::utf8::utf16to8(fileContent->getReference()->begin(), fileContent->getReference()->end(), back_inserter(m_Body));
             m_Body.append("\"\r\n\r\n");
 
             constexpr size_t BUFFER_SIZE = 1024 * 4;
@@ -304,9 +306,7 @@ namespace aspose::words::cloud {
 
             m_Body.append("Content-Type: application/octet-stream\r\n");
             m_Body.append("Content-Disposition: form-data; name=\"");
-            ::utf8::utf16to8(fileContent->getId()->begin(), fileContent->getId()->end(), back_inserter(m_Body));
-            m_Body.append("\"; filename=\"");
-            ::utf8::utf16to8(fileContent->getFilename()->begin(), fileContent->getFilename()->end(), back_inserter(m_Body));
+            ::utf8::utf16to8(fileContent->getReference()->begin(), fileContent->getReference()->end(), back_inserter(m_Body));
             m_Body.append("\"\r\n\r\n");
 
             constexpr size_t BUFFER_SIZE = 1024 * 4;

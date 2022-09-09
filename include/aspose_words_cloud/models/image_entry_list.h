@@ -25,23 +25,34 @@
 
 #pragma once
 #include "model_base.h"
-#include "base_image_entry_list.h"
+#include "base_entry_list.h"
 #include "image_entry.h"
 
 namespace aspose::words::cloud::models {
     /// <summary>
     /// Represents a list of images which will be appended to the original resource document or image.
     /// </summary>
-    class ImageEntryList : public BaseImageEntryList
+    class ImageEntryList : public BaseEntryList
     {
     public:
 
         ASPOSE_WORDS_CLOUD_EXPORT virtual ~ImageEntryList() = default;
         ASPOSE_WORDS_CLOUD_EXPORT virtual void toJson(void* jsonIfc) const override;
         ASPOSE_WORDS_CLOUD_EXPORT virtual void fromJson(const void* jsonIfc) override;
-        ASPOSE_WORDS_CLOUD_EXPORT virtual void getFileContent(std::vector< FileContent* >& result) override;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void getFileReferences(std::vector< FileReference* >& result) override;
 
         void abstractBaseEntryList() override {}
+
+        /// <summary>
+        /// Gets or sets a value indicating whether each image should be added to a new page in the document.
+        /// </summary>
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< bool > getAppendEachImageOnNewPage() const;
+
+        /// <summary>
+        /// Gets or sets a value indicating whether each image should be added to a new page in the document.
+        /// </summary>
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setAppendEachImageOnNewPage(std::shared_ptr< bool > value);
+
 
         /// <summary>
         /// Gets or sets the list of images.
@@ -55,6 +66,7 @@ namespace aspose::words::cloud::models {
 
 
     protected:
+        std::shared_ptr< bool > m_AppendEachImageOnNewPage;
         std::shared_ptr< std::vector<std::shared_ptr<aspose::words::cloud::models::ImageEntry>> > m_ImageEntries;
     };
 }

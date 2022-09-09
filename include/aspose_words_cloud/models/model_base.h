@@ -31,13 +31,13 @@
 #include "aspose_words_cloud/common.h"
 
 namespace aspose::words::cloud::models {
-    class FileContent;
+    class FileReference;
     class ModelBase
     {
     public:
         ASPOSE_WORDS_CLOUD_EXPORT virtual ~ModelBase() = default;
         ASPOSE_WORDS_CLOUD_EXPORT virtual void toJson(void* jsonIfc) const = 0;
         ASPOSE_WORDS_CLOUD_EXPORT virtual void fromJson(const void* jsonIfc) = 0;
-        ASPOSE_WORDS_CLOUD_EXPORT virtual void getFileContent(std::vector< FileContent* >& result) = 0;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void getFileReferences(std::vector< FileReference* >& result) = 0;
     };
 }

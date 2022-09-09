@@ -25,23 +25,34 @@
 
 #pragma once
 #include "model_base.h"
-#include "base_document_entry_list.h"
+#include "base_entry_list.h"
 #include "document_entry.h"
 
 namespace aspose::words::cloud::models {
     /// <summary>
     /// Represents a list of documents which will be appended to the original resource document.
     /// </summary>
-    class DocumentEntryList : public BaseDocumentEntryList
+    class DocumentEntryList : public BaseEntryList
     {
     public:
 
         ASPOSE_WORDS_CLOUD_EXPORT virtual ~DocumentEntryList() = default;
         ASPOSE_WORDS_CLOUD_EXPORT virtual void toJson(void* jsonIfc) const override;
         ASPOSE_WORDS_CLOUD_EXPORT virtual void fromJson(const void* jsonIfc) override;
-        ASPOSE_WORDS_CLOUD_EXPORT virtual void getFileContent(std::vector< FileContent* >& result) override;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void getFileReferences(std::vector< FileReference* >& result) override;
 
         void abstractBaseEntryList() override {}
+
+        /// <summary>
+        /// Gets or sets a value indicating whether to apply headers and footers from base document to appending documents. The default value is true.
+        /// </summary>
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< bool > getApplyBaseDocumentHeadersAndFootersToAppendingDocuments() const;
+
+        /// <summary>
+        /// Gets or sets a value indicating whether to apply headers and footers from base document to appending documents. The default value is true.
+        /// </summary>
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setApplyBaseDocumentHeadersAndFootersToAppendingDocuments(std::shared_ptr< bool > value);
+
 
         /// <summary>
         /// Gets or sets the list of documents.
@@ -55,6 +66,7 @@ namespace aspose::words::cloud::models {
 
 
     protected:
+        std::shared_ptr< bool > m_ApplyBaseDocumentHeadersAndFootersToAppendingDocuments;
         std::shared_ptr< std::vector<std::shared_ptr<aspose::words::cloud::models::DocumentEntry>> > m_DocumentEntries;
     };
 }

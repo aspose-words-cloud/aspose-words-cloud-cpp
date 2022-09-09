@@ -1,5 +1,5 @@
 ﻿/** --------------------------------------------------------------------------------------------------------------------
-* <copyright company="Aspose" file="base_document_entry.h">
+* <copyright company="Aspose" file="file_reference.h">
 *   Copyright (c) 2022 Aspose.Words for Cloud
 * </copyright>
 * <summary>
@@ -24,48 +24,44 @@
 -------------------------------------------------------------------------------------------------------------------- **/
 
 #pragma once
-#include "model_base.h"
+#include "./model_base.h"
 
 namespace aspose::words::cloud::models {
+    enum class FileSource { Request, Storage };
+
     /// <summary>
-    /// Represents a base document entry.
+    /// File reference.
     /// </summary>
-    class BaseDocumentEntry : public ModelBase
+    class FileReference : public ModelBase
     {
     public:
-
-        ASPOSE_WORDS_CLOUD_EXPORT virtual ~BaseDocumentEntry() = default;
+        FileReference();
+        ASPOSE_WORDS_CLOUD_EXPORT FileReference(const std::shared_ptr< std::wstring > remoteStoragePath);
+        ASPOSE_WORDS_CLOUD_EXPORT FileReference(const std::shared_ptr< std::istream > localFileContent);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual ~FileReference() = default;
         ASPOSE_WORDS_CLOUD_EXPORT virtual void toJson(void* jsonIfc) const override;
         ASPOSE_WORDS_CLOUD_EXPORT virtual void fromJson(const void* jsonIfc) override;
-        ASPOSE_WORDS_CLOUD_EXPORT virtual void getFileContent(std::vector< FileContent* >& result) override;
-
-        virtual void abstractBaseDocumentEntry() = 0;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void getFileReferences(std::vector< FileReference* >& result) override;
 
         /// <summary>
-        /// Gets or sets document password encrypted on API public key. The default value is null (the document has no password).
+        /// Gets the file source.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< std::wstring > getEncryptedPassword() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual FileSource getSource() const;
 
         /// <summary>
-        /// Gets or sets document password encrypted on API public key. The default value is null (the document has no password).
+        /// Gets the file reference.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT virtual void setEncryptedPassword(std::shared_ptr< std::wstring > value);
-
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< std::wstring > getReference() const;
 
         /// <summary>
-        /// Gets or sets the option that controls formatting will be used: appended or destination document. Can be KeepSourceFormatting or UseDestinationStyles.
+        /// Gets the file content.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< std::wstring > getImportFormatMode() const;
-
-        /// <summary>
-        /// Gets or sets the option that controls formatting will be used: appended or destination document. Can be KeepSourceFormatting or UseDestinationStyles.
-        /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT virtual void setImportFormatMode(std::shared_ptr< std::wstring > value);
-
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< std::istream > getContent() const;
 
     protected:
-        std::shared_ptr< std::wstring > m_EncryptedPassword;
-        std::shared_ptr< std::wstring > m_ImportFormatMode;
+        FileSource m_Source;
+        std::shared_ptr< std::wstring > m_Reference;
+        std::shared_ptr< std::istream > m_Content;
     };
 }
 

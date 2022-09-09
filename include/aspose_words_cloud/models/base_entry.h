@@ -1,5 +1,5 @@
 ﻿/** --------------------------------------------------------------------------------------------------------------------
-* <copyright company="Aspose" file="file_content.h">
+* <copyright company="Aspose" file="base_entry.h">
 *   Copyright (c) 2022 Aspose.Words for Cloud
 * </copyright>
 * <summary>
@@ -25,40 +25,36 @@
 
 #pragma once
 #include "model_base.h"
+#include "file_reference.h"
 
 namespace aspose::words::cloud::models {
     /// <summary>
-    /// Utility class to support multiple files uploading as online documents.
+    /// Represents a base class for document which will be appended to the original resource document.
     /// </summary>
-    class FileContent : public ModelBase
+    class BaseEntry : public ModelBase
     {
     public:
-        FileContent();
-        ASPOSE_WORDS_CLOUD_EXPORT FileContent(const std::shared_ptr< std::wstring > fileName, const std::shared_ptr< std::istream > fileContent);
-        ASPOSE_WORDS_CLOUD_EXPORT virtual ~FileContent() = default;
+
+        ASPOSE_WORDS_CLOUD_EXPORT virtual ~BaseEntry() = default;
         ASPOSE_WORDS_CLOUD_EXPORT virtual void toJson(void* jsonIfc) const override;
         ASPOSE_WORDS_CLOUD_EXPORT virtual void fromJson(const void* jsonIfc) override;
-        ASPOSE_WORDS_CLOUD_EXPORT virtual void getFileContent(std::vector< FileContent* >& result) override;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void getFileReferences(std::vector< FileReference* >& result) override;
+
+        virtual void abstractBaseEntry() = 0;
 
         /// <summary>
-        /// Gets the file name.
+        /// Gets or sets the file reference.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< std::wstring > getFilename() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< aspose::words::cloud::models::FileReference > getFileReference() const;
 
         /// <summary>
-        /// Gets the file ID inside the multipart.
+        /// Gets or sets the file reference.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< std::wstring > getId() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setFileReference(std::shared_ptr< aspose::words::cloud::models::FileReference > value);
 
-        /// <summary>
-        /// Gets the file content.
-        /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< std::istream > getContent() const;
 
     protected:
-        std::shared_ptr< std::wstring > m_Filename;
-        std::shared_ptr< std::wstring > m_Id;
-        std::shared_ptr< std::istream > m_Content;
+        std::shared_ptr< aspose::words::cloud::models::FileReference > m_FileReference;
     };
 }
 
