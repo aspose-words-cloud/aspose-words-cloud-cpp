@@ -90,7 +90,9 @@ namespace aspose::words::cloud::models {
 
     void FileReference::getFileReferences(std::vector< FileReference* >& result)
     {
-        result.push_back(this);
+        if (m_Source == aspose::words::cloud::models::FileSource::Request) {
+            result.push_back(this);
+        }
     }
 
     inline std::string pdfPermissionsToString(PdfPermissions value)

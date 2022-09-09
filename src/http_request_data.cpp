@@ -253,12 +253,12 @@ namespace aspose::words::cloud {
 
     void HttpRequestData::addFormDataParam(const models::FileReference* fileContent)
     {
-        if (!fileContent->getContent()->good()) {
-            throw ApiException(400, L"Invalid input stream in operation request.");
-        }
-
         if (fileContent->getSource() != aspose::words::cloud::models::FileSource::Request) {
             return;
+        }
+
+        if (!fileContent->getContent()->good()) {
+            throw ApiException(400, L"Invalid input stream in operation request.");
         }
 
         if (m_PartsCount == 0)
