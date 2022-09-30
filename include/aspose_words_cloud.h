@@ -27,6 +27,7 @@
 
 #include "./aspose_words_cloud/api_exception.h"
 #include "./aspose_words_cloud/api_configuration.h"
+#include "./aspose_words_cloud/models/file_reference.h"
 #include "./aspose_words_cloud/models/api_error.h"
 #include "./aspose_words_cloud/models/available_fonts_response.h"
 #include "./aspose_words_cloud/models/base_entry.h"

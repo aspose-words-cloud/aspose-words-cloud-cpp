@@ -24,20 +24,23 @@
 -------------------------------------------------------------------------------------------------------------------- **/
 
 #pragma once
-#include "./model_base.h"
+#include "model_base.h"
+#include "base_entry.h"
 
 namespace aspose::words::cloud::models {
     /// <summary>
     /// Represents a document which will be appended to the original resource document.
     /// </summary>
-    class DocumentEntry : public ModelBase
+    class DocumentEntry : public BaseEntry
     {
     public:
 
         ASPOSE_WORDS_CLOUD_EXPORT virtual ~DocumentEntry() = default;
         ASPOSE_WORDS_CLOUD_EXPORT virtual void toJson(void* jsonIfc) const override;
         ASPOSE_WORDS_CLOUD_EXPORT virtual void fromJson(const void* jsonIfc) override;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void getFileReferences(std::vector< FileReference* >& result) override;
 
+        void abstractBaseEntry() override {}
 
         /// <summary>
         /// Gets or sets document password encrypted on API public key. The default value is null (the document has no password).
@@ -48,17 +51,6 @@ namespace aspose::words::cloud::models {
         /// Gets or sets document password encrypted on API public key. The default value is null (the document has no password).
         /// </summary>
         ASPOSE_WORDS_CLOUD_EXPORT virtual void setEncryptedPassword(std::shared_ptr< std::wstring > value);
-
-
-        /// <summary>
-        /// Gets or sets the path to document to append at the server.
-        /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< std::wstring > getHref() const;
-
-        /// <summary>
-        /// Gets or sets the path to document to append at the server.
-        /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT virtual void setHref(std::shared_ptr< std::wstring > value);
 
 
         /// <summary>
@@ -74,7 +66,6 @@ namespace aspose::words::cloud::models {
 
     protected:
         std::shared_ptr< std::wstring > m_EncryptedPassword;
-        std::shared_ptr< std::wstring > m_Href;
         std::shared_ptr< std::wstring > m_ImportFormatMode;
     };
 }

@@ -28,7 +28,11 @@
 
 namespace aspose::words::cloud {
     ApiConfiguration::ApiConfiguration(const std::wstring& clientId, const std::wstring& clientSecret, const std::wstring& baseUrl)
-        : m_ClientId(clientId), m_ClientSecret(clientSecret), m_BaseUrl(baseUrl) { }
+        : m_ClientId(clientId), m_ClientSecret(clientSecret), m_BaseUrl(baseUrl) {
+        if (m_BaseUrl[m_BaseUrl.length() - 1] == L'/') {
+            m_BaseUrl = m_BaseUrl.substr(0, m_BaseUrl.length() - 1);
+        }
+    }
 
     const std::wstring& ApiConfiguration::getBaseUrl() const
     {

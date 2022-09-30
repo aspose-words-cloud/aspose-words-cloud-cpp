@@ -29,6 +29,7 @@
 #include <map>
 #include "./common.h"
 #include "./models/model_base.h"
+#include "./models/file_reference.h"
 
 namespace aspose::words::cloud {
     enum class HttpRequestMethod {
@@ -50,13 +51,10 @@ namespace aspose::words::cloud {
         ASPOSE_WORDS_CLOUD_EXPORT void addQueryParam(const std::wstring& name, double value);
         ASPOSE_WORDS_CLOUD_EXPORT void addHeader(const std::wstring& name, const std::wstring& value);
         ASPOSE_WORDS_CLOUD_EXPORT void setMethod(HttpRequestMethod method);
-        ASPOSE_WORDS_CLOUD_EXPORT void setBody(const aspose::words::cloud::models::ModelBase& model);
-        ASPOSE_WORDS_CLOUD_EXPORT void setBody(std::istream& stream);
         ASPOSE_WORDS_CLOUD_EXPORT std::string& getBodyMutable();
-        ASPOSE_WORDS_CLOUD_EXPORT void setBodyJson(const std::wstring& value);
-        ASPOSE_WORDS_CLOUD_EXPORT void setBodyText(const std::wstring& value);
         ASPOSE_WORDS_CLOUD_EXPORT void addFormDataParam(const std::wstring& name, const aspose::words::cloud::models::ModelBase& model);
         ASPOSE_WORDS_CLOUD_EXPORT void addFormDataParam(const std::wstring& name, std::istream& stream);
+        ASPOSE_WORDS_CLOUD_EXPORT void addFormDataParam(const models::FileReference* fileContent);
         ASPOSE_WORDS_CLOUD_EXPORT void addFormDataParam(const std::wstring& name, const std::wstring& value);
         ASPOSE_WORDS_CLOUD_EXPORT void setContentType(const std::string& value);
         ASPOSE_WORDS_CLOUD_EXPORT void encryptSecureData(aspose::words::cloud::ApiClient* apiClient);
@@ -75,5 +73,7 @@ namespace aspose::words::cloud {
         std::string m_Body;
         std::string m_ContentType;
         std::string m_Boundary;
+        std::wstring m_LastName;
+        std::size_t m_PartsCount = 0;
     };
 }

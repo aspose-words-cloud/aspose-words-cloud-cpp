@@ -24,11 +24,12 @@
 -------------------------------------------------------------------------------------------------------------------- **/
 
 #pragma once
-#include "./model_base.h"
+#include "model_base.h"
+#include "file_reference.h"
 
 namespace aspose::words::cloud::models {
     /// <summary>
-    /// Represents a entry which will be appended to the original resource document.
+    /// Represents a base class for document which will be appended to the original resource document.
     /// </summary>
     class BaseEntry : public ModelBase
     {
@@ -37,21 +38,23 @@ namespace aspose::words::cloud::models {
         ASPOSE_WORDS_CLOUD_EXPORT virtual ~BaseEntry() = default;
         ASPOSE_WORDS_CLOUD_EXPORT virtual void toJson(void* jsonIfc) const override;
         ASPOSE_WORDS_CLOUD_EXPORT virtual void fromJson(const void* jsonIfc) override;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void getFileReferences(std::vector< FileReference* >& result) override;
 
-
-        /// <summary>
-        /// Gets or sets the path to entry to append at the server.
-        /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< std::wstring > getHref() const;
+        virtual void abstractBaseEntry() = 0;
 
         /// <summary>
-        /// Gets or sets the path to entry to append at the server.
+        /// Gets or sets the file reference.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT virtual void setHref(std::shared_ptr< std::wstring > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< aspose::words::cloud::models::FileReference > getFileReference() const;
+
+        /// <summary>
+        /// Gets or sets the file reference.
+        /// </summary>
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setFileReference(std::shared_ptr< aspose::words::cloud::models::FileReference > value);
 
 
     protected:
-        std::shared_ptr< std::wstring > m_Href;
+        std::shared_ptr< aspose::words::cloud::models::FileReference > m_FileReference;
     };
 }
 
