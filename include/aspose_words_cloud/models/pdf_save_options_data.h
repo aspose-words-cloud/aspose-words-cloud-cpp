@@ -139,6 +139,17 @@ namespace aspose::words::cloud::models {
         void abstractSaveOptionsData() override {}
 
         /// <summary>
+        /// Gets or sets a value indicating whether or not to cache shapes placed in header and footer of document.
+        /// </summary>
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< bool > getCacheHeaderFooterShapes() const;
+
+        /// <summary>
+        /// Gets or sets a value indicating whether or not to cache shapes placed in header and footer of document.
+        /// </summary>
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setCacheHeaderFooterShapes(std::shared_ptr< bool > value);
+
+
+        /// <summary>
         /// Gets or sets the PDF standards compliance level for output documents.
         /// </summary>
         ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< aspose::words::cloud::models::PdfSaveOptionsData::Compliance > getCompliance() const;
@@ -429,6 +440,7 @@ namespace aspose::words::cloud::models {
 
 
     protected:
+        std::shared_ptr< bool > m_CacheHeaderFooterShapes;
         std::shared_ptr< aspose::words::cloud::models::PdfSaveOptionsData::Compliance > m_Compliance;
         std::shared_ptr< bool > m_CreateNoteHyperlinks;
         std::shared_ptr< aspose::words::cloud::models::PdfSaveOptionsData::CustomPropertiesExport > m_CustomPropertiesExport;

@@ -149,19 +149,6 @@ namespace aspose::words::cloud::models {
 
 
         /// <summary>
-        /// Gets or sets value determining which document formats are allowed to be mapped by Aspose.Words.Markup.StructuredDocumentTag.XmlMapping.
-        /// By default only Aspose.Words.LoadFormat.FlatOpc document format is allowed to be mapped.
-        /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< bool > getFlatOpcXmlMappingOnly() const;
-
-        /// <summary>
-        /// Gets or sets value determining which document formats are allowed to be mapped by Aspose.Words.Markup.StructuredDocumentTag.XmlMapping.
-        /// By default only Aspose.Words.LoadFormat.FlatOpc document format is allowed to be mapped.
-        /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT virtual void setFlatOpcXmlMappingOnly(std::shared_ptr< bool > value);
-
-
-        /// <summary>
         /// Gets or sets the value determining how ink (InkML) objects are rendered.
         /// </summary>
         ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< aspose::words::cloud::models::SaveOptionsData::ImlRenderingMode > getImlRenderingMode() const;
@@ -256,7 +243,6 @@ namespace aspose::words::cloud::models {
         std::shared_ptr< aspose::words::cloud::models::SaveOptionsData::DmlEffectsRenderingMode > m_DmlEffectsRenderingMode;
         std::shared_ptr< aspose::words::cloud::models::SaveOptionsData::DmlRenderingMode > m_DmlRenderingMode;
         std::shared_ptr< std::wstring > m_FileName;
-        std::shared_ptr< bool > m_FlatOpcXmlMappingOnly;
         std::shared_ptr< aspose::words::cloud::models::SaveOptionsData::ImlRenderingMode > m_ImlRenderingMode;
         std::shared_ptr< std::wstring > m_SaveFormat;
         std::shared_ptr< bool > m_UpdateCreatedTimeProperty;

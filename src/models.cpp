@@ -17094,6 +17094,9 @@ namespace aspose::words::cloud::models {
     {
         FixedPageSaveOptionsData::toJson(jsonIfc);
         ::nlohmann::json& json = *((::nlohmann::json*)jsonIfc);
+        if (this->m_CacheHeaderFooterShapes) {
+            json["CacheHeaderFooterShapes"] = *(this->m_CacheHeaderFooterShapes);
+        }
         if (this->m_Compliance) {
             json["Compliance"] = pdfSaveOptionsDataComplianceToString(*(this->m_Compliance));
         }
@@ -17178,6 +17181,11 @@ namespace aspose::words::cloud::models {
     {
         FixedPageSaveOptionsData::fromJson(jsonIfc);
         ::nlohmann::json& json = *((::nlohmann::json*)jsonIfc);
+        if (json.contains("CacheHeaderFooterShapes") && !json["CacheHeaderFooterShapes"].is_null()) {
+            this->m_CacheHeaderFooterShapes = std::make_shared< bool >(
+                json["CacheHeaderFooterShapes"].get< bool >()
+            );
+        }
         if (json.contains("Compliance") && !json["Compliance"].is_null()) {
             this->m_Compliance = std::make_shared< aspose::words::cloud::models::PdfSaveOptionsData::Compliance >(
                 pdfSaveOptionsDataComplianceFromString(json["Compliance"].get< std::string >())
@@ -17309,6 +17317,17 @@ namespace aspose::words::cloud::models {
     void PdfSaveOptionsData::getFileReferences(std::vector< FileReference* >& result)
     {
     }
+
+    std::shared_ptr< bool > PdfSaveOptionsData::getCacheHeaderFooterShapes() const
+    {
+        return this->m_CacheHeaderFooterShapes;
+    }
+
+    void PdfSaveOptionsData::setCacheHeaderFooterShapes(std::shared_ptr< bool > value)
+    {
+        this->m_CacheHeaderFooterShapes = value;
+    }
+
 
     std::shared_ptr< aspose::words::cloud::models::PdfSaveOptionsData::Compliance > PdfSaveOptionsData::getCompliance() const
     {
@@ -19055,9 +19074,6 @@ namespace aspose::words::cloud::models {
         if (this->m_FileName) {
             json["FileName"] = convertUtf16(*(this->m_FileName));
         }
-        if (this->m_FlatOpcXmlMappingOnly) {
-            json["FlatOpcXmlMappingOnly"] = *(this->m_FlatOpcXmlMappingOnly);
-        }
         if (this->m_ImlRenderingMode) {
             json["ImlRenderingMode"] = saveOptionsDataImlRenderingModeToString(*(this->m_ImlRenderingMode));
         }
@@ -19114,11 +19130,6 @@ namespace aspose::words::cloud::models {
         if (json.contains("FileName") && !json["FileName"].is_null()) {
             this->m_FileName = std::make_shared< std::wstring >(
                 convertUtf8( json["FileName"].get< std::string >() )
-            );
-        }
-        if (json.contains("FlatOpcXmlMappingOnly") && !json["FlatOpcXmlMappingOnly"].is_null()) {
-            this->m_FlatOpcXmlMappingOnly = std::make_shared< bool >(
-                json["FlatOpcXmlMappingOnly"].get< bool >()
             );
         }
         if (json.contains("ImlRenderingMode") && !json["ImlRenderingMode"].is_null()) {
@@ -19230,17 +19241,6 @@ namespace aspose::words::cloud::models {
     void SaveOptionsData::setFileName(std::shared_ptr< std::wstring > value)
     {
         this->m_FileName = value;
-    }
-
-
-    std::shared_ptr< bool > SaveOptionsData::getFlatOpcXmlMappingOnly() const
-    {
-        return this->m_FlatOpcXmlMappingOnly;
-    }
-
-    void SaveOptionsData::setFlatOpcXmlMappingOnly(std::shared_ptr< bool > value)
-    {
-        this->m_FlatOpcXmlMappingOnly = value;
     }
 
 
