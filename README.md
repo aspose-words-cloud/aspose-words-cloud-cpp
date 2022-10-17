@@ -17,6 +17,15 @@ Feel free to explore the [Developer's Guide](https://docs.aspose.cloud/display/w
 - Read & write access to Document Object Model.
 - Thread safe
 
+## Enhancements in Version 22.10
+
+- Added 'CacheHeaderFooterShapes' property for PdfSaveOptionsData class.
+- FileReference structure has been added that allows to determine how the document will be accessed: from the remote storage, or loaded directly in the request.
+- The 'AppendDocument' and 'AppendDocumentOnline' methods takes a 'FileReference' instead of an 'href' property.
+- Added property 'StartingNumber' for 'PageNumbers' class.
+- Added property 'GlobalCultureName' for 'FieldOptions' class.
+
+
 ## Enhancements in Version 22.9
 
 - CompressDocument method now can handle images.

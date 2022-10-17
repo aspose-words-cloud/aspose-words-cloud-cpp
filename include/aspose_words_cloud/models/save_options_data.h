@@ -24,7 +24,7 @@
 -------------------------------------------------------------------------------------------------------------------- **/
 
 #pragma once
-#include "./model_base.h"
+#include "model_base.h"
 #include "time_zone_info_data.h"
 
 namespace aspose::words::cloud::models {
@@ -76,6 +76,7 @@ namespace aspose::words::cloud::models {
         ASPOSE_WORDS_CLOUD_EXPORT virtual ~SaveOptionsData() = default;
         ASPOSE_WORDS_CLOUD_EXPORT virtual void toJson(void* jsonIfc) const override;
         ASPOSE_WORDS_CLOUD_EXPORT virtual void fromJson(const void* jsonIfc) override;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void getFileReferences(std::vector< FileReference* >& result) override;
 
         virtual void abstractSaveOptionsData() = 0;
 
@@ -145,19 +146,6 @@ namespace aspose::words::cloud::models {
         /// Gets or sets the name of destination file.
         /// </summary>
         ASPOSE_WORDS_CLOUD_EXPORT virtual void setFileName(std::shared_ptr< std::wstring > value);
-
-
-        /// <summary>
-        /// Gets or sets value determining which document formats are allowed to be mapped by Aspose.Words.Markup.StructuredDocumentTag.XmlMapping.
-        /// By default only Aspose.Words.LoadFormat.FlatOpc document format is allowed to be mapped.
-        /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< bool > getFlatOpcXmlMappingOnly() const;
-
-        /// <summary>
-        /// Gets or sets value determining which document formats are allowed to be mapped by Aspose.Words.Markup.StructuredDocumentTag.XmlMapping.
-        /// By default only Aspose.Words.LoadFormat.FlatOpc document format is allowed to be mapped.
-        /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT virtual void setFlatOpcXmlMappingOnly(std::shared_ptr< bool > value);
 
 
         /// <summary>
@@ -255,7 +243,6 @@ namespace aspose::words::cloud::models {
         std::shared_ptr< aspose::words::cloud::models::SaveOptionsData::DmlEffectsRenderingMode > m_DmlEffectsRenderingMode;
         std::shared_ptr< aspose::words::cloud::models::SaveOptionsData::DmlRenderingMode > m_DmlRenderingMode;
         std::shared_ptr< std::wstring > m_FileName;
-        std::shared_ptr< bool > m_FlatOpcXmlMappingOnly;
         std::shared_ptr< aspose::words::cloud::models::SaveOptionsData::ImlRenderingMode > m_ImlRenderingMode;
         std::shared_ptr< std::wstring > m_SaveFormat;
         std::shared_ptr< bool > m_UpdateCreatedTimeProperty;

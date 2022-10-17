@@ -24,7 +24,7 @@
 -------------------------------------------------------------------------------------------------------------------- **/
 
 #pragma once
-#include "./model_base.h"
+#include "model_base.h"
 #include "downsample_options_data.h"
 #include "fixed_page_save_options_data.h"
 #include "outline_options_data.h"
@@ -133,9 +133,21 @@ namespace aspose::words::cloud::models {
         ASPOSE_WORDS_CLOUD_EXPORT virtual ~PdfSaveOptionsData() = default;
         ASPOSE_WORDS_CLOUD_EXPORT virtual void toJson(void* jsonIfc) const override;
         ASPOSE_WORDS_CLOUD_EXPORT virtual void fromJson(const void* jsonIfc) override;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void getFileReferences(std::vector< FileReference* >& result) override;
 
         void abstractFixedPageSaveOptionsData() override {}
         void abstractSaveOptionsData() override {}
+
+        /// <summary>
+        /// Gets or sets a value indicating whether or not to cache shapes placed in header and footer of document.
+        /// </summary>
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< bool > getCacheHeaderFooterShapes() const;
+
+        /// <summary>
+        /// Gets or sets a value indicating whether or not to cache shapes placed in header and footer of document.
+        /// </summary>
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setCacheHeaderFooterShapes(std::shared_ptr< bool > value);
+
 
         /// <summary>
         /// Gets or sets the PDF standards compliance level for output documents.
@@ -428,6 +440,7 @@ namespace aspose::words::cloud::models {
 
 
     protected:
+        std::shared_ptr< bool > m_CacheHeaderFooterShapes;
         std::shared_ptr< aspose::words::cloud::models::PdfSaveOptionsData::Compliance > m_Compliance;
         std::shared_ptr< bool > m_CreateNoteHyperlinks;
         std::shared_ptr< aspose::words::cloud::models::PdfSaveOptionsData::CustomPropertiesExport > m_CustomPropertiesExport;

@@ -24,7 +24,7 @@
 -------------------------------------------------------------------------------------------------------------------- **/
 
 #pragma once
-#include "./model_base.h"
+#include "model_base.h"
 #include "node_link.h"
 #include "table_properties.h"
 #include "table_row.h"
@@ -40,6 +40,7 @@ namespace aspose::words::cloud::models {
         ASPOSE_WORDS_CLOUD_EXPORT virtual ~Table() = default;
         ASPOSE_WORDS_CLOUD_EXPORT virtual void toJson(void* jsonIfc) const override;
         ASPOSE_WORDS_CLOUD_EXPORT virtual void fromJson(const void* jsonIfc) override;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void getFileReferences(std::vector< FileReference* >& result) override;
 
 
         /// <summary>

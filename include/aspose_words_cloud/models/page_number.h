@@ -24,7 +24,7 @@
 -------------------------------------------------------------------------------------------------------------------- **/
 
 #pragma once
-#include "./model_base.h"
+#include "model_base.h"
 
 namespace aspose::words::cloud::models {
     /// <summary>
@@ -37,6 +37,7 @@ namespace aspose::words::cloud::models {
         ASPOSE_WORDS_CLOUD_EXPORT virtual ~PageNumber() = default;
         ASPOSE_WORDS_CLOUD_EXPORT virtual void toJson(void* jsonIfc) const override;
         ASPOSE_WORDS_CLOUD_EXPORT virtual void fromJson(const void* jsonIfc) override;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void getFileReferences(std::vector< FileReference* >& result) override;
 
 
         /// <summary>
@@ -73,6 +74,17 @@ namespace aspose::words::cloud::models {
 
 
         /// <summary>
+        /// Gets or sets the starting page number of the document.
+        /// </summary>
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< int32_t > getPageStartingNumber() const;
+
+        /// <summary>
+        /// Gets or sets the starting page number of the document.
+        /// </summary>
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setPageStartingNumber(std::shared_ptr< int32_t > value);
+
+
+        /// <summary>
         /// Gets or sets a value indicating whether if true the page number is added on first page too.
         /// </summary>
         ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< bool > getSetPageNumberOnFirstPage() const;
@@ -87,6 +99,7 @@ namespace aspose::words::cloud::models {
         std::shared_ptr< std::wstring > m_Alignment;
         std::shared_ptr< std::wstring > m_Format;
         std::shared_ptr< bool > m_IsTop;
+        std::shared_ptr< int32_t > m_PageStartingNumber;
         std::shared_ptr< bool > m_SetPageNumberOnFirstPage;
     };
 }

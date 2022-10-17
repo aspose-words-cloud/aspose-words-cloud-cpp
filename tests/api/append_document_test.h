@@ -47,8 +47,9 @@ TEST_F(AppendDocumentTests, TestAppendDocument) {
         remoteDataFolder + L"/" + remoteFileName
     );
 
+    auto requestDocumentListDocumentEntries0FileReference = std::make_shared< aspose::words::cloud::models::FileReference >(std::make_shared< std::wstring >(remoteDataFolder + L"/" + remoteFileName));
     auto requestDocumentListDocumentEntries0 = std::make_shared< aspose::words::cloud::models::DocumentEntry >();
-    requestDocumentListDocumentEntries0->setHref(std::make_shared< std::wstring >(remoteDataFolder + L"/" + remoteFileName));
+    requestDocumentListDocumentEntries0->setFileReference(requestDocumentListDocumentEntries0FileReference);
     requestDocumentListDocumentEntries0->setImportFormatMode(std::make_shared< std::wstring >(L"KeepSourceFormatting"));
     auto requestDocumentListDocumentEntries = std::make_shared< std::vector<std::shared_ptr<aspose::words::cloud::models::DocumentEntry>> >();
     requestDocumentListDocumentEntries->push_back(requestDocumentListDocumentEntries0);
@@ -76,16 +77,11 @@ TEST_F(AppendDocumentTests, TestAppendDocument) {
 /// Test for appending document online.
 /// </summary>
 TEST_F(AppendDocumentTests, TestAppendDocumentOnline) {
-    std::wstring remoteFileName = L"TestAppendDocument.docx";
-
-    uploadFileToStorage(
-        localTestDataFolder + L"/" + localFile,
-        remoteDataFolder + L"/" + remoteFileName
-    );
-
     auto requestDocument = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(localFile)), std::istream::binary));
+    auto requestDocumentListDocumentEntries0FileReferenceStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(localFile)), std::istream::binary));
+    auto requestDocumentListDocumentEntries0FileReference = std::make_shared< aspose::words::cloud::models::FileReference >(requestDocumentListDocumentEntries0FileReferenceStream);
     auto requestDocumentListDocumentEntries0 = std::make_shared< aspose::words::cloud::models::DocumentEntry >();
-    requestDocumentListDocumentEntries0->setHref(std::make_shared< std::wstring >(remoteDataFolder + L"/" + remoteFileName));
+    requestDocumentListDocumentEntries0->setFileReference(requestDocumentListDocumentEntries0FileReference);
     requestDocumentListDocumentEntries0->setImportFormatMode(std::make_shared< std::wstring >(L"KeepSourceFormatting"));
     auto requestDocumentListDocumentEntries = std::make_shared< std::vector<std::shared_ptr<aspose::words::cloud::models::DocumentEntry>> >();
     requestDocumentListDocumentEntries->push_back(requestDocumentListDocumentEntries0);

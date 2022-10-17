@@ -24,7 +24,7 @@
 -------------------------------------------------------------------------------------------------------------------- **/
 
 #pragma once
-#include "./model_base.h"
+#include "model_base.h"
 #include "link_element.h"
 #include "preferred_width.h"
 
@@ -82,6 +82,7 @@ namespace aspose::words::cloud::models {
         ASPOSE_WORDS_CLOUD_EXPORT virtual ~TableCellFormat() = default;
         ASPOSE_WORDS_CLOUD_EXPORT virtual void toJson(void* jsonIfc) const override;
         ASPOSE_WORDS_CLOUD_EXPORT virtual void fromJson(const void* jsonIfc) override;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void getFileReferences(std::vector< FileReference* >& result) override;
 
 
         /// <summary>

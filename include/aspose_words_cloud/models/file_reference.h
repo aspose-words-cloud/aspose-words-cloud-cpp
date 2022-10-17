@@ -1,5 +1,5 @@
 ﻿/** --------------------------------------------------------------------------------------------------------------------
-* <copyright company="Aspose" file="form_fields_response.h">
+* <copyright company="Aspose" file="file_reference.h">
 *   Copyright (c) 2022 Aspose.Words for Cloud
 * </copyright>
 * <summary>
@@ -24,37 +24,44 @@
 -------------------------------------------------------------------------------------------------------------------- **/
 
 #pragma once
-#include "model_base.h"
-#include "form_field_collection.h"
-#include "words_response.h"
+#include "./model_base.h"
 
 namespace aspose::words::cloud::models {
+    enum class FileSource { Request, Storage };
+
     /// <summary>
-    /// The REST response with a collection of form fields.
+    /// File reference.
     /// </summary>
-    class FormFieldsResponse : public WordsResponse
+    class FileReference : public ModelBase
     {
     public:
-
-        ASPOSE_WORDS_CLOUD_EXPORT virtual ~FormFieldsResponse() = default;
+        FileReference();
+        ASPOSE_WORDS_CLOUD_EXPORT FileReference(const std::shared_ptr< std::wstring > remoteStoragePath);
+        ASPOSE_WORDS_CLOUD_EXPORT FileReference(const std::shared_ptr< std::istream > localFileContent);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual ~FileReference() = default;
         ASPOSE_WORDS_CLOUD_EXPORT virtual void toJson(void* jsonIfc) const override;
         ASPOSE_WORDS_CLOUD_EXPORT virtual void fromJson(const void* jsonIfc) override;
         ASPOSE_WORDS_CLOUD_EXPORT virtual void getFileReferences(std::vector< FileReference* >& result) override;
 
+        /// <summary>
+        /// Gets the file source.
+        /// </summary>
+        ASPOSE_WORDS_CLOUD_EXPORT virtual FileSource getSource() const;
 
         /// <summary>
-        /// Gets or sets the collection of form fields.
+        /// Gets the file reference.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< aspose::words::cloud::models::FormFieldCollection > getFormFields() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< std::wstring > getReference() const;
 
         /// <summary>
-        /// Gets or sets the collection of form fields.
+        /// Gets the file content.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT virtual void setFormFields(std::shared_ptr< aspose::words::cloud::models::FormFieldCollection > value);
-
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< std::istream > getContent() const;
 
     protected:
-        std::shared_ptr< aspose::words::cloud::models::FormFieldCollection > m_FormFields;
+        FileSource m_Source;
+        std::shared_ptr< std::wstring > m_Reference;
+        std::shared_ptr< std::istream > m_Content;
     };
 }
 
