@@ -18,7 +18,7 @@ def packageTestingWindows = false
 def packageTestingLinux = false
 
 parallel windows: {
-    node('win2016_2') {
+    node('windows2016') {
         try {
             gitlabCommitStatus("windows_checkout") {
                 stage('windows_checkout'){
@@ -71,9 +71,8 @@ parallel windows: {
                                     
                                     docker run --rm --env accept_eula=Y --memory 4G -v "%cd%/out:C:/out" aspose-words-cloud-cpp-tests:windows cmd /c ".\\scripts\\runTestsDocker.bat %WordsClientId% %WordsClientSecret% %apiUrl%"
                                     exit /b %ERRORLEVEL%
-                                    """
+                                """
                             } finally {
-                                archiveArtifacts artifacts: '**\\out\\windows-x64.zip'
                                 junit '**\\out\\test_result.xml'
                             }
                             
@@ -124,7 +123,6 @@ parallel windows: {
 
                                 sh 'docker run --rm -v "$PWD/out:/out/" -v "$PWD:/aspose-words-cloud-cpp" aspose-words-cloud-cpp-tests:linux bash /aspose-words-cloud-cpp/scripts/runTestsDocker.sh $WordsClientId $WordsClientSecret $apiUrl'
                             } finally {
-                                archiveArtifacts artifacts: '**\\out\\linux-x64.zip'
                                 junit '**\\out\\test_result.xml'
                             }
                             
