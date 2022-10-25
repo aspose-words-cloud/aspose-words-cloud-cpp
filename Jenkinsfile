@@ -18,7 +18,7 @@ def packageTestingWindows = false
 def packageTestingLinux = false
 
 parallel windows: {
-    node('windows2016') {
+    node('win2019') {
         try {
             gitlabCommitStatus("windows_checkout") {
                 stage('windows_checkout'){
