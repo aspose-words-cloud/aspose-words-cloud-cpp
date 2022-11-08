@@ -25,10 +25,10 @@ parallel windows: {
                     packageTestingWindows = params.packageTesting
                     if (packageTestingWindows) {
                         needToBuildWindows = true
-                        checkout([$class: 'GitSCM', branches: [[name: 'release']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[url: 'https://github.com/aspose-words-cloud/aspose-words-cloud-cpp.git']]])
+                        checkout([$class: 'GitSCM', branches: [[name: 'release']], doGenerateSubmoduleConfigurations: false, extensions: [[$class: 'LocalBranch', localBranch: "**"]], submoduleCfg: [], userRemoteConfigs: [[url: 'https://github.com/aspose-words-cloud/aspose-words-cloud-cpp.git']]])
                     }
                     else {
-                        checkout([$class: 'GitSCM', branches: [[name: params.branch]], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: '361885ba-9425-4230-950e-0af201d90547', url: 'https://git.auckland.dynabic.com/words-cloud/words-cloud-cpp.git']]])
+                        checkout([$class: 'GitSCM', branches: [[name: params.branch]], doGenerateSubmoduleConfigurations: false, extensions: [[$class: 'LocalBranch', localBranch: "**"]], submoduleCfg: [], userRemoteConfigs: [[credentialsId: '361885ba-9425-4230-950e-0af201d90547', url: 'https://git.auckland.dynabic.com/words-cloud/words-cloud-cpp.git']]])
                         bat 'git show -s HEAD > gitMessage'
                         def commitMessage = readFile('gitMessage').trim()
                         echo commitMessage
@@ -71,9 +71,8 @@ parallel windows: {
                                     
                                     docker run --rm --env accept_eula=Y --memory 4G -v "%cd%/out:C:/out" aspose-words-cloud-cpp-tests:windows cmd /c ".\\scripts\\runTestsDocker.bat %WordsClientId% %WordsClientSecret% %apiUrl%"
                                     exit /b %ERRORLEVEL%
-                                    """
+                                """
                             } finally {
-                                archiveArtifacts artifacts: '**\\out\\windows-x64.zip'
                                 junit '**\\out\\test_result.xml'
                             }
                             
@@ -124,7 +123,6 @@ parallel windows: {
 
                                 sh 'docker run --rm -v "$PWD/out:/out/" -v "$PWD:/aspose-words-cloud-cpp" aspose-words-cloud-cpp-tests:linux bash /aspose-words-cloud-cpp/scripts/runTestsDocker.sh $WordsClientId $WordsClientSecret $apiUrl'
                             } finally {
-                                archiveArtifacts artifacts: '**\\out\\linux-x64.zip'
                                 junit '**\\out\\test_result.xml'
                             }
                             
