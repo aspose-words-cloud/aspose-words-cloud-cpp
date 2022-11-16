@@ -155,7 +155,7 @@ TEST_F(PageSetupTests, TestGetRenderPage) {
     std::shared_ptr<requests::RenderPageRequest> request(new requests::RenderPageRequest(
         std::make_shared< std::wstring >(remoteFileName),
         std::make_shared< int32_t >(1),
-        std::make_shared< std::wstring >(L"bmp"),
+        std::make_shared< std::wstring >(L"jpg"),
         std::make_shared< std::wstring >(remoteDataFolder),
         nullptr,
         nullptr,
@@ -175,7 +175,7 @@ TEST_F(PageSetupTests, TestGetRenderPageOnline) {
     std::shared_ptr<requests::RenderPageOnlineRequest> request(new requests::RenderPageOnlineRequest(
         requestDocument,
         std::make_shared< int32_t >(1),
-        std::make_shared< std::wstring >(L"bmp"),
+        std::make_shared< std::wstring >(L"jpg"),
         nullptr,
         nullptr,
         nullptr,

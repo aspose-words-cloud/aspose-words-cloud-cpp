@@ -29,6 +29,7 @@
 namespace aspose::words::cloud::models {
     /// <summary>
     /// Represents options for parsing CSV data.
+    /// To learn more, visit the LINQ Reporting Engine documentation article.
     /// </summary>
     class CsvDataLoadOptions : public ModelBase
     {
