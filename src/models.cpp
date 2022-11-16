@@ -17094,8 +17094,8 @@ namespace aspose::words::cloud::models {
     {
         FixedPageSaveOptionsData::toJson(jsonIfc);
         ::nlohmann::json& json = *((::nlohmann::json*)jsonIfc);
-        if (this->m_CacheHeaderFooterShapes) {
-            json["CacheHeaderFooterShapes"] = *(this->m_CacheHeaderFooterShapes);
+        if (this->m_CacheBackgroundGraphics) {
+            json["CacheBackgroundGraphics"] = *(this->m_CacheBackgroundGraphics);
         }
         if (this->m_Compliance) {
             json["Compliance"] = pdfSaveOptionsDataComplianceToString(*(this->m_Compliance));
@@ -17114,6 +17114,9 @@ namespace aspose::words::cloud::models {
         }
         if (this->m_DownsampleOptions) {
             this->m_DownsampleOptions->toJson(&json["DownsampleOptions"]);
+        }
+        if (this->m_EmbedAttachments) {
+            json["EmbedAttachments"] = *(this->m_EmbedAttachments);
         }
         if (this->m_EmbedFullFonts) {
             json["EmbedFullFonts"] = *(this->m_EmbedFullFonts);
@@ -17181,9 +17184,9 @@ namespace aspose::words::cloud::models {
     {
         FixedPageSaveOptionsData::fromJson(jsonIfc);
         ::nlohmann::json& json = *((::nlohmann::json*)jsonIfc);
-        if (json.contains("CacheHeaderFooterShapes") && !json["CacheHeaderFooterShapes"].is_null()) {
-            this->m_CacheHeaderFooterShapes = std::make_shared< bool >(
-                json["CacheHeaderFooterShapes"].get< bool >()
+        if (json.contains("CacheBackgroundGraphics") && !json["CacheBackgroundGraphics"].is_null()) {
+            this->m_CacheBackgroundGraphics = std::make_shared< bool >(
+                json["CacheBackgroundGraphics"].get< bool >()
             );
         }
         if (json.contains("Compliance") && !json["Compliance"].is_null()) {
@@ -17213,6 +17216,11 @@ namespace aspose::words::cloud::models {
         if (json.contains("DownsampleOptions") && !json["DownsampleOptions"].is_null()) {
             this->m_DownsampleOptions = std::make_shared< aspose::words::cloud::models::DownsampleOptionsData >();
             this->m_DownsampleOptions->fromJson(&json["DownsampleOptions"]);
+        }
+        if (json.contains("EmbedAttachments") && !json["EmbedAttachments"].is_null()) {
+            this->m_EmbedAttachments = std::make_shared< bool >(
+                json["EmbedAttachments"].get< bool >()
+            );
         }
         if (json.contains("EmbedFullFonts") && !json["EmbedFullFonts"].is_null()) {
             this->m_EmbedFullFonts = std::make_shared< bool >(
@@ -17318,14 +17326,14 @@ namespace aspose::words::cloud::models {
     {
     }
 
-    std::shared_ptr< bool > PdfSaveOptionsData::getCacheHeaderFooterShapes() const
+    std::shared_ptr< bool > PdfSaveOptionsData::getCacheBackgroundGraphics() const
     {
-        return this->m_CacheHeaderFooterShapes;
+        return this->m_CacheBackgroundGraphics;
     }
 
-    void PdfSaveOptionsData::setCacheHeaderFooterShapes(std::shared_ptr< bool > value)
+    void PdfSaveOptionsData::setCacheBackgroundGraphics(std::shared_ptr< bool > value)
     {
-        this->m_CacheHeaderFooterShapes = value;
+        this->m_CacheBackgroundGraphics = value;
     }
 
 
@@ -17392,6 +17400,17 @@ namespace aspose::words::cloud::models {
     void PdfSaveOptionsData::setDownsampleOptions(std::shared_ptr< aspose::words::cloud::models::DownsampleOptionsData > value)
     {
         this->m_DownsampleOptions = value;
+    }
+
+
+    std::shared_ptr< bool > PdfSaveOptionsData::getEmbedAttachments() const
+    {
+        return this->m_EmbedAttachments;
+    }
+
+    void PdfSaveOptionsData::setEmbedAttachments(std::shared_ptr< bool > value)
+    {
+        this->m_EmbedAttachments = value;
     }
 
 

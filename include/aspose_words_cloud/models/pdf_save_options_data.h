@@ -139,14 +139,14 @@ namespace aspose::words::cloud::models {
         void abstractSaveOptionsData() override {}
 
         /// <summary>
-        /// Gets or sets a value indicating whether or not to cache shapes placed in header and footer of document.
+        /// Gets or sets a value determining whether or not to cache graphics placed in document's background.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< bool > getCacheHeaderFooterShapes() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< bool > getCacheBackgroundGraphics() const;
 
         /// <summary>
-        /// Gets or sets a value indicating whether or not to cache shapes placed in header and footer of document.
+        /// Gets or sets a value determining whether or not to cache graphics placed in document's background.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT virtual void setCacheHeaderFooterShapes(std::shared_ptr< bool > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setCacheBackgroundGraphics(std::shared_ptr< bool > value);
 
 
         /// <summary>
@@ -219,6 +219,17 @@ namespace aspose::words::cloud::models {
         /// Gets or sets the downsample options.
         /// </summary>
         ASPOSE_WORDS_CLOUD_EXPORT virtual void setDownsampleOptions(std::shared_ptr< aspose::words::cloud::models::DownsampleOptionsData > value);
+
+
+        /// <summary>
+        /// Gets or sets a value determining whether or not to embed attachments to the PDF document.
+        /// </summary>
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< bool > getEmbedAttachments() const;
+
+        /// <summary>
+        /// Gets or sets a value determining whether or not to embed attachments to the PDF document.
+        /// </summary>
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setEmbedAttachments(std::shared_ptr< bool > value);
 
 
         /// <summary>
@@ -440,13 +451,14 @@ namespace aspose::words::cloud::models {
 
 
     protected:
-        std::shared_ptr< bool > m_CacheHeaderFooterShapes;
+        std::shared_ptr< bool > m_CacheBackgroundGraphics;
         std::shared_ptr< aspose::words::cloud::models::PdfSaveOptionsData::Compliance > m_Compliance;
         std::shared_ptr< bool > m_CreateNoteHyperlinks;
         std::shared_ptr< aspose::words::cloud::models::PdfSaveOptionsData::CustomPropertiesExport > m_CustomPropertiesExport;
         std::shared_ptr< aspose::words::cloud::models::PdfDigitalSignatureDetailsData > m_DigitalSignatureDetails;
         std::shared_ptr< bool > m_DisplayDocTitle;
         std::shared_ptr< aspose::words::cloud::models::DownsampleOptionsData > m_DownsampleOptions;
+        std::shared_ptr< bool > m_EmbedAttachments;
         std::shared_ptr< bool > m_EmbedFullFonts;
         std::shared_ptr< aspose::words::cloud::models::PdfEncryptionDetailsData > m_EncryptionDetails;
         std::shared_ptr< bool > m_ExportDocumentStructure;
