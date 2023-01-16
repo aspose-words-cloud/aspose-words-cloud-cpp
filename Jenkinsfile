@@ -18,7 +18,7 @@ def packageTestingWindows = false
 def packageTestingLinux = false
 
 parallel windows: {
-    node('win2019') {
+    node('win2016_1') {
         try {
             stage('windows_checkout'){
                 packageTestingWindows = params.packageTesting
