@@ -20,65 +20,63 @@ def packageTestingLinux = false
 parallel windows: {
     node('windows2016') {
         try {
-            gitlabCommitStatus("windows_checkout") {
-                stage('windows_checkout'){
-                    packageTestingWindows = params.packageTesting
-                    if (packageTestingWindows) {
-                        needToBuildWindows = true
-                        checkout([$class: 'GitSCM', branches: [[name: 'release']], doGenerateSubmoduleConfigurations: false, extensions: [[$class: 'LocalBranch', localBranch: "**"]], submoduleCfg: [], userRemoteConfigs: [[url: 'https://github.com/aspose-words-cloud/aspose-words-cloud-cpp.git']]])
-                    }
-                    else {
-                        checkout([$class: 'GitSCM', branches: [[name: params.branch]], doGenerateSubmoduleConfigurations: false, extensions: [[$class: 'LocalBranch', localBranch: "**"]], submoduleCfg: [], userRemoteConfigs: [[credentialsId: '361885ba-9425-4230-950e-0af201d90547', url: 'https://git.auckland.dynabic.com/words-cloud/words-cloud-cpp.git']]])
-                        bat 'git show -s HEAD > gitMessage'
-                        def commitMessage = readFile('gitMessage').trim()
-                        echo commitMessage
-                        needToBuildWindows = params.ignoreCiSkip || !commitMessage.contains('[ci skip]')
-                    }
-                    
-                    bat 'git clean -fdx'
+            stage('windows_checkout'){
+                packageTestingWindows = params.packageTesting
+                if (packageTestingWindows) {
+                    needToBuildWindows = true
+                    checkout([$class: 'GitSCM', branches: [[name: 'release']], doGenerateSubmoduleConfigurations: false, extensions: [[$class: 'LocalBranch', localBranch: "**"]], submoduleCfg: [], userRemoteConfigs: [[url: 'https://github.com/aspose-words-cloud/aspose-words-cloud-cpp.git']]])
                 }
+                else {
+                    checkout([$class: 'GitSCM', branches: [[name: params.branch]], doGenerateSubmoduleConfigurations: false, extensions: [[$class: 'LocalBranch', localBranch: "**"]], submoduleCfg: [], userRemoteConfigs: [[credentialsId: '361885ba-9425-4230-950e-0af201d90547', url: 'https://git.auckland.dynabic.com/words-cloud/words-cloud-cpp.git']]])
+                    bat 'git show -s HEAD > gitMessage'
+                    def commitMessage = readFile('gitMessage').trim()
+                    echo commitMessage
+                    needToBuildWindows = params.ignoreCiSkip || !commitMessage.contains('[ci skip]')
+                }
+                
+                bat 'git clean -fdx'
             }
             
             if (needToBuildWindows) {
-                gitlabCommitStatus("windows_tests") {
-                    stage('windows_tests'){
-                        withCredentials([usernamePassword(credentialsId: 'cc2e3c9b-b3da-4455-b702-227bcce18895', usernameVariable: 'dockerrigistry_login', passwordVariable: 'dockerregistry_password')]) {
-                            bat 'docker login -u "%dockerrigistry_login%" -p "%dockerregistry_password%" git.auckland.dynabic.com:4567'
+                stage('windows_build') {
+                    withCredentials([usernamePassword(credentialsId: 'cc2e3c9b-b3da-4455-b702-227bcce18895', usernameVariable: 'dockerrigistry_login', passwordVariable: 'dockerregistry_password')]) {
+                        bat 'docker login -u "%dockerrigistry_login%" -p "%dockerregistry_password%" git.auckland.dynabic.com:4567'
+                        bat """
+                            docker pull ${buildCacheImage}/wincore:latest || goto build
+                            exit /b 0
+                            
+                            :build
+                            docker build --cache-from=${buildCacheImage}/wincore:latest -t ${buildCacheImage}/wincore:latest -t aspose-words-cloud-cpp-tests:wincore - < Dockerfile.wincore || goto error
+                            docker build -t aspose-words-cloud-cpp-tests:windows -f Dockerfile.windows . || goto error
+                            
+                            rem Uncomment for pushing updated image
+                            rem docker push ${buildCacheImage}/wincore:latest || goto error
+                            exit /b 0
+                            
+                            :error
+                            exit /b 255
+                        """
+                        bat (script: "docker build -t aspose-words-cloud-cpp-tests:windows -f Dockerfile.windows .")
+                    }
+                }
+                stage('windows_tests') {
+                    withCredentials([usernamePassword(credentialsId: params.credentialsId, passwordVariable: 'WordsClientSecret', usernameVariable: 'WordsClientId')]) {
+                        try {
+                            bat (script: "docker build -t aspose-words-cloud-cpp-tests:windows -f Dockerfile.windows .")
+                            def apiUrl = params.apiUrl
+                            bat """
+                                if exist out rmdir out /s /q
+                                mkdir out
+                                
+                                docker run --rm --env accept_eula=Y --memory 4G -v "%cd%/out:C:/out" aspose-words-cloud-cpp-tests:windows cmd /c ".\\scripts\\runTestsDocker.bat %WordsClientId% %WordsClientSecret% %apiUrl%"
+                                exit /b %ERRORLEVEL%
+                            """
+                        } finally {
+                            junit '**\\out\\test_result.xml'
                         }
-                        withCredentials([usernamePassword(credentialsId: params.credentialsId, passwordVariable: 'WordsClientSecret', usernameVariable: 'WordsClientId')]) {
-                            try {
-                                bat """
-                                    docker pull ${buildCacheImage}/wincore:latest || goto build
-                                    exit /b 0
-                                    
-                                    :build
-                                    docker build --cache-from=${buildCacheImage}/wincore:latest -t ${buildCacheImage}/wincore:latest -t aspose-words-cloud-cpp-tests:wincore - < Dockerfile.wincore || goto error
-                                    docker build -t aspose-words-cloud-cpp-tests:windows -f Dockerfile.windows . || goto error
-                                    
-                                    rem Uncomment for pushing updated image
-                                    rem docker push ${buildCacheImage}/wincore:latest || goto error
-                                    exit /b 0
-                                    
-                                    :error
-                                    exit /b 255
-                                """
-                            
-                                bat (script: "docker build -t aspose-words-cloud-cpp-tests:windows -f Dockerfile.windows .")
-                                def apiUrl = params.apiUrl
-                                bat """
-                                    if exist out rmdir out /s /q
-                                    mkdir out
-                                    
-                                    docker run --rm --env accept_eula=Y --memory 4G -v "%cd%/out:C:/out" aspose-words-cloud-cpp-tests:windows cmd /c ".\\scripts\\runTestsDocker.bat %WordsClientId% %WordsClientSecret% %apiUrl%"
-                                    exit /b %ERRORLEVEL%
-                                """
-                            } finally {
-                                junit '**\\out\\test_result.xml'
-                            }
-                            
-                            if (currentBuild.result == "UNSTABLE") {
-                                currentBuild.result = "FAILURE"
-                            }
+                        
+                        if (currentBuild.result == "UNSTABLE") {
+                            currentBuild.result = "FAILURE"
                         }
                     }
                 }
@@ -90,45 +88,42 @@ parallel windows: {
 }, linux: {
     node('words-linux') {
         try {
-            gitlabCommitStatus("linux_checkout") {
-                stage('linux_checkout'){
-                    packageTestingLinux = params.packageTesting
-                    if (packageTestingLinux) {
-                        needToBuildLinux = true
-                        checkout([$class: 'GitSCM', branches: [[name: 'release']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[url: 'https://github.com/aspose-words-cloud/aspose-words-cloud-cpp.git']]])
-                    }
-                    else {
-                        checkout([$class: 'GitSCM', branches: [[name: params.branch]], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: '361885ba-9425-4230-950e-0af201d90547', url: 'https://git.auckland.dynabic.com/words-cloud/words-cloud-cpp.git']]])
-                        sh 'git show -s HEAD > gitMessage'
-                        def commitMessage = readFile('gitMessage').trim()
-                        echo commitMessage
-                        needToBuildLinux = params.ignoreCiSkip || !commitMessage.contains('[ci skip]')
-                    }
-                    
-                    sh 'git clean -fdx'
+            stage('linux_checkout'){
+                packageTestingLinux = params.packageTesting
+                if (packageTestingLinux) {
+                    needToBuildLinux = true
+                    checkout([$class: 'GitSCM', branches: [[name: 'release']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[url: 'https://github.com/aspose-words-cloud/aspose-words-cloud-cpp.git']]])
                 }
+                else {
+                    checkout([$class: 'GitSCM', branches: [[name: params.branch]], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: '361885ba-9425-4230-950e-0af201d90547', url: 'https://git.auckland.dynabic.com/words-cloud/words-cloud-cpp.git']]])
+                    sh 'git show -s HEAD > gitMessage'
+                    def commitMessage = readFile('gitMessage').trim()
+                    echo commitMessage
+                    needToBuildLinux = params.ignoreCiSkip || !commitMessage.contains('[ci skip]')
+                }
+                
+                sh 'git clean -fdx'
             }
             
             if (needToBuildLinux) {
-                gitlabCommitStatus("linux_tests") {
-                    stage('linux_tests'){
-                        withCredentials([usernamePassword(credentialsId: 'cc2e3c9b-b3da-4455-b702-227bcce18895', usernameVariable: 'dockerrigistry_login', passwordVariable: 'dockerregistry_password')]) {
-                            sh 'docker login -u "${dockerrigistry_login}" -p "${dockerregistry_password}" git.auckland.dynabic.com:4567'
+                stage('linux_build') {
+                    withCredentials([usernamePassword(credentialsId: 'cc2e3c9b-b3da-4455-b702-227bcce18895', usernameVariable: 'dockerrigistry_login', passwordVariable: 'dockerregistry_password')]) {
+                        sh 'docker login -u "${dockerrigistry_login}" -p "${dockerregistry_password}" git.auckland.dynabic.com:4567'
+                        sh (script: "docker pull ${buildCacheImage}/linux:latest")
+                        sh (script: "docker build --cache-from=${buildCacheImage}/linux:latest -t ${buildCacheImage}/linux:latest -t aspose-words-cloud-cpp-tests:linux - < Dockerfile.linux")
+                        sh (script: "docker push ${buildCacheImage}/linux:latest")
+                    }
+                }
+                stage('linux_tests') {
+                    withCredentials([usernamePassword(credentialsId: params.credentialsId, passwordVariable: 'WordsClientSecret', usernameVariable: 'WordsClientId')]) {
+                        try {
+                            sh 'docker run --rm -v "$PWD/out:/out/" -v "$PWD:/aspose-words-cloud-cpp" aspose-words-cloud-cpp-tests:linux bash /aspose-words-cloud-cpp/scripts/runTestsDocker.sh $WordsClientId $WordsClientSecret $apiUrl'
+                        } finally {
+                            junit '**\\out\\test_result.xml'
                         }
-                        withCredentials([usernamePassword(credentialsId: params.credentialsId, passwordVariable: 'WordsClientSecret', usernameVariable: 'WordsClientId')]) {
-                            try {
-                                sh (script: "docker pull ${buildCacheImage}/linux:latest")
-                                sh (script: "docker build --cache-from=${buildCacheImage}/linux:latest -t ${buildCacheImage}/linux:latest -t aspose-words-cloud-cpp-tests:linux - < Dockerfile.linux")
-                                sh (script: "docker push ${buildCacheImage}/linux:latest")
-
-                                sh 'docker run --rm -v "$PWD/out:/out/" -v "$PWD:/aspose-words-cloud-cpp" aspose-words-cloud-cpp-tests:linux bash /aspose-words-cloud-cpp/scripts/runTestsDocker.sh $WordsClientId $WordsClientSecret $apiUrl'
-                            } finally {
-                                junit '**\\out\\test_result.xml'
-                            }
-                            
-                            if (currentBuild.result == "UNSTABLE") {
-                                currentBuild.result = "FAILURE"
-                            }
+                        
+                        if (currentBuild.result == "UNSTABLE") {
+                            currentBuild.result = "FAILURE"
                         }
                     }
                 }
