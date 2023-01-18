@@ -18,7 +18,7 @@ def packageTestingWindows = false
 def packageTestingLinux = false
 
 parallel windows: {
-    node('win2016_1') {
+    node('windows2019') {
         try {
             stage('windows_checkout'){
                 packageTestingWindows = params.packageTesting
@@ -42,15 +42,15 @@ parallel windows: {
                     withCredentials([usernamePassword(credentialsId: 'cc2e3c9b-b3da-4455-b702-227bcce18895', usernameVariable: 'dockerrigistry_login', passwordVariable: 'dockerregistry_password')]) {
                         bat 'docker login -u "%dockerrigistry_login%" -p "%dockerregistry_password%" git.auckland.dynabic.com:4567'
                         bat """
-                            docker pull ${buildCacheImage}/wincore:latest || goto build
-                            exit /b 0
+                            rem docker pull ${buildCacheImage}/wincore:latest || goto build
+                            rem exit /b 0
                             
                             :build
                             docker build --cache-from=${buildCacheImage}/wincore:latest -t ${buildCacheImage}/wincore:latest -t aspose-words-cloud-cpp-tests:wincore - < Dockerfile.wincore || goto error
                             docker build -t aspose-words-cloud-cpp-tests:windows -f Dockerfile.windows . || goto error
                             
                             rem Uncomment for pushing updated image
-                            rem docker push ${buildCacheImage}/wincore:latest || goto error
+                            docker push ${buildCacheImage}/wincore:latest || goto error
                             exit /b 0
                             
                             :error
@@ -71,6 +71,7 @@ parallel windows: {
                                 docker run --rm --env accept_eula=Y --memory 4G -v "%cd%/out:C:/out" aspose-words-cloud-cpp-tests:windows cmd /c ".\\scripts\\runTestsDocker.bat %WordsClientId% %WordsClientSecret% %apiUrl%"
                                 exit /b %ERRORLEVEL%
                             """
+                            archiveArtifacts artifacts: '**\\out\\windows-x64.zip'
                         } finally {
                             junit '**\\out\\test_result.xml'
                         }
@@ -118,6 +119,7 @@ parallel windows: {
                     withCredentials([usernamePassword(credentialsId: params.credentialsId, passwordVariable: 'WordsClientSecret', usernameVariable: 'WordsClientId')]) {
                         try {
                             sh 'docker run --rm -v "$PWD/out:/out/" -v "$PWD:/aspose-words-cloud-cpp" aspose-words-cloud-cpp-tests:linux bash /aspose-words-cloud-cpp/scripts/runTestsDocker.sh $WordsClientId $WordsClientSecret $apiUrl'
+                            archiveArtifacts artifacts: '**\\out\\linux-x64.zip'
                         } finally {
                             junit '**\\out\\test_result.xml'
                         }

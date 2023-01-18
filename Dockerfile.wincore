@@ -1,25 +1,28 @@
-FROM mcr.microsoft.com/windows/servercore:ltsc2016
+FROM mcr.microsoft.com/windows/servercore:ltsc2019
 
 # Visual Studio
 RUN powershell -NoProfile -InputFormat None -ExecutionPolicy Bypass -Command "[System.Net.ServicePointManager]::SecurityProtocol = 3072; $wc = New-Object net.webclient; $wc.Downloadfile('https://aka.ms/vs/15/release/vs_buildtools.exe', 'vs_buildtools.exe')" \
     && C:\vs_BuildTools.exe \
+        --includeRecommended \
+        --add Microsoft.Component.MSBuild \
+        --add Microsoft.VisualStudio.Component.Windows10SDK \
+        --add Microsoft.VisualStudio.ComponentGroup.NativeDesktop.Core \ 
         --add Microsoft.VisualStudio.Product.BuildTools \
         --add Microsoft.VisualStudio.Workload.MSBuildTools \
         --add Microsoft.VisualStudio.Workload.VCTools \
         --add Microsoft.VisualStudio.Component.VC.ATL \
         --add Microsoft.VisualStudio.Component.VC.ATLMFC \
-        --includeRecommended \
-        --passive \
-        --norestart \
-        --wait \
-        --nocache \
-    && del C:\vs_BuildTools.exe 
+        --add Microsoft.VisualStudio.Component.VC.140 \
+        --add Microsoft.VisualStudio.Component.VC.Tools.x86.x64 \
+        --add Microsoft.VisualStudio.Component.Windows10SDK.19041 \
+        --quiet --wait --norestart --nocache \
+    && del C:\vs_BuildTools.exe
 
 # Chocolatey & Git
 RUN powershell -NoProfile -InputFormat None -ExecutionPolicy Bypass -Command "[System.Net.ServicePointManager]::SecurityProtocol = 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))" && \
     SET "PATH=%PATH%;%ALLUSERSPROFILE%\chocolatey\bin" && \ 
     %ALLUSERSPROFILE%\chocolatey\bin\choco.exe install -y git && \
-    %ALLUSERSPROFILE%\chocolatey\bin\choco.exe install -y cmake --version=3.19.0 --installargs 'ADD_CMAKE_TO_PATH=""System""'
+    %ALLUSERSPROFILE%\chocolatey\bin\choco.exe install -y cmake --version=3.25.1 --installargs 'ADD_CMAKE_TO_PATH=""System""'
 
 # install vcpkg
 RUN git clone https://github.com/microsoft/vcpkg C:\vcpkg && \
