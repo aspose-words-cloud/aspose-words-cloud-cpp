@@ -42,14 +42,9 @@ parallel windows: {
                     withCredentials([usernamePassword(credentialsId: 'cc2e3c9b-b3da-4455-b702-227bcce18895', usernameVariable: 'dockerrigistry_login', passwordVariable: 'dockerregistry_password')]) {
                         bat 'docker login -u "%dockerrigistry_login%" -p "%dockerregistry_password%" git.auckland.dynabic.com:4567'
                         bat """
-                            rem docker pull ${buildCacheImage}/wincore:latest || goto build
-                            rem exit /b 0
-                            
-                            :build
+                            docker pull ${buildCacheImage}/wincore:latest
                             docker build --cache-from=${buildCacheImage}/wincore:latest -t ${buildCacheImage}/wincore:latest -t aspose-words-cloud-cpp-tests:wincore - < Dockerfile.wincore || goto error
                             docker build -t aspose-words-cloud-cpp-tests:windows -f Dockerfile.windows . || goto error
-                            
-                            rem Uncomment for pushing updated image
                             docker push ${buildCacheImage}/wincore:latest || goto error
                             exit /b 0
                             
