@@ -179,6 +179,10 @@
 #include "aspose_words_cloud/responses/delete_section_response.h"
 #include "aspose_words_cloud/requests/delete_section_online_request.h"
 #include "aspose_words_cloud/responses/delete_section_online_response.h"
+#include "aspose_words_cloud/requests/delete_structured_document_tag_request.h"
+#include "aspose_words_cloud/responses/delete_structured_document_tag_response.h"
+#include "aspose_words_cloud/requests/delete_structured_document_tag_online_request.h"
+#include "aspose_words_cloud/responses/delete_structured_document_tag_online_response.h"
 #include "aspose_words_cloud/requests/delete_table_request.h"
 #include "aspose_words_cloud/responses/delete_table_response.h"
 #include "aspose_words_cloud/requests/delete_table_cell_request.h"
@@ -389,6 +393,14 @@
 #include "aspose_words_cloud/responses/get_sections_response.h"
 #include "aspose_words_cloud/requests/get_sections_online_request.h"
 #include "aspose_words_cloud/responses/get_sections_online_response.h"
+#include "aspose_words_cloud/requests/get_structured_document_tag_request.h"
+#include "aspose_words_cloud/responses/get_structured_document_tag_response.h"
+#include "aspose_words_cloud/requests/get_structured_document_tag_online_request.h"
+#include "aspose_words_cloud/responses/get_structured_document_tag_online_response.h"
+#include "aspose_words_cloud/requests/get_structured_document_tags_request.h"
+#include "aspose_words_cloud/responses/get_structured_document_tags_response.h"
+#include "aspose_words_cloud/requests/get_structured_document_tags_online_request.h"
+#include "aspose_words_cloud/responses/get_structured_document_tags_online_response.h"
 #include "aspose_words_cloud/requests/get_style_request.h"
 #include "aspose_words_cloud/responses/get_style_response.h"
 #include "aspose_words_cloud/requests/get_style_from_document_element_request.h"
@@ -481,6 +493,10 @@
 #include "aspose_words_cloud/responses/insert_run_response.h"
 #include "aspose_words_cloud/requests/insert_run_online_request.h"
 #include "aspose_words_cloud/responses/insert_run_online_response.h"
+#include "aspose_words_cloud/requests/insert_structured_document_tag_request.h"
+#include "aspose_words_cloud/responses/insert_structured_document_tag_response.h"
+#include "aspose_words_cloud/requests/insert_structured_document_tag_online_request.h"
+#include "aspose_words_cloud/responses/insert_structured_document_tag_online_response.h"
 #include "aspose_words_cloud/requests/insert_style_request.h"
 #include "aspose_words_cloud/responses/insert_style_response.h"
 #include "aspose_words_cloud/requests/insert_style_online_request.h"
@@ -647,6 +663,10 @@
 #include "aspose_words_cloud/responses/update_section_page_setup_response.h"
 #include "aspose_words_cloud/requests/update_section_page_setup_online_request.h"
 #include "aspose_words_cloud/responses/update_section_page_setup_online_response.h"
+#include "aspose_words_cloud/requests/update_structured_document_tag_request.h"
+#include "aspose_words_cloud/responses/update_structured_document_tag_response.h"
+#include "aspose_words_cloud/requests/update_structured_document_tag_online_request.h"
+#include "aspose_words_cloud/responses/update_structured_document_tag_online_response.h"
 #include "aspose_words_cloud/requests/update_style_request.h"
 #include "aspose_words_cloud/responses/update_style_response.h"
 #include "aspose_words_cloud/requests/update_style_online_request.h"
@@ -1675,6 +1695,36 @@ namespace aspose::words::cloud::api {
         /// <param name="revisionAuthor">Initials of the author to use for revisions.If you set this parameter and then make some changes to the document programmatically, save the document and later open the document in MS Word you will see these changes as revisions.</param>
         /// <param name="revisionDateTime">The date and time to use for revisions.</param>
         ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::map<std::wstring, std::shared_ptr<std::istream>> > deleteSectionOnline(std::shared_ptr<aspose::words::cloud::requests::DeleteSectionOnlineRequest> request);
+
+        /// <summary>
+        /// Removes a StructuredDocumentTag (SDT) from the document node.
+        /// </summary>
+        /// <param name="name">The filename of the input document.</param>
+        /// <param name="index">Object index.</param>
+        /// <param name="nodePath">The path to the node in the document tree.</param>
+        /// <param name="folder">Original document folder.</param>
+        /// <param name="storage">Original document storage.</param>
+        /// <param name="loadEncoding">Encoding that will be used to load an HTML (or TXT) document if the encoding is not specified in HTML.</param>
+        /// <param name="password">Password of protected Word document. Use the parameter to pass a password via SDK. SDK encrypts it automatically. We don't recommend to use the parameter to pass a plain password for direct call of API.</param>
+        /// <param name="encryptedPassword">Password of protected Word document. Use the parameter to pass an encrypted password for direct calls of API. See SDK code for encyption details.</param>
+        /// <param name="destFileName">Result path of the document after the operation. If this parameter is omitted then result of the operation will be saved as the source document.</param>
+        /// <param name="revisionAuthor">Initials of the author to use for revisions.If you set this parameter and then make some changes to the document programmatically, save the document and later open the document in MS Word you will see these changes as revisions.</param>
+        /// <param name="revisionDateTime">The date and time to use for revisions.</param>
+        ASPOSE_WORDS_CLOUD_EXPORT void deleteStructuredDocumentTag(std::shared_ptr<aspose::words::cloud::requests::DeleteStructuredDocumentTagRequest> request);
+
+        /// <summary>
+        /// Removes a StructuredDocumentTag (SDT) from the document node.
+        /// </summary>
+        /// <param name="document">The document.</param>
+        /// <param name="index">Object index.</param>
+        /// <param name="nodePath">The path to the node in the document tree.</param>
+        /// <param name="loadEncoding">Encoding that will be used to load an HTML (or TXT) document if the encoding is not specified in HTML.</param>
+        /// <param name="password">Password of protected Word document. Use the parameter to pass a password via SDK. SDK encrypts it automatically. We don't recommend to use the parameter to pass a plain password for direct call of API.</param>
+        /// <param name="encryptedPassword">Password of protected Word document. Use the parameter to pass an encrypted password for direct calls of API. See SDK code for encyption details.</param>
+        /// <param name="destFileName">Result path of the document after the operation. If this parameter is omitted then result of the operation will be saved as the source document.</param>
+        /// <param name="revisionAuthor">Initials of the author to use for revisions.If you set this parameter and then make some changes to the document programmatically, save the document and later open the document in MS Word you will see these changes as revisions.</param>
+        /// <param name="revisionDateTime">The date and time to use for revisions.</param>
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::map<std::wstring, std::shared_ptr<std::istream>> > deleteStructuredDocumentTagOnline(std::shared_ptr<aspose::words::cloud::requests::DeleteStructuredDocumentTagOnlineRequest> request);
 
         /// <summary>
         /// Removes a table from the document node.
@@ -2872,6 +2922,52 @@ namespace aspose::words::cloud::api {
         ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::SectionLinkCollectionResponse > getSectionsOnline(std::shared_ptr<aspose::words::cloud::requests::GetSectionsOnlineRequest> request);
 
         /// <summary>
+        /// Reads a StructuredDocumentTag (SDT) from the document node.
+        /// </summary>
+        /// <param name="name">The filename of the input document.</param>
+        /// <param name="index">Object index.</param>
+        /// <param name="nodePath">The path to the node in the document tree.</param>
+        /// <param name="folder">Original document folder.</param>
+        /// <param name="storage">Original document storage.</param>
+        /// <param name="loadEncoding">Encoding that will be used to load an HTML (or TXT) document if the encoding is not specified in HTML.</param>
+        /// <param name="password">Password of protected Word document. Use the parameter to pass a password via SDK. SDK encrypts it automatically. We don't recommend to use the parameter to pass a plain password for direct call of API.</param>
+        /// <param name="encryptedPassword">Password of protected Word document. Use the parameter to pass an encrypted password for direct calls of API. See SDK code for encyption details.</param>
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::StructuredDocumentTagResponse > getStructuredDocumentTag(std::shared_ptr<aspose::words::cloud::requests::GetStructuredDocumentTagRequest> request);
+
+        /// <summary>
+        /// Reads a StructuredDocumentTag (SDT) from the document node.
+        /// </summary>
+        /// <param name="document">The document.</param>
+        /// <param name="index">Object index.</param>
+        /// <param name="nodePath">The path to the node in the document tree.</param>
+        /// <param name="loadEncoding">Encoding that will be used to load an HTML (or TXT) document if the encoding is not specified in HTML.</param>
+        /// <param name="password">Password of protected Word document. Use the parameter to pass a password via SDK. SDK encrypts it automatically. We don't recommend to use the parameter to pass a plain password for direct call of API.</param>
+        /// <param name="encryptedPassword">Password of protected Word document. Use the parameter to pass an encrypted password for direct calls of API. See SDK code for encyption details.</param>
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::StructuredDocumentTagResponse > getStructuredDocumentTagOnline(std::shared_ptr<aspose::words::cloud::requests::GetStructuredDocumentTagOnlineRequest> request);
+
+        /// <summary>
+        /// Reads StructuredDocumentTags (SDT) from the document node.
+        /// </summary>
+        /// <param name="name">The filename of the input document.</param>
+        /// <param name="nodePath">The path to the node in the document tree.</param>
+        /// <param name="folder">Original document folder.</param>
+        /// <param name="storage">Original document storage.</param>
+        /// <param name="loadEncoding">Encoding that will be used to load an HTML (or TXT) document if the encoding is not specified in HTML.</param>
+        /// <param name="password">Password of protected Word document. Use the parameter to pass a password via SDK. SDK encrypts it automatically. We don't recommend to use the parameter to pass a plain password for direct call of API.</param>
+        /// <param name="encryptedPassword">Password of protected Word document. Use the parameter to pass an encrypted password for direct calls of API. See SDK code for encyption details.</param>
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::StructuredDocumentTagsResponse > getStructuredDocumentTags(std::shared_ptr<aspose::words::cloud::requests::GetStructuredDocumentTagsRequest> request);
+
+        /// <summary>
+        /// Reads StructuredDocumentTags (SDT) from the document node.
+        /// </summary>
+        /// <param name="document">The document.</param>
+        /// <param name="nodePath">The path to the node in the document tree.</param>
+        /// <param name="loadEncoding">Encoding that will be used to load an HTML (or TXT) document if the encoding is not specified in HTML.</param>
+        /// <param name="password">Password of protected Word document. Use the parameter to pass a password via SDK. SDK encrypts it automatically. We don't recommend to use the parameter to pass a plain password for direct call of API.</param>
+        /// <param name="encryptedPassword">Password of protected Word document. Use the parameter to pass an encrypted password for direct calls of API. See SDK code for encyption details.</param>
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::StructuredDocumentTagsResponse > getStructuredDocumentTagsOnline(std::shared_ptr<aspose::words::cloud::requests::GetStructuredDocumentTagsOnlineRequest> request);
+
+        /// <summary>
         /// Reads a style from the document.
         /// </summary>
         /// <param name="name">The filename of the input document.</param>
@@ -3488,6 +3584,36 @@ namespace aspose::words::cloud::api {
         /// <param name="revisionDateTime">The date and time to use for revisions.</param>
         /// <param name="insertBeforeNode">The index of the node. A new Run object will be inserted before the node with the specified node Id.</param>
         ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr<aspose::words::cloud::responses::InsertRunOnlineResponse> insertRunOnline(std::shared_ptr<aspose::words::cloud::requests::InsertRunOnlineRequest> request);
+
+        /// <summary>
+        /// Inserts a new StructuredDocumentTag (SDT) to the document node.
+        /// </summary>
+        /// <param name="name">The filename of the input document.</param>
+        /// <param name="structuredDocumentTag">Structured document tag parameters.</param>
+        /// <param name="nodePath">The path to the node in the document tree.</param>
+        /// <param name="folder">Original document folder.</param>
+        /// <param name="storage">Original document storage.</param>
+        /// <param name="loadEncoding">Encoding that will be used to load an HTML (or TXT) document if the encoding is not specified in HTML.</param>
+        /// <param name="password">Password of protected Word document. Use the parameter to pass a password via SDK. SDK encrypts it automatically. We don't recommend to use the parameter to pass a plain password for direct call of API.</param>
+        /// <param name="encryptedPassword">Password of protected Word document. Use the parameter to pass an encrypted password for direct calls of API. See SDK code for encyption details.</param>
+        /// <param name="destFileName">Result path of the document after the operation. If this parameter is omitted then result of the operation will be saved as the source document.</param>
+        /// <param name="revisionAuthor">Initials of the author to use for revisions.If you set this parameter and then make some changes to the document programmatically, save the document and later open the document in MS Word you will see these changes as revisions.</param>
+        /// <param name="revisionDateTime">The date and time to use for revisions.</param>
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::StructuredDocumentTagResponse > insertStructuredDocumentTag(std::shared_ptr<aspose::words::cloud::requests::InsertStructuredDocumentTagRequest> request);
+
+        /// <summary>
+        /// Inserts a new StructuredDocumentTag (SDT) to the document node.
+        /// </summary>
+        /// <param name="document">The document.</param>
+        /// <param name="structuredDocumentTag">Structured document tag parameters.</param>
+        /// <param name="nodePath">The path to the node in the document tree.</param>
+        /// <param name="loadEncoding">Encoding that will be used to load an HTML (or TXT) document if the encoding is not specified in HTML.</param>
+        /// <param name="password">Password of protected Word document. Use the parameter to pass a password via SDK. SDK encrypts it automatically. We don't recommend to use the parameter to pass a plain password for direct call of API.</param>
+        /// <param name="encryptedPassword">Password of protected Word document. Use the parameter to pass an encrypted password for direct calls of API. See SDK code for encyption details.</param>
+        /// <param name="destFileName">Result path of the document after the operation. If this parameter is omitted then result of the operation will be saved as the source document.</param>
+        /// <param name="revisionAuthor">Initials of the author to use for revisions.If you set this parameter and then make some changes to the document programmatically, save the document and later open the document in MS Word you will see these changes as revisions.</param>
+        /// <param name="revisionDateTime">The date and time to use for revisions.</param>
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr<aspose::words::cloud::responses::InsertStructuredDocumentTagOnlineResponse> insertStructuredDocumentTagOnline(std::shared_ptr<aspose::words::cloud::requests::InsertStructuredDocumentTagOnlineRequest> request);
 
         /// <summary>
         /// Inserts a new style to the document.
@@ -4695,6 +4821,38 @@ namespace aspose::words::cloud::api {
         /// <param name="revisionAuthor">Initials of the author to use for revisions.If you set this parameter and then make some changes to the document programmatically, save the document and later open the document in MS Word you will see these changes as revisions.</param>
         /// <param name="revisionDateTime">The date and time to use for revisions.</param>
         ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr<aspose::words::cloud::responses::UpdateSectionPageSetupOnlineResponse> updateSectionPageSetupOnline(std::shared_ptr<aspose::words::cloud::requests::UpdateSectionPageSetupOnlineRequest> request);
+
+        /// <summary>
+        /// Updates a StructuredDocumentTag (SDT) in the document node.
+        /// </summary>
+        /// <param name="name">The filename of the input document.</param>
+        /// <param name="index">Object index.</param>
+        /// <param name="structuredDocumentTag">Structured document tag parameters.</param>
+        /// <param name="nodePath">The path to the node in the document tree.</param>
+        /// <param name="folder">Original document folder.</param>
+        /// <param name="storage">Original document storage.</param>
+        /// <param name="loadEncoding">Encoding that will be used to load an HTML (or TXT) document if the encoding is not specified in HTML.</param>
+        /// <param name="password">Password of protected Word document. Use the parameter to pass a password via SDK. SDK encrypts it automatically. We don't recommend to use the parameter to pass a plain password for direct call of API.</param>
+        /// <param name="encryptedPassword">Password of protected Word document. Use the parameter to pass an encrypted password for direct calls of API. See SDK code for encyption details.</param>
+        /// <param name="destFileName">Result path of the document after the operation. If this parameter is omitted then result of the operation will be saved as the source document.</param>
+        /// <param name="revisionAuthor">Initials of the author to use for revisions.If you set this parameter and then make some changes to the document programmatically, save the document and later open the document in MS Word you will see these changes as revisions.</param>
+        /// <param name="revisionDateTime">The date and time to use for revisions.</param>
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::StructuredDocumentTagResponse > updateStructuredDocumentTag(std::shared_ptr<aspose::words::cloud::requests::UpdateStructuredDocumentTagRequest> request);
+
+        /// <summary>
+        /// Updates a StructuredDocumentTag (SDT) in the document node.
+        /// </summary>
+        /// <param name="document">The document.</param>
+        /// <param name="structuredDocumentTag">Structured document tag parameters.</param>
+        /// <param name="index">Object index.</param>
+        /// <param name="nodePath">The path to the node in the document tree.</param>
+        /// <param name="loadEncoding">Encoding that will be used to load an HTML (or TXT) document if the encoding is not specified in HTML.</param>
+        /// <param name="password">Password of protected Word document. Use the parameter to pass a password via SDK. SDK encrypts it automatically. We don't recommend to use the parameter to pass a plain password for direct call of API.</param>
+        /// <param name="encryptedPassword">Password of protected Word document. Use the parameter to pass an encrypted password for direct calls of API. See SDK code for encyption details.</param>
+        /// <param name="destFileName">Result path of the document after the operation. If this parameter is omitted then result of the operation will be saved as the source document.</param>
+        /// <param name="revisionAuthor">Initials of the author to use for revisions.If you set this parameter and then make some changes to the document programmatically, save the document and later open the document in MS Word you will see these changes as revisions.</param>
+        /// <param name="revisionDateTime">The date and time to use for revisions.</param>
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr<aspose::words::cloud::responses::UpdateStructuredDocumentTagOnlineResponse> updateStructuredDocumentTagOnline(std::shared_ptr<aspose::words::cloud::requests::UpdateStructuredDocumentTagOnlineRequest> request);
 
         /// <summary>
         /// Updates a style in the document.

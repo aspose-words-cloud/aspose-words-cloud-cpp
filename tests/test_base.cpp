@@ -65,6 +65,7 @@
 #include "./api/section_test.h"
 #include "./api/file_test.h"
 #include "./api/folder_test.h"
+#include "./api/structured_document_tag_test.h"
 #include "./api/styles_test.h"
 #include "./api/table_test.h"
 #include "./api/table_border_test.h"
