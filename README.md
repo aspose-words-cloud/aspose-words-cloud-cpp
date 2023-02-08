@@ -17,6 +17,11 @@ Feel free to explore the [Developer's Guide](https://docs.aspose.cloud/display/w
 - Read & write access to Document Object Model.
 - Thread safe
 
+## Enhancements in Version 23.2
+
+- Added operations to manipulate with Structure Document Tags (SDT) in documents.
+
+
 ## Enhancements in Version 23.1
 
 - Various changes related to stability and performance

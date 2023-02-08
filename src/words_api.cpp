@@ -806,6 +806,26 @@ namespace aspose::words::cloud::api {
         return response->getDocument();
     }
 
+    void WordsApi::deleteStructuredDocumentTag(std::shared_ptr<aspose::words::cloud::requests::DeleteStructuredDocumentTagRequest> request)
+    {
+        auto response = std::make_shared< aspose::words::cloud::responses::DeleteStructuredDocumentTagResponse >();
+        m_ApiClient->call( request->createHttpRequest(), *response);
+        if (response->getStatusCode() != 200) {
+            throw aspose::words::cloud::ApiException(response->getStatusCode(), response->getErrorMessage());
+        }
+    }
+
+    std::shared_ptr< std::map<std::wstring, std::shared_ptr<std::istream>> > WordsApi::deleteStructuredDocumentTagOnline(std::shared_ptr<aspose::words::cloud::requests::DeleteStructuredDocumentTagOnlineRequest> request)
+    {
+        auto response = std::make_shared< aspose::words::cloud::responses::DeleteStructuredDocumentTagOnlineResponse >();
+        m_ApiClient->call( request->createHttpRequest(), *response);
+        if (response->getStatusCode() != 200) {
+            throw aspose::words::cloud::ApiException(response->getStatusCode(), response->getErrorMessage());
+        }
+
+        return response->getDocument();
+    }
+
     void WordsApi::deleteTable(std::shared_ptr<aspose::words::cloud::requests::DeleteTableRequest> request)
     {
         auto response = std::make_shared< aspose::words::cloud::responses::DeleteTableResponse >();
@@ -1955,6 +1975,50 @@ namespace aspose::words::cloud::api {
         return response->getResult();
     }
 
+    std::shared_ptr< aspose::words::cloud::models::StructuredDocumentTagResponse > WordsApi::getStructuredDocumentTag(std::shared_ptr<aspose::words::cloud::requests::GetStructuredDocumentTagRequest> request)
+    {
+        auto response = std::make_shared< aspose::words::cloud::responses::GetStructuredDocumentTagResponse >();
+        m_ApiClient->call( request->createHttpRequest(), *response);
+        if (response->getStatusCode() != 200) {
+            throw aspose::words::cloud::ApiException(response->getStatusCode(), response->getErrorMessage());
+        }
+
+        return response->getResult();
+    }
+
+    std::shared_ptr< aspose::words::cloud::models::StructuredDocumentTagResponse > WordsApi::getStructuredDocumentTagOnline(std::shared_ptr<aspose::words::cloud::requests::GetStructuredDocumentTagOnlineRequest> request)
+    {
+        auto response = std::make_shared< aspose::words::cloud::responses::GetStructuredDocumentTagOnlineResponse >();
+        m_ApiClient->call( request->createHttpRequest(), *response);
+        if (response->getStatusCode() != 200) {
+            throw aspose::words::cloud::ApiException(response->getStatusCode(), response->getErrorMessage());
+        }
+
+        return response->getResult();
+    }
+
+    std::shared_ptr< aspose::words::cloud::models::StructuredDocumentTagsResponse > WordsApi::getStructuredDocumentTags(std::shared_ptr<aspose::words::cloud::requests::GetStructuredDocumentTagsRequest> request)
+    {
+        auto response = std::make_shared< aspose::words::cloud::responses::GetStructuredDocumentTagsResponse >();
+        m_ApiClient->call( request->createHttpRequest(), *response);
+        if (response->getStatusCode() != 200) {
+            throw aspose::words::cloud::ApiException(response->getStatusCode(), response->getErrorMessage());
+        }
+
+        return response->getResult();
+    }
+
+    std::shared_ptr< aspose::words::cloud::models::StructuredDocumentTagsResponse > WordsApi::getStructuredDocumentTagsOnline(std::shared_ptr<aspose::words::cloud::requests::GetStructuredDocumentTagsOnlineRequest> request)
+    {
+        auto response = std::make_shared< aspose::words::cloud::responses::GetStructuredDocumentTagsOnlineResponse >();
+        m_ApiClient->call( request->createHttpRequest(), *response);
+        if (response->getStatusCode() != 200) {
+            throw aspose::words::cloud::ApiException(response->getStatusCode(), response->getErrorMessage());
+        }
+
+        return response->getResult();
+    }
+
     std::shared_ptr< aspose::words::cloud::models::StyleResponse > WordsApi::getStyle(std::shared_ptr<aspose::words::cloud::requests::GetStyleRequest> request)
     {
         auto response = std::make_shared< aspose::words::cloud::responses::GetStyleResponse >();
@@ -2453,6 +2517,28 @@ namespace aspose::words::cloud::api {
     std::shared_ptr<aspose::words::cloud::responses::InsertRunOnlineResponse> WordsApi::insertRunOnline(std::shared_ptr<aspose::words::cloud::requests::InsertRunOnlineRequest> request)
     {
         auto response = std::make_shared< aspose::words::cloud::responses::InsertRunOnlineResponse >();
+        m_ApiClient->call( request->createHttpRequest(), *response);
+        if (response->getStatusCode() != 200) {
+            throw aspose::words::cloud::ApiException(response->getStatusCode(), response->getErrorMessage());
+        }
+
+        return response;
+    }
+
+    std::shared_ptr< aspose::words::cloud::models::StructuredDocumentTagResponse > WordsApi::insertStructuredDocumentTag(std::shared_ptr<aspose::words::cloud::requests::InsertStructuredDocumentTagRequest> request)
+    {
+        auto response = std::make_shared< aspose::words::cloud::responses::InsertStructuredDocumentTagResponse >();
+        m_ApiClient->call( request->createHttpRequest(), *response);
+        if (response->getStatusCode() != 200) {
+            throw aspose::words::cloud::ApiException(response->getStatusCode(), response->getErrorMessage());
+        }
+
+        return response->getResult();
+    }
+
+    std::shared_ptr<aspose::words::cloud::responses::InsertStructuredDocumentTagOnlineResponse> WordsApi::insertStructuredDocumentTagOnline(std::shared_ptr<aspose::words::cloud::requests::InsertStructuredDocumentTagOnlineRequest> request)
+    {
+        auto response = std::make_shared< aspose::words::cloud::responses::InsertStructuredDocumentTagOnlineResponse >();
         m_ApiClient->call( request->createHttpRequest(), *response);
         if (response->getStatusCode() != 200) {
             throw aspose::words::cloud::ApiException(response->getStatusCode(), response->getErrorMessage());
@@ -3356,6 +3442,28 @@ namespace aspose::words::cloud::api {
     std::shared_ptr<aspose::words::cloud::responses::UpdateSectionPageSetupOnlineResponse> WordsApi::updateSectionPageSetupOnline(std::shared_ptr<aspose::words::cloud::requests::UpdateSectionPageSetupOnlineRequest> request)
     {
         auto response = std::make_shared< aspose::words::cloud::responses::UpdateSectionPageSetupOnlineResponse >();
+        m_ApiClient->call( request->createHttpRequest(), *response);
+        if (response->getStatusCode() != 200) {
+            throw aspose::words::cloud::ApiException(response->getStatusCode(), response->getErrorMessage());
+        }
+
+        return response;
+    }
+
+    std::shared_ptr< aspose::words::cloud::models::StructuredDocumentTagResponse > WordsApi::updateStructuredDocumentTag(std::shared_ptr<aspose::words::cloud::requests::UpdateStructuredDocumentTagRequest> request)
+    {
+        auto response = std::make_shared< aspose::words::cloud::responses::UpdateStructuredDocumentTagResponse >();
+        m_ApiClient->call( request->createHttpRequest(), *response);
+        if (response->getStatusCode() != 200) {
+            throw aspose::words::cloud::ApiException(response->getStatusCode(), response->getErrorMessage());
+        }
+
+        return response->getResult();
+    }
+
+    std::shared_ptr<aspose::words::cloud::responses::UpdateStructuredDocumentTagOnlineResponse> WordsApi::updateStructuredDocumentTagOnline(std::shared_ptr<aspose::words::cloud::requests::UpdateStructuredDocumentTagOnlineRequest> request)
+    {
+        auto response = std::make_shared< aspose::words::cloud::responses::UpdateStructuredDocumentTagOnlineResponse >();
         m_ApiClient->call( request->createHttpRequest(), *response);
         if (response->getStatusCode() != 200) {
             throw aspose::words::cloud::ApiException(response->getStatusCode(), response->getErrorMessage());

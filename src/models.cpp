@@ -20425,6 +20425,840 @@ namespace aspose::words::cloud::models {
 
 
     /*
+     * StructuredDocumentTag implementation
+     */
+    inline std::string structuredDocumentTagAppearanceToString(aspose::words::cloud::models::StructuredDocumentTag::Appearance value)
+    {
+        if (value == aspose::words::cloud::models::StructuredDocumentTag::Appearance::DEFAULT) return "Default";
+        if (value == aspose::words::cloud::models::StructuredDocumentTag::Appearance::BOUNDING_BOX) return "BoundingBox";
+        if (value == aspose::words::cloud::models::StructuredDocumentTag::Appearance::TAGS) return "Tags";
+        if (value == aspose::words::cloud::models::StructuredDocumentTag::Appearance::HIDDEN) return "Hidden";
+        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
+    }
+
+    inline aspose::words::cloud::models::StructuredDocumentTag::Appearance structuredDocumentTagAppearanceFromString(const std::string& value)
+    {
+        if (value == "Default") return aspose::words::cloud::models::StructuredDocumentTag::Appearance::DEFAULT;
+        if (value == "BoundingBox") return aspose::words::cloud::models::StructuredDocumentTag::Appearance::BOUNDING_BOX;
+        if (value == "Tags") return aspose::words::cloud::models::StructuredDocumentTag::Appearance::TAGS;
+        if (value == "Hidden") return aspose::words::cloud::models::StructuredDocumentTag::Appearance::HIDDEN;
+        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
+    }
+
+    inline std::string structuredDocumentTagCalendarTypeToString(aspose::words::cloud::models::StructuredDocumentTag::CalendarType value)
+    {
+        if (value == aspose::words::cloud::models::StructuredDocumentTag::CalendarType::DEFAULT) return "Default";
+        if (value == aspose::words::cloud::models::StructuredDocumentTag::CalendarType::GREGORIAN) return "Gregorian";
+        if (value == aspose::words::cloud::models::StructuredDocumentTag::CalendarType::GREGORIAN_ARABIC) return "GregorianArabic";
+        if (value == aspose::words::cloud::models::StructuredDocumentTag::CalendarType::GREGORIAN_ME_FRENCH) return "GregorianMeFrench";
+        if (value == aspose::words::cloud::models::StructuredDocumentTag::CalendarType::GREGORIAN_US) return "GregorianUs";
+        if (value == aspose::words::cloud::models::StructuredDocumentTag::CalendarType::GREGORIAN_XLIT_ENGLISH) return "GregorianXlitEnglish";
+        if (value == aspose::words::cloud::models::StructuredDocumentTag::CalendarType::GREGORIAN_XLIT_FRENCH) return "GregorianXlitFrench";
+        if (value == aspose::words::cloud::models::StructuredDocumentTag::CalendarType::HEBREW) return "Hebrew";
+        if (value == aspose::words::cloud::models::StructuredDocumentTag::CalendarType::HIJRI) return "Hijri";
+        if (value == aspose::words::cloud::models::StructuredDocumentTag::CalendarType::JAPAN) return "Japan";
+        if (value == aspose::words::cloud::models::StructuredDocumentTag::CalendarType::KOREA) return "Korea";
+        if (value == aspose::words::cloud::models::StructuredDocumentTag::CalendarType::NONE) return "None";
+        if (value == aspose::words::cloud::models::StructuredDocumentTag::CalendarType::SAKA) return "Saka";
+        if (value == aspose::words::cloud::models::StructuredDocumentTag::CalendarType::TAIWAN) return "Taiwan";
+        if (value == aspose::words::cloud::models::StructuredDocumentTag::CalendarType::THAI) return "Thai";
+        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
+    }
+
+    inline aspose::words::cloud::models::StructuredDocumentTag::CalendarType structuredDocumentTagCalendarTypeFromString(const std::string& value)
+    {
+        if (value == "Default") return aspose::words::cloud::models::StructuredDocumentTag::CalendarType::DEFAULT;
+        if (value == "Gregorian") return aspose::words::cloud::models::StructuredDocumentTag::CalendarType::GREGORIAN;
+        if (value == "GregorianArabic") return aspose::words::cloud::models::StructuredDocumentTag::CalendarType::GREGORIAN_ARABIC;
+        if (value == "GregorianMeFrench") return aspose::words::cloud::models::StructuredDocumentTag::CalendarType::GREGORIAN_ME_FRENCH;
+        if (value == "GregorianUs") return aspose::words::cloud::models::StructuredDocumentTag::CalendarType::GREGORIAN_US;
+        if (value == "GregorianXlitEnglish") return aspose::words::cloud::models::StructuredDocumentTag::CalendarType::GREGORIAN_XLIT_ENGLISH;
+        if (value == "GregorianXlitFrench") return aspose::words::cloud::models::StructuredDocumentTag::CalendarType::GREGORIAN_XLIT_FRENCH;
+        if (value == "Hebrew") return aspose::words::cloud::models::StructuredDocumentTag::CalendarType::HEBREW;
+        if (value == "Hijri") return aspose::words::cloud::models::StructuredDocumentTag::CalendarType::HIJRI;
+        if (value == "Japan") return aspose::words::cloud::models::StructuredDocumentTag::CalendarType::JAPAN;
+        if (value == "Korea") return aspose::words::cloud::models::StructuredDocumentTag::CalendarType::KOREA;
+        if (value == "None") return aspose::words::cloud::models::StructuredDocumentTag::CalendarType::NONE;
+        if (value == "Saka") return aspose::words::cloud::models::StructuredDocumentTag::CalendarType::SAKA;
+        if (value == "Taiwan") return aspose::words::cloud::models::StructuredDocumentTag::CalendarType::TAIWAN;
+        if (value == "Thai") return aspose::words::cloud::models::StructuredDocumentTag::CalendarType::THAI;
+        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
+    }
+
+    inline std::string structuredDocumentTagDateStorageFormatToString(aspose::words::cloud::models::StructuredDocumentTag::DateStorageFormat value)
+    {
+        if (value == aspose::words::cloud::models::StructuredDocumentTag::DateStorageFormat::DATE) return "Date";
+        if (value == aspose::words::cloud::models::StructuredDocumentTag::DateStorageFormat::DATE_TIME) return "DateTime";
+        if (value == aspose::words::cloud::models::StructuredDocumentTag::DateStorageFormat::DEFAULT) return "Default";
+        if (value == aspose::words::cloud::models::StructuredDocumentTag::DateStorageFormat::TEXT) return "Text";
+        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
+    }
+
+    inline aspose::words::cloud::models::StructuredDocumentTag::DateStorageFormat structuredDocumentTagDateStorageFormatFromString(const std::string& value)
+    {
+        if (value == "Date") return aspose::words::cloud::models::StructuredDocumentTag::DateStorageFormat::DATE;
+        if (value == "DateTime") return aspose::words::cloud::models::StructuredDocumentTag::DateStorageFormat::DATE_TIME;
+        if (value == "Default") return aspose::words::cloud::models::StructuredDocumentTag::DateStorageFormat::DEFAULT;
+        if (value == "Text") return aspose::words::cloud::models::StructuredDocumentTag::DateStorageFormat::TEXT;
+        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
+    }
+
+    inline std::string structuredDocumentTagLevelToString(aspose::words::cloud::models::StructuredDocumentTag::Level value)
+    {
+        if (value == aspose::words::cloud::models::StructuredDocumentTag::Level::UNKNOWN) return "Unknown";
+        if (value == aspose::words::cloud::models::StructuredDocumentTag::Level::INLINE) return "Inline";
+        if (value == aspose::words::cloud::models::StructuredDocumentTag::Level::BLOCK) return "Block";
+        if (value == aspose::words::cloud::models::StructuredDocumentTag::Level::ROW) return "Row";
+        if (value == aspose::words::cloud::models::StructuredDocumentTag::Level::CELL) return "Cell";
+        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
+    }
+
+    inline aspose::words::cloud::models::StructuredDocumentTag::Level structuredDocumentTagLevelFromString(const std::string& value)
+    {
+        if (value == "Unknown") return aspose::words::cloud::models::StructuredDocumentTag::Level::UNKNOWN;
+        if (value == "Inline") return aspose::words::cloud::models::StructuredDocumentTag::Level::INLINE;
+        if (value == "Block") return aspose::words::cloud::models::StructuredDocumentTag::Level::BLOCK;
+        if (value == "Row") return aspose::words::cloud::models::StructuredDocumentTag::Level::ROW;
+        if (value == "Cell") return aspose::words::cloud::models::StructuredDocumentTag::Level::CELL;
+        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
+    }
+
+    inline std::string structuredDocumentTagSdtTypeToString(aspose::words::cloud::models::StructuredDocumentTag::SdtType value)
+    {
+        if (value == aspose::words::cloud::models::StructuredDocumentTag::SdtType::NONE) return "None";
+        if (value == aspose::words::cloud::models::StructuredDocumentTag::SdtType::BIBLIOGRAPHY) return "Bibliography";
+        if (value == aspose::words::cloud::models::StructuredDocumentTag::SdtType::CITATION) return "Citation";
+        if (value == aspose::words::cloud::models::StructuredDocumentTag::SdtType::EQUATION) return "Equation";
+        if (value == aspose::words::cloud::models::StructuredDocumentTag::SdtType::DROP_DOWN_LIST) return "DropDownList";
+        if (value == aspose::words::cloud::models::StructuredDocumentTag::SdtType::COMBO_BOX) return "ComboBox";
+        if (value == aspose::words::cloud::models::StructuredDocumentTag::SdtType::DATE) return "Date";
+        if (value == aspose::words::cloud::models::StructuredDocumentTag::SdtType::BUILDING_BLOCK_GALLERY) return "BuildingBlockGallery";
+        if (value == aspose::words::cloud::models::StructuredDocumentTag::SdtType::DOC_PART_OBJ) return "DocPartObj";
+        if (value == aspose::words::cloud::models::StructuredDocumentTag::SdtType::GROUP) return "Group";
+        if (value == aspose::words::cloud::models::StructuredDocumentTag::SdtType::PICTURE) return "Picture";
+        if (value == aspose::words::cloud::models::StructuredDocumentTag::SdtType::RICH_TEXT) return "RichText";
+        if (value == aspose::words::cloud::models::StructuredDocumentTag::SdtType::PLAIN_TEXT) return "PlainText";
+        if (value == aspose::words::cloud::models::StructuredDocumentTag::SdtType::CHECKBOX) return "Checkbox";
+        if (value == aspose::words::cloud::models::StructuredDocumentTag::SdtType::REPEATING_SECTION) return "RepeatingSection";
+        if (value == aspose::words::cloud::models::StructuredDocumentTag::SdtType::REPEATING_SECTION_ITEM) return "RepeatingSectionItem";
+        if (value == aspose::words::cloud::models::StructuredDocumentTag::SdtType::ENTITY_PICKER) return "EntityPicker";
+        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
+    }
+
+    inline aspose::words::cloud::models::StructuredDocumentTag::SdtType structuredDocumentTagSdtTypeFromString(const std::string& value)
+    {
+        if (value == "None") return aspose::words::cloud::models::StructuredDocumentTag::SdtType::NONE;
+        if (value == "Bibliography") return aspose::words::cloud::models::StructuredDocumentTag::SdtType::BIBLIOGRAPHY;
+        if (value == "Citation") return aspose::words::cloud::models::StructuredDocumentTag::SdtType::CITATION;
+        if (value == "Equation") return aspose::words::cloud::models::StructuredDocumentTag::SdtType::EQUATION;
+        if (value == "DropDownList") return aspose::words::cloud::models::StructuredDocumentTag::SdtType::DROP_DOWN_LIST;
+        if (value == "ComboBox") return aspose::words::cloud::models::StructuredDocumentTag::SdtType::COMBO_BOX;
+        if (value == "Date") return aspose::words::cloud::models::StructuredDocumentTag::SdtType::DATE;
+        if (value == "BuildingBlockGallery") return aspose::words::cloud::models::StructuredDocumentTag::SdtType::BUILDING_BLOCK_GALLERY;
+        if (value == "DocPartObj") return aspose::words::cloud::models::StructuredDocumentTag::SdtType::DOC_PART_OBJ;
+        if (value == "Group") return aspose::words::cloud::models::StructuredDocumentTag::SdtType::GROUP;
+        if (value == "Picture") return aspose::words::cloud::models::StructuredDocumentTag::SdtType::PICTURE;
+        if (value == "RichText") return aspose::words::cloud::models::StructuredDocumentTag::SdtType::RICH_TEXT;
+        if (value == "PlainText") return aspose::words::cloud::models::StructuredDocumentTag::SdtType::PLAIN_TEXT;
+        if (value == "Checkbox") return aspose::words::cloud::models::StructuredDocumentTag::SdtType::CHECKBOX;
+        if (value == "RepeatingSection") return aspose::words::cloud::models::StructuredDocumentTag::SdtType::REPEATING_SECTION;
+        if (value == "RepeatingSectionItem") return aspose::words::cloud::models::StructuredDocumentTag::SdtType::REPEATING_SECTION_ITEM;
+        if (value == "EntityPicker") return aspose::words::cloud::models::StructuredDocumentTag::SdtType::ENTITY_PICKER;
+        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
+    }
+    void StructuredDocumentTag::toJson(void* jsonIfc) const
+    {
+        NodeLink::toJson(jsonIfc);
+        ::nlohmann::json& json = *((::nlohmann::json*)jsonIfc);
+        if (this->m_Appearance) {
+            json["Appearance"] = structuredDocumentTagAppearanceToString(*(this->m_Appearance));
+        }
+        if (this->m_BuildingBlockCategory) {
+            json["BuildingBlockCategory"] = convertUtf16(*(this->m_BuildingBlockCategory));
+        }
+        if (this->m_BuildingBlockGallery) {
+            json["BuildingBlockGallery"] = convertUtf16(*(this->m_BuildingBlockGallery));
+        }
+        if (this->m_CalendarType) {
+            json["CalendarType"] = structuredDocumentTagCalendarTypeToString(*(this->m_CalendarType));
+        }
+        if (this->m_Checked) {
+            json["Checked"] = *(this->m_Checked);
+        }
+        if (this->m_Color) {
+            json["Color"] = convertUtf16(*(this->m_Color));
+        }
+        if (this->m_DateDisplayFormat) {
+            json["DateDisplayFormat"] = convertUtf16(*(this->m_DateDisplayFormat));
+        }
+        if (this->m_DateDisplayLocale) {
+            json["DateDisplayLocale"] = *(this->m_DateDisplayLocale);
+        }
+        if (this->m_DateStorageFormat) {
+            json["DateStorageFormat"] = structuredDocumentTagDateStorageFormatToString(*(this->m_DateStorageFormat));
+        }
+        if (this->m_FullDate) {
+            json["FullDate"] = convertUtf16(*(this->m_FullDate));
+        }
+        if (this->m_Id) {
+            json["Id"] = *(this->m_Id);
+        }
+        if (this->m_IsShowingPlaceholderText) {
+            json["IsShowingPlaceholderText"] = *(this->m_IsShowingPlaceholderText);
+        }
+        if (this->m_IsTemporary) {
+            json["IsTemporary"] = *(this->m_IsTemporary);
+        }
+        if (this->m_Level) {
+            json["Level"] = structuredDocumentTagLevelToString(*(this->m_Level));
+        }
+        if (this->m_ListItems) {
+            json["ListItems"] = ::nlohmann::json::array();
+            for (auto& element : *(this->m_ListItems)) {
+                element->toJson(&json["ListItems"].emplace_back());
+            }
+        }
+        if (this->m_LockContentControl) {
+            json["LockContentControl"] = *(this->m_LockContentControl);
+        }
+        if (this->m_LockContents) {
+            json["LockContents"] = *(this->m_LockContents);
+        }
+        if (this->m_Multiline) {
+            json["Multiline"] = *(this->m_Multiline);
+        }
+        if (this->m_PlaceholderName) {
+            json["PlaceholderName"] = convertUtf16(*(this->m_PlaceholderName));
+        }
+        if (this->m_SdtType) {
+            json["SdtType"] = structuredDocumentTagSdtTypeToString(*(this->m_SdtType));
+        }
+        if (this->m_StyleName) {
+            json["StyleName"] = convertUtf16(*(this->m_StyleName));
+        }
+        if (this->m_Tag) {
+            json["Tag"] = convertUtf16(*(this->m_Tag));
+        }
+        if (this->m_Title) {
+            json["Title"] = convertUtf16(*(this->m_Title));
+        }
+        if (this->m_WordOpenXML) {
+            json["WordOpenXML"] = convertUtf16(*(this->m_WordOpenXML));
+        }
+    }
+
+    void StructuredDocumentTag::fromJson(const void* jsonIfc)
+    {
+        NodeLink::fromJson(jsonIfc);
+        ::nlohmann::json& json = *((::nlohmann::json*)jsonIfc);
+        if (json.contains("Appearance") && !json["Appearance"].is_null()) {
+            this->m_Appearance = std::make_shared< aspose::words::cloud::models::StructuredDocumentTag::Appearance >(
+                structuredDocumentTagAppearanceFromString(json["Appearance"].get< std::string >())
+            );
+        }
+        if (json.contains("BuildingBlockCategory") && !json["BuildingBlockCategory"].is_null()) {
+            this->m_BuildingBlockCategory = std::make_shared< std::wstring >(
+                convertUtf8( json["BuildingBlockCategory"].get< std::string >() )
+            );
+        }
+        if (json.contains("BuildingBlockGallery") && !json["BuildingBlockGallery"].is_null()) {
+            this->m_BuildingBlockGallery = std::make_shared< std::wstring >(
+                convertUtf8( json["BuildingBlockGallery"].get< std::string >() )
+            );
+        }
+        if (json.contains("CalendarType") && !json["CalendarType"].is_null()) {
+            this->m_CalendarType = std::make_shared< aspose::words::cloud::models::StructuredDocumentTag::CalendarType >(
+                structuredDocumentTagCalendarTypeFromString(json["CalendarType"].get< std::string >())
+            );
+        }
+        if (json.contains("Checked") && !json["Checked"].is_null()) {
+            this->m_Checked = std::make_shared< bool >(
+                json["Checked"].get< bool >()
+            );
+        }
+        if (json.contains("Color") && !json["Color"].is_null()) {
+            this->m_Color = std::make_shared< std::wstring >(
+                convertUtf8( json["Color"].get< std::string >() )
+            );
+        }
+        if (json.contains("DateDisplayFormat") && !json["DateDisplayFormat"].is_null()) {
+            this->m_DateDisplayFormat = std::make_shared< std::wstring >(
+                convertUtf8( json["DateDisplayFormat"].get< std::string >() )
+            );
+        }
+        if (json.contains("DateDisplayLocale") && !json["DateDisplayLocale"].is_null()) {
+            this->m_DateDisplayLocale = std::make_shared< int32_t >(
+                json["DateDisplayLocale"].get< int32_t >()
+            );
+        }
+        if (json.contains("DateStorageFormat") && !json["DateStorageFormat"].is_null()) {
+            this->m_DateStorageFormat = std::make_shared< aspose::words::cloud::models::StructuredDocumentTag::DateStorageFormat >(
+                structuredDocumentTagDateStorageFormatFromString(json["DateStorageFormat"].get< std::string >())
+            );
+        }
+        if (json.contains("FullDate") && !json["FullDate"].is_null()) {
+            this->m_FullDate = std::make_shared< std::wstring >(
+                convertUtf8( json["FullDate"].get< std::string >() )
+            );
+        }
+        if (json.contains("Id") && !json["Id"].is_null()) {
+            this->m_Id = std::make_shared< int32_t >(
+                json["Id"].get< int32_t >()
+            );
+        }
+        if (json.contains("IsShowingPlaceholderText") && !json["IsShowingPlaceholderText"].is_null()) {
+            this->m_IsShowingPlaceholderText = std::make_shared< bool >(
+                json["IsShowingPlaceholderText"].get< bool >()
+            );
+        }
+        if (json.contains("IsTemporary") && !json["IsTemporary"].is_null()) {
+            this->m_IsTemporary = std::make_shared< bool >(
+                json["IsTemporary"].get< bool >()
+            );
+        }
+        if (json.contains("Level") && !json["Level"].is_null()) {
+            this->m_Level = std::make_shared< aspose::words::cloud::models::StructuredDocumentTag::Level >(
+                structuredDocumentTagLevelFromString(json["Level"].get< std::string >())
+            );
+        }
+        if (json.contains("ListItems") && !json["ListItems"].is_null()) {
+            this->m_ListItems = std::make_shared< std::vector<std::shared_ptr<aspose::words::cloud::models::StructuredDocumentTagListItem>> >();
+            for (auto& element : json["ListItems"]) {
+                this->m_ListItems->emplace_back(std::make_shared< aspose::words::cloud::models::StructuredDocumentTagListItem >())->fromJson(&element);
+            }
+        }
+        if (json.contains("LockContentControl") && !json["LockContentControl"].is_null()) {
+            this->m_LockContentControl = std::make_shared< bool >(
+                json["LockContentControl"].get< bool >()
+            );
+        }
+        if (json.contains("LockContents") && !json["LockContents"].is_null()) {
+            this->m_LockContents = std::make_shared< bool >(
+                json["LockContents"].get< bool >()
+            );
+        }
+        if (json.contains("Multiline") && !json["Multiline"].is_null()) {
+            this->m_Multiline = std::make_shared< bool >(
+                json["Multiline"].get< bool >()
+            );
+        }
+        if (json.contains("PlaceholderName") && !json["PlaceholderName"].is_null()) {
+            this->m_PlaceholderName = std::make_shared< std::wstring >(
+                convertUtf8( json["PlaceholderName"].get< std::string >() )
+            );
+        }
+        if (json.contains("SdtType") && !json["SdtType"].is_null()) {
+            this->m_SdtType = std::make_shared< aspose::words::cloud::models::StructuredDocumentTag::SdtType >(
+                structuredDocumentTagSdtTypeFromString(json["SdtType"].get< std::string >())
+            );
+        }
+        if (json.contains("StyleName") && !json["StyleName"].is_null()) {
+            this->m_StyleName = std::make_shared< std::wstring >(
+                convertUtf8( json["StyleName"].get< std::string >() )
+            );
+        }
+        if (json.contains("Tag") && !json["Tag"].is_null()) {
+            this->m_Tag = std::make_shared< std::wstring >(
+                convertUtf8( json["Tag"].get< std::string >() )
+            );
+        }
+        if (json.contains("Title") && !json["Title"].is_null()) {
+            this->m_Title = std::make_shared< std::wstring >(
+                convertUtf8( json["Title"].get< std::string >() )
+            );
+        }
+        if (json.contains("WordOpenXML") && !json["WordOpenXML"].is_null()) {
+            this->m_WordOpenXML = std::make_shared< std::wstring >(
+                convertUtf8( json["WordOpenXML"].get< std::string >() )
+            );
+        }
+    }
+
+    void StructuredDocumentTag::getFileReferences(std::vector< FileReference* >& result)
+    {
+    }
+
+    std::shared_ptr< aspose::words::cloud::models::StructuredDocumentTag::Appearance > StructuredDocumentTag::getAppearance() const
+    {
+        return this->m_Appearance;
+    }
+
+    void StructuredDocumentTag::setAppearance(std::shared_ptr< aspose::words::cloud::models::StructuredDocumentTag::Appearance > value)
+    {
+        this->m_Appearance = value;
+    }
+
+
+    std::shared_ptr< std::wstring > StructuredDocumentTag::getBuildingBlockCategory() const
+    {
+        return this->m_BuildingBlockCategory;
+    }
+
+    void StructuredDocumentTag::setBuildingBlockCategory(std::shared_ptr< std::wstring > value)
+    {
+        this->m_BuildingBlockCategory = value;
+    }
+
+
+    std::shared_ptr< std::wstring > StructuredDocumentTag::getBuildingBlockGallery() const
+    {
+        return this->m_BuildingBlockGallery;
+    }
+
+    void StructuredDocumentTag::setBuildingBlockGallery(std::shared_ptr< std::wstring > value)
+    {
+        this->m_BuildingBlockGallery = value;
+    }
+
+
+    std::shared_ptr< aspose::words::cloud::models::StructuredDocumentTag::CalendarType > StructuredDocumentTag::getCalendarType() const
+    {
+        return this->m_CalendarType;
+    }
+
+    void StructuredDocumentTag::setCalendarType(std::shared_ptr< aspose::words::cloud::models::StructuredDocumentTag::CalendarType > value)
+    {
+        this->m_CalendarType = value;
+    }
+
+
+    std::shared_ptr< bool > StructuredDocumentTag::getChecked() const
+    {
+        return this->m_Checked;
+    }
+
+    void StructuredDocumentTag::setChecked(std::shared_ptr< bool > value)
+    {
+        this->m_Checked = value;
+    }
+
+
+    std::shared_ptr< std::wstring > StructuredDocumentTag::getColor() const
+    {
+        return this->m_Color;
+    }
+
+    void StructuredDocumentTag::setColor(std::shared_ptr< std::wstring > value)
+    {
+        this->m_Color = value;
+    }
+
+
+    std::shared_ptr< std::wstring > StructuredDocumentTag::getDateDisplayFormat() const
+    {
+        return this->m_DateDisplayFormat;
+    }
+
+    void StructuredDocumentTag::setDateDisplayFormat(std::shared_ptr< std::wstring > value)
+    {
+        this->m_DateDisplayFormat = value;
+    }
+
+
+    std::shared_ptr< int32_t > StructuredDocumentTag::getDateDisplayLocale() const
+    {
+        return this->m_DateDisplayLocale;
+    }
+
+    void StructuredDocumentTag::setDateDisplayLocale(std::shared_ptr< int32_t > value)
+    {
+        this->m_DateDisplayLocale = value;
+    }
+
+
+    std::shared_ptr< aspose::words::cloud::models::StructuredDocumentTag::DateStorageFormat > StructuredDocumentTag::getDateStorageFormat() const
+    {
+        return this->m_DateStorageFormat;
+    }
+
+    void StructuredDocumentTag::setDateStorageFormat(std::shared_ptr< aspose::words::cloud::models::StructuredDocumentTag::DateStorageFormat > value)
+    {
+        this->m_DateStorageFormat = value;
+    }
+
+
+    std::shared_ptr< std::wstring > StructuredDocumentTag::getFullDate() const
+    {
+        return this->m_FullDate;
+    }
+
+    void StructuredDocumentTag::setFullDate(std::shared_ptr< std::wstring > value)
+    {
+        this->m_FullDate = value;
+    }
+
+
+    std::shared_ptr< int32_t > StructuredDocumentTag::getId() const
+    {
+        return this->m_Id;
+    }
+
+    void StructuredDocumentTag::setId(std::shared_ptr< int32_t > value)
+    {
+        this->m_Id = value;
+    }
+
+
+    std::shared_ptr< bool > StructuredDocumentTag::getIsShowingPlaceholderText() const
+    {
+        return this->m_IsShowingPlaceholderText;
+    }
+
+    void StructuredDocumentTag::setIsShowingPlaceholderText(std::shared_ptr< bool > value)
+    {
+        this->m_IsShowingPlaceholderText = value;
+    }
+
+
+    std::shared_ptr< bool > StructuredDocumentTag::getIsTemporary() const
+    {
+        return this->m_IsTemporary;
+    }
+
+    void StructuredDocumentTag::setIsTemporary(std::shared_ptr< bool > value)
+    {
+        this->m_IsTemporary = value;
+    }
+
+
+    std::shared_ptr< aspose::words::cloud::models::StructuredDocumentTag::Level > StructuredDocumentTag::getLevel() const
+    {
+        return this->m_Level;
+    }
+
+    void StructuredDocumentTag::setLevel(std::shared_ptr< aspose::words::cloud::models::StructuredDocumentTag::Level > value)
+    {
+        this->m_Level = value;
+    }
+
+
+    std::shared_ptr< std::vector<std::shared_ptr<aspose::words::cloud::models::StructuredDocumentTagListItem>> > StructuredDocumentTag::getListItems() const
+    {
+        return this->m_ListItems;
+    }
+
+    void StructuredDocumentTag::setListItems(std::shared_ptr< std::vector<std::shared_ptr<aspose::words::cloud::models::StructuredDocumentTagListItem>> > value)
+    {
+        this->m_ListItems = value;
+    }
+
+
+    std::shared_ptr< bool > StructuredDocumentTag::getLockContentControl() const
+    {
+        return this->m_LockContentControl;
+    }
+
+    void StructuredDocumentTag::setLockContentControl(std::shared_ptr< bool > value)
+    {
+        this->m_LockContentControl = value;
+    }
+
+
+    std::shared_ptr< bool > StructuredDocumentTag::getLockContents() const
+    {
+        return this->m_LockContents;
+    }
+
+    void StructuredDocumentTag::setLockContents(std::shared_ptr< bool > value)
+    {
+        this->m_LockContents = value;
+    }
+
+
+    std::shared_ptr< bool > StructuredDocumentTag::getMultiline() const
+    {
+        return this->m_Multiline;
+    }
+
+    void StructuredDocumentTag::setMultiline(std::shared_ptr< bool > value)
+    {
+        this->m_Multiline = value;
+    }
+
+
+    std::shared_ptr< std::wstring > StructuredDocumentTag::getPlaceholderName() const
+    {
+        return this->m_PlaceholderName;
+    }
+
+    void StructuredDocumentTag::setPlaceholderName(std::shared_ptr< std::wstring > value)
+    {
+        this->m_PlaceholderName = value;
+    }
+
+
+    std::shared_ptr< aspose::words::cloud::models::StructuredDocumentTag::SdtType > StructuredDocumentTag::getSdtType() const
+    {
+        return this->m_SdtType;
+    }
+
+    void StructuredDocumentTag::setSdtType(std::shared_ptr< aspose::words::cloud::models::StructuredDocumentTag::SdtType > value)
+    {
+        this->m_SdtType = value;
+    }
+
+
+    std::shared_ptr< std::wstring > StructuredDocumentTag::getStyleName() const
+    {
+        return this->m_StyleName;
+    }
+
+    void StructuredDocumentTag::setStyleName(std::shared_ptr< std::wstring > value)
+    {
+        this->m_StyleName = value;
+    }
+
+
+    std::shared_ptr< std::wstring > StructuredDocumentTag::getTag() const
+    {
+        return this->m_Tag;
+    }
+
+    void StructuredDocumentTag::setTag(std::shared_ptr< std::wstring > value)
+    {
+        this->m_Tag = value;
+    }
+
+
+    std::shared_ptr< std::wstring > StructuredDocumentTag::getTitle() const
+    {
+        return this->m_Title;
+    }
+
+    void StructuredDocumentTag::setTitle(std::shared_ptr< std::wstring > value)
+    {
+        this->m_Title = value;
+    }
+
+
+    std::shared_ptr< std::wstring > StructuredDocumentTag::getWordOpenXML() const
+    {
+        return this->m_WordOpenXML;
+    }
+
+    void StructuredDocumentTag::setWordOpenXML(std::shared_ptr< std::wstring > value)
+    {
+        this->m_WordOpenXML = value;
+    }
+
+
+
+    /*
+     * StructuredDocumentTagCollection implementation
+     */
+    void StructuredDocumentTagCollection::toJson(void* jsonIfc) const
+    {
+        LinkElement::toJson(jsonIfc);
+        ::nlohmann::json& json = *((::nlohmann::json*)jsonIfc);
+        if (this->m_List) {
+            json["List"] = ::nlohmann::json::array();
+            for (auto& element : *(this->m_List)) {
+                element->toJson(&json["List"].emplace_back());
+            }
+        }
+    }
+
+    void StructuredDocumentTagCollection::fromJson(const void* jsonIfc)
+    {
+        LinkElement::fromJson(jsonIfc);
+        ::nlohmann::json& json = *((::nlohmann::json*)jsonIfc);
+        if (json.contains("List") && !json["List"].is_null()) {
+            this->m_List = std::make_shared< std::vector<std::shared_ptr<aspose::words::cloud::models::StructuredDocumentTag>> >();
+            for (auto& element : json["List"]) {
+                this->m_List->emplace_back(std::make_shared< aspose::words::cloud::models::StructuredDocumentTag >())->fromJson(&element);
+            }
+        }
+    }
+
+    void StructuredDocumentTagCollection::getFileReferences(std::vector< FileReference* >& result)
+    {
+    }
+
+    std::shared_ptr< std::vector<std::shared_ptr<aspose::words::cloud::models::StructuredDocumentTag>> > StructuredDocumentTagCollection::getList() const
+    {
+        return this->m_List;
+    }
+
+    void StructuredDocumentTagCollection::setList(std::shared_ptr< std::vector<std::shared_ptr<aspose::words::cloud::models::StructuredDocumentTag>> > value)
+    {
+        this->m_List = value;
+    }
+
+
+
+    /*
+     * StructuredDocumentTagInsert implementation
+     */
+    void StructuredDocumentTagInsert::toJson(void* jsonIfc) const
+    {
+        StructuredDocumentTag::toJson(jsonIfc);
+    }
+
+    void StructuredDocumentTagInsert::fromJson(const void* jsonIfc)
+    {
+        StructuredDocumentTag::fromJson(jsonIfc);
+    }
+
+    void StructuredDocumentTagInsert::getFileReferences(std::vector< FileReference* >& result)
+    {
+    }
+
+
+
+
+    /*
+     * StructuredDocumentTagListItem implementation
+     */
+    void StructuredDocumentTagListItem::toJson(void* jsonIfc) const
+    {
+        ::nlohmann::json& json = *((::nlohmann::json*)jsonIfc);
+        if (this->m_DisplayText) {
+            json["DisplayText"] = convertUtf16(*(this->m_DisplayText));
+        }
+        if (this->m_Value) {
+            json["Value"] = convertUtf16(*(this->m_Value));
+        }
+    }
+
+    void StructuredDocumentTagListItem::fromJson(const void* jsonIfc)
+    {
+        ::nlohmann::json& json = *((::nlohmann::json*)jsonIfc);
+        if (json.contains("DisplayText") && !json["DisplayText"].is_null()) {
+            this->m_DisplayText = std::make_shared< std::wstring >(
+                convertUtf8( json["DisplayText"].get< std::string >() )
+            );
+        }
+        if (json.contains("Value") && !json["Value"].is_null()) {
+            this->m_Value = std::make_shared< std::wstring >(
+                convertUtf8( json["Value"].get< std::string >() )
+            );
+        }
+    }
+
+    void StructuredDocumentTagListItem::getFileReferences(std::vector< FileReference* >& result)
+    {
+    }
+
+    std::shared_ptr< std::wstring > StructuredDocumentTagListItem::getDisplayText() const
+    {
+        return this->m_DisplayText;
+    }
+
+    void StructuredDocumentTagListItem::setDisplayText(std::shared_ptr< std::wstring > value)
+    {
+        this->m_DisplayText = value;
+    }
+
+
+    std::shared_ptr< std::wstring > StructuredDocumentTagListItem::getValue() const
+    {
+        return this->m_Value;
+    }
+
+    void StructuredDocumentTagListItem::setValue(std::shared_ptr< std::wstring > value)
+    {
+        this->m_Value = value;
+    }
+
+
+
+    /*
+     * StructuredDocumentTagResponse implementation
+     */
+    void StructuredDocumentTagResponse::toJson(void* jsonIfc) const
+    {
+        WordsResponse::toJson(jsonIfc);
+        ::nlohmann::json& json = *((::nlohmann::json*)jsonIfc);
+        if (this->m_StructuredDocumentTag) {
+            this->m_StructuredDocumentTag->toJson(&json["StructuredDocumentTag"]);
+        }
+    }
+
+    void StructuredDocumentTagResponse::fromJson(const void* jsonIfc)
+    {
+        WordsResponse::fromJson(jsonIfc);
+        ::nlohmann::json& json = *((::nlohmann::json*)jsonIfc);
+        if (json.contains("StructuredDocumentTag") && !json["StructuredDocumentTag"].is_null()) {
+            this->m_StructuredDocumentTag = std::make_shared< aspose::words::cloud::models::StructuredDocumentTag >();
+            this->m_StructuredDocumentTag->fromJson(&json["StructuredDocumentTag"]);
+        }
+    }
+
+    void StructuredDocumentTagResponse::getFileReferences(std::vector< FileReference* >& result)
+    {
+    }
+
+    std::shared_ptr< aspose::words::cloud::models::StructuredDocumentTag > StructuredDocumentTagResponse::getStructuredDocumentTag() const
+    {
+        return this->m_StructuredDocumentTag;
+    }
+
+    void StructuredDocumentTagResponse::setStructuredDocumentTag(std::shared_ptr< aspose::words::cloud::models::StructuredDocumentTag > value)
+    {
+        this->m_StructuredDocumentTag = value;
+    }
+
+
+
+    /*
+     * StructuredDocumentTagsResponse implementation
+     */
+    void StructuredDocumentTagsResponse::toJson(void* jsonIfc) const
+    {
+        WordsResponse::toJson(jsonIfc);
+        ::nlohmann::json& json = *((::nlohmann::json*)jsonIfc);
+        if (this->m_StructuredDocumentTags) {
+            this->m_StructuredDocumentTags->toJson(&json["StructuredDocumentTags"]);
+        }
+    }
+
+    void StructuredDocumentTagsResponse::fromJson(const void* jsonIfc)
+    {
+        WordsResponse::fromJson(jsonIfc);
+        ::nlohmann::json& json = *((::nlohmann::json*)jsonIfc);
+        if (json.contains("StructuredDocumentTags") && !json["StructuredDocumentTags"].is_null()) {
+            this->m_StructuredDocumentTags = std::make_shared< aspose::words::cloud::models::StructuredDocumentTagCollection >();
+            this->m_StructuredDocumentTags->fromJson(&json["StructuredDocumentTags"]);
+        }
+    }
+
+    void StructuredDocumentTagsResponse::getFileReferences(std::vector< FileReference* >& result)
+    {
+    }
+
+    std::shared_ptr< aspose::words::cloud::models::StructuredDocumentTagCollection > StructuredDocumentTagsResponse::getStructuredDocumentTags() const
+    {
+        return this->m_StructuredDocumentTags;
+    }
+
+    void StructuredDocumentTagsResponse::setStructuredDocumentTags(std::shared_ptr< aspose::words::cloud::models::StructuredDocumentTagCollection > value)
+    {
+        this->m_StructuredDocumentTags = value;
+    }
+
+
+
+    /*
+     * StructuredDocumentTagUpdate implementation
+     */
+    void StructuredDocumentTagUpdate::toJson(void* jsonIfc) const
+    {
+        StructuredDocumentTag::toJson(jsonIfc);
+    }
+
+    void StructuredDocumentTagUpdate::fromJson(const void* jsonIfc)
+    {
+        StructuredDocumentTag::fromJson(jsonIfc);
+    }
+
+    void StructuredDocumentTagUpdate::getFileReferences(std::vector< FileReference* >& result)
+    {
+    }
+
+
+
+
+    /*
      * Style implementation
      */
     inline std::string styleStyleIdentifierToString(aspose::words::cloud::models::Style::StyleIdentifier value)

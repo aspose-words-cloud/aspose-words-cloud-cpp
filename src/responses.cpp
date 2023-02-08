@@ -1368,6 +1368,27 @@ namespace aspose::words::cloud::responses {
     }
 
     /*
+     * DeleteStructuredDocumentTag request implementation
+     */
+
+    void DeleteStructuredDocumentTagResponse::deserialize(const std::string& contentType, const std::string_view& response)
+    {
+    }
+
+    /*
+     * DeleteStructuredDocumentTagOnline request implementation
+     */
+    std::shared_ptr< std::map<std::wstring, std::shared_ptr<std::istream>> > DeleteStructuredDocumentTagOnlineResponse::getDocument() const
+    {
+        return m_Document;
+    }
+
+    void DeleteStructuredDocumentTagOnlineResponse::deserialize(const std::string& contentType, const std::string_view& response)
+    {
+        m_Document = parseFilesCollection(std::make_tuple("", contentType, response));
+    }
+
+    /*
      * DeleteTable request implementation
      */
 
@@ -2916,6 +2937,66 @@ namespace aspose::words::cloud::responses {
     }
 
     /*
+     * GetStructuredDocumentTag request implementation
+     */
+    std::shared_ptr< aspose::words::cloud::models::StructuredDocumentTagResponse > GetStructuredDocumentTagResponse::getResult() const
+    {
+        return m_Result;
+    }
+
+    void GetStructuredDocumentTagResponse::deserialize(const std::string& contentType, const std::string_view& response)
+    {
+        auto json = ::nlohmann::json::parse(response);
+        m_Result = std::make_shared< aspose::words::cloud::models::StructuredDocumentTagResponse >();
+        m_Result->fromJson(&json);
+    }
+
+    /*
+     * GetStructuredDocumentTagOnline request implementation
+     */
+    std::shared_ptr< aspose::words::cloud::models::StructuredDocumentTagResponse > GetStructuredDocumentTagOnlineResponse::getResult() const
+    {
+        return m_Result;
+    }
+
+    void GetStructuredDocumentTagOnlineResponse::deserialize(const std::string& contentType, const std::string_view& response)
+    {
+        auto json = ::nlohmann::json::parse(response);
+        m_Result = std::make_shared< aspose::words::cloud::models::StructuredDocumentTagResponse >();
+        m_Result->fromJson(&json);
+    }
+
+    /*
+     * GetStructuredDocumentTags request implementation
+     */
+    std::shared_ptr< aspose::words::cloud::models::StructuredDocumentTagsResponse > GetStructuredDocumentTagsResponse::getResult() const
+    {
+        return m_Result;
+    }
+
+    void GetStructuredDocumentTagsResponse::deserialize(const std::string& contentType, const std::string_view& response)
+    {
+        auto json = ::nlohmann::json::parse(response);
+        m_Result = std::make_shared< aspose::words::cloud::models::StructuredDocumentTagsResponse >();
+        m_Result->fromJson(&json);
+    }
+
+    /*
+     * GetStructuredDocumentTagsOnline request implementation
+     */
+    std::shared_ptr< aspose::words::cloud::models::StructuredDocumentTagsResponse > GetStructuredDocumentTagsOnlineResponse::getResult() const
+    {
+        return m_Result;
+    }
+
+    void GetStructuredDocumentTagsOnlineResponse::deserialize(const std::string& contentType, const std::string_view& response)
+    {
+        auto json = ::nlohmann::json::parse(response);
+        m_Result = std::make_shared< aspose::words::cloud::models::StructuredDocumentTagsResponse >();
+        m_Result->fromJson(&json);
+    }
+
+    /*
      * GetStyle request implementation
      */
     std::shared_ptr< aspose::words::cloud::models::StyleResponse > GetStyleResponse::getResult() const
@@ -3779,6 +3860,50 @@ namespace aspose::words::cloud::responses {
             const auto& part = parts.at("Model");
             auto json = ::nlohmann::json::parse(std::get<2>(part));
             m_Model = std::make_shared< aspose::words::cloud::models::RunResponse >();
+            m_Model->fromJson(&json);
+        }
+        if (parts.find("Document") != parts.end()) {
+            const auto& part = parts.at("Document");
+            m_Document = parseFilesCollection(part);
+        }
+    }
+
+    /*
+     * InsertStructuredDocumentTag request implementation
+     */
+    std::shared_ptr< aspose::words::cloud::models::StructuredDocumentTagResponse > InsertStructuredDocumentTagResponse::getResult() const
+    {
+        return m_Result;
+    }
+
+    void InsertStructuredDocumentTagResponse::deserialize(const std::string& contentType, const std::string_view& response)
+    {
+        auto json = ::nlohmann::json::parse(response);
+        m_Result = std::make_shared< aspose::words::cloud::models::StructuredDocumentTagResponse >();
+        m_Result->fromJson(&json);
+    }
+
+    /*
+     * InsertStructuredDocumentTagOnline request implementation
+     */
+    std::shared_ptr< aspose::words::cloud::models::StructuredDocumentTagResponse > InsertStructuredDocumentTagOnlineResponse::getModel() const
+    {
+        return m_Model;
+    }
+
+    std::shared_ptr< std::map<std::wstring, std::shared_ptr<std::istream>> > InsertStructuredDocumentTagOnlineResponse::getDocument() const
+    {
+        return m_Document;
+    }
+
+    void InsertStructuredDocumentTagOnlineResponse::deserialize(const std::string& contentType, const std::string_view& response)
+    {
+        std::unordered_map<std::string, std::tuple<std::string, std::string, std::string_view> > parts;
+        parseMultipart(response, parts);
+        if (parts.find("Model") != parts.end()) {
+            const auto& part = parts.at("Model");
+            auto json = ::nlohmann::json::parse(std::get<2>(part));
+            m_Model = std::make_shared< aspose::words::cloud::models::StructuredDocumentTagResponse >();
             m_Model->fromJson(&json);
         }
         if (parts.find("Document") != parts.end()) {
@@ -5415,6 +5540,50 @@ namespace aspose::words::cloud::responses {
             const auto& part = parts.at("Model");
             auto json = ::nlohmann::json::parse(std::get<2>(part));
             m_Model = std::make_shared< aspose::words::cloud::models::SectionPageSetupResponse >();
+            m_Model->fromJson(&json);
+        }
+        if (parts.find("Document") != parts.end()) {
+            const auto& part = parts.at("Document");
+            m_Document = parseFilesCollection(part);
+        }
+    }
+
+    /*
+     * UpdateStructuredDocumentTag request implementation
+     */
+    std::shared_ptr< aspose::words::cloud::models::StructuredDocumentTagResponse > UpdateStructuredDocumentTagResponse::getResult() const
+    {
+        return m_Result;
+    }
+
+    void UpdateStructuredDocumentTagResponse::deserialize(const std::string& contentType, const std::string_view& response)
+    {
+        auto json = ::nlohmann::json::parse(response);
+        m_Result = std::make_shared< aspose::words::cloud::models::StructuredDocumentTagResponse >();
+        m_Result->fromJson(&json);
+    }
+
+    /*
+     * UpdateStructuredDocumentTagOnline request implementation
+     */
+    std::shared_ptr< aspose::words::cloud::models::StructuredDocumentTagResponse > UpdateStructuredDocumentTagOnlineResponse::getModel() const
+    {
+        return m_Model;
+    }
+
+    std::shared_ptr< std::map<std::wstring, std::shared_ptr<std::istream>> > UpdateStructuredDocumentTagOnlineResponse::getDocument() const
+    {
+        return m_Document;
+    }
+
+    void UpdateStructuredDocumentTagOnlineResponse::deserialize(const std::string& contentType, const std::string_view& response)
+    {
+        std::unordered_map<std::string, std::tuple<std::string, std::string, std::string_view> > parts;
+        parseMultipart(response, parts);
+        if (parts.find("Model") != parts.end()) {
+            const auto& part = parts.at("Model");
+            auto json = ::nlohmann::json::parse(std::get<2>(part));
+            m_Model = std::make_shared< aspose::words::cloud::models::StructuredDocumentTagResponse >();
             m_Model->fromJson(&json);
         }
         if (parts.find("Document") != parts.end()) {

@@ -7702,6 +7702,233 @@ namespace aspose::words::cloud::requests {
     }
 
     /*
+     * DeleteStructuredDocumentTag request implementation
+     */
+    DeleteStructuredDocumentTagRequest::DeleteStructuredDocumentTagRequest(
+        const std::shared_ptr< std::wstring > name,
+        const std::shared_ptr< int32_t > index,
+        const std::shared_ptr< std::wstring > nodePath,
+        const std::shared_ptr< std::wstring > folder,
+        const std::shared_ptr< std::wstring > storage,
+        const std::shared_ptr< std::wstring > loadEncoding,
+        const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< std::wstring > destFileName,
+        const std::shared_ptr< std::wstring > revisionAuthor,
+        const std::shared_ptr< std::wstring > revisionDateTime
+    ) : 
+        m_Name(name),
+        m_Index(index),
+        m_NodePath(nodePath),
+        m_Folder(folder),
+        m_Storage(storage),
+        m_LoadEncoding(loadEncoding),
+        m_Password(password),
+        m_EncryptedPassword(encryptedPassword),
+        m_DestFileName(destFileName),
+        m_RevisionAuthor(revisionAuthor),
+        m_RevisionDateTime(revisionDateTime)
+    {
+    }
+
+    const std::shared_ptr< std::wstring > DeleteStructuredDocumentTagRequest::getName() const
+    {
+        return m_Name;
+    }
+
+    const std::shared_ptr< int32_t > DeleteStructuredDocumentTagRequest::getIndex() const
+    {
+        return m_Index;
+    }
+
+    const std::shared_ptr< std::wstring > DeleteStructuredDocumentTagRequest::getNodePath() const
+    {
+        return m_NodePath;
+    }
+
+    const std::shared_ptr< std::wstring > DeleteStructuredDocumentTagRequest::getFolder() const
+    {
+        return m_Folder;
+    }
+
+    const std::shared_ptr< std::wstring > DeleteStructuredDocumentTagRequest::getStorage() const
+    {
+        return m_Storage;
+    }
+
+    const std::shared_ptr< std::wstring > DeleteStructuredDocumentTagRequest::getLoadEncoding() const
+    {
+        return m_LoadEncoding;
+    }
+
+    const std::shared_ptr< std::wstring > DeleteStructuredDocumentTagRequest::getPassword() const
+    {
+        return m_Password;
+    }
+
+    const std::shared_ptr< std::wstring > DeleteStructuredDocumentTagRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
+    }
+
+    const std::shared_ptr< std::wstring > DeleteStructuredDocumentTagRequest::getDestFileName() const
+    {
+        return m_DestFileName;
+    }
+
+    const std::shared_ptr< std::wstring > DeleteStructuredDocumentTagRequest::getRevisionAuthor() const
+    {
+        return m_RevisionAuthor;
+    }
+
+    const std::shared_ptr< std::wstring > DeleteStructuredDocumentTagRequest::getRevisionDateTime() const
+    {
+        return m_RevisionDateTime;
+    }
+
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > DeleteStructuredDocumentTagRequest::createHttpRequest() const
+    {
+        std::vector<models::FileReference*> additionalFilesContent;
+        auto result = std::make_shared<HttpRequestData>();
+        result->setMethod(HttpRequestMethod::HttpDELETE);
+        result->setPath(L"/words/{name}/{nodePath}/sdt/{index}");
+        if (!m_Name) throw aspose::words::cloud::ApiException(400, L"Parameter 'Name' is required.");
+        result->setPathParam(L"{name}", *m_Name);
+        if (!m_Index) throw aspose::words::cloud::ApiException(400, L"Parameter 'Index' is required.");
+        result->setPathParam(L"{index}", *m_Index);
+        result->setPathParam(L"{nodePath}", m_NodePath ? *m_NodePath : L"");
+        if (m_Folder) result->addQueryParam(L"folder", *m_Folder);
+        if (m_Storage) result->addQueryParam(L"storage", *m_Storage);
+        if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
+        if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
+        if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
+        if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
+
+        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        {
+            result->addFormDataParam(additionalFileContent);
+        }
+
+        return result;
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > DeleteStructuredDocumentTagRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::DeleteStructuredDocumentTagResponse()
+        );
+    }
+
+    /*
+     * DeleteStructuredDocumentTagOnline request implementation
+     */
+    DeleteStructuredDocumentTagOnlineRequest::DeleteStructuredDocumentTagOnlineRequest(
+        const std::shared_ptr< std::istream > document,
+        const std::shared_ptr< int32_t > index,
+        const std::shared_ptr< std::wstring > nodePath,
+        const std::shared_ptr< std::wstring > loadEncoding,
+        const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< std::wstring > destFileName,
+        const std::shared_ptr< std::wstring > revisionAuthor,
+        const std::shared_ptr< std::wstring > revisionDateTime
+    ) : 
+        m_Document(document),
+        m_Index(index),
+        m_NodePath(nodePath),
+        m_LoadEncoding(loadEncoding),
+        m_Password(password),
+        m_EncryptedPassword(encryptedPassword),
+        m_DestFileName(destFileName),
+        m_RevisionAuthor(revisionAuthor),
+        m_RevisionDateTime(revisionDateTime)
+    {
+    }
+
+    const std::shared_ptr< std::istream > DeleteStructuredDocumentTagOnlineRequest::getDocument() const
+    {
+        return m_Document;
+    }
+
+    const std::shared_ptr< int32_t > DeleteStructuredDocumentTagOnlineRequest::getIndex() const
+    {
+        return m_Index;
+    }
+
+    const std::shared_ptr< std::wstring > DeleteStructuredDocumentTagOnlineRequest::getNodePath() const
+    {
+        return m_NodePath;
+    }
+
+    const std::shared_ptr< std::wstring > DeleteStructuredDocumentTagOnlineRequest::getLoadEncoding() const
+    {
+        return m_LoadEncoding;
+    }
+
+    const std::shared_ptr< std::wstring > DeleteStructuredDocumentTagOnlineRequest::getPassword() const
+    {
+        return m_Password;
+    }
+
+    const std::shared_ptr< std::wstring > DeleteStructuredDocumentTagOnlineRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
+    }
+
+    const std::shared_ptr< std::wstring > DeleteStructuredDocumentTagOnlineRequest::getDestFileName() const
+    {
+        return m_DestFileName;
+    }
+
+    const std::shared_ptr< std::wstring > DeleteStructuredDocumentTagOnlineRequest::getRevisionAuthor() const
+    {
+        return m_RevisionAuthor;
+    }
+
+    const std::shared_ptr< std::wstring > DeleteStructuredDocumentTagOnlineRequest::getRevisionDateTime() const
+    {
+        return m_RevisionDateTime;
+    }
+
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > DeleteStructuredDocumentTagOnlineRequest::createHttpRequest() const
+    {
+        std::vector<models::FileReference*> additionalFilesContent;
+        auto result = std::make_shared<HttpRequestData>();
+        result->setMethod(HttpRequestMethod::HttpPUT);
+        result->setPath(L"/words/online/delete/{nodePath}/sdt/{index}");
+        if (!m_Index) throw aspose::words::cloud::ApiException(400, L"Parameter 'Index' is required.");
+        result->setPathParam(L"{index}", *m_Index);
+        result->setPathParam(L"{nodePath}", m_NodePath ? *m_NodePath : L"");
+        if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
+        if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
+        if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
+        if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
+        if (m_Document)
+        {
+            result->addFormDataParam(L"document", *m_Document);
+        }
+        else throw aspose::words::cloud::ApiException(400, L"Parameter 'Document' is required.");
+
+        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        {
+            result->addFormDataParam(additionalFileContent);
+        }
+
+        return result;
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > DeleteStructuredDocumentTagOnlineRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::DeleteStructuredDocumentTagOnlineResponse()
+        );
+    }
+
+    /*
      * DeleteTable request implementation
      */
     DeleteTableRequest::DeleteTableRequest(
@@ -16550,6 +16777,346 @@ namespace aspose::words::cloud::requests {
     }
 
     /*
+     * GetStructuredDocumentTag request implementation
+     */
+    GetStructuredDocumentTagRequest::GetStructuredDocumentTagRequest(
+        const std::shared_ptr< std::wstring > name,
+        const std::shared_ptr< int32_t > index,
+        const std::shared_ptr< std::wstring > nodePath,
+        const std::shared_ptr< std::wstring > folder,
+        const std::shared_ptr< std::wstring > storage,
+        const std::shared_ptr< std::wstring > loadEncoding,
+        const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword
+    ) : 
+        m_Name(name),
+        m_Index(index),
+        m_NodePath(nodePath),
+        m_Folder(folder),
+        m_Storage(storage),
+        m_LoadEncoding(loadEncoding),
+        m_Password(password),
+        m_EncryptedPassword(encryptedPassword)
+    {
+    }
+
+    const std::shared_ptr< std::wstring > GetStructuredDocumentTagRequest::getName() const
+    {
+        return m_Name;
+    }
+
+    const std::shared_ptr< int32_t > GetStructuredDocumentTagRequest::getIndex() const
+    {
+        return m_Index;
+    }
+
+    const std::shared_ptr< std::wstring > GetStructuredDocumentTagRequest::getNodePath() const
+    {
+        return m_NodePath;
+    }
+
+    const std::shared_ptr< std::wstring > GetStructuredDocumentTagRequest::getFolder() const
+    {
+        return m_Folder;
+    }
+
+    const std::shared_ptr< std::wstring > GetStructuredDocumentTagRequest::getStorage() const
+    {
+        return m_Storage;
+    }
+
+    const std::shared_ptr< std::wstring > GetStructuredDocumentTagRequest::getLoadEncoding() const
+    {
+        return m_LoadEncoding;
+    }
+
+    const std::shared_ptr< std::wstring > GetStructuredDocumentTagRequest::getPassword() const
+    {
+        return m_Password;
+    }
+
+    const std::shared_ptr< std::wstring > GetStructuredDocumentTagRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
+    }
+
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetStructuredDocumentTagRequest::createHttpRequest() const
+    {
+        std::vector<models::FileReference*> additionalFilesContent;
+        auto result = std::make_shared<HttpRequestData>();
+        result->setMethod(HttpRequestMethod::HttpGET);
+        result->setPath(L"/words/{name}/{nodePath}/sdt/{index}");
+        if (!m_Name) throw aspose::words::cloud::ApiException(400, L"Parameter 'Name' is required.");
+        result->setPathParam(L"{name}", *m_Name);
+        if (!m_Index) throw aspose::words::cloud::ApiException(400, L"Parameter 'Index' is required.");
+        result->setPathParam(L"{index}", *m_Index);
+        result->setPathParam(L"{nodePath}", m_NodePath ? *m_NodePath : L"");
+        if (m_Folder) result->addQueryParam(L"folder", *m_Folder);
+        if (m_Storage) result->addQueryParam(L"storage", *m_Storage);
+        if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
+        if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+
+        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        {
+            result->addFormDataParam(additionalFileContent);
+        }
+
+        return result;
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > GetStructuredDocumentTagRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::GetStructuredDocumentTagResponse()
+        );
+    }
+
+    /*
+     * GetStructuredDocumentTagOnline request implementation
+     */
+    GetStructuredDocumentTagOnlineRequest::GetStructuredDocumentTagOnlineRequest(
+        const std::shared_ptr< std::istream > document,
+        const std::shared_ptr< int32_t > index,
+        const std::shared_ptr< std::wstring > nodePath,
+        const std::shared_ptr< std::wstring > loadEncoding,
+        const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword
+    ) : 
+        m_Document(document),
+        m_Index(index),
+        m_NodePath(nodePath),
+        m_LoadEncoding(loadEncoding),
+        m_Password(password),
+        m_EncryptedPassword(encryptedPassword)
+    {
+    }
+
+    const std::shared_ptr< std::istream > GetStructuredDocumentTagOnlineRequest::getDocument() const
+    {
+        return m_Document;
+    }
+
+    const std::shared_ptr< int32_t > GetStructuredDocumentTagOnlineRequest::getIndex() const
+    {
+        return m_Index;
+    }
+
+    const std::shared_ptr< std::wstring > GetStructuredDocumentTagOnlineRequest::getNodePath() const
+    {
+        return m_NodePath;
+    }
+
+    const std::shared_ptr< std::wstring > GetStructuredDocumentTagOnlineRequest::getLoadEncoding() const
+    {
+        return m_LoadEncoding;
+    }
+
+    const std::shared_ptr< std::wstring > GetStructuredDocumentTagOnlineRequest::getPassword() const
+    {
+        return m_Password;
+    }
+
+    const std::shared_ptr< std::wstring > GetStructuredDocumentTagOnlineRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
+    }
+
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetStructuredDocumentTagOnlineRequest::createHttpRequest() const
+    {
+        std::vector<models::FileReference*> additionalFilesContent;
+        auto result = std::make_shared<HttpRequestData>();
+        result->setMethod(HttpRequestMethod::HttpPUT);
+        result->setPath(L"/words/online/get/{nodePath}/sdt/{index}");
+        if (!m_Index) throw aspose::words::cloud::ApiException(400, L"Parameter 'Index' is required.");
+        result->setPathParam(L"{index}", *m_Index);
+        result->setPathParam(L"{nodePath}", m_NodePath ? *m_NodePath : L"");
+        if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
+        if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_Document)
+        {
+            result->addFormDataParam(L"document", *m_Document);
+        }
+        else throw aspose::words::cloud::ApiException(400, L"Parameter 'Document' is required.");
+
+        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        {
+            result->addFormDataParam(additionalFileContent);
+        }
+
+        return result;
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > GetStructuredDocumentTagOnlineRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::GetStructuredDocumentTagOnlineResponse()
+        );
+    }
+
+    /*
+     * GetStructuredDocumentTags request implementation
+     */
+    GetStructuredDocumentTagsRequest::GetStructuredDocumentTagsRequest(
+        const std::shared_ptr< std::wstring > name,
+        const std::shared_ptr< std::wstring > nodePath,
+        const std::shared_ptr< std::wstring > folder,
+        const std::shared_ptr< std::wstring > storage,
+        const std::shared_ptr< std::wstring > loadEncoding,
+        const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword
+    ) : 
+        m_Name(name),
+        m_NodePath(nodePath),
+        m_Folder(folder),
+        m_Storage(storage),
+        m_LoadEncoding(loadEncoding),
+        m_Password(password),
+        m_EncryptedPassword(encryptedPassword)
+    {
+    }
+
+    const std::shared_ptr< std::wstring > GetStructuredDocumentTagsRequest::getName() const
+    {
+        return m_Name;
+    }
+
+    const std::shared_ptr< std::wstring > GetStructuredDocumentTagsRequest::getNodePath() const
+    {
+        return m_NodePath;
+    }
+
+    const std::shared_ptr< std::wstring > GetStructuredDocumentTagsRequest::getFolder() const
+    {
+        return m_Folder;
+    }
+
+    const std::shared_ptr< std::wstring > GetStructuredDocumentTagsRequest::getStorage() const
+    {
+        return m_Storage;
+    }
+
+    const std::shared_ptr< std::wstring > GetStructuredDocumentTagsRequest::getLoadEncoding() const
+    {
+        return m_LoadEncoding;
+    }
+
+    const std::shared_ptr< std::wstring > GetStructuredDocumentTagsRequest::getPassword() const
+    {
+        return m_Password;
+    }
+
+    const std::shared_ptr< std::wstring > GetStructuredDocumentTagsRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
+    }
+
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetStructuredDocumentTagsRequest::createHttpRequest() const
+    {
+        std::vector<models::FileReference*> additionalFilesContent;
+        auto result = std::make_shared<HttpRequestData>();
+        result->setMethod(HttpRequestMethod::HttpGET);
+        result->setPath(L"/words/{name}/{nodePath}/sdt");
+        if (!m_Name) throw aspose::words::cloud::ApiException(400, L"Parameter 'Name' is required.");
+        result->setPathParam(L"{name}", *m_Name);
+        result->setPathParam(L"{nodePath}", m_NodePath ? *m_NodePath : L"");
+        if (m_Folder) result->addQueryParam(L"folder", *m_Folder);
+        if (m_Storage) result->addQueryParam(L"storage", *m_Storage);
+        if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
+        if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+
+        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        {
+            result->addFormDataParam(additionalFileContent);
+        }
+
+        return result;
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > GetStructuredDocumentTagsRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::GetStructuredDocumentTagsResponse()
+        );
+    }
+
+    /*
+     * GetStructuredDocumentTagsOnline request implementation
+     */
+    GetStructuredDocumentTagsOnlineRequest::GetStructuredDocumentTagsOnlineRequest(
+        const std::shared_ptr< std::istream > document,
+        const std::shared_ptr< std::wstring > nodePath,
+        const std::shared_ptr< std::wstring > loadEncoding,
+        const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword
+    ) : 
+        m_Document(document),
+        m_NodePath(nodePath),
+        m_LoadEncoding(loadEncoding),
+        m_Password(password),
+        m_EncryptedPassword(encryptedPassword)
+    {
+    }
+
+    const std::shared_ptr< std::istream > GetStructuredDocumentTagsOnlineRequest::getDocument() const
+    {
+        return m_Document;
+    }
+
+    const std::shared_ptr< std::wstring > GetStructuredDocumentTagsOnlineRequest::getNodePath() const
+    {
+        return m_NodePath;
+    }
+
+    const std::shared_ptr< std::wstring > GetStructuredDocumentTagsOnlineRequest::getLoadEncoding() const
+    {
+        return m_LoadEncoding;
+    }
+
+    const std::shared_ptr< std::wstring > GetStructuredDocumentTagsOnlineRequest::getPassword() const
+    {
+        return m_Password;
+    }
+
+    const std::shared_ptr< std::wstring > GetStructuredDocumentTagsOnlineRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
+    }
+
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetStructuredDocumentTagsOnlineRequest::createHttpRequest() const
+    {
+        std::vector<models::FileReference*> additionalFilesContent;
+        auto result = std::make_shared<HttpRequestData>();
+        result->setMethod(HttpRequestMethod::HttpPUT);
+        result->setPath(L"/words/online/get/{nodePath}/sdt");
+        result->setPathParam(L"{nodePath}", m_NodePath ? *m_NodePath : L"");
+        if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
+        if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_Document)
+        {
+            result->addFormDataParam(L"document", *m_Document);
+        }
+        else throw aspose::words::cloud::ApiException(400, L"Parameter 'Document' is required.");
+
+        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        {
+            result->addFormDataParam(additionalFileContent);
+        }
+
+        return result;
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > GetStructuredDocumentTagsOnlineRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::GetStructuredDocumentTagsOnlineResponse()
+        );
+    }
+
+    /*
      * GetStyle request implementation
      */
     GetStyleRequest::GetStyleRequest(
@@ -21314,6 +21881,241 @@ namespace aspose::words::cloud::requests {
     {
         return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
             new aspose::words::cloud::responses::InsertRunOnlineResponse()
+        );
+    }
+
+    /*
+     * InsertStructuredDocumentTag request implementation
+     */
+    InsertStructuredDocumentTagRequest::InsertStructuredDocumentTagRequest(
+        const std::shared_ptr< std::wstring > name,
+        const std::shared_ptr< aspose::words::cloud::models::StructuredDocumentTagInsert > structuredDocumentTag,
+        const std::shared_ptr< std::wstring > nodePath,
+        const std::shared_ptr< std::wstring > folder,
+        const std::shared_ptr< std::wstring > storage,
+        const std::shared_ptr< std::wstring > loadEncoding,
+        const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< std::wstring > destFileName,
+        const std::shared_ptr< std::wstring > revisionAuthor,
+        const std::shared_ptr< std::wstring > revisionDateTime
+    ) : 
+        m_Name(name),
+        m_StructuredDocumentTag(structuredDocumentTag),
+        m_NodePath(nodePath),
+        m_Folder(folder),
+        m_Storage(storage),
+        m_LoadEncoding(loadEncoding),
+        m_Password(password),
+        m_EncryptedPassword(encryptedPassword),
+        m_DestFileName(destFileName),
+        m_RevisionAuthor(revisionAuthor),
+        m_RevisionDateTime(revisionDateTime)
+    {
+    }
+
+    const std::shared_ptr< std::wstring > InsertStructuredDocumentTagRequest::getName() const
+    {
+        return m_Name;
+    }
+
+    const std::shared_ptr< aspose::words::cloud::models::StructuredDocumentTagInsert > InsertStructuredDocumentTagRequest::getStructuredDocumentTag() const
+    {
+        return m_StructuredDocumentTag;
+    }
+
+    const std::shared_ptr< std::wstring > InsertStructuredDocumentTagRequest::getNodePath() const
+    {
+        return m_NodePath;
+    }
+
+    const std::shared_ptr< std::wstring > InsertStructuredDocumentTagRequest::getFolder() const
+    {
+        return m_Folder;
+    }
+
+    const std::shared_ptr< std::wstring > InsertStructuredDocumentTagRequest::getStorage() const
+    {
+        return m_Storage;
+    }
+
+    const std::shared_ptr< std::wstring > InsertStructuredDocumentTagRequest::getLoadEncoding() const
+    {
+        return m_LoadEncoding;
+    }
+
+    const std::shared_ptr< std::wstring > InsertStructuredDocumentTagRequest::getPassword() const
+    {
+        return m_Password;
+    }
+
+    const std::shared_ptr< std::wstring > InsertStructuredDocumentTagRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
+    }
+
+    const std::shared_ptr< std::wstring > InsertStructuredDocumentTagRequest::getDestFileName() const
+    {
+        return m_DestFileName;
+    }
+
+    const std::shared_ptr< std::wstring > InsertStructuredDocumentTagRequest::getRevisionAuthor() const
+    {
+        return m_RevisionAuthor;
+    }
+
+    const std::shared_ptr< std::wstring > InsertStructuredDocumentTagRequest::getRevisionDateTime() const
+    {
+        return m_RevisionDateTime;
+    }
+
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > InsertStructuredDocumentTagRequest::createHttpRequest() const
+    {
+        std::vector<models::FileReference*> additionalFilesContent;
+        auto result = std::make_shared<HttpRequestData>();
+        result->setMethod(HttpRequestMethod::HttpPOST);
+        result->setPath(L"/words/{name}/{nodePath}/sdt");
+        if (!m_Name) throw aspose::words::cloud::ApiException(400, L"Parameter 'Name' is required.");
+        result->setPathParam(L"{name}", *m_Name);
+        result->setPathParam(L"{nodePath}", m_NodePath ? *m_NodePath : L"");
+        if (m_Folder) result->addQueryParam(L"folder", *m_Folder);
+        if (m_Storage) result->addQueryParam(L"storage", *m_Storage);
+        if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
+        if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
+        if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
+        if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
+        if (m_StructuredDocumentTag)
+        {
+            result->addFormDataParam(L"Body", *m_StructuredDocumentTag);
+        }
+        else throw aspose::words::cloud::ApiException(400, L"Parameter 'StructuredDocumentTag' is required.");
+
+
+        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        {
+            result->addFormDataParam(additionalFileContent);
+        }
+
+        return result;
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > InsertStructuredDocumentTagRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::InsertStructuredDocumentTagResponse()
+        );
+    }
+
+    /*
+     * InsertStructuredDocumentTagOnline request implementation
+     */
+    InsertStructuredDocumentTagOnlineRequest::InsertStructuredDocumentTagOnlineRequest(
+        const std::shared_ptr< std::istream > document,
+        const std::shared_ptr< aspose::words::cloud::models::StructuredDocumentTagInsert > structuredDocumentTag,
+        const std::shared_ptr< std::wstring > nodePath,
+        const std::shared_ptr< std::wstring > loadEncoding,
+        const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< std::wstring > destFileName,
+        const std::shared_ptr< std::wstring > revisionAuthor,
+        const std::shared_ptr< std::wstring > revisionDateTime
+    ) : 
+        m_Document(document),
+        m_StructuredDocumentTag(structuredDocumentTag),
+        m_NodePath(nodePath),
+        m_LoadEncoding(loadEncoding),
+        m_Password(password),
+        m_EncryptedPassword(encryptedPassword),
+        m_DestFileName(destFileName),
+        m_RevisionAuthor(revisionAuthor),
+        m_RevisionDateTime(revisionDateTime)
+    {
+    }
+
+    const std::shared_ptr< std::istream > InsertStructuredDocumentTagOnlineRequest::getDocument() const
+    {
+        return m_Document;
+    }
+
+    const std::shared_ptr< aspose::words::cloud::models::StructuredDocumentTagInsert > InsertStructuredDocumentTagOnlineRequest::getStructuredDocumentTag() const
+    {
+        return m_StructuredDocumentTag;
+    }
+
+    const std::shared_ptr< std::wstring > InsertStructuredDocumentTagOnlineRequest::getNodePath() const
+    {
+        return m_NodePath;
+    }
+
+    const std::shared_ptr< std::wstring > InsertStructuredDocumentTagOnlineRequest::getLoadEncoding() const
+    {
+        return m_LoadEncoding;
+    }
+
+    const std::shared_ptr< std::wstring > InsertStructuredDocumentTagOnlineRequest::getPassword() const
+    {
+        return m_Password;
+    }
+
+    const std::shared_ptr< std::wstring > InsertStructuredDocumentTagOnlineRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
+    }
+
+    const std::shared_ptr< std::wstring > InsertStructuredDocumentTagOnlineRequest::getDestFileName() const
+    {
+        return m_DestFileName;
+    }
+
+    const std::shared_ptr< std::wstring > InsertStructuredDocumentTagOnlineRequest::getRevisionAuthor() const
+    {
+        return m_RevisionAuthor;
+    }
+
+    const std::shared_ptr< std::wstring > InsertStructuredDocumentTagOnlineRequest::getRevisionDateTime() const
+    {
+        return m_RevisionDateTime;
+    }
+
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > InsertStructuredDocumentTagOnlineRequest::createHttpRequest() const
+    {
+        std::vector<models::FileReference*> additionalFilesContent;
+        auto result = std::make_shared<HttpRequestData>();
+        result->setMethod(HttpRequestMethod::HttpPUT);
+        result->setPath(L"/words/online/post/{nodePath}/sdt");
+        result->setPathParam(L"{nodePath}", m_NodePath ? *m_NodePath : L"");
+        if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
+        if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
+        if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
+        if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
+        if (m_Document)
+        {
+            result->addFormDataParam(L"document", *m_Document);
+        }
+        else throw aspose::words::cloud::ApiException(400, L"Parameter 'Document' is required.");
+
+        if (m_StructuredDocumentTag)
+        {
+            result->addFormDataParam(L"structuredDocumentTag", *m_StructuredDocumentTag);
+        }
+        else throw aspose::words::cloud::ApiException(400, L"Parameter 'StructuredDocumentTag' is required.");
+
+        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        {
+            result->addFormDataParam(additionalFileContent);
+        }
+
+        return result;
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > InsertStructuredDocumentTagOnlineRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::InsertStructuredDocumentTagOnlineResponse()
         );
     }
 
@@ -30714,6 +31516,259 @@ namespace aspose::words::cloud::requests {
     {
         return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
             new aspose::words::cloud::responses::UpdateSectionPageSetupOnlineResponse()
+        );
+    }
+
+    /*
+     * UpdateStructuredDocumentTag request implementation
+     */
+    UpdateStructuredDocumentTagRequest::UpdateStructuredDocumentTagRequest(
+        const std::shared_ptr< std::wstring > name,
+        const std::shared_ptr< int32_t > index,
+        const std::shared_ptr< aspose::words::cloud::models::StructuredDocumentTagUpdate > structuredDocumentTag,
+        const std::shared_ptr< std::wstring > nodePath,
+        const std::shared_ptr< std::wstring > folder,
+        const std::shared_ptr< std::wstring > storage,
+        const std::shared_ptr< std::wstring > loadEncoding,
+        const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< std::wstring > destFileName,
+        const std::shared_ptr< std::wstring > revisionAuthor,
+        const std::shared_ptr< std::wstring > revisionDateTime
+    ) : 
+        m_Name(name),
+        m_Index(index),
+        m_StructuredDocumentTag(structuredDocumentTag),
+        m_NodePath(nodePath),
+        m_Folder(folder),
+        m_Storage(storage),
+        m_LoadEncoding(loadEncoding),
+        m_Password(password),
+        m_EncryptedPassword(encryptedPassword),
+        m_DestFileName(destFileName),
+        m_RevisionAuthor(revisionAuthor),
+        m_RevisionDateTime(revisionDateTime)
+    {
+    }
+
+    const std::shared_ptr< std::wstring > UpdateStructuredDocumentTagRequest::getName() const
+    {
+        return m_Name;
+    }
+
+    const std::shared_ptr< int32_t > UpdateStructuredDocumentTagRequest::getIndex() const
+    {
+        return m_Index;
+    }
+
+    const std::shared_ptr< aspose::words::cloud::models::StructuredDocumentTagUpdate > UpdateStructuredDocumentTagRequest::getStructuredDocumentTag() const
+    {
+        return m_StructuredDocumentTag;
+    }
+
+    const std::shared_ptr< std::wstring > UpdateStructuredDocumentTagRequest::getNodePath() const
+    {
+        return m_NodePath;
+    }
+
+    const std::shared_ptr< std::wstring > UpdateStructuredDocumentTagRequest::getFolder() const
+    {
+        return m_Folder;
+    }
+
+    const std::shared_ptr< std::wstring > UpdateStructuredDocumentTagRequest::getStorage() const
+    {
+        return m_Storage;
+    }
+
+    const std::shared_ptr< std::wstring > UpdateStructuredDocumentTagRequest::getLoadEncoding() const
+    {
+        return m_LoadEncoding;
+    }
+
+    const std::shared_ptr< std::wstring > UpdateStructuredDocumentTagRequest::getPassword() const
+    {
+        return m_Password;
+    }
+
+    const std::shared_ptr< std::wstring > UpdateStructuredDocumentTagRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
+    }
+
+    const std::shared_ptr< std::wstring > UpdateStructuredDocumentTagRequest::getDestFileName() const
+    {
+        return m_DestFileName;
+    }
+
+    const std::shared_ptr< std::wstring > UpdateStructuredDocumentTagRequest::getRevisionAuthor() const
+    {
+        return m_RevisionAuthor;
+    }
+
+    const std::shared_ptr< std::wstring > UpdateStructuredDocumentTagRequest::getRevisionDateTime() const
+    {
+        return m_RevisionDateTime;
+    }
+
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > UpdateStructuredDocumentTagRequest::createHttpRequest() const
+    {
+        std::vector<models::FileReference*> additionalFilesContent;
+        auto result = std::make_shared<HttpRequestData>();
+        result->setMethod(HttpRequestMethod::HttpPUT);
+        result->setPath(L"/words/{name}/{nodePath}/sdt/{index}");
+        if (!m_Name) throw aspose::words::cloud::ApiException(400, L"Parameter 'Name' is required.");
+        result->setPathParam(L"{name}", *m_Name);
+        if (!m_Index) throw aspose::words::cloud::ApiException(400, L"Parameter 'Index' is required.");
+        result->setPathParam(L"{index}", *m_Index);
+        result->setPathParam(L"{nodePath}", m_NodePath ? *m_NodePath : L"");
+        if (m_Folder) result->addQueryParam(L"folder", *m_Folder);
+        if (m_Storage) result->addQueryParam(L"storage", *m_Storage);
+        if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
+        if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
+        if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
+        if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
+        if (m_StructuredDocumentTag)
+        {
+            result->addFormDataParam(L"Body", *m_StructuredDocumentTag);
+        }
+        else throw aspose::words::cloud::ApiException(400, L"Parameter 'StructuredDocumentTag' is required.");
+
+
+        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        {
+            result->addFormDataParam(additionalFileContent);
+        }
+
+        return result;
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > UpdateStructuredDocumentTagRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::UpdateStructuredDocumentTagResponse()
+        );
+    }
+
+    /*
+     * UpdateStructuredDocumentTagOnline request implementation
+     */
+    UpdateStructuredDocumentTagOnlineRequest::UpdateStructuredDocumentTagOnlineRequest(
+        const std::shared_ptr< std::istream > document,
+        const std::shared_ptr< aspose::words::cloud::models::StructuredDocumentTagUpdate > structuredDocumentTag,
+        const std::shared_ptr< int32_t > index,
+        const std::shared_ptr< std::wstring > nodePath,
+        const std::shared_ptr< std::wstring > loadEncoding,
+        const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< std::wstring > destFileName,
+        const std::shared_ptr< std::wstring > revisionAuthor,
+        const std::shared_ptr< std::wstring > revisionDateTime
+    ) : 
+        m_Document(document),
+        m_StructuredDocumentTag(structuredDocumentTag),
+        m_Index(index),
+        m_NodePath(nodePath),
+        m_LoadEncoding(loadEncoding),
+        m_Password(password),
+        m_EncryptedPassword(encryptedPassword),
+        m_DestFileName(destFileName),
+        m_RevisionAuthor(revisionAuthor),
+        m_RevisionDateTime(revisionDateTime)
+    {
+    }
+
+    const std::shared_ptr< std::istream > UpdateStructuredDocumentTagOnlineRequest::getDocument() const
+    {
+        return m_Document;
+    }
+
+    const std::shared_ptr< aspose::words::cloud::models::StructuredDocumentTagUpdate > UpdateStructuredDocumentTagOnlineRequest::getStructuredDocumentTag() const
+    {
+        return m_StructuredDocumentTag;
+    }
+
+    const std::shared_ptr< int32_t > UpdateStructuredDocumentTagOnlineRequest::getIndex() const
+    {
+        return m_Index;
+    }
+
+    const std::shared_ptr< std::wstring > UpdateStructuredDocumentTagOnlineRequest::getNodePath() const
+    {
+        return m_NodePath;
+    }
+
+    const std::shared_ptr< std::wstring > UpdateStructuredDocumentTagOnlineRequest::getLoadEncoding() const
+    {
+        return m_LoadEncoding;
+    }
+
+    const std::shared_ptr< std::wstring > UpdateStructuredDocumentTagOnlineRequest::getPassword() const
+    {
+        return m_Password;
+    }
+
+    const std::shared_ptr< std::wstring > UpdateStructuredDocumentTagOnlineRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
+    }
+
+    const std::shared_ptr< std::wstring > UpdateStructuredDocumentTagOnlineRequest::getDestFileName() const
+    {
+        return m_DestFileName;
+    }
+
+    const std::shared_ptr< std::wstring > UpdateStructuredDocumentTagOnlineRequest::getRevisionAuthor() const
+    {
+        return m_RevisionAuthor;
+    }
+
+    const std::shared_ptr< std::wstring > UpdateStructuredDocumentTagOnlineRequest::getRevisionDateTime() const
+    {
+        return m_RevisionDateTime;
+    }
+
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > UpdateStructuredDocumentTagOnlineRequest::createHttpRequest() const
+    {
+        std::vector<models::FileReference*> additionalFilesContent;
+        auto result = std::make_shared<HttpRequestData>();
+        result->setMethod(HttpRequestMethod::HttpPUT);
+        result->setPath(L"/words/online/put/{nodePath}/sdt/{index}");
+        if (!m_Index) throw aspose::words::cloud::ApiException(400, L"Parameter 'Index' is required.");
+        result->setPathParam(L"{index}", *m_Index);
+        result->setPathParam(L"{nodePath}", m_NodePath ? *m_NodePath : L"");
+        if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
+        if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
+        if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
+        if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
+        if (m_Document)
+        {
+            result->addFormDataParam(L"document", *m_Document);
+        }
+        else throw aspose::words::cloud::ApiException(400, L"Parameter 'Document' is required.");
+
+        if (m_StructuredDocumentTag)
+        {
+            result->addFormDataParam(L"structuredDocumentTag", *m_StructuredDocumentTag);
+        }
+        else throw aspose::words::cloud::ApiException(400, L"Parameter 'StructuredDocumentTag' is required.");
+
+        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        {
+            result->addFormDataParam(additionalFileContent);
+        }
+
+        return result;
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > UpdateStructuredDocumentTagOnlineRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::UpdateStructuredDocumentTagOnlineResponse()
         );
     }
 
