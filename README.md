@@ -17,6 +17,12 @@ Feel free to explore the [Developer's Guide](https://docs.aspose.cloud/display/w
 - Read & write access to Document Object Model.
 - Thread safe
 
+## Enhancements in Version 23.3
+
+- Fix compatibility between CreateDocument API and Dropbox storage.
+- Fix compatibility for property PageCount for FixedPageSaveOptionsData.
+
+
 ## Enhancements in Version 23.2
 
 - Added operations to manipulate with Structure Document Tags (SDT) in documents.
