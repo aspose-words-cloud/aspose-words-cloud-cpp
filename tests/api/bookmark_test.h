@@ -273,14 +273,12 @@ TEST_F(BookmarkTests, TestInsertBookmark) {
         remoteDataFolder + L"/" + remoteFileName
     );
 
-    auto requestBookmarkStartRangeNode = std::make_shared< aspose::words::cloud::models::NodeLink >();
-    requestBookmarkStartRangeNode->setNodeId(std::make_shared< std::wstring >(L"0.0.0.0"));
-    auto requestBookmarkStartRange = std::make_shared< aspose::words::cloud::models::DocumentPosition >();
-    requestBookmarkStartRange->setNode(requestBookmarkStartRangeNode);
-    auto requestBookmarkEndRangeNode = std::make_shared< aspose::words::cloud::models::NodeLink >();
-    requestBookmarkEndRangeNode->setNodeId(std::make_shared< std::wstring >(L"0.0.0.0"));
-    auto requestBookmarkEndRange = std::make_shared< aspose::words::cloud::models::DocumentPosition >();
-    requestBookmarkEndRange->setNode(requestBookmarkEndRangeNode);
+    auto requestBookmarkStartRange = std::make_shared< aspose::words::cloud::models::NewDocumentPosition >();
+    requestBookmarkStartRange->setNodeId(std::make_shared< std::wstring >(L"0.0.0.0"));
+    requestBookmarkStartRange->setOffset(std::make_shared< int32_t >(0));
+    auto requestBookmarkEndRange = std::make_shared< aspose::words::cloud::models::NewDocumentPosition >();
+    requestBookmarkEndRange->setNodeId(std::make_shared< std::wstring >(L"0.0.0.0"));
+    requestBookmarkEndRange->setOffset(std::make_shared< int32_t >(0));
     auto requestBookmark = std::make_shared< aspose::words::cloud::models::BookmarkInsert >();
     requestBookmark->setStartRange(requestBookmarkStartRange);
     requestBookmark->setEndRange(requestBookmarkEndRange);
@@ -307,14 +305,12 @@ TEST_F(BookmarkTests, TestInsertBookmark) {
 /// </summary>
 TEST_F(BookmarkTests, TestInsertBookmarkOnline) {
     auto requestDocument = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(localFile)), std::istream::binary));
-    auto requestBookmarkStartRangeNode = std::make_shared< aspose::words::cloud::models::NodeLink >();
-    requestBookmarkStartRangeNode->setNodeId(std::make_shared< std::wstring >(L"0.0.0.0"));
-    auto requestBookmarkStartRange = std::make_shared< aspose::words::cloud::models::DocumentPosition >();
-    requestBookmarkStartRange->setNode(requestBookmarkStartRangeNode);
-    auto requestBookmarkEndRangeNode = std::make_shared< aspose::words::cloud::models::NodeLink >();
-    requestBookmarkEndRangeNode->setNodeId(std::make_shared< std::wstring >(L"0.0.0.0"));
-    auto requestBookmarkEndRange = std::make_shared< aspose::words::cloud::models::DocumentPosition >();
-    requestBookmarkEndRange->setNode(requestBookmarkEndRangeNode);
+    auto requestBookmarkStartRange = std::make_shared< aspose::words::cloud::models::NewDocumentPosition >();
+    requestBookmarkStartRange->setNodeId(std::make_shared< std::wstring >(L"0.0.0.0"));
+    requestBookmarkStartRange->setOffset(std::make_shared< int32_t >(0));
+    auto requestBookmarkEndRange = std::make_shared< aspose::words::cloud::models::NewDocumentPosition >();
+    requestBookmarkEndRange->setNodeId(std::make_shared< std::wstring >(L"0.0.0.0"));
+    requestBookmarkEndRange->setOffset(std::make_shared< int32_t >(0));
     auto requestBookmark = std::make_shared< aspose::words::cloud::models::BookmarkInsert >();
     requestBookmark->setStartRange(requestBookmarkStartRange);
     requestBookmark->setEndRange(requestBookmarkEndRange);

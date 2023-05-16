@@ -172,6 +172,7 @@
 #include "./aspose_words_cloud/models/metafile_rendering_options_data.h"
 #include "./aspose_words_cloud/models/mhtml_save_options_data.h"
 #include "./aspose_words_cloud/models/modification_operation_result.h"
+#include "./aspose_words_cloud/models/new_document_position.h"
 #include "./aspose_words_cloud/models/node_link.h"
 #include "./aspose_words_cloud/models/odt_save_options_data.h"
 #include "./aspose_words_cloud/models/office_math_link.h"

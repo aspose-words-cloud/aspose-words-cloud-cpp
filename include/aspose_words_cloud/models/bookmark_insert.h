@@ -26,7 +26,7 @@
 #pragma once
 #include "model_base.h"
 #include "bookmark_data.h"
-#include "document_position.h"
+#include "new_document_position.h"
 
 namespace aspose::words::cloud::models {
     /// <summary>
@@ -45,28 +45,28 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the link to end bookmark node.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< aspose::words::cloud::models::DocumentPosition > getEndRange() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< aspose::words::cloud::models::NewDocumentPosition > getEndRange() const;
 
         /// <summary>
         /// Gets or sets the link to end bookmark node.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT virtual void setEndRange(std::shared_ptr< aspose::words::cloud::models::DocumentPosition > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setEndRange(std::shared_ptr< aspose::words::cloud::models::NewDocumentPosition > value);
 
 
         /// <summary>
         /// Gets or sets the link to start bookmark node.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< aspose::words::cloud::models::DocumentPosition > getStartRange() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< aspose::words::cloud::models::NewDocumentPosition > getStartRange() const;
 
         /// <summary>
         /// Gets or sets the link to start bookmark node.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT virtual void setStartRange(std::shared_ptr< aspose::words::cloud::models::DocumentPosition > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setStartRange(std::shared_ptr< aspose::words::cloud::models::NewDocumentPosition > value);
 
 
     protected:
-        std::shared_ptr< aspose::words::cloud::models::DocumentPosition > m_EndRange;
-        std::shared_ptr< aspose::words::cloud::models::DocumentPosition > m_StartRange;
+        std::shared_ptr< aspose::words::cloud::models::NewDocumentPosition > m_EndRange;
+        std::shared_ptr< aspose::words::cloud::models::NewDocumentPosition > m_StartRange;
     };
 }
 
