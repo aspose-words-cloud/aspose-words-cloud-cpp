@@ -25,7 +25,7 @@
 
 #pragma once
 #include "model_base.h"
-#include "document_position.h"
+#include "new_document_position.h"
 
 namespace aspose::words::cloud::models {
     /// <summary>
@@ -55,12 +55,12 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the position to insert the table. The table will be inserted before the specified position.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< aspose::words::cloud::models::DocumentPosition > getPosition() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< aspose::words::cloud::models::NewDocumentPosition > getPosition() const;
 
         /// <summary>
         /// Gets or sets the position to insert the table. The table will be inserted before the specified position.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT virtual void setPosition(std::shared_ptr< aspose::words::cloud::models::DocumentPosition > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setPosition(std::shared_ptr< aspose::words::cloud::models::NewDocumentPosition > value);
 
 
         /// <summary>
@@ -76,7 +76,7 @@ namespace aspose::words::cloud::models {
 
     protected:
         std::shared_ptr< int32_t > m_ColumnsCount;
-        std::shared_ptr< aspose::words::cloud::models::DocumentPosition > m_Position;
+        std::shared_ptr< aspose::words::cloud::models::NewDocumentPosition > m_Position;
         std::shared_ptr< int32_t > m_RowsCount;
     };
 }

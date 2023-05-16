@@ -17,6 +17,11 @@ Feel free to explore the [Developer's Guide](https://docs.aspose.cloud/display/w
 - Read & write access to Document Object Model.
 - Thread safe
 
+## Enhancements in Version 23.4
+
+- Added new type of RangeEndIdentifier for RangeApi: document:end
+
+
 ## Enhancements in Version 23.3
 
 - Fix compatibility between CreateDocument API and Dropbox storage.

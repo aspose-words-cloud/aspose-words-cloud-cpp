@@ -25,7 +25,7 @@
 
 #pragma once
 #include "model_base.h"
-#include "document_position.h"
+#include "new_document_position.h"
 
 namespace aspose::words::cloud::models {
     /// <summary>
@@ -78,23 +78,23 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the link to comment range end node.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< aspose::words::cloud::models::DocumentPosition > getRangeEnd() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< aspose::words::cloud::models::NewDocumentPosition > getRangeEnd() const;
 
         /// <summary>
         /// Gets or sets the link to comment range end node.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT virtual void setRangeEnd(std::shared_ptr< aspose::words::cloud::models::DocumentPosition > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setRangeEnd(std::shared_ptr< aspose::words::cloud::models::NewDocumentPosition > value);
 
 
         /// <summary>
         /// Gets or sets the link to comment range start node.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< aspose::words::cloud::models::DocumentPosition > getRangeStart() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< aspose::words::cloud::models::NewDocumentPosition > getRangeStart() const;
 
         /// <summary>
         /// Gets or sets the link to comment range start node.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT virtual void setRangeStart(std::shared_ptr< aspose::words::cloud::models::DocumentPosition > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setRangeStart(std::shared_ptr< aspose::words::cloud::models::NewDocumentPosition > value);
 
 
         /// <summary>
@@ -112,8 +112,8 @@ namespace aspose::words::cloud::models {
         std::shared_ptr< std::wstring > m_Author;
         std::shared_ptr< std::wstring > m_DateTime;
         std::shared_ptr< std::wstring > m_Initial;
-        std::shared_ptr< aspose::words::cloud::models::DocumentPosition > m_RangeEnd;
-        std::shared_ptr< aspose::words::cloud::models::DocumentPosition > m_RangeStart;
+        std::shared_ptr< aspose::words::cloud::models::NewDocumentPosition > m_RangeEnd;
+        std::shared_ptr< aspose::words::cloud::models::NewDocumentPosition > m_RangeStart;
         std::shared_ptr< std::wstring > m_Text;
     };
 }

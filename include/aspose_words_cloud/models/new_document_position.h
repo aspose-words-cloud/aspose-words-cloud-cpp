@@ -1,5 +1,5 @@
 ﻿/** --------------------------------------------------------------------------------------------------------------------
-* <copyright company="Aspose" file="table_insert.h">
+* <copyright company="Aspose" file="new_document_position.h">
 *   Copyright (c) 2023 Aspose.Words for Cloud
 * </copyright>
 * <summary>
@@ -25,59 +25,46 @@
 
 #pragma once
 #include "model_base.h"
-#include "new_document_position.h"
 
 namespace aspose::words::cloud::models {
     /// <summary>
-    /// DTO container with a table element.
+    /// DTO container with a new position in the document tree.
     /// </summary>
-    class TableInsert : public ModelBase
+    class NewDocumentPosition : public ModelBase
     {
     public:
 
-        ASPOSE_WORDS_CLOUD_EXPORT virtual ~TableInsert() = default;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual ~NewDocumentPosition() = default;
         ASPOSE_WORDS_CLOUD_EXPORT virtual void toJson(void* jsonIfc) const override;
         ASPOSE_WORDS_CLOUD_EXPORT virtual void fromJson(const void* jsonIfc) override;
         ASPOSE_WORDS_CLOUD_EXPORT virtual void getFileReferences(std::vector< FileReference* >& result) override;
 
 
         /// <summary>
-        /// Gets or sets the number of columns. The default value is 2.
+        /// Gets or sets the node id.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< int32_t > getColumnsCount() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< std::wstring > getNodeId() const;
 
         /// <summary>
-        /// Gets or sets the number of columns. The default value is 2.
+        /// Gets or sets the node id.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT virtual void setColumnsCount(std::shared_ptr< int32_t > value);
-
-
-        /// <summary>
-        /// Gets or sets the position to insert the table. The table will be inserted before the specified position.
-        /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< aspose::words::cloud::models::NewDocumentPosition > getPosition() const;
-
-        /// <summary>
-        /// Gets or sets the position to insert the table. The table will be inserted before the specified position.
-        /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT virtual void setPosition(std::shared_ptr< aspose::words::cloud::models::NewDocumentPosition > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setNodeId(std::shared_ptr< std::wstring > value);
 
 
         /// <summary>
-        /// Gets or sets the number of rows. The default value is 2.
+        /// Gets or sets the offset in the node.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< int32_t > getRowsCount() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< int32_t > getOffset() const;
 
         /// <summary>
-        /// Gets or sets the number of rows. The default value is 2.
+        /// Gets or sets the offset in the node.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT virtual void setRowsCount(std::shared_ptr< int32_t > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setOffset(std::shared_ptr< int32_t > value);
 
 
     protected:
-        std::shared_ptr< int32_t > m_ColumnsCount;
-        std::shared_ptr< aspose::words::cloud::models::NewDocumentPosition > m_Position;
-        std::shared_ptr< int32_t > m_RowsCount;
+        std::shared_ptr< std::wstring > m_NodeId;
+        std::shared_ptr< int32_t > m_Offset;
     };
 }
 
