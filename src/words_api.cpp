@@ -2525,6 +2525,26 @@ namespace aspose::words::cloud::api {
         return response;
     }
 
+    void WordsApi::insertSection(std::shared_ptr<aspose::words::cloud::requests::InsertSectionRequest> request)
+    {
+        auto response = std::make_shared< aspose::words::cloud::responses::InsertSectionResponse >();
+        m_ApiClient->call( request->createHttpRequest(), *response);
+        if (response->getStatusCode() != 200) {
+            throw aspose::words::cloud::ApiException(response->getStatusCode(), response->getErrorMessage());
+        }
+    }
+
+    std::shared_ptr< std::map<std::wstring, std::shared_ptr<std::istream>> > WordsApi::insertSectionOnline(std::shared_ptr<aspose::words::cloud::requests::InsertSectionOnlineRequest> request)
+    {
+        auto response = std::make_shared< aspose::words::cloud::responses::InsertSectionOnlineResponse >();
+        m_ApiClient->call( request->createHttpRequest(), *response);
+        if (response->getStatusCode() != 200) {
+            throw aspose::words::cloud::ApiException(response->getStatusCode(), response->getErrorMessage());
+        }
+
+        return response->getDocument();
+    }
+
     std::shared_ptr< aspose::words::cloud::models::StructuredDocumentTagResponse > WordsApi::insertStructuredDocumentTag(std::shared_ptr<aspose::words::cloud::requests::InsertStructuredDocumentTagRequest> request)
     {
         auto response = std::make_shared< aspose::words::cloud::responses::InsertStructuredDocumentTagResponse >();
