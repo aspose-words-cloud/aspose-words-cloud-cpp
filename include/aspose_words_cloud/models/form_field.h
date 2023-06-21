@@ -40,7 +40,6 @@ namespace aspose::words::cloud::models {
         ASPOSE_WORDS_CLOUD_EXPORT virtual void fromJson(const void* jsonIfc) override;
         ASPOSE_WORDS_CLOUD_EXPORT virtual void getFileReferences(std::vector< FileReference* >& result) override;
 
-        virtual void abstractFormField() = 0;
 
         /// <summary>
         /// Gets or sets a value indicating whether references to the specified form field are automatically updated whenever the field is exited.
