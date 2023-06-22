@@ -8537,7 +8537,8 @@ namespace aspose::words::cloud::models {
         WordsResponse::fromJson(jsonIfc);
         ::nlohmann::json& json = *((::nlohmann::json*)jsonIfc);
         if (json.contains("FormField") && !json["FormField"].is_null()) {
-            throw aspose::words::cloud::ApiException(400, L"Cannot deserialize abstract data model FormField.");
+            this->m_FormField = std::make_shared< aspose::words::cloud::models::FormField >();
+            this->m_FormField->fromJson(&json["FormField"]);
         }
     }
 
