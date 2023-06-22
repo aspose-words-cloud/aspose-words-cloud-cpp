@@ -22065,7 +22065,7 @@ namespace aspose::words::cloud::requests {
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
-        result->setMethod(HttpRequestMethod::HttpPOST);
+        result->setMethod(HttpRequestMethod::HttpPUT);
         result->setPath(L"/words/online/post/sections/{sectionIndex}");
         if (!m_SectionIndex) throw aspose::words::cloud::ApiException(400, L"Parameter 'SectionIndex' is required.");
         result->setPathParam(L"{sectionIndex}", *m_SectionIndex);
