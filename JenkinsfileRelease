@@ -1,47 +1,77 @@
-properties([
-	gitLabConnection('gitlab')
-])
+parameters {
+    string(name: 'tagVersion', description: 'new version number for tag')
+    string(name: 'testServerUrl', defaultValue: 'https://api-qa.aspose.cloud', description: 'server url')
+}
 
-node('win2019') {
-	try {
-		gitlabCommitStatus("checkout") {
-			stage('checkout'){
-				checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [[$class: 'LocalBranch', localBranch: "**"]], submoduleCfg: [], userRemoteConfigs: [[credentialsId: '361885ba-9425-4230-950e-0af201d90547', url: 'https://git.auckland.dynabic.com/words-cloud/words-cloud-cpp.git']]])
-			}
-		}	
-	
-		env.SDK_VERSION = powershell(returnStdout: true, script:'echo ((ConvertFrom-Json -InputObject (New-Object System.Net.WebClient).DownloadString("https://api.aspose.cloud/v4.0/words/swagger/spec")).info.version | Select-String -Pattern "^\\d+\\.\\d+" ).Matches[0].Value').trim()
-		
-        gitlabCommitStatus("Merge master to release") {
-            stage('Merge master to release'){
-                checkout([$class: 'GitSCM', branches: [[name: '*/release']], doGenerateSubmoduleConfigurations: false, extensions: [[$class: 'LocalBranch', localBranch: "**"]], submoduleCfg: [], userRemoteConfigs: [[credentialsId: '361885ba-9425-4230-950e-0af201d90547', url: 'https://git.auckland.dynabic.com/words-cloud/words-cloud-cpp.git']]])
-                bat "git config user.email 'jenkins.aspose@gmail.com'"
-                bat "git config user.name 'jenkins'"
-                bat "git checkout --merge release"
-                bat "git reset --hard origin/release"
-                bat "git merge --no-ff --allow-unrelated-histories origin/master"
-                bat "git diff --name-status"			
-                bat 'git commit -am "Merged master branch to release" || exit 0'
-                withCredentials([usernamePassword(credentialsId: '361885ba-9425-4230-950e-0af201d90547', passwordVariable: 'gitPass', usernameVariable: 'gitUsername')]) {
-                    bat "git push https://$gitUsername:$gitPass@git.auckland.dynabic.com/words-cloud/words-cloud-cpp.git release"
+def runtests() {
+    try {
+        stage('checkout'){
+            checkout([$class: 'GitSCM', branches: [[name: "master"]], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: '361885ba-9425-4230-950e-0af201d90547', url: 'https://git.auckland.dynabic.com/words-cloud/words-cloud-cpp.git']]])
+            sh 'git show -s HEAD > gitMessage'
+            def commitMessage = readFile('gitMessage').trim()
+            echo commitMessage
+            sh 'git clean -fdx'
+        }
+        
+        stage('build') {
+            withCredentials([usernamePassword(credentialsId: 'cc2e3c9b-b3da-4455-b702-227bcce18895', usernameVariable: 'dockerrigistry_login', passwordVariable: 'dockerregistry_password')]) {
+                sh 'docker login -u "${dockerrigistry_login}" -p "${dockerregistry_password}" git.auckland.dynabic.com:4567'
+                sh (script: "docker pull git.auckland.dynabic.com:4567/words-cloud/api/cpp/linux:latest")
+                sh (script: "docker build --cache-from=git.auckland.dynabic.com:4567/words-cloud/api/cpp/linux:latest -t git.auckland.dynabic.com:4567/words-cloud/api/cpp/linux:latest -t aspose-words-cloud-cpp-tests:linux - < Dockerfile.linux")
+                sh (script: "docker push git.auckland.dynabic.com:4567/words-cloud/api/cpp/linux:latest")
+            }
+        }
+        stage('tests') {
+            withCredentials([usernamePassword(credentialsId: '6839cbe8-39fa-40c0-86ce-90706f0bae5d', passwordVariable: 'WordsClientSecret', usernameVariable: 'WordsClientId')]) {
+                try {
+                    sh 'docker run --rm -v "$PWD/out:/out/" -v "$PWD:/aspose-words-cloud-cpp" aspose-words-cloud-cpp-tests:linux bash /aspose-words-cloud-cpp/scripts/runTestsDocker.sh $WordsClientId $WordsClientSecret $testServerUrl'
+                } finally {
+                    junit '**\\out\\test_result.xml'
+                }
+                
+                if (currentBuild.result == "UNSTABLE") {
+                    currentBuild.result = "FAILURE"
                 }
             }
         }
-        
-		gitlabCommitStatus("add version tag") {
-			stage('add version tag') {			
-				bat "git config user.email 'jenkins.aspose@gmail.com'"
-				bat "git config user.name 'jenkins'"
-				
-				bat "git tag -a %SDK_VERSION% -m \"version %SDK_VERSION%\""
-				
-				withCredentials([usernamePassword(credentialsId: '361885ba-9425-4230-950e-0af201d90547', usernameVariable: 'gitUsername', passwordVariable: 'gitPass')]) {
-					bat "git push https://%gitUsername%:%gitPass%@git.auckland.dynabic.com/words-cloud/words-cloud-cpp.git %SDK_VERSION%"
-				}
-				
-			}
-		}
-	} finally {
-		deleteDir()
-	}
+    } finally {
+        deleteDir()
+    }
+}
+
+def makerelease() {
+    try {
+        stage('merge'){
+            checkout([$class: 'GitSCM', branches: [[name: '*/release']], doGenerateSubmoduleConfigurations: false, extensions: [[$class: 'LocalBranch', localBranch: "**"]], submoduleCfg: [], userRemoteConfigs: [[credentialsId: '361885ba-9425-4230-950e-0af201d90547', url: 'https://git.auckland.dynabic.com/words-cloud/words-cloud-cpp.git']]])
+            sh "git config user.email 'jenkins.aspose@gmail.com'"
+            sh "git config user.name 'jenkins'"
+            sh "git checkout --merge release"
+            sh "git reset --hard origin/release"
+            sh "git merge --no-ff --allow-unrelated-histories origin/master"
+            sh "git diff --name-status"
+            sh 'git commit -am "Merged master branch to release" || exit 0'
+            withCredentials([usernamePassword(credentialsId: '361885ba-9425-4230-950e-0af201d90547', passwordVariable: 'gitPass', usernameVariable: 'gitUsername')]) {
+                sh "git push https://$gitUsername:$gitPass@git.auckland.dynabic.com/words-cloud/words-cloud-cpp.git release"
+            }
+        }
+
+        stage('tag'){
+            checkout([$class: 'GitSCM', branches: [[name: '*/release']], doGenerateSubmoduleConfigurations: false, extensions: [[$class: 'LocalBranch', localBranch: "**"]], submoduleCfg: [], userRemoteConfigs: [[credentialsId: '361885ba-9425-4230-950e-0af201d90547', url: 'https://git.auckland.dynabic.com/words-cloud/words-cloud-cpp.git']]])
+            sh "git config user.email \"jenkins.aspose@gmail.com\""
+            sh "git config user.name \"jenkins\""
+            sh "git tag -a ${tagVersion} -m 'version ${tagVersion}' | exit 0"
+            
+            withCredentials([usernamePassword(credentialsId: '361885ba-9425-4230-950e-0af201d90547', passwordVariable: 'gitPass', usernameVariable: 'gitUsername')]) {
+                sh "git push https://$gitUsername:$gitPass@git.auckland.dynabic.com/words-cloud/words-cloud-cpp.git ${tagVersion}"
+            }
+        }
+    } finally {
+        deleteDir()
+    }
+}
+
+node('words-linux') {
+    cleanWs()
+    runtests()
+    makerelease()
 }
