@@ -1,5 +1,5 @@
 ﻿/** --------------------------------------------------------------------------------------------------------------------
-* <copyright company="Aspose" file="create_document_request.h">
+* <copyright company="Aspose" file="insert_section_online_response.h">
 *   Copyright (c) 2023 Aspose.Words for Cloud
 * </copyright>
 * <summary>
@@ -24,27 +24,17 @@
 -------------------------------------------------------------------------------------------------------------------- **/
 
 #pragma once
-#include "./request_model_base.h"
+#include "./response_model_base.h"
 
-namespace aspose::words::cloud::requests {
-    class CreateDocumentRequest : public RequestModelBase {
-    public:
-        ASPOSE_WORDS_CLOUD_EXPORT CreateDocumentRequest(
-            const std::shared_ptr< std::wstring > fileName,
-            const std::shared_ptr< std::wstring > folder = nullptr,
-            const std::shared_ptr< std::wstring > storage = nullptr
-        );
+namespace aspose::words::cloud::responses {
+    class InsertSectionOnlineResponse : public ResponseModelBase {
+    public: 
+        ASPOSE_WORDS_CLOUD_EXPORT virtual ~InsertSectionOnlineResponse() = default;
 
-        ASPOSE_WORDS_CLOUD_EXPORT const std::shared_ptr< std::wstring > getFileName() const;
-        ASPOSE_WORDS_CLOUD_EXPORT const std::shared_ptr< std::wstring > getFolder() const;
-        ASPOSE_WORDS_CLOUD_EXPORT const std::shared_ptr< std::wstring > getStorage() const;
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::map<std::wstring, std::shared_ptr<std::istream>> > getDocument() const;
 
-        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< aspose::words::cloud::HttpRequestData > createHttpRequest() const override;
-        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > createResponse() const override;
-
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void deserialize(const std::string& contentType, const std::string_view& response) override;
     private:
-        const std::shared_ptr< std::wstring > m_FileName;
-        const std::shared_ptr< std::wstring > m_Folder;
-        const std::shared_ptr< std::wstring > m_Storage;
+        std::shared_ptr< std::map<std::wstring, std::shared_ptr<std::istream>> > m_Document;
     };
 }

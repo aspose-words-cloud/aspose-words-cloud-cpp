@@ -169,6 +169,52 @@ TEST_F(SectionTests, TestDeleteSectionOnline) {
 }
 
 /// <summary>
+/// Test for insertion a section.
+/// </summary>
+TEST_F(SectionTests, TestInsertSection) {
+    std::wstring remoteFileName = L"TestInsertSection.docx";
+
+    uploadFileToStorage(
+        localTestDataFolder + L"/" + localFile,
+        remoteDataFolder + L"/" + remoteFileName
+    );
+
+    std::shared_ptr<requests::InsertSectionRequest> request(new requests::InsertSectionRequest(
+        std::make_shared< std::wstring >(remoteFileName),
+        std::make_shared< int32_t >(0),
+        std::make_shared< std::wstring >(remoteDataFolder),
+        nullptr,
+        nullptr,
+        nullptr,
+        nullptr,
+        nullptr,
+        nullptr,
+        nullptr
+    ));
+
+getApi()->insertSection(request);
+}
+
+/// <summary>
+/// Test for insertion a section online.
+/// </summary>
+TEST_F(SectionTests, TestInsertSectionOnline) {
+    auto requestDocument = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(localFile)), std::istream::binary));
+    std::shared_ptr<requests::InsertSectionOnlineRequest> request(new requests::InsertSectionOnlineRequest(
+        requestDocument,
+        std::make_shared< int32_t >(0),
+        nullptr,
+        nullptr,
+        nullptr,
+        nullptr,
+        nullptr,
+        nullptr
+    ));
+
+    auto actual = getApi()->insertSectionOnline(request);
+}
+
+/// <summary>
 /// Test for linking headers and footers to previous section.
 /// </summary>
 TEST_F(SectionTests, TestLinkHeaderFootersToPrevious) {

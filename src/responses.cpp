@@ -3869,6 +3869,27 @@ namespace aspose::words::cloud::responses {
     }
 
     /*
+     * InsertSection request implementation
+     */
+
+    void InsertSectionResponse::deserialize(const std::string& contentType, const std::string_view& response)
+    {
+    }
+
+    /*
+     * InsertSectionOnline request implementation
+     */
+    std::shared_ptr< std::map<std::wstring, std::shared_ptr<std::istream>> > InsertSectionOnlineResponse::getDocument() const
+    {
+        return m_Document;
+    }
+
+    void InsertSectionOnlineResponse::deserialize(const std::string& contentType, const std::string_view& response)
+    {
+        m_Document = parseFilesCollection(std::make_tuple("", contentType, response));
+    }
+
+    /*
      * InsertStructuredDocumentTag request implementation
      */
     std::shared_ptr< aspose::words::cloud::models::StructuredDocumentTagResponse > InsertStructuredDocumentTagResponse::getResult() const
