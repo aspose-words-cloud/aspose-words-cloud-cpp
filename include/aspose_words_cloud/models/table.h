@@ -44,17 +44,6 @@ namespace aspose::words::cloud::models {
 
 
         /// <summary>
-        /// Gets or sets table properties.
-        /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< aspose::words::cloud::models::TableProperties > getTableProperties() const;
-
-        /// <summary>
-        /// Gets or sets table properties.
-        /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT virtual void setTableProperties(std::shared_ptr< aspose::words::cloud::models::TableProperties > value);
-
-
-        /// <summary>
         /// Gets or sets the collection of table's rows.
         /// </summary>
         ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< std::vector<std::shared_ptr<aspose::words::cloud::models::TableRow>> > getTableRowList() const;
@@ -65,9 +54,20 @@ namespace aspose::words::cloud::models {
         ASPOSE_WORDS_CLOUD_EXPORT virtual void setTableRowList(std::shared_ptr< std::vector<std::shared_ptr<aspose::words::cloud::models::TableRow>> > value);
 
 
+        /// <summary>
+        /// Gets or sets table properties.
+        /// </summary>
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< aspose::words::cloud::models::TableProperties > getTableProperties() const;
+
+        /// <summary>
+        /// Gets or sets table properties.
+        /// </summary>
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setTableProperties(std::shared_ptr< aspose::words::cloud::models::TableProperties > value);
+
+
     protected:
-        std::shared_ptr< aspose::words::cloud::models::TableProperties > m_TableProperties;
         std::shared_ptr< std::vector<std::shared_ptr<aspose::words::cloud::models::TableRow>> > m_TableRowList;
+        std::shared_ptr< aspose::words::cloud::models::TableProperties > m_TableProperties;
     };
 }
 

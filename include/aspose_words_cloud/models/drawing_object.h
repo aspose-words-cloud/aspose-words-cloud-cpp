@@ -89,72 +89,6 @@ namespace aspose::words::cloud::models {
 
 
         /// <summary>
-        /// Gets or sets the height of the DrawingObject in points.
-        /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< double > getHeight() const;
-
-        /// <summary>
-        /// Gets or sets the height of the DrawingObject in points.
-        /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT virtual void setHeight(std::shared_ptr< double > value);
-
-
-        /// <summary>
-        /// Gets or sets the link to image data. Can be null if shape does not have an image.
-        /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< aspose::words::cloud::models::WordsApiLink > getImageDataLink() const;
-
-        /// <summary>
-        /// Gets or sets the link to image data. Can be null if shape does not have an image.
-        /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT virtual void setImageDataLink(std::shared_ptr< aspose::words::cloud::models::WordsApiLink > value);
-
-
-        /// <summary>
-        /// Gets or sets the distance in points from the origin to the left side of the image.
-        /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< double > getLeft() const;
-
-        /// <summary>
-        /// Gets or sets the distance in points from the origin to the left side of the image.
-        /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT virtual void setLeft(std::shared_ptr< double > value);
-
-
-        /// <summary>
-        /// Gets or sets the link to OLE object. Can be null if shape does not have OLE data.
-        /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< aspose::words::cloud::models::WordsApiLink > getOleDataLink() const;
-
-        /// <summary>
-        /// Gets or sets the link to OLE object. Can be null if shape does not have OLE data.
-        /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT virtual void setOleDataLink(std::shared_ptr< aspose::words::cloud::models::WordsApiLink > value);
-
-
-        /// <summary>
-        /// Gets or sets the relative horizontal position, from which the distance to the image is measured.
-        /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< aspose::words::cloud::models::DrawingObject::RelativeHorizontalPosition > getRelativeHorizontalPosition() const;
-
-        /// <summary>
-        /// Gets or sets the relative horizontal position, from which the distance to the image is measured.
-        /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT virtual void setRelativeHorizontalPosition(std::shared_ptr< aspose::words::cloud::models::DrawingObject::RelativeHorizontalPosition > value);
-
-
-        /// <summary>
-        /// Gets or sets the relative vertical position, from which the distance to the image is measured.
-        /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< aspose::words::cloud::models::DrawingObject::RelativeVerticalPosition > getRelativeVerticalPosition() const;
-
-        /// <summary>
-        /// Gets or sets the relative vertical position, from which the distance to the image is measured.
-        /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT virtual void setRelativeVerticalPosition(std::shared_ptr< aspose::words::cloud::models::DrawingObject::RelativeVerticalPosition > value);
-
-
-        /// <summary>
         /// Gets or sets the list of links that originate from this DrawingObjectDto.
         /// </summary>
         ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< std::vector<std::shared_ptr<aspose::words::cloud::models::WordsApiLink>> > getRenderLinks() const;
@@ -163,17 +97,6 @@ namespace aspose::words::cloud::models {
         /// Gets or sets the list of links that originate from this DrawingObjectDto.
         /// </summary>
         ASPOSE_WORDS_CLOUD_EXPORT virtual void setRenderLinks(std::shared_ptr< std::vector<std::shared_ptr<aspose::words::cloud::models::WordsApiLink>> > value);
-
-
-        /// <summary>
-        /// Gets or sets the distance in points from the origin to the top side of the image.
-        /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< double > getTop() const;
-
-        /// <summary>
-        /// Gets or sets the distance in points from the origin to the top side of the image.
-        /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT virtual void setTop(std::shared_ptr< double > value);
 
 
         /// <summary>
@@ -188,6 +111,83 @@ namespace aspose::words::cloud::models {
 
 
         /// <summary>
+        /// Gets or sets the height of the DrawingObject in points.
+        /// </summary>
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< double > getHeight() const;
+
+        /// <summary>
+        /// Gets or sets the height of the DrawingObject in points.
+        /// </summary>
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setHeight(std::shared_ptr< double > value);
+
+
+        /// <summary>
+        /// Gets or sets the link to OLE object. Can be null if shape does not have OLE data.
+        /// </summary>
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< aspose::words::cloud::models::WordsApiLink > getOleDataLink() const;
+
+        /// <summary>
+        /// Gets or sets the link to OLE object. Can be null if shape does not have OLE data.
+        /// </summary>
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setOleDataLink(std::shared_ptr< aspose::words::cloud::models::WordsApiLink > value);
+
+
+        /// <summary>
+        /// Gets or sets the link to image data. Can be null if shape does not have an image.
+        /// </summary>
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< aspose::words::cloud::models::WordsApiLink > getImageDataLink() const;
+
+        /// <summary>
+        /// Gets or sets the link to image data. Can be null if shape does not have an image.
+        /// </summary>
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setImageDataLink(std::shared_ptr< aspose::words::cloud::models::WordsApiLink > value);
+
+
+        /// <summary>
+        /// Gets or sets the relative horizontal position, from which the distance to the image is measured.
+        /// </summary>
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< aspose::words::cloud::models::DrawingObject::RelativeHorizontalPosition > getRelativeHorizontalPosition() const;
+
+        /// <summary>
+        /// Gets or sets the relative horizontal position, from which the distance to the image is measured.
+        /// </summary>
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setRelativeHorizontalPosition(std::shared_ptr< aspose::words::cloud::models::DrawingObject::RelativeHorizontalPosition > value);
+
+
+        /// <summary>
+        /// Gets or sets the distance in points from the origin to the left side of the image.
+        /// </summary>
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< double > getLeft() const;
+
+        /// <summary>
+        /// Gets or sets the distance in points from the origin to the left side of the image.
+        /// </summary>
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setLeft(std::shared_ptr< double > value);
+
+
+        /// <summary>
+        /// Gets or sets the relative vertical position, from which the distance to the image is measured.
+        /// </summary>
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< aspose::words::cloud::models::DrawingObject::RelativeVerticalPosition > getRelativeVerticalPosition() const;
+
+        /// <summary>
+        /// Gets or sets the relative vertical position, from which the distance to the image is measured.
+        /// </summary>
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setRelativeVerticalPosition(std::shared_ptr< aspose::words::cloud::models::DrawingObject::RelativeVerticalPosition > value);
+
+
+        /// <summary>
+        /// Gets or sets the distance in points from the origin to the top side of the image.
+        /// </summary>
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< double > getTop() const;
+
+        /// <summary>
+        /// Gets or sets the distance in points from the origin to the top side of the image.
+        /// </summary>
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setTop(std::shared_ptr< double > value);
+
+
+        /// <summary>
         /// Gets or sets the option that controls how to wrap text around the image.
         /// </summary>
         ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< aspose::words::cloud::models::DrawingObject::WrapType > getWrapType() const;
@@ -199,15 +199,15 @@ namespace aspose::words::cloud::models {
 
 
     protected:
-        std::shared_ptr< double > m_Height;
-        std::shared_ptr< aspose::words::cloud::models::WordsApiLink > m_ImageDataLink;
-        std::shared_ptr< double > m_Left;
-        std::shared_ptr< aspose::words::cloud::models::WordsApiLink > m_OleDataLink;
-        std::shared_ptr< aspose::words::cloud::models::DrawingObject::RelativeHorizontalPosition > m_RelativeHorizontalPosition;
-        std::shared_ptr< aspose::words::cloud::models::DrawingObject::RelativeVerticalPosition > m_RelativeVerticalPosition;
         std::shared_ptr< std::vector<std::shared_ptr<aspose::words::cloud::models::WordsApiLink>> > m_RenderLinks;
-        std::shared_ptr< double > m_Top;
         std::shared_ptr< double > m_Width;
+        std::shared_ptr< double > m_Height;
+        std::shared_ptr< aspose::words::cloud::models::WordsApiLink > m_OleDataLink;
+        std::shared_ptr< aspose::words::cloud::models::WordsApiLink > m_ImageDataLink;
+        std::shared_ptr< aspose::words::cloud::models::DrawingObject::RelativeHorizontalPosition > m_RelativeHorizontalPosition;
+        std::shared_ptr< double > m_Left;
+        std::shared_ptr< aspose::words::cloud::models::DrawingObject::RelativeVerticalPosition > m_RelativeVerticalPosition;
+        std::shared_ptr< double > m_Top;
         std::shared_ptr< aspose::words::cloud::models::DrawingObject::WrapType > m_WrapType;
     };
 }

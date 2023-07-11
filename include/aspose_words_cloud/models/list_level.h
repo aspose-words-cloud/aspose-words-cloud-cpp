@@ -37,16 +37,6 @@ namespace aspose::words::cloud::models {
     {
     public:
         /// <summary>
-        /// Gets or sets the justification of the actual number of the list item.
-        /// </summary>
-        enum class Alignment
-        { 
-            LEFT,
-            CENTER,
-            RIGHT
-        };
-
-        /// <summary>
         /// Gets or sets the number style for this list level.
         /// </summary>
         enum class NumberStyle
@@ -116,6 +106,16 @@ namespace aspose::words::cloud::models {
         };
 
         /// <summary>
+        /// Gets or sets the justification of the actual number of the list item.
+        /// </summary>
+        enum class Alignment
+        { 
+            LEFT,
+            CENTER,
+            RIGHT
+        };
+
+        /// <summary>
         /// Gets or sets the character inserted after the number for the list level.
         /// </summary>
         enum class TrailingCharacter
@@ -133,69 +133,14 @@ namespace aspose::words::cloud::models {
 
 
         /// <summary>
-        /// Gets or sets the justification of the actual number of the list item.
+        /// Gets or sets the starting number for this list level.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< aspose::words::cloud::models::ListLevel::Alignment > getAlignment() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< int32_t > getStartAt() const;
 
         /// <summary>
-        /// Gets or sets the justification of the actual number of the list item.
+        /// Gets or sets the starting number for this list level.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT virtual void setAlignment(std::shared_ptr< aspose::words::cloud::models::ListLevel::Alignment > value);
-
-
-        /// <summary>
-        /// Gets or sets character formatting used for the list label.
-        /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< aspose::words::cloud::models::Font > getFont() const;
-
-        /// <summary>
-        /// Gets or sets character formatting used for the list label.
-        /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT virtual void setFont(std::shared_ptr< aspose::words::cloud::models::Font > value);
-
-
-        /// <summary>
-        /// Gets or sets a value indicating whether the level turns all inherited numbers to Arabic, false if it preserves their number style.
-        /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< bool > getIsLegal() const;
-
-        /// <summary>
-        /// Gets or sets a value indicating whether the level turns all inherited numbers to Arabic, false if it preserves their number style.
-        /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT virtual void setIsLegal(std::shared_ptr< bool > value);
-
-
-        /// <summary>
-        /// Gets or sets the paragraph style that is linked to this list level.
-        /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< aspose::words::cloud::models::Style > getLinkedStyle() const;
-
-        /// <summary>
-        /// Gets or sets the paragraph style that is linked to this list level.
-        /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT virtual void setLinkedStyle(std::shared_ptr< aspose::words::cloud::models::Style > value);
-
-
-        /// <summary>
-        /// Gets or sets the number format for the list level.
-        /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< std::wstring > getNumberFormat() const;
-
-        /// <summary>
-        /// Gets or sets the number format for the list level.
-        /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT virtual void setNumberFormat(std::shared_ptr< std::wstring > value);
-
-
-        /// <summary>
-        /// Gets or sets the position (in points) of the number or bullet for the list level.
-        /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< double > getNumberPosition() const;
-
-        /// <summary>
-        /// Gets or sets the position (in points) of the number or bullet for the list level.
-        /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT virtual void setNumberPosition(std::shared_ptr< double > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setStartAt(std::shared_ptr< int32_t > value);
 
 
         /// <summary>
@@ -210,6 +155,39 @@ namespace aspose::words::cloud::models {
 
 
         /// <summary>
+        /// Gets or sets the number format for the list level.
+        /// </summary>
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< std::wstring > getNumberFormat() const;
+
+        /// <summary>
+        /// Gets or sets the number format for the list level.
+        /// </summary>
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setNumberFormat(std::shared_ptr< std::wstring > value);
+
+
+        /// <summary>
+        /// Gets or sets the justification of the actual number of the list item.
+        /// </summary>
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< aspose::words::cloud::models::ListLevel::Alignment > getAlignment() const;
+
+        /// <summary>
+        /// Gets or sets the justification of the actual number of the list item.
+        /// </summary>
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setAlignment(std::shared_ptr< aspose::words::cloud::models::ListLevel::Alignment > value);
+
+
+        /// <summary>
+        /// Gets or sets a value indicating whether the level turns all inherited numbers to Arabic, false if it preserves their number style.
+        /// </summary>
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< bool > getIsLegal() const;
+
+        /// <summary>
+        /// Gets or sets a value indicating whether the level turns all inherited numbers to Arabic, false if it preserves their number style.
+        /// </summary>
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setIsLegal(std::shared_ptr< bool > value);
+
+
+        /// <summary>
         /// Gets or sets the list level, that must appear before the specified list level restarts numbering.
         /// </summary>
         ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< int32_t > getRestartAfterLevel() const;
@@ -221,14 +199,25 @@ namespace aspose::words::cloud::models {
 
 
         /// <summary>
-        /// Gets or sets the starting number for this list level.
+        /// Gets or sets the character inserted after the number for the list level.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< int32_t > getStartAt() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< aspose::words::cloud::models::ListLevel::TrailingCharacter > getTrailingCharacter() const;
 
         /// <summary>
-        /// Gets or sets the starting number for this list level.
+        /// Gets or sets the character inserted after the number for the list level.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT virtual void setStartAt(std::shared_ptr< int32_t > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setTrailingCharacter(std::shared_ptr< aspose::words::cloud::models::ListLevel::TrailingCharacter > value);
+
+
+        /// <summary>
+        /// Gets or sets character formatting used for the list label.
+        /// </summary>
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< aspose::words::cloud::models::Font > getFont() const;
+
+        /// <summary>
+        /// Gets or sets character formatting used for the list label.
+        /// </summary>
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setFont(std::shared_ptr< aspose::words::cloud::models::Font > value);
 
 
         /// <summary>
@@ -243,6 +232,17 @@ namespace aspose::words::cloud::models {
 
 
         /// <summary>
+        /// Gets or sets the position (in points) of the number or bullet for the list level.
+        /// </summary>
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< double > getNumberPosition() const;
+
+        /// <summary>
+        /// Gets or sets the position (in points) of the number or bullet for the list level.
+        /// </summary>
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setNumberPosition(std::shared_ptr< double > value);
+
+
+        /// <summary>
         /// Gets or sets the position (in points) for the second line of wrapping text for the list level.
         /// </summary>
         ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< double > getTextPosition() const;
@@ -254,29 +254,29 @@ namespace aspose::words::cloud::models {
 
 
         /// <summary>
-        /// Gets or sets the character inserted after the number for the list level.
+        /// Gets or sets the paragraph style that is linked to this list level.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< aspose::words::cloud::models::ListLevel::TrailingCharacter > getTrailingCharacter() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< aspose::words::cloud::models::Style > getLinkedStyle() const;
 
         /// <summary>
-        /// Gets or sets the character inserted after the number for the list level.
+        /// Gets or sets the paragraph style that is linked to this list level.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT virtual void setTrailingCharacter(std::shared_ptr< aspose::words::cloud::models::ListLevel::TrailingCharacter > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setLinkedStyle(std::shared_ptr< aspose::words::cloud::models::Style > value);
 
 
     protected:
-        std::shared_ptr< aspose::words::cloud::models::ListLevel::Alignment > m_Alignment;
-        std::shared_ptr< aspose::words::cloud::models::Font > m_Font;
-        std::shared_ptr< bool > m_IsLegal;
-        std::shared_ptr< aspose::words::cloud::models::Style > m_LinkedStyle;
-        std::shared_ptr< std::wstring > m_NumberFormat;
-        std::shared_ptr< double > m_NumberPosition;
-        std::shared_ptr< aspose::words::cloud::models::ListLevel::NumberStyle > m_NumberStyle;
-        std::shared_ptr< int32_t > m_RestartAfterLevel;
         std::shared_ptr< int32_t > m_StartAt;
-        std::shared_ptr< double > m_TabPosition;
-        std::shared_ptr< double > m_TextPosition;
+        std::shared_ptr< aspose::words::cloud::models::ListLevel::NumberStyle > m_NumberStyle;
+        std::shared_ptr< std::wstring > m_NumberFormat;
+        std::shared_ptr< aspose::words::cloud::models::ListLevel::Alignment > m_Alignment;
+        std::shared_ptr< bool > m_IsLegal;
+        std::shared_ptr< int32_t > m_RestartAfterLevel;
         std::shared_ptr< aspose::words::cloud::models::ListLevel::TrailingCharacter > m_TrailingCharacter;
+        std::shared_ptr< aspose::words::cloud::models::Font > m_Font;
+        std::shared_ptr< double > m_TabPosition;
+        std::shared_ptr< double > m_NumberPosition;
+        std::shared_ptr< double > m_TextPosition;
+        std::shared_ptr< aspose::words::cloud::models::Style > m_LinkedStyle;
     };
 }
 

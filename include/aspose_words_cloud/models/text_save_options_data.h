@@ -81,13 +81,6 @@ namespace aspose::words::cloud::models {
 
 
         /// <summary>
-        /// Gets the format of save.
-        /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< std::wstring > getSaveFormat() const override;
-
-
-
-        /// <summary>
         /// Gets or sets a value indicating whether the program should simplify list labels in case of complex label formatting not being adequately represented by plain text.
         /// </summary>
         ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< bool > getSimplifyListLabels() const;
@@ -98,12 +91,19 @@ namespace aspose::words::cloud::models {
         ASPOSE_WORDS_CLOUD_EXPORT virtual void setSimplifyListLabels(std::shared_ptr< bool > value);
 
 
+        /// <summary>
+        /// Gets the format of save.
+        /// </summary>
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< std::wstring > getSaveFormat() const override;
+
+
+
     protected:
         std::shared_ptr< bool > m_AddBidiMarks;
         std::shared_ptr< int32_t > m_MaxCharactersPerLine;
         std::shared_ptr< bool > m_PreserveTableLayout;
-        std::shared_ptr< std::wstring > m_SaveFormat = std::make_shared<std::wstring>(L"txt");
         std::shared_ptr< bool > m_SimplifyListLabels;
+        std::shared_ptr< std::wstring > m_SaveFormat = std::make_shared<std::wstring>(L"txt");
     };
 }
 

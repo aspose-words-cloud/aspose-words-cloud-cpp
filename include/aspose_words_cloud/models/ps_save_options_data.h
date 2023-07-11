@@ -44,13 +44,6 @@ namespace aspose::words::cloud::models {
         void abstractSaveOptionsData() override {}
 
         /// <summary>
-        /// Gets the format of save.
-        /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< std::wstring > getSaveFormat() const override;
-
-
-
-        /// <summary>
         /// Gets or sets a value indicating whether the document should be saved using a booklet printing layout.
         /// </summary>
         ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< bool > getUseBookFoldPrintingSettings() const;
@@ -61,9 +54,16 @@ namespace aspose::words::cloud::models {
         ASPOSE_WORDS_CLOUD_EXPORT virtual void setUseBookFoldPrintingSettings(std::shared_ptr< bool > value);
 
 
+        /// <summary>
+        /// Gets the format of save.
+        /// </summary>
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< std::wstring > getSaveFormat() const override;
+
+
+
     protected:
-        std::shared_ptr< std::wstring > m_SaveFormat = std::make_shared<std::wstring>(L"ps");
         std::shared_ptr< bool > m_UseBookFoldPrintingSettings;
+        std::shared_ptr< std::wstring > m_SaveFormat = std::make_shared<std::wstring>(L"ps");
     };
 }
 

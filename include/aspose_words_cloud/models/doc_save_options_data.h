@@ -67,13 +67,6 @@ namespace aspose::words::cloud::models {
 
 
         /// <summary>
-        /// Gets the format of save.
-        /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< std::wstring > getSaveFormat() const override;
-
-
-
-        /// <summary>
         /// Gets or sets a value indicating when False, that PictureBullet data is not saved to the output document.
         /// The default value is true.
         /// </summary>
@@ -97,12 +90,19 @@ namespace aspose::words::cloud::models {
         ASPOSE_WORDS_CLOUD_EXPORT virtual void setSaveRoutingSlip(std::shared_ptr< bool > value);
 
 
+        /// <summary>
+        /// Gets the format of save.
+        /// </summary>
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< std::wstring > getSaveFormat() const override;
+
+
+
     protected:
         std::shared_ptr< bool > m_AlwaysCompressMetafiles;
         std::shared_ptr< std::wstring > m_Password;
-        std::shared_ptr< std::wstring > m_SaveFormat = std::make_shared<std::wstring>(L"doc");
         std::shared_ptr< bool > m_SavePictureBullet;
         std::shared_ptr< bool > m_SaveRoutingSlip;
+        std::shared_ptr< std::wstring > m_SaveFormat = std::make_shared<std::wstring>(L"doc");
     };
 }
 

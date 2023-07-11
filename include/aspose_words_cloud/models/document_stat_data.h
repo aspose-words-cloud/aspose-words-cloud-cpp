@@ -65,17 +65,6 @@ namespace aspose::words::cloud::models {
 
 
         /// <summary>
-        /// Gets or sets the detailed statistics on all pages.
-        /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< std::vector<std::shared_ptr<aspose::words::cloud::models::PageStatData>> > getPageStatData() const;
-
-        /// <summary>
-        /// Gets or sets the detailed statistics on all pages.
-        /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT virtual void setPageStatData(std::shared_ptr< std::vector<std::shared_ptr<aspose::words::cloud::models::PageStatData>> > value);
-
-
-        /// <summary>
         /// Gets or sets the total count of paragraphs in the document.
         /// </summary>
         ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< int32_t > getParagraphCount() const;
@@ -97,12 +86,23 @@ namespace aspose::words::cloud::models {
         ASPOSE_WORDS_CLOUD_EXPORT virtual void setWordCount(std::shared_ptr< int32_t > value);
 
 
+        /// <summary>
+        /// Gets or sets the detailed statistics on all pages.
+        /// </summary>
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< std::vector<std::shared_ptr<aspose::words::cloud::models::PageStatData>> > getPageStatData() const;
+
+        /// <summary>
+        /// Gets or sets the detailed statistics on all pages.
+        /// </summary>
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setPageStatData(std::shared_ptr< std::vector<std::shared_ptr<aspose::words::cloud::models::PageStatData>> > value);
+
+
     protected:
         std::shared_ptr< aspose::words::cloud::models::FootnotesStatData > m_FootnotesStatData;
         std::shared_ptr< int32_t > m_PageCount;
-        std::shared_ptr< std::vector<std::shared_ptr<aspose::words::cloud::models::PageStatData>> > m_PageStatData;
         std::shared_ptr< int32_t > m_ParagraphCount;
         std::shared_ptr< int32_t > m_WordCount;
+        std::shared_ptr< std::vector<std::shared_ptr<aspose::words::cloud::models::PageStatData>> > m_PageStatData;
     };
 }
 

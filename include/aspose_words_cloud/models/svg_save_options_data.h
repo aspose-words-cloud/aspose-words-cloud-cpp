@@ -98,13 +98,6 @@ namespace aspose::words::cloud::models {
 
 
         /// <summary>
-        /// Gets the format of save.
-        /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< std::wstring > getSaveFormat() const override;
-
-
-
-        /// <summary>
         /// Gets or sets a value indicating whether to show or hide page stepper.
         /// </summary>
         ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< bool > getShowPageBorder() const;
@@ -126,14 +119,21 @@ namespace aspose::words::cloud::models {
         ASPOSE_WORDS_CLOUD_EXPORT virtual void setTextOutputMode(std::shared_ptr< aspose::words::cloud::models::SvgSaveOptionsData::TextOutputMode > value);
 
 
+        /// <summary>
+        /// Gets the format of save.
+        /// </summary>
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< std::wstring > getSaveFormat() const override;
+
+
+
     protected:
         std::shared_ptr< bool > m_ExportEmbeddedImages;
         std::shared_ptr< bool > m_FitToViewPort;
         std::shared_ptr< std::wstring > m_ResourcesFolder;
         std::shared_ptr< std::wstring > m_ResourcesFolderAlias;
-        std::shared_ptr< std::wstring > m_SaveFormat = std::make_shared<std::wstring>(L"svg");
         std::shared_ptr< bool > m_ShowPageBorder;
         std::shared_ptr< aspose::words::cloud::models::SvgSaveOptionsData::TextOutputMode > m_TextOutputMode;
+        std::shared_ptr< std::wstring > m_SaveFormat = std::make_shared<std::wstring>(L"svg");
     };
 }
 

@@ -44,17 +44,6 @@ namespace aspose::words::cloud::models {
 
 
         /// <summary>
-        /// Gets or sets the formatting properties of a row.
-        /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< aspose::words::cloud::models::TableRowFormat > getRowFormat() const;
-
-        /// <summary>
-        /// Gets or sets the formatting properties of a row.
-        /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT virtual void setRowFormat(std::shared_ptr< aspose::words::cloud::models::TableRowFormat > value);
-
-
-        /// <summary>
         /// Gets or sets the collection of rows.
         /// </summary>
         ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< std::vector<std::shared_ptr<aspose::words::cloud::models::TableCell>> > getTableCellList() const;
@@ -65,9 +54,20 @@ namespace aspose::words::cloud::models {
         ASPOSE_WORDS_CLOUD_EXPORT virtual void setTableCellList(std::shared_ptr< std::vector<std::shared_ptr<aspose::words::cloud::models::TableCell>> > value);
 
 
+        /// <summary>
+        /// Gets or sets the formatting properties of a row.
+        /// </summary>
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< aspose::words::cloud::models::TableRowFormat > getRowFormat() const;
+
+        /// <summary>
+        /// Gets or sets the formatting properties of a row.
+        /// </summary>
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setRowFormat(std::shared_ptr< aspose::words::cloud::models::TableRowFormat > value);
+
+
     protected:
-        std::shared_ptr< aspose::words::cloud::models::TableRowFormat > m_RowFormat;
         std::shared_ptr< std::vector<std::shared_ptr<aspose::words::cloud::models::TableCell>> > m_TableCellList;
+        std::shared_ptr< aspose::words::cloud::models::TableRowFormat > m_RowFormat;
     };
 }
 

@@ -55,17 +55,6 @@ namespace aspose::words::cloud::models {
 
 
         /// <summary>
-        /// Gets or sets the link to DrawingObjects resource.
-        /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< aspose::words::cloud::models::LinkElement > getDrawingObjects() const;
-
-        /// <summary>
-        /// Gets or sets the link to DrawingObjects resource.
-        /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT virtual void setDrawingObjects(std::shared_ptr< aspose::words::cloud::models::LinkElement > value);
-
-
-        /// <summary>
         /// Gets or sets the link to Paragraphs resource.
         /// </summary>
         ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< aspose::words::cloud::models::LinkElement > getParagraphs() const;
@@ -76,10 +65,21 @@ namespace aspose::words::cloud::models {
         ASPOSE_WORDS_CLOUD_EXPORT virtual void setParagraphs(std::shared_ptr< aspose::words::cloud::models::LinkElement > value);
 
 
+        /// <summary>
+        /// Gets or sets the link to DrawingObjects resource.
+        /// </summary>
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< aspose::words::cloud::models::LinkElement > getDrawingObjects() const;
+
+        /// <summary>
+        /// Gets or sets the link to DrawingObjects resource.
+        /// </summary>
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setDrawingObjects(std::shared_ptr< aspose::words::cloud::models::LinkElement > value);
+
+
     protected:
         std::shared_ptr< std::vector<std::shared_ptr<aspose::words::cloud::models::NodeLink>> > m_ChildNodes;
-        std::shared_ptr< aspose::words::cloud::models::LinkElement > m_DrawingObjects;
         std::shared_ptr< aspose::words::cloud::models::LinkElement > m_Paragraphs;
+        std::shared_ptr< aspose::words::cloud::models::LinkElement > m_DrawingObjects;
     };
 }
 

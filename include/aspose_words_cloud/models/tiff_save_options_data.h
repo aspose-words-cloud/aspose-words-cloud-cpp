@@ -66,13 +66,6 @@ namespace aspose::words::cloud::models {
         void abstractSaveOptionsData() override {}
 
         /// <summary>
-        /// Gets the format of save.
-        /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< std::wstring > getSaveFormat() const override;
-
-
-
-        /// <summary>
         /// Gets or sets the threshold that determines the value of the binarization error in the Floyd-Steinberg method. when ImageBinarizationMethod is ImageBinarizationMethod.FloydSteinbergDithering.
         /// Default value is 128.
         /// </summary>
@@ -107,11 +100,18 @@ namespace aspose::words::cloud::models {
         ASPOSE_WORDS_CLOUD_EXPORT virtual void setTiffCompression(std::shared_ptr< aspose::words::cloud::models::TiffSaveOptionsData::TiffCompression > value);
 
 
+        /// <summary>
+        /// Gets the format of save.
+        /// </summary>
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< std::wstring > getSaveFormat() const override;
+
+
+
     protected:
-        std::shared_ptr< std::wstring > m_SaveFormat = std::make_shared<std::wstring>(L"tiff");
         std::shared_ptr< int32_t > m_ThresholdForFloydSteinbergDithering;
         std::shared_ptr< aspose::words::cloud::models::TiffSaveOptionsData::TiffBinarizationMethod > m_TiffBinarizationMethod;
         std::shared_ptr< aspose::words::cloud::models::TiffSaveOptionsData::TiffCompression > m_TiffCompression;
+        std::shared_ptr< std::wstring > m_SaveFormat = std::make_shared<std::wstring>(L"tiff");
     };
 }
 

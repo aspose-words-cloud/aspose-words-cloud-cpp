@@ -42,17 +42,6 @@ namespace aspose::words::cloud::models {
 
 
         /// <summary>
-        /// Gets or sets the list of links to additional items (css, images etc).
-        /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< std::vector<std::shared_ptr<aspose::words::cloud::models::FileLink>> > getAdditionalItems() const;
-
-        /// <summary>
-        /// Gets or sets the list of links to additional items (css, images etc).
-        /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT virtual void setAdditionalItems(std::shared_ptr< std::vector<std::shared_ptr<aspose::words::cloud::models::FileLink>> > value);
-
-
-        /// <summary>
         /// Gets or sets the link to destination document.
         /// </summary>
         ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< aspose::words::cloud::models::FileLink > getDestDocument() const;
@@ -74,10 +63,21 @@ namespace aspose::words::cloud::models {
         ASPOSE_WORDS_CLOUD_EXPORT virtual void setSourceDocument(std::shared_ptr< aspose::words::cloud::models::FileLink > value);
 
 
+        /// <summary>
+        /// Gets or sets the list of links to additional items (css, images etc).
+        /// </summary>
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< std::vector<std::shared_ptr<aspose::words::cloud::models::FileLink>> > getAdditionalItems() const;
+
+        /// <summary>
+        /// Gets or sets the list of links to additional items (css, images etc).
+        /// </summary>
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setAdditionalItems(std::shared_ptr< std::vector<std::shared_ptr<aspose::words::cloud::models::FileLink>> > value);
+
+
     protected:
-        std::shared_ptr< std::vector<std::shared_ptr<aspose::words::cloud::models::FileLink>> > m_AdditionalItems;
         std::shared_ptr< aspose::words::cloud::models::FileLink > m_DestDocument;
         std::shared_ptr< aspose::words::cloud::models::FileLink > m_SourceDocument;
+        std::shared_ptr< std::vector<std::shared_ptr<aspose::words::cloud::models::FileLink>> > m_AdditionalItems;
     };
 }
 

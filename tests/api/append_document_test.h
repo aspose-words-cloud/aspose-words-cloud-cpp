@@ -50,7 +50,7 @@ TEST_F(AppendDocumentTests, TestAppendDocument) {
     auto requestDocumentListDocumentEntries0FileReference = std::make_shared< aspose::words::cloud::models::FileReference >(std::make_shared< std::wstring >(remoteDataFolder + L"/" + remoteFileName));
     auto requestDocumentListDocumentEntries0 = std::make_shared< aspose::words::cloud::models::DocumentEntry >();
     requestDocumentListDocumentEntries0->setFileReference(requestDocumentListDocumentEntries0FileReference);
-    requestDocumentListDocumentEntries0->setImportFormatMode(std::make_shared< std::wstring >(L"KeepSourceFormatting"));
+    requestDocumentListDocumentEntries0->setImportFormatMode(std::make_shared< aspose::words::cloud::models::DocumentEntry::ImportFormatMode >(aspose::words::cloud::models::DocumentEntry::ImportFormatMode::KEEP_SOURCE_FORMATTING));
     auto requestDocumentListDocumentEntries = std::make_shared< std::vector<std::shared_ptr<aspose::words::cloud::models::DocumentEntry>> >();
     requestDocumentListDocumentEntries->push_back(requestDocumentListDocumentEntries0);
     auto requestDocumentList = std::make_shared< aspose::words::cloud::models::DocumentEntryList >();
@@ -82,7 +82,7 @@ TEST_F(AppendDocumentTests, TestAppendDocumentOnline) {
     auto requestDocumentListDocumentEntries0FileReference = std::make_shared< aspose::words::cloud::models::FileReference >(requestDocumentListDocumentEntries0FileReferenceStream);
     auto requestDocumentListDocumentEntries0 = std::make_shared< aspose::words::cloud::models::DocumentEntry >();
     requestDocumentListDocumentEntries0->setFileReference(requestDocumentListDocumentEntries0FileReference);
-    requestDocumentListDocumentEntries0->setImportFormatMode(std::make_shared< std::wstring >(L"KeepSourceFormatting"));
+    requestDocumentListDocumentEntries0->setImportFormatMode(std::make_shared< aspose::words::cloud::models::DocumentEntry::ImportFormatMode >(aspose::words::cloud::models::DocumentEntry::ImportFormatMode::KEEP_SOURCE_FORMATTING));
     auto requestDocumentListDocumentEntries = std::make_shared< std::vector<std::shared_ptr<aspose::words::cloud::models::DocumentEntry>> >();
     requestDocumentListDocumentEntries->push_back(requestDocumentListDocumentEntries0);
     auto requestDocumentList = std::make_shared< aspose::words::cloud::models::DocumentEntryList >();

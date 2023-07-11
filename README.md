@@ -17,6 +17,10 @@ Feel free to explore the [Developer's Guide](https://docs.aspose.cloud/display/w
 - Read & write access to Document Object Model.
 - Thread safe
 
+## Enhancements in Version 23.6
+
+
+
 ## Enhancements in Version 23.5
 
 - Added InsertSection method.

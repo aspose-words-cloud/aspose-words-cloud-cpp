@@ -71,6 +71,17 @@ namespace aspose::words::cloud::models {
 
 
         /// <summary>
+        /// Gets or sets the list of links that originate from this document.
+        /// </summary>
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< std::vector<std::shared_ptr<aspose::words::cloud::models::Link>> > getLinks() const;
+
+        /// <summary>
+        /// Gets or sets the list of links that originate from this document.
+        /// </summary>
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setLinks(std::shared_ptr< std::vector<std::shared_ptr<aspose::words::cloud::models::Link>> > value);
+
+
+        /// <summary>
         /// Gets or sets the document properties.
         /// </summary>
         ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< aspose::words::cloud::models::DocumentProperties > getDocumentProperties() const;
@@ -115,17 +126,6 @@ namespace aspose::words::cloud::models {
 
 
         /// <summary>
-        /// Gets or sets the list of links that originate from this document.
-        /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< std::vector<std::shared_ptr<aspose::words::cloud::models::Link>> > getLinks() const;
-
-        /// <summary>
-        /// Gets or sets the list of links that originate from this document.
-        /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT virtual void setLinks(std::shared_ptr< std::vector<std::shared_ptr<aspose::words::cloud::models::Link>> > value);
-
-
-        /// <summary>
         /// Gets or sets the original format of the document.
         /// </summary>
         ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< aspose::words::cloud::models::Document::SourceFormat > getSourceFormat() const;
@@ -137,11 +137,11 @@ namespace aspose::words::cloud::models {
 
 
     protected:
+        std::shared_ptr< std::vector<std::shared_ptr<aspose::words::cloud::models::Link>> > m_Links;
         std::shared_ptr< aspose::words::cloud::models::DocumentProperties > m_DocumentProperties;
         std::shared_ptr< std::wstring > m_FileName;
         std::shared_ptr< bool > m_IsEncrypted;
         std::shared_ptr< bool > m_IsSigned;
-        std::shared_ptr< std::vector<std::shared_ptr<aspose::words::cloud::models::Link>> > m_Links;
         std::shared_ptr< aspose::words::cloud::models::Document::SourceFormat > m_SourceFormat;
     };
 }
