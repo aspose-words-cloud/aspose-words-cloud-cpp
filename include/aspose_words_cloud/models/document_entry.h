@@ -34,6 +34,16 @@ namespace aspose::words::cloud::models {
     class DocumentEntry : public BaseEntry
     {
     public:
+        /// <summary>
+        /// Gets or sets the option that controls formatting will be used: appended or destination document. Can be KeepSourceFormatting or UseDestinationStyles.
+        /// </summary>
+        enum class ImportFormatMode
+        { 
+            USE_DESTINATION_STYLES,
+            KEEP_SOURCE_FORMATTING,
+            KEEP_DIFFERENT_STYLES
+        };
+
 
         ASPOSE_WORDS_CLOUD_EXPORT virtual ~DocumentEntry() = default;
         ASPOSE_WORDS_CLOUD_EXPORT virtual void toJson(void* jsonIfc) const override;
@@ -56,17 +66,17 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the option that controls formatting will be used: appended or destination document. Can be KeepSourceFormatting or UseDestinationStyles.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< std::wstring > getImportFormatMode() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< aspose::words::cloud::models::DocumentEntry::ImportFormatMode > getImportFormatMode() const;
 
         /// <summary>
         /// Gets or sets the option that controls formatting will be used: appended or destination document. Can be KeepSourceFormatting or UseDestinationStyles.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT virtual void setImportFormatMode(std::shared_ptr< std::wstring > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setImportFormatMode(std::shared_ptr< aspose::words::cloud::models::DocumentEntry::ImportFormatMode > value);
 
 
     protected:
         std::shared_ptr< std::wstring > m_EncryptedPassword;
-        std::shared_ptr< std::wstring > m_ImportFormatMode;
+        std::shared_ptr< aspose::words::cloud::models::DocumentEntry::ImportFormatMode > m_ImportFormatMode;
     };
 }
 

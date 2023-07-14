@@ -389,13 +389,6 @@ namespace aspose::words::cloud::models {
 
 
         /// <summary>
-        /// Gets the format of save.
-        /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< std::wstring > getSaveFormat() const override;
-
-
-
-        /// <summary>
         /// Gets or sets the compression type to be used for all textual content in the document.
         /// </summary>
         ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< aspose::words::cloud::models::PdfSaveOptionsData::TextCompression > getTextCompression() const;
@@ -450,6 +443,13 @@ namespace aspose::words::cloud::models {
         ASPOSE_WORDS_CLOUD_EXPORT virtual void setZoomFactor(std::shared_ptr< int32_t > value);
 
 
+        /// <summary>
+        /// Gets the format of save.
+        /// </summary>
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< std::wstring > getSaveFormat() const override;
+
+
+
     protected:
         std::shared_ptr< bool > m_CacheBackgroundGraphics;
         std::shared_ptr< aspose::words::cloud::models::PdfSaveOptionsData::Compliance > m_Compliance;
@@ -473,12 +473,12 @@ namespace aspose::words::cloud::models {
         std::shared_ptr< aspose::words::cloud::models::PdfSaveOptionsData::PageMode > m_PageMode;
         std::shared_ptr< bool > m_PreblendImages;
         std::shared_ptr< bool > m_PreserveFormFields;
-        std::shared_ptr< std::wstring > m_SaveFormat = std::make_shared<std::wstring>(L"pdf");
         std::shared_ptr< aspose::words::cloud::models::PdfSaveOptionsData::TextCompression > m_TextCompression;
         std::shared_ptr< bool > m_UseBookFoldPrintingSettings;
         std::shared_ptr< bool > m_UseCoreFonts;
         std::shared_ptr< aspose::words::cloud::models::PdfSaveOptionsData::ZoomBehavior > m_ZoomBehavior;
         std::shared_ptr< int32_t > m_ZoomFactor;
+        std::shared_ptr< std::wstring > m_SaveFormat = std::make_shared<std::wstring>(L"pdf");
     };
 }
 

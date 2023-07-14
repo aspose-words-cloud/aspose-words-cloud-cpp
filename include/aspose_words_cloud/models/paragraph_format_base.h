@@ -660,17 +660,6 @@ namespace aspose::words::cloud::models {
 
 
         /// <summary>
-        /// Gets or sets the Shading object, that refers to the shading formatting for the paragraph.
-        /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< aspose::words::cloud::models::Shading > getShading() const;
-
-        /// <summary>
-        /// Gets or sets the Shading object, that refers to the shading formatting for the paragraph.
-        /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT virtual void setShading(std::shared_ptr< aspose::words::cloud::models::Shading > value);
-
-
-        /// <summary>
         /// Gets or sets the amount of spacing (in points) after the paragraph.
         /// </summary>
         ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< double > getSpaceAfter() const;
@@ -769,6 +758,17 @@ namespace aspose::words::cloud::models {
         ASPOSE_WORDS_CLOUD_EXPORT virtual void setWidowControl(std::shared_ptr< bool > value);
 
 
+        /// <summary>
+        /// Gets or sets the Shading object, that refers to the shading formatting for the paragraph.
+        /// </summary>
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< aspose::words::cloud::models::Shading > getShading() const;
+
+        /// <summary>
+        /// Gets or sets the Shading object, that refers to the shading formatting for the paragraph.
+        /// </summary>
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setShading(std::shared_ptr< aspose::words::cloud::models::Shading > value);
+
+
     protected:
         std::shared_ptr< bool > m_AddSpaceBetweenFarEastAndAlpha;
         std::shared_ptr< bool > m_AddSpaceBetweenFarEastAndDigit;
@@ -786,7 +786,6 @@ namespace aspose::words::cloud::models {
         std::shared_ptr< aspose::words::cloud::models::ParagraphFormatBase::OutlineLevel > m_OutlineLevel;
         std::shared_ptr< bool > m_PageBreakBefore;
         std::shared_ptr< double > m_RightIndent;
-        std::shared_ptr< aspose::words::cloud::models::Shading > m_Shading;
         std::shared_ptr< double > m_SpaceAfter;
         std::shared_ptr< bool > m_SpaceAfterAuto;
         std::shared_ptr< double > m_SpaceBefore;
@@ -796,6 +795,7 @@ namespace aspose::words::cloud::models {
         std::shared_ptr< bool > m_SuppressAutoHyphens;
         std::shared_ptr< bool > m_SuppressLineNumbers;
         std::shared_ptr< bool > m_WidowControl;
+        std::shared_ptr< aspose::words::cloud::models::Shading > m_Shading;
     };
 }
 

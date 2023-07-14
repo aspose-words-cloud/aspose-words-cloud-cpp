@@ -76,13 +76,6 @@ namespace aspose::words::cloud::models {
 
 
         /// <summary>
-        /// Gets the format of save.
-        /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< std::wstring > getSaveFormat() const override;
-
-
-
-        /// <summary>
         /// Gets or sets a value indicating whether when true all images will be saved as WMF. This option might help to avoid WordPad warning messages.
         /// </summary>
         ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< bool > getSaveImagesAsWmf() const;
@@ -93,12 +86,19 @@ namespace aspose::words::cloud::models {
         ASPOSE_WORDS_CLOUD_EXPORT virtual void setSaveImagesAsWmf(std::shared_ptr< bool > value);
 
 
+        /// <summary>
+        /// Gets the format of save.
+        /// </summary>
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< std::wstring > getSaveFormat() const override;
+
+
+
     protected:
         std::shared_ptr< bool > m_ExportCompactSize;
         std::shared_ptr< bool > m_ExportImagesForOldReaders;
         std::shared_ptr< bool > m_PrettyFormat;
-        std::shared_ptr< std::wstring > m_SaveFormat = std::make_shared<std::wstring>(L"rtf");
         std::shared_ptr< bool > m_SaveImagesAsWmf;
+        std::shared_ptr< std::wstring > m_SaveFormat = std::make_shared<std::wstring>(L"rtf");
     };
 }
 

@@ -42,19 +42,6 @@ namespace aspose::words::cloud::models {
 
 
         /// <summary>
-        /// Gets or sets a value indicating whether the property is built-in or not.
-        /// If true the property is built-in, if false the property is custom.
-        /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< bool > getBuiltIn() const;
-
-        /// <summary>
-        /// Gets or sets a value indicating whether the property is built-in or not.
-        /// If true the property is built-in, if false the property is custom.
-        /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT virtual void setBuiltIn(std::shared_ptr< bool > value);
-
-
-        /// <summary>
         /// Gets or sets the name of the document property.
         /// </summary>
         ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< std::wstring > getName() const;
@@ -76,10 +63,23 @@ namespace aspose::words::cloud::models {
         ASPOSE_WORDS_CLOUD_EXPORT virtual void setValue(std::shared_ptr< std::wstring > value);
 
 
+        /// <summary>
+        /// Gets or sets a value indicating whether the property is built-in or not.
+        /// If true the property is built-in, if false the property is custom.
+        /// </summary>
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< bool > getBuiltIn() const;
+
+        /// <summary>
+        /// Gets or sets a value indicating whether the property is built-in or not.
+        /// If true the property is built-in, if false the property is custom.
+        /// </summary>
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setBuiltIn(std::shared_ptr< bool > value);
+
+
     protected:
-        std::shared_ptr< bool > m_BuiltIn;
         std::shared_ptr< std::wstring > m_Name;
         std::shared_ptr< std::wstring > m_Value;
+        std::shared_ptr< bool > m_BuiltIn;
     };
 }
 

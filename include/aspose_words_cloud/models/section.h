@@ -54,14 +54,14 @@ namespace aspose::words::cloud::models {
 
 
         /// <summary>
-        /// Gets or sets the link to HeaderFooters resource.
+        /// Gets or sets the link to Paragraphs resource.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< aspose::words::cloud::models::LinkElement > getHeaderFooters() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< aspose::words::cloud::models::LinkElement > getParagraphs() const;
 
         /// <summary>
-        /// Gets or sets the link to HeaderFooters resource.
+        /// Gets or sets the link to Paragraphs resource.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT virtual void setHeaderFooters(std::shared_ptr< aspose::words::cloud::models::LinkElement > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setParagraphs(std::shared_ptr< aspose::words::cloud::models::LinkElement > value);
 
 
         /// <summary>
@@ -76,14 +76,14 @@ namespace aspose::words::cloud::models {
 
 
         /// <summary>
-        /// Gets or sets the link to Paragraphs resource.
+        /// Gets or sets the link to HeaderFooters resource.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< aspose::words::cloud::models::LinkElement > getParagraphs() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< aspose::words::cloud::models::LinkElement > getHeaderFooters() const;
 
         /// <summary>
-        /// Gets or sets the link to Paragraphs resource.
+        /// Gets or sets the link to HeaderFooters resource.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT virtual void setParagraphs(std::shared_ptr< aspose::words::cloud::models::LinkElement > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setHeaderFooters(std::shared_ptr< aspose::words::cloud::models::LinkElement > value);
 
 
         /// <summary>
@@ -99,9 +99,9 @@ namespace aspose::words::cloud::models {
 
     protected:
         std::shared_ptr< std::vector<std::shared_ptr<aspose::words::cloud::models::NodeLink>> > m_ChildNodes;
-        std::shared_ptr< aspose::words::cloud::models::LinkElement > m_HeaderFooters;
-        std::shared_ptr< aspose::words::cloud::models::LinkElement > m_PageSetup;
         std::shared_ptr< aspose::words::cloud::models::LinkElement > m_Paragraphs;
+        std::shared_ptr< aspose::words::cloud::models::LinkElement > m_PageSetup;
+        std::shared_ptr< aspose::words::cloud::models::LinkElement > m_HeaderFooters;
         std::shared_ptr< aspose::words::cloud::models::LinkElement > m_Tables;
     };
 }

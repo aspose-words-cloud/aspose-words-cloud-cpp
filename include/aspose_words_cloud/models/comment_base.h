@@ -43,6 +43,28 @@ namespace aspose::words::cloud::models {
         virtual void abstractCommentBase() = 0;
 
         /// <summary>
+        /// Gets or sets the link to comment range start node.
+        /// </summary>
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< aspose::words::cloud::models::NewDocumentPosition > getRangeStart() const;
+
+        /// <summary>
+        /// Gets or sets the link to comment range start node.
+        /// </summary>
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setRangeStart(std::shared_ptr< aspose::words::cloud::models::NewDocumentPosition > value);
+
+
+        /// <summary>
+        /// Gets or sets the link to comment range end node.
+        /// </summary>
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< aspose::words::cloud::models::NewDocumentPosition > getRangeEnd() const;
+
+        /// <summary>
+        /// Gets or sets the link to comment range end node.
+        /// </summary>
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setRangeEnd(std::shared_ptr< aspose::words::cloud::models::NewDocumentPosition > value);
+
+
+        /// <summary>
         /// Gets or sets the author name for a comment.
         /// </summary>
         ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< std::wstring > getAuthor() const;
@@ -76,28 +98,6 @@ namespace aspose::words::cloud::models {
 
 
         /// <summary>
-        /// Gets or sets the link to comment range end node.
-        /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< aspose::words::cloud::models::NewDocumentPosition > getRangeEnd() const;
-
-        /// <summary>
-        /// Gets or sets the link to comment range end node.
-        /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT virtual void setRangeEnd(std::shared_ptr< aspose::words::cloud::models::NewDocumentPosition > value);
-
-
-        /// <summary>
-        /// Gets or sets the link to comment range start node.
-        /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< aspose::words::cloud::models::NewDocumentPosition > getRangeStart() const;
-
-        /// <summary>
-        /// Gets or sets the link to comment range start node.
-        /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT virtual void setRangeStart(std::shared_ptr< aspose::words::cloud::models::NewDocumentPosition > value);
-
-
-        /// <summary>
         /// Gets or sets text of the comment.
         /// </summary>
         ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< std::wstring > getText() const;
@@ -109,11 +109,11 @@ namespace aspose::words::cloud::models {
 
 
     protected:
+        std::shared_ptr< aspose::words::cloud::models::NewDocumentPosition > m_RangeStart;
+        std::shared_ptr< aspose::words::cloud::models::NewDocumentPosition > m_RangeEnd;
         std::shared_ptr< std::wstring > m_Author;
         std::shared_ptr< std::wstring > m_DateTime;
         std::shared_ptr< std::wstring > m_Initial;
-        std::shared_ptr< aspose::words::cloud::models::NewDocumentPosition > m_RangeEnd;
-        std::shared_ptr< aspose::words::cloud::models::NewDocumentPosition > m_RangeStart;
         std::shared_ptr< std::wstring > m_Text;
     };
 }

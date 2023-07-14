@@ -36,6 +36,17 @@ namespace aspose::words::cloud::models {
     {
     public:
         /// <summary>
+        /// Gets or sets the style type (paragraph or character).
+        /// </summary>
+        enum class Type
+        { 
+            PARAGRAPH,
+            CHARACTER,
+            TABLE,
+            LIST
+        };
+
+        /// <summary>
         /// Gets or sets the locale independent style identifier for a built-in style.
         /// </summary>
         enum class StyleIdentifier
@@ -420,55 +431,11 @@ namespace aspose::words::cloud::models {
             NIL
         };
 
-        /// <summary>
-        /// Gets or sets the style type (paragraph or character).
-        /// </summary>
-        enum class Type
-        { 
-            PARAGRAPH,
-            CHARACTER,
-            TABLE,
-            LIST
-        };
-
 
         ASPOSE_WORDS_CLOUD_EXPORT virtual ~Style() = default;
         ASPOSE_WORDS_CLOUD_EXPORT virtual void toJson(void* jsonIfc) const override;
         ASPOSE_WORDS_CLOUD_EXPORT virtual void fromJson(const void* jsonIfc) override;
         ASPOSE_WORDS_CLOUD_EXPORT virtual void getFileReferences(std::vector< FileReference* >& result) override;
-
-
-        /// <summary>
-        /// Gets or sets all aliases of this style. If style has no aliases then empty array of string is returned.
-        /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< std::vector<std::shared_ptr<std::wstring>> > getAliases() const;
-
-        /// <summary>
-        /// Gets or sets all aliases of this style. If style has no aliases then empty array of string is returned.
-        /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT virtual void setAliases(std::shared_ptr< std::vector<std::shared_ptr<std::wstring>> > value);
-
-
-        /// <summary>
-        /// Gets or sets the name of the style this style is based on.
-        /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< std::wstring > getBaseStyleName() const;
-
-        /// <summary>
-        /// Gets or sets the name of the style this style is based on.
-        /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT virtual void setBaseStyleName(std::shared_ptr< std::wstring > value);
-
-
-        /// <summary>
-        /// Gets or sets a value indicating whether this style is one of the built-in styles in MS Word.
-        /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< bool > getBuiltIn() const;
-
-        /// <summary>
-        /// Gets or sets a value indicating whether this style is one of the built-in styles in MS Word.
-        /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT virtual void setBuiltIn(std::shared_ptr< bool > value);
 
 
         /// <summary>
@@ -483,14 +450,36 @@ namespace aspose::words::cloud::models {
 
 
         /// <summary>
-        /// Gets or sets a value indicating whether the style is one of the built-in Heading styles.
+        /// Gets or sets a value indicating whether this style is one of the built-in styles in MS Word.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< bool > getIsHeading() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< bool > getBuiltIn() const;
 
         /// <summary>
-        /// Gets or sets a value indicating whether the style is one of the built-in Heading styles.
+        /// Gets or sets a value indicating whether this style is one of the built-in styles in MS Word.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT virtual void setIsHeading(std::shared_ptr< bool > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setBuiltIn(std::shared_ptr< bool > value);
+
+
+        /// <summary>
+        /// Gets or sets the name of the style to be applied automatically to a new paragraph inserted after a paragraph formatted with the specified style.
+        /// </summary>
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< std::wstring > getNextParagraphStyleName() const;
+
+        /// <summary>
+        /// Gets or sets the name of the style to be applied automatically to a new paragraph inserted after a paragraph formatted with the specified style.
+        /// </summary>
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setNextParagraphStyleName(std::shared_ptr< std::wstring > value);
+
+
+        /// <summary>
+        /// Gets or sets the name of the style this style is based on.
+        /// </summary>
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< std::wstring > getBaseStyleName() const;
+
+        /// <summary>
+        /// Gets or sets the name of the style this style is based on.
+        /// </summary>
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setBaseStyleName(std::shared_ptr< std::wstring > value);
 
 
         /// <summary>
@@ -516,25 +505,36 @@ namespace aspose::words::cloud::models {
 
 
         /// <summary>
-        /// Gets or sets the name of the style.
+        /// Gets or sets the style type (paragraph or character).
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< std::wstring > getName() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< aspose::words::cloud::models::Style::Type > getType() const;
 
         /// <summary>
-        /// Gets or sets the name of the style.
+        /// Gets or sets the style type (paragraph or character).
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT virtual void setName(std::shared_ptr< std::wstring > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setType(std::shared_ptr< aspose::words::cloud::models::Style::Type > value);
 
 
         /// <summary>
-        /// Gets or sets the name of the style to be applied automatically to a new paragraph inserted after a paragraph formatted with the specified style.
+        /// Gets or sets a value indicating whether the style is one of the built-in Heading styles.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< std::wstring > getNextParagraphStyleName() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< bool > getIsHeading() const;
 
         /// <summary>
-        /// Gets or sets the name of the style to be applied automatically to a new paragraph inserted after a paragraph formatted with the specified style.
+        /// Gets or sets a value indicating whether the style is one of the built-in Heading styles.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT virtual void setNextParagraphStyleName(std::shared_ptr< std::wstring > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setIsHeading(std::shared_ptr< bool > value);
+
+
+        /// <summary>
+        /// Gets or sets all aliases of this style. If style has no aliases then empty array of string is returned.
+        /// </summary>
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< std::vector<std::shared_ptr<std::wstring>> > getAliases() const;
+
+        /// <summary>
+        /// Gets or sets all aliases of this style. If style has no aliases then empty array of string is returned.
+        /// </summary>
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setAliases(std::shared_ptr< std::vector<std::shared_ptr<std::wstring>> > value);
 
 
         /// <summary>
@@ -549,28 +549,28 @@ namespace aspose::words::cloud::models {
 
 
         /// <summary>
-        /// Gets or sets the style type (paragraph or character).
+        /// Gets or sets the name of the style.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< aspose::words::cloud::models::Style::Type > getType() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< std::wstring > getName() const;
 
         /// <summary>
-        /// Gets or sets the style type (paragraph or character).
+        /// Gets or sets the name of the style.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT virtual void setType(std::shared_ptr< aspose::words::cloud::models::Style::Type > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setName(std::shared_ptr< std::wstring > value);
 
 
     protected:
-        std::shared_ptr< std::vector<std::shared_ptr<std::wstring>> > m_Aliases;
-        std::shared_ptr< std::wstring > m_BaseStyleName;
-        std::shared_ptr< bool > m_BuiltIn;
         std::shared_ptr< aspose::words::cloud::models::Font > m_Font;
-        std::shared_ptr< bool > m_IsHeading;
+        std::shared_ptr< bool > m_BuiltIn;
+        std::shared_ptr< std::wstring > m_NextParagraphStyleName;
+        std::shared_ptr< std::wstring > m_BaseStyleName;
         std::shared_ptr< bool > m_IsQuickStyle;
         std::shared_ptr< std::wstring > m_LinkedStyleName;
-        std::shared_ptr< std::wstring > m_Name;
-        std::shared_ptr< std::wstring > m_NextParagraphStyleName;
-        std::shared_ptr< aspose::words::cloud::models::Style::StyleIdentifier > m_StyleIdentifier;
         std::shared_ptr< aspose::words::cloud::models::Style::Type > m_Type;
+        std::shared_ptr< bool > m_IsHeading;
+        std::shared_ptr< std::vector<std::shared_ptr<std::wstring>> > m_Aliases;
+        std::shared_ptr< aspose::words::cloud::models::Style::StyleIdentifier > m_StyleIdentifier;
+        std::shared_ptr< std::wstring > m_Name;
     };
 }
 

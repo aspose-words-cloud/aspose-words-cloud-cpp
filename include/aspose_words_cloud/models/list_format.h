@@ -42,14 +42,14 @@ namespace aspose::words::cloud::models {
 
 
         /// <summary>
-        /// Gets or sets a value indicating whether the paragraph has bulleted or numbered formatting applied to it.
+        /// Gets or sets the list level number (0 to 8) for the paragraph.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< bool > getIsListItem() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< int32_t > getListLevelNumber() const;
 
         /// <summary>
-        /// Gets or sets a value indicating whether the paragraph has bulleted or numbered formatting applied to it.
+        /// Gets or sets the list level number (0 to 8) for the paragraph.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT virtual void setIsListItem(std::shared_ptr< bool > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setListLevelNumber(std::shared_ptr< int32_t > value);
 
 
         /// <summary>
@@ -64,20 +64,20 @@ namespace aspose::words::cloud::models {
 
 
         /// <summary>
-        /// Gets or sets the list level number (0 to 8) for the paragraph.
+        /// Gets or sets a value indicating whether the paragraph has bulleted or numbered formatting applied to it.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< int32_t > getListLevelNumber() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< bool > getIsListItem() const;
 
         /// <summary>
-        /// Gets or sets the list level number (0 to 8) for the paragraph.
+        /// Gets or sets a value indicating whether the paragraph has bulleted or numbered formatting applied to it.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT virtual void setListLevelNumber(std::shared_ptr< int32_t > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setIsListItem(std::shared_ptr< bool > value);
 
 
     protected:
-        std::shared_ptr< bool > m_IsListItem;
-        std::shared_ptr< int32_t > m_ListId;
         std::shared_ptr< int32_t > m_ListLevelNumber;
+        std::shared_ptr< int32_t > m_ListId;
+        std::shared_ptr< bool > m_IsListItem;
     };
 }
 

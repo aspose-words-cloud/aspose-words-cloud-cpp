@@ -42,17 +42,6 @@ namespace aspose::words::cloud::models {
 
 
         /// <summary>
-        /// Gets or sets the link to result range end node.
-        /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< aspose::words::cloud::models::DocumentPosition > getRangeEnd() const;
-
-        /// <summary>
-        /// Gets or sets the link to result range end node.
-        /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT virtual void setRangeEnd(std::shared_ptr< aspose::words::cloud::models::DocumentPosition > value);
-
-
-        /// <summary>
         /// Gets or sets the link to result range start node.
         /// </summary>
         ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< aspose::words::cloud::models::DocumentPosition > getRangeStart() const;
@@ -63,9 +52,20 @@ namespace aspose::words::cloud::models {
         ASPOSE_WORDS_CLOUD_EXPORT virtual void setRangeStart(std::shared_ptr< aspose::words::cloud::models::DocumentPosition > value);
 
 
+        /// <summary>
+        /// Gets or sets the link to result range end node.
+        /// </summary>
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< aspose::words::cloud::models::DocumentPosition > getRangeEnd() const;
+
+        /// <summary>
+        /// Gets or sets the link to result range end node.
+        /// </summary>
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setRangeEnd(std::shared_ptr< aspose::words::cloud::models::DocumentPosition > value);
+
+
     protected:
-        std::shared_ptr< aspose::words::cloud::models::DocumentPosition > m_RangeEnd;
         std::shared_ptr< aspose::words::cloud::models::DocumentPosition > m_RangeStart;
+        std::shared_ptr< aspose::words::cloud::models::DocumentPosition > m_RangeEnd;
     };
 }
 

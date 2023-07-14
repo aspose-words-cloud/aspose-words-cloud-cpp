@@ -42,14 +42,14 @@ namespace aspose::words::cloud::models {
 
 
         /// <summary>
-        /// Gets or sets a value indicating whether references to the specified form field are automatically updated whenever the field is exited.
+        /// Gets or sets the form field name.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< bool > getCalculateOnExit() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< std::wstring > getName() const;
 
         /// <summary>
-        /// Gets or sets a value indicating whether references to the specified form field are automatically updated whenever the field is exited.
+        /// Gets or sets the form field name.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT virtual void setCalculateOnExit(std::shared_ptr< bool > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setName(std::shared_ptr< std::wstring > value);
 
 
         /// <summary>
@@ -61,6 +61,61 @@ namespace aspose::words::cloud::models {
         /// Gets or sets a value indicating whether a form field is enabled.
         /// </summary>
         ASPOSE_WORDS_CLOUD_EXPORT virtual void setEnabled(std::shared_ptr< bool > value);
+
+
+        /// <summary>
+        /// Gets or sets text, displayed in the status bar when a form field has the focus.
+        /// </summary>
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< std::wstring > getStatusText() const;
+
+        /// <summary>
+        /// Gets or sets text, displayed in the status bar when a form field has the focus.
+        /// </summary>
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setStatusText(std::shared_ptr< std::wstring > value);
+
+
+        /// <summary>
+        /// Gets or sets a value indicating whether the source of the text that's displayed in the status bar when a form field has the focus.
+        /// </summary>
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< bool > getOwnStatus() const;
+
+        /// <summary>
+        /// Gets or sets a value indicating whether the source of the text that's displayed in the status bar when a form field has the focus.
+        /// </summary>
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setOwnStatus(std::shared_ptr< bool > value);
+
+
+        /// <summary>
+        /// Gets or sets text, displayed in a message box when the form field has the focus and the user presses F1.
+        /// </summary>
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< std::wstring > getHelpText() const;
+
+        /// <summary>
+        /// Gets or sets text, displayed in a message box when the form field has the focus and the user presses F1.
+        /// </summary>
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setHelpText(std::shared_ptr< std::wstring > value);
+
+
+        /// <summary>
+        /// Gets or sets a value indicating whether the source of the text that's displayed in a message box when a form field has the focus and the user presses F1.
+        /// </summary>
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< bool > getOwnHelp() const;
+
+        /// <summary>
+        /// Gets or sets a value indicating whether the source of the text that's displayed in a message box when a form field has the focus and the user presses F1.
+        /// </summary>
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setOwnHelp(std::shared_ptr< bool > value);
+
+
+        /// <summary>
+        /// Gets or sets a value indicating whether references to the specified form field are automatically updated whenever the field is exited.
+        /// </summary>
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< bool > getCalculateOnExit() const;
+
+        /// <summary>
+        /// Gets or sets a value indicating whether references to the specified form field are automatically updated whenever the field is exited.
+        /// </summary>
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setCalculateOnExit(std::shared_ptr< bool > value);
 
 
         /// <summary>
@@ -85,71 +140,16 @@ namespace aspose::words::cloud::models {
         ASPOSE_WORDS_CLOUD_EXPORT virtual void setExitMacro(std::shared_ptr< std::wstring > value);
 
 
-        /// <summary>
-        /// Gets or sets text, displayed in a message box when the form field has the focus and the user presses F1.
-        /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< std::wstring > getHelpText() const;
-
-        /// <summary>
-        /// Gets or sets text, displayed in a message box when the form field has the focus and the user presses F1.
-        /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT virtual void setHelpText(std::shared_ptr< std::wstring > value);
-
-
-        /// <summary>
-        /// Gets or sets the form field name.
-        /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< std::wstring > getName() const;
-
-        /// <summary>
-        /// Gets or sets the form field name.
-        /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT virtual void setName(std::shared_ptr< std::wstring > value);
-
-
-        /// <summary>
-        /// Gets or sets a value indicating whether the source of the text that's displayed in a message box when a form field has the focus and the user presses F1.
-        /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< bool > getOwnHelp() const;
-
-        /// <summary>
-        /// Gets or sets a value indicating whether the source of the text that's displayed in a message box when a form field has the focus and the user presses F1.
-        /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT virtual void setOwnHelp(std::shared_ptr< bool > value);
-
-
-        /// <summary>
-        /// Gets or sets a value indicating whether the source of the text that's displayed in the status bar when a form field has the focus.
-        /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< bool > getOwnStatus() const;
-
-        /// <summary>
-        /// Gets or sets a value indicating whether the source of the text that's displayed in the status bar when a form field has the focus.
-        /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT virtual void setOwnStatus(std::shared_ptr< bool > value);
-
-
-        /// <summary>
-        /// Gets or sets text, displayed in the status bar when a form field has the focus.
-        /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< std::wstring > getStatusText() const;
-
-        /// <summary>
-        /// Gets or sets text, displayed in the status bar when a form field has the focus.
-        /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT virtual void setStatusText(std::shared_ptr< std::wstring > value);
-
-
     protected:
-        std::shared_ptr< bool > m_CalculateOnExit;
+        std::shared_ptr< std::wstring > m_Name;
         std::shared_ptr< bool > m_Enabled;
+        std::shared_ptr< std::wstring > m_StatusText;
+        std::shared_ptr< bool > m_OwnStatus;
+        std::shared_ptr< std::wstring > m_HelpText;
+        std::shared_ptr< bool > m_OwnHelp;
+        std::shared_ptr< bool > m_CalculateOnExit;
         std::shared_ptr< std::wstring > m_EntryMacro;
         std::shared_ptr< std::wstring > m_ExitMacro;
-        std::shared_ptr< std::wstring > m_HelpText;
-        std::shared_ptr< std::wstring > m_Name;
-        std::shared_ptr< bool > m_OwnHelp;
-        std::shared_ptr< bool > m_OwnStatus;
-        std::shared_ptr< std::wstring > m_StatusText;
     };
 }
 

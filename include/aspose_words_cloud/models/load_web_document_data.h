@@ -42,17 +42,6 @@ namespace aspose::words::cloud::models {
 
 
         /// <summary>
-        /// Gets or sets the web document URL.
-        /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< std::wstring > getLoadingDocumentUrl() const;
-
-        /// <summary>
-        /// Gets or sets the web document URL.
-        /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT virtual void setLoadingDocumentUrl(std::shared_ptr< std::wstring > value);
-
-
-        /// <summary>
         /// Gets or sets the save options.
         /// </summary>
         ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< aspose::words::cloud::models::SaveOptionsData > getSaveOptions() const;
@@ -63,9 +52,20 @@ namespace aspose::words::cloud::models {
         ASPOSE_WORDS_CLOUD_EXPORT virtual void setSaveOptions(std::shared_ptr< aspose::words::cloud::models::SaveOptionsData > value);
 
 
+        /// <summary>
+        /// Gets or sets the web document URL.
+        /// </summary>
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< std::wstring > getLoadingDocumentUrl() const;
+
+        /// <summary>
+        /// Gets or sets the web document URL.
+        /// </summary>
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setLoadingDocumentUrl(std::shared_ptr< std::wstring > value);
+
+
     protected:
-        std::shared_ptr< std::wstring > m_LoadingDocumentUrl;
         std::shared_ptr< aspose::words::cloud::models::SaveOptionsData > m_SaveOptions;
+        std::shared_ptr< std::wstring > m_LoadingDocumentUrl;
     };
 }
 

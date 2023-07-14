@@ -168,7 +168,7 @@ namespace aspose::words::cloud {
 
         ::httplib::Headers headers;
         headers.emplace("Authorization", m_AccessToken);
-        headers.emplace("x-aspose-client-version", "23.5");
+        headers.emplace("x-aspose-client-version", "23.6");
         headers.emplace("x-aspose-client", "C++ SDK");
 
         for (auto& pair : httpRequest->getHeaders()) {
@@ -257,7 +257,7 @@ namespace aspose::words::cloud {
         std::wstring body = L"grant_type=client_credentials&client_id=" + m_Configuration->getClientId() + L"&client_secret=" + m_Configuration->getClientSecret();
         ::utf8::utf16to8(body.begin(), body.end(), back_inserter(bodyUtf8));
 
-        ::httplib::Result result = m_HttpClient->Post("/connect/token", bodyUtf8, "application/x-www-form-urlencoded");
+        ::httplib::Result result = m_HttpClient->Post("/v4.0/words/connect/token", bodyUtf8, "application/x-www-form-urlencoded");
         HandleHttpError(result);
         if (result->status != 200)
         {

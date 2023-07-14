@@ -545,13 +545,6 @@ namespace aspose::words::cloud::models {
 
 
         /// <summary>
-        /// Gets the format of save.
-        /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< std::wstring > getSaveFormat() const override;
-
-
-
-        /// <summary>
         /// Gets or sets a value indicating whether images are scaled by Aspose.Words to the bounding shape size when exporting.
         /// </summary>
         ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< bool > getScaleImageToShapeSize() const;
@@ -571,6 +564,13 @@ namespace aspose::words::cloud::models {
         /// Gets or sets the option that controls how table, row and cell widths are exported.
         /// </summary>
         ASPOSE_WORDS_CLOUD_EXPORT virtual void setTableWidthOutputMode(std::shared_ptr< aspose::words::cloud::models::HtmlSaveOptionsData::TableWidthOutputMode > value);
+
+
+        /// <summary>
+        /// Gets the format of save.
+        /// </summary>
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< std::wstring > getSaveFormat() const override;
+
 
 
     protected:
@@ -610,9 +610,9 @@ namespace aspose::words::cloud::models {
         std::shared_ptr< bool > m_ResolveFontNames;
         std::shared_ptr< std::wstring > m_ResourceFolder;
         std::shared_ptr< std::wstring > m_ResourceFolderAlias;
-        std::shared_ptr< std::wstring > m_SaveFormat = std::make_shared<std::wstring>(L"html");
         std::shared_ptr< bool > m_ScaleImageToShapeSize;
         std::shared_ptr< aspose::words::cloud::models::HtmlSaveOptionsData::TableWidthOutputMode > m_TableWidthOutputMode;
+        std::shared_ptr< std::wstring > m_SaveFormat = std::make_shared<std::wstring>(L"html");
     };
 }
 
