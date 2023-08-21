@@ -4590,8 +4590,8 @@ namespace aspose::words::cloud::models {
     {
         HtmlSaveOptionsData::toJson(jsonIfc);
         ::nlohmann::json& json = *((::nlohmann::json*)jsonIfc);
-        if (this->m_EpubNavigationMapLevel) {
-            json["EpubNavigationMapLevel"] = *(this->m_EpubNavigationMapLevel);
+        if (this->m_NavigationMapLevel) {
+            json["NavigationMapLevel"] = *(this->m_NavigationMapLevel);
         }
         if (this->m_SaveFormat) {
             json["SaveFormat"] = convertUtf16(*(this->m_SaveFormat));
@@ -4602,9 +4602,9 @@ namespace aspose::words::cloud::models {
     {
         HtmlSaveOptionsData::fromJson(jsonIfc);
         ::nlohmann::json& json = *((::nlohmann::json*)jsonIfc);
-        if (json.contains("EpubNavigationMapLevel") && !json["EpubNavigationMapLevel"].is_null()) {
-            this->m_EpubNavigationMapLevel = std::make_shared< int32_t >(
-                json["EpubNavigationMapLevel"].get< int32_t >()
+        if (json.contains("NavigationMapLevel") && !json["NavigationMapLevel"].is_null()) {
+            this->m_NavigationMapLevel = std::make_shared< int32_t >(
+                json["NavigationMapLevel"].get< int32_t >()
             );
         }
         if (json.contains("SaveFormat") && !json["SaveFormat"].is_null()) {
@@ -4618,14 +4618,14 @@ namespace aspose::words::cloud::models {
     {
     }
 
-    std::shared_ptr< int32_t > EpubSaveOptionsData::getEpubNavigationMapLevel() const
+    std::shared_ptr< int32_t > EpubSaveOptionsData::getNavigationMapLevel() const
     {
-        return this->m_EpubNavigationMapLevel;
+        return this->m_NavigationMapLevel;
     }
 
-    void EpubSaveOptionsData::setEpubNavigationMapLevel(std::shared_ptr< int32_t > value)
+    void EpubSaveOptionsData::setNavigationMapLevel(std::shared_ptr< int32_t > value)
     {
-        this->m_EpubNavigationMapLevel = value;
+        this->m_NavigationMapLevel = value;
     }
 
 
@@ -19179,9 +19179,6 @@ namespace aspose::words::cloud::models {
         if (this->m_UpdateLastSavedTimeProperty) {
             json["UpdateLastSavedTimeProperty"] = *(this->m_UpdateLastSavedTimeProperty);
         }
-        if (this->m_UpdateSdtContent) {
-            json["UpdateSdtContent"] = *(this->m_UpdateSdtContent);
-        }
         if (this->m_ZipOutput) {
             json["ZipOutput"] = *(this->m_ZipOutput);
         }
@@ -19245,11 +19242,6 @@ namespace aspose::words::cloud::models {
         if (json.contains("UpdateLastSavedTimeProperty") && !json["UpdateLastSavedTimeProperty"].is_null()) {
             this->m_UpdateLastSavedTimeProperty = std::make_shared< bool >(
                 json["UpdateLastSavedTimeProperty"].get< bool >()
-            );
-        }
-        if (json.contains("UpdateSdtContent") && !json["UpdateSdtContent"].is_null()) {
-            this->m_UpdateSdtContent = std::make_shared< bool >(
-                json["UpdateSdtContent"].get< bool >()
             );
         }
         if (json.contains("ZipOutput") && !json["ZipOutput"].is_null()) {
@@ -19386,17 +19378,6 @@ namespace aspose::words::cloud::models {
     void SaveOptionsData::setUpdateLastSavedTimeProperty(std::shared_ptr< bool > value)
     {
         this->m_UpdateLastSavedTimeProperty = value;
-    }
-
-
-    std::shared_ptr< bool > SaveOptionsData::getUpdateSdtContent() const
-    {
-        return this->m_UpdateSdtContent;
-    }
-
-    void SaveOptionsData::setUpdateSdtContent(std::shared_ptr< bool > value)
-    {
-        this->m_UpdateSdtContent = value;
     }
 
 

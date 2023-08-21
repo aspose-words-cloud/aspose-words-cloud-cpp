@@ -41,7 +41,6 @@ TEST_F(LoadWebDocumentTests, TestLoadWebDocument) {
     requestDataSaveOptions->setFileName(std::make_shared< std::wstring >(L"google.doc"));
     requestDataSaveOptions->setDmlEffectsRenderingMode(std::make_shared< aspose::words::cloud::models::SaveOptionsData::DmlEffectsRenderingMode >(aspose::words::cloud::models::SaveOptionsData::DmlEffectsRenderingMode::NONE));
     requestDataSaveOptions->setDmlRenderingMode(std::make_shared< aspose::words::cloud::models::SaveOptionsData::DmlRenderingMode >(aspose::words::cloud::models::SaveOptionsData::DmlRenderingMode::DRAWING_ML));
-    requestDataSaveOptions->setUpdateSdtContent(std::make_shared< bool >(false));
     requestDataSaveOptions->setZipOutput(std::make_shared< bool >(false));
     auto requestData = std::make_shared< aspose::words::cloud::models::LoadWebDocumentData >();
     requestData->setLoadingDocumentUrl(std::make_shared< std::wstring >(L"http://google.com"));
