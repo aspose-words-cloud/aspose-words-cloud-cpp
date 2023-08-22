@@ -206,17 +206,6 @@ namespace aspose::words::cloud::models {
 
 
         /// <summary>
-        /// Gets or sets a value indicating whether content of StructuredDocumentTag is updated before saving.
-        /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< bool > getUpdateSdtContent() const;
-
-        /// <summary>
-        /// Gets or sets a value indicating whether content of StructuredDocumentTag is updated before saving.
-        /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT virtual void setUpdateSdtContent(std::shared_ptr< bool > value);
-
-
-        /// <summary>
         /// Gets or sets a value indicating whether to zip output or not.
         /// The default value is false.
         /// </summary>
@@ -248,7 +237,6 @@ namespace aspose::words::cloud::models {
         std::shared_ptr< bool > m_UpdateFields;
         std::shared_ptr< bool > m_UpdateLastPrintedProperty;
         std::shared_ptr< bool > m_UpdateLastSavedTimeProperty;
-        std::shared_ptr< bool > m_UpdateSdtContent;
         std::shared_ptr< bool > m_ZipOutput;
         std::shared_ptr< std::wstring > m_SaveFormat;
     };
