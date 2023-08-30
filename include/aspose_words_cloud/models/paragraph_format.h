@@ -40,6 +40,8 @@ namespace aspose::words::cloud::models {
         ASPOSE_WORDS_CLOUD_EXPORT virtual void fromJson(const void* jsonIfc) override;
         ASPOSE_WORDS_CLOUD_EXPORT virtual void getFileReferences(std::vector< FileReference* >& result) override;
 
+        void abstractParagraphFormatBase() override {}
+
 
         /// <summary>
         /// Gets or sets a value indicating whether the paragraph is an item in a bulleted or numbered list.
