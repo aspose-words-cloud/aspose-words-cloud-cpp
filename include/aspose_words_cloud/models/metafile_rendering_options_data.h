@@ -83,6 +83,19 @@ namespace aspose::words::cloud::models {
 
 
         /// <summary>
+        /// Gets or sets a value determining whether metafile rendering emulates the display of the metafile according to the size on page
+        /// or the display of the metafile in its default size.
+        /// </summary>
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< bool > getEmulateRenderingToSizeOnPage() const;
+
+        /// <summary>
+        /// Gets or sets a value determining whether metafile rendering emulates the display of the metafile according to the size on page
+        /// or the display of the metafile in its default size.
+        /// </summary>
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setEmulateRenderingToSizeOnPage(std::shared_ptr< bool > value);
+
+
+        /// <summary>
         /// Gets or sets the option that controls how metafile images should be rendered.
         /// </summary>
         ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< aspose::words::cloud::models::MetafileRenderingOptionsData::RenderingMode > getRenderingMode() const;
@@ -91,19 +104,6 @@ namespace aspose::words::cloud::models {
         /// Gets or sets the option that controls how metafile images should be rendered.
         /// </summary>
         ASPOSE_WORDS_CLOUD_EXPORT virtual void setRenderingMode(std::shared_ptr< aspose::words::cloud::models::MetafileRenderingOptionsData::RenderingMode > value);
-
-
-        /// <summary>
-        /// Gets or sets a value indicating whether to scale fonts in WMF metafile according to metafile size on the page.
-        /// The default value is true.
-        /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< bool > getScaleWmfFontsToMetafileSize() const;
-
-        /// <summary>
-        /// Gets or sets a value indicating whether to scale fonts in WMF metafile according to metafile size on the page.
-        /// The default value is true.
-        /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT virtual void setScaleWmfFontsToMetafileSize(std::shared_ptr< bool > value);
 
 
         /// <summary>
@@ -120,8 +120,8 @@ namespace aspose::words::cloud::models {
     protected:
         std::shared_ptr< aspose::words::cloud::models::MetafileRenderingOptionsData::EmfPlusDualRenderingMode > m_EmfPlusDualRenderingMode;
         std::shared_ptr< bool > m_EmulateRasterOperations;
+        std::shared_ptr< bool > m_EmulateRenderingToSizeOnPage;
         std::shared_ptr< aspose::words::cloud::models::MetafileRenderingOptionsData::RenderingMode > m_RenderingMode;
-        std::shared_ptr< bool > m_ScaleWmfFontsToMetafileSize;
         std::shared_ptr< bool > m_UseEmfEmbeddedToWmf;
     };
 }

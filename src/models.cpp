@@ -12955,11 +12955,11 @@ namespace aspose::words::cloud::models {
         if (this->m_EmulateRasterOperations) {
             json["EmulateRasterOperations"] = *(this->m_EmulateRasterOperations);
         }
+        if (this->m_EmulateRenderingToSizeOnPage) {
+            json["EmulateRenderingToSizeOnPage"] = *(this->m_EmulateRenderingToSizeOnPage);
+        }
         if (this->m_RenderingMode) {
             json["RenderingMode"] = metafileRenderingOptionsDataRenderingModeToString(*(this->m_RenderingMode));
-        }
-        if (this->m_ScaleWmfFontsToMetafileSize) {
-            json["ScaleWmfFontsToMetafileSize"] = *(this->m_ScaleWmfFontsToMetafileSize);
         }
         if (this->m_UseEmfEmbeddedToWmf) {
             json["UseEmfEmbeddedToWmf"] = *(this->m_UseEmfEmbeddedToWmf);
@@ -12979,14 +12979,14 @@ namespace aspose::words::cloud::models {
                 json["EmulateRasterOperations"].get< bool >()
             );
         }
+        if (json.contains("EmulateRenderingToSizeOnPage") && !json["EmulateRenderingToSizeOnPage"].is_null()) {
+            this->m_EmulateRenderingToSizeOnPage = std::make_shared< bool >(
+                json["EmulateRenderingToSizeOnPage"].get< bool >()
+            );
+        }
         if (json.contains("RenderingMode") && !json["RenderingMode"].is_null()) {
             this->m_RenderingMode = std::make_shared< aspose::words::cloud::models::MetafileRenderingOptionsData::RenderingMode >(
                 metafileRenderingOptionsDataRenderingModeFromString(json["RenderingMode"].get< std::string >())
-            );
-        }
-        if (json.contains("ScaleWmfFontsToMetafileSize") && !json["ScaleWmfFontsToMetafileSize"].is_null()) {
-            this->m_ScaleWmfFontsToMetafileSize = std::make_shared< bool >(
-                json["ScaleWmfFontsToMetafileSize"].get< bool >()
             );
         }
         if (json.contains("UseEmfEmbeddedToWmf") && !json["UseEmfEmbeddedToWmf"].is_null()) {
@@ -13022,6 +13022,17 @@ namespace aspose::words::cloud::models {
     }
 
 
+    std::shared_ptr< bool > MetafileRenderingOptionsData::getEmulateRenderingToSizeOnPage() const
+    {
+        return this->m_EmulateRenderingToSizeOnPage;
+    }
+
+    void MetafileRenderingOptionsData::setEmulateRenderingToSizeOnPage(std::shared_ptr< bool > value)
+    {
+        this->m_EmulateRenderingToSizeOnPage = value;
+    }
+
+
     std::shared_ptr< aspose::words::cloud::models::MetafileRenderingOptionsData::RenderingMode > MetafileRenderingOptionsData::getRenderingMode() const
     {
         return this->m_RenderingMode;
@@ -13030,17 +13041,6 @@ namespace aspose::words::cloud::models {
     void MetafileRenderingOptionsData::setRenderingMode(std::shared_ptr< aspose::words::cloud::models::MetafileRenderingOptionsData::RenderingMode > value)
     {
         this->m_RenderingMode = value;
-    }
-
-
-    std::shared_ptr< bool > MetafileRenderingOptionsData::getScaleWmfFontsToMetafileSize() const
-    {
-        return this->m_ScaleWmfFontsToMetafileSize;
-    }
-
-    void MetafileRenderingOptionsData::setScaleWmfFontsToMetafileSize(std::shared_ptr< bool > value)
-    {
-        this->m_ScaleWmfFontsToMetafileSize = value;
     }
 
 
