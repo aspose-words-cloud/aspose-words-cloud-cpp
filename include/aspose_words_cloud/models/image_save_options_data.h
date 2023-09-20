@@ -206,6 +206,28 @@ namespace aspose::words::cloud::models {
 
 
         /// <summary>
+        /// Gets or sets the height of a generated image in pixels.
+        /// </summary>
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< int32_t > getImageHeight() const;
+
+        /// <summary>
+        /// Gets or sets the height of a generated image in pixels.
+        /// </summary>
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setImageHeight(std::shared_ptr< int32_t > value);
+
+
+        /// <summary>
+        /// Gets or sets the width of a generated image in pixels.
+        /// </summary>
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< int32_t > getImageWidth() const;
+
+        /// <summary>
+        /// Gets or sets the width of a generated image in pixels.
+        /// </summary>
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setImageWidth(std::shared_ptr< int32_t > value);
+
+
+        /// <summary>
         /// Gets or sets a value indicating whether to use GDI+ or Aspose.Words metafile renderer when saving to EMF.
         /// </summary>
         ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< bool > getUseGdiEmfRenderer() const;
@@ -228,6 +250,8 @@ namespace aspose::words::cloud::models {
         std::shared_ptr< bool > m_UseAntiAliasing;
         std::shared_ptr< bool > m_UseHighQualityRendering;
         std::shared_ptr< double > m_VerticalResolution;
+        std::shared_ptr< int32_t > m_ImageHeight;
+        std::shared_ptr< int32_t > m_ImageWidth;
         std::shared_ptr< bool > m_UseGdiEmfRenderer;
     };
 }

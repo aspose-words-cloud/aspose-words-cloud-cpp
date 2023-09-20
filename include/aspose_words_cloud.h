@@ -93,6 +93,7 @@
 #include "./aspose_words_cloud/models/drawing_objects_response.h"
 #include "./aspose_words_cloud/models/drawing_object_update.h"
 #include "./aspose_words_cloud/models/emf_save_options_data.h"
+#include "./aspose_words_cloud/models/eps_save_options_data.h"
 #include "./aspose_words_cloud/models/epub_save_options_data.h"
 #include "./aspose_words_cloud/models/error.h"
 #include "./aspose_words_cloud/models/error_details.h"

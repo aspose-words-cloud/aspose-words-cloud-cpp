@@ -91,6 +91,7 @@ namespace aspose::words::cloud::models {
         { L"DrawingObjectsResponse, _", [] () { return dynamic_cast< ModelBase* >(new DrawingObjectsResponse()); }},
         { L"DrawingObjectUpdate, _", [] () { return dynamic_cast< ModelBase* >(new DrawingObjectUpdate()); }},
         { L"EmfSaveOptionsData, _", [] () { return dynamic_cast< ModelBase* >(new EmfSaveOptionsData()); }},
+        { L"EpsSaveOptionsData, _", [] () { return dynamic_cast< ModelBase* >(new EpsSaveOptionsData()); }},
         { L"EpubSaveOptionsData, _", [] () { return dynamic_cast< ModelBase* >(new EpubSaveOptionsData()); }},
         { L"Error, _", [] () { return dynamic_cast< ModelBase* >(new Error()); }},
         { L"ErrorDetails, _", [] () { return dynamic_cast< ModelBase* >(new ErrorDetails()); }},
@@ -4840,6 +4841,41 @@ namespace aspose::words::cloud::models {
     }
 
     std::shared_ptr< std::wstring > EmfSaveOptionsData::getSaveFormat() const
+    {
+        return this->m_SaveFormat;
+    }
+
+
+
+
+    /*
+     * EpsSaveOptionsData implementation
+     */
+    void EpsSaveOptionsData::toJson(void* jsonIfc) const
+    {
+        ImageSaveOptionsData::toJson(jsonIfc);
+        ::nlohmann::json& json = *((::nlohmann::json*)jsonIfc);
+        if (this->m_SaveFormat) {
+            json["SaveFormat"] = convertUtf16(*(this->m_SaveFormat));
+        }
+    }
+
+    void EpsSaveOptionsData::fromJson(const void* jsonIfc)
+    {
+        ImageSaveOptionsData::fromJson(jsonIfc);
+        ::nlohmann::json& json = *((::nlohmann::json*)jsonIfc);
+        if (json.contains("SaveFormat") && !json["SaveFormat"].is_null()) {
+            this->m_SaveFormat = std::make_shared< std::wstring >(
+                convertUtf8( json["SaveFormat"].get< std::string >() )
+            );
+        }
+    }
+
+    void EpsSaveOptionsData::getFileReferences(std::vector< FileReference* >& result)
+    {
+    }
+
+    std::shared_ptr< std::wstring > EpsSaveOptionsData::getSaveFormat() const
     {
         return this->m_SaveFormat;
     }
@@ -10835,6 +10871,12 @@ namespace aspose::words::cloud::models {
         if (this->m_VerticalResolution) {
             json["VerticalResolution"] = *(this->m_VerticalResolution);
         }
+        if (this->m_ImageHeight) {
+            json["ImageHeight"] = *(this->m_ImageHeight);
+        }
+        if (this->m_ImageWidth) {
+            json["ImageWidth"] = *(this->m_ImageWidth);
+        }
         if (this->m_UseGdiEmfRenderer) {
             json["UseGdiEmfRenderer"] = *(this->m_UseGdiEmfRenderer);
         }
@@ -10897,6 +10939,16 @@ namespace aspose::words::cloud::models {
         if (json.contains("VerticalResolution") && !json["VerticalResolution"].is_null()) {
             this->m_VerticalResolution = std::make_shared< double >(
                 json["VerticalResolution"].get< double >()
+            );
+        }
+        if (json.contains("ImageHeight") && !json["ImageHeight"].is_null()) {
+            this->m_ImageHeight = std::make_shared< int32_t >(
+                json["ImageHeight"].get< int32_t >()
+            );
+        }
+        if (json.contains("ImageWidth") && !json["ImageWidth"].is_null()) {
+            this->m_ImageWidth = std::make_shared< int32_t >(
+                json["ImageWidth"].get< int32_t >()
             );
         }
         if (json.contains("UseGdiEmfRenderer") && !json["UseGdiEmfRenderer"].is_null()) {
@@ -11028,6 +11080,28 @@ namespace aspose::words::cloud::models {
     void ImageSaveOptionsData::setVerticalResolution(std::shared_ptr< double > value)
     {
         this->m_VerticalResolution = value;
+    }
+
+
+    std::shared_ptr< int32_t > ImageSaveOptionsData::getImageHeight() const
+    {
+        return this->m_ImageHeight;
+    }
+
+    void ImageSaveOptionsData::setImageHeight(std::shared_ptr< int32_t > value)
+    {
+        this->m_ImageHeight = value;
+    }
+
+
+    std::shared_ptr< int32_t > ImageSaveOptionsData::getImageWidth() const
+    {
+        return this->m_ImageWidth;
+    }
+
+    void ImageSaveOptionsData::setImageWidth(std::shared_ptr< int32_t > value)
+    {
+        this->m_ImageWidth = value;
     }
 
 
