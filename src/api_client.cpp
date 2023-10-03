@@ -320,8 +320,7 @@ namespace aspose::words::cloud {
                 throw aspose::words::cloud::ApiException(response->getStatusCode(), response->getErrorMessage());
             }
 
-            auto result = response->getResult();
-
+            auto result = response->getModel();
             std::string modulus, exponent;
             ::utf8::utf16to8(result->getModulus()->begin(), result->getModulus()->end(), back_inserter(modulus));
             ::utf8::utf16to8(result->getExponent()->begin(), result->getExponent()->end(), back_inserter(exponent));
