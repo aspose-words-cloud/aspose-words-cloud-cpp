@@ -31,6 +31,7 @@
 namespace aspose::words::cloud::models {
     /// <summary>
     /// The REST response with a collection of mail merge fields.
+    /// This response should be returned by the service when handling: GET /{name}/mailMergeFieldNames.
     /// </summary>
     class FieldNamesResponse : public WordsResponse
     {

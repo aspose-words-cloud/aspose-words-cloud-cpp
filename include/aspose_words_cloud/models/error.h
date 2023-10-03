@@ -42,45 +42,45 @@ namespace aspose::words::cloud::models {
 
 
         /// <summary>
-        /// Code.
+        /// Gets or sets Code.
         /// </summary>
         ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< std::wstring > getCode() const;
 
         /// <summary>
-        /// Code.
+        /// Gets or sets Code.
         /// </summary>
         ASPOSE_WORDS_CLOUD_EXPORT virtual void setCode(std::shared_ptr< std::wstring > value);
 
 
         /// <summary>
-        /// Description.
+        /// Gets or sets Description.
         /// </summary>
         ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< std::wstring > getDescription() const;
 
         /// <summary>
-        /// Description.
+        /// Gets or sets Description.
         /// </summary>
         ASPOSE_WORDS_CLOUD_EXPORT virtual void setDescription(std::shared_ptr< std::wstring > value);
 
 
         /// <summary>
-        /// Inner Error.
+        /// Gets or sets InnerError.
         /// </summary>
         ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< aspose::words::cloud::models::ErrorDetails > getInnerError() const;
 
         /// <summary>
-        /// Inner Error.
+        /// Gets or sets InnerError.
         /// </summary>
         ASPOSE_WORDS_CLOUD_EXPORT virtual void setInnerError(std::shared_ptr< aspose::words::cloud::models::ErrorDetails > value);
 
 
         /// <summary>
-        /// Message.
+        /// Gets or sets Message.
         /// </summary>
         ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< std::wstring > getMessage() const;
 
         /// <summary>
-        /// Message.
+        /// Gets or sets Message.
         /// </summary>
         ASPOSE_WORDS_CLOUD_EXPORT virtual void setMessage(std::shared_ptr< std::wstring > value);
 

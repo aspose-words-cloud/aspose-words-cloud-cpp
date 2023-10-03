@@ -44,11 +44,13 @@ namespace aspose::words::cloud::models {
 
         /// <summary>
         /// Gets or sets the collection of list levels for this list.
+        /// Use this property to access and modify formatting individual to each level of the list.
         /// </summary>
         ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< std::vector<std::shared_ptr<aspose::words::cloud::models::ListLevel>> > getListLevel() const;
 
         /// <summary>
         /// Gets or sets the collection of list levels for this list.
+        /// Use this property to access and modify formatting individual to each level of the list.
         /// </summary>
         ASPOSE_WORDS_CLOUD_EXPORT virtual void setListLevel(std::shared_ptr< std::vector<std::shared_ptr<aspose::words::cloud::models::ListLevel>> > value);
 

@@ -41,23 +41,23 @@ namespace aspose::words::cloud::models {
 
 
         /// <summary>
-        /// Error datetime.
+        /// Gets or sets ErrorDateTime.
         /// </summary>
         ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< std::wstring > getErrorDateTime() const;
 
         /// <summary>
-        /// Error datetime.
+        /// Gets or sets ErrorDateTime.
         /// </summary>
         ASPOSE_WORDS_CLOUD_EXPORT virtual void setErrorDateTime(std::shared_ptr< std::wstring > value);
 
 
         /// <summary>
-        /// The request id.
+        /// Gets or sets RequestId.
         /// </summary>
         ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< std::wstring > getRequestId() const;
 
         /// <summary>
-        /// The request id.
+        /// Gets or sets RequestId.
         /// </summary>
         ASPOSE_WORDS_CLOUD_EXPORT virtual void setRequestId(std::shared_ptr< std::wstring > value);
 

@@ -30,6 +30,7 @@ namespace aspose::words::cloud::models {
     /// <summary>
     /// Represents options for parsing CSV data.
     /// To learn more, visit the LINQ Reporting Engine documentation article.
+    /// An instance of this class can be passed into constructors of CsvDataSource.
     /// </summary>
     class CsvDataLoadOptions : public ModelBase
     {
@@ -43,44 +44,52 @@ namespace aspose::words::cloud::models {
 
         /// <summary>
         /// Gets or sets the character that is used to comment lines of CSV data.
+        /// The default value is '#' (number sign).
         /// </summary>
         ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< std::wstring > getCommentChar() const;
 
         /// <summary>
         /// Gets or sets the character that is used to comment lines of CSV data.
+        /// The default value is '#' (number sign).
         /// </summary>
         ASPOSE_WORDS_CLOUD_EXPORT virtual void setCommentChar(std::shared_ptr< std::wstring > value);
 
 
         /// <summary>
         /// Gets or sets the character to be used as a column delimiter.
+        /// The default value is ',' (comma).
         /// </summary>
         ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< std::wstring > getDelimiter() const;
 
         /// <summary>
         /// Gets or sets the character to be used as a column delimiter.
+        /// The default value is ',' (comma).
         /// </summary>
         ASPOSE_WORDS_CLOUD_EXPORT virtual void setDelimiter(std::shared_ptr< std::wstring > value);
 
 
         /// <summary>
         /// Gets or sets a value indicating whether the first record of CSV data contains column names.
+        /// The default value is false.
         /// </summary>
         ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< bool > getHasHeaders() const;
 
         /// <summary>
         /// Gets or sets a value indicating whether the first record of CSV data contains column names.
+        /// The default value is false.
         /// </summary>
         ASPOSE_WORDS_CLOUD_EXPORT virtual void setHasHeaders(std::shared_ptr< bool > value);
 
 
         /// <summary>
         /// Gets or sets the character that is used to quote field values.
+        /// The default value is '"' (quotation mark).Double the character to place it into quoted text.
         /// </summary>
         ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< std::wstring > getQuoteChar() const;
 
         /// <summary>
         /// Gets or sets the character that is used to quote field values.
+        /// The default value is '"' (quotation mark).Double the character to place it into quoted text.
         /// </summary>
         ASPOSE_WORDS_CLOUD_EXPORT virtual void setQuoteChar(std::shared_ptr< std::wstring > value);
 

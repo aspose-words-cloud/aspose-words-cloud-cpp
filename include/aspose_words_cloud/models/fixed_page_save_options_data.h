@@ -38,6 +38,8 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the value determining how colors are rendered.
         /// { Normal | Grayscale}.
+        /// The default value is Normal.
+        /// This property is used when the document is exported to fixed page formats.
         /// </summary>
         enum class ColorMode
         { 
@@ -69,12 +71,16 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the value determining how colors are rendered.
         /// { Normal | Grayscale}.
+        /// The default value is Normal.
+        /// This property is used when the document is exported to fixed page formats.
         /// </summary>
         ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< aspose::words::cloud::models::FixedPageSaveOptionsData::ColorMode > getColorMode() const;
 
         /// <summary>
         /// Gets or sets the value determining how colors are rendered.
         /// { Normal | Grayscale}.
+        /// The default value is Normal.
+        /// This property is used when the document is exported to fixed page formats.
         /// </summary>
         ASPOSE_WORDS_CLOUD_EXPORT virtual void setColorMode(std::shared_ptr< aspose::words::cloud::models::FixedPageSaveOptionsData::ColorMode > value);
 

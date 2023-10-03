@@ -30,6 +30,7 @@
 namespace aspose::words::cloud::models {
     /// <summary>
     /// Represents the page setup properties of a section.
+    /// PageSetup object contains all the page setup attributes of a section (left margin, bottom margin, paper size, and so on) as properties.
     /// </summary>
     class PageSetup : public LinkElement
     {
@@ -65,6 +66,7 @@ namespace aspose::words::cloud::models {
 
         /// <summary>
         /// Gets or sets the orientation of the page.
+        /// Changing Orientation swaps PageWidth and PageHeight.
         /// </summary>
         enum class Orientation
         { 
@@ -143,6 +145,7 @@ namespace aspose::words::cloud::models {
 
         /// <summary>
         /// Gets or sets the paper size.
+        /// Setting this property updates PageWidth and PageHeight values. Setting this value to Custom does not change existing values.
         /// </summary>
         enum class PaperSize
         { 
@@ -198,11 +201,13 @@ namespace aspose::words::cloud::models {
 
         /// <summary>
         /// Gets or sets a value indicating whether this section contains bidirectional (complex scripts) text.
+        /// When true, the columns in this section are laid out from right to left.
         /// </summary>
         ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< bool > getBidi() const;
 
         /// <summary>
         /// Gets or sets a value indicating whether this section contains bidirectional (complex scripts) text.
+        /// When true, the columns in this section are laid out from right to left.
         /// </summary>
         ASPOSE_WORDS_CLOUD_EXPORT virtual void setBidi(std::shared_ptr< bool > value);
 
@@ -332,11 +337,13 @@ namespace aspose::words::cloud::models {
 
         /// <summary>
         /// Gets or sets the distance between the right edge of line numbers and the left edge of the document.
+        /// Set this property to zero for automatic distance between the line numbers and text of the document.
         /// </summary>
         ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< double > getLineNumberDistanceFromText() const;
 
         /// <summary>
         /// Gets or sets the distance between the right edge of line numbers and the left edge of the document.
+        /// Set this property to zero for automatic distance between the line numbers and text of the document.
         /// </summary>
         ASPOSE_WORDS_CLOUD_EXPORT virtual void setLineNumberDistanceFromText(std::shared_ptr< double > value);
 
@@ -365,11 +372,13 @@ namespace aspose::words::cloud::models {
 
         /// <summary>
         /// Gets or sets the orientation of the page.
+        /// Changing Orientation swaps PageWidth and PageHeight.
         /// </summary>
         ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< aspose::words::cloud::models::PageSetup::Orientation > getOrientation() const;
 
         /// <summary>
         /// Gets or sets the orientation of the page.
+        /// Changing Orientation swaps PageWidth and PageHeight.
         /// </summary>
         ASPOSE_WORDS_CLOUD_EXPORT virtual void setOrientation(std::shared_ptr< aspose::words::cloud::models::PageSetup::Orientation > value);
 
@@ -411,11 +420,13 @@ namespace aspose::words::cloud::models {
 
         /// <summary>
         /// Gets or sets the starting page number of the section.
+        /// The RestartPageNumbering property, if set to false, will override the PageStartingNumber property so that page numbering can continue from the previous section.
         /// </summary>
         ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< int32_t > getPageStartingNumber() const;
 
         /// <summary>
         /// Gets or sets the starting page number of the section.
+        /// The RestartPageNumbering property, if set to false, will override the PageStartingNumber property so that page numbering can continue from the previous section.
         /// </summary>
         ASPOSE_WORDS_CLOUD_EXPORT virtual void setPageStartingNumber(std::shared_ptr< int32_t > value);
 
@@ -433,22 +444,26 @@ namespace aspose::words::cloud::models {
 
         /// <summary>
         /// Gets or sets the paper size.
+        /// Setting this property updates PageWidth and PageHeight values. Setting this value to Custom does not change existing values.
         /// </summary>
         ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< aspose::words::cloud::models::PageSetup::PaperSize > getPaperSize() const;
 
         /// <summary>
         /// Gets or sets the paper size.
+        /// Setting this property updates PageWidth and PageHeight values. Setting this value to Custom does not change existing values.
         /// </summary>
         ASPOSE_WORDS_CLOUD_EXPORT virtual void setPaperSize(std::shared_ptr< aspose::words::cloud::models::PageSetup::PaperSize > value);
 
 
         /// <summary>
         /// Gets or sets a value indicating whether page numbering restarts at the beginning of the section.
+        /// If set to false, the RestartPageNumbering property will override the PageStartingNumber property so that page numbering can continue from the previous section.
         /// </summary>
         ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< bool > getRestartPageNumbering() const;
 
         /// <summary>
         /// Gets or sets a value indicating whether page numbering restarts at the beginning of the section.
+        /// If set to false, the RestartPageNumbering property will override the PageStartingNumber property so that page numbering can continue from the previous section.
         /// </summary>
         ASPOSE_WORDS_CLOUD_EXPORT virtual void setRestartPageNumbering(std::shared_ptr< bool > value);
 

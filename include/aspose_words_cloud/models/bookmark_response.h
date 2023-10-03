@@ -31,6 +31,7 @@
 namespace aspose::words::cloud::models {
     /// <summary>
     /// The REST response with a bookmark.
+    /// This response should be returned by the service when handling: GET bookmarks/{bookmarkName}.
     /// </summary>
     class BookmarkResponse : public WordsResponse
     {

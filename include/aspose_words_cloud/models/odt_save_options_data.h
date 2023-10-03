@@ -78,11 +78,13 @@ namespace aspose::words::cloud::models {
 
         /// <summary>
         /// Gets or sets the password to encrypt document.
+        /// In order to save document without encryption this property should be null or empty string.
         /// </summary>
         ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< std::wstring > getPassword() const;
 
         /// <summary>
         /// Gets or sets the password to encrypt document.
+        /// In order to save document without encryption this property should be null or empty string.
         /// </summary>
         ASPOSE_WORDS_CLOUD_EXPORT virtual void setPassword(std::shared_ptr< std::wstring > value);
 

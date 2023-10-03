@@ -43,17 +43,6 @@ namespace aspose::words::cloud::models {
 
 
         /// <summary>
-        /// Gets or sets the link to end bookmark node.
-        /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< aspose::words::cloud::models::NewDocumentPosition > getEndRange() const;
-
-        /// <summary>
-        /// Gets or sets the link to end bookmark node.
-        /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT virtual void setEndRange(std::shared_ptr< aspose::words::cloud::models::NewDocumentPosition > value);
-
-
-        /// <summary>
         /// Gets or sets the link to start bookmark node.
         /// </summary>
         ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< aspose::words::cloud::models::NewDocumentPosition > getStartRange() const;
@@ -64,9 +53,20 @@ namespace aspose::words::cloud::models {
         ASPOSE_WORDS_CLOUD_EXPORT virtual void setStartRange(std::shared_ptr< aspose::words::cloud::models::NewDocumentPosition > value);
 
 
+        /// <summary>
+        /// Gets or sets the link to end bookmark node.
+        /// </summary>
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< aspose::words::cloud::models::NewDocumentPosition > getEndRange() const;
+
+        /// <summary>
+        /// Gets or sets the link to end bookmark node.
+        /// </summary>
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setEndRange(std::shared_ptr< aspose::words::cloud::models::NewDocumentPosition > value);
+
+
     protected:
-        std::shared_ptr< aspose::words::cloud::models::NewDocumentPosition > m_EndRange;
         std::shared_ptr< aspose::words::cloud::models::NewDocumentPosition > m_StartRange;
+        std::shared_ptr< aspose::words::cloud::models::NewDocumentPosition > m_EndRange;
     };
 }
 

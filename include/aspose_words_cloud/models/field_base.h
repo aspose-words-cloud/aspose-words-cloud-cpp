@@ -42,17 +42,6 @@ namespace aspose::words::cloud::models {
         virtual void abstractFieldBase() = 0;
 
         /// <summary>
-        /// Gets or sets the field code.
-        /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< std::wstring > getFieldCode() const;
-
-        /// <summary>
-        /// Gets or sets the field code.
-        /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT virtual void setFieldCode(std::shared_ptr< std::wstring > value);
-
-
-        /// <summary>
         /// Gets or sets the LCID of the field.
         /// </summary>
         ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< std::wstring > getLocaleId() const;
@@ -63,9 +52,20 @@ namespace aspose::words::cloud::models {
         ASPOSE_WORDS_CLOUD_EXPORT virtual void setLocaleId(std::shared_ptr< std::wstring > value);
 
 
+        /// <summary>
+        /// Gets or sets the field code.
+        /// </summary>
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< std::wstring > getFieldCode() const;
+
+        /// <summary>
+        /// Gets or sets the field code.
+        /// </summary>
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setFieldCode(std::shared_ptr< std::wstring > value);
+
+
     protected:
-        std::shared_ptr< std::wstring > m_FieldCode;
         std::shared_ptr< std::wstring > m_LocaleId;
+        std::shared_ptr< std::wstring > m_FieldCode;
     };
 }
 

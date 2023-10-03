@@ -65,17 +65,6 @@ namespace aspose::words::cloud::models {
 
 
         /// <summary>
-        /// Gets or sets BuiltIn Templates Paths.
-        /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< std::vector<std::shared_ptr<std::wstring>> > getBuiltInTemplatesPaths() const;
-
-        /// <summary>
-        /// Gets or sets BuiltIn Templates Paths.
-        /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT virtual void setBuiltInTemplatesPaths(std::shared_ptr< std::vector<std::shared_ptr<std::wstring>> > value);
-
-
-        /// <summary>
         /// Gets or sets Curren tUser.
         /// </summary>
         ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< aspose::words::cloud::models::UserInformation > getCurrentUser() const;
@@ -211,8 +200,18 @@ namespace aspose::words::cloud::models {
         ASPOSE_WORDS_CLOUD_EXPORT virtual void setUseInvariantCultureNumberFormat(std::shared_ptr< bool > value);
 
 
+        /// <summary>
+        /// Gets or sets BuiltIn Templates Paths.
+        /// </summary>
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< std::vector<std::shared_ptr<std::wstring>> > getBuiltInTemplatesPaths() const;
+
+        /// <summary>
+        /// Gets or sets BuiltIn Templates Paths.
+        /// </summary>
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setBuiltInTemplatesPaths(std::shared_ptr< std::vector<std::shared_ptr<std::wstring>> > value);
+
+
     protected:
-        std::shared_ptr< std::vector<std::shared_ptr<std::wstring>> > m_BuiltInTemplatesPaths;
         std::shared_ptr< aspose::words::cloud::models::UserInformation > m_CurrentUser;
         std::shared_ptr< std::wstring > m_CustomTocStyleSeparator;
         std::shared_ptr< std::wstring > m_DefaultDocumentAuthor;
@@ -225,6 +224,7 @@ namespace aspose::words::cloud::models {
         std::shared_ptr< std::wstring > m_PreProcessCultureName;
         std::shared_ptr< std::wstring > m_TemplateName;
         std::shared_ptr< bool > m_UseInvariantCultureNumberFormat;
+        std::shared_ptr< std::vector<std::shared_ptr<std::wstring>> > m_BuiltInTemplatesPaths;
     };
 }
 

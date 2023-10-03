@@ -88,28 +88,6 @@ namespace aspose::words::cloud::models {
 
 
         /// <summary>
-        /// Gets or sets the height of the DrawingObject in points.
-        /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< double > getHeight() const;
-
-        /// <summary>
-        /// Gets or sets the height of the DrawingObject in points.
-        /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT virtual void setHeight(std::shared_ptr< double > value);
-
-
-        /// <summary>
-        /// Gets or sets the distance in points from the origin to the left side of the image.
-        /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< double > getLeft() const;
-
-        /// <summary>
-        /// Gets or sets the distance in points from the origin to the left side of the image.
-        /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT virtual void setLeft(std::shared_ptr< double > value);
-
-
-        /// <summary>
         /// Gets or sets the position, before which the DrawingObject will be inserted.
         /// </summary>
         ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< aspose::words::cloud::models::NewDocumentPosition > getPosition() const;
@@ -129,6 +107,17 @@ namespace aspose::words::cloud::models {
         /// Gets or sets the relative horizontal position, from which the distance to the image is measured.
         /// </summary>
         ASPOSE_WORDS_CLOUD_EXPORT virtual void setRelativeHorizontalPosition(std::shared_ptr< aspose::words::cloud::models::DrawingObjectInsert::RelativeHorizontalPosition > value);
+
+
+        /// <summary>
+        /// Gets or sets the distance in points from the origin to the left side of the image.
+        /// </summary>
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< double > getLeft() const;
+
+        /// <summary>
+        /// Gets or sets the distance in points from the origin to the left side of the image.
+        /// </summary>
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setLeft(std::shared_ptr< double > value);
 
 
         /// <summary>
@@ -165,6 +154,17 @@ namespace aspose::words::cloud::models {
 
 
         /// <summary>
+        /// Gets or sets the height of the DrawingObject in points.
+        /// </summary>
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< double > getHeight() const;
+
+        /// <summary>
+        /// Gets or sets the height of the DrawingObject in points.
+        /// </summary>
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setHeight(std::shared_ptr< double > value);
+
+
+        /// <summary>
         /// Gets or sets the option indicating how to wrap text around the image.
         /// </summary>
         ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< aspose::words::cloud::models::DrawingObjectInsert::WrapType > getWrapType() const;
@@ -176,13 +176,13 @@ namespace aspose::words::cloud::models {
 
 
     protected:
-        std::shared_ptr< double > m_Height;
-        std::shared_ptr< double > m_Left;
         std::shared_ptr< aspose::words::cloud::models::NewDocumentPosition > m_Position;
         std::shared_ptr< aspose::words::cloud::models::DrawingObjectInsert::RelativeHorizontalPosition > m_RelativeHorizontalPosition;
+        std::shared_ptr< double > m_Left;
         std::shared_ptr< aspose::words::cloud::models::DrawingObjectInsert::RelativeVerticalPosition > m_RelativeVerticalPosition;
         std::shared_ptr< double > m_Top;
         std::shared_ptr< double > m_Width;
+        std::shared_ptr< double > m_Height;
         std::shared_ptr< aspose::words::cloud::models::DrawingObjectInsert::WrapType > m_WrapType;
     };
 }
