@@ -43,22 +43,26 @@ namespace aspose::words::cloud::models {
 
         /// <summary>
         /// Gets or sets the list level number (0 to 8) for the paragraph.
+        /// In Word documents, lists may consist of 1 or 9 levels, numbered 0 to 8. Has effect only when the Aspose.Words.ListFormat.List property is set to reference a valid list. Aspose.Words.ListFormat.List.
         /// </summary>
         ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< int32_t > getListLevelNumber() const;
 
         /// <summary>
         /// Gets or sets the list level number (0 to 8) for the paragraph.
+        /// In Word documents, lists may consist of 1 or 9 levels, numbered 0 to 8. Has effect only when the Aspose.Words.ListFormat.List property is set to reference a valid list. Aspose.Words.ListFormat.List.
         /// </summary>
         ASPOSE_WORDS_CLOUD_EXPORT virtual void setListLevelNumber(std::shared_ptr< int32_t > value);
 
 
         /// <summary>
         /// Gets or sets the list id of this paragraph.
+        /// The list that is being assigned to this property must belong to the current document.The list that is being assigned to this property must not be a list style definition.
         /// </summary>
         ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< int32_t > getListId() const;
 
         /// <summary>
         /// Gets or sets the list id of this paragraph.
+        /// The list that is being assigned to this property must belong to the current document.The list that is being assigned to this property must not be a list style definition.
         /// </summary>
         ASPOSE_WORDS_CLOUD_EXPORT virtual void setListId(std::shared_ptr< int32_t > value);
 

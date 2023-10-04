@@ -42,22 +42,26 @@ namespace aspose::words::cloud::models {
 
         /// <summary>
         /// Gets or sets the text to display in the run content in place of the Aspose.Words.Markup.SdtListItem.Value attribute contents for this list item.
+        /// Cannot be null and cannot be an empty string.
         /// </summary>
         ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< std::wstring > getDisplayText() const;
 
         /// <summary>
         /// Gets or sets the text to display in the run content in place of the Aspose.Words.Markup.SdtListItem.Value attribute contents for this list item.
+        /// Cannot be null and cannot be an empty string.
         /// </summary>
         ASPOSE_WORDS_CLOUD_EXPORT virtual void setDisplayText(std::shared_ptr< std::wstring > value);
 
 
         /// <summary>
         /// Gets or sets the value of this list item.
+        /// Cannot be null and cannot be an empty string.
         /// </summary>
         ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< std::wstring > getValue() const;
 
         /// <summary>
         /// Gets or sets the value of this list item.
+        /// Cannot be null and cannot be an empty string.
         /// </summary>
         ASPOSE_WORDS_CLOUD_EXPORT virtual void setValue(std::shared_ptr< std::wstring > value);
 

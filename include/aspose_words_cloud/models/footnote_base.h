@@ -52,17 +52,6 @@ namespace aspose::words::cloud::models {
         virtual void abstractFootnoteBase() = 0;
 
         /// <summary>
-        /// Gets or sets the option, that specifies whether this is a footnote or endnote.
-        /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< aspose::words::cloud::models::FootnoteBase::FootnoteType > getFootnoteType() const;
-
-        /// <summary>
-        /// Gets or sets the option, that specifies whether this is a footnote or endnote.
-        /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT virtual void setFootnoteType(std::shared_ptr< aspose::words::cloud::models::FootnoteBase::FootnoteType > value);
-
-
-        /// <summary>
         /// Gets or sets the link to comment range start node.
         /// </summary>
         ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< aspose::words::cloud::models::NewDocumentPosition > getPosition() const;
@@ -74,32 +63,47 @@ namespace aspose::words::cloud::models {
 
 
         /// <summary>
+        /// Gets or sets the option, that specifies whether this is a footnote or endnote.
+        /// </summary>
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< aspose::words::cloud::models::FootnoteBase::FootnoteType > getFootnoteType() const;
+
+        /// <summary>
+        /// Gets or sets the option, that specifies whether this is a footnote or endnote.
+        /// </summary>
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setFootnoteType(std::shared_ptr< aspose::words::cloud::models::FootnoteBase::FootnoteType > value);
+
+
+        /// <summary>
         /// Gets or sets the custom reference mark to be used for this footnote.
         /// Default value is Empty, meaning auto-numbered footnotes are used.
+        /// RTF-format can only store 1 symbol as custom reference mark, so upon export only the first symbol will be written others will be discard.
         /// </summary>
         ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< std::wstring > getReferenceMark() const;
 
         /// <summary>
         /// Gets or sets the custom reference mark to be used for this footnote.
         /// Default value is Empty, meaning auto-numbered footnotes are used.
+        /// RTF-format can only store 1 symbol as custom reference mark, so upon export only the first symbol will be written others will be discard.
         /// </summary>
         ASPOSE_WORDS_CLOUD_EXPORT virtual void setReferenceMark(std::shared_ptr< std::wstring > value);
 
 
         /// <summary>
         /// Gets or sets text of the footnote.
+        /// This method allows to quickly set text of a footnote from a string. The string can contain paragraph breaks, this will create paragraphs of text in the footnote accordingly.
         /// </summary>
         ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< std::wstring > getText() const;
 
         /// <summary>
         /// Gets or sets text of the footnote.
+        /// This method allows to quickly set text of a footnote from a string. The string can contain paragraph breaks, this will create paragraphs of text in the footnote accordingly.
         /// </summary>
         ASPOSE_WORDS_CLOUD_EXPORT virtual void setText(std::shared_ptr< std::wstring > value);
 
 
     protected:
-        std::shared_ptr< aspose::words::cloud::models::FootnoteBase::FootnoteType > m_FootnoteType;
         std::shared_ptr< aspose::words::cloud::models::NewDocumentPosition > m_Position;
+        std::shared_ptr< aspose::words::cloud::models::FootnoteBase::FootnoteType > m_FootnoteType;
         std::shared_ptr< std::wstring > m_ReferenceMark;
         std::shared_ptr< std::wstring > m_Text;
     };

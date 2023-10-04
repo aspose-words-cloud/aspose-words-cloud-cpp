@@ -60,11 +60,11 @@ TEST_F(BatchTest, TestBatchParallel) {
 
     ASSERT_TRUE(response->getResult<responses::GetBookmarksOnlineResponse>(0) != nullptr);
     ASSERT_TRUE(response->getResult<responses::GetBookmarksOnlineResponse>(0)->getStatusCode() == 200);
-    ASSERT_TRUE(response->getResult<responses::GetBookmarksOnlineResponse>(0)->getResult()->getBookmarks()->getBookmarkList()->size() > 0);
+    ASSERT_TRUE(response->getResult<responses::GetBookmarksOnlineResponse>(0)->getModel()->getBookmarks()->getBookmarkList()->size() > 0);
 
     ASSERT_TRUE(response->getResult<responses::GetCommentsOnlineResponse>(1) != nullptr);
     ASSERT_TRUE(response->getResult<responses::GetCommentsOnlineResponse>(1)->getStatusCode() == 200);
-    ASSERT_TRUE(response->getResult<responses::GetCommentsOnlineResponse>(1)->getResult()->getComments()->getCommentList()->size() > 0);
+    ASSERT_TRUE(response->getResult<responses::GetCommentsOnlineResponse>(1)->getModel()->getComments()->getCommentList()->size() > 0);
 }
 
 /// <summary>
@@ -109,11 +109,11 @@ TEST_F(BatchTest, TestBatchDepends) {
 
     ASSERT_TRUE(response->getResult<responses::GetBookmarksResponse>(1) != nullptr);
     ASSERT_TRUE(response->getResult<responses::GetBookmarksResponse>(1)->getStatusCode() == 200);
-    ASSERT_TRUE(response->getResult<responses::GetBookmarksResponse>(1)->getResult()->getBookmarks()->getBookmarkList()->size() > 0);
+    ASSERT_TRUE(response->getResult<responses::GetBookmarksResponse>(1)->getModel()->getBookmarks()->getBookmarkList()->size() > 0);
 
     ASSERT_TRUE(response->getResult<responses::GetCommentsResponse>(2) != nullptr);
     ASSERT_TRUE(response->getResult<responses::GetCommentsResponse>(2)->getStatusCode() == 200);
-    ASSERT_TRUE(response->getResult<responses::GetCommentsResponse>(2)->getResult()->getComments()->getCommentList()->size() > 0);
+    ASSERT_TRUE(response->getResult<responses::GetCommentsResponse>(2)->getModel()->getComments()->getCommentList()->size() > 0);
 }
 
 /// <summary>
@@ -187,5 +187,5 @@ TEST_F(BatchTest, TestBatchWithoutIntermediateResults) {
     ASSERT_TRUE(response->getCount() == 1);
     ASSERT_TRUE(response->getResult<responses::GetCommentsResponse>(0) != nullptr);
     ASSERT_TRUE(response->getResult<responses::GetCommentsResponse>(0)->getStatusCode() == 200);
-    ASSERT_TRUE(response->getResult<responses::GetCommentsResponse>(0)->getResult()->getComments()->getCommentList()->size() > 0);
+    ASSERT_TRUE(response->getResult<responses::GetCommentsResponse>(0)->getModel()->getComments()->getCommentList()->size() > 0);
 }

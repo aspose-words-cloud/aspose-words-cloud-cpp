@@ -29,6 +29,7 @@
 namespace aspose::words::cloud::models {
     /// <summary>
     /// Represents options for parsing JSON data.
+    /// An instance of this class can be passed into constructors of Aspose.Words.Reporting.JsonDataSource.
     /// </summary>
     class JsonDataLoadOptions : public ModelBase
     {
@@ -55,6 +56,7 @@ namespace aspose::words::cloud::models {
         /// Gets or sets a value indicating whether a generated data source will always contain
         /// an object for a JSON root element. If a JSON root element contains a single complex
         /// property, such an object is not created by default.
+        /// The default value is false.
         /// </summary>
         ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< bool > getAlwaysGenerateRootObject() const;
 
@@ -62,6 +64,7 @@ namespace aspose::words::cloud::models {
         /// Gets or sets a value indicating whether a generated data source will always contain
         /// an object for a JSON root element. If a JSON root element contains a single complex
         /// property, such an object is not created by default.
+        /// The default value is false.
         /// </summary>
         ASPOSE_WORDS_CLOUD_EXPORT virtual void setAlwaysGenerateRootObject(std::shared_ptr< bool > value);
 
@@ -69,12 +72,38 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets exact formats for parsing JSON date-time values while loading JSON.
         /// The default is null.
+        /// Strings encoded using Microsoft® JSON date-time format (for example, "/Date(1224043200000)/")
+        /// are always recognized as date-time values regardless of a value of this property.
+        /// The property defines additional formats to be used while parsing date-time values
+        /// from strings in the following way:
+        /// • When Aspose.Words.Reporting.JsonDataLoadOptions.ExactDateTimeParseFormats is
+        /// null, the ISO-8601 format and all date-time formats supported for the current,
+        /// English USA, and English New Zealand cultures are used additionally in the mentioned
+        /// order.
+        /// • When Aspose.Words.Reporting.JsonDataLoadOptions.ExactDateTimeParseFormats contains
+        /// strings, they are used as additional date-time formats utilizing the current
+        /// culture.
+        /// • When Aspose.Words.Reporting.JsonDataLoadOptions.ExactDateTimeParseFormats is
+        /// empty, no additional date-time formats are used.
         /// </summary>
         ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< std::vector<std::shared_ptr<std::wstring>> > getExactDateTimeParseFormats() const;
 
         /// <summary>
         /// Gets or sets exact formats for parsing JSON date-time values while loading JSON.
         /// The default is null.
+        /// Strings encoded using Microsoft® JSON date-time format (for example, "/Date(1224043200000)/")
+        /// are always recognized as date-time values regardless of a value of this property.
+        /// The property defines additional formats to be used while parsing date-time values
+        /// from strings in the following way:
+        /// • When Aspose.Words.Reporting.JsonDataLoadOptions.ExactDateTimeParseFormats is
+        /// null, the ISO-8601 format and all date-time formats supported for the current,
+        /// English USA, and English New Zealand cultures are used additionally in the mentioned
+        /// order.
+        /// • When Aspose.Words.Reporting.JsonDataLoadOptions.ExactDateTimeParseFormats contains
+        /// strings, they are used as additional date-time formats utilizing the current
+        /// culture.
+        /// • When Aspose.Words.Reporting.JsonDataLoadOptions.ExactDateTimeParseFormats is
+        /// empty, no additional date-time formats are used.
         /// </summary>
         ASPOSE_WORDS_CLOUD_EXPORT virtual void setExactDateTimeParseFormats(std::shared_ptr< std::vector<std::shared_ptr<std::wstring>> > value);
 

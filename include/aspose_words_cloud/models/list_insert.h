@@ -35,6 +35,7 @@ namespace aspose::words::cloud::models {
     public:
         /// <summary>
         /// Gets or sets the option that controls how list should be restarted at each section.
+        /// This option is supported only in RTF, DOC and DOCX document formats. This option will be written to DOCX only if Aspose.Words.Saving.OoxmlCompliance is higher then Aspose.Words.Saving.OoxmlCompliance.Ecma376_2006.
         /// </summary>
         enum class Template
         { 
@@ -71,11 +72,13 @@ namespace aspose::words::cloud::models {
 
         /// <summary>
         /// Gets or sets the option that controls how list should be restarted at each section.
+        /// This option is supported only in RTF, DOC and DOCX document formats. This option will be written to DOCX only if Aspose.Words.Saving.OoxmlCompliance is higher then Aspose.Words.Saving.OoxmlCompliance.Ecma376_2006.
         /// </summary>
         ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< aspose::words::cloud::models::ListInsert::Template > getTemplate() const;
 
         /// <summary>
         /// Gets or sets the option that controls how list should be restarted at each section.
+        /// This option is supported only in RTF, DOC and DOCX document formats. This option will be written to DOCX only if Aspose.Words.Saving.OoxmlCompliance is higher then Aspose.Words.Saving.OoxmlCompliance.Ecma376_2006.
         /// </summary>
         ASPOSE_WORDS_CLOUD_EXPORT virtual void setTemplate(std::shared_ptr< aspose::words::cloud::models::ListInsert::Template > value);
 

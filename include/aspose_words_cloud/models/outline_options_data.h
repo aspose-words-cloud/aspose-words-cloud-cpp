@@ -42,17 +42,6 @@ namespace aspose::words::cloud::models {
 
 
         /// <summary>
-        /// Gets or sets the individual bookmarks outline level.
-        /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< std::vector<std::shared_ptr<aspose::words::cloud::models::BookmarksOutlineLevelData>> > getBookmarksOutlineLevels() const;
-
-        /// <summary>
-        /// Gets or sets the individual bookmarks outline level.
-        /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT virtual void setBookmarksOutlineLevels(std::shared_ptr< std::vector<std::shared_ptr<aspose::words::cloud::models::BookmarksOutlineLevelData>> > value);
-
-
-        /// <summary>
         /// Gets or sets a value indicating whether to create missing outline levels when the document is exported. The default value is false.
         /// </summary>
         ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< bool > getCreateMissingOutlineLevels() const;
@@ -65,11 +54,13 @@ namespace aspose::words::cloud::models {
 
         /// <summary>
         /// Gets or sets a value indicating whether to create outlines for headings (paragraphs formatted with the Heading styles) inside tables.
+        /// The default value is false.
         /// </summary>
         ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< bool > getCreateOutlinesForHeadingsInTables() const;
 
         /// <summary>
         /// Gets or sets a value indicating whether to create outlines for headings (paragraphs formatted with the Heading styles) inside tables.
+        /// The default value is false.
         /// </summary>
         ASPOSE_WORDS_CLOUD_EXPORT virtual void setCreateOutlinesForHeadingsInTables(std::shared_ptr< bool > value);
 
@@ -107,13 +98,24 @@ namespace aspose::words::cloud::models {
         ASPOSE_WORDS_CLOUD_EXPORT virtual void setHeadingsOutlineLevels(std::shared_ptr< int32_t > value);
 
 
+        /// <summary>
+        /// Gets or sets the individual bookmarks outline level.
+        /// </summary>
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< std::vector<std::shared_ptr<aspose::words::cloud::models::BookmarksOutlineLevelData>> > getBookmarksOutlineLevels() const;
+
+        /// <summary>
+        /// Gets or sets the individual bookmarks outline level.
+        /// </summary>
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setBookmarksOutlineLevels(std::shared_ptr< std::vector<std::shared_ptr<aspose::words::cloud::models::BookmarksOutlineLevelData>> > value);
+
+
     protected:
-        std::shared_ptr< std::vector<std::shared_ptr<aspose::words::cloud::models::BookmarksOutlineLevelData>> > m_BookmarksOutlineLevels;
         std::shared_ptr< bool > m_CreateMissingOutlineLevels;
         std::shared_ptr< bool > m_CreateOutlinesForHeadingsInTables;
         std::shared_ptr< int32_t > m_DefaultBookmarksOutlineLevel;
         std::shared_ptr< int32_t > m_ExpandedOutlineLevels;
         std::shared_ptr< int32_t > m_HeadingsOutlineLevels;
+        std::shared_ptr< std::vector<std::shared_ptr<aspose::words::cloud::models::BookmarksOutlineLevelData>> > m_BookmarksOutlineLevels;
     };
 }
 

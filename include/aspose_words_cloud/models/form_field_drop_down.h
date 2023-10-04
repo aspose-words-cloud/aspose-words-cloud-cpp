@@ -46,11 +46,13 @@ namespace aspose::words::cloud::models {
 
         /// <summary>
         /// Gets or sets the items array of a dropdown form field.
+        /// Microsoft Word allows maximum 25 items in a dropdown form field.
         /// </summary>
         ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< std::vector<std::shared_ptr<std::wstring>> > getDropDownItems() const;
 
         /// <summary>
         /// Gets or sets the items array of a dropdown form field.
+        /// Microsoft Word allows maximum 25 items in a dropdown form field.
         /// </summary>
         ASPOSE_WORDS_CLOUD_EXPORT virtual void setDropDownItems(std::shared_ptr< std::vector<std::shared_ptr<std::wstring>> > value);
 

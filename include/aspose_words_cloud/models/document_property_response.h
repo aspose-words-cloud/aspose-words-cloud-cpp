@@ -31,6 +31,7 @@
 namespace aspose::words::cloud::models {
     /// <summary>
     /// The REST response with a document property.
+    /// This response should be returned by the service when handling: GET documentProperties/{propertyName}.
     /// </summary>
     class DocumentPropertyResponse : public WordsResponse
     {

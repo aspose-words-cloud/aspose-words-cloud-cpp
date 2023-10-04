@@ -23491,7 +23491,6 @@ namespace aspose::words::cloud::requests {
         {
             result->addFormDataParam(L"imageFile", *m_ImageFile);
         }
-        else throw aspose::words::cloud::ApiException(400, L"Parameter 'ImageFile' is required.");
 
         for (const models::FileReference* additionalFileContent : additionalFilesContent)
         {

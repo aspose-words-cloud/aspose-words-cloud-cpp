@@ -480,11 +480,13 @@ namespace aspose::words::cloud::models {
 
         /// <summary>
         /// Gets or sets a value indicating whether the contents of this run shall have right-to-left characteristics.
+        /// This property, when on, shall not be used with strongly left-to-right text. Any behavior under that condition is unspecified. This property, when off, shall not be used with strong right-to-left text. Any behavior under that condition is unspecified.When the contents of this run are displayed, all characters shall be treated as complex script characters for formatting purposes. This means that BoldBi, ItalicBi, SizeBi and a corresponding font name will be used when rendering this run.Also, when the contents of this run are displayed, this property acts as a right-to-left override for characters which are classified as "weak types" and "neutral types".
         /// </summary>
         ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< bool > getBidi() const;
 
         /// <summary>
         /// Gets or sets a value indicating whether the contents of this run shall have right-to-left characteristics.
+        /// This property, when on, shall not be used with strongly left-to-right text. Any behavior under that condition is unspecified. This property, when off, shall not be used with strong right-to-left text. Any behavior under that condition is unspecified.When the contents of this run are displayed, all characters shall be treated as complex script characters for formatting purposes. This means that BoldBi, ItalicBi, SizeBi and a corresponding font name will be used when rendering this run.Also, when the contents of this run are displayed, this property acts as a right-to-left override for characters which are classified as "weak types" and "neutral types".
         /// </summary>
         ASPOSE_WORDS_CLOUD_EXPORT virtual void setBidi(std::shared_ptr< bool > value);
 
@@ -634,33 +636,39 @@ namespace aspose::words::cloud::models {
 
         /// <summary>
         /// Gets or sets the locale identifier (language) of the formatted characters.
+        /// For the list of locale identifiers see http://www.microsoft.com/globaldev/reference/lcid-all.mspx.
         /// </summary>
         ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< int32_t > getLocaleId() const;
 
         /// <summary>
         /// Gets or sets the locale identifier (language) of the formatted characters.
+        /// For the list of locale identifiers see http://www.microsoft.com/globaldev/reference/lcid-all.mspx.
         /// </summary>
         ASPOSE_WORDS_CLOUD_EXPORT virtual void setLocaleId(std::shared_ptr< int32_t > value);
 
 
         /// <summary>
         /// Gets or sets the locale identifier (language) of the formatted right-to-left characters.
+        /// For the list of locale identifiers see http://www.microsoft.com/globaldev/reference/lcid-all.mspx.
         /// </summary>
         ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< int32_t > getLocaleIdBi() const;
 
         /// <summary>
         /// Gets or sets the locale identifier (language) of the formatted right-to-left characters.
+        /// For the list of locale identifiers see http://www.microsoft.com/globaldev/reference/lcid-all.mspx.
         /// </summary>
         ASPOSE_WORDS_CLOUD_EXPORT virtual void setLocaleIdBi(std::shared_ptr< int32_t > value);
 
 
         /// <summary>
         /// Gets or sets the locale identifier (language) of the formatted Asian characters.
+        /// For the list of locale identifiers see http://www.microsoft.com/globaldev/reference/lcid-all.mspx.
         /// </summary>
         ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< int32_t > getLocaleIdFarEast() const;
 
         /// <summary>
         /// Gets or sets the locale identifier (language) of the formatted Asian characters.
+        /// For the list of locale identifiers see http://www.microsoft.com/globaldev/reference/lcid-all.mspx.
         /// </summary>
         ASPOSE_WORDS_CLOUD_EXPORT virtual void setLocaleIdFarEast(std::shared_ptr< int32_t > value);
 

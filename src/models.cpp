@@ -113,7 +113,6 @@ namespace aspose::words::cloud::models {
         { L"FlatOpcTemplateMacroSaveOptionsData, _", [] () { return dynamic_cast< ModelBase* >(new FlatOpcTemplateMacroSaveOptionsData()); }},
         { L"FlatOpcTemplateSaveOptionsData, _", [] () { return dynamic_cast< ModelBase* >(new FlatOpcTemplateSaveOptionsData()); }},
         { L"Font, _", [] () { return dynamic_cast< ModelBase* >(new Font()); }},
-        { L"FontDto, _", [] () { return dynamic_cast< ModelBase* >(new FontDto()); }},
         { L"FontInfo, _", [] () { return dynamic_cast< ModelBase* >(new FontInfo()); }},
         { L"FontResponse, _", [] () { return dynamic_cast< ModelBase* >(new FontResponse()); }},
         { L"Footnote, _", [] () { return dynamic_cast< ModelBase* >(new Footnote()); }},
@@ -204,10 +203,8 @@ namespace aspose::words::cloud::models {
         { L"PsSaveOptionsData, _", [] () { return dynamic_cast< ModelBase* >(new PsSaveOptionsData()); }},
         { L"PublicKeyResponse, _", [] () { return dynamic_cast< ModelBase* >(new PublicKeyResponse()); }},
         { L"RangeDocument, _", [] () { return dynamic_cast< ModelBase* >(new RangeDocument()); }},
-        { L"RangeDocumentDto, _", [] () { return dynamic_cast< ModelBase* >(new RangeDocumentDto()); }},
         { L"RangeTextResponse, _", [] () { return dynamic_cast< ModelBase* >(new RangeTextResponse()); }},
         { L"ReplaceRange, _", [] () { return dynamic_cast< ModelBase* >(new ReplaceRange()); }},
-        { L"ReplaceRangeDto, _", [] () { return dynamic_cast< ModelBase* >(new ReplaceRangeDto()); }},
         { L"ReplaceTextParameters, _", [] () { return dynamic_cast< ModelBase* >(new ReplaceTextParameters()); }},
         { L"ReplaceTextResponse, _", [] () { return dynamic_cast< ModelBase* >(new ReplaceTextResponse()); }},
         { L"ReportBuildOptions, _", [] () { return nullptr; }},
@@ -256,26 +253,20 @@ namespace aspose::words::cloud::models {
         { L"Table, _", [] () { return dynamic_cast< ModelBase* >(new Table()); }},
         { L"TableCell, _", [] () { return dynamic_cast< ModelBase* >(new TableCell()); }},
         { L"TableCellFormat, _", [] () { return dynamic_cast< ModelBase* >(new TableCellFormat()); }},
-        { L"TableCellFormatDto, _", [] () { return dynamic_cast< ModelBase* >(new TableCellFormatDto()); }},
         { L"TableCellFormatResponse, _", [] () { return dynamic_cast< ModelBase* >(new TableCellFormatResponse()); }},
         { L"TableCellInsert, _", [] () { return dynamic_cast< ModelBase* >(new TableCellInsert()); }},
-        { L"TableCellInsertDto, _", [] () { return dynamic_cast< ModelBase* >(new TableCellInsertDto()); }},
         { L"TableCellResponse, _", [] () { return dynamic_cast< ModelBase* >(new TableCellResponse()); }},
         { L"TableInsert, _", [] () { return dynamic_cast< ModelBase* >(new TableInsert()); }},
-        { L"TableInsertDto, _", [] () { return dynamic_cast< ModelBase* >(new TableInsertDto()); }},
         { L"TableLink, _", [] () { return dynamic_cast< ModelBase* >(new TableLink()); }},
         { L"TableLinkCollection, _", [] () { return dynamic_cast< ModelBase* >(new TableLinkCollection()); }},
         { L"TableLinkCollectionResponse, _", [] () { return dynamic_cast< ModelBase* >(new TableLinkCollectionResponse()); }},
         { L"TableProperties, _", [] () { return dynamic_cast< ModelBase* >(new TableProperties()); }},
-        { L"TablePropertiesDto, _", [] () { return dynamic_cast< ModelBase* >(new TablePropertiesDto()); }},
         { L"TablePropertiesResponse, _", [] () { return dynamic_cast< ModelBase* >(new TablePropertiesResponse()); }},
         { L"TableResponse, _", [] () { return dynamic_cast< ModelBase* >(new TableResponse()); }},
         { L"TableRow, _", [] () { return dynamic_cast< ModelBase* >(new TableRow()); }},
         { L"TableRowFormat, _", [] () { return dynamic_cast< ModelBase* >(new TableRowFormat()); }},
-        { L"TableRowFormatDto, _", [] () { return dynamic_cast< ModelBase* >(new TableRowFormatDto()); }},
         { L"TableRowFormatResponse, _", [] () { return dynamic_cast< ModelBase* >(new TableRowFormatResponse()); }},
         { L"TableRowInsert, _", [] () { return dynamic_cast< ModelBase* >(new TableRowInsert()); }},
-        { L"TableRowInsertDto, _", [] () { return dynamic_cast< ModelBase* >(new TableRowInsertDto()); }},
         { L"TableRowResponse, _", [] () { return dynamic_cast< ModelBase* >(new TableRowResponse()); }},
         { L"TabStop, _", [] () { return dynamic_cast< ModelBase* >(new TabStop()); }},
         { L"TabStopInsert, _", [] () { return dynamic_cast< ModelBase* >(new TabStopInsert()); }},
@@ -859,11 +850,11 @@ namespace aspose::words::cloud::models {
     {
         BookmarkData::toJson(jsonIfc);
         ::nlohmann::json& json = *((::nlohmann::json*)jsonIfc);
-        if (this->m_EndRange) {
-            this->m_EndRange->toJson(&json["EndRange"]);
-        }
         if (this->m_StartRange) {
             this->m_StartRange->toJson(&json["StartRange"]);
+        }
+        if (this->m_EndRange) {
+            this->m_EndRange->toJson(&json["EndRange"]);
         }
     }
 
@@ -871,28 +862,17 @@ namespace aspose::words::cloud::models {
     {
         BookmarkData::fromJson(jsonIfc);
         ::nlohmann::json& json = *((::nlohmann::json*)jsonIfc);
-        if (json.contains("EndRange") && !json["EndRange"].is_null()) {
-            this->m_EndRange = createModelInstance< aspose::words::cloud::models::NewDocumentPosition >(L"NewDocumentPosition, _", json["EndRange"]);
-        }
         if (json.contains("StartRange") && !json["StartRange"].is_null()) {
             this->m_StartRange = createModelInstance< aspose::words::cloud::models::NewDocumentPosition >(L"NewDocumentPosition, _", json["StartRange"]);
+        }
+        if (json.contains("EndRange") && !json["EndRange"].is_null()) {
+            this->m_EndRange = createModelInstance< aspose::words::cloud::models::NewDocumentPosition >(L"NewDocumentPosition, _", json["EndRange"]);
         }
     }
 
     void BookmarkInsert::getFileReferences(std::vector< FileReference* >& result)
     {
     }
-
-    std::shared_ptr< aspose::words::cloud::models::NewDocumentPosition > BookmarkInsert::getEndRange() const
-    {
-        return this->m_EndRange;
-    }
-
-    void BookmarkInsert::setEndRange(std::shared_ptr< aspose::words::cloud::models::NewDocumentPosition > value)
-    {
-        this->m_EndRange = value;
-    }
-
 
     std::shared_ptr< aspose::words::cloud::models::NewDocumentPosition > BookmarkInsert::getStartRange() const
     {
@@ -902,6 +882,17 @@ namespace aspose::words::cloud::models {
     void BookmarkInsert::setStartRange(std::shared_ptr< aspose::words::cloud::models::NewDocumentPosition > value)
     {
         this->m_StartRange = value;
+    }
+
+
+    std::shared_ptr< aspose::words::cloud::models::NewDocumentPosition > BookmarkInsert::getEndRange() const
+    {
+        return this->m_EndRange;
+    }
+
+    void BookmarkInsert::setEndRange(std::shared_ptr< aspose::words::cloud::models::NewDocumentPosition > value)
+    {
+        this->m_EndRange = value;
     }
 
 
@@ -1718,11 +1709,11 @@ namespace aspose::words::cloud::models {
         if (this->m_Author) {
             json["Author"] = convertUtf16(*(this->m_Author));
         }
-        if (this->m_DateTime) {
-            json["DateTime"] = convertUtf16(*(this->m_DateTime));
-        }
         if (this->m_Initial) {
             json["Initial"] = convertUtf16(*(this->m_Initial));
+        }
+        if (this->m_DateTime) {
+            json["DateTime"] = convertUtf16(*(this->m_DateTime));
         }
         if (this->m_Text) {
             json["Text"] = convertUtf16(*(this->m_Text));
@@ -1743,14 +1734,14 @@ namespace aspose::words::cloud::models {
                 convertUtf8( json["Author"].get< std::string >() )
             );
         }
-        if (json.contains("DateTime") && !json["DateTime"].is_null()) {
-            this->m_DateTime = std::make_shared< std::wstring >(
-                convertUtf8( json["DateTime"].get< std::string >() )
-            );
-        }
         if (json.contains("Initial") && !json["Initial"].is_null()) {
             this->m_Initial = std::make_shared< std::wstring >(
                 convertUtf8( json["Initial"].get< std::string >() )
+            );
+        }
+        if (json.contains("DateTime") && !json["DateTime"].is_null()) {
+            this->m_DateTime = std::make_shared< std::wstring >(
+                convertUtf8( json["DateTime"].get< std::string >() )
             );
         }
         if (json.contains("Text") && !json["Text"].is_null()) {
@@ -1797,17 +1788,6 @@ namespace aspose::words::cloud::models {
     }
 
 
-    std::shared_ptr< std::wstring > CommentBase::getDateTime() const
-    {
-        return this->m_DateTime;
-    }
-
-    void CommentBase::setDateTime(std::shared_ptr< std::wstring > value)
-    {
-        this->m_DateTime = value;
-    }
-
-
     std::shared_ptr< std::wstring > CommentBase::getInitial() const
     {
         return this->m_Initial;
@@ -1816,6 +1796,17 @@ namespace aspose::words::cloud::models {
     void CommentBase::setInitial(std::shared_ptr< std::wstring > value)
     {
         this->m_Initial = value;
+    }
+
+
+    std::shared_ptr< std::wstring > CommentBase::getDateTime() const
+    {
+        return this->m_DateTime;
+    }
+
+    void CommentBase::setDateTime(std::shared_ptr< std::wstring > value)
+    {
+        this->m_DateTime = value;
     }
 
 
@@ -4327,17 +4318,14 @@ namespace aspose::words::cloud::models {
     void DrawingObjectInsert::toJson(void* jsonIfc) const
     {
         ::nlohmann::json& json = *((::nlohmann::json*)jsonIfc);
-        if (this->m_Height) {
-            json["Height"] = *(this->m_Height);
-        }
-        if (this->m_Left) {
-            json["Left"] = *(this->m_Left);
-        }
         if (this->m_Position) {
             this->m_Position->toJson(&json["Position"]);
         }
         if (this->m_RelativeHorizontalPosition) {
             json["RelativeHorizontalPosition"] = drawingObjectInsertRelativeHorizontalPositionToString(*(this->m_RelativeHorizontalPosition));
+        }
+        if (this->m_Left) {
+            json["Left"] = *(this->m_Left);
         }
         if (this->m_RelativeVerticalPosition) {
             json["RelativeVerticalPosition"] = drawingObjectInsertRelativeVerticalPositionToString(*(this->m_RelativeVerticalPosition));
@@ -4348,6 +4336,9 @@ namespace aspose::words::cloud::models {
         if (this->m_Width) {
             json["Width"] = *(this->m_Width);
         }
+        if (this->m_Height) {
+            json["Height"] = *(this->m_Height);
+        }
         if (this->m_WrapType) {
             json["WrapType"] = drawingObjectInsertWrapTypeToString(*(this->m_WrapType));
         }
@@ -4356,22 +4347,17 @@ namespace aspose::words::cloud::models {
     void DrawingObjectInsert::fromJson(const void* jsonIfc)
     {
         ::nlohmann::json& json = *((::nlohmann::json*)jsonIfc);
-        if (json.contains("Height") && !json["Height"].is_null()) {
-            this->m_Height = std::make_shared< double >(
-                json["Height"].get< double >()
-            );
-        }
-        if (json.contains("Left") && !json["Left"].is_null()) {
-            this->m_Left = std::make_shared< double >(
-                json["Left"].get< double >()
-            );
-        }
         if (json.contains("Position") && !json["Position"].is_null()) {
             this->m_Position = createModelInstance< aspose::words::cloud::models::NewDocumentPosition >(L"NewDocumentPosition, _", json["Position"]);
         }
         if (json.contains("RelativeHorizontalPosition") && !json["RelativeHorizontalPosition"].is_null()) {
             this->m_RelativeHorizontalPosition = std::make_shared< aspose::words::cloud::models::DrawingObjectInsert::RelativeHorizontalPosition >(
                 drawingObjectInsertRelativeHorizontalPositionFromString(json["RelativeHorizontalPosition"].get< std::string >())
+            );
+        }
+        if (json.contains("Left") && !json["Left"].is_null()) {
+            this->m_Left = std::make_shared< double >(
+                json["Left"].get< double >()
             );
         }
         if (json.contains("RelativeVerticalPosition") && !json["RelativeVerticalPosition"].is_null()) {
@@ -4389,6 +4375,11 @@ namespace aspose::words::cloud::models {
                 json["Width"].get< double >()
             );
         }
+        if (json.contains("Height") && !json["Height"].is_null()) {
+            this->m_Height = std::make_shared< double >(
+                json["Height"].get< double >()
+            );
+        }
         if (json.contains("WrapType") && !json["WrapType"].is_null()) {
             this->m_WrapType = std::make_shared< aspose::words::cloud::models::DrawingObjectInsert::WrapType >(
                 drawingObjectInsertWrapTypeFromString(json["WrapType"].get< std::string >())
@@ -4399,28 +4390,6 @@ namespace aspose::words::cloud::models {
     void DrawingObjectInsert::getFileReferences(std::vector< FileReference* >& result)
     {
     }
-
-    std::shared_ptr< double > DrawingObjectInsert::getHeight() const
-    {
-        return this->m_Height;
-    }
-
-    void DrawingObjectInsert::setHeight(std::shared_ptr< double > value)
-    {
-        this->m_Height = value;
-    }
-
-
-    std::shared_ptr< double > DrawingObjectInsert::getLeft() const
-    {
-        return this->m_Left;
-    }
-
-    void DrawingObjectInsert::setLeft(std::shared_ptr< double > value)
-    {
-        this->m_Left = value;
-    }
-
 
     std::shared_ptr< aspose::words::cloud::models::NewDocumentPosition > DrawingObjectInsert::getPosition() const
     {
@@ -4441,6 +4410,17 @@ namespace aspose::words::cloud::models {
     void DrawingObjectInsert::setRelativeHorizontalPosition(std::shared_ptr< aspose::words::cloud::models::DrawingObjectInsert::RelativeHorizontalPosition > value)
     {
         this->m_RelativeHorizontalPosition = value;
+    }
+
+
+    std::shared_ptr< double > DrawingObjectInsert::getLeft() const
+    {
+        return this->m_Left;
+    }
+
+    void DrawingObjectInsert::setLeft(std::shared_ptr< double > value)
+    {
+        this->m_Left = value;
     }
 
 
@@ -4474,6 +4454,17 @@ namespace aspose::words::cloud::models {
     void DrawingObjectInsert::setWidth(std::shared_ptr< double > value)
     {
         this->m_Width = value;
+    }
+
+
+    std::shared_ptr< double > DrawingObjectInsert::getHeight() const
+    {
+        return this->m_Height;
+    }
+
+    void DrawingObjectInsert::setHeight(std::shared_ptr< double > value)
+    {
+        this->m_Height = value;
     }
 
 
@@ -4668,14 +4659,11 @@ namespace aspose::words::cloud::models {
     void DrawingObjectUpdate::toJson(void* jsonIfc) const
     {
         ::nlohmann::json& json = *((::nlohmann::json*)jsonIfc);
-        if (this->m_Height) {
-            json["Height"] = *(this->m_Height);
+        if (this->m_RelativeHorizontalPosition) {
+            json["RelativeHorizontalPosition"] = drawingObjectUpdateRelativeHorizontalPositionToString(*(this->m_RelativeHorizontalPosition));
         }
         if (this->m_Left) {
             json["Left"] = *(this->m_Left);
-        }
-        if (this->m_RelativeHorizontalPosition) {
-            json["RelativeHorizontalPosition"] = drawingObjectUpdateRelativeHorizontalPositionToString(*(this->m_RelativeHorizontalPosition));
         }
         if (this->m_RelativeVerticalPosition) {
             json["RelativeVerticalPosition"] = drawingObjectUpdateRelativeVerticalPositionToString(*(this->m_RelativeVerticalPosition));
@@ -4686,6 +4674,9 @@ namespace aspose::words::cloud::models {
         if (this->m_Width) {
             json["Width"] = *(this->m_Width);
         }
+        if (this->m_Height) {
+            json["Height"] = *(this->m_Height);
+        }
         if (this->m_WrapType) {
             json["WrapType"] = drawingObjectUpdateWrapTypeToString(*(this->m_WrapType));
         }
@@ -4694,19 +4685,14 @@ namespace aspose::words::cloud::models {
     void DrawingObjectUpdate::fromJson(const void* jsonIfc)
     {
         ::nlohmann::json& json = *((::nlohmann::json*)jsonIfc);
-        if (json.contains("Height") && !json["Height"].is_null()) {
-            this->m_Height = std::make_shared< double >(
-                json["Height"].get< double >()
+        if (json.contains("RelativeHorizontalPosition") && !json["RelativeHorizontalPosition"].is_null()) {
+            this->m_RelativeHorizontalPosition = std::make_shared< aspose::words::cloud::models::DrawingObjectUpdate::RelativeHorizontalPosition >(
+                drawingObjectUpdateRelativeHorizontalPositionFromString(json["RelativeHorizontalPosition"].get< std::string >())
             );
         }
         if (json.contains("Left") && !json["Left"].is_null()) {
             this->m_Left = std::make_shared< double >(
                 json["Left"].get< double >()
-            );
-        }
-        if (json.contains("RelativeHorizontalPosition") && !json["RelativeHorizontalPosition"].is_null()) {
-            this->m_RelativeHorizontalPosition = std::make_shared< aspose::words::cloud::models::DrawingObjectUpdate::RelativeHorizontalPosition >(
-                drawingObjectUpdateRelativeHorizontalPositionFromString(json["RelativeHorizontalPosition"].get< std::string >())
             );
         }
         if (json.contains("RelativeVerticalPosition") && !json["RelativeVerticalPosition"].is_null()) {
@@ -4724,6 +4710,11 @@ namespace aspose::words::cloud::models {
                 json["Width"].get< double >()
             );
         }
+        if (json.contains("Height") && !json["Height"].is_null()) {
+            this->m_Height = std::make_shared< double >(
+                json["Height"].get< double >()
+            );
+        }
         if (json.contains("WrapType") && !json["WrapType"].is_null()) {
             this->m_WrapType = std::make_shared< aspose::words::cloud::models::DrawingObjectUpdate::WrapType >(
                 drawingObjectUpdateWrapTypeFromString(json["WrapType"].get< std::string >())
@@ -4735,14 +4726,14 @@ namespace aspose::words::cloud::models {
     {
     }
 
-    std::shared_ptr< double > DrawingObjectUpdate::getHeight() const
+    std::shared_ptr< aspose::words::cloud::models::DrawingObjectUpdate::RelativeHorizontalPosition > DrawingObjectUpdate::getRelativeHorizontalPosition() const
     {
-        return this->m_Height;
+        return this->m_RelativeHorizontalPosition;
     }
 
-    void DrawingObjectUpdate::setHeight(std::shared_ptr< double > value)
+    void DrawingObjectUpdate::setRelativeHorizontalPosition(std::shared_ptr< aspose::words::cloud::models::DrawingObjectUpdate::RelativeHorizontalPosition > value)
     {
-        this->m_Height = value;
+        this->m_RelativeHorizontalPosition = value;
     }
 
 
@@ -4754,17 +4745,6 @@ namespace aspose::words::cloud::models {
     void DrawingObjectUpdate::setLeft(std::shared_ptr< double > value)
     {
         this->m_Left = value;
-    }
-
-
-    std::shared_ptr< aspose::words::cloud::models::DrawingObjectUpdate::RelativeHorizontalPosition > DrawingObjectUpdate::getRelativeHorizontalPosition() const
-    {
-        return this->m_RelativeHorizontalPosition;
-    }
-
-    void DrawingObjectUpdate::setRelativeHorizontalPosition(std::shared_ptr< aspose::words::cloud::models::DrawingObjectUpdate::RelativeHorizontalPosition > value)
-    {
-        this->m_RelativeHorizontalPosition = value;
     }
 
 
@@ -4798,6 +4778,17 @@ namespace aspose::words::cloud::models {
     void DrawingObjectUpdate::setWidth(std::shared_ptr< double > value)
     {
         this->m_Width = value;
+    }
+
+
+    std::shared_ptr< double > DrawingObjectUpdate::getHeight() const
+    {
+        return this->m_Height;
+    }
+
+    void DrawingObjectUpdate::setHeight(std::shared_ptr< double > value)
+    {
+        this->m_Height = value;
     }
 
 
@@ -5149,25 +5140,25 @@ namespace aspose::words::cloud::models {
     void FieldBase::toJson(void* jsonIfc) const
     {
         ::nlohmann::json& json = *((::nlohmann::json*)jsonIfc);
-        if (this->m_FieldCode) {
-            json["FieldCode"] = convertUtf16(*(this->m_FieldCode));
-        }
         if (this->m_LocaleId) {
             json["LocaleId"] = convertUtf16(*(this->m_LocaleId));
+        }
+        if (this->m_FieldCode) {
+            json["FieldCode"] = convertUtf16(*(this->m_FieldCode));
         }
     }
 
     void FieldBase::fromJson(const void* jsonIfc)
     {
         ::nlohmann::json& json = *((::nlohmann::json*)jsonIfc);
-        if (json.contains("FieldCode") && !json["FieldCode"].is_null()) {
-            this->m_FieldCode = std::make_shared< std::wstring >(
-                convertUtf8( json["FieldCode"].get< std::string >() )
-            );
-        }
         if (json.contains("LocaleId") && !json["LocaleId"].is_null()) {
             this->m_LocaleId = std::make_shared< std::wstring >(
                 convertUtf8( json["LocaleId"].get< std::string >() )
+            );
+        }
+        if (json.contains("FieldCode") && !json["FieldCode"].is_null()) {
+            this->m_FieldCode = std::make_shared< std::wstring >(
+                convertUtf8( json["FieldCode"].get< std::string >() )
             );
         }
     }
@@ -5175,17 +5166,6 @@ namespace aspose::words::cloud::models {
     void FieldBase::getFileReferences(std::vector< FileReference* >& result)
     {
     }
-
-    std::shared_ptr< std::wstring > FieldBase::getFieldCode() const
-    {
-        return this->m_FieldCode;
-    }
-
-    void FieldBase::setFieldCode(std::shared_ptr< std::wstring > value)
-    {
-        this->m_FieldCode = value;
-    }
-
 
     std::shared_ptr< std::wstring > FieldBase::getLocaleId() const
     {
@@ -5195,6 +5175,17 @@ namespace aspose::words::cloud::models {
     void FieldBase::setLocaleId(std::shared_ptr< std::wstring > value)
     {
         this->m_LocaleId = value;
+    }
+
+
+    std::shared_ptr< std::wstring > FieldBase::getFieldCode() const
+    {
+        return this->m_FieldCode;
+    }
+
+    void FieldBase::setFieldCode(std::shared_ptr< std::wstring > value)
+    {
+        this->m_FieldCode = value;
     }
 
 
@@ -5424,12 +5415,6 @@ namespace aspose::words::cloud::models {
     void FieldOptions::toJson(void* jsonIfc) const
     {
         ::nlohmann::json& json = *((::nlohmann::json*)jsonIfc);
-        if (this->m_BuiltInTemplatesPaths) {
-            json["BuiltInTemplatesPaths"] = ::nlohmann::json::array();
-            for (auto& element : *(this->m_BuiltInTemplatesPaths)) {
-                json["BuiltInTemplatesPaths"].push_back(convertUtf16(*element));
-            }
-        }
         if (this->m_CurrentUser) {
             this->m_CurrentUser->toJson(&json["CurrentUser"]);
         }
@@ -5466,17 +5451,17 @@ namespace aspose::words::cloud::models {
         if (this->m_UseInvariantCultureNumberFormat) {
             json["UseInvariantCultureNumberFormat"] = *(this->m_UseInvariantCultureNumberFormat);
         }
+        if (this->m_BuiltInTemplatesPaths) {
+            json["BuiltInTemplatesPaths"] = ::nlohmann::json::array();
+            for (auto& element : *(this->m_BuiltInTemplatesPaths)) {
+                json["BuiltInTemplatesPaths"].push_back(convertUtf16(*element));
+            }
+        }
     }
 
     void FieldOptions::fromJson(const void* jsonIfc)
     {
         ::nlohmann::json& json = *((::nlohmann::json*)jsonIfc);
-        if (json.contains("BuiltInTemplatesPaths") && !json["BuiltInTemplatesPaths"].is_null()) {
-            this->m_BuiltInTemplatesPaths = std::make_shared< std::vector<std::shared_ptr<std::wstring>> >();
-            for (auto& element : json["BuiltInTemplatesPaths"]) {
-                this->m_BuiltInTemplatesPaths->push_back(std::make_shared< std::wstring >(convertUtf8( element.get< std::string >() )));
-            }
-        }
         if (json.contains("CurrentUser") && !json["CurrentUser"].is_null()) {
             this->m_CurrentUser = createModelInstance< aspose::words::cloud::models::UserInformation >(L"UserInformation, _", json["CurrentUser"]);
         }
@@ -5535,22 +5520,17 @@ namespace aspose::words::cloud::models {
                 json["UseInvariantCultureNumberFormat"].get< bool >()
             );
         }
+        if (json.contains("BuiltInTemplatesPaths") && !json["BuiltInTemplatesPaths"].is_null()) {
+            this->m_BuiltInTemplatesPaths = std::make_shared< std::vector<std::shared_ptr<std::wstring>> >();
+            for (auto& element : json["BuiltInTemplatesPaths"]) {
+                this->m_BuiltInTemplatesPaths->push_back(std::make_shared< std::wstring >(convertUtf8( element.get< std::string >() )));
+            }
+        }
     }
 
     void FieldOptions::getFileReferences(std::vector< FileReference* >& result)
     {
     }
-
-    std::shared_ptr< std::vector<std::shared_ptr<std::wstring>> > FieldOptions::getBuiltInTemplatesPaths() const
-    {
-        return this->m_BuiltInTemplatesPaths;
-    }
-
-    void FieldOptions::setBuiltInTemplatesPaths(std::shared_ptr< std::vector<std::shared_ptr<std::wstring>> > value)
-    {
-        this->m_BuiltInTemplatesPaths = value;
-    }
-
 
     std::shared_ptr< aspose::words::cloud::models::UserInformation > FieldOptions::getCurrentUser() const
     {
@@ -5681,6 +5661,17 @@ namespace aspose::words::cloud::models {
     void FieldOptions::setUseInvariantCultureNumberFormat(std::shared_ptr< bool > value)
     {
         this->m_UseInvariantCultureNumberFormat = value;
+    }
+
+
+    std::shared_ptr< std::vector<std::shared_ptr<std::wstring>> > FieldOptions::getBuiltInTemplatesPaths() const
+    {
+        return this->m_BuiltInTemplatesPaths;
+    }
+
+    void FieldOptions::setBuiltInTemplatesPaths(std::shared_ptr< std::vector<std::shared_ptr<std::wstring>> > value)
+    {
+        this->m_BuiltInTemplatesPaths = value;
     }
 
 
@@ -7836,24 +7827,6 @@ namespace aspose::words::cloud::models {
 
 
     /*
-     * FontDto implementation
-     */
-    void FontDto::toJson(void* jsonIfc) const
-    {
-    }
-
-    void FontDto::fromJson(const void* jsonIfc)
-    {
-    }
-
-    void FontDto::getFileReferences(std::vector< FileReference* >& result)
-    {
-    }
-
-
-
-
-    /*
      * FontInfo implementation
      */
     void FontInfo::toJson(void* jsonIfc) const
@@ -8127,11 +8100,11 @@ namespace aspose::words::cloud::models {
     void FootnoteBase::toJson(void* jsonIfc) const
     {
         ::nlohmann::json& json = *((::nlohmann::json*)jsonIfc);
-        if (this->m_FootnoteType) {
-            json["FootnoteType"] = footnoteBaseFootnoteTypeToString(*(this->m_FootnoteType));
-        }
         if (this->m_Position) {
             this->m_Position->toJson(&json["Position"]);
+        }
+        if (this->m_FootnoteType) {
+            json["FootnoteType"] = footnoteBaseFootnoteTypeToString(*(this->m_FootnoteType));
         }
         if (this->m_ReferenceMark) {
             json["ReferenceMark"] = convertUtf16(*(this->m_ReferenceMark));
@@ -8144,13 +8117,13 @@ namespace aspose::words::cloud::models {
     void FootnoteBase::fromJson(const void* jsonIfc)
     {
         ::nlohmann::json& json = *((::nlohmann::json*)jsonIfc);
+        if (json.contains("Position") && !json["Position"].is_null()) {
+            this->m_Position = createModelInstance< aspose::words::cloud::models::NewDocumentPosition >(L"NewDocumentPosition, _", json["Position"]);
+        }
         if (json.contains("FootnoteType") && !json["FootnoteType"].is_null()) {
             this->m_FootnoteType = std::make_shared< aspose::words::cloud::models::FootnoteBase::FootnoteType >(
                 footnoteBaseFootnoteTypeFromString(json["FootnoteType"].get< std::string >())
             );
-        }
-        if (json.contains("Position") && !json["Position"].is_null()) {
-            this->m_Position = createModelInstance< aspose::words::cloud::models::NewDocumentPosition >(L"NewDocumentPosition, _", json["Position"]);
         }
         if (json.contains("ReferenceMark") && !json["ReferenceMark"].is_null()) {
             this->m_ReferenceMark = std::make_shared< std::wstring >(
@@ -8168,17 +8141,6 @@ namespace aspose::words::cloud::models {
     {
     }
 
-    std::shared_ptr< aspose::words::cloud::models::FootnoteBase::FootnoteType > FootnoteBase::getFootnoteType() const
-    {
-        return this->m_FootnoteType;
-    }
-
-    void FootnoteBase::setFootnoteType(std::shared_ptr< aspose::words::cloud::models::FootnoteBase::FootnoteType > value)
-    {
-        this->m_FootnoteType = value;
-    }
-
-
     std::shared_ptr< aspose::words::cloud::models::NewDocumentPosition > FootnoteBase::getPosition() const
     {
         return this->m_Position;
@@ -8187,6 +8149,17 @@ namespace aspose::words::cloud::models {
     void FootnoteBase::setPosition(std::shared_ptr< aspose::words::cloud::models::NewDocumentPosition > value)
     {
         this->m_Position = value;
+    }
+
+
+    std::shared_ptr< aspose::words::cloud::models::FootnoteBase::FootnoteType > FootnoteBase::getFootnoteType() const
+    {
+        return this->m_FootnoteType;
+    }
+
+    void FootnoteBase::setFootnoteType(std::shared_ptr< aspose::words::cloud::models::FootnoteBase::FootnoteType > value)
+    {
+        this->m_FootnoteType = value;
     }
 
 
@@ -11593,25 +11566,25 @@ namespace aspose::words::cloud::models {
     void ListFormatUpdate::toJson(void* jsonIfc) const
     {
         ::nlohmann::json& json = *((::nlohmann::json*)jsonIfc);
-        if (this->m_ListId) {
-            json["ListId"] = *(this->m_ListId);
-        }
         if (this->m_ListLevelNumber) {
             json["ListLevelNumber"] = *(this->m_ListLevelNumber);
+        }
+        if (this->m_ListId) {
+            json["ListId"] = *(this->m_ListId);
         }
     }
 
     void ListFormatUpdate::fromJson(const void* jsonIfc)
     {
         ::nlohmann::json& json = *((::nlohmann::json*)jsonIfc);
-        if (json.contains("ListId") && !json["ListId"].is_null()) {
-            this->m_ListId = std::make_shared< int32_t >(
-                json["ListId"].get< int32_t >()
-            );
-        }
         if (json.contains("ListLevelNumber") && !json["ListLevelNumber"].is_null()) {
             this->m_ListLevelNumber = std::make_shared< int32_t >(
                 json["ListLevelNumber"].get< int32_t >()
+            );
+        }
+        if (json.contains("ListId") && !json["ListId"].is_null()) {
+            this->m_ListId = std::make_shared< int32_t >(
+                json["ListId"].get< int32_t >()
             );
         }
     }
@@ -11619,17 +11592,6 @@ namespace aspose::words::cloud::models {
     void ListFormatUpdate::getFileReferences(std::vector< FileReference* >& result)
     {
     }
-
-    std::shared_ptr< int32_t > ListFormatUpdate::getListId() const
-    {
-        return this->m_ListId;
-    }
-
-    void ListFormatUpdate::setListId(std::shared_ptr< int32_t > value)
-    {
-        this->m_ListId = value;
-    }
-
 
     std::shared_ptr< int32_t > ListFormatUpdate::getListLevelNumber() const
     {
@@ -11639,6 +11601,17 @@ namespace aspose::words::cloud::models {
     void ListFormatUpdate::setListLevelNumber(std::shared_ptr< int32_t > value)
     {
         this->m_ListLevelNumber = value;
+    }
+
+
+    std::shared_ptr< int32_t > ListFormatUpdate::getListId() const
+    {
+        return this->m_ListId;
+    }
+
+    void ListFormatUpdate::setListId(std::shared_ptr< int32_t > value)
+    {
+        this->m_ListId = value;
     }
 
 
@@ -12337,22 +12310,6 @@ namespace aspose::words::cloud::models {
     /*
      * ListLevelUpdate implementation
      */
-    inline std::string listLevelUpdateAlignmentToString(aspose::words::cloud::models::ListLevelUpdate::Alignment value)
-    {
-        if (value == aspose::words::cloud::models::ListLevelUpdate::Alignment::LEFT) return "Left";
-        if (value == aspose::words::cloud::models::ListLevelUpdate::Alignment::CENTER) return "Center";
-        if (value == aspose::words::cloud::models::ListLevelUpdate::Alignment::RIGHT) return "Right";
-        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
-    }
-
-    inline aspose::words::cloud::models::ListLevelUpdate::Alignment listLevelUpdateAlignmentFromString(const std::string& value)
-    {
-        if (value == "Left") return aspose::words::cloud::models::ListLevelUpdate::Alignment::LEFT;
-        if (value == "Center") return aspose::words::cloud::models::ListLevelUpdate::Alignment::CENTER;
-        if (value == "Right") return aspose::words::cloud::models::ListLevelUpdate::Alignment::RIGHT;
-        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
-    }
-
     inline std::string listLevelUpdateNumberStyleToString(aspose::words::cloud::models::ListLevelUpdate::NumberStyle value)
     {
         if (value == aspose::words::cloud::models::ListLevelUpdate::NumberStyle::ARABIC) return "Arabic";
@@ -12487,6 +12444,22 @@ namespace aspose::words::cloud::models {
         throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
     }
 
+    inline std::string listLevelUpdateAlignmentToString(aspose::words::cloud::models::ListLevelUpdate::Alignment value)
+    {
+        if (value == aspose::words::cloud::models::ListLevelUpdate::Alignment::LEFT) return "Left";
+        if (value == aspose::words::cloud::models::ListLevelUpdate::Alignment::CENTER) return "Center";
+        if (value == aspose::words::cloud::models::ListLevelUpdate::Alignment::RIGHT) return "Right";
+        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
+    }
+
+    inline aspose::words::cloud::models::ListLevelUpdate::Alignment listLevelUpdateAlignmentFromString(const std::string& value)
+    {
+        if (value == "Left") return aspose::words::cloud::models::ListLevelUpdate::Alignment::LEFT;
+        if (value == "Center") return aspose::words::cloud::models::ListLevelUpdate::Alignment::CENTER;
+        if (value == "Right") return aspose::words::cloud::models::ListLevelUpdate::Alignment::RIGHT;
+        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
+    }
+
     inline std::string listLevelUpdateTrailingCharacterToString(aspose::words::cloud::models::ListLevelUpdate::TrailingCharacter value)
     {
         if (value == aspose::words::cloud::models::ListLevelUpdate::TrailingCharacter::TAB) return "Tab";
@@ -12505,41 +12478,56 @@ namespace aspose::words::cloud::models {
     void ListLevelUpdate::toJson(void* jsonIfc) const
     {
         ::nlohmann::json& json = *((::nlohmann::json*)jsonIfc);
+        if (this->m_StartAt) {
+            json["StartAt"] = *(this->m_StartAt);
+        }
+        if (this->m_NumberStyle) {
+            json["NumberStyle"] = listLevelUpdateNumberStyleToString(*(this->m_NumberStyle));
+        }
+        if (this->m_NumberFormat) {
+            json["NumberFormat"] = convertUtf16(*(this->m_NumberFormat));
+        }
         if (this->m_Alignment) {
             json["Alignment"] = listLevelUpdateAlignmentToString(*(this->m_Alignment));
         }
         if (this->m_IsLegal) {
             json["IsLegal"] = *(this->m_IsLegal);
         }
-        if (this->m_NumberFormat) {
-            json["NumberFormat"] = convertUtf16(*(this->m_NumberFormat));
-        }
-        if (this->m_NumberPosition) {
-            json["NumberPosition"] = *(this->m_NumberPosition);
-        }
-        if (this->m_NumberStyle) {
-            json["NumberStyle"] = listLevelUpdateNumberStyleToString(*(this->m_NumberStyle));
-        }
         if (this->m_RestartAfterLevel) {
             json["RestartAfterLevel"] = *(this->m_RestartAfterLevel);
         }
-        if (this->m_StartAt) {
-            json["StartAt"] = *(this->m_StartAt);
+        if (this->m_TrailingCharacter) {
+            json["TrailingCharacter"] = listLevelUpdateTrailingCharacterToString(*(this->m_TrailingCharacter));
         }
         if (this->m_TabPosition) {
             json["TabPosition"] = *(this->m_TabPosition);
         }
+        if (this->m_NumberPosition) {
+            json["NumberPosition"] = *(this->m_NumberPosition);
+        }
         if (this->m_TextPosition) {
             json["TextPosition"] = *(this->m_TextPosition);
-        }
-        if (this->m_TrailingCharacter) {
-            json["TrailingCharacter"] = listLevelUpdateTrailingCharacterToString(*(this->m_TrailingCharacter));
         }
     }
 
     void ListLevelUpdate::fromJson(const void* jsonIfc)
     {
         ::nlohmann::json& json = *((::nlohmann::json*)jsonIfc);
+        if (json.contains("StartAt") && !json["StartAt"].is_null()) {
+            this->m_StartAt = std::make_shared< int32_t >(
+                json["StartAt"].get< int32_t >()
+            );
+        }
+        if (json.contains("NumberStyle") && !json["NumberStyle"].is_null()) {
+            this->m_NumberStyle = std::make_shared< aspose::words::cloud::models::ListLevelUpdate::NumberStyle >(
+                listLevelUpdateNumberStyleFromString(json["NumberStyle"].get< std::string >())
+            );
+        }
+        if (json.contains("NumberFormat") && !json["NumberFormat"].is_null()) {
+            this->m_NumberFormat = std::make_shared< std::wstring >(
+                convertUtf8( json["NumberFormat"].get< std::string >() )
+            );
+        }
         if (json.contains("Alignment") && !json["Alignment"].is_null()) {
             this->m_Alignment = std::make_shared< aspose::words::cloud::models::ListLevelUpdate::Alignment >(
                 listLevelUpdateAlignmentFromString(json["Alignment"].get< std::string >())
@@ -12550,39 +12538,9 @@ namespace aspose::words::cloud::models {
                 json["IsLegal"].get< bool >()
             );
         }
-        if (json.contains("NumberFormat") && !json["NumberFormat"].is_null()) {
-            this->m_NumberFormat = std::make_shared< std::wstring >(
-                convertUtf8( json["NumberFormat"].get< std::string >() )
-            );
-        }
-        if (json.contains("NumberPosition") && !json["NumberPosition"].is_null()) {
-            this->m_NumberPosition = std::make_shared< double >(
-                json["NumberPosition"].get< double >()
-            );
-        }
-        if (json.contains("NumberStyle") && !json["NumberStyle"].is_null()) {
-            this->m_NumberStyle = std::make_shared< aspose::words::cloud::models::ListLevelUpdate::NumberStyle >(
-                listLevelUpdateNumberStyleFromString(json["NumberStyle"].get< std::string >())
-            );
-        }
         if (json.contains("RestartAfterLevel") && !json["RestartAfterLevel"].is_null()) {
             this->m_RestartAfterLevel = std::make_shared< int32_t >(
                 json["RestartAfterLevel"].get< int32_t >()
-            );
-        }
-        if (json.contains("StartAt") && !json["StartAt"].is_null()) {
-            this->m_StartAt = std::make_shared< int32_t >(
-                json["StartAt"].get< int32_t >()
-            );
-        }
-        if (json.contains("TabPosition") && !json["TabPosition"].is_null()) {
-            this->m_TabPosition = std::make_shared< double >(
-                json["TabPosition"].get< double >()
-            );
-        }
-        if (json.contains("TextPosition") && !json["TextPosition"].is_null()) {
-            this->m_TextPosition = std::make_shared< double >(
-                json["TextPosition"].get< double >()
             );
         }
         if (json.contains("TrailingCharacter") && !json["TrailingCharacter"].is_null()) {
@@ -12590,11 +12548,59 @@ namespace aspose::words::cloud::models {
                 listLevelUpdateTrailingCharacterFromString(json["TrailingCharacter"].get< std::string >())
             );
         }
+        if (json.contains("TabPosition") && !json["TabPosition"].is_null()) {
+            this->m_TabPosition = std::make_shared< double >(
+                json["TabPosition"].get< double >()
+            );
+        }
+        if (json.contains("NumberPosition") && !json["NumberPosition"].is_null()) {
+            this->m_NumberPosition = std::make_shared< double >(
+                json["NumberPosition"].get< double >()
+            );
+        }
+        if (json.contains("TextPosition") && !json["TextPosition"].is_null()) {
+            this->m_TextPosition = std::make_shared< double >(
+                json["TextPosition"].get< double >()
+            );
+        }
     }
 
     void ListLevelUpdate::getFileReferences(std::vector< FileReference* >& result)
     {
     }
+
+    std::shared_ptr< int32_t > ListLevelUpdate::getStartAt() const
+    {
+        return this->m_StartAt;
+    }
+
+    void ListLevelUpdate::setStartAt(std::shared_ptr< int32_t > value)
+    {
+        this->m_StartAt = value;
+    }
+
+
+    std::shared_ptr< aspose::words::cloud::models::ListLevelUpdate::NumberStyle > ListLevelUpdate::getNumberStyle() const
+    {
+        return this->m_NumberStyle;
+    }
+
+    void ListLevelUpdate::setNumberStyle(std::shared_ptr< aspose::words::cloud::models::ListLevelUpdate::NumberStyle > value)
+    {
+        this->m_NumberStyle = value;
+    }
+
+
+    std::shared_ptr< std::wstring > ListLevelUpdate::getNumberFormat() const
+    {
+        return this->m_NumberFormat;
+    }
+
+    void ListLevelUpdate::setNumberFormat(std::shared_ptr< std::wstring > value)
+    {
+        this->m_NumberFormat = value;
+    }
+
 
     std::shared_ptr< aspose::words::cloud::models::ListLevelUpdate::Alignment > ListLevelUpdate::getAlignment() const
     {
@@ -12618,39 +12624,6 @@ namespace aspose::words::cloud::models {
     }
 
 
-    std::shared_ptr< std::wstring > ListLevelUpdate::getNumberFormat() const
-    {
-        return this->m_NumberFormat;
-    }
-
-    void ListLevelUpdate::setNumberFormat(std::shared_ptr< std::wstring > value)
-    {
-        this->m_NumberFormat = value;
-    }
-
-
-    std::shared_ptr< double > ListLevelUpdate::getNumberPosition() const
-    {
-        return this->m_NumberPosition;
-    }
-
-    void ListLevelUpdate::setNumberPosition(std::shared_ptr< double > value)
-    {
-        this->m_NumberPosition = value;
-    }
-
-
-    std::shared_ptr< aspose::words::cloud::models::ListLevelUpdate::NumberStyle > ListLevelUpdate::getNumberStyle() const
-    {
-        return this->m_NumberStyle;
-    }
-
-    void ListLevelUpdate::setNumberStyle(std::shared_ptr< aspose::words::cloud::models::ListLevelUpdate::NumberStyle > value)
-    {
-        this->m_NumberStyle = value;
-    }
-
-
     std::shared_ptr< int32_t > ListLevelUpdate::getRestartAfterLevel() const
     {
         return this->m_RestartAfterLevel;
@@ -12662,14 +12635,14 @@ namespace aspose::words::cloud::models {
     }
 
 
-    std::shared_ptr< int32_t > ListLevelUpdate::getStartAt() const
+    std::shared_ptr< aspose::words::cloud::models::ListLevelUpdate::TrailingCharacter > ListLevelUpdate::getTrailingCharacter() const
     {
-        return this->m_StartAt;
+        return this->m_TrailingCharacter;
     }
 
-    void ListLevelUpdate::setStartAt(std::shared_ptr< int32_t > value)
+    void ListLevelUpdate::setTrailingCharacter(std::shared_ptr< aspose::words::cloud::models::ListLevelUpdate::TrailingCharacter > value)
     {
-        this->m_StartAt = value;
+        this->m_TrailingCharacter = value;
     }
 
 
@@ -12684,6 +12657,17 @@ namespace aspose::words::cloud::models {
     }
 
 
+    std::shared_ptr< double > ListLevelUpdate::getNumberPosition() const
+    {
+        return this->m_NumberPosition;
+    }
+
+    void ListLevelUpdate::setNumberPosition(std::shared_ptr< double > value)
+    {
+        this->m_NumberPosition = value;
+    }
+
+
     std::shared_ptr< double > ListLevelUpdate::getTextPosition() const
     {
         return this->m_TextPosition;
@@ -12692,17 +12676,6 @@ namespace aspose::words::cloud::models {
     void ListLevelUpdate::setTextPosition(std::shared_ptr< double > value)
     {
         this->m_TextPosition = value;
-    }
-
-
-    std::shared_ptr< aspose::words::cloud::models::ListLevelUpdate::TrailingCharacter > ListLevelUpdate::getTrailingCharacter() const
-    {
-        return this->m_TrailingCharacter;
-    }
-
-    void ListLevelUpdate::setTrailingCharacter(std::shared_ptr< aspose::words::cloud::models::ListLevelUpdate::TrailingCharacter > value)
-    {
-        this->m_TrailingCharacter = value;
     }
 
 
@@ -14058,12 +14031,6 @@ namespace aspose::words::cloud::models {
     void OutlineOptionsData::toJson(void* jsonIfc) const
     {
         ::nlohmann::json& json = *((::nlohmann::json*)jsonIfc);
-        if (this->m_BookmarksOutlineLevels) {
-            json["BookmarksOutlineLevels"] = ::nlohmann::json::array();
-            for (auto& element : *(this->m_BookmarksOutlineLevels)) {
-                element->toJson(&json["BookmarksOutlineLevels"].emplace_back());
-            }
-        }
         if (this->m_CreateMissingOutlineLevels) {
             json["CreateMissingOutlineLevels"] = *(this->m_CreateMissingOutlineLevels);
         }
@@ -14079,17 +14046,17 @@ namespace aspose::words::cloud::models {
         if (this->m_HeadingsOutlineLevels) {
             json["HeadingsOutlineLevels"] = *(this->m_HeadingsOutlineLevels);
         }
+        if (this->m_BookmarksOutlineLevels) {
+            json["BookmarksOutlineLevels"] = ::nlohmann::json::array();
+            for (auto& element : *(this->m_BookmarksOutlineLevels)) {
+                element->toJson(&json["BookmarksOutlineLevels"].emplace_back());
+            }
+        }
     }
 
     void OutlineOptionsData::fromJson(const void* jsonIfc)
     {
         ::nlohmann::json& json = *((::nlohmann::json*)jsonIfc);
-        if (json.contains("BookmarksOutlineLevels") && !json["BookmarksOutlineLevels"].is_null()) {
-            this->m_BookmarksOutlineLevels = std::make_shared< std::vector<std::shared_ptr<aspose::words::cloud::models::BookmarksOutlineLevelData>> >();
-            for (auto& element : json["BookmarksOutlineLevels"]) {
-                this->m_BookmarksOutlineLevels->emplace_back(createModelInstance< aspose::words::cloud::models::BookmarksOutlineLevelData >(L"BookmarksOutlineLevelData, _", element));
-            }
-        }
         if (json.contains("CreateMissingOutlineLevels") && !json["CreateMissingOutlineLevels"].is_null()) {
             this->m_CreateMissingOutlineLevels = std::make_shared< bool >(
                 json["CreateMissingOutlineLevels"].get< bool >()
@@ -14115,22 +14082,17 @@ namespace aspose::words::cloud::models {
                 json["HeadingsOutlineLevels"].get< int32_t >()
             );
         }
+        if (json.contains("BookmarksOutlineLevels") && !json["BookmarksOutlineLevels"].is_null()) {
+            this->m_BookmarksOutlineLevels = std::make_shared< std::vector<std::shared_ptr<aspose::words::cloud::models::BookmarksOutlineLevelData>> >();
+            for (auto& element : json["BookmarksOutlineLevels"]) {
+                this->m_BookmarksOutlineLevels->emplace_back(createModelInstance< aspose::words::cloud::models::BookmarksOutlineLevelData >(L"BookmarksOutlineLevelData, _", element));
+            }
+        }
     }
 
     void OutlineOptionsData::getFileReferences(std::vector< FileReference* >& result)
     {
     }
-
-    std::shared_ptr< std::vector<std::shared_ptr<aspose::words::cloud::models::BookmarksOutlineLevelData>> > OutlineOptionsData::getBookmarksOutlineLevels() const
-    {
-        return this->m_BookmarksOutlineLevels;
-    }
-
-    void OutlineOptionsData::setBookmarksOutlineLevels(std::shared_ptr< std::vector<std::shared_ptr<aspose::words::cloud::models::BookmarksOutlineLevelData>> > value)
-    {
-        this->m_BookmarksOutlineLevels = value;
-    }
-
 
     std::shared_ptr< bool > OutlineOptionsData::getCreateMissingOutlineLevels() const
     {
@@ -14184,6 +14146,17 @@ namespace aspose::words::cloud::models {
     void OutlineOptionsData::setHeadingsOutlineLevels(std::shared_ptr< int32_t > value)
     {
         this->m_HeadingsOutlineLevels = value;
+    }
+
+
+    std::shared_ptr< std::vector<std::shared_ptr<aspose::words::cloud::models::BookmarksOutlineLevelData>> > OutlineOptionsData::getBookmarksOutlineLevels() const
+    {
+        return this->m_BookmarksOutlineLevels;
+    }
+
+    void OutlineOptionsData::setBookmarksOutlineLevels(std::shared_ptr< std::vector<std::shared_ptr<aspose::words::cloud::models::BookmarksOutlineLevelData>> > value)
+    {
+        this->m_BookmarksOutlineLevels = value;
     }
 
 
@@ -18416,43 +18389,6 @@ namespace aspose::words::cloud::models {
 
 
     /*
-     * RangeDocumentDto implementation
-     */
-    void RangeDocumentDto::toJson(void* jsonIfc) const
-    {
-        ::nlohmann::json& json = *((::nlohmann::json*)jsonIfc);
-        if (this->m_DocumentName) {
-            json["DocumentName"] = convertUtf16(*(this->m_DocumentName));
-        }
-    }
-
-    void RangeDocumentDto::fromJson(const void* jsonIfc)
-    {
-        ::nlohmann::json& json = *((::nlohmann::json*)jsonIfc);
-        if (json.contains("DocumentName") && !json["DocumentName"].is_null()) {
-            this->m_DocumentName = std::make_shared< std::wstring >(
-                convertUtf8( json["DocumentName"].get< std::string >() )
-            );
-        }
-    }
-
-    void RangeDocumentDto::getFileReferences(std::vector< FileReference* >& result)
-    {
-    }
-
-    std::shared_ptr< std::wstring > RangeDocumentDto::getDocumentName() const
-    {
-        return this->m_DocumentName;
-    }
-
-    void RangeDocumentDto::setDocumentName(std::shared_ptr< std::wstring > value)
-    {
-        this->m_DocumentName = value;
-    }
-
-
-
-    /*
      * RangeTextResponse implementation
      */
     void RangeTextResponse::toJson(void* jsonIfc) const
@@ -18554,75 +18490,6 @@ namespace aspose::words::cloud::models {
     }
 
     void ReplaceRange::setTextType(std::shared_ptr< aspose::words::cloud::models::ReplaceRange::TextType > value)
-    {
-        this->m_TextType = value;
-    }
-
-
-
-    /*
-     * ReplaceRangeDto implementation
-     */
-    inline std::string replaceRangeDtoTextTypeToString(aspose::words::cloud::models::ReplaceRangeDto::TextType value)
-    {
-        if (value == aspose::words::cloud::models::ReplaceRangeDto::TextType::TEXT) return "Text";
-        if (value == aspose::words::cloud::models::ReplaceRangeDto::TextType::HTML) return "Html";
-        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
-    }
-
-    inline aspose::words::cloud::models::ReplaceRangeDto::TextType replaceRangeDtoTextTypeFromString(const std::string& value)
-    {
-        if (value == "Text") return aspose::words::cloud::models::ReplaceRangeDto::TextType::TEXT;
-        if (value == "Html") return aspose::words::cloud::models::ReplaceRangeDto::TextType::HTML;
-        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
-    }
-    void ReplaceRangeDto::toJson(void* jsonIfc) const
-    {
-        ::nlohmann::json& json = *((::nlohmann::json*)jsonIfc);
-        if (this->m_Text) {
-            json["Text"] = convertUtf16(*(this->m_Text));
-        }
-        if (this->m_TextType) {
-            json["TextType"] = replaceRangeDtoTextTypeToString(*(this->m_TextType));
-        }
-    }
-
-    void ReplaceRangeDto::fromJson(const void* jsonIfc)
-    {
-        ::nlohmann::json& json = *((::nlohmann::json*)jsonIfc);
-        if (json.contains("Text") && !json["Text"].is_null()) {
-            this->m_Text = std::make_shared< std::wstring >(
-                convertUtf8( json["Text"].get< std::string >() )
-            );
-        }
-        if (json.contains("TextType") && !json["TextType"].is_null()) {
-            this->m_TextType = std::make_shared< aspose::words::cloud::models::ReplaceRangeDto::TextType >(
-                replaceRangeDtoTextTypeFromString(json["TextType"].get< std::string >())
-            );
-        }
-    }
-
-    void ReplaceRangeDto::getFileReferences(std::vector< FileReference* >& result)
-    {
-    }
-
-    std::shared_ptr< std::wstring > ReplaceRangeDto::getText() const
-    {
-        return this->m_Text;
-    }
-
-    void ReplaceRangeDto::setText(std::shared_ptr< std::wstring > value)
-    {
-        this->m_Text = value;
-    }
-
-
-    std::shared_ptr< aspose::words::cloud::models::ReplaceRangeDto::TextType > ReplaceRangeDto::getTextType() const
-    {
-        return this->m_TextType;
-    }
-
-    void ReplaceRangeDto::setTextType(std::shared_ptr< aspose::words::cloud::models::ReplaceRangeDto::TextType > value)
     {
         this->m_TextType = value;
     }
@@ -21350,10 +21217,6 @@ namespace aspose::words::cloud::models {
         return this->m_WordOpenXML;
     }
 
-    void StructuredDocumentTag::setWordOpenXML(std::shared_ptr< std::wstring > value)
-    {
-        this->m_WordOpenXML = value;
-    }
 
 
 
@@ -22817,6 +22680,9 @@ namespace aspose::words::cloud::models {
     void StyleUpdate::toJson(void* jsonIfc) const
     {
         ::nlohmann::json& json = *((::nlohmann::json*)jsonIfc);
+        if (this->m_NextParagraphStyleName) {
+            json["NextParagraphStyleName"] = convertUtf16(*(this->m_NextParagraphStyleName));
+        }
         if (this->m_BaseStyleName) {
             json["BaseStyleName"] = convertUtf16(*(this->m_BaseStyleName));
         }
@@ -22826,14 +22692,16 @@ namespace aspose::words::cloud::models {
         if (this->m_Name) {
             json["Name"] = convertUtf16(*(this->m_Name));
         }
-        if (this->m_NextParagraphStyleName) {
-            json["NextParagraphStyleName"] = convertUtf16(*(this->m_NextParagraphStyleName));
-        }
     }
 
     void StyleUpdate::fromJson(const void* jsonIfc)
     {
         ::nlohmann::json& json = *((::nlohmann::json*)jsonIfc);
+        if (json.contains("NextParagraphStyleName") && !json["NextParagraphStyleName"].is_null()) {
+            this->m_NextParagraphStyleName = std::make_shared< std::wstring >(
+                convertUtf8( json["NextParagraphStyleName"].get< std::string >() )
+            );
+        }
         if (json.contains("BaseStyleName") && !json["BaseStyleName"].is_null()) {
             this->m_BaseStyleName = std::make_shared< std::wstring >(
                 convertUtf8( json["BaseStyleName"].get< std::string >() )
@@ -22849,16 +22717,22 @@ namespace aspose::words::cloud::models {
                 convertUtf8( json["Name"].get< std::string >() )
             );
         }
-        if (json.contains("NextParagraphStyleName") && !json["NextParagraphStyleName"].is_null()) {
-            this->m_NextParagraphStyleName = std::make_shared< std::wstring >(
-                convertUtf8( json["NextParagraphStyleName"].get< std::string >() )
-            );
-        }
     }
 
     void StyleUpdate::getFileReferences(std::vector< FileReference* >& result)
     {
     }
+
+    std::shared_ptr< std::wstring > StyleUpdate::getNextParagraphStyleName() const
+    {
+        return this->m_NextParagraphStyleName;
+    }
+
+    void StyleUpdate::setNextParagraphStyleName(std::shared_ptr< std::wstring > value)
+    {
+        this->m_NextParagraphStyleName = value;
+    }
+
 
     std::shared_ptr< std::wstring > StyleUpdate::getBaseStyleName() const
     {
@@ -22890,17 +22764,6 @@ namespace aspose::words::cloud::models {
     void StyleUpdate::setName(std::shared_ptr< std::wstring > value)
     {
         this->m_Name = value;
-    }
-
-
-    std::shared_ptr< std::wstring > StyleUpdate::getNextParagraphStyleName() const
-    {
-        return this->m_NextParagraphStyleName;
-    }
-
-    void StyleUpdate::setNextParagraphStyleName(std::shared_ptr< std::wstring > value)
-    {
-        this->m_NextParagraphStyleName = value;
     }
 
 
@@ -23488,24 +23351,6 @@ namespace aspose::words::cloud::models {
 
 
     /*
-     * TableCellFormatDto implementation
-     */
-    void TableCellFormatDto::toJson(void* jsonIfc) const
-    {
-    }
-
-    void TableCellFormatDto::fromJson(const void* jsonIfc)
-    {
-    }
-
-    void TableCellFormatDto::getFileReferences(std::vector< FileReference* >& result)
-    {
-    }
-
-
-
-
-    /*
      * TableCellFormatResponse implementation
      */
     void TableCellFormatResponse::toJson(void* jsonIfc) const
@@ -23573,43 +23418,6 @@ namespace aspose::words::cloud::models {
     }
 
     void TableCellInsert::setInsertAfter(std::shared_ptr< int32_t > value)
-    {
-        this->m_InsertAfter = value;
-    }
-
-
-
-    /*
-     * TableCellInsertDto implementation
-     */
-    void TableCellInsertDto::toJson(void* jsonIfc) const
-    {
-        ::nlohmann::json& json = *((::nlohmann::json*)jsonIfc);
-        if (this->m_InsertAfter) {
-            json["InsertAfter"] = *(this->m_InsertAfter);
-        }
-    }
-
-    void TableCellInsertDto::fromJson(const void* jsonIfc)
-    {
-        ::nlohmann::json& json = *((::nlohmann::json*)jsonIfc);
-        if (json.contains("InsertAfter") && !json["InsertAfter"].is_null()) {
-            this->m_InsertAfter = std::make_shared< int32_t >(
-                json["InsertAfter"].get< int32_t >()
-            );
-        }
-    }
-
-    void TableCellInsertDto::getFileReferences(std::vector< FileReference* >& result)
-    {
-    }
-
-    std::shared_ptr< int32_t > TableCellInsertDto::getInsertAfter() const
-    {
-        return this->m_InsertAfter;
-    }
-
-    void TableCellInsertDto::setInsertAfter(std::shared_ptr< int32_t > value)
     {
         this->m_InsertAfter = value;
     }
@@ -23720,79 +23528,6 @@ namespace aspose::words::cloud::models {
     }
 
     void TableInsert::setRowsCount(std::shared_ptr< int32_t > value)
-    {
-        this->m_RowsCount = value;
-    }
-
-
-
-    /*
-     * TableInsertDto implementation
-     */
-    void TableInsertDto::toJson(void* jsonIfc) const
-    {
-        ::nlohmann::json& json = *((::nlohmann::json*)jsonIfc);
-        if (this->m_ColumnsCount) {
-            json["ColumnsCount"] = *(this->m_ColumnsCount);
-        }
-        if (this->m_Position) {
-            this->m_Position->toJson(&json["Position"]);
-        }
-        if (this->m_RowsCount) {
-            json["RowsCount"] = *(this->m_RowsCount);
-        }
-    }
-
-    void TableInsertDto::fromJson(const void* jsonIfc)
-    {
-        ::nlohmann::json& json = *((::nlohmann::json*)jsonIfc);
-        if (json.contains("ColumnsCount") && !json["ColumnsCount"].is_null()) {
-            this->m_ColumnsCount = std::make_shared< int32_t >(
-                json["ColumnsCount"].get< int32_t >()
-            );
-        }
-        if (json.contains("Position") && !json["Position"].is_null()) {
-            this->m_Position = createModelInstance< aspose::words::cloud::models::NewDocumentPosition >(L"NewDocumentPosition, _", json["Position"]);
-        }
-        if (json.contains("RowsCount") && !json["RowsCount"].is_null()) {
-            this->m_RowsCount = std::make_shared< int32_t >(
-                json["RowsCount"].get< int32_t >()
-            );
-        }
-    }
-
-    void TableInsertDto::getFileReferences(std::vector< FileReference* >& result)
-    {
-    }
-
-    std::shared_ptr< int32_t > TableInsertDto::getColumnsCount() const
-    {
-        return this->m_ColumnsCount;
-    }
-
-    void TableInsertDto::setColumnsCount(std::shared_ptr< int32_t > value)
-    {
-        this->m_ColumnsCount = value;
-    }
-
-
-    std::shared_ptr< aspose::words::cloud::models::NewDocumentPosition > TableInsertDto::getPosition() const
-    {
-        return this->m_Position;
-    }
-
-    void TableInsertDto::setPosition(std::shared_ptr< aspose::words::cloud::models::NewDocumentPosition > value)
-    {
-        this->m_Position = value;
-    }
-
-
-    std::shared_ptr< int32_t > TableInsertDto::getRowsCount() const
-    {
-        return this->m_RowsCount;
-    }
-
-    void TableInsertDto::setRowsCount(std::shared_ptr< int32_t > value)
     {
         this->m_RowsCount = value;
     }
@@ -25009,24 +24744,6 @@ namespace aspose::words::cloud::models {
 
 
     /*
-     * TablePropertiesDto implementation
-     */
-    void TablePropertiesDto::toJson(void* jsonIfc) const
-    {
-    }
-
-    void TablePropertiesDto::fromJson(const void* jsonIfc)
-    {
-    }
-
-    void TablePropertiesDto::getFileReferences(std::vector< FileReference* >& result)
-    {
-    }
-
-
-
-
-    /*
      * TablePropertiesResponse implementation
      */
     void TablePropertiesResponse::toJson(void* jsonIfc) const
@@ -25272,24 +24989,6 @@ namespace aspose::words::cloud::models {
 
 
     /*
-     * TableRowFormatDto implementation
-     */
-    void TableRowFormatDto::toJson(void* jsonIfc) const
-    {
-    }
-
-    void TableRowFormatDto::fromJson(const void* jsonIfc)
-    {
-    }
-
-    void TableRowFormatDto::getFileReferences(std::vector< FileReference* >& result)
-    {
-    }
-
-
-
-
-    /*
      * TableRowFormatResponse implementation
      */
     void TableRowFormatResponse::toJson(void* jsonIfc) const
@@ -25376,62 +25075,6 @@ namespace aspose::words::cloud::models {
     }
 
     void TableRowInsert::setInsertAfter(std::shared_ptr< int32_t > value)
-    {
-        this->m_InsertAfter = value;
-    }
-
-
-
-    /*
-     * TableRowInsertDto implementation
-     */
-    void TableRowInsertDto::toJson(void* jsonIfc) const
-    {
-        ::nlohmann::json& json = *((::nlohmann::json*)jsonIfc);
-        if (this->m_ColumnsCount) {
-            json["ColumnsCount"] = *(this->m_ColumnsCount);
-        }
-        if (this->m_InsertAfter) {
-            json["InsertAfter"] = *(this->m_InsertAfter);
-        }
-    }
-
-    void TableRowInsertDto::fromJson(const void* jsonIfc)
-    {
-        ::nlohmann::json& json = *((::nlohmann::json*)jsonIfc);
-        if (json.contains("ColumnsCount") && !json["ColumnsCount"].is_null()) {
-            this->m_ColumnsCount = std::make_shared< int32_t >(
-                json["ColumnsCount"].get< int32_t >()
-            );
-        }
-        if (json.contains("InsertAfter") && !json["InsertAfter"].is_null()) {
-            this->m_InsertAfter = std::make_shared< int32_t >(
-                json["InsertAfter"].get< int32_t >()
-            );
-        }
-    }
-
-    void TableRowInsertDto::getFileReferences(std::vector< FileReference* >& result)
-    {
-    }
-
-    std::shared_ptr< int32_t > TableRowInsertDto::getColumnsCount() const
-    {
-        return this->m_ColumnsCount;
-    }
-
-    void TableRowInsertDto::setColumnsCount(std::shared_ptr< int32_t > value)
-    {
-        this->m_ColumnsCount = value;
-    }
-
-
-    std::shared_ptr< int32_t > TableRowInsertDto::getInsertAfter() const
-    {
-        return this->m_InsertAfter;
-    }
-
-    void TableRowInsertDto::setInsertAfter(std::shared_ptr< int32_t > value)
     {
         this->m_InsertAfter = value;
     }
@@ -26610,6 +26253,12 @@ namespace aspose::words::cloud::models {
         if (this->m_Web) {
             json["Web"] = convertUtf16(*(this->m_Web));
         }
+        if (this->m_XmlAlpha) {
+            json["XmlAlpha"] = *(this->m_XmlAlpha);
+        }
+        if (this->m_XmlAlphaSpecified) {
+            json["XmlAlphaSpecified"] = *(this->m_XmlAlphaSpecified);
+        }
     }
 
     void XmlColor::fromJson(const void* jsonIfc)
@@ -26623,6 +26272,16 @@ namespace aspose::words::cloud::models {
         if (json.contains("Web") && !json["Web"].is_null()) {
             this->m_Web = std::make_shared< std::wstring >(
                 convertUtf8( json["Web"].get< std::string >() )
+            );
+        }
+        if (json.contains("XmlAlpha") && !json["XmlAlpha"].is_null()) {
+            this->m_XmlAlpha = std::make_shared< int32_t >(
+                json["XmlAlpha"].get< int32_t >()
+            );
+        }
+        if (json.contains("XmlAlphaSpecified") && !json["XmlAlphaSpecified"].is_null()) {
+            this->m_XmlAlphaSpecified = std::make_shared< bool >(
+                json["XmlAlphaSpecified"].get< bool >()
             );
         }
     }
@@ -26651,6 +26310,24 @@ namespace aspose::words::cloud::models {
     {
         this->m_Web = value;
     }
+
+
+    std::shared_ptr< int32_t > XmlColor::getXmlAlpha() const
+    {
+        return this->m_XmlAlpha;
+    }
+
+    void XmlColor::setXmlAlpha(std::shared_ptr< int32_t > value)
+    {
+        this->m_XmlAlpha = value;
+    }
+
+
+    std::shared_ptr< bool > XmlColor::getXmlAlphaSpecified() const
+    {
+        return this->m_XmlAlphaSpecified;
+    }
+
 
 
 

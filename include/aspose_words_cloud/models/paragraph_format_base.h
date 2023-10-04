@@ -517,11 +517,13 @@ namespace aspose::words::cloud::models {
 
         /// <summary>
         /// Gets or sets a value indicating whether this is a right-to-left paragraph.
+        /// When true, the runs and other inline objects in this paragraph are laid out right to left.
         /// </summary>
         ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< bool > getBidi() const;
 
         /// <summary>
         /// Gets or sets a value indicating whether this is a right-to-left paragraph.
+        /// When true, the runs and other inline objects in this paragraph are laid out right to left.
         /// </summary>
         ASPOSE_WORDS_CLOUD_EXPORT virtual void setBidi(std::shared_ptr< bool > value);
 
@@ -585,11 +587,13 @@ namespace aspose::words::cloud::models {
 
         /// <summary>
         /// Gets or sets the line spacing (in points) for the paragraph.
+        /// When LineSpacingRule property is set to AtLeast, the line spacing can be greater than or equal to, but never less than the specified LineSpacing value.When LineSpacingRule property is set to Exactly, the line spacing never changes from the specified LineSpacing value, even if a larger font is used within the paragraph.
         /// </summary>
         ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< double > getLineSpacing() const;
 
         /// <summary>
         /// Gets or sets the line spacing (in points) for the paragraph.
+        /// When LineSpacingRule property is set to AtLeast, the line spacing can be greater than or equal to, but never less than the specified LineSpacing value.When LineSpacingRule property is set to Exactly, the line spacing never changes from the specified LineSpacing value, even if a larger font is used within the paragraph.
         /// </summary>
         ASPOSE_WORDS_CLOUD_EXPORT virtual void setLineSpacing(std::shared_ptr< double > value);
 
@@ -618,11 +622,13 @@ namespace aspose::words::cloud::models {
 
         /// <summary>
         /// Gets or sets a value indicating whether SpaceBefore and SpaceAfter will be ignored between the paragraphs of the same style.
+        /// This setting only takes affect when applied to a paragraph style. If applied to a paragraph directly, it has no effect.
         /// </summary>
         ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< bool > getNoSpaceBetweenParagraphsOfSameStyle() const;
 
         /// <summary>
         /// Gets or sets a value indicating whether SpaceBefore and SpaceAfter will be ignored between the paragraphs of the same style.
+        /// This setting only takes affect when applied to a paragraph style. If applied to a paragraph directly, it has no effect.
         /// </summary>
         ASPOSE_WORDS_CLOUD_EXPORT virtual void setNoSpaceBetweenParagraphsOfSameStyle(std::shared_ptr< bool > value);
 
@@ -662,44 +668,52 @@ namespace aspose::words::cloud::models {
 
         /// <summary>
         /// Gets or sets the amount of spacing (in points) after the paragraph.
+        /// Has no effect when SpaceAfterAuto is true.
         /// </summary>
         ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< double > getSpaceAfter() const;
 
         /// <summary>
         /// Gets or sets the amount of spacing (in points) after the paragraph.
+        /// Has no effect when SpaceAfterAuto is true.
         /// </summary>
         ASPOSE_WORDS_CLOUD_EXPORT virtual void setSpaceAfter(std::shared_ptr< double > value);
 
 
         /// <summary>
         /// Gets or sets a value indicating whether the amount of spacing after the paragraph is set automatically.
+        /// When set to true, overrides the effect of SpaceAfter.
         /// </summary>
         ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< bool > getSpaceAfterAuto() const;
 
         /// <summary>
         /// Gets or sets a value indicating whether the amount of spacing after the paragraph is set automatically.
+        /// When set to true, overrides the effect of SpaceAfter.
         /// </summary>
         ASPOSE_WORDS_CLOUD_EXPORT virtual void setSpaceAfterAuto(std::shared_ptr< bool > value);
 
 
         /// <summary>
         /// Gets or sets the amount of spacing (in points) before the paragraph.
+        /// Has no effect when SpaceBeforeAuto is true.
         /// </summary>
         ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< double > getSpaceBefore() const;
 
         /// <summary>
         /// Gets or sets the amount of spacing (in points) before the paragraph.
+        /// Has no effect when SpaceBeforeAuto is true.
         /// </summary>
         ASPOSE_WORDS_CLOUD_EXPORT virtual void setSpaceBefore(std::shared_ptr< double > value);
 
 
         /// <summary>
         /// Gets or sets a value indicating whether the amount of spacing before the paragraph is set automatically.
+        /// When set to true, overrides the effect of SpaceBefore.
         /// </summary>
         ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< bool > getSpaceBeforeAuto() const;
 
         /// <summary>
         /// Gets or sets a value indicating whether the amount of spacing before the paragraph is set automatically.
+        /// When set to true, overrides the effect of SpaceBefore.
         /// </summary>
         ASPOSE_WORDS_CLOUD_EXPORT virtual void setSpaceBeforeAuto(std::shared_ptr< bool > value);
 
