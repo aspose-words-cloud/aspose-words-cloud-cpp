@@ -4261,6 +4261,7 @@ namespace aspose::words::cloud::api {
         /// <param name="tiffBinarizationMethod">The optional TIFF binarization method. Possible values are: FloydSteinbergDithering, Threshold.</param>
         /// <param name="zipOutput">The flag indicating whether to ZIP the output.</param>
         /// <param name="fontsLocation">Folder in filestorage with custom fonts.</param>
+        [[deprecated("This operation will be removed in the future.")]]
         ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::SaveResponse > saveAsTiff(std::shared_ptr<aspose::words::cloud::requests::SaveAsTiffRequest> request);
 
         /// <summary>
@@ -4289,6 +4290,7 @@ namespace aspose::words::cloud::api {
         /// <param name="tiffBinarizationMethod">The optional TIFF binarization method. Possible values are: FloydSteinbergDithering, Threshold.</param>
         /// <param name="zipOutput">The flag indicating whether to ZIP the output.</param>
         /// <param name="fontsLocation">Folder in filestorage with custom fonts.</param>
+        [[deprecated("This operation will be removed in the future.")]]
         ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr<aspose::words::cloud::responses::SaveAsTiffOnlineResponse> saveAsTiffOnline(std::shared_ptr<aspose::words::cloud::requests::SaveAsTiffOnlineRequest> request);
 
         /// <summary>
