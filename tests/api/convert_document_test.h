@@ -141,6 +141,91 @@ TEST_F(ConvertDocumentTests, TestSaveAsDocx) {
 }
 
 /// <summary>
+/// Test for converting document to one of the available formats.
+/// </summary>
+TEST_F(ConvertDocumentTests, TestSaveAsTiff) {
+    std::wstring localName = L"test_multi_pages.docx";
+    std::wstring remoteName = L"TestSaveAsTiff.pdf";
+
+    uploadFileToStorage(
+        localTestDataFolder + L"/" + L"Common/" + localName,
+        remoteFolder + L"/" + remoteName
+    );
+
+    auto requestSaveOptions = std::make_shared< aspose::words::cloud::models::TiffSaveOptionsData >();
+    requestSaveOptions->setFileName(std::make_shared< std::wstring >(baseTestOutPath + L"/abc.tiff"));
+    std::shared_ptr<requests::SaveAsTiffRequest> request(new requests::SaveAsTiffRequest(
+        std::make_shared< std::wstring >(remoteName),
+        requestSaveOptions,
+        std::make_shared< std::wstring >(remoteFolder),
+        nullptr,
+        nullptr,
+        nullptr,
+        nullptr,
+        nullptr,
+        nullptr,
+        nullptr,
+        nullptr,
+        nullptr,
+        nullptr,
+        nullptr,
+        nullptr,
+        nullptr,
+        nullptr,
+        nullptr,
+        nullptr,
+        nullptr,
+        nullptr,
+        nullptr,
+        nullptr,
+        nullptr,
+        nullptr
+    ));
+
+    auto actual = getApi()->saveAsTiff(request);
+    ASSERT_TRUE(actual->getSaveResult() != nullptr);
+    ASSERT_TRUE(actual->getSaveResult()->getDestDocument() != nullptr);
+}
+
+/// <summary>
+/// Test for converting document to one of the available formats.
+/// </summary>
+TEST_F(ConvertDocumentTests, TestSaveAsTiffOnline) {
+    std::wstring localName = L"test_multi_pages.docx";
+
+    auto requestDocument = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(L"Common/" + localName)), std::istream::binary));
+    auto requestSaveOptions = std::make_shared< aspose::words::cloud::models::TiffSaveOptionsData >();
+    requestSaveOptions->setFileName(std::make_shared< std::wstring >(baseTestOutPath + L"/abc.tiff"));
+    std::shared_ptr<requests::SaveAsTiffOnlineRequest> request(new requests::SaveAsTiffOnlineRequest(
+        requestDocument,
+        requestSaveOptions,
+        nullptr,
+        nullptr,
+        nullptr,
+        nullptr,
+        nullptr,
+        nullptr,
+        nullptr,
+        nullptr,
+        nullptr,
+        nullptr,
+        nullptr,
+        nullptr,
+        nullptr,
+        nullptr,
+        nullptr,
+        nullptr,
+        nullptr,
+        nullptr,
+        nullptr,
+        nullptr,
+        nullptr
+    ));
+
+    auto actual = getApi()->saveAsTiffOnline(request);
+}
+
+/// <summary>
 /// A test for ConvertDocument.
 /// </summary>
 TEST_F(ConvertDocumentTests, TestConvertDocument) {
