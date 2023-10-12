@@ -31,6 +31,7 @@
 namespace aspose::words::cloud::models {
     /// <summary>
     /// The REST response with a collection of StructuredDocumentTags.
+    /// This response should be returned by the service when handling: GET /structuredDocumentTags.
     /// </summary>
     class StructuredDocumentTagsResponse : public WordsResponse
     {

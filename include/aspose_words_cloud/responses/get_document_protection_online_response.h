@@ -32,10 +32,10 @@ namespace aspose::words::cloud::responses {
     public: 
         ASPOSE_WORDS_CLOUD_EXPORT virtual ~GetDocumentProtectionOnlineResponse() = default;
 
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::ProtectionDataResponse > getResult() const;
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::ProtectionDataResponse > getModel() const;
 
         ASPOSE_WORDS_CLOUD_EXPORT virtual void deserialize(const std::string& contentType, const std::string_view& response) override;
     private:
-        std::shared_ptr< aspose::words::cloud::models::ProtectionDataResponse > m_Result;
+        std::shared_ptr< aspose::words::cloud::models::ProtectionDataResponse > m_Model;
     };
 }

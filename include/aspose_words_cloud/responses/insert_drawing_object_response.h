@@ -32,10 +32,10 @@ namespace aspose::words::cloud::responses {
     public: 
         ASPOSE_WORDS_CLOUD_EXPORT virtual ~InsertDrawingObjectResponse() = default;
 
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::DrawingObjectResponse > getResult() const;
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::DrawingObjectResponse > getModel() const;
 
         ASPOSE_WORDS_CLOUD_EXPORT virtual void deserialize(const std::string& contentType, const std::string_view& response) override;
     private:
-        std::shared_ptr< aspose::words::cloud::models::DrawingObjectResponse > m_Result;
+        std::shared_ptr< aspose::words::cloud::models::DrawingObjectResponse > m_Model;
     };
 }

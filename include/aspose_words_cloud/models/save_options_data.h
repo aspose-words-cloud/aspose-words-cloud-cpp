@@ -36,6 +36,7 @@ namespace aspose::words::cloud::models {
     public:
         /// <summary>
         /// Gets or sets the value determining how 3D effects are rendered.
+        /// The default value is Aspose.Words.Saving.Dml3DEffectsRenderingMode.Basic.
         /// </summary>
         enum class Dml3DEffectsRenderingMode
         { 
@@ -46,6 +47,8 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the value determining how DrawingML effects are rendered.
         /// { Simplified | None | Fine }.
+        /// The default value is Simplified.
+        /// This property is used when the document is exported to fixed page formats.
         /// </summary>
         enum class DmlEffectsRenderingMode
         { 
@@ -56,6 +59,8 @@ namespace aspose::words::cloud::models {
 
         /// <summary>
         /// Gets or sets the option that controls how DrawingML shapes are rendered.
+        /// { Fallback | DrawingML }. The default value is Fallback.
+        /// This property is used when the document is exported to fixed page formats.
         /// </summary>
         enum class DmlRenderingMode
         { 
@@ -65,6 +70,7 @@ namespace aspose::words::cloud::models {
 
         /// <summary>
         /// Gets or sets the value determining how ink (InkML) objects are rendered.
+        /// The default value is Aspose.Words.Saving.ImlRenderingMode.InkML.
         /// </summary>
         enum class ImlRenderingMode
         { 
@@ -82,11 +88,17 @@ namespace aspose::words::cloud::models {
 
         /// <summary>
         /// Gets or sets a boolean value indicating whether to allow embedding fonts with PostScript outlines when embedding TrueType fonts in a document upon it is saved. The default value is false..
+        /// Note, Word does not embed PostScript fonts, but can open documents with embedded fonts of this type.
+        /// This option only works when Aspose.Words.Fonts.FontInfoCollection.EmbedTrueTypeFonts of the Aspose.Words.DocumentBase.FontInfos property is set to true.
+        /// The default value is false.
         /// </summary>
         ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< bool > getAllowEmbeddingPostScriptFonts() const;
 
         /// <summary>
         /// Gets or sets a boolean value indicating whether to allow embedding fonts with PostScript outlines when embedding TrueType fonts in a document upon it is saved. The default value is false..
+        /// Note, Word does not embed PostScript fonts, but can open documents with embedded fonts of this type.
+        /// This option only works when Aspose.Words.Fonts.FontInfoCollection.EmbedTrueTypeFonts of the Aspose.Words.DocumentBase.FontInfos property is set to true.
+        /// The default value is false.
         /// </summary>
         ASPOSE_WORDS_CLOUD_EXPORT virtual void setAllowEmbeddingPostScriptFonts(std::shared_ptr< bool > value);
 
@@ -104,11 +116,13 @@ namespace aspose::words::cloud::models {
 
         /// <summary>
         /// Gets or sets the value determining how 3D effects are rendered.
+        /// The default value is Aspose.Words.Saving.Dml3DEffectsRenderingMode.Basic.
         /// </summary>
         ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< aspose::words::cloud::models::SaveOptionsData::Dml3DEffectsRenderingMode > getDml3DEffectsRenderingMode() const;
 
         /// <summary>
         /// Gets or sets the value determining how 3D effects are rendered.
+        /// The default value is Aspose.Words.Saving.Dml3DEffectsRenderingMode.Basic.
         /// </summary>
         ASPOSE_WORDS_CLOUD_EXPORT virtual void setDml3DEffectsRenderingMode(std::shared_ptr< aspose::words::cloud::models::SaveOptionsData::Dml3DEffectsRenderingMode > value);
 
@@ -116,23 +130,31 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the value determining how DrawingML effects are rendered.
         /// { Simplified | None | Fine }.
+        /// The default value is Simplified.
+        /// This property is used when the document is exported to fixed page formats.
         /// </summary>
         ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< aspose::words::cloud::models::SaveOptionsData::DmlEffectsRenderingMode > getDmlEffectsRenderingMode() const;
 
         /// <summary>
         /// Gets or sets the value determining how DrawingML effects are rendered.
         /// { Simplified | None | Fine }.
+        /// The default value is Simplified.
+        /// This property is used when the document is exported to fixed page formats.
         /// </summary>
         ASPOSE_WORDS_CLOUD_EXPORT virtual void setDmlEffectsRenderingMode(std::shared_ptr< aspose::words::cloud::models::SaveOptionsData::DmlEffectsRenderingMode > value);
 
 
         /// <summary>
         /// Gets or sets the option that controls how DrawingML shapes are rendered.
+        /// { Fallback | DrawingML }. The default value is Fallback.
+        /// This property is used when the document is exported to fixed page formats.
         /// </summary>
         ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< aspose::words::cloud::models::SaveOptionsData::DmlRenderingMode > getDmlRenderingMode() const;
 
         /// <summary>
         /// Gets or sets the option that controls how DrawingML shapes are rendered.
+        /// { Fallback | DrawingML }. The default value is Fallback.
+        /// This property is used when the document is exported to fixed page formats.
         /// </summary>
         ASPOSE_WORDS_CLOUD_EXPORT virtual void setDmlRenderingMode(std::shared_ptr< aspose::words::cloud::models::SaveOptionsData::DmlRenderingMode > value);
 
@@ -150,11 +172,13 @@ namespace aspose::words::cloud::models {
 
         /// <summary>
         /// Gets or sets the value determining how ink (InkML) objects are rendered.
+        /// The default value is Aspose.Words.Saving.ImlRenderingMode.InkML.
         /// </summary>
         ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< aspose::words::cloud::models::SaveOptionsData::ImlRenderingMode > getImlRenderingMode() const;
 
         /// <summary>
         /// Gets or sets the value determining how ink (InkML) objects are rendered.
+        /// The default value is Aspose.Words.Saving.ImlRenderingMode.InkML.
         /// </summary>
         ASPOSE_WORDS_CLOUD_EXPORT virtual void setImlRenderingMode(std::shared_ptr< aspose::words::cloud::models::SaveOptionsData::ImlRenderingMode > value);
 
@@ -196,11 +220,13 @@ namespace aspose::words::cloud::models {
 
         /// <summary>
         /// Gets or sets a value indicating whether the Aspose.Words.Properties.BuiltInDocumentProperties.LastSavedTime property is updated before saving.
+        /// The default value is false.
         /// </summary>
         ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< bool > getUpdateLastSavedTimeProperty() const;
 
         /// <summary>
         /// Gets or sets a value indicating whether the Aspose.Words.Properties.BuiltInDocumentProperties.LastSavedTime property is updated before saving.
+        /// The default value is false.
         /// </summary>
         ASPOSE_WORDS_CLOUD_EXPORT virtual void setUpdateLastSavedTimeProperty(std::shared_ptr< bool > value);
 
@@ -208,12 +234,14 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets a value indicating whether to zip output or not.
         /// The default value is false.
+        /// When set to true, output files will be zipped.
         /// </summary>
         ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< bool > getZipOutput() const;
 
         /// <summary>
         /// Gets or sets a value indicating whether to zip output or not.
         /// The default value is false.
+        /// When set to true, output files will be zipped.
         /// </summary>
         ASPOSE_WORDS_CLOUD_EXPORT virtual void setZipOutput(std::shared_ptr< bool > value);
 

@@ -42,33 +42,39 @@ namespace aspose::words::cloud::models {
 
         /// <summary>
         /// Gets or sets a value indicating whether images should be downsampled.
+        /// The default value is true.
         /// </summary>
         ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< bool > getDownsampleImages() const;
 
         /// <summary>
         /// Gets or sets a value indicating whether images should be downsampled.
+        /// The default value is true.
         /// </summary>
         ASPOSE_WORDS_CLOUD_EXPORT virtual void setDownsampleImages(std::shared_ptr< bool > value);
 
 
         /// <summary>
         /// Gets or sets the resolution in pixels per inch which the images should be downsampled to.
+        /// The default value is 220 ppi.
         /// </summary>
         ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< int32_t > getResolution() const;
 
         /// <summary>
         /// Gets or sets the resolution in pixels per inch which the images should be downsampled to.
+        /// The default value is 220 ppi.
         /// </summary>
         ASPOSE_WORDS_CLOUD_EXPORT virtual void setResolution(std::shared_ptr< int32_t > value);
 
 
         /// <summary>
         /// Gets or sets the threshold resolution in pixels per inch. If resolution of an image in the document is less than threshold value, the downsampling algorithm will not be applied. A value of 0 means the threshold check is not used and all images that can be reduced in size are downsampled.
+        /// The default value is 0.
         /// </summary>
         ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< int32_t > getResolutionThreshold() const;
 
         /// <summary>
         /// Gets or sets the threshold resolution in pixels per inch. If resolution of an image in the document is less than threshold value, the downsampling algorithm will not be applied. A value of 0 means the threshold check is not used and all images that can be reduced in size are downsampled.
+        /// The default value is 0.
         /// </summary>
         ASPOSE_WORDS_CLOUD_EXPORT virtual void setResolutionThreshold(std::shared_ptr< int32_t > value);
 

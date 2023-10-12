@@ -37,6 +37,7 @@ namespace aspose::words::cloud::models {
     public:
         /// <summary>
         /// Gets or sets the option that controls how an inline table is aligned in the document.
+        /// The default value is Left.
         /// </summary>
         enum class Alignment
         { 
@@ -465,33 +466,39 @@ namespace aspose::words::cloud::models {
 
         /// <summary>
         /// Gets or sets the option that controls how an inline table is aligned in the document.
+        /// The default value is Left.
         /// </summary>
         ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< aspose::words::cloud::models::TableProperties::Alignment > getAlignment() const;
 
         /// <summary>
         /// Gets or sets the option that controls how an inline table is aligned in the document.
+        /// The default value is Left.
         /// </summary>
         ASPOSE_WORDS_CLOUD_EXPORT virtual void setAlignment(std::shared_ptr< aspose::words::cloud::models::TableProperties::Alignment > value);
 
 
         /// <summary>
         /// Gets or sets a value indicating whether to automatically resize cells in a table to fit their contents.
+        /// The default value is true.
         /// </summary>
         ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< bool > getAllowAutoFit() const;
 
         /// <summary>
         /// Gets or sets a value indicating whether to automatically resize cells in a table to fit their contents.
+        /// The default value is true.
         /// </summary>
         ASPOSE_WORDS_CLOUD_EXPORT virtual void setAllowAutoFit(std::shared_ptr< bool > value);
 
 
         /// <summary>
         /// Gets or sets a value indicating whether this is a right-to-left table.
+        /// When true, the cells in this row are laid out right to left.The default value is false.
         /// </summary>
         ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< bool > getBidi() const;
 
         /// <summary>
         /// Gets or sets a value indicating whether this is a right-to-left table.
+        /// When true, the cells in this row are laid out right to left.The default value is false.
         /// </summary>
         ASPOSE_WORDS_CLOUD_EXPORT virtual void setBidi(std::shared_ptr< bool > value);
 

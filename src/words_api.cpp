@@ -37,7 +37,7 @@ namespace aspose::words::cloud::api {
             throw aspose::words::cloud::ApiException(response->getStatusCode(), response->getErrorMessage());
         }
 
-        return response->getResult();
+        return response->getModel();
     }
 
     std::shared_ptr<aspose::words::cloud::responses::AcceptAllRevisionsOnlineResponse> WordsApi::acceptAllRevisionsOnline(std::shared_ptr<aspose::words::cloud::requests::AcceptAllRevisionsOnlineRequest> request)
@@ -59,7 +59,7 @@ namespace aspose::words::cloud::api {
             throw aspose::words::cloud::ApiException(response->getStatusCode(), response->getErrorMessage());
         }
 
-        return response->getResult();
+        return response->getModel();
     }
 
     std::shared_ptr<aspose::words::cloud::responses::AppendDocumentOnlineResponse> WordsApi::appendDocumentOnline(std::shared_ptr<aspose::words::cloud::requests::AppendDocumentOnlineRequest> request)
@@ -81,7 +81,7 @@ namespace aspose::words::cloud::api {
             throw aspose::words::cloud::ApiException(response->getStatusCode(), response->getErrorMessage());
         }
 
-        return response->getResult();
+        return response->getModel();
     }
 
     std::shared_ptr<aspose::words::cloud::responses::ApplyStyleToDocumentElementOnlineResponse> WordsApi::applyStyleToDocumentElementOnline(std::shared_ptr<aspose::words::cloud::requests::ApplyStyleToDocumentElementOnlineRequest> request)
@@ -103,7 +103,7 @@ namespace aspose::words::cloud::api {
             throw aspose::words::cloud::ApiException(response->getStatusCode(), response->getErrorMessage());
         }
 
-        return response->getResult();
+        return response->getModel();
     }
 
     std::shared_ptr< std::istream > WordsApi::buildReportOnline(std::shared_ptr<aspose::words::cloud::requests::BuildReportOnlineRequest> request)
@@ -114,7 +114,7 @@ namespace aspose::words::cloud::api {
             throw aspose::words::cloud::ApiException(response->getStatusCode(), response->getErrorMessage());
         }
 
-        return response->getResult();
+        return response->getModel();
     }
 
     std::shared_ptr< aspose::words::cloud::models::ClassificationResponse > WordsApi::classify(std::shared_ptr<aspose::words::cloud::requests::ClassifyRequest> request)
@@ -125,7 +125,7 @@ namespace aspose::words::cloud::api {
             throw aspose::words::cloud::ApiException(response->getStatusCode(), response->getErrorMessage());
         }
 
-        return response->getResult();
+        return response->getModel();
     }
 
     std::shared_ptr< aspose::words::cloud::models::ClassificationResponse > WordsApi::classifyDocument(std::shared_ptr<aspose::words::cloud::requests::ClassifyDocumentRequest> request)
@@ -136,7 +136,7 @@ namespace aspose::words::cloud::api {
             throw aspose::words::cloud::ApiException(response->getStatusCode(), response->getErrorMessage());
         }
 
-        return response->getResult();
+        return response->getModel();
     }
 
     std::shared_ptr< aspose::words::cloud::models::ClassificationResponse > WordsApi::classifyDocumentOnline(std::shared_ptr<aspose::words::cloud::requests::ClassifyDocumentOnlineRequest> request)
@@ -147,7 +147,7 @@ namespace aspose::words::cloud::api {
             throw aspose::words::cloud::ApiException(response->getStatusCode(), response->getErrorMessage());
         }
 
-        return response->getResult();
+        return response->getModel();
     }
 
     std::shared_ptr< aspose::words::cloud::models::DocumentResponse > WordsApi::compareDocument(std::shared_ptr<aspose::words::cloud::requests::CompareDocumentRequest> request)
@@ -158,7 +158,7 @@ namespace aspose::words::cloud::api {
             throw aspose::words::cloud::ApiException(response->getStatusCode(), response->getErrorMessage());
         }
 
-        return response->getResult();
+        return response->getModel();
     }
 
     std::shared_ptr<aspose::words::cloud::responses::CompareDocumentOnlineResponse> WordsApi::compareDocumentOnline(std::shared_ptr<aspose::words::cloud::requests::CompareDocumentOnlineRequest> request)
@@ -180,7 +180,7 @@ namespace aspose::words::cloud::api {
             throw aspose::words::cloud::ApiException(response->getStatusCode(), response->getErrorMessage());
         }
 
-        return response->getResult();
+        return response->getModel();
     }
 
     std::shared_ptr<aspose::words::cloud::responses::CompressDocumentOnlineResponse> WordsApi::compressDocumentOnline(std::shared_ptr<aspose::words::cloud::requests::CompressDocumentOnlineRequest> request)
@@ -202,7 +202,7 @@ namespace aspose::words::cloud::api {
             throw aspose::words::cloud::ApiException(response->getStatusCode(), response->getErrorMessage());
         }
 
-        return response->getResult();
+        return response->getModel();
     }
 
     void WordsApi::copyFile(std::shared_ptr<aspose::words::cloud::requests::CopyFileRequest> request)
@@ -231,7 +231,7 @@ namespace aspose::words::cloud::api {
             throw aspose::words::cloud::ApiException(response->getStatusCode(), response->getErrorMessage());
         }
 
-        return response->getResult();
+        return response->getModel();
     }
 
     std::shared_ptr<aspose::words::cloud::responses::CopyStyleOnlineResponse> WordsApi::copyStyleOnline(std::shared_ptr<aspose::words::cloud::requests::CopyStyleOnlineRequest> request)
@@ -253,7 +253,7 @@ namespace aspose::words::cloud::api {
             throw aspose::words::cloud::ApiException(response->getStatusCode(), response->getErrorMessage());
         }
 
-        return response->getResult();
+        return response->getModel();
     }
 
     std::shared_ptr< aspose::words::cloud::models::DocumentResponse > WordsApi::createDocument(std::shared_ptr<aspose::words::cloud::requests::CreateDocumentRequest> request)
@@ -264,7 +264,7 @@ namespace aspose::words::cloud::api {
             throw aspose::words::cloud::ApiException(response->getStatusCode(), response->getErrorMessage());
         }
 
-        return response->getResult();
+        return response->getModel();
     }
 
     void WordsApi::createFolder(std::shared_ptr<aspose::words::cloud::requests::CreateFolderRequest> request)
@@ -284,7 +284,7 @@ namespace aspose::words::cloud::api {
             throw aspose::words::cloud::ApiException(response->getStatusCode(), response->getErrorMessage());
         }
 
-        return response->getResult();
+        return response->getModel();
     }
 
     std::shared_ptr<aspose::words::cloud::responses::CreateOrUpdateDocumentPropertyOnlineResponse> WordsApi::createOrUpdateDocumentPropertyOnline(std::shared_ptr<aspose::words::cloud::requests::CreateOrUpdateDocumentPropertyOnlineRequest> request)
@@ -306,7 +306,7 @@ namespace aspose::words::cloud::api {
             throw aspose::words::cloud::ApiException(response->getStatusCode(), response->getErrorMessage());
         }
 
-        return response->getResult();
+        return response->getModel();
     }
 
     std::shared_ptr<aspose::words::cloud::responses::DeleteAllParagraphTabStopsOnlineResponse> WordsApi::deleteAllParagraphTabStopsOnline(std::shared_ptr<aspose::words::cloud::requests::DeleteAllParagraphTabStopsOnlineRequest> request)
@@ -368,7 +368,7 @@ namespace aspose::words::cloud::api {
             throw aspose::words::cloud::ApiException(response->getStatusCode(), response->getErrorMessage());
         }
 
-        return response->getResult();
+        return response->getModel();
     }
 
     std::shared_ptr<aspose::words::cloud::responses::DeleteBorderOnlineResponse> WordsApi::deleteBorderOnline(std::shared_ptr<aspose::words::cloud::requests::DeleteBorderOnlineRequest> request)
@@ -390,7 +390,7 @@ namespace aspose::words::cloud::api {
             throw aspose::words::cloud::ApiException(response->getStatusCode(), response->getErrorMessage());
         }
 
-        return response->getResult();
+        return response->getModel();
     }
 
     std::shared_ptr<aspose::words::cloud::responses::DeleteBordersOnlineResponse> WordsApi::deleteBordersOnline(std::shared_ptr<aspose::words::cloud::requests::DeleteBordersOnlineRequest> request)
@@ -719,7 +719,7 @@ namespace aspose::words::cloud::api {
             throw aspose::words::cloud::ApiException(response->getStatusCode(), response->getErrorMessage());
         }
 
-        return response->getResult();
+        return response->getModel();
     }
 
     std::shared_ptr<aspose::words::cloud::responses::DeleteParagraphListFormatOnlineResponse> WordsApi::deleteParagraphListFormatOnline(std::shared_ptr<aspose::words::cloud::requests::DeleteParagraphListFormatOnlineRequest> request)
@@ -752,7 +752,7 @@ namespace aspose::words::cloud::api {
             throw aspose::words::cloud::ApiException(response->getStatusCode(), response->getErrorMessage());
         }
 
-        return response->getResult();
+        return response->getModel();
     }
 
     std::shared_ptr<aspose::words::cloud::responses::DeleteParagraphTabStopOnlineResponse> WordsApi::deleteParagraphTabStopOnline(std::shared_ptr<aspose::words::cloud::requests::DeleteParagraphTabStopOnlineRequest> request)
@@ -894,7 +894,7 @@ namespace aspose::words::cloud::api {
             throw aspose::words::cloud::ApiException(response->getStatusCode(), response->getErrorMessage());
         }
 
-        return response->getResult();
+        return response->getModel();
     }
 
     std::shared_ptr<aspose::words::cloud::responses::DeleteWatermarkOnlineResponse> WordsApi::deleteWatermarkOnline(std::shared_ptr<aspose::words::cloud::requests::DeleteWatermarkOnlineRequest> request)
@@ -916,7 +916,7 @@ namespace aspose::words::cloud::api {
             throw aspose::words::cloud::ApiException(response->getStatusCode(), response->getErrorMessage());
         }
 
-        return response->getResult();
+        return response->getModel();
     }
 
     std::shared_ptr< aspose::words::cloud::models::DocumentResponse > WordsApi::executeMailMerge(std::shared_ptr<aspose::words::cloud::requests::ExecuteMailMergeRequest> request)
@@ -927,7 +927,7 @@ namespace aspose::words::cloud::api {
             throw aspose::words::cloud::ApiException(response->getStatusCode(), response->getErrorMessage());
         }
 
-        return response->getResult();
+        return response->getModel();
     }
 
     std::shared_ptr< std::istream > WordsApi::executeMailMergeOnline(std::shared_ptr<aspose::words::cloud::requests::ExecuteMailMergeOnlineRequest> request)
@@ -938,7 +938,7 @@ namespace aspose::words::cloud::api {
             throw aspose::words::cloud::ApiException(response->getStatusCode(), response->getErrorMessage());
         }
 
-        return response->getResult();
+        return response->getModel();
     }
 
     std::shared_ptr< aspose::words::cloud::models::AvailableFontsResponse > WordsApi::getAvailableFonts(std::shared_ptr<aspose::words::cloud::requests::GetAvailableFontsRequest> request)
@@ -949,7 +949,7 @@ namespace aspose::words::cloud::api {
             throw aspose::words::cloud::ApiException(response->getStatusCode(), response->getErrorMessage());
         }
 
-        return response->getResult();
+        return response->getModel();
     }
 
     std::shared_ptr< aspose::words::cloud::models::BookmarkResponse > WordsApi::getBookmarkByName(std::shared_ptr<aspose::words::cloud::requests::GetBookmarkByNameRequest> request)
@@ -960,7 +960,7 @@ namespace aspose::words::cloud::api {
             throw aspose::words::cloud::ApiException(response->getStatusCode(), response->getErrorMessage());
         }
 
-        return response->getResult();
+        return response->getModel();
     }
 
     std::shared_ptr< aspose::words::cloud::models::BookmarkResponse > WordsApi::getBookmarkByNameOnline(std::shared_ptr<aspose::words::cloud::requests::GetBookmarkByNameOnlineRequest> request)
@@ -971,7 +971,7 @@ namespace aspose::words::cloud::api {
             throw aspose::words::cloud::ApiException(response->getStatusCode(), response->getErrorMessage());
         }
 
-        return response->getResult();
+        return response->getModel();
     }
 
     std::shared_ptr< aspose::words::cloud::models::BookmarksResponse > WordsApi::getBookmarks(std::shared_ptr<aspose::words::cloud::requests::GetBookmarksRequest> request)
@@ -982,7 +982,7 @@ namespace aspose::words::cloud::api {
             throw aspose::words::cloud::ApiException(response->getStatusCode(), response->getErrorMessage());
         }
 
-        return response->getResult();
+        return response->getModel();
     }
 
     std::shared_ptr< aspose::words::cloud::models::BookmarksResponse > WordsApi::getBookmarksOnline(std::shared_ptr<aspose::words::cloud::requests::GetBookmarksOnlineRequest> request)
@@ -993,7 +993,7 @@ namespace aspose::words::cloud::api {
             throw aspose::words::cloud::ApiException(response->getStatusCode(), response->getErrorMessage());
         }
 
-        return response->getResult();
+        return response->getModel();
     }
 
     std::shared_ptr< aspose::words::cloud::models::BorderResponse > WordsApi::getBorder(std::shared_ptr<aspose::words::cloud::requests::GetBorderRequest> request)
@@ -1004,7 +1004,7 @@ namespace aspose::words::cloud::api {
             throw aspose::words::cloud::ApiException(response->getStatusCode(), response->getErrorMessage());
         }
 
-        return response->getResult();
+        return response->getModel();
     }
 
     std::shared_ptr< aspose::words::cloud::models::BorderResponse > WordsApi::getBorderOnline(std::shared_ptr<aspose::words::cloud::requests::GetBorderOnlineRequest> request)
@@ -1015,7 +1015,7 @@ namespace aspose::words::cloud::api {
             throw aspose::words::cloud::ApiException(response->getStatusCode(), response->getErrorMessage());
         }
 
-        return response->getResult();
+        return response->getModel();
     }
 
     std::shared_ptr< aspose::words::cloud::models::BordersResponse > WordsApi::getBorders(std::shared_ptr<aspose::words::cloud::requests::GetBordersRequest> request)
@@ -1026,7 +1026,7 @@ namespace aspose::words::cloud::api {
             throw aspose::words::cloud::ApiException(response->getStatusCode(), response->getErrorMessage());
         }
 
-        return response->getResult();
+        return response->getModel();
     }
 
     std::shared_ptr< aspose::words::cloud::models::BordersResponse > WordsApi::getBordersOnline(std::shared_ptr<aspose::words::cloud::requests::GetBordersOnlineRequest> request)
@@ -1037,7 +1037,7 @@ namespace aspose::words::cloud::api {
             throw aspose::words::cloud::ApiException(response->getStatusCode(), response->getErrorMessage());
         }
 
-        return response->getResult();
+        return response->getModel();
     }
 
     std::shared_ptr< aspose::words::cloud::models::CommentResponse > WordsApi::getComment(std::shared_ptr<aspose::words::cloud::requests::GetCommentRequest> request)
@@ -1048,7 +1048,7 @@ namespace aspose::words::cloud::api {
             throw aspose::words::cloud::ApiException(response->getStatusCode(), response->getErrorMessage());
         }
 
-        return response->getResult();
+        return response->getModel();
     }
 
     std::shared_ptr< aspose::words::cloud::models::CommentResponse > WordsApi::getCommentOnline(std::shared_ptr<aspose::words::cloud::requests::GetCommentOnlineRequest> request)
@@ -1059,7 +1059,7 @@ namespace aspose::words::cloud::api {
             throw aspose::words::cloud::ApiException(response->getStatusCode(), response->getErrorMessage());
         }
 
-        return response->getResult();
+        return response->getModel();
     }
 
     std::shared_ptr< aspose::words::cloud::models::CommentsResponse > WordsApi::getComments(std::shared_ptr<aspose::words::cloud::requests::GetCommentsRequest> request)
@@ -1070,7 +1070,7 @@ namespace aspose::words::cloud::api {
             throw aspose::words::cloud::ApiException(response->getStatusCode(), response->getErrorMessage());
         }
 
-        return response->getResult();
+        return response->getModel();
     }
 
     std::shared_ptr< aspose::words::cloud::models::CommentsResponse > WordsApi::getCommentsOnline(std::shared_ptr<aspose::words::cloud::requests::GetCommentsOnlineRequest> request)
@@ -1081,7 +1081,7 @@ namespace aspose::words::cloud::api {
             throw aspose::words::cloud::ApiException(response->getStatusCode(), response->getErrorMessage());
         }
 
-        return response->getResult();
+        return response->getModel();
     }
 
     std::shared_ptr< aspose::words::cloud::models::CustomXmlPartResponse > WordsApi::getCustomXmlPart(std::shared_ptr<aspose::words::cloud::requests::GetCustomXmlPartRequest> request)
@@ -1092,7 +1092,7 @@ namespace aspose::words::cloud::api {
             throw aspose::words::cloud::ApiException(response->getStatusCode(), response->getErrorMessage());
         }
 
-        return response->getResult();
+        return response->getModel();
     }
 
     std::shared_ptr< aspose::words::cloud::models::CustomXmlPartResponse > WordsApi::getCustomXmlPartOnline(std::shared_ptr<aspose::words::cloud::requests::GetCustomXmlPartOnlineRequest> request)
@@ -1103,7 +1103,7 @@ namespace aspose::words::cloud::api {
             throw aspose::words::cloud::ApiException(response->getStatusCode(), response->getErrorMessage());
         }
 
-        return response->getResult();
+        return response->getModel();
     }
 
     std::shared_ptr< aspose::words::cloud::models::CustomXmlPartsResponse > WordsApi::getCustomXmlParts(std::shared_ptr<aspose::words::cloud::requests::GetCustomXmlPartsRequest> request)
@@ -1114,7 +1114,7 @@ namespace aspose::words::cloud::api {
             throw aspose::words::cloud::ApiException(response->getStatusCode(), response->getErrorMessage());
         }
 
-        return response->getResult();
+        return response->getModel();
     }
 
     std::shared_ptr< aspose::words::cloud::models::CustomXmlPartsResponse > WordsApi::getCustomXmlPartsOnline(std::shared_ptr<aspose::words::cloud::requests::GetCustomXmlPartsOnlineRequest> request)
@@ -1125,7 +1125,7 @@ namespace aspose::words::cloud::api {
             throw aspose::words::cloud::ApiException(response->getStatusCode(), response->getErrorMessage());
         }
 
-        return response->getResult();
+        return response->getModel();
     }
 
     std::shared_ptr< aspose::words::cloud::models::DocumentResponse > WordsApi::getDocument(std::shared_ptr<aspose::words::cloud::requests::GetDocumentRequest> request)
@@ -1136,7 +1136,7 @@ namespace aspose::words::cloud::api {
             throw aspose::words::cloud::ApiException(response->getStatusCode(), response->getErrorMessage());
         }
 
-        return response->getResult();
+        return response->getModel();
     }
 
     std::shared_ptr< aspose::words::cloud::models::DrawingObjectResponse > WordsApi::getDocumentDrawingObjectByIndex(std::shared_ptr<aspose::words::cloud::requests::GetDocumentDrawingObjectByIndexRequest> request)
@@ -1147,7 +1147,7 @@ namespace aspose::words::cloud::api {
             throw aspose::words::cloud::ApiException(response->getStatusCode(), response->getErrorMessage());
         }
 
-        return response->getResult();
+        return response->getModel();
     }
 
     std::shared_ptr< aspose::words::cloud::models::DrawingObjectResponse > WordsApi::getDocumentDrawingObjectByIndexOnline(std::shared_ptr<aspose::words::cloud::requests::GetDocumentDrawingObjectByIndexOnlineRequest> request)
@@ -1158,7 +1158,7 @@ namespace aspose::words::cloud::api {
             throw aspose::words::cloud::ApiException(response->getStatusCode(), response->getErrorMessage());
         }
 
-        return response->getResult();
+        return response->getModel();
     }
 
     std::shared_ptr< std::istream > WordsApi::getDocumentDrawingObjectImageData(std::shared_ptr<aspose::words::cloud::requests::GetDocumentDrawingObjectImageDataRequest> request)
@@ -1169,7 +1169,7 @@ namespace aspose::words::cloud::api {
             throw aspose::words::cloud::ApiException(response->getStatusCode(), response->getErrorMessage());
         }
 
-        return response->getResult();
+        return response->getModel();
     }
 
     std::shared_ptr< std::istream > WordsApi::getDocumentDrawingObjectImageDataOnline(std::shared_ptr<aspose::words::cloud::requests::GetDocumentDrawingObjectImageDataOnlineRequest> request)
@@ -1180,7 +1180,7 @@ namespace aspose::words::cloud::api {
             throw aspose::words::cloud::ApiException(response->getStatusCode(), response->getErrorMessage());
         }
 
-        return response->getResult();
+        return response->getModel();
     }
 
     std::shared_ptr< std::istream > WordsApi::getDocumentDrawingObjectOleData(std::shared_ptr<aspose::words::cloud::requests::GetDocumentDrawingObjectOleDataRequest> request)
@@ -1191,7 +1191,7 @@ namespace aspose::words::cloud::api {
             throw aspose::words::cloud::ApiException(response->getStatusCode(), response->getErrorMessage());
         }
 
-        return response->getResult();
+        return response->getModel();
     }
 
     std::shared_ptr< std::istream > WordsApi::getDocumentDrawingObjectOleDataOnline(std::shared_ptr<aspose::words::cloud::requests::GetDocumentDrawingObjectOleDataOnlineRequest> request)
@@ -1202,7 +1202,7 @@ namespace aspose::words::cloud::api {
             throw aspose::words::cloud::ApiException(response->getStatusCode(), response->getErrorMessage());
         }
 
-        return response->getResult();
+        return response->getModel();
     }
 
     std::shared_ptr< aspose::words::cloud::models::DrawingObjectsResponse > WordsApi::getDocumentDrawingObjects(std::shared_ptr<aspose::words::cloud::requests::GetDocumentDrawingObjectsRequest> request)
@@ -1213,7 +1213,7 @@ namespace aspose::words::cloud::api {
             throw aspose::words::cloud::ApiException(response->getStatusCode(), response->getErrorMessage());
         }
 
-        return response->getResult();
+        return response->getModel();
     }
 
     std::shared_ptr< aspose::words::cloud::models::DrawingObjectsResponse > WordsApi::getDocumentDrawingObjectsOnline(std::shared_ptr<aspose::words::cloud::requests::GetDocumentDrawingObjectsOnlineRequest> request)
@@ -1224,7 +1224,7 @@ namespace aspose::words::cloud::api {
             throw aspose::words::cloud::ApiException(response->getStatusCode(), response->getErrorMessage());
         }
 
-        return response->getResult();
+        return response->getModel();
     }
 
     std::shared_ptr< aspose::words::cloud::models::FieldNamesResponse > WordsApi::getDocumentFieldNames(std::shared_ptr<aspose::words::cloud::requests::GetDocumentFieldNamesRequest> request)
@@ -1235,7 +1235,7 @@ namespace aspose::words::cloud::api {
             throw aspose::words::cloud::ApiException(response->getStatusCode(), response->getErrorMessage());
         }
 
-        return response->getResult();
+        return response->getModel();
     }
 
     std::shared_ptr< aspose::words::cloud::models::FieldNamesResponse > WordsApi::getDocumentFieldNamesOnline(std::shared_ptr<aspose::words::cloud::requests::GetDocumentFieldNamesOnlineRequest> request)
@@ -1246,7 +1246,7 @@ namespace aspose::words::cloud::api {
             throw aspose::words::cloud::ApiException(response->getStatusCode(), response->getErrorMessage());
         }
 
-        return response->getResult();
+        return response->getModel();
     }
 
     std::shared_ptr< aspose::words::cloud::models::HyperlinkResponse > WordsApi::getDocumentHyperlinkByIndex(std::shared_ptr<aspose::words::cloud::requests::GetDocumentHyperlinkByIndexRequest> request)
@@ -1257,7 +1257,7 @@ namespace aspose::words::cloud::api {
             throw aspose::words::cloud::ApiException(response->getStatusCode(), response->getErrorMessage());
         }
 
-        return response->getResult();
+        return response->getModel();
     }
 
     std::shared_ptr< aspose::words::cloud::models::HyperlinkResponse > WordsApi::getDocumentHyperlinkByIndexOnline(std::shared_ptr<aspose::words::cloud::requests::GetDocumentHyperlinkByIndexOnlineRequest> request)
@@ -1268,7 +1268,7 @@ namespace aspose::words::cloud::api {
             throw aspose::words::cloud::ApiException(response->getStatusCode(), response->getErrorMessage());
         }
 
-        return response->getResult();
+        return response->getModel();
     }
 
     std::shared_ptr< aspose::words::cloud::models::HyperlinksResponse > WordsApi::getDocumentHyperlinks(std::shared_ptr<aspose::words::cloud::requests::GetDocumentHyperlinksRequest> request)
@@ -1279,7 +1279,7 @@ namespace aspose::words::cloud::api {
             throw aspose::words::cloud::ApiException(response->getStatusCode(), response->getErrorMessage());
         }
 
-        return response->getResult();
+        return response->getModel();
     }
 
     std::shared_ptr< aspose::words::cloud::models::HyperlinksResponse > WordsApi::getDocumentHyperlinksOnline(std::shared_ptr<aspose::words::cloud::requests::GetDocumentHyperlinksOnlineRequest> request)
@@ -1290,7 +1290,7 @@ namespace aspose::words::cloud::api {
             throw aspose::words::cloud::ApiException(response->getStatusCode(), response->getErrorMessage());
         }
 
-        return response->getResult();
+        return response->getModel();
     }
 
     std::shared_ptr< aspose::words::cloud::models::DocumentPropertiesResponse > WordsApi::getDocumentProperties(std::shared_ptr<aspose::words::cloud::requests::GetDocumentPropertiesRequest> request)
@@ -1301,7 +1301,7 @@ namespace aspose::words::cloud::api {
             throw aspose::words::cloud::ApiException(response->getStatusCode(), response->getErrorMessage());
         }
 
-        return response->getResult();
+        return response->getModel();
     }
 
     std::shared_ptr< aspose::words::cloud::models::DocumentPropertiesResponse > WordsApi::getDocumentPropertiesOnline(std::shared_ptr<aspose::words::cloud::requests::GetDocumentPropertiesOnlineRequest> request)
@@ -1312,7 +1312,7 @@ namespace aspose::words::cloud::api {
             throw aspose::words::cloud::ApiException(response->getStatusCode(), response->getErrorMessage());
         }
 
-        return response->getResult();
+        return response->getModel();
     }
 
     std::shared_ptr< aspose::words::cloud::models::DocumentPropertyResponse > WordsApi::getDocumentProperty(std::shared_ptr<aspose::words::cloud::requests::GetDocumentPropertyRequest> request)
@@ -1323,7 +1323,7 @@ namespace aspose::words::cloud::api {
             throw aspose::words::cloud::ApiException(response->getStatusCode(), response->getErrorMessage());
         }
 
-        return response->getResult();
+        return response->getModel();
     }
 
     std::shared_ptr< aspose::words::cloud::models::DocumentPropertyResponse > WordsApi::getDocumentPropertyOnline(std::shared_ptr<aspose::words::cloud::requests::GetDocumentPropertyOnlineRequest> request)
@@ -1334,7 +1334,7 @@ namespace aspose::words::cloud::api {
             throw aspose::words::cloud::ApiException(response->getStatusCode(), response->getErrorMessage());
         }
 
-        return response->getResult();
+        return response->getModel();
     }
 
     std::shared_ptr< aspose::words::cloud::models::ProtectionDataResponse > WordsApi::getDocumentProtection(std::shared_ptr<aspose::words::cloud::requests::GetDocumentProtectionRequest> request)
@@ -1345,7 +1345,7 @@ namespace aspose::words::cloud::api {
             throw aspose::words::cloud::ApiException(response->getStatusCode(), response->getErrorMessage());
         }
 
-        return response->getResult();
+        return response->getModel();
     }
 
     std::shared_ptr< aspose::words::cloud::models::ProtectionDataResponse > WordsApi::getDocumentProtectionOnline(std::shared_ptr<aspose::words::cloud::requests::GetDocumentProtectionOnlineRequest> request)
@@ -1356,7 +1356,7 @@ namespace aspose::words::cloud::api {
             throw aspose::words::cloud::ApiException(response->getStatusCode(), response->getErrorMessage());
         }
 
-        return response->getResult();
+        return response->getModel();
     }
 
     std::shared_ptr< aspose::words::cloud::models::StatDataResponse > WordsApi::getDocumentStatistics(std::shared_ptr<aspose::words::cloud::requests::GetDocumentStatisticsRequest> request)
@@ -1367,7 +1367,7 @@ namespace aspose::words::cloud::api {
             throw aspose::words::cloud::ApiException(response->getStatusCode(), response->getErrorMessage());
         }
 
-        return response->getResult();
+        return response->getModel();
     }
 
     std::shared_ptr< aspose::words::cloud::models::StatDataResponse > WordsApi::getDocumentStatisticsOnline(std::shared_ptr<aspose::words::cloud::requests::GetDocumentStatisticsOnlineRequest> request)
@@ -1378,7 +1378,7 @@ namespace aspose::words::cloud::api {
             throw aspose::words::cloud::ApiException(response->getStatusCode(), response->getErrorMessage());
         }
 
-        return response->getResult();
+        return response->getModel();
     }
 
     std::shared_ptr< std::istream > WordsApi::getDocumentWithFormat(std::shared_ptr<aspose::words::cloud::requests::GetDocumentWithFormatRequest> request)
@@ -1389,7 +1389,7 @@ namespace aspose::words::cloud::api {
             throw aspose::words::cloud::ApiException(response->getStatusCode(), response->getErrorMessage());
         }
 
-        return response->getResult();
+        return response->getModel();
     }
 
     std::shared_ptr< aspose::words::cloud::models::FieldResponse > WordsApi::getField(std::shared_ptr<aspose::words::cloud::requests::GetFieldRequest> request)
@@ -1400,7 +1400,7 @@ namespace aspose::words::cloud::api {
             throw aspose::words::cloud::ApiException(response->getStatusCode(), response->getErrorMessage());
         }
 
-        return response->getResult();
+        return response->getModel();
     }
 
     std::shared_ptr< aspose::words::cloud::models::FieldResponse > WordsApi::getFieldOnline(std::shared_ptr<aspose::words::cloud::requests::GetFieldOnlineRequest> request)
@@ -1411,7 +1411,7 @@ namespace aspose::words::cloud::api {
             throw aspose::words::cloud::ApiException(response->getStatusCode(), response->getErrorMessage());
         }
 
-        return response->getResult();
+        return response->getModel();
     }
 
     std::shared_ptr< aspose::words::cloud::models::FieldsResponse > WordsApi::getFields(std::shared_ptr<aspose::words::cloud::requests::GetFieldsRequest> request)
@@ -1422,7 +1422,7 @@ namespace aspose::words::cloud::api {
             throw aspose::words::cloud::ApiException(response->getStatusCode(), response->getErrorMessage());
         }
 
-        return response->getResult();
+        return response->getModel();
     }
 
     std::shared_ptr< aspose::words::cloud::models::FieldsResponse > WordsApi::getFieldsOnline(std::shared_ptr<aspose::words::cloud::requests::GetFieldsOnlineRequest> request)
@@ -1433,7 +1433,7 @@ namespace aspose::words::cloud::api {
             throw aspose::words::cloud::ApiException(response->getStatusCode(), response->getErrorMessage());
         }
 
-        return response->getResult();
+        return response->getModel();
     }
 
     std::shared_ptr< aspose::words::cloud::models::FilesList > WordsApi::getFilesList(std::shared_ptr<aspose::words::cloud::requests::GetFilesListRequest> request)
@@ -1444,7 +1444,7 @@ namespace aspose::words::cloud::api {
             throw aspose::words::cloud::ApiException(response->getStatusCode(), response->getErrorMessage());
         }
 
-        return response->getResult();
+        return response->getModel();
     }
 
     std::shared_ptr< aspose::words::cloud::models::FootnoteResponse > WordsApi::getFootnote(std::shared_ptr<aspose::words::cloud::requests::GetFootnoteRequest> request)
@@ -1455,7 +1455,7 @@ namespace aspose::words::cloud::api {
             throw aspose::words::cloud::ApiException(response->getStatusCode(), response->getErrorMessage());
         }
 
-        return response->getResult();
+        return response->getModel();
     }
 
     std::shared_ptr< aspose::words::cloud::models::FootnoteResponse > WordsApi::getFootnoteOnline(std::shared_ptr<aspose::words::cloud::requests::GetFootnoteOnlineRequest> request)
@@ -1466,7 +1466,7 @@ namespace aspose::words::cloud::api {
             throw aspose::words::cloud::ApiException(response->getStatusCode(), response->getErrorMessage());
         }
 
-        return response->getResult();
+        return response->getModel();
     }
 
     std::shared_ptr< aspose::words::cloud::models::FootnotesResponse > WordsApi::getFootnotes(std::shared_ptr<aspose::words::cloud::requests::GetFootnotesRequest> request)
@@ -1477,7 +1477,7 @@ namespace aspose::words::cloud::api {
             throw aspose::words::cloud::ApiException(response->getStatusCode(), response->getErrorMessage());
         }
 
-        return response->getResult();
+        return response->getModel();
     }
 
     std::shared_ptr< aspose::words::cloud::models::FootnotesResponse > WordsApi::getFootnotesOnline(std::shared_ptr<aspose::words::cloud::requests::GetFootnotesOnlineRequest> request)
@@ -1488,7 +1488,7 @@ namespace aspose::words::cloud::api {
             throw aspose::words::cloud::ApiException(response->getStatusCode(), response->getErrorMessage());
         }
 
-        return response->getResult();
+        return response->getModel();
     }
 
     std::shared_ptr< aspose::words::cloud::models::FormFieldResponse > WordsApi::getFormField(std::shared_ptr<aspose::words::cloud::requests::GetFormFieldRequest> request)
@@ -1499,7 +1499,7 @@ namespace aspose::words::cloud::api {
             throw aspose::words::cloud::ApiException(response->getStatusCode(), response->getErrorMessage());
         }
 
-        return response->getResult();
+        return response->getModel();
     }
 
     std::shared_ptr< aspose::words::cloud::models::FormFieldResponse > WordsApi::getFormFieldOnline(std::shared_ptr<aspose::words::cloud::requests::GetFormFieldOnlineRequest> request)
@@ -1510,7 +1510,7 @@ namespace aspose::words::cloud::api {
             throw aspose::words::cloud::ApiException(response->getStatusCode(), response->getErrorMessage());
         }
 
-        return response->getResult();
+        return response->getModel();
     }
 
     std::shared_ptr< aspose::words::cloud::models::FormFieldsResponse > WordsApi::getFormFields(std::shared_ptr<aspose::words::cloud::requests::GetFormFieldsRequest> request)
@@ -1521,7 +1521,7 @@ namespace aspose::words::cloud::api {
             throw aspose::words::cloud::ApiException(response->getStatusCode(), response->getErrorMessage());
         }
 
-        return response->getResult();
+        return response->getModel();
     }
 
     std::shared_ptr< aspose::words::cloud::models::FormFieldsResponse > WordsApi::getFormFieldsOnline(std::shared_ptr<aspose::words::cloud::requests::GetFormFieldsOnlineRequest> request)
@@ -1532,7 +1532,7 @@ namespace aspose::words::cloud::api {
             throw aspose::words::cloud::ApiException(response->getStatusCode(), response->getErrorMessage());
         }
 
-        return response->getResult();
+        return response->getModel();
     }
 
     std::shared_ptr< aspose::words::cloud::models::HeaderFooterResponse > WordsApi::getHeaderFooter(std::shared_ptr<aspose::words::cloud::requests::GetHeaderFooterRequest> request)
@@ -1543,7 +1543,7 @@ namespace aspose::words::cloud::api {
             throw aspose::words::cloud::ApiException(response->getStatusCode(), response->getErrorMessage());
         }
 
-        return response->getResult();
+        return response->getModel();
     }
 
     std::shared_ptr< aspose::words::cloud::models::HeaderFooterResponse > WordsApi::getHeaderFooterOfSection(std::shared_ptr<aspose::words::cloud::requests::GetHeaderFooterOfSectionRequest> request)
@@ -1554,7 +1554,7 @@ namespace aspose::words::cloud::api {
             throw aspose::words::cloud::ApiException(response->getStatusCode(), response->getErrorMessage());
         }
 
-        return response->getResult();
+        return response->getModel();
     }
 
     std::shared_ptr< aspose::words::cloud::models::HeaderFooterResponse > WordsApi::getHeaderFooterOfSectionOnline(std::shared_ptr<aspose::words::cloud::requests::GetHeaderFooterOfSectionOnlineRequest> request)
@@ -1565,7 +1565,7 @@ namespace aspose::words::cloud::api {
             throw aspose::words::cloud::ApiException(response->getStatusCode(), response->getErrorMessage());
         }
 
-        return response->getResult();
+        return response->getModel();
     }
 
     std::shared_ptr< aspose::words::cloud::models::HeaderFooterResponse > WordsApi::getHeaderFooterOnline(std::shared_ptr<aspose::words::cloud::requests::GetHeaderFooterOnlineRequest> request)
@@ -1576,7 +1576,7 @@ namespace aspose::words::cloud::api {
             throw aspose::words::cloud::ApiException(response->getStatusCode(), response->getErrorMessage());
         }
 
-        return response->getResult();
+        return response->getModel();
     }
 
     std::shared_ptr< aspose::words::cloud::models::HeaderFootersResponse > WordsApi::getHeaderFooters(std::shared_ptr<aspose::words::cloud::requests::GetHeaderFootersRequest> request)
@@ -1587,7 +1587,7 @@ namespace aspose::words::cloud::api {
             throw aspose::words::cloud::ApiException(response->getStatusCode(), response->getErrorMessage());
         }
 
-        return response->getResult();
+        return response->getModel();
     }
 
     std::shared_ptr< aspose::words::cloud::models::HeaderFootersResponse > WordsApi::getHeaderFootersOnline(std::shared_ptr<aspose::words::cloud::requests::GetHeaderFootersOnlineRequest> request)
@@ -1598,7 +1598,7 @@ namespace aspose::words::cloud::api {
             throw aspose::words::cloud::ApiException(response->getStatusCode(), response->getErrorMessage());
         }
 
-        return response->getResult();
+        return response->getModel();
     }
 
     std::shared_ptr< aspose::words::cloud::models::InfoResponse > WordsApi::getInfo(std::shared_ptr<aspose::words::cloud::requests::GetInfoRequest> request)
@@ -1609,7 +1609,7 @@ namespace aspose::words::cloud::api {
             throw aspose::words::cloud::ApiException(response->getStatusCode(), response->getErrorMessage());
         }
 
-        return response->getResult();
+        return response->getModel();
     }
 
     std::shared_ptr< aspose::words::cloud::models::ListResponse > WordsApi::getList(std::shared_ptr<aspose::words::cloud::requests::GetListRequest> request)
@@ -1620,7 +1620,7 @@ namespace aspose::words::cloud::api {
             throw aspose::words::cloud::ApiException(response->getStatusCode(), response->getErrorMessage());
         }
 
-        return response->getResult();
+        return response->getModel();
     }
 
     std::shared_ptr< aspose::words::cloud::models::ListResponse > WordsApi::getListOnline(std::shared_ptr<aspose::words::cloud::requests::GetListOnlineRequest> request)
@@ -1631,7 +1631,7 @@ namespace aspose::words::cloud::api {
             throw aspose::words::cloud::ApiException(response->getStatusCode(), response->getErrorMessage());
         }
 
-        return response->getResult();
+        return response->getModel();
     }
 
     std::shared_ptr< aspose::words::cloud::models::ListsResponse > WordsApi::getLists(std::shared_ptr<aspose::words::cloud::requests::GetListsRequest> request)
@@ -1642,7 +1642,7 @@ namespace aspose::words::cloud::api {
             throw aspose::words::cloud::ApiException(response->getStatusCode(), response->getErrorMessage());
         }
 
-        return response->getResult();
+        return response->getModel();
     }
 
     std::shared_ptr< aspose::words::cloud::models::ListsResponse > WordsApi::getListsOnline(std::shared_ptr<aspose::words::cloud::requests::GetListsOnlineRequest> request)
@@ -1653,7 +1653,7 @@ namespace aspose::words::cloud::api {
             throw aspose::words::cloud::ApiException(response->getStatusCode(), response->getErrorMessage());
         }
 
-        return response->getResult();
+        return response->getModel();
     }
 
     std::shared_ptr< aspose::words::cloud::models::OfficeMathObjectResponse > WordsApi::getOfficeMathObject(std::shared_ptr<aspose::words::cloud::requests::GetOfficeMathObjectRequest> request)
@@ -1664,7 +1664,7 @@ namespace aspose::words::cloud::api {
             throw aspose::words::cloud::ApiException(response->getStatusCode(), response->getErrorMessage());
         }
 
-        return response->getResult();
+        return response->getModel();
     }
 
     std::shared_ptr< aspose::words::cloud::models::OfficeMathObjectResponse > WordsApi::getOfficeMathObjectOnline(std::shared_ptr<aspose::words::cloud::requests::GetOfficeMathObjectOnlineRequest> request)
@@ -1675,7 +1675,7 @@ namespace aspose::words::cloud::api {
             throw aspose::words::cloud::ApiException(response->getStatusCode(), response->getErrorMessage());
         }
 
-        return response->getResult();
+        return response->getModel();
     }
 
     std::shared_ptr< aspose::words::cloud::models::OfficeMathObjectsResponse > WordsApi::getOfficeMathObjects(std::shared_ptr<aspose::words::cloud::requests::GetOfficeMathObjectsRequest> request)
@@ -1686,7 +1686,7 @@ namespace aspose::words::cloud::api {
             throw aspose::words::cloud::ApiException(response->getStatusCode(), response->getErrorMessage());
         }
 
-        return response->getResult();
+        return response->getModel();
     }
 
     std::shared_ptr< aspose::words::cloud::models::OfficeMathObjectsResponse > WordsApi::getOfficeMathObjectsOnline(std::shared_ptr<aspose::words::cloud::requests::GetOfficeMathObjectsOnlineRequest> request)
@@ -1697,7 +1697,7 @@ namespace aspose::words::cloud::api {
             throw aspose::words::cloud::ApiException(response->getStatusCode(), response->getErrorMessage());
         }
 
-        return response->getResult();
+        return response->getModel();
     }
 
     std::shared_ptr< aspose::words::cloud::models::ParagraphResponse > WordsApi::getParagraph(std::shared_ptr<aspose::words::cloud::requests::GetParagraphRequest> request)
@@ -1708,7 +1708,7 @@ namespace aspose::words::cloud::api {
             throw aspose::words::cloud::ApiException(response->getStatusCode(), response->getErrorMessage());
         }
 
-        return response->getResult();
+        return response->getModel();
     }
 
     std::shared_ptr< aspose::words::cloud::models::ParagraphFormatResponse > WordsApi::getParagraphFormat(std::shared_ptr<aspose::words::cloud::requests::GetParagraphFormatRequest> request)
@@ -1719,7 +1719,7 @@ namespace aspose::words::cloud::api {
             throw aspose::words::cloud::ApiException(response->getStatusCode(), response->getErrorMessage());
         }
 
-        return response->getResult();
+        return response->getModel();
     }
 
     std::shared_ptr< aspose::words::cloud::models::ParagraphFormatResponse > WordsApi::getParagraphFormatOnline(std::shared_ptr<aspose::words::cloud::requests::GetParagraphFormatOnlineRequest> request)
@@ -1730,7 +1730,7 @@ namespace aspose::words::cloud::api {
             throw aspose::words::cloud::ApiException(response->getStatusCode(), response->getErrorMessage());
         }
 
-        return response->getResult();
+        return response->getModel();
     }
 
     std::shared_ptr< aspose::words::cloud::models::ParagraphListFormatResponse > WordsApi::getParagraphListFormat(std::shared_ptr<aspose::words::cloud::requests::GetParagraphListFormatRequest> request)
@@ -1741,7 +1741,7 @@ namespace aspose::words::cloud::api {
             throw aspose::words::cloud::ApiException(response->getStatusCode(), response->getErrorMessage());
         }
 
-        return response->getResult();
+        return response->getModel();
     }
 
     std::shared_ptr< aspose::words::cloud::models::ParagraphListFormatResponse > WordsApi::getParagraphListFormatOnline(std::shared_ptr<aspose::words::cloud::requests::GetParagraphListFormatOnlineRequest> request)
@@ -1752,7 +1752,7 @@ namespace aspose::words::cloud::api {
             throw aspose::words::cloud::ApiException(response->getStatusCode(), response->getErrorMessage());
         }
 
-        return response->getResult();
+        return response->getModel();
     }
 
     std::shared_ptr< aspose::words::cloud::models::ParagraphResponse > WordsApi::getParagraphOnline(std::shared_ptr<aspose::words::cloud::requests::GetParagraphOnlineRequest> request)
@@ -1763,7 +1763,7 @@ namespace aspose::words::cloud::api {
             throw aspose::words::cloud::ApiException(response->getStatusCode(), response->getErrorMessage());
         }
 
-        return response->getResult();
+        return response->getModel();
     }
 
     std::shared_ptr< aspose::words::cloud::models::ParagraphLinkCollectionResponse > WordsApi::getParagraphs(std::shared_ptr<aspose::words::cloud::requests::GetParagraphsRequest> request)
@@ -1774,7 +1774,7 @@ namespace aspose::words::cloud::api {
             throw aspose::words::cloud::ApiException(response->getStatusCode(), response->getErrorMessage());
         }
 
-        return response->getResult();
+        return response->getModel();
     }
 
     std::shared_ptr< aspose::words::cloud::models::ParagraphLinkCollectionResponse > WordsApi::getParagraphsOnline(std::shared_ptr<aspose::words::cloud::requests::GetParagraphsOnlineRequest> request)
@@ -1785,7 +1785,7 @@ namespace aspose::words::cloud::api {
             throw aspose::words::cloud::ApiException(response->getStatusCode(), response->getErrorMessage());
         }
 
-        return response->getResult();
+        return response->getModel();
     }
 
     std::shared_ptr< aspose::words::cloud::models::TabStopsResponse > WordsApi::getParagraphTabStops(std::shared_ptr<aspose::words::cloud::requests::GetParagraphTabStopsRequest> request)
@@ -1796,7 +1796,7 @@ namespace aspose::words::cloud::api {
             throw aspose::words::cloud::ApiException(response->getStatusCode(), response->getErrorMessage());
         }
 
-        return response->getResult();
+        return response->getModel();
     }
 
     std::shared_ptr< aspose::words::cloud::models::TabStopsResponse > WordsApi::getParagraphTabStopsOnline(std::shared_ptr<aspose::words::cloud::requests::GetParagraphTabStopsOnlineRequest> request)
@@ -1807,7 +1807,7 @@ namespace aspose::words::cloud::api {
             throw aspose::words::cloud::ApiException(response->getStatusCode(), response->getErrorMessage());
         }
 
-        return response->getResult();
+        return response->getModel();
     }
 
     std::shared_ptr< aspose::words::cloud::models::PublicKeyResponse > WordsApi::getPublicKey(std::shared_ptr<aspose::words::cloud::requests::GetPublicKeyRequest> request)
@@ -1818,7 +1818,7 @@ namespace aspose::words::cloud::api {
             throw aspose::words::cloud::ApiException(response->getStatusCode(), response->getErrorMessage());
         }
 
-        return response->getResult();
+        return response->getModel();
     }
 
     std::shared_ptr< aspose::words::cloud::models::RangeTextResponse > WordsApi::getRangeText(std::shared_ptr<aspose::words::cloud::requests::GetRangeTextRequest> request)
@@ -1829,7 +1829,7 @@ namespace aspose::words::cloud::api {
             throw aspose::words::cloud::ApiException(response->getStatusCode(), response->getErrorMessage());
         }
 
-        return response->getResult();
+        return response->getModel();
     }
 
     std::shared_ptr< aspose::words::cloud::models::RangeTextResponse > WordsApi::getRangeTextOnline(std::shared_ptr<aspose::words::cloud::requests::GetRangeTextOnlineRequest> request)
@@ -1840,7 +1840,7 @@ namespace aspose::words::cloud::api {
             throw aspose::words::cloud::ApiException(response->getStatusCode(), response->getErrorMessage());
         }
 
-        return response->getResult();
+        return response->getModel();
     }
 
     std::shared_ptr< aspose::words::cloud::models::RunResponse > WordsApi::getRun(std::shared_ptr<aspose::words::cloud::requests::GetRunRequest> request)
@@ -1851,7 +1851,7 @@ namespace aspose::words::cloud::api {
             throw aspose::words::cloud::ApiException(response->getStatusCode(), response->getErrorMessage());
         }
 
-        return response->getResult();
+        return response->getModel();
     }
 
     std::shared_ptr< aspose::words::cloud::models::FontResponse > WordsApi::getRunFont(std::shared_ptr<aspose::words::cloud::requests::GetRunFontRequest> request)
@@ -1862,7 +1862,7 @@ namespace aspose::words::cloud::api {
             throw aspose::words::cloud::ApiException(response->getStatusCode(), response->getErrorMessage());
         }
 
-        return response->getResult();
+        return response->getModel();
     }
 
     std::shared_ptr< aspose::words::cloud::models::FontResponse > WordsApi::getRunFontOnline(std::shared_ptr<aspose::words::cloud::requests::GetRunFontOnlineRequest> request)
@@ -1873,7 +1873,7 @@ namespace aspose::words::cloud::api {
             throw aspose::words::cloud::ApiException(response->getStatusCode(), response->getErrorMessage());
         }
 
-        return response->getResult();
+        return response->getModel();
     }
 
     std::shared_ptr< aspose::words::cloud::models::RunResponse > WordsApi::getRunOnline(std::shared_ptr<aspose::words::cloud::requests::GetRunOnlineRequest> request)
@@ -1884,7 +1884,7 @@ namespace aspose::words::cloud::api {
             throw aspose::words::cloud::ApiException(response->getStatusCode(), response->getErrorMessage());
         }
 
-        return response->getResult();
+        return response->getModel();
     }
 
     std::shared_ptr< aspose::words::cloud::models::RunsResponse > WordsApi::getRuns(std::shared_ptr<aspose::words::cloud::requests::GetRunsRequest> request)
@@ -1895,7 +1895,7 @@ namespace aspose::words::cloud::api {
             throw aspose::words::cloud::ApiException(response->getStatusCode(), response->getErrorMessage());
         }
 
-        return response->getResult();
+        return response->getModel();
     }
 
     std::shared_ptr< aspose::words::cloud::models::RunsResponse > WordsApi::getRunsOnline(std::shared_ptr<aspose::words::cloud::requests::GetRunsOnlineRequest> request)
@@ -1906,7 +1906,7 @@ namespace aspose::words::cloud::api {
             throw aspose::words::cloud::ApiException(response->getStatusCode(), response->getErrorMessage());
         }
 
-        return response->getResult();
+        return response->getModel();
     }
 
     std::shared_ptr< aspose::words::cloud::models::SectionResponse > WordsApi::getSection(std::shared_ptr<aspose::words::cloud::requests::GetSectionRequest> request)
@@ -1917,7 +1917,7 @@ namespace aspose::words::cloud::api {
             throw aspose::words::cloud::ApiException(response->getStatusCode(), response->getErrorMessage());
         }
 
-        return response->getResult();
+        return response->getModel();
     }
 
     std::shared_ptr< aspose::words::cloud::models::SectionResponse > WordsApi::getSectionOnline(std::shared_ptr<aspose::words::cloud::requests::GetSectionOnlineRequest> request)
@@ -1928,7 +1928,7 @@ namespace aspose::words::cloud::api {
             throw aspose::words::cloud::ApiException(response->getStatusCode(), response->getErrorMessage());
         }
 
-        return response->getResult();
+        return response->getModel();
     }
 
     std::shared_ptr< aspose::words::cloud::models::SectionPageSetupResponse > WordsApi::getSectionPageSetup(std::shared_ptr<aspose::words::cloud::requests::GetSectionPageSetupRequest> request)
@@ -1939,7 +1939,7 @@ namespace aspose::words::cloud::api {
             throw aspose::words::cloud::ApiException(response->getStatusCode(), response->getErrorMessage());
         }
 
-        return response->getResult();
+        return response->getModel();
     }
 
     std::shared_ptr< aspose::words::cloud::models::SectionPageSetupResponse > WordsApi::getSectionPageSetupOnline(std::shared_ptr<aspose::words::cloud::requests::GetSectionPageSetupOnlineRequest> request)
@@ -1950,7 +1950,7 @@ namespace aspose::words::cloud::api {
             throw aspose::words::cloud::ApiException(response->getStatusCode(), response->getErrorMessage());
         }
 
-        return response->getResult();
+        return response->getModel();
     }
 
     std::shared_ptr< aspose::words::cloud::models::SectionLinkCollectionResponse > WordsApi::getSections(std::shared_ptr<aspose::words::cloud::requests::GetSectionsRequest> request)
@@ -1961,7 +1961,7 @@ namespace aspose::words::cloud::api {
             throw aspose::words::cloud::ApiException(response->getStatusCode(), response->getErrorMessage());
         }
 
-        return response->getResult();
+        return response->getModel();
     }
 
     std::shared_ptr< aspose::words::cloud::models::SectionLinkCollectionResponse > WordsApi::getSectionsOnline(std::shared_ptr<aspose::words::cloud::requests::GetSectionsOnlineRequest> request)
@@ -1972,7 +1972,7 @@ namespace aspose::words::cloud::api {
             throw aspose::words::cloud::ApiException(response->getStatusCode(), response->getErrorMessage());
         }
 
-        return response->getResult();
+        return response->getModel();
     }
 
     std::shared_ptr< aspose::words::cloud::models::StructuredDocumentTagResponse > WordsApi::getStructuredDocumentTag(std::shared_ptr<aspose::words::cloud::requests::GetStructuredDocumentTagRequest> request)
@@ -1983,7 +1983,7 @@ namespace aspose::words::cloud::api {
             throw aspose::words::cloud::ApiException(response->getStatusCode(), response->getErrorMessage());
         }
 
-        return response->getResult();
+        return response->getModel();
     }
 
     std::shared_ptr< aspose::words::cloud::models::StructuredDocumentTagResponse > WordsApi::getStructuredDocumentTagOnline(std::shared_ptr<aspose::words::cloud::requests::GetStructuredDocumentTagOnlineRequest> request)
@@ -1994,7 +1994,7 @@ namespace aspose::words::cloud::api {
             throw aspose::words::cloud::ApiException(response->getStatusCode(), response->getErrorMessage());
         }
 
-        return response->getResult();
+        return response->getModel();
     }
 
     std::shared_ptr< aspose::words::cloud::models::StructuredDocumentTagsResponse > WordsApi::getStructuredDocumentTags(std::shared_ptr<aspose::words::cloud::requests::GetStructuredDocumentTagsRequest> request)
@@ -2005,7 +2005,7 @@ namespace aspose::words::cloud::api {
             throw aspose::words::cloud::ApiException(response->getStatusCode(), response->getErrorMessage());
         }
 
-        return response->getResult();
+        return response->getModel();
     }
 
     std::shared_ptr< aspose::words::cloud::models::StructuredDocumentTagsResponse > WordsApi::getStructuredDocumentTagsOnline(std::shared_ptr<aspose::words::cloud::requests::GetStructuredDocumentTagsOnlineRequest> request)
@@ -2016,7 +2016,7 @@ namespace aspose::words::cloud::api {
             throw aspose::words::cloud::ApiException(response->getStatusCode(), response->getErrorMessage());
         }
 
-        return response->getResult();
+        return response->getModel();
     }
 
     std::shared_ptr< aspose::words::cloud::models::StyleResponse > WordsApi::getStyle(std::shared_ptr<aspose::words::cloud::requests::GetStyleRequest> request)
@@ -2027,7 +2027,7 @@ namespace aspose::words::cloud::api {
             throw aspose::words::cloud::ApiException(response->getStatusCode(), response->getErrorMessage());
         }
 
-        return response->getResult();
+        return response->getModel();
     }
 
     std::shared_ptr< aspose::words::cloud::models::StyleResponse > WordsApi::getStyleFromDocumentElement(std::shared_ptr<aspose::words::cloud::requests::GetStyleFromDocumentElementRequest> request)
@@ -2038,7 +2038,7 @@ namespace aspose::words::cloud::api {
             throw aspose::words::cloud::ApiException(response->getStatusCode(), response->getErrorMessage());
         }
 
-        return response->getResult();
+        return response->getModel();
     }
 
     std::shared_ptr< aspose::words::cloud::models::StyleResponse > WordsApi::getStyleFromDocumentElementOnline(std::shared_ptr<aspose::words::cloud::requests::GetStyleFromDocumentElementOnlineRequest> request)
@@ -2049,7 +2049,7 @@ namespace aspose::words::cloud::api {
             throw aspose::words::cloud::ApiException(response->getStatusCode(), response->getErrorMessage());
         }
 
-        return response->getResult();
+        return response->getModel();
     }
 
     std::shared_ptr< aspose::words::cloud::models::StyleResponse > WordsApi::getStyleOnline(std::shared_ptr<aspose::words::cloud::requests::GetStyleOnlineRequest> request)
@@ -2060,7 +2060,7 @@ namespace aspose::words::cloud::api {
             throw aspose::words::cloud::ApiException(response->getStatusCode(), response->getErrorMessage());
         }
 
-        return response->getResult();
+        return response->getModel();
     }
 
     std::shared_ptr< aspose::words::cloud::models::StylesResponse > WordsApi::getStyles(std::shared_ptr<aspose::words::cloud::requests::GetStylesRequest> request)
@@ -2071,7 +2071,7 @@ namespace aspose::words::cloud::api {
             throw aspose::words::cloud::ApiException(response->getStatusCode(), response->getErrorMessage());
         }
 
-        return response->getResult();
+        return response->getModel();
     }
 
     std::shared_ptr< aspose::words::cloud::models::StylesResponse > WordsApi::getStylesOnline(std::shared_ptr<aspose::words::cloud::requests::GetStylesOnlineRequest> request)
@@ -2082,7 +2082,7 @@ namespace aspose::words::cloud::api {
             throw aspose::words::cloud::ApiException(response->getStatusCode(), response->getErrorMessage());
         }
 
-        return response->getResult();
+        return response->getModel();
     }
 
     std::shared_ptr< aspose::words::cloud::models::TableResponse > WordsApi::getTable(std::shared_ptr<aspose::words::cloud::requests::GetTableRequest> request)
@@ -2093,7 +2093,7 @@ namespace aspose::words::cloud::api {
             throw aspose::words::cloud::ApiException(response->getStatusCode(), response->getErrorMessage());
         }
 
-        return response->getResult();
+        return response->getModel();
     }
 
     std::shared_ptr< aspose::words::cloud::models::TableCellResponse > WordsApi::getTableCell(std::shared_ptr<aspose::words::cloud::requests::GetTableCellRequest> request)
@@ -2104,7 +2104,7 @@ namespace aspose::words::cloud::api {
             throw aspose::words::cloud::ApiException(response->getStatusCode(), response->getErrorMessage());
         }
 
-        return response->getResult();
+        return response->getModel();
     }
 
     std::shared_ptr< aspose::words::cloud::models::TableCellFormatResponse > WordsApi::getTableCellFormat(std::shared_ptr<aspose::words::cloud::requests::GetTableCellFormatRequest> request)
@@ -2115,7 +2115,7 @@ namespace aspose::words::cloud::api {
             throw aspose::words::cloud::ApiException(response->getStatusCode(), response->getErrorMessage());
         }
 
-        return response->getResult();
+        return response->getModel();
     }
 
     std::shared_ptr< aspose::words::cloud::models::TableCellFormatResponse > WordsApi::getTableCellFormatOnline(std::shared_ptr<aspose::words::cloud::requests::GetTableCellFormatOnlineRequest> request)
@@ -2126,7 +2126,7 @@ namespace aspose::words::cloud::api {
             throw aspose::words::cloud::ApiException(response->getStatusCode(), response->getErrorMessage());
         }
 
-        return response->getResult();
+        return response->getModel();
     }
 
     std::shared_ptr< aspose::words::cloud::models::TableCellResponse > WordsApi::getTableCellOnline(std::shared_ptr<aspose::words::cloud::requests::GetTableCellOnlineRequest> request)
@@ -2137,7 +2137,7 @@ namespace aspose::words::cloud::api {
             throw aspose::words::cloud::ApiException(response->getStatusCode(), response->getErrorMessage());
         }
 
-        return response->getResult();
+        return response->getModel();
     }
 
     std::shared_ptr< aspose::words::cloud::models::TableResponse > WordsApi::getTableOnline(std::shared_ptr<aspose::words::cloud::requests::GetTableOnlineRequest> request)
@@ -2148,7 +2148,7 @@ namespace aspose::words::cloud::api {
             throw aspose::words::cloud::ApiException(response->getStatusCode(), response->getErrorMessage());
         }
 
-        return response->getResult();
+        return response->getModel();
     }
 
     std::shared_ptr< aspose::words::cloud::models::TablePropertiesResponse > WordsApi::getTableProperties(std::shared_ptr<aspose::words::cloud::requests::GetTablePropertiesRequest> request)
@@ -2159,7 +2159,7 @@ namespace aspose::words::cloud::api {
             throw aspose::words::cloud::ApiException(response->getStatusCode(), response->getErrorMessage());
         }
 
-        return response->getResult();
+        return response->getModel();
     }
 
     std::shared_ptr< aspose::words::cloud::models::TablePropertiesResponse > WordsApi::getTablePropertiesOnline(std::shared_ptr<aspose::words::cloud::requests::GetTablePropertiesOnlineRequest> request)
@@ -2170,7 +2170,7 @@ namespace aspose::words::cloud::api {
             throw aspose::words::cloud::ApiException(response->getStatusCode(), response->getErrorMessage());
         }
 
-        return response->getResult();
+        return response->getModel();
     }
 
     std::shared_ptr< aspose::words::cloud::models::TableRowResponse > WordsApi::getTableRow(std::shared_ptr<aspose::words::cloud::requests::GetTableRowRequest> request)
@@ -2181,7 +2181,7 @@ namespace aspose::words::cloud::api {
             throw aspose::words::cloud::ApiException(response->getStatusCode(), response->getErrorMessage());
         }
 
-        return response->getResult();
+        return response->getModel();
     }
 
     std::shared_ptr< aspose::words::cloud::models::TableRowFormatResponse > WordsApi::getTableRowFormat(std::shared_ptr<aspose::words::cloud::requests::GetTableRowFormatRequest> request)
@@ -2192,7 +2192,7 @@ namespace aspose::words::cloud::api {
             throw aspose::words::cloud::ApiException(response->getStatusCode(), response->getErrorMessage());
         }
 
-        return response->getResult();
+        return response->getModel();
     }
 
     std::shared_ptr< aspose::words::cloud::models::TableRowFormatResponse > WordsApi::getTableRowFormatOnline(std::shared_ptr<aspose::words::cloud::requests::GetTableRowFormatOnlineRequest> request)
@@ -2203,7 +2203,7 @@ namespace aspose::words::cloud::api {
             throw aspose::words::cloud::ApiException(response->getStatusCode(), response->getErrorMessage());
         }
 
-        return response->getResult();
+        return response->getModel();
     }
 
     std::shared_ptr< aspose::words::cloud::models::TableRowResponse > WordsApi::getTableRowOnline(std::shared_ptr<aspose::words::cloud::requests::GetTableRowOnlineRequest> request)
@@ -2214,7 +2214,7 @@ namespace aspose::words::cloud::api {
             throw aspose::words::cloud::ApiException(response->getStatusCode(), response->getErrorMessage());
         }
 
-        return response->getResult();
+        return response->getModel();
     }
 
     std::shared_ptr< aspose::words::cloud::models::TableLinkCollectionResponse > WordsApi::getTables(std::shared_ptr<aspose::words::cloud::requests::GetTablesRequest> request)
@@ -2225,7 +2225,7 @@ namespace aspose::words::cloud::api {
             throw aspose::words::cloud::ApiException(response->getStatusCode(), response->getErrorMessage());
         }
 
-        return response->getResult();
+        return response->getModel();
     }
 
     std::shared_ptr< aspose::words::cloud::models::TableLinkCollectionResponse > WordsApi::getTablesOnline(std::shared_ptr<aspose::words::cloud::requests::GetTablesOnlineRequest> request)
@@ -2236,7 +2236,7 @@ namespace aspose::words::cloud::api {
             throw aspose::words::cloud::ApiException(response->getStatusCode(), response->getErrorMessage());
         }
 
-        return response->getResult();
+        return response->getModel();
     }
 
     std::shared_ptr< aspose::words::cloud::models::BookmarkResponse > WordsApi::insertBookmark(std::shared_ptr<aspose::words::cloud::requests::InsertBookmarkRequest> request)
@@ -2247,7 +2247,7 @@ namespace aspose::words::cloud::api {
             throw aspose::words::cloud::ApiException(response->getStatusCode(), response->getErrorMessage());
         }
 
-        return response->getResult();
+        return response->getModel();
     }
 
     std::shared_ptr<aspose::words::cloud::responses::InsertBookmarkOnlineResponse> WordsApi::insertBookmarkOnline(std::shared_ptr<aspose::words::cloud::requests::InsertBookmarkOnlineRequest> request)
@@ -2269,7 +2269,7 @@ namespace aspose::words::cloud::api {
             throw aspose::words::cloud::ApiException(response->getStatusCode(), response->getErrorMessage());
         }
 
-        return response->getResult();
+        return response->getModel();
     }
 
     std::shared_ptr<aspose::words::cloud::responses::InsertCommentOnlineResponse> WordsApi::insertCommentOnline(std::shared_ptr<aspose::words::cloud::requests::InsertCommentOnlineRequest> request)
@@ -2291,7 +2291,7 @@ namespace aspose::words::cloud::api {
             throw aspose::words::cloud::ApiException(response->getStatusCode(), response->getErrorMessage());
         }
 
-        return response->getResult();
+        return response->getModel();
     }
 
     std::shared_ptr<aspose::words::cloud::responses::InsertCustomXmlPartOnlineResponse> WordsApi::insertCustomXmlPartOnline(std::shared_ptr<aspose::words::cloud::requests::InsertCustomXmlPartOnlineRequest> request)
@@ -2313,7 +2313,7 @@ namespace aspose::words::cloud::api {
             throw aspose::words::cloud::ApiException(response->getStatusCode(), response->getErrorMessage());
         }
 
-        return response->getResult();
+        return response->getModel();
     }
 
     std::shared_ptr<aspose::words::cloud::responses::InsertDrawingObjectOnlineResponse> WordsApi::insertDrawingObjectOnline(std::shared_ptr<aspose::words::cloud::requests::InsertDrawingObjectOnlineRequest> request)
@@ -2335,7 +2335,7 @@ namespace aspose::words::cloud::api {
             throw aspose::words::cloud::ApiException(response->getStatusCode(), response->getErrorMessage());
         }
 
-        return response->getResult();
+        return response->getModel();
     }
 
     std::shared_ptr<aspose::words::cloud::responses::InsertFieldOnlineResponse> WordsApi::insertFieldOnline(std::shared_ptr<aspose::words::cloud::requests::InsertFieldOnlineRequest> request)
@@ -2357,7 +2357,7 @@ namespace aspose::words::cloud::api {
             throw aspose::words::cloud::ApiException(response->getStatusCode(), response->getErrorMessage());
         }
 
-        return response->getResult();
+        return response->getModel();
     }
 
     std::shared_ptr<aspose::words::cloud::responses::InsertFootnoteOnlineResponse> WordsApi::insertFootnoteOnline(std::shared_ptr<aspose::words::cloud::requests::InsertFootnoteOnlineRequest> request)
@@ -2379,7 +2379,7 @@ namespace aspose::words::cloud::api {
             throw aspose::words::cloud::ApiException(response->getStatusCode(), response->getErrorMessage());
         }
 
-        return response->getResult();
+        return response->getModel();
     }
 
     std::shared_ptr<aspose::words::cloud::responses::InsertFormFieldOnlineResponse> WordsApi::insertFormFieldOnline(std::shared_ptr<aspose::words::cloud::requests::InsertFormFieldOnlineRequest> request)
@@ -2401,7 +2401,7 @@ namespace aspose::words::cloud::api {
             throw aspose::words::cloud::ApiException(response->getStatusCode(), response->getErrorMessage());
         }
 
-        return response->getResult();
+        return response->getModel();
     }
 
     std::shared_ptr<aspose::words::cloud::responses::InsertHeaderFooterOnlineResponse> WordsApi::insertHeaderFooterOnline(std::shared_ptr<aspose::words::cloud::requests::InsertHeaderFooterOnlineRequest> request)
@@ -2423,7 +2423,7 @@ namespace aspose::words::cloud::api {
             throw aspose::words::cloud::ApiException(response->getStatusCode(), response->getErrorMessage());
         }
 
-        return response->getResult();
+        return response->getModel();
     }
 
     std::shared_ptr<aspose::words::cloud::responses::InsertListOnlineResponse> WordsApi::insertListOnline(std::shared_ptr<aspose::words::cloud::requests::InsertListOnlineRequest> request)
@@ -2445,7 +2445,7 @@ namespace aspose::words::cloud::api {
             throw aspose::words::cloud::ApiException(response->getStatusCode(), response->getErrorMessage());
         }
 
-        return response->getResult();
+        return response->getModel();
     }
 
     std::shared_ptr<aspose::words::cloud::responses::InsertOrUpdateParagraphTabStopOnlineResponse> WordsApi::insertOrUpdateParagraphTabStopOnline(std::shared_ptr<aspose::words::cloud::requests::InsertOrUpdateParagraphTabStopOnlineRequest> request)
@@ -2467,7 +2467,7 @@ namespace aspose::words::cloud::api {
             throw aspose::words::cloud::ApiException(response->getStatusCode(), response->getErrorMessage());
         }
 
-        return response->getResult();
+        return response->getModel();
     }
 
     std::shared_ptr<aspose::words::cloud::responses::InsertPageNumbersOnlineResponse> WordsApi::insertPageNumbersOnline(std::shared_ptr<aspose::words::cloud::requests::InsertPageNumbersOnlineRequest> request)
@@ -2489,7 +2489,7 @@ namespace aspose::words::cloud::api {
             throw aspose::words::cloud::ApiException(response->getStatusCode(), response->getErrorMessage());
         }
 
-        return response->getResult();
+        return response->getModel();
     }
 
     std::shared_ptr<aspose::words::cloud::responses::InsertParagraphOnlineResponse> WordsApi::insertParagraphOnline(std::shared_ptr<aspose::words::cloud::requests::InsertParagraphOnlineRequest> request)
@@ -2511,7 +2511,7 @@ namespace aspose::words::cloud::api {
             throw aspose::words::cloud::ApiException(response->getStatusCode(), response->getErrorMessage());
         }
 
-        return response->getResult();
+        return response->getModel();
     }
 
     std::shared_ptr<aspose::words::cloud::responses::InsertRunOnlineResponse> WordsApi::insertRunOnline(std::shared_ptr<aspose::words::cloud::requests::InsertRunOnlineRequest> request)
@@ -2553,7 +2553,7 @@ namespace aspose::words::cloud::api {
             throw aspose::words::cloud::ApiException(response->getStatusCode(), response->getErrorMessage());
         }
 
-        return response->getResult();
+        return response->getModel();
     }
 
     std::shared_ptr<aspose::words::cloud::responses::InsertStructuredDocumentTagOnlineResponse> WordsApi::insertStructuredDocumentTagOnline(std::shared_ptr<aspose::words::cloud::requests::InsertStructuredDocumentTagOnlineRequest> request)
@@ -2575,7 +2575,7 @@ namespace aspose::words::cloud::api {
             throw aspose::words::cloud::ApiException(response->getStatusCode(), response->getErrorMessage());
         }
 
-        return response->getResult();
+        return response->getModel();
     }
 
     std::shared_ptr<aspose::words::cloud::responses::InsertStyleOnlineResponse> WordsApi::insertStyleOnline(std::shared_ptr<aspose::words::cloud::requests::InsertStyleOnlineRequest> request)
@@ -2597,7 +2597,7 @@ namespace aspose::words::cloud::api {
             throw aspose::words::cloud::ApiException(response->getStatusCode(), response->getErrorMessage());
         }
 
-        return response->getResult();
+        return response->getModel();
     }
 
     std::shared_ptr< aspose::words::cloud::models::TableCellResponse > WordsApi::insertTableCell(std::shared_ptr<aspose::words::cloud::requests::InsertTableCellRequest> request)
@@ -2608,7 +2608,7 @@ namespace aspose::words::cloud::api {
             throw aspose::words::cloud::ApiException(response->getStatusCode(), response->getErrorMessage());
         }
 
-        return response->getResult();
+        return response->getModel();
     }
 
     std::shared_ptr<aspose::words::cloud::responses::InsertTableCellOnlineResponse> WordsApi::insertTableCellOnline(std::shared_ptr<aspose::words::cloud::requests::InsertTableCellOnlineRequest> request)
@@ -2641,7 +2641,7 @@ namespace aspose::words::cloud::api {
             throw aspose::words::cloud::ApiException(response->getStatusCode(), response->getErrorMessage());
         }
 
-        return response->getResult();
+        return response->getModel();
     }
 
     std::shared_ptr<aspose::words::cloud::responses::InsertTableRowOnlineResponse> WordsApi::insertTableRowOnline(std::shared_ptr<aspose::words::cloud::requests::InsertTableRowOnlineRequest> request)
@@ -2663,7 +2663,7 @@ namespace aspose::words::cloud::api {
             throw aspose::words::cloud::ApiException(response->getStatusCode(), response->getErrorMessage());
         }
 
-        return response->getResult();
+        return response->getModel();
     }
 
     std::shared_ptr<aspose::words::cloud::responses::InsertWatermarkImageOnlineResponse> WordsApi::insertWatermarkImageOnline(std::shared_ptr<aspose::words::cloud::requests::InsertWatermarkImageOnlineRequest> request)
@@ -2685,7 +2685,7 @@ namespace aspose::words::cloud::api {
             throw aspose::words::cloud::ApiException(response->getStatusCode(), response->getErrorMessage());
         }
 
-        return response->getResult();
+        return response->getModel();
     }
 
     std::shared_ptr<aspose::words::cloud::responses::InsertWatermarkTextOnlineResponse> WordsApi::insertWatermarkTextOnline(std::shared_ptr<aspose::words::cloud::requests::InsertWatermarkTextOnlineRequest> request)
@@ -2716,7 +2716,7 @@ namespace aspose::words::cloud::api {
             throw aspose::words::cloud::ApiException(response->getStatusCode(), response->getErrorMessage());
         }
 
-        return response->getResult();
+        return response->getModel();
     }
 
     void WordsApi::moveFile(std::shared_ptr<aspose::words::cloud::requests::MoveFileRequest> request)
@@ -2765,7 +2765,7 @@ namespace aspose::words::cloud::api {
             throw aspose::words::cloud::ApiException(response->getStatusCode(), response->getErrorMessage());
         }
 
-        return response->getResult();
+        return response->getModel();
     }
 
     std::shared_ptr<aspose::words::cloud::responses::ProtectDocumentOnlineResponse> WordsApi::protectDocumentOnline(std::shared_ptr<aspose::words::cloud::requests::ProtectDocumentOnlineRequest> request)
@@ -2787,7 +2787,7 @@ namespace aspose::words::cloud::api {
             throw aspose::words::cloud::ApiException(response->getStatusCode(), response->getErrorMessage());
         }
 
-        return response->getResult();
+        return response->getModel();
     }
 
     std::shared_ptr<aspose::words::cloud::responses::RejectAllRevisionsOnlineResponse> WordsApi::rejectAllRevisionsOnline(std::shared_ptr<aspose::words::cloud::requests::RejectAllRevisionsOnlineRequest> request)
@@ -2809,7 +2809,7 @@ namespace aspose::words::cloud::api {
             throw aspose::words::cloud::ApiException(response->getStatusCode(), response->getErrorMessage());
         }
 
-        return response->getResult();
+        return response->getModel();
     }
 
     std::shared_ptr<aspose::words::cloud::responses::RemoveRangeOnlineResponse> WordsApi::removeRangeOnline(std::shared_ptr<aspose::words::cloud::requests::RemoveRangeOnlineRequest> request)
@@ -2831,7 +2831,7 @@ namespace aspose::words::cloud::api {
             throw aspose::words::cloud::ApiException(response->getStatusCode(), response->getErrorMessage());
         }
 
-        return response->getResult();
+        return response->getModel();
     }
 
     std::shared_ptr< std::istream > WordsApi::renderDrawingObjectOnline(std::shared_ptr<aspose::words::cloud::requests::RenderDrawingObjectOnlineRequest> request)
@@ -2842,7 +2842,7 @@ namespace aspose::words::cloud::api {
             throw aspose::words::cloud::ApiException(response->getStatusCode(), response->getErrorMessage());
         }
 
-        return response->getResult();
+        return response->getModel();
     }
 
     std::shared_ptr< std::istream > WordsApi::renderMathObject(std::shared_ptr<aspose::words::cloud::requests::RenderMathObjectRequest> request)
@@ -2853,7 +2853,7 @@ namespace aspose::words::cloud::api {
             throw aspose::words::cloud::ApiException(response->getStatusCode(), response->getErrorMessage());
         }
 
-        return response->getResult();
+        return response->getModel();
     }
 
     std::shared_ptr< std::istream > WordsApi::renderMathObjectOnline(std::shared_ptr<aspose::words::cloud::requests::RenderMathObjectOnlineRequest> request)
@@ -2864,7 +2864,7 @@ namespace aspose::words::cloud::api {
             throw aspose::words::cloud::ApiException(response->getStatusCode(), response->getErrorMessage());
         }
 
-        return response->getResult();
+        return response->getModel();
     }
 
     std::shared_ptr< std::istream > WordsApi::renderPage(std::shared_ptr<aspose::words::cloud::requests::RenderPageRequest> request)
@@ -2875,7 +2875,7 @@ namespace aspose::words::cloud::api {
             throw aspose::words::cloud::ApiException(response->getStatusCode(), response->getErrorMessage());
         }
 
-        return response->getResult();
+        return response->getModel();
     }
 
     std::shared_ptr< std::istream > WordsApi::renderPageOnline(std::shared_ptr<aspose::words::cloud::requests::RenderPageOnlineRequest> request)
@@ -2886,7 +2886,7 @@ namespace aspose::words::cloud::api {
             throw aspose::words::cloud::ApiException(response->getStatusCode(), response->getErrorMessage());
         }
 
-        return response->getResult();
+        return response->getModel();
     }
 
     std::shared_ptr< std::istream > WordsApi::renderParagraph(std::shared_ptr<aspose::words::cloud::requests::RenderParagraphRequest> request)
@@ -2897,7 +2897,7 @@ namespace aspose::words::cloud::api {
             throw aspose::words::cloud::ApiException(response->getStatusCode(), response->getErrorMessage());
         }
 
-        return response->getResult();
+        return response->getModel();
     }
 
     std::shared_ptr< std::istream > WordsApi::renderParagraphOnline(std::shared_ptr<aspose::words::cloud::requests::RenderParagraphOnlineRequest> request)
@@ -2908,7 +2908,7 @@ namespace aspose::words::cloud::api {
             throw aspose::words::cloud::ApiException(response->getStatusCode(), response->getErrorMessage());
         }
 
-        return response->getResult();
+        return response->getModel();
     }
 
     std::shared_ptr< std::istream > WordsApi::renderTable(std::shared_ptr<aspose::words::cloud::requests::RenderTableRequest> request)
@@ -2919,7 +2919,7 @@ namespace aspose::words::cloud::api {
             throw aspose::words::cloud::ApiException(response->getStatusCode(), response->getErrorMessage());
         }
 
-        return response->getResult();
+        return response->getModel();
     }
 
     std::shared_ptr< std::istream > WordsApi::renderTableOnline(std::shared_ptr<aspose::words::cloud::requests::RenderTableOnlineRequest> request)
@@ -2930,7 +2930,7 @@ namespace aspose::words::cloud::api {
             throw aspose::words::cloud::ApiException(response->getStatusCode(), response->getErrorMessage());
         }
 
-        return response->getResult();
+        return response->getModel();
     }
 
     std::shared_ptr< aspose::words::cloud::models::ReplaceTextResponse > WordsApi::replaceText(std::shared_ptr<aspose::words::cloud::requests::ReplaceTextRequest> request)
@@ -2941,7 +2941,7 @@ namespace aspose::words::cloud::api {
             throw aspose::words::cloud::ApiException(response->getStatusCode(), response->getErrorMessage());
         }
 
-        return response->getResult();
+        return response->getModel();
     }
 
     std::shared_ptr<aspose::words::cloud::responses::ReplaceTextOnlineResponse> WordsApi::replaceTextOnline(std::shared_ptr<aspose::words::cloud::requests::ReplaceTextOnlineRequest> request)
@@ -2963,7 +2963,7 @@ namespace aspose::words::cloud::api {
             throw aspose::words::cloud::ApiException(response->getStatusCode(), response->getErrorMessage());
         }
 
-        return response->getResult();
+        return response->getModel();
     }
 
     std::shared_ptr<aspose::words::cloud::responses::ReplaceWithTextOnlineResponse> WordsApi::replaceWithTextOnline(std::shared_ptr<aspose::words::cloud::requests::ReplaceWithTextOnlineRequest> request)
@@ -2994,7 +2994,7 @@ namespace aspose::words::cloud::api {
             throw aspose::words::cloud::ApiException(response->getStatusCode(), response->getErrorMessage());
         }
 
-        return response->getResult();
+        return response->getModel();
     }
 
     std::shared_ptr<aspose::words::cloud::responses::SaveAsOnlineResponse> WordsApi::saveAsOnline(std::shared_ptr<aspose::words::cloud::requests::SaveAsOnlineRequest> request)
@@ -3016,7 +3016,7 @@ namespace aspose::words::cloud::api {
             throw aspose::words::cloud::ApiException(response->getStatusCode(), response->getErrorMessage());
         }
 
-        return response->getResult();
+        return response->getModel();
     }
 
     std::shared_ptr<aspose::words::cloud::responses::SaveAsRangeOnlineResponse> WordsApi::saveAsRangeOnline(std::shared_ptr<aspose::words::cloud::requests::SaveAsRangeOnlineRequest> request)
@@ -3038,7 +3038,7 @@ namespace aspose::words::cloud::api {
             throw aspose::words::cloud::ApiException(response->getStatusCode(), response->getErrorMessage());
         }
 
-        return response->getResult();
+        return response->getModel();
     }
 
     std::shared_ptr<aspose::words::cloud::responses::SaveAsTiffOnlineResponse> WordsApi::saveAsTiffOnline(std::shared_ptr<aspose::words::cloud::requests::SaveAsTiffOnlineRequest> request)
@@ -3060,7 +3060,7 @@ namespace aspose::words::cloud::api {
             throw aspose::words::cloud::ApiException(response->getStatusCode(), response->getErrorMessage());
         }
 
-        return response->getResult();
+        return response->getModel();
     }
 
     std::shared_ptr< aspose::words::cloud::models::SearchResponse > WordsApi::searchOnline(std::shared_ptr<aspose::words::cloud::requests::SearchOnlineRequest> request)
@@ -3071,7 +3071,7 @@ namespace aspose::words::cloud::api {
             throw aspose::words::cloud::ApiException(response->getStatusCode(), response->getErrorMessage());
         }
 
-        return response->getResult();
+        return response->getModel();
     }
 
     std::shared_ptr< aspose::words::cloud::models::SplitDocumentResponse > WordsApi::splitDocument(std::shared_ptr<aspose::words::cloud::requests::SplitDocumentRequest> request)
@@ -3082,7 +3082,7 @@ namespace aspose::words::cloud::api {
             throw aspose::words::cloud::ApiException(response->getStatusCode(), response->getErrorMessage());
         }
 
-        return response->getResult();
+        return response->getModel();
     }
 
     std::shared_ptr<aspose::words::cloud::responses::SplitDocumentOnlineResponse> WordsApi::splitDocumentOnline(std::shared_ptr<aspose::words::cloud::requests::SplitDocumentOnlineRequest> request)
@@ -3104,7 +3104,7 @@ namespace aspose::words::cloud::api {
             throw aspose::words::cloud::ApiException(response->getStatusCode(), response->getErrorMessage());
         }
 
-        return response->getResult();
+        return response->getModel();
     }
 
     std::shared_ptr<aspose::words::cloud::responses::UnprotectDocumentOnlineResponse> WordsApi::unprotectDocumentOnline(std::shared_ptr<aspose::words::cloud::requests::UnprotectDocumentOnlineRequest> request)
@@ -3126,7 +3126,7 @@ namespace aspose::words::cloud::api {
             throw aspose::words::cloud::ApiException(response->getStatusCode(), response->getErrorMessage());
         }
 
-        return response->getResult();
+        return response->getModel();
     }
 
     std::shared_ptr<aspose::words::cloud::responses::UpdateBookmarkOnlineResponse> WordsApi::updateBookmarkOnline(std::shared_ptr<aspose::words::cloud::requests::UpdateBookmarkOnlineRequest> request)
@@ -3148,7 +3148,7 @@ namespace aspose::words::cloud::api {
             throw aspose::words::cloud::ApiException(response->getStatusCode(), response->getErrorMessage());
         }
 
-        return response->getResult();
+        return response->getModel();
     }
 
     std::shared_ptr<aspose::words::cloud::responses::UpdateBorderOnlineResponse> WordsApi::updateBorderOnline(std::shared_ptr<aspose::words::cloud::requests::UpdateBorderOnlineRequest> request)
@@ -3170,7 +3170,7 @@ namespace aspose::words::cloud::api {
             throw aspose::words::cloud::ApiException(response->getStatusCode(), response->getErrorMessage());
         }
 
-        return response->getResult();
+        return response->getModel();
     }
 
     std::shared_ptr<aspose::words::cloud::responses::UpdateCommentOnlineResponse> WordsApi::updateCommentOnline(std::shared_ptr<aspose::words::cloud::requests::UpdateCommentOnlineRequest> request)
@@ -3192,7 +3192,7 @@ namespace aspose::words::cloud::api {
             throw aspose::words::cloud::ApiException(response->getStatusCode(), response->getErrorMessage());
         }
 
-        return response->getResult();
+        return response->getModel();
     }
 
     std::shared_ptr<aspose::words::cloud::responses::UpdateCustomXmlPartOnlineResponse> WordsApi::updateCustomXmlPartOnline(std::shared_ptr<aspose::words::cloud::requests::UpdateCustomXmlPartOnlineRequest> request)
@@ -3214,7 +3214,7 @@ namespace aspose::words::cloud::api {
             throw aspose::words::cloud::ApiException(response->getStatusCode(), response->getErrorMessage());
         }
 
-        return response->getResult();
+        return response->getModel();
     }
 
     std::shared_ptr<aspose::words::cloud::responses::UpdateDrawingObjectOnlineResponse> WordsApi::updateDrawingObjectOnline(std::shared_ptr<aspose::words::cloud::requests::UpdateDrawingObjectOnlineRequest> request)
@@ -3236,7 +3236,7 @@ namespace aspose::words::cloud::api {
             throw aspose::words::cloud::ApiException(response->getStatusCode(), response->getErrorMessage());
         }
 
-        return response->getResult();
+        return response->getModel();
     }
 
     std::shared_ptr<aspose::words::cloud::responses::UpdateFieldOnlineResponse> WordsApi::updateFieldOnline(std::shared_ptr<aspose::words::cloud::requests::UpdateFieldOnlineRequest> request)
@@ -3258,7 +3258,7 @@ namespace aspose::words::cloud::api {
             throw aspose::words::cloud::ApiException(response->getStatusCode(), response->getErrorMessage());
         }
 
-        return response->getResult();
+        return response->getModel();
     }
 
     std::shared_ptr<aspose::words::cloud::responses::UpdateFieldsOnlineResponse> WordsApi::updateFieldsOnline(std::shared_ptr<aspose::words::cloud::requests::UpdateFieldsOnlineRequest> request)
@@ -3280,7 +3280,7 @@ namespace aspose::words::cloud::api {
             throw aspose::words::cloud::ApiException(response->getStatusCode(), response->getErrorMessage());
         }
 
-        return response->getResult();
+        return response->getModel();
     }
 
     std::shared_ptr<aspose::words::cloud::responses::UpdateFootnoteOnlineResponse> WordsApi::updateFootnoteOnline(std::shared_ptr<aspose::words::cloud::requests::UpdateFootnoteOnlineRequest> request)
@@ -3302,7 +3302,7 @@ namespace aspose::words::cloud::api {
             throw aspose::words::cloud::ApiException(response->getStatusCode(), response->getErrorMessage());
         }
 
-        return response->getResult();
+        return response->getModel();
     }
 
     std::shared_ptr<aspose::words::cloud::responses::UpdateFormFieldOnlineResponse> WordsApi::updateFormFieldOnline(std::shared_ptr<aspose::words::cloud::requests::UpdateFormFieldOnlineRequest> request)
@@ -3324,7 +3324,7 @@ namespace aspose::words::cloud::api {
             throw aspose::words::cloud::ApiException(response->getStatusCode(), response->getErrorMessage());
         }
 
-        return response->getResult();
+        return response->getModel();
     }
 
     std::shared_ptr< aspose::words::cloud::models::ListResponse > WordsApi::updateListLevel(std::shared_ptr<aspose::words::cloud::requests::UpdateListLevelRequest> request)
@@ -3335,7 +3335,7 @@ namespace aspose::words::cloud::api {
             throw aspose::words::cloud::ApiException(response->getStatusCode(), response->getErrorMessage());
         }
 
-        return response->getResult();
+        return response->getModel();
     }
 
     std::shared_ptr<aspose::words::cloud::responses::UpdateListLevelOnlineResponse> WordsApi::updateListLevelOnline(std::shared_ptr<aspose::words::cloud::requests::UpdateListLevelOnlineRequest> request)
@@ -3368,7 +3368,7 @@ namespace aspose::words::cloud::api {
             throw aspose::words::cloud::ApiException(response->getStatusCode(), response->getErrorMessage());
         }
 
-        return response->getResult();
+        return response->getModel();
     }
 
     std::shared_ptr<aspose::words::cloud::responses::UpdateParagraphFormatOnlineResponse> WordsApi::updateParagraphFormatOnline(std::shared_ptr<aspose::words::cloud::requests::UpdateParagraphFormatOnlineRequest> request)
@@ -3390,7 +3390,7 @@ namespace aspose::words::cloud::api {
             throw aspose::words::cloud::ApiException(response->getStatusCode(), response->getErrorMessage());
         }
 
-        return response->getResult();
+        return response->getModel();
     }
 
     std::shared_ptr<aspose::words::cloud::responses::UpdateParagraphListFormatOnlineResponse> WordsApi::updateParagraphListFormatOnline(std::shared_ptr<aspose::words::cloud::requests::UpdateParagraphListFormatOnlineRequest> request)
@@ -3412,7 +3412,7 @@ namespace aspose::words::cloud::api {
             throw aspose::words::cloud::ApiException(response->getStatusCode(), response->getErrorMessage());
         }
 
-        return response->getResult();
+        return response->getModel();
     }
 
     std::shared_ptr< aspose::words::cloud::models::FontResponse > WordsApi::updateRunFont(std::shared_ptr<aspose::words::cloud::requests::UpdateRunFontRequest> request)
@@ -3423,7 +3423,7 @@ namespace aspose::words::cloud::api {
             throw aspose::words::cloud::ApiException(response->getStatusCode(), response->getErrorMessage());
         }
 
-        return response->getResult();
+        return response->getModel();
     }
 
     std::shared_ptr<aspose::words::cloud::responses::UpdateRunFontOnlineResponse> WordsApi::updateRunFontOnline(std::shared_ptr<aspose::words::cloud::requests::UpdateRunFontOnlineRequest> request)
@@ -3456,7 +3456,7 @@ namespace aspose::words::cloud::api {
             throw aspose::words::cloud::ApiException(response->getStatusCode(), response->getErrorMessage());
         }
 
-        return response->getResult();
+        return response->getModel();
     }
 
     std::shared_ptr<aspose::words::cloud::responses::UpdateSectionPageSetupOnlineResponse> WordsApi::updateSectionPageSetupOnline(std::shared_ptr<aspose::words::cloud::requests::UpdateSectionPageSetupOnlineRequest> request)
@@ -3478,7 +3478,7 @@ namespace aspose::words::cloud::api {
             throw aspose::words::cloud::ApiException(response->getStatusCode(), response->getErrorMessage());
         }
 
-        return response->getResult();
+        return response->getModel();
     }
 
     std::shared_ptr<aspose::words::cloud::responses::UpdateStructuredDocumentTagOnlineResponse> WordsApi::updateStructuredDocumentTagOnline(std::shared_ptr<aspose::words::cloud::requests::UpdateStructuredDocumentTagOnlineRequest> request)
@@ -3500,7 +3500,7 @@ namespace aspose::words::cloud::api {
             throw aspose::words::cloud::ApiException(response->getStatusCode(), response->getErrorMessage());
         }
 
-        return response->getResult();
+        return response->getModel();
     }
 
     std::shared_ptr<aspose::words::cloud::responses::UpdateStyleOnlineResponse> WordsApi::updateStyleOnline(std::shared_ptr<aspose::words::cloud::requests::UpdateStyleOnlineRequest> request)
@@ -3522,7 +3522,7 @@ namespace aspose::words::cloud::api {
             throw aspose::words::cloud::ApiException(response->getStatusCode(), response->getErrorMessage());
         }
 
-        return response->getResult();
+        return response->getModel();
     }
 
     std::shared_ptr<aspose::words::cloud::responses::UpdateTableCellFormatOnlineResponse> WordsApi::updateTableCellFormatOnline(std::shared_ptr<aspose::words::cloud::requests::UpdateTableCellFormatOnlineRequest> request)
@@ -3544,7 +3544,7 @@ namespace aspose::words::cloud::api {
             throw aspose::words::cloud::ApiException(response->getStatusCode(), response->getErrorMessage());
         }
 
-        return response->getResult();
+        return response->getModel();
     }
 
     std::shared_ptr<aspose::words::cloud::responses::UpdateTablePropertiesOnlineResponse> WordsApi::updateTablePropertiesOnline(std::shared_ptr<aspose::words::cloud::requests::UpdateTablePropertiesOnlineRequest> request)
@@ -3566,7 +3566,7 @@ namespace aspose::words::cloud::api {
             throw aspose::words::cloud::ApiException(response->getStatusCode(), response->getErrorMessage());
         }
 
-        return response->getResult();
+        return response->getModel();
     }
 
     std::shared_ptr<aspose::words::cloud::responses::UpdateTableRowFormatOnlineResponse> WordsApi::updateTableRowFormatOnline(std::shared_ptr<aspose::words::cloud::requests::UpdateTableRowFormatOnlineRequest> request)
@@ -3588,7 +3588,7 @@ namespace aspose::words::cloud::api {
             throw aspose::words::cloud::ApiException(response->getStatusCode(), response->getErrorMessage());
         }
 
-        return response->getResult();
+        return response->getModel();
     }
 
     std::shared_ptr<aspose::words::cloud::responses::BatchResponse> WordsApi::batch(const std::vector<aspose::words::cloud::requests::BatchRequest>& requests, bool displayIntermediateResults) {

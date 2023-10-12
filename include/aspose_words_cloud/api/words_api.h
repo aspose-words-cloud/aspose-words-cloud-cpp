@@ -856,6 +856,7 @@ namespace aspose::words::cloud::api {
         ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr<aspose::words::cloud::responses::CompareDocumentOnlineResponse> compareDocumentOnline(std::shared_ptr<aspose::words::cloud::requests::CompareDocumentOnlineRequest> request);
 
         /// <summary>
+        /// Compress and resize images inside the document.
         /// The default settings allows to reduce the size of the document without any visible degradation of images quality.
         /// </summary>
         /// <param name="name">The filename of the input document.</param>
@@ -870,6 +871,7 @@ namespace aspose::words::cloud::api {
 
         /// <summary>
         /// Compress and resize images inside the document.
+        /// The default settings allows to reduce the size of the document without any visible degradation of images quality.
         /// </summary>
         /// <param name="document">The document.</param>
         /// <param name="compressOptions">Options for compress the document.</param>
@@ -956,6 +958,7 @@ namespace aspose::words::cloud::api {
         ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::WordsResponse > copyStylesFromTemplate(std::shared_ptr<aspose::words::cloud::requests::CopyStylesFromTemplateRequest> request);
 
         /// <summary>
+        /// Creates a new document in cloud storage in the format, determined by the file extension.
         /// Supported all save format extensions.
         /// </summary>
         /// <param name="fileName">The filename of the document.</param>
@@ -1081,6 +1084,7 @@ namespace aspose::words::cloud::api {
         ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::map<std::wstring, std::shared_ptr<std::istream>> > deleteBookmarksOnline(std::shared_ptr<aspose::words::cloud::requests::DeleteBookmarksOnlineRequest> request);
 
         /// <summary>
+        /// Removes a border from the document node.
         /// The 'nodePath' parameter should refer to a paragraph, a cell or a row.
         /// </summary>
         /// <param name="name">The filename of the input document.</param>
@@ -1098,6 +1102,7 @@ namespace aspose::words::cloud::api {
 
         /// <summary>
         /// Removes a border from the document node.
+        /// The 'nodePath' parameter should refer to a paragraph, a cell or a row.
         /// </summary>
         /// <param name="document">The document.</param>
         /// <param name="borderType">Border type.</param>
@@ -1111,6 +1116,7 @@ namespace aspose::words::cloud::api {
         ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr<aspose::words::cloud::responses::DeleteBorderOnlineResponse> deleteBorderOnline(std::shared_ptr<aspose::words::cloud::requests::DeleteBorderOnlineRequest> request);
 
         /// <summary>
+        /// Removes borders from the document node.
         /// The 'nodePath' parameter should refer to a paragraph, a cell or a row.
         /// </summary>
         /// <param name="name">The filename of the input document.</param>
@@ -1127,6 +1133,7 @@ namespace aspose::words::cloud::api {
 
         /// <summary>
         /// Removes borders from the document node.
+        /// The 'nodePath' parameter should refer to a paragraph, a cell or a row.
         /// </summary>
         /// <param name="document">The document.</param>
         /// <param name="nodePath">The path to the node in the document tree.</param>
@@ -1932,6 +1939,7 @@ namespace aspose::words::cloud::api {
         ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::BookmarksResponse > getBookmarksOnline(std::shared_ptr<aspose::words::cloud::requests::GetBookmarksOnlineRequest> request);
 
         /// <summary>
+        /// Reads a border from the document node.
         /// The 'nodePath' parameter should refer to a paragraph, a cell or a row.
         /// </summary>
         /// <param name="name">The filename of the input document.</param>
@@ -1946,6 +1954,7 @@ namespace aspose::words::cloud::api {
 
         /// <summary>
         /// Reads a border from the document node.
+        /// The 'nodePath' parameter should refer to a paragraph, a cell or a row.
         /// </summary>
         /// <param name="document">The document.</param>
         /// <param name="borderType">Border type.</param>
@@ -4188,7 +4197,7 @@ namespace aspose::words::cloud::api {
         ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::SaveResponse > saveAs(std::shared_ptr<aspose::words::cloud::requests::SaveAsRequest> request);
 
         /// <summary>
-        /// Converts a document to the specified format.
+        /// Converts a document in cloud storage to the specified format.
         /// </summary>
         /// <param name="document">The document.</param>
         /// <param name="saveOptionsData">Save options.</param>
@@ -4252,10 +4261,11 @@ namespace aspose::words::cloud::api {
         /// <param name="tiffBinarizationMethod">The optional TIFF binarization method. Possible values are: FloydSteinbergDithering, Threshold.</param>
         /// <param name="zipOutput">The flag indicating whether to ZIP the output.</param>
         /// <param name="fontsLocation">Folder in filestorage with custom fonts.</param>
+        [[deprecated("This operation will be removed in the future.")]]
         ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::SaveResponse > saveAsTiff(std::shared_ptr<aspose::words::cloud::requests::SaveAsTiffRequest> request);
 
         /// <summary>
-        /// Converts a document to TIFF format using detailed conversion settings.
+        /// Converts a document in cloud storage to TIFF format using detailed conversion settings.
         /// </summary>
         /// <param name="document">The document.</param>
         /// <param name="saveOptions">Tiff save options.</param>
@@ -4280,6 +4290,7 @@ namespace aspose::words::cloud::api {
         /// <param name="tiffBinarizationMethod">The optional TIFF binarization method. Possible values are: FloydSteinbergDithering, Threshold.</param>
         /// <param name="zipOutput">The flag indicating whether to ZIP the output.</param>
         /// <param name="fontsLocation">Folder in filestorage with custom fonts.</param>
+        [[deprecated("This operation will be removed in the future.")]]
         ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr<aspose::words::cloud::responses::SaveAsTiffOnlineResponse> saveAsTiffOnline(std::shared_ptr<aspose::words::cloud::requests::SaveAsTiffOnlineRequest> request);
 
         /// <summary>
@@ -4391,6 +4402,7 @@ namespace aspose::words::cloud::api {
         ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr<aspose::words::cloud::responses::UpdateBookmarkOnlineResponse> updateBookmarkOnline(std::shared_ptr<aspose::words::cloud::requests::UpdateBookmarkOnlineRequest> request);
 
         /// <summary>
+        /// Updates a border in the document node.
         /// The 'nodePath' parameter should refer to a paragraph, a cell or a row.
         /// </summary>
         /// <param name="name">The filename of the input document.</param>
@@ -4409,6 +4421,7 @@ namespace aspose::words::cloud::api {
 
         /// <summary>
         /// Updates a border in the document node.
+        /// The 'nodePath' parameter should refer to a paragraph, a cell or a row.
         /// </summary>
         /// <param name="document">The document.</param>
         /// <param name="borderProperties">Border properties.</param>

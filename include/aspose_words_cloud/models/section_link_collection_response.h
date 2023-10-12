@@ -31,6 +31,7 @@
 namespace aspose::words::cloud::models {
     /// <summary>
     /// The REST response with a collection of sections.
+    /// This response is returned by the Service when handling "GET https://api.aspose.cloud/v4.0/words/Test.doc/sections" REST API requests.
     /// </summary>
     class SectionLinkCollectionResponse : public WordsResponse
     {

@@ -37,6 +37,7 @@ namespace aspose::words::cloud::models {
     public:
         /// <summary>
         /// Gets or sets the display format type of the OfficeMath object. This display format defines whether an equation is displayed inline with the text or displayed on its own line.
+        /// Display format type has effect for top level Office Math only.Returned display format type is always Inline for nested Office Math.
         /// </summary>
         enum class DisplayType
         { 
@@ -46,6 +47,7 @@ namespace aspose::words::cloud::models {
 
         /// <summary>
         /// Gets or sets the justification of the OfficeMath object.
+        /// Justification cannot be set to the Office Math with display format type Inline.Inline justification cannot be set to the Office Math with display format type Display.Corresponding DisplayType has to be set before setting Office Math justification.
         /// </summary>
         enum class Justification
         { 
@@ -114,22 +116,26 @@ namespace aspose::words::cloud::models {
 
         /// <summary>
         /// Gets or sets the display format type of the OfficeMath object. This display format defines whether an equation is displayed inline with the text or displayed on its own line.
+        /// Display format type has effect for top level Office Math only.Returned display format type is always Inline for nested Office Math.
         /// </summary>
         ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< aspose::words::cloud::models::OfficeMathObject::DisplayType > getDisplayType() const;
 
         /// <summary>
         /// Gets or sets the display format type of the OfficeMath object. This display format defines whether an equation is displayed inline with the text or displayed on its own line.
+        /// Display format type has effect for top level Office Math only.Returned display format type is always Inline for nested Office Math.
         /// </summary>
         ASPOSE_WORDS_CLOUD_EXPORT virtual void setDisplayType(std::shared_ptr< aspose::words::cloud::models::OfficeMathObject::DisplayType > value);
 
 
         /// <summary>
         /// Gets or sets the justification of the OfficeMath object.
+        /// Justification cannot be set to the Office Math with display format type Inline.Inline justification cannot be set to the Office Math with display format type Display.Corresponding DisplayType has to be set before setting Office Math justification.
         /// </summary>
         ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< aspose::words::cloud::models::OfficeMathObject::Justification > getJustification() const;
 
         /// <summary>
         /// Gets or sets the justification of the OfficeMath object.
+        /// Justification cannot be set to the Office Math with display format type Inline.Inline justification cannot be set to the Office Math with display format type Display.Corresponding DisplayType has to be set before setting Office Math justification.
         /// </summary>
         ASPOSE_WORDS_CLOUD_EXPORT virtual void setJustification(std::shared_ptr< aspose::words::cloud::models::OfficeMathObject::Justification > value);
 

@@ -48,6 +48,8 @@ namespace aspose::words::cloud::models {
 
         /// <summary>
         /// Gets or sets the locale independent style identifier for a built-in style.
+        /// For user defined (custom) styles, this property returns Aspose.Words.StyleIdentifier.User.
+        /// Aspose.Words.Style.Name.
         /// </summary>
         enum class StyleIdentifier
         { 
@@ -440,11 +442,13 @@ namespace aspose::words::cloud::models {
 
         /// <summary>
         /// Gets or sets the character formatting of the style.
+        /// For list styles this property returns null.
         /// </summary>
         ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< aspose::words::cloud::models::Font > getFont() const;
 
         /// <summary>
         /// Gets or sets the character formatting of the style.
+        /// For list styles this property returns null.
         /// </summary>
         ASPOSE_WORDS_CLOUD_EXPORT virtual void setFont(std::shared_ptr< aspose::words::cloud::models::Font > value);
 
@@ -462,22 +466,26 @@ namespace aspose::words::cloud::models {
 
         /// <summary>
         /// Gets or sets the name of the style to be applied automatically to a new paragraph inserted after a paragraph formatted with the specified style.
+        /// This property is not used by Aspose.Words. The next paragraph style will only be applied automatically when you edit the document in MS Word.
         /// </summary>
         ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< std::wstring > getNextParagraphStyleName() const;
 
         /// <summary>
         /// Gets or sets the name of the style to be applied automatically to a new paragraph inserted after a paragraph formatted with the specified style.
+        /// This property is not used by Aspose.Words. The next paragraph style will only be applied automatically when you edit the document in MS Word.
         /// </summary>
         ASPOSE_WORDS_CLOUD_EXPORT virtual void setNextParagraphStyleName(std::shared_ptr< std::wstring > value);
 
 
         /// <summary>
         /// Gets or sets the name of the style this style is based on.
+        /// This will be an empty string if the style is not based on any other style and it can be set to an empty string.
         /// </summary>
         ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< std::wstring > getBaseStyleName() const;
 
         /// <summary>
         /// Gets or sets the name of the style this style is based on.
+        /// This will be an empty string if the style is not based on any other style and it can be set to an empty string.
         /// </summary>
         ASPOSE_WORDS_CLOUD_EXPORT virtual void setBaseStyleName(std::shared_ptr< std::wstring > value);
 
@@ -539,22 +547,28 @@ namespace aspose::words::cloud::models {
 
         /// <summary>
         /// Gets or sets the locale independent style identifier for a built-in style.
+        /// For user defined (custom) styles, this property returns Aspose.Words.StyleIdentifier.User.
+        /// Aspose.Words.Style.Name.
         /// </summary>
         ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< aspose::words::cloud::models::Style::StyleIdentifier > getStyleIdentifier() const;
 
         /// <summary>
         /// Gets or sets the locale independent style identifier for a built-in style.
+        /// For user defined (custom) styles, this property returns Aspose.Words.StyleIdentifier.User.
+        /// Aspose.Words.Style.Name.
         /// </summary>
         ASPOSE_WORDS_CLOUD_EXPORT virtual void setStyleIdentifier(std::shared_ptr< aspose::words::cloud::models::Style::StyleIdentifier > value);
 
 
         /// <summary>
         /// Gets or sets the name of the style.
+        /// Can not be empty string. If there already is a style with such name in the collection, then this style will override it. All affected nodes will reference new style.
         /// </summary>
         ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< std::wstring > getName() const;
 
         /// <summary>
         /// Gets or sets the name of the style.
+        /// Can not be empty string. If there already is a style with such name in the collection, then this style will override it. All affected nodes will reference new style.
         /// </summary>
         ASPOSE_WORDS_CLOUD_EXPORT virtual void setName(std::shared_ptr< std::wstring > value);
 

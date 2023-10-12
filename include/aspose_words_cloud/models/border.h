@@ -31,6 +31,7 @@
 namespace aspose::words::cloud::models {
     /// <summary>
     /// Represents a border of an object.
+    /// Borders can be applied to various document elements including paragraph, run of text inside a paragraph or a table cell.
     /// </summary>
     class Border : public LinkElement
     {
@@ -53,6 +54,7 @@ namespace aspose::words::cloud::models {
 
         /// <summary>
         /// Gets or sets the border style.
+        /// If you set line style to none, then line width is automatically changed to zero.
         /// </summary>
         enum class LineStyle
         { 
@@ -116,44 +118,52 @@ namespace aspose::words::cloud::models {
 
         /// <summary>
         /// Gets or sets the distance of the border from text or from the page edge in points.
+        /// Has no effect and will be automatically reset to zero for borders of table cells.
         /// </summary>
         ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< double > getDistanceFromText() const;
 
         /// <summary>
         /// Gets or sets the distance of the border from text or from the page edge in points.
+        /// Has no effect and will be automatically reset to zero for borders of table cells.
         /// </summary>
         ASPOSE_WORDS_CLOUD_EXPORT virtual void setDistanceFromText(std::shared_ptr< double > value);
 
 
         /// <summary>
         /// Gets or sets the border style.
+        /// If you set line style to none, then line width is automatically changed to zero.
         /// </summary>
         ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< aspose::words::cloud::models::Border::LineStyle > getLineStyle() const;
 
         /// <summary>
         /// Gets or sets the border style.
+        /// If you set line style to none, then line width is automatically changed to zero.
         /// </summary>
         ASPOSE_WORDS_CLOUD_EXPORT virtual void setLineStyle(std::shared_ptr< aspose::words::cloud::models::Border::LineStyle > value);
 
 
         /// <summary>
         /// Gets or sets the border width in points.
+        /// If you set line width greater than zero when line style is none, the line style is automatically changed to single line.
         /// </summary>
         ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< double > getLineWidth() const;
 
         /// <summary>
         /// Gets or sets the border width in points.
+        /// If you set line width greater than zero when line style is none, the line style is automatically changed to single line.
         /// </summary>
         ASPOSE_WORDS_CLOUD_EXPORT virtual void setLineWidth(std::shared_ptr< double > value);
 
 
         /// <summary>
         /// Gets or sets a value indicating whether the border has a shadow.
+        /// In Microsoft Word, for a border to have a shadow, the borders on all four sides (left, top, right and bottom) should be of the same type, width, color and all should have the Shadow property set to true.
         /// </summary>
         ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< bool > getShadow() const;
 
         /// <summary>
         /// Gets or sets a value indicating whether the border has a shadow.
+        /// In Microsoft Word, for a border to have a shadow, the borders on all four sides (left, top, right and bottom) should be of the same type, width, color and all should have the Shadow property set to true.
         /// </summary>
         ASPOSE_WORDS_CLOUD_EXPORT virtual void setShadow(std::shared_ptr< bool > value);
 

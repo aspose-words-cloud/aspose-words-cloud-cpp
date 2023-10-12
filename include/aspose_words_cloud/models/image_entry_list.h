@@ -45,11 +45,13 @@ namespace aspose::words::cloud::models {
 
         /// <summary>
         /// Gets or sets a value indicating whether each image should be added to a new page in the document.
+        /// This value only has an effect when adding images to a document that supports pagination.
         /// </summary>
         ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< bool > getAppendEachImageOnNewPage() const;
 
         /// <summary>
         /// Gets or sets a value indicating whether each image should be added to a new page in the document.
+        /// This value only has an effect when adding images to a document that supports pagination.
         /// </summary>
         ASPOSE_WORDS_CLOUD_EXPORT virtual void setAppendEachImageOnNewPage(std::shared_ptr< bool > value);
 

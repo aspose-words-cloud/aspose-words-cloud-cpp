@@ -1,5 +1,5 @@
 ﻿/** --------------------------------------------------------------------------------------------------------------------
-* <copyright company="Aspose" file="table_cell_insert_dto.h">
+* <copyright company="Aspose" file="eps_save_options_data.h">
 *   Copyright (c) 2023 Aspose.Words for Cloud
 * </copyright>
 * <summary>
@@ -25,34 +25,34 @@
 
 #pragma once
 #include "model_base.h"
+#include "image_save_options_data.h"
 
 namespace aspose::words::cloud::models {
     /// <summary>
-    /// DTO container with a table cell.
+    /// Container class for eps save options.
     /// </summary>
-    class TableCellInsertDto : public ModelBase
+    class EpsSaveOptionsData : public ImageSaveOptionsData
     {
     public:
 
-        ASPOSE_WORDS_CLOUD_EXPORT virtual ~TableCellInsertDto() = default;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual ~EpsSaveOptionsData() = default;
         ASPOSE_WORDS_CLOUD_EXPORT virtual void toJson(void* jsonIfc) const override;
         ASPOSE_WORDS_CLOUD_EXPORT virtual void fromJson(const void* jsonIfc) override;
         ASPOSE_WORDS_CLOUD_EXPORT virtual void getFileReferences(std::vector< FileReference* >& result) override;
 
+        void abstractImageSaveOptionsData() override {}
+        void abstractFixedPageSaveOptionsData() override {}
+        void abstractSaveOptionsData() override {}
 
         /// <summary>
-        /// Gets or sets the 0-based index, the table cell will be inserted after.
+        /// Gets the format of save.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< int32_t > getInsertAfter() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< std::wstring > getSaveFormat() const override;
 
-        /// <summary>
-        /// Gets or sets the 0-based index, the table cell will be inserted after.
-        /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT virtual void setInsertAfter(std::shared_ptr< int32_t > value);
 
 
     protected:
-        std::shared_ptr< int32_t > m_InsertAfter;
+        std::shared_ptr< std::wstring > m_SaveFormat = std::make_shared<std::wstring>(L"eps");
     };
 }
 

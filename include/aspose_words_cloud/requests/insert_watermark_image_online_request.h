@@ -31,7 +31,7 @@ namespace aspose::words::cloud::requests {
     public:
         ASPOSE_WORDS_CLOUD_EXPORT InsertWatermarkImageOnlineRequest(
             const std::shared_ptr< std::istream > document,
-            const std::shared_ptr< std::istream > imageFile,
+            const std::shared_ptr< std::istream > imageFile = nullptr,
             const std::shared_ptr< std::wstring > loadEncoding = nullptr,
             const std::shared_ptr< std::wstring > password = nullptr,
             const std::shared_ptr< std::wstring > encryptedPassword = nullptr,

@@ -311,14 +311,14 @@ namespace aspose::words::cloud::responses {
     /*
      * AcceptAllRevisions request implementation
      */
-    std::shared_ptr< aspose::words::cloud::models::RevisionsModificationResponse > AcceptAllRevisionsResponse::getResult() const
+    std::shared_ptr< aspose::words::cloud::models::RevisionsModificationResponse > AcceptAllRevisionsResponse::getModel() const
     {
-        return m_Result;
+        return m_Model;
     }
 
     void AcceptAllRevisionsResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
-        m_Result = createModelInstance< aspose::words::cloud::models::RevisionsModificationResponse >(L"RevisionsModificationResponse, _", response);
+        m_Model = createModelInstance< aspose::words::cloud::models::RevisionsModificationResponse >(L"RevisionsModificationResponse, _", response);
     }
 
     /*
@@ -352,14 +352,14 @@ namespace aspose::words::cloud::responses {
     /*
      * AppendDocument request implementation
      */
-    std::shared_ptr< aspose::words::cloud::models::DocumentResponse > AppendDocumentResponse::getResult() const
+    std::shared_ptr< aspose::words::cloud::models::DocumentResponse > AppendDocumentResponse::getModel() const
     {
-        return m_Result;
+        return m_Model;
     }
 
     void AppendDocumentResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
-        m_Result = createModelInstance< aspose::words::cloud::models::DocumentResponse >(L"DocumentResponse, _", response);
+        m_Model = createModelInstance< aspose::words::cloud::models::DocumentResponse >(L"DocumentResponse, _", response);
     }
 
     /*
@@ -393,14 +393,14 @@ namespace aspose::words::cloud::responses {
     /*
      * ApplyStyleToDocumentElement request implementation
      */
-    std::shared_ptr< aspose::words::cloud::models::WordsResponse > ApplyStyleToDocumentElementResponse::getResult() const
+    std::shared_ptr< aspose::words::cloud::models::WordsResponse > ApplyStyleToDocumentElementResponse::getModel() const
     {
-        return m_Result;
+        return m_Model;
     }
 
     void ApplyStyleToDocumentElementResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
-        m_Result = createModelInstance< aspose::words::cloud::models::WordsResponse >(L"WordsResponse, _", response);
+        m_Model = createModelInstance< aspose::words::cloud::models::WordsResponse >(L"WordsResponse, _", response);
     }
 
     /*
@@ -434,79 +434,79 @@ namespace aspose::words::cloud::responses {
     /*
      * BuildReport request implementation
      */
-    std::shared_ptr< aspose::words::cloud::models::DocumentResponse > BuildReportResponse::getResult() const
+    std::shared_ptr< aspose::words::cloud::models::DocumentResponse > BuildReportResponse::getModel() const
     {
-        return m_Result;
+        return m_Model;
     }
 
     void BuildReportResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
-        m_Result = createModelInstance< aspose::words::cloud::models::DocumentResponse >(L"DocumentResponse, _", response);
+        m_Model = createModelInstance< aspose::words::cloud::models::DocumentResponse >(L"DocumentResponse, _", response);
     }
 
     /*
      * BuildReportOnline request implementation
      */
-    std::shared_ptr< std::istream > BuildReportOnlineResponse::getResult() const
+    std::shared_ptr< std::istream > BuildReportOnlineResponse::getModel() const
     {
-        return m_Result;
+        return m_Model;
     }
 
     void BuildReportOnlineResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
-        m_Result = std::shared_ptr< std::istream >(new std::istringstream(std::string(response), std::ios_base::in));
+        m_Model = std::shared_ptr< std::istream >(new std::istringstream(std::string(response), std::ios_base::in));
     }
 
     /*
      * Classify request implementation
      */
-    std::shared_ptr< aspose::words::cloud::models::ClassificationResponse > ClassifyResponse::getResult() const
+    std::shared_ptr< aspose::words::cloud::models::ClassificationResponse > ClassifyResponse::getModel() const
     {
-        return m_Result;
+        return m_Model;
     }
 
     void ClassifyResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
-        m_Result = createModelInstance< aspose::words::cloud::models::ClassificationResponse >(L"ClassificationResponse, _", response);
+        m_Model = createModelInstance< aspose::words::cloud::models::ClassificationResponse >(L"ClassificationResponse, _", response);
     }
 
     /*
      * ClassifyDocument request implementation
      */
-    std::shared_ptr< aspose::words::cloud::models::ClassificationResponse > ClassifyDocumentResponse::getResult() const
+    std::shared_ptr< aspose::words::cloud::models::ClassificationResponse > ClassifyDocumentResponse::getModel() const
     {
-        return m_Result;
+        return m_Model;
     }
 
     void ClassifyDocumentResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
-        m_Result = createModelInstance< aspose::words::cloud::models::ClassificationResponse >(L"ClassificationResponse, _", response);
+        m_Model = createModelInstance< aspose::words::cloud::models::ClassificationResponse >(L"ClassificationResponse, _", response);
     }
 
     /*
      * ClassifyDocumentOnline request implementation
      */
-    std::shared_ptr< aspose::words::cloud::models::ClassificationResponse > ClassifyDocumentOnlineResponse::getResult() const
+    std::shared_ptr< aspose::words::cloud::models::ClassificationResponse > ClassifyDocumentOnlineResponse::getModel() const
     {
-        return m_Result;
+        return m_Model;
     }
 
     void ClassifyDocumentOnlineResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
-        m_Result = createModelInstance< aspose::words::cloud::models::ClassificationResponse >(L"ClassificationResponse, _", response);
+        m_Model = createModelInstance< aspose::words::cloud::models::ClassificationResponse >(L"ClassificationResponse, _", response);
     }
 
     /*
      * CompareDocument request implementation
      */
-    std::shared_ptr< aspose::words::cloud::models::DocumentResponse > CompareDocumentResponse::getResult() const
+    std::shared_ptr< aspose::words::cloud::models::DocumentResponse > CompareDocumentResponse::getModel() const
     {
-        return m_Result;
+        return m_Model;
     }
 
     void CompareDocumentResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
-        m_Result = createModelInstance< aspose::words::cloud::models::DocumentResponse >(L"DocumentResponse, _", response);
+        m_Model = createModelInstance< aspose::words::cloud::models::DocumentResponse >(L"DocumentResponse, _", response);
     }
 
     /*
@@ -540,14 +540,14 @@ namespace aspose::words::cloud::responses {
     /*
      * CompressDocument request implementation
      */
-    std::shared_ptr< aspose::words::cloud::models::CompressResponse > CompressDocumentResponse::getResult() const
+    std::shared_ptr< aspose::words::cloud::models::CompressResponse > CompressDocumentResponse::getModel() const
     {
-        return m_Result;
+        return m_Model;
     }
 
     void CompressDocumentResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
-        m_Result = createModelInstance< aspose::words::cloud::models::CompressResponse >(L"CompressResponse, _", response);
+        m_Model = createModelInstance< aspose::words::cloud::models::CompressResponse >(L"CompressResponse, _", response);
     }
 
     /*
@@ -581,14 +581,14 @@ namespace aspose::words::cloud::responses {
     /*
      * ConvertDocument request implementation
      */
-    std::shared_ptr< std::istream > ConvertDocumentResponse::getResult() const
+    std::shared_ptr< std::istream > ConvertDocumentResponse::getModel() const
     {
-        return m_Result;
+        return m_Model;
     }
 
     void ConvertDocumentResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
-        m_Result = std::shared_ptr< std::istream >(new std::istringstream(std::string(response), std::ios_base::in));
+        m_Model = std::shared_ptr< std::istream >(new std::istringstream(std::string(response), std::ios_base::in));
     }
 
     /*
@@ -610,14 +610,14 @@ namespace aspose::words::cloud::responses {
     /*
      * CopyStyle request implementation
      */
-    std::shared_ptr< aspose::words::cloud::models::StyleResponse > CopyStyleResponse::getResult() const
+    std::shared_ptr< aspose::words::cloud::models::StyleResponse > CopyStyleResponse::getModel() const
     {
-        return m_Result;
+        return m_Model;
     }
 
     void CopyStyleResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
-        m_Result = createModelInstance< aspose::words::cloud::models::StyleResponse >(L"StyleResponse, _", response);
+        m_Model = createModelInstance< aspose::words::cloud::models::StyleResponse >(L"StyleResponse, _", response);
     }
 
     /*
@@ -651,27 +651,27 @@ namespace aspose::words::cloud::responses {
     /*
      * CopyStylesFromTemplate request implementation
      */
-    std::shared_ptr< aspose::words::cloud::models::WordsResponse > CopyStylesFromTemplateResponse::getResult() const
+    std::shared_ptr< aspose::words::cloud::models::WordsResponse > CopyStylesFromTemplateResponse::getModel() const
     {
-        return m_Result;
+        return m_Model;
     }
 
     void CopyStylesFromTemplateResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
-        m_Result = createModelInstance< aspose::words::cloud::models::WordsResponse >(L"WordsResponse, _", response);
+        m_Model = createModelInstance< aspose::words::cloud::models::WordsResponse >(L"WordsResponse, _", response);
     }
 
     /*
      * CreateDocument request implementation
      */
-    std::shared_ptr< aspose::words::cloud::models::DocumentResponse > CreateDocumentResponse::getResult() const
+    std::shared_ptr< aspose::words::cloud::models::DocumentResponse > CreateDocumentResponse::getModel() const
     {
-        return m_Result;
+        return m_Model;
     }
 
     void CreateDocumentResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
-        m_Result = createModelInstance< aspose::words::cloud::models::DocumentResponse >(L"DocumentResponse, _", response);
+        m_Model = createModelInstance< aspose::words::cloud::models::DocumentResponse >(L"DocumentResponse, _", response);
     }
 
     /*
@@ -685,14 +685,14 @@ namespace aspose::words::cloud::responses {
     /*
      * CreateOrUpdateDocumentProperty request implementation
      */
-    std::shared_ptr< aspose::words::cloud::models::DocumentPropertyResponse > CreateOrUpdateDocumentPropertyResponse::getResult() const
+    std::shared_ptr< aspose::words::cloud::models::DocumentPropertyResponse > CreateOrUpdateDocumentPropertyResponse::getModel() const
     {
-        return m_Result;
+        return m_Model;
     }
 
     void CreateOrUpdateDocumentPropertyResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
-        m_Result = createModelInstance< aspose::words::cloud::models::DocumentPropertyResponse >(L"DocumentPropertyResponse, _", response);
+        m_Model = createModelInstance< aspose::words::cloud::models::DocumentPropertyResponse >(L"DocumentPropertyResponse, _", response);
     }
 
     /*
@@ -726,14 +726,14 @@ namespace aspose::words::cloud::responses {
     /*
      * DeleteAllParagraphTabStops request implementation
      */
-    std::shared_ptr< aspose::words::cloud::models::TabStopsResponse > DeleteAllParagraphTabStopsResponse::getResult() const
+    std::shared_ptr< aspose::words::cloud::models::TabStopsResponse > DeleteAllParagraphTabStopsResponse::getModel() const
     {
-        return m_Result;
+        return m_Model;
     }
 
     void DeleteAllParagraphTabStopsResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
-        m_Result = createModelInstance< aspose::words::cloud::models::TabStopsResponse >(L"TabStopsResponse, _", response);
+        m_Model = createModelInstance< aspose::words::cloud::models::TabStopsResponse >(L"TabStopsResponse, _", response);
     }
 
     /*
@@ -809,14 +809,14 @@ namespace aspose::words::cloud::responses {
     /*
      * DeleteBorder request implementation
      */
-    std::shared_ptr< aspose::words::cloud::models::BorderResponse > DeleteBorderResponse::getResult() const
+    std::shared_ptr< aspose::words::cloud::models::BorderResponse > DeleteBorderResponse::getModel() const
     {
-        return m_Result;
+        return m_Model;
     }
 
     void DeleteBorderResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
-        m_Result = createModelInstance< aspose::words::cloud::models::BorderResponse >(L"BorderResponse, _", response);
+        m_Model = createModelInstance< aspose::words::cloud::models::BorderResponse >(L"BorderResponse, _", response);
     }
 
     /*
@@ -850,14 +850,14 @@ namespace aspose::words::cloud::responses {
     /*
      * DeleteBorders request implementation
      */
-    std::shared_ptr< aspose::words::cloud::models::BordersResponse > DeleteBordersResponse::getResult() const
+    std::shared_ptr< aspose::words::cloud::models::BordersResponse > DeleteBordersResponse::getModel() const
     {
-        return m_Result;
+        return m_Model;
     }
 
     void DeleteBordersResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
-        m_Result = createModelInstance< aspose::words::cloud::models::BordersResponse >(L"BordersResponse, _", response);
+        m_Model = createModelInstance< aspose::words::cloud::models::BordersResponse >(L"BordersResponse, _", response);
     }
 
     /*
@@ -1209,14 +1209,14 @@ namespace aspose::words::cloud::responses {
     /*
      * DeleteParagraphListFormat request implementation
      */
-    std::shared_ptr< aspose::words::cloud::models::ParagraphListFormatResponse > DeleteParagraphListFormatResponse::getResult() const
+    std::shared_ptr< aspose::words::cloud::models::ParagraphListFormatResponse > DeleteParagraphListFormatResponse::getModel() const
     {
-        return m_Result;
+        return m_Model;
     }
 
     void DeleteParagraphListFormatResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
-        m_Result = createModelInstance< aspose::words::cloud::models::ParagraphListFormatResponse >(L"ParagraphListFormatResponse, _", response);
+        m_Model = createModelInstance< aspose::words::cloud::models::ParagraphListFormatResponse >(L"ParagraphListFormatResponse, _", response);
     }
 
     /*
@@ -1263,14 +1263,14 @@ namespace aspose::words::cloud::responses {
     /*
      * DeleteParagraphTabStop request implementation
      */
-    std::shared_ptr< aspose::words::cloud::models::TabStopsResponse > DeleteParagraphTabStopResponse::getResult() const
+    std::shared_ptr< aspose::words::cloud::models::TabStopsResponse > DeleteParagraphTabStopResponse::getModel() const
     {
-        return m_Result;
+        return m_Model;
     }
 
     void DeleteParagraphTabStopResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
-        m_Result = createModelInstance< aspose::words::cloud::models::TabStopsResponse >(L"TabStopsResponse, _", response);
+        m_Model = createModelInstance< aspose::words::cloud::models::TabStopsResponse >(L"TabStopsResponse, _", response);
     }
 
     /*
@@ -1430,14 +1430,14 @@ namespace aspose::words::cloud::responses {
     /*
      * DeleteWatermark request implementation
      */
-    std::shared_ptr< aspose::words::cloud::models::DocumentResponse > DeleteWatermarkResponse::getResult() const
+    std::shared_ptr< aspose::words::cloud::models::DocumentResponse > DeleteWatermarkResponse::getModel() const
     {
-        return m_Result;
+        return m_Model;
     }
 
     void DeleteWatermarkResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
-        m_Result = createModelInstance< aspose::words::cloud::models::DocumentResponse >(L"DocumentResponse, _", response);
+        m_Model = createModelInstance< aspose::words::cloud::models::DocumentResponse >(L"DocumentResponse, _", response);
     }
 
     /*
@@ -1471,1587 +1471,1587 @@ namespace aspose::words::cloud::responses {
     /*
      * DownloadFile request implementation
      */
-    std::shared_ptr< std::istream > DownloadFileResponse::getResult() const
+    std::shared_ptr< std::istream > DownloadFileResponse::getModel() const
     {
-        return m_Result;
+        return m_Model;
     }
 
     void DownloadFileResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
-        m_Result = std::shared_ptr< std::istream >(new std::istringstream(std::string(response), std::ios_base::in));
+        m_Model = std::shared_ptr< std::istream >(new std::istringstream(std::string(response), std::ios_base::in));
     }
 
     /*
      * ExecuteMailMerge request implementation
      */
-    std::shared_ptr< aspose::words::cloud::models::DocumentResponse > ExecuteMailMergeResponse::getResult() const
+    std::shared_ptr< aspose::words::cloud::models::DocumentResponse > ExecuteMailMergeResponse::getModel() const
     {
-        return m_Result;
+        return m_Model;
     }
 
     void ExecuteMailMergeResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
-        m_Result = createModelInstance< aspose::words::cloud::models::DocumentResponse >(L"DocumentResponse, _", response);
+        m_Model = createModelInstance< aspose::words::cloud::models::DocumentResponse >(L"DocumentResponse, _", response);
     }
 
     /*
      * ExecuteMailMergeOnline request implementation
      */
-    std::shared_ptr< std::istream > ExecuteMailMergeOnlineResponse::getResult() const
+    std::shared_ptr< std::istream > ExecuteMailMergeOnlineResponse::getModel() const
     {
-        return m_Result;
+        return m_Model;
     }
 
     void ExecuteMailMergeOnlineResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
-        m_Result = std::shared_ptr< std::istream >(new std::istringstream(std::string(response), std::ios_base::in));
+        m_Model = std::shared_ptr< std::istream >(new std::istringstream(std::string(response), std::ios_base::in));
     }
 
     /*
      * GetAvailableFonts request implementation
      */
-    std::shared_ptr< aspose::words::cloud::models::AvailableFontsResponse > GetAvailableFontsResponse::getResult() const
+    std::shared_ptr< aspose::words::cloud::models::AvailableFontsResponse > GetAvailableFontsResponse::getModel() const
     {
-        return m_Result;
+        return m_Model;
     }
 
     void GetAvailableFontsResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
-        m_Result = createModelInstance< aspose::words::cloud::models::AvailableFontsResponse >(L"AvailableFontsResponse, _", response);
+        m_Model = createModelInstance< aspose::words::cloud::models::AvailableFontsResponse >(L"AvailableFontsResponse, _", response);
     }
 
     /*
      * GetBookmarkByName request implementation
      */
-    std::shared_ptr< aspose::words::cloud::models::BookmarkResponse > GetBookmarkByNameResponse::getResult() const
+    std::shared_ptr< aspose::words::cloud::models::BookmarkResponse > GetBookmarkByNameResponse::getModel() const
     {
-        return m_Result;
+        return m_Model;
     }
 
     void GetBookmarkByNameResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
-        m_Result = createModelInstance< aspose::words::cloud::models::BookmarkResponse >(L"BookmarkResponse, _", response);
+        m_Model = createModelInstance< aspose::words::cloud::models::BookmarkResponse >(L"BookmarkResponse, _", response);
     }
 
     /*
      * GetBookmarkByNameOnline request implementation
      */
-    std::shared_ptr< aspose::words::cloud::models::BookmarkResponse > GetBookmarkByNameOnlineResponse::getResult() const
+    std::shared_ptr< aspose::words::cloud::models::BookmarkResponse > GetBookmarkByNameOnlineResponse::getModel() const
     {
-        return m_Result;
+        return m_Model;
     }
 
     void GetBookmarkByNameOnlineResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
-        m_Result = createModelInstance< aspose::words::cloud::models::BookmarkResponse >(L"BookmarkResponse, _", response);
+        m_Model = createModelInstance< aspose::words::cloud::models::BookmarkResponse >(L"BookmarkResponse, _", response);
     }
 
     /*
      * GetBookmarks request implementation
      */
-    std::shared_ptr< aspose::words::cloud::models::BookmarksResponse > GetBookmarksResponse::getResult() const
+    std::shared_ptr< aspose::words::cloud::models::BookmarksResponse > GetBookmarksResponse::getModel() const
     {
-        return m_Result;
+        return m_Model;
     }
 
     void GetBookmarksResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
-        m_Result = createModelInstance< aspose::words::cloud::models::BookmarksResponse >(L"BookmarksResponse, _", response);
+        m_Model = createModelInstance< aspose::words::cloud::models::BookmarksResponse >(L"BookmarksResponse, _", response);
     }
 
     /*
      * GetBookmarksOnline request implementation
      */
-    std::shared_ptr< aspose::words::cloud::models::BookmarksResponse > GetBookmarksOnlineResponse::getResult() const
+    std::shared_ptr< aspose::words::cloud::models::BookmarksResponse > GetBookmarksOnlineResponse::getModel() const
     {
-        return m_Result;
+        return m_Model;
     }
 
     void GetBookmarksOnlineResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
-        m_Result = createModelInstance< aspose::words::cloud::models::BookmarksResponse >(L"BookmarksResponse, _", response);
+        m_Model = createModelInstance< aspose::words::cloud::models::BookmarksResponse >(L"BookmarksResponse, _", response);
     }
 
     /*
      * GetBorder request implementation
      */
-    std::shared_ptr< aspose::words::cloud::models::BorderResponse > GetBorderResponse::getResult() const
+    std::shared_ptr< aspose::words::cloud::models::BorderResponse > GetBorderResponse::getModel() const
     {
-        return m_Result;
+        return m_Model;
     }
 
     void GetBorderResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
-        m_Result = createModelInstance< aspose::words::cloud::models::BorderResponse >(L"BorderResponse, _", response);
+        m_Model = createModelInstance< aspose::words::cloud::models::BorderResponse >(L"BorderResponse, _", response);
     }
 
     /*
      * GetBorderOnline request implementation
      */
-    std::shared_ptr< aspose::words::cloud::models::BorderResponse > GetBorderOnlineResponse::getResult() const
+    std::shared_ptr< aspose::words::cloud::models::BorderResponse > GetBorderOnlineResponse::getModel() const
     {
-        return m_Result;
+        return m_Model;
     }
 
     void GetBorderOnlineResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
-        m_Result = createModelInstance< aspose::words::cloud::models::BorderResponse >(L"BorderResponse, _", response);
+        m_Model = createModelInstance< aspose::words::cloud::models::BorderResponse >(L"BorderResponse, _", response);
     }
 
     /*
      * GetBorders request implementation
      */
-    std::shared_ptr< aspose::words::cloud::models::BordersResponse > GetBordersResponse::getResult() const
+    std::shared_ptr< aspose::words::cloud::models::BordersResponse > GetBordersResponse::getModel() const
     {
-        return m_Result;
+        return m_Model;
     }
 
     void GetBordersResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
-        m_Result = createModelInstance< aspose::words::cloud::models::BordersResponse >(L"BordersResponse, _", response);
+        m_Model = createModelInstance< aspose::words::cloud::models::BordersResponse >(L"BordersResponse, _", response);
     }
 
     /*
      * GetBordersOnline request implementation
      */
-    std::shared_ptr< aspose::words::cloud::models::BordersResponse > GetBordersOnlineResponse::getResult() const
+    std::shared_ptr< aspose::words::cloud::models::BordersResponse > GetBordersOnlineResponse::getModel() const
     {
-        return m_Result;
+        return m_Model;
     }
 
     void GetBordersOnlineResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
-        m_Result = createModelInstance< aspose::words::cloud::models::BordersResponse >(L"BordersResponse, _", response);
+        m_Model = createModelInstance< aspose::words::cloud::models::BordersResponse >(L"BordersResponse, _", response);
     }
 
     /*
      * GetComment request implementation
      */
-    std::shared_ptr< aspose::words::cloud::models::CommentResponse > GetCommentResponse::getResult() const
+    std::shared_ptr< aspose::words::cloud::models::CommentResponse > GetCommentResponse::getModel() const
     {
-        return m_Result;
+        return m_Model;
     }
 
     void GetCommentResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
-        m_Result = createModelInstance< aspose::words::cloud::models::CommentResponse >(L"CommentResponse, _", response);
+        m_Model = createModelInstance< aspose::words::cloud::models::CommentResponse >(L"CommentResponse, _", response);
     }
 
     /*
      * GetCommentOnline request implementation
      */
-    std::shared_ptr< aspose::words::cloud::models::CommentResponse > GetCommentOnlineResponse::getResult() const
+    std::shared_ptr< aspose::words::cloud::models::CommentResponse > GetCommentOnlineResponse::getModel() const
     {
-        return m_Result;
+        return m_Model;
     }
 
     void GetCommentOnlineResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
-        m_Result = createModelInstance< aspose::words::cloud::models::CommentResponse >(L"CommentResponse, _", response);
+        m_Model = createModelInstance< aspose::words::cloud::models::CommentResponse >(L"CommentResponse, _", response);
     }
 
     /*
      * GetComments request implementation
      */
-    std::shared_ptr< aspose::words::cloud::models::CommentsResponse > GetCommentsResponse::getResult() const
+    std::shared_ptr< aspose::words::cloud::models::CommentsResponse > GetCommentsResponse::getModel() const
     {
-        return m_Result;
+        return m_Model;
     }
 
     void GetCommentsResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
-        m_Result = createModelInstance< aspose::words::cloud::models::CommentsResponse >(L"CommentsResponse, _", response);
+        m_Model = createModelInstance< aspose::words::cloud::models::CommentsResponse >(L"CommentsResponse, _", response);
     }
 
     /*
      * GetCommentsOnline request implementation
      */
-    std::shared_ptr< aspose::words::cloud::models::CommentsResponse > GetCommentsOnlineResponse::getResult() const
+    std::shared_ptr< aspose::words::cloud::models::CommentsResponse > GetCommentsOnlineResponse::getModel() const
     {
-        return m_Result;
+        return m_Model;
     }
 
     void GetCommentsOnlineResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
-        m_Result = createModelInstance< aspose::words::cloud::models::CommentsResponse >(L"CommentsResponse, _", response);
+        m_Model = createModelInstance< aspose::words::cloud::models::CommentsResponse >(L"CommentsResponse, _", response);
     }
 
     /*
      * GetCustomXmlPart request implementation
      */
-    std::shared_ptr< aspose::words::cloud::models::CustomXmlPartResponse > GetCustomXmlPartResponse::getResult() const
+    std::shared_ptr< aspose::words::cloud::models::CustomXmlPartResponse > GetCustomXmlPartResponse::getModel() const
     {
-        return m_Result;
+        return m_Model;
     }
 
     void GetCustomXmlPartResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
-        m_Result = createModelInstance< aspose::words::cloud::models::CustomXmlPartResponse >(L"CustomXmlPartResponse, _", response);
+        m_Model = createModelInstance< aspose::words::cloud::models::CustomXmlPartResponse >(L"CustomXmlPartResponse, _", response);
     }
 
     /*
      * GetCustomXmlPartOnline request implementation
      */
-    std::shared_ptr< aspose::words::cloud::models::CustomXmlPartResponse > GetCustomXmlPartOnlineResponse::getResult() const
+    std::shared_ptr< aspose::words::cloud::models::CustomXmlPartResponse > GetCustomXmlPartOnlineResponse::getModel() const
     {
-        return m_Result;
+        return m_Model;
     }
 
     void GetCustomXmlPartOnlineResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
-        m_Result = createModelInstance< aspose::words::cloud::models::CustomXmlPartResponse >(L"CustomXmlPartResponse, _", response);
+        m_Model = createModelInstance< aspose::words::cloud::models::CustomXmlPartResponse >(L"CustomXmlPartResponse, _", response);
     }
 
     /*
      * GetCustomXmlParts request implementation
      */
-    std::shared_ptr< aspose::words::cloud::models::CustomXmlPartsResponse > GetCustomXmlPartsResponse::getResult() const
+    std::shared_ptr< aspose::words::cloud::models::CustomXmlPartsResponse > GetCustomXmlPartsResponse::getModel() const
     {
-        return m_Result;
+        return m_Model;
     }
 
     void GetCustomXmlPartsResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
-        m_Result = createModelInstance< aspose::words::cloud::models::CustomXmlPartsResponse >(L"CustomXmlPartsResponse, _", response);
+        m_Model = createModelInstance< aspose::words::cloud::models::CustomXmlPartsResponse >(L"CustomXmlPartsResponse, _", response);
     }
 
     /*
      * GetCustomXmlPartsOnline request implementation
      */
-    std::shared_ptr< aspose::words::cloud::models::CustomXmlPartsResponse > GetCustomXmlPartsOnlineResponse::getResult() const
+    std::shared_ptr< aspose::words::cloud::models::CustomXmlPartsResponse > GetCustomXmlPartsOnlineResponse::getModel() const
     {
-        return m_Result;
+        return m_Model;
     }
 
     void GetCustomXmlPartsOnlineResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
-        m_Result = createModelInstance< aspose::words::cloud::models::CustomXmlPartsResponse >(L"CustomXmlPartsResponse, _", response);
+        m_Model = createModelInstance< aspose::words::cloud::models::CustomXmlPartsResponse >(L"CustomXmlPartsResponse, _", response);
     }
 
     /*
      * GetDocument request implementation
      */
-    std::shared_ptr< aspose::words::cloud::models::DocumentResponse > GetDocumentResponse::getResult() const
+    std::shared_ptr< aspose::words::cloud::models::DocumentResponse > GetDocumentResponse::getModel() const
     {
-        return m_Result;
+        return m_Model;
     }
 
     void GetDocumentResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
-        m_Result = createModelInstance< aspose::words::cloud::models::DocumentResponse >(L"DocumentResponse, _", response);
+        m_Model = createModelInstance< aspose::words::cloud::models::DocumentResponse >(L"DocumentResponse, _", response);
     }
 
     /*
      * GetDocumentDrawingObjectByIndex request implementation
      */
-    std::shared_ptr< aspose::words::cloud::models::DrawingObjectResponse > GetDocumentDrawingObjectByIndexResponse::getResult() const
+    std::shared_ptr< aspose::words::cloud::models::DrawingObjectResponse > GetDocumentDrawingObjectByIndexResponse::getModel() const
     {
-        return m_Result;
+        return m_Model;
     }
 
     void GetDocumentDrawingObjectByIndexResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
-        m_Result = createModelInstance< aspose::words::cloud::models::DrawingObjectResponse >(L"DrawingObjectResponse, _", response);
+        m_Model = createModelInstance< aspose::words::cloud::models::DrawingObjectResponse >(L"DrawingObjectResponse, _", response);
     }
 
     /*
      * GetDocumentDrawingObjectByIndexOnline request implementation
      */
-    std::shared_ptr< aspose::words::cloud::models::DrawingObjectResponse > GetDocumentDrawingObjectByIndexOnlineResponse::getResult() const
+    std::shared_ptr< aspose::words::cloud::models::DrawingObjectResponse > GetDocumentDrawingObjectByIndexOnlineResponse::getModel() const
     {
-        return m_Result;
+        return m_Model;
     }
 
     void GetDocumentDrawingObjectByIndexOnlineResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
-        m_Result = createModelInstance< aspose::words::cloud::models::DrawingObjectResponse >(L"DrawingObjectResponse, _", response);
+        m_Model = createModelInstance< aspose::words::cloud::models::DrawingObjectResponse >(L"DrawingObjectResponse, _", response);
     }
 
     /*
      * GetDocumentDrawingObjectImageData request implementation
      */
-    std::shared_ptr< std::istream > GetDocumentDrawingObjectImageDataResponse::getResult() const
+    std::shared_ptr< std::istream > GetDocumentDrawingObjectImageDataResponse::getModel() const
     {
-        return m_Result;
+        return m_Model;
     }
 
     void GetDocumentDrawingObjectImageDataResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
-        m_Result = std::shared_ptr< std::istream >(new std::istringstream(std::string(response), std::ios_base::in));
+        m_Model = std::shared_ptr< std::istream >(new std::istringstream(std::string(response), std::ios_base::in));
     }
 
     /*
      * GetDocumentDrawingObjectImageDataOnline request implementation
      */
-    std::shared_ptr< std::istream > GetDocumentDrawingObjectImageDataOnlineResponse::getResult() const
+    std::shared_ptr< std::istream > GetDocumentDrawingObjectImageDataOnlineResponse::getModel() const
     {
-        return m_Result;
+        return m_Model;
     }
 
     void GetDocumentDrawingObjectImageDataOnlineResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
-        m_Result = std::shared_ptr< std::istream >(new std::istringstream(std::string(response), std::ios_base::in));
+        m_Model = std::shared_ptr< std::istream >(new std::istringstream(std::string(response), std::ios_base::in));
     }
 
     /*
      * GetDocumentDrawingObjectOleData request implementation
      */
-    std::shared_ptr< std::istream > GetDocumentDrawingObjectOleDataResponse::getResult() const
+    std::shared_ptr< std::istream > GetDocumentDrawingObjectOleDataResponse::getModel() const
     {
-        return m_Result;
+        return m_Model;
     }
 
     void GetDocumentDrawingObjectOleDataResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
-        m_Result = std::shared_ptr< std::istream >(new std::istringstream(std::string(response), std::ios_base::in));
+        m_Model = std::shared_ptr< std::istream >(new std::istringstream(std::string(response), std::ios_base::in));
     }
 
     /*
      * GetDocumentDrawingObjectOleDataOnline request implementation
      */
-    std::shared_ptr< std::istream > GetDocumentDrawingObjectOleDataOnlineResponse::getResult() const
+    std::shared_ptr< std::istream > GetDocumentDrawingObjectOleDataOnlineResponse::getModel() const
     {
-        return m_Result;
+        return m_Model;
     }
 
     void GetDocumentDrawingObjectOleDataOnlineResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
-        m_Result = std::shared_ptr< std::istream >(new std::istringstream(std::string(response), std::ios_base::in));
+        m_Model = std::shared_ptr< std::istream >(new std::istringstream(std::string(response), std::ios_base::in));
     }
 
     /*
      * GetDocumentDrawingObjects request implementation
      */
-    std::shared_ptr< aspose::words::cloud::models::DrawingObjectsResponse > GetDocumentDrawingObjectsResponse::getResult() const
+    std::shared_ptr< aspose::words::cloud::models::DrawingObjectsResponse > GetDocumentDrawingObjectsResponse::getModel() const
     {
-        return m_Result;
+        return m_Model;
     }
 
     void GetDocumentDrawingObjectsResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
-        m_Result = createModelInstance< aspose::words::cloud::models::DrawingObjectsResponse >(L"DrawingObjectsResponse, _", response);
+        m_Model = createModelInstance< aspose::words::cloud::models::DrawingObjectsResponse >(L"DrawingObjectsResponse, _", response);
     }
 
     /*
      * GetDocumentDrawingObjectsOnline request implementation
      */
-    std::shared_ptr< aspose::words::cloud::models::DrawingObjectsResponse > GetDocumentDrawingObjectsOnlineResponse::getResult() const
+    std::shared_ptr< aspose::words::cloud::models::DrawingObjectsResponse > GetDocumentDrawingObjectsOnlineResponse::getModel() const
     {
-        return m_Result;
+        return m_Model;
     }
 
     void GetDocumentDrawingObjectsOnlineResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
-        m_Result = createModelInstance< aspose::words::cloud::models::DrawingObjectsResponse >(L"DrawingObjectsResponse, _", response);
+        m_Model = createModelInstance< aspose::words::cloud::models::DrawingObjectsResponse >(L"DrawingObjectsResponse, _", response);
     }
 
     /*
      * GetDocumentFieldNames request implementation
      */
-    std::shared_ptr< aspose::words::cloud::models::FieldNamesResponse > GetDocumentFieldNamesResponse::getResult() const
+    std::shared_ptr< aspose::words::cloud::models::FieldNamesResponse > GetDocumentFieldNamesResponse::getModel() const
     {
-        return m_Result;
+        return m_Model;
     }
 
     void GetDocumentFieldNamesResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
-        m_Result = createModelInstance< aspose::words::cloud::models::FieldNamesResponse >(L"FieldNamesResponse, _", response);
+        m_Model = createModelInstance< aspose::words::cloud::models::FieldNamesResponse >(L"FieldNamesResponse, _", response);
     }
 
     /*
      * GetDocumentFieldNamesOnline request implementation
      */
-    std::shared_ptr< aspose::words::cloud::models::FieldNamesResponse > GetDocumentFieldNamesOnlineResponse::getResult() const
+    std::shared_ptr< aspose::words::cloud::models::FieldNamesResponse > GetDocumentFieldNamesOnlineResponse::getModel() const
     {
-        return m_Result;
+        return m_Model;
     }
 
     void GetDocumentFieldNamesOnlineResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
-        m_Result = createModelInstance< aspose::words::cloud::models::FieldNamesResponse >(L"FieldNamesResponse, _", response);
+        m_Model = createModelInstance< aspose::words::cloud::models::FieldNamesResponse >(L"FieldNamesResponse, _", response);
     }
 
     /*
      * GetDocumentHyperlinkByIndex request implementation
      */
-    std::shared_ptr< aspose::words::cloud::models::HyperlinkResponse > GetDocumentHyperlinkByIndexResponse::getResult() const
+    std::shared_ptr< aspose::words::cloud::models::HyperlinkResponse > GetDocumentHyperlinkByIndexResponse::getModel() const
     {
-        return m_Result;
+        return m_Model;
     }
 
     void GetDocumentHyperlinkByIndexResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
-        m_Result = createModelInstance< aspose::words::cloud::models::HyperlinkResponse >(L"HyperlinkResponse, _", response);
+        m_Model = createModelInstance< aspose::words::cloud::models::HyperlinkResponse >(L"HyperlinkResponse, _", response);
     }
 
     /*
      * GetDocumentHyperlinkByIndexOnline request implementation
      */
-    std::shared_ptr< aspose::words::cloud::models::HyperlinkResponse > GetDocumentHyperlinkByIndexOnlineResponse::getResult() const
+    std::shared_ptr< aspose::words::cloud::models::HyperlinkResponse > GetDocumentHyperlinkByIndexOnlineResponse::getModel() const
     {
-        return m_Result;
+        return m_Model;
     }
 
     void GetDocumentHyperlinkByIndexOnlineResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
-        m_Result = createModelInstance< aspose::words::cloud::models::HyperlinkResponse >(L"HyperlinkResponse, _", response);
+        m_Model = createModelInstance< aspose::words::cloud::models::HyperlinkResponse >(L"HyperlinkResponse, _", response);
     }
 
     /*
      * GetDocumentHyperlinks request implementation
      */
-    std::shared_ptr< aspose::words::cloud::models::HyperlinksResponse > GetDocumentHyperlinksResponse::getResult() const
+    std::shared_ptr< aspose::words::cloud::models::HyperlinksResponse > GetDocumentHyperlinksResponse::getModel() const
     {
-        return m_Result;
+        return m_Model;
     }
 
     void GetDocumentHyperlinksResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
-        m_Result = createModelInstance< aspose::words::cloud::models::HyperlinksResponse >(L"HyperlinksResponse, _", response);
+        m_Model = createModelInstance< aspose::words::cloud::models::HyperlinksResponse >(L"HyperlinksResponse, _", response);
     }
 
     /*
      * GetDocumentHyperlinksOnline request implementation
      */
-    std::shared_ptr< aspose::words::cloud::models::HyperlinksResponse > GetDocumentHyperlinksOnlineResponse::getResult() const
+    std::shared_ptr< aspose::words::cloud::models::HyperlinksResponse > GetDocumentHyperlinksOnlineResponse::getModel() const
     {
-        return m_Result;
+        return m_Model;
     }
 
     void GetDocumentHyperlinksOnlineResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
-        m_Result = createModelInstance< aspose::words::cloud::models::HyperlinksResponse >(L"HyperlinksResponse, _", response);
+        m_Model = createModelInstance< aspose::words::cloud::models::HyperlinksResponse >(L"HyperlinksResponse, _", response);
     }
 
     /*
      * GetDocumentProperties request implementation
      */
-    std::shared_ptr< aspose::words::cloud::models::DocumentPropertiesResponse > GetDocumentPropertiesResponse::getResult() const
+    std::shared_ptr< aspose::words::cloud::models::DocumentPropertiesResponse > GetDocumentPropertiesResponse::getModel() const
     {
-        return m_Result;
+        return m_Model;
     }
 
     void GetDocumentPropertiesResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
-        m_Result = createModelInstance< aspose::words::cloud::models::DocumentPropertiesResponse >(L"DocumentPropertiesResponse, _", response);
+        m_Model = createModelInstance< aspose::words::cloud::models::DocumentPropertiesResponse >(L"DocumentPropertiesResponse, _", response);
     }
 
     /*
      * GetDocumentPropertiesOnline request implementation
      */
-    std::shared_ptr< aspose::words::cloud::models::DocumentPropertiesResponse > GetDocumentPropertiesOnlineResponse::getResult() const
+    std::shared_ptr< aspose::words::cloud::models::DocumentPropertiesResponse > GetDocumentPropertiesOnlineResponse::getModel() const
     {
-        return m_Result;
+        return m_Model;
     }
 
     void GetDocumentPropertiesOnlineResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
-        m_Result = createModelInstance< aspose::words::cloud::models::DocumentPropertiesResponse >(L"DocumentPropertiesResponse, _", response);
+        m_Model = createModelInstance< aspose::words::cloud::models::DocumentPropertiesResponse >(L"DocumentPropertiesResponse, _", response);
     }
 
     /*
      * GetDocumentProperty request implementation
      */
-    std::shared_ptr< aspose::words::cloud::models::DocumentPropertyResponse > GetDocumentPropertyResponse::getResult() const
+    std::shared_ptr< aspose::words::cloud::models::DocumentPropertyResponse > GetDocumentPropertyResponse::getModel() const
     {
-        return m_Result;
+        return m_Model;
     }
 
     void GetDocumentPropertyResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
-        m_Result = createModelInstance< aspose::words::cloud::models::DocumentPropertyResponse >(L"DocumentPropertyResponse, _", response);
+        m_Model = createModelInstance< aspose::words::cloud::models::DocumentPropertyResponse >(L"DocumentPropertyResponse, _", response);
     }
 
     /*
      * GetDocumentPropertyOnline request implementation
      */
-    std::shared_ptr< aspose::words::cloud::models::DocumentPropertyResponse > GetDocumentPropertyOnlineResponse::getResult() const
+    std::shared_ptr< aspose::words::cloud::models::DocumentPropertyResponse > GetDocumentPropertyOnlineResponse::getModel() const
     {
-        return m_Result;
+        return m_Model;
     }
 
     void GetDocumentPropertyOnlineResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
-        m_Result = createModelInstance< aspose::words::cloud::models::DocumentPropertyResponse >(L"DocumentPropertyResponse, _", response);
+        m_Model = createModelInstance< aspose::words::cloud::models::DocumentPropertyResponse >(L"DocumentPropertyResponse, _", response);
     }
 
     /*
      * GetDocumentProtection request implementation
      */
-    std::shared_ptr< aspose::words::cloud::models::ProtectionDataResponse > GetDocumentProtectionResponse::getResult() const
+    std::shared_ptr< aspose::words::cloud::models::ProtectionDataResponse > GetDocumentProtectionResponse::getModel() const
     {
-        return m_Result;
+        return m_Model;
     }
 
     void GetDocumentProtectionResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
-        m_Result = createModelInstance< aspose::words::cloud::models::ProtectionDataResponse >(L"ProtectionDataResponse, _", response);
+        m_Model = createModelInstance< aspose::words::cloud::models::ProtectionDataResponse >(L"ProtectionDataResponse, _", response);
     }
 
     /*
      * GetDocumentProtectionOnline request implementation
      */
-    std::shared_ptr< aspose::words::cloud::models::ProtectionDataResponse > GetDocumentProtectionOnlineResponse::getResult() const
+    std::shared_ptr< aspose::words::cloud::models::ProtectionDataResponse > GetDocumentProtectionOnlineResponse::getModel() const
     {
-        return m_Result;
+        return m_Model;
     }
 
     void GetDocumentProtectionOnlineResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
-        m_Result = createModelInstance< aspose::words::cloud::models::ProtectionDataResponse >(L"ProtectionDataResponse, _", response);
+        m_Model = createModelInstance< aspose::words::cloud::models::ProtectionDataResponse >(L"ProtectionDataResponse, _", response);
     }
 
     /*
      * GetDocumentStatistics request implementation
      */
-    std::shared_ptr< aspose::words::cloud::models::StatDataResponse > GetDocumentStatisticsResponse::getResult() const
+    std::shared_ptr< aspose::words::cloud::models::StatDataResponse > GetDocumentStatisticsResponse::getModel() const
     {
-        return m_Result;
+        return m_Model;
     }
 
     void GetDocumentStatisticsResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
-        m_Result = createModelInstance< aspose::words::cloud::models::StatDataResponse >(L"StatDataResponse, _", response);
+        m_Model = createModelInstance< aspose::words::cloud::models::StatDataResponse >(L"StatDataResponse, _", response);
     }
 
     /*
      * GetDocumentStatisticsOnline request implementation
      */
-    std::shared_ptr< aspose::words::cloud::models::StatDataResponse > GetDocumentStatisticsOnlineResponse::getResult() const
+    std::shared_ptr< aspose::words::cloud::models::StatDataResponse > GetDocumentStatisticsOnlineResponse::getModel() const
     {
-        return m_Result;
+        return m_Model;
     }
 
     void GetDocumentStatisticsOnlineResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
-        m_Result = createModelInstance< aspose::words::cloud::models::StatDataResponse >(L"StatDataResponse, _", response);
+        m_Model = createModelInstance< aspose::words::cloud::models::StatDataResponse >(L"StatDataResponse, _", response);
     }
 
     /*
      * GetDocumentWithFormat request implementation
      */
-    std::shared_ptr< std::istream > GetDocumentWithFormatResponse::getResult() const
+    std::shared_ptr< std::istream > GetDocumentWithFormatResponse::getModel() const
     {
-        return m_Result;
+        return m_Model;
     }
 
     void GetDocumentWithFormatResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
-        m_Result = std::shared_ptr< std::istream >(new std::istringstream(std::string(response), std::ios_base::in));
+        m_Model = std::shared_ptr< std::istream >(new std::istringstream(std::string(response), std::ios_base::in));
     }
 
     /*
      * GetField request implementation
      */
-    std::shared_ptr< aspose::words::cloud::models::FieldResponse > GetFieldResponse::getResult() const
+    std::shared_ptr< aspose::words::cloud::models::FieldResponse > GetFieldResponse::getModel() const
     {
-        return m_Result;
+        return m_Model;
     }
 
     void GetFieldResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
-        m_Result = createModelInstance< aspose::words::cloud::models::FieldResponse >(L"FieldResponse, _", response);
+        m_Model = createModelInstance< aspose::words::cloud::models::FieldResponse >(L"FieldResponse, _", response);
     }
 
     /*
      * GetFieldOnline request implementation
      */
-    std::shared_ptr< aspose::words::cloud::models::FieldResponse > GetFieldOnlineResponse::getResult() const
+    std::shared_ptr< aspose::words::cloud::models::FieldResponse > GetFieldOnlineResponse::getModel() const
     {
-        return m_Result;
+        return m_Model;
     }
 
     void GetFieldOnlineResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
-        m_Result = createModelInstance< aspose::words::cloud::models::FieldResponse >(L"FieldResponse, _", response);
+        m_Model = createModelInstance< aspose::words::cloud::models::FieldResponse >(L"FieldResponse, _", response);
     }
 
     /*
      * GetFields request implementation
      */
-    std::shared_ptr< aspose::words::cloud::models::FieldsResponse > GetFieldsResponse::getResult() const
+    std::shared_ptr< aspose::words::cloud::models::FieldsResponse > GetFieldsResponse::getModel() const
     {
-        return m_Result;
+        return m_Model;
     }
 
     void GetFieldsResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
-        m_Result = createModelInstance< aspose::words::cloud::models::FieldsResponse >(L"FieldsResponse, _", response);
+        m_Model = createModelInstance< aspose::words::cloud::models::FieldsResponse >(L"FieldsResponse, _", response);
     }
 
     /*
      * GetFieldsOnline request implementation
      */
-    std::shared_ptr< aspose::words::cloud::models::FieldsResponse > GetFieldsOnlineResponse::getResult() const
+    std::shared_ptr< aspose::words::cloud::models::FieldsResponse > GetFieldsOnlineResponse::getModel() const
     {
-        return m_Result;
+        return m_Model;
     }
 
     void GetFieldsOnlineResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
-        m_Result = createModelInstance< aspose::words::cloud::models::FieldsResponse >(L"FieldsResponse, _", response);
+        m_Model = createModelInstance< aspose::words::cloud::models::FieldsResponse >(L"FieldsResponse, _", response);
     }
 
     /*
      * GetFilesList request implementation
      */
-    std::shared_ptr< aspose::words::cloud::models::FilesList > GetFilesListResponse::getResult() const
+    std::shared_ptr< aspose::words::cloud::models::FilesList > GetFilesListResponse::getModel() const
     {
-        return m_Result;
+        return m_Model;
     }
 
     void GetFilesListResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
-        m_Result = createModelInstance< aspose::words::cloud::models::FilesList >(L"FilesList, _", response);
+        m_Model = createModelInstance< aspose::words::cloud::models::FilesList >(L"FilesList, _", response);
     }
 
     /*
      * GetFootnote request implementation
      */
-    std::shared_ptr< aspose::words::cloud::models::FootnoteResponse > GetFootnoteResponse::getResult() const
+    std::shared_ptr< aspose::words::cloud::models::FootnoteResponse > GetFootnoteResponse::getModel() const
     {
-        return m_Result;
+        return m_Model;
     }
 
     void GetFootnoteResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
-        m_Result = createModelInstance< aspose::words::cloud::models::FootnoteResponse >(L"FootnoteResponse, _", response);
+        m_Model = createModelInstance< aspose::words::cloud::models::FootnoteResponse >(L"FootnoteResponse, _", response);
     }
 
     /*
      * GetFootnoteOnline request implementation
      */
-    std::shared_ptr< aspose::words::cloud::models::FootnoteResponse > GetFootnoteOnlineResponse::getResult() const
+    std::shared_ptr< aspose::words::cloud::models::FootnoteResponse > GetFootnoteOnlineResponse::getModel() const
     {
-        return m_Result;
+        return m_Model;
     }
 
     void GetFootnoteOnlineResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
-        m_Result = createModelInstance< aspose::words::cloud::models::FootnoteResponse >(L"FootnoteResponse, _", response);
+        m_Model = createModelInstance< aspose::words::cloud::models::FootnoteResponse >(L"FootnoteResponse, _", response);
     }
 
     /*
      * GetFootnotes request implementation
      */
-    std::shared_ptr< aspose::words::cloud::models::FootnotesResponse > GetFootnotesResponse::getResult() const
+    std::shared_ptr< aspose::words::cloud::models::FootnotesResponse > GetFootnotesResponse::getModel() const
     {
-        return m_Result;
+        return m_Model;
     }
 
     void GetFootnotesResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
-        m_Result = createModelInstance< aspose::words::cloud::models::FootnotesResponse >(L"FootnotesResponse, _", response);
+        m_Model = createModelInstance< aspose::words::cloud::models::FootnotesResponse >(L"FootnotesResponse, _", response);
     }
 
     /*
      * GetFootnotesOnline request implementation
      */
-    std::shared_ptr< aspose::words::cloud::models::FootnotesResponse > GetFootnotesOnlineResponse::getResult() const
+    std::shared_ptr< aspose::words::cloud::models::FootnotesResponse > GetFootnotesOnlineResponse::getModel() const
     {
-        return m_Result;
+        return m_Model;
     }
 
     void GetFootnotesOnlineResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
-        m_Result = createModelInstance< aspose::words::cloud::models::FootnotesResponse >(L"FootnotesResponse, _", response);
+        m_Model = createModelInstance< aspose::words::cloud::models::FootnotesResponse >(L"FootnotesResponse, _", response);
     }
 
     /*
      * GetFormField request implementation
      */
-    std::shared_ptr< aspose::words::cloud::models::FormFieldResponse > GetFormFieldResponse::getResult() const
+    std::shared_ptr< aspose::words::cloud::models::FormFieldResponse > GetFormFieldResponse::getModel() const
     {
-        return m_Result;
+        return m_Model;
     }
 
     void GetFormFieldResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
-        m_Result = createModelInstance< aspose::words::cloud::models::FormFieldResponse >(L"FormFieldResponse, _", response);
+        m_Model = createModelInstance< aspose::words::cloud::models::FormFieldResponse >(L"FormFieldResponse, _", response);
     }
 
     /*
      * GetFormFieldOnline request implementation
      */
-    std::shared_ptr< aspose::words::cloud::models::FormFieldResponse > GetFormFieldOnlineResponse::getResult() const
+    std::shared_ptr< aspose::words::cloud::models::FormFieldResponse > GetFormFieldOnlineResponse::getModel() const
     {
-        return m_Result;
+        return m_Model;
     }
 
     void GetFormFieldOnlineResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
-        m_Result = createModelInstance< aspose::words::cloud::models::FormFieldResponse >(L"FormFieldResponse, _", response);
+        m_Model = createModelInstance< aspose::words::cloud::models::FormFieldResponse >(L"FormFieldResponse, _", response);
     }
 
     /*
      * GetFormFields request implementation
      */
-    std::shared_ptr< aspose::words::cloud::models::FormFieldsResponse > GetFormFieldsResponse::getResult() const
+    std::shared_ptr< aspose::words::cloud::models::FormFieldsResponse > GetFormFieldsResponse::getModel() const
     {
-        return m_Result;
+        return m_Model;
     }
 
     void GetFormFieldsResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
-        m_Result = createModelInstance< aspose::words::cloud::models::FormFieldsResponse >(L"FormFieldsResponse, _", response);
+        m_Model = createModelInstance< aspose::words::cloud::models::FormFieldsResponse >(L"FormFieldsResponse, _", response);
     }
 
     /*
      * GetFormFieldsOnline request implementation
      */
-    std::shared_ptr< aspose::words::cloud::models::FormFieldsResponse > GetFormFieldsOnlineResponse::getResult() const
+    std::shared_ptr< aspose::words::cloud::models::FormFieldsResponse > GetFormFieldsOnlineResponse::getModel() const
     {
-        return m_Result;
+        return m_Model;
     }
 
     void GetFormFieldsOnlineResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
-        m_Result = createModelInstance< aspose::words::cloud::models::FormFieldsResponse >(L"FormFieldsResponse, _", response);
+        m_Model = createModelInstance< aspose::words::cloud::models::FormFieldsResponse >(L"FormFieldsResponse, _", response);
     }
 
     /*
      * GetHeaderFooter request implementation
      */
-    std::shared_ptr< aspose::words::cloud::models::HeaderFooterResponse > GetHeaderFooterResponse::getResult() const
+    std::shared_ptr< aspose::words::cloud::models::HeaderFooterResponse > GetHeaderFooterResponse::getModel() const
     {
-        return m_Result;
+        return m_Model;
     }
 
     void GetHeaderFooterResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
-        m_Result = createModelInstance< aspose::words::cloud::models::HeaderFooterResponse >(L"HeaderFooterResponse, _", response);
+        m_Model = createModelInstance< aspose::words::cloud::models::HeaderFooterResponse >(L"HeaderFooterResponse, _", response);
     }
 
     /*
      * GetHeaderFooterOfSection request implementation
      */
-    std::shared_ptr< aspose::words::cloud::models::HeaderFooterResponse > GetHeaderFooterOfSectionResponse::getResult() const
+    std::shared_ptr< aspose::words::cloud::models::HeaderFooterResponse > GetHeaderFooterOfSectionResponse::getModel() const
     {
-        return m_Result;
+        return m_Model;
     }
 
     void GetHeaderFooterOfSectionResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
-        m_Result = createModelInstance< aspose::words::cloud::models::HeaderFooterResponse >(L"HeaderFooterResponse, _", response);
+        m_Model = createModelInstance< aspose::words::cloud::models::HeaderFooterResponse >(L"HeaderFooterResponse, _", response);
     }
 
     /*
      * GetHeaderFooterOfSectionOnline request implementation
      */
-    std::shared_ptr< aspose::words::cloud::models::HeaderFooterResponse > GetHeaderFooterOfSectionOnlineResponse::getResult() const
+    std::shared_ptr< aspose::words::cloud::models::HeaderFooterResponse > GetHeaderFooterOfSectionOnlineResponse::getModel() const
     {
-        return m_Result;
+        return m_Model;
     }
 
     void GetHeaderFooterOfSectionOnlineResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
-        m_Result = createModelInstance< aspose::words::cloud::models::HeaderFooterResponse >(L"HeaderFooterResponse, _", response);
+        m_Model = createModelInstance< aspose::words::cloud::models::HeaderFooterResponse >(L"HeaderFooterResponse, _", response);
     }
 
     /*
      * GetHeaderFooterOnline request implementation
      */
-    std::shared_ptr< aspose::words::cloud::models::HeaderFooterResponse > GetHeaderFooterOnlineResponse::getResult() const
+    std::shared_ptr< aspose::words::cloud::models::HeaderFooterResponse > GetHeaderFooterOnlineResponse::getModel() const
     {
-        return m_Result;
+        return m_Model;
     }
 
     void GetHeaderFooterOnlineResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
-        m_Result = createModelInstance< aspose::words::cloud::models::HeaderFooterResponse >(L"HeaderFooterResponse, _", response);
+        m_Model = createModelInstance< aspose::words::cloud::models::HeaderFooterResponse >(L"HeaderFooterResponse, _", response);
     }
 
     /*
      * GetHeaderFooters request implementation
      */
-    std::shared_ptr< aspose::words::cloud::models::HeaderFootersResponse > GetHeaderFootersResponse::getResult() const
+    std::shared_ptr< aspose::words::cloud::models::HeaderFootersResponse > GetHeaderFootersResponse::getModel() const
     {
-        return m_Result;
+        return m_Model;
     }
 
     void GetHeaderFootersResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
-        m_Result = createModelInstance< aspose::words::cloud::models::HeaderFootersResponse >(L"HeaderFootersResponse, _", response);
+        m_Model = createModelInstance< aspose::words::cloud::models::HeaderFootersResponse >(L"HeaderFootersResponse, _", response);
     }
 
     /*
      * GetHeaderFootersOnline request implementation
      */
-    std::shared_ptr< aspose::words::cloud::models::HeaderFootersResponse > GetHeaderFootersOnlineResponse::getResult() const
+    std::shared_ptr< aspose::words::cloud::models::HeaderFootersResponse > GetHeaderFootersOnlineResponse::getModel() const
     {
-        return m_Result;
+        return m_Model;
     }
 
     void GetHeaderFootersOnlineResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
-        m_Result = createModelInstance< aspose::words::cloud::models::HeaderFootersResponse >(L"HeaderFootersResponse, _", response);
+        m_Model = createModelInstance< aspose::words::cloud::models::HeaderFootersResponse >(L"HeaderFootersResponse, _", response);
     }
 
     /*
      * GetInfo request implementation
      */
-    std::shared_ptr< aspose::words::cloud::models::InfoResponse > GetInfoResponse::getResult() const
+    std::shared_ptr< aspose::words::cloud::models::InfoResponse > GetInfoResponse::getModel() const
     {
-        return m_Result;
+        return m_Model;
     }
 
     void GetInfoResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
-        m_Result = createModelInstance< aspose::words::cloud::models::InfoResponse >(L"InfoResponse, _", response);
+        m_Model = createModelInstance< aspose::words::cloud::models::InfoResponse >(L"InfoResponse, _", response);
     }
 
     /*
      * GetList request implementation
      */
-    std::shared_ptr< aspose::words::cloud::models::ListResponse > GetListResponse::getResult() const
+    std::shared_ptr< aspose::words::cloud::models::ListResponse > GetListResponse::getModel() const
     {
-        return m_Result;
+        return m_Model;
     }
 
     void GetListResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
-        m_Result = createModelInstance< aspose::words::cloud::models::ListResponse >(L"ListResponse, _", response);
+        m_Model = createModelInstance< aspose::words::cloud::models::ListResponse >(L"ListResponse, _", response);
     }
 
     /*
      * GetListOnline request implementation
      */
-    std::shared_ptr< aspose::words::cloud::models::ListResponse > GetListOnlineResponse::getResult() const
+    std::shared_ptr< aspose::words::cloud::models::ListResponse > GetListOnlineResponse::getModel() const
     {
-        return m_Result;
+        return m_Model;
     }
 
     void GetListOnlineResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
-        m_Result = createModelInstance< aspose::words::cloud::models::ListResponse >(L"ListResponse, _", response);
+        m_Model = createModelInstance< aspose::words::cloud::models::ListResponse >(L"ListResponse, _", response);
     }
 
     /*
      * GetLists request implementation
      */
-    std::shared_ptr< aspose::words::cloud::models::ListsResponse > GetListsResponse::getResult() const
+    std::shared_ptr< aspose::words::cloud::models::ListsResponse > GetListsResponse::getModel() const
     {
-        return m_Result;
+        return m_Model;
     }
 
     void GetListsResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
-        m_Result = createModelInstance< aspose::words::cloud::models::ListsResponse >(L"ListsResponse, _", response);
+        m_Model = createModelInstance< aspose::words::cloud::models::ListsResponse >(L"ListsResponse, _", response);
     }
 
     /*
      * GetListsOnline request implementation
      */
-    std::shared_ptr< aspose::words::cloud::models::ListsResponse > GetListsOnlineResponse::getResult() const
+    std::shared_ptr< aspose::words::cloud::models::ListsResponse > GetListsOnlineResponse::getModel() const
     {
-        return m_Result;
+        return m_Model;
     }
 
     void GetListsOnlineResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
-        m_Result = createModelInstance< aspose::words::cloud::models::ListsResponse >(L"ListsResponse, _", response);
+        m_Model = createModelInstance< aspose::words::cloud::models::ListsResponse >(L"ListsResponse, _", response);
     }
 
     /*
      * GetOfficeMathObject request implementation
      */
-    std::shared_ptr< aspose::words::cloud::models::OfficeMathObjectResponse > GetOfficeMathObjectResponse::getResult() const
+    std::shared_ptr< aspose::words::cloud::models::OfficeMathObjectResponse > GetOfficeMathObjectResponse::getModel() const
     {
-        return m_Result;
+        return m_Model;
     }
 
     void GetOfficeMathObjectResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
-        m_Result = createModelInstance< aspose::words::cloud::models::OfficeMathObjectResponse >(L"OfficeMathObjectResponse, _", response);
+        m_Model = createModelInstance< aspose::words::cloud::models::OfficeMathObjectResponse >(L"OfficeMathObjectResponse, _", response);
     }
 
     /*
      * GetOfficeMathObjectOnline request implementation
      */
-    std::shared_ptr< aspose::words::cloud::models::OfficeMathObjectResponse > GetOfficeMathObjectOnlineResponse::getResult() const
+    std::shared_ptr< aspose::words::cloud::models::OfficeMathObjectResponse > GetOfficeMathObjectOnlineResponse::getModel() const
     {
-        return m_Result;
+        return m_Model;
     }
 
     void GetOfficeMathObjectOnlineResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
-        m_Result = createModelInstance< aspose::words::cloud::models::OfficeMathObjectResponse >(L"OfficeMathObjectResponse, _", response);
+        m_Model = createModelInstance< aspose::words::cloud::models::OfficeMathObjectResponse >(L"OfficeMathObjectResponse, _", response);
     }
 
     /*
      * GetOfficeMathObjects request implementation
      */
-    std::shared_ptr< aspose::words::cloud::models::OfficeMathObjectsResponse > GetOfficeMathObjectsResponse::getResult() const
+    std::shared_ptr< aspose::words::cloud::models::OfficeMathObjectsResponse > GetOfficeMathObjectsResponse::getModel() const
     {
-        return m_Result;
+        return m_Model;
     }
 
     void GetOfficeMathObjectsResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
-        m_Result = createModelInstance< aspose::words::cloud::models::OfficeMathObjectsResponse >(L"OfficeMathObjectsResponse, _", response);
+        m_Model = createModelInstance< aspose::words::cloud::models::OfficeMathObjectsResponse >(L"OfficeMathObjectsResponse, _", response);
     }
 
     /*
      * GetOfficeMathObjectsOnline request implementation
      */
-    std::shared_ptr< aspose::words::cloud::models::OfficeMathObjectsResponse > GetOfficeMathObjectsOnlineResponse::getResult() const
+    std::shared_ptr< aspose::words::cloud::models::OfficeMathObjectsResponse > GetOfficeMathObjectsOnlineResponse::getModel() const
     {
-        return m_Result;
+        return m_Model;
     }
 
     void GetOfficeMathObjectsOnlineResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
-        m_Result = createModelInstance< aspose::words::cloud::models::OfficeMathObjectsResponse >(L"OfficeMathObjectsResponse, _", response);
+        m_Model = createModelInstance< aspose::words::cloud::models::OfficeMathObjectsResponse >(L"OfficeMathObjectsResponse, _", response);
     }
 
     /*
      * GetParagraph request implementation
      */
-    std::shared_ptr< aspose::words::cloud::models::ParagraphResponse > GetParagraphResponse::getResult() const
+    std::shared_ptr< aspose::words::cloud::models::ParagraphResponse > GetParagraphResponse::getModel() const
     {
-        return m_Result;
+        return m_Model;
     }
 
     void GetParagraphResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
-        m_Result = createModelInstance< aspose::words::cloud::models::ParagraphResponse >(L"ParagraphResponse, _", response);
+        m_Model = createModelInstance< aspose::words::cloud::models::ParagraphResponse >(L"ParagraphResponse, _", response);
     }
 
     /*
      * GetParagraphFormat request implementation
      */
-    std::shared_ptr< aspose::words::cloud::models::ParagraphFormatResponse > GetParagraphFormatResponse::getResult() const
+    std::shared_ptr< aspose::words::cloud::models::ParagraphFormatResponse > GetParagraphFormatResponse::getModel() const
     {
-        return m_Result;
+        return m_Model;
     }
 
     void GetParagraphFormatResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
-        m_Result = createModelInstance< aspose::words::cloud::models::ParagraphFormatResponse >(L"ParagraphFormatResponse, _", response);
+        m_Model = createModelInstance< aspose::words::cloud::models::ParagraphFormatResponse >(L"ParagraphFormatResponse, _", response);
     }
 
     /*
      * GetParagraphFormatOnline request implementation
      */
-    std::shared_ptr< aspose::words::cloud::models::ParagraphFormatResponse > GetParagraphFormatOnlineResponse::getResult() const
+    std::shared_ptr< aspose::words::cloud::models::ParagraphFormatResponse > GetParagraphFormatOnlineResponse::getModel() const
     {
-        return m_Result;
+        return m_Model;
     }
 
     void GetParagraphFormatOnlineResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
-        m_Result = createModelInstance< aspose::words::cloud::models::ParagraphFormatResponse >(L"ParagraphFormatResponse, _", response);
+        m_Model = createModelInstance< aspose::words::cloud::models::ParagraphFormatResponse >(L"ParagraphFormatResponse, _", response);
     }
 
     /*
      * GetParagraphListFormat request implementation
      */
-    std::shared_ptr< aspose::words::cloud::models::ParagraphListFormatResponse > GetParagraphListFormatResponse::getResult() const
+    std::shared_ptr< aspose::words::cloud::models::ParagraphListFormatResponse > GetParagraphListFormatResponse::getModel() const
     {
-        return m_Result;
+        return m_Model;
     }
 
     void GetParagraphListFormatResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
-        m_Result = createModelInstance< aspose::words::cloud::models::ParagraphListFormatResponse >(L"ParagraphListFormatResponse, _", response);
+        m_Model = createModelInstance< aspose::words::cloud::models::ParagraphListFormatResponse >(L"ParagraphListFormatResponse, _", response);
     }
 
     /*
      * GetParagraphListFormatOnline request implementation
      */
-    std::shared_ptr< aspose::words::cloud::models::ParagraphListFormatResponse > GetParagraphListFormatOnlineResponse::getResult() const
+    std::shared_ptr< aspose::words::cloud::models::ParagraphListFormatResponse > GetParagraphListFormatOnlineResponse::getModel() const
     {
-        return m_Result;
+        return m_Model;
     }
 
     void GetParagraphListFormatOnlineResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
-        m_Result = createModelInstance< aspose::words::cloud::models::ParagraphListFormatResponse >(L"ParagraphListFormatResponse, _", response);
+        m_Model = createModelInstance< aspose::words::cloud::models::ParagraphListFormatResponse >(L"ParagraphListFormatResponse, _", response);
     }
 
     /*
      * GetParagraphOnline request implementation
      */
-    std::shared_ptr< aspose::words::cloud::models::ParagraphResponse > GetParagraphOnlineResponse::getResult() const
+    std::shared_ptr< aspose::words::cloud::models::ParagraphResponse > GetParagraphOnlineResponse::getModel() const
     {
-        return m_Result;
+        return m_Model;
     }
 
     void GetParagraphOnlineResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
-        m_Result = createModelInstance< aspose::words::cloud::models::ParagraphResponse >(L"ParagraphResponse, _", response);
+        m_Model = createModelInstance< aspose::words::cloud::models::ParagraphResponse >(L"ParagraphResponse, _", response);
     }
 
     /*
      * GetParagraphs request implementation
      */
-    std::shared_ptr< aspose::words::cloud::models::ParagraphLinkCollectionResponse > GetParagraphsResponse::getResult() const
+    std::shared_ptr< aspose::words::cloud::models::ParagraphLinkCollectionResponse > GetParagraphsResponse::getModel() const
     {
-        return m_Result;
+        return m_Model;
     }
 
     void GetParagraphsResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
-        m_Result = createModelInstance< aspose::words::cloud::models::ParagraphLinkCollectionResponse >(L"ParagraphLinkCollectionResponse, _", response);
+        m_Model = createModelInstance< aspose::words::cloud::models::ParagraphLinkCollectionResponse >(L"ParagraphLinkCollectionResponse, _", response);
     }
 
     /*
      * GetParagraphsOnline request implementation
      */
-    std::shared_ptr< aspose::words::cloud::models::ParagraphLinkCollectionResponse > GetParagraphsOnlineResponse::getResult() const
+    std::shared_ptr< aspose::words::cloud::models::ParagraphLinkCollectionResponse > GetParagraphsOnlineResponse::getModel() const
     {
-        return m_Result;
+        return m_Model;
     }
 
     void GetParagraphsOnlineResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
-        m_Result = createModelInstance< aspose::words::cloud::models::ParagraphLinkCollectionResponse >(L"ParagraphLinkCollectionResponse, _", response);
+        m_Model = createModelInstance< aspose::words::cloud::models::ParagraphLinkCollectionResponse >(L"ParagraphLinkCollectionResponse, _", response);
     }
 
     /*
      * GetParagraphTabStops request implementation
      */
-    std::shared_ptr< aspose::words::cloud::models::TabStopsResponse > GetParagraphTabStopsResponse::getResult() const
+    std::shared_ptr< aspose::words::cloud::models::TabStopsResponse > GetParagraphTabStopsResponse::getModel() const
     {
-        return m_Result;
+        return m_Model;
     }
 
     void GetParagraphTabStopsResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
-        m_Result = createModelInstance< aspose::words::cloud::models::TabStopsResponse >(L"TabStopsResponse, _", response);
+        m_Model = createModelInstance< aspose::words::cloud::models::TabStopsResponse >(L"TabStopsResponse, _", response);
     }
 
     /*
      * GetParagraphTabStopsOnline request implementation
      */
-    std::shared_ptr< aspose::words::cloud::models::TabStopsResponse > GetParagraphTabStopsOnlineResponse::getResult() const
+    std::shared_ptr< aspose::words::cloud::models::TabStopsResponse > GetParagraphTabStopsOnlineResponse::getModel() const
     {
-        return m_Result;
+        return m_Model;
     }
 
     void GetParagraphTabStopsOnlineResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
-        m_Result = createModelInstance< aspose::words::cloud::models::TabStopsResponse >(L"TabStopsResponse, _", response);
+        m_Model = createModelInstance< aspose::words::cloud::models::TabStopsResponse >(L"TabStopsResponse, _", response);
     }
 
     /*
      * GetPublicKey request implementation
      */
-    std::shared_ptr< aspose::words::cloud::models::PublicKeyResponse > GetPublicKeyResponse::getResult() const
+    std::shared_ptr< aspose::words::cloud::models::PublicKeyResponse > GetPublicKeyResponse::getModel() const
     {
-        return m_Result;
+        return m_Model;
     }
 
     void GetPublicKeyResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
-        m_Result = createModelInstance< aspose::words::cloud::models::PublicKeyResponse >(L"PublicKeyResponse, _", response);
+        m_Model = createModelInstance< aspose::words::cloud::models::PublicKeyResponse >(L"PublicKeyResponse, _", response);
     }
 
     /*
      * GetRangeText request implementation
      */
-    std::shared_ptr< aspose::words::cloud::models::RangeTextResponse > GetRangeTextResponse::getResult() const
+    std::shared_ptr< aspose::words::cloud::models::RangeTextResponse > GetRangeTextResponse::getModel() const
     {
-        return m_Result;
+        return m_Model;
     }
 
     void GetRangeTextResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
-        m_Result = createModelInstance< aspose::words::cloud::models::RangeTextResponse >(L"RangeTextResponse, _", response);
+        m_Model = createModelInstance< aspose::words::cloud::models::RangeTextResponse >(L"RangeTextResponse, _", response);
     }
 
     /*
      * GetRangeTextOnline request implementation
      */
-    std::shared_ptr< aspose::words::cloud::models::RangeTextResponse > GetRangeTextOnlineResponse::getResult() const
+    std::shared_ptr< aspose::words::cloud::models::RangeTextResponse > GetRangeTextOnlineResponse::getModel() const
     {
-        return m_Result;
+        return m_Model;
     }
 
     void GetRangeTextOnlineResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
-        m_Result = createModelInstance< aspose::words::cloud::models::RangeTextResponse >(L"RangeTextResponse, _", response);
+        m_Model = createModelInstance< aspose::words::cloud::models::RangeTextResponse >(L"RangeTextResponse, _", response);
     }
 
     /*
      * GetRun request implementation
      */
-    std::shared_ptr< aspose::words::cloud::models::RunResponse > GetRunResponse::getResult() const
+    std::shared_ptr< aspose::words::cloud::models::RunResponse > GetRunResponse::getModel() const
     {
-        return m_Result;
+        return m_Model;
     }
 
     void GetRunResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
-        m_Result = createModelInstance< aspose::words::cloud::models::RunResponse >(L"RunResponse, _", response);
+        m_Model = createModelInstance< aspose::words::cloud::models::RunResponse >(L"RunResponse, _", response);
     }
 
     /*
      * GetRunFont request implementation
      */
-    std::shared_ptr< aspose::words::cloud::models::FontResponse > GetRunFontResponse::getResult() const
+    std::shared_ptr< aspose::words::cloud::models::FontResponse > GetRunFontResponse::getModel() const
     {
-        return m_Result;
+        return m_Model;
     }
 
     void GetRunFontResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
-        m_Result = createModelInstance< aspose::words::cloud::models::FontResponse >(L"FontResponse, _", response);
+        m_Model = createModelInstance< aspose::words::cloud::models::FontResponse >(L"FontResponse, _", response);
     }
 
     /*
      * GetRunFontOnline request implementation
      */
-    std::shared_ptr< aspose::words::cloud::models::FontResponse > GetRunFontOnlineResponse::getResult() const
+    std::shared_ptr< aspose::words::cloud::models::FontResponse > GetRunFontOnlineResponse::getModel() const
     {
-        return m_Result;
+        return m_Model;
     }
 
     void GetRunFontOnlineResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
-        m_Result = createModelInstance< aspose::words::cloud::models::FontResponse >(L"FontResponse, _", response);
+        m_Model = createModelInstance< aspose::words::cloud::models::FontResponse >(L"FontResponse, _", response);
     }
 
     /*
      * GetRunOnline request implementation
      */
-    std::shared_ptr< aspose::words::cloud::models::RunResponse > GetRunOnlineResponse::getResult() const
+    std::shared_ptr< aspose::words::cloud::models::RunResponse > GetRunOnlineResponse::getModel() const
     {
-        return m_Result;
+        return m_Model;
     }
 
     void GetRunOnlineResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
-        m_Result = createModelInstance< aspose::words::cloud::models::RunResponse >(L"RunResponse, _", response);
+        m_Model = createModelInstance< aspose::words::cloud::models::RunResponse >(L"RunResponse, _", response);
     }
 
     /*
      * GetRuns request implementation
      */
-    std::shared_ptr< aspose::words::cloud::models::RunsResponse > GetRunsResponse::getResult() const
+    std::shared_ptr< aspose::words::cloud::models::RunsResponse > GetRunsResponse::getModel() const
     {
-        return m_Result;
+        return m_Model;
     }
 
     void GetRunsResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
-        m_Result = createModelInstance< aspose::words::cloud::models::RunsResponse >(L"RunsResponse, _", response);
+        m_Model = createModelInstance< aspose::words::cloud::models::RunsResponse >(L"RunsResponse, _", response);
     }
 
     /*
      * GetRunsOnline request implementation
      */
-    std::shared_ptr< aspose::words::cloud::models::RunsResponse > GetRunsOnlineResponse::getResult() const
+    std::shared_ptr< aspose::words::cloud::models::RunsResponse > GetRunsOnlineResponse::getModel() const
     {
-        return m_Result;
+        return m_Model;
     }
 
     void GetRunsOnlineResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
-        m_Result = createModelInstance< aspose::words::cloud::models::RunsResponse >(L"RunsResponse, _", response);
+        m_Model = createModelInstance< aspose::words::cloud::models::RunsResponse >(L"RunsResponse, _", response);
     }
 
     /*
      * GetSection request implementation
      */
-    std::shared_ptr< aspose::words::cloud::models::SectionResponse > GetSectionResponse::getResult() const
+    std::shared_ptr< aspose::words::cloud::models::SectionResponse > GetSectionResponse::getModel() const
     {
-        return m_Result;
+        return m_Model;
     }
 
     void GetSectionResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
-        m_Result = createModelInstance< aspose::words::cloud::models::SectionResponse >(L"SectionResponse, _", response);
+        m_Model = createModelInstance< aspose::words::cloud::models::SectionResponse >(L"SectionResponse, _", response);
     }
 
     /*
      * GetSectionOnline request implementation
      */
-    std::shared_ptr< aspose::words::cloud::models::SectionResponse > GetSectionOnlineResponse::getResult() const
+    std::shared_ptr< aspose::words::cloud::models::SectionResponse > GetSectionOnlineResponse::getModel() const
     {
-        return m_Result;
+        return m_Model;
     }
 
     void GetSectionOnlineResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
-        m_Result = createModelInstance< aspose::words::cloud::models::SectionResponse >(L"SectionResponse, _", response);
+        m_Model = createModelInstance< aspose::words::cloud::models::SectionResponse >(L"SectionResponse, _", response);
     }
 
     /*
      * GetSectionPageSetup request implementation
      */
-    std::shared_ptr< aspose::words::cloud::models::SectionPageSetupResponse > GetSectionPageSetupResponse::getResult() const
+    std::shared_ptr< aspose::words::cloud::models::SectionPageSetupResponse > GetSectionPageSetupResponse::getModel() const
     {
-        return m_Result;
+        return m_Model;
     }
 
     void GetSectionPageSetupResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
-        m_Result = createModelInstance< aspose::words::cloud::models::SectionPageSetupResponse >(L"SectionPageSetupResponse, _", response);
+        m_Model = createModelInstance< aspose::words::cloud::models::SectionPageSetupResponse >(L"SectionPageSetupResponse, _", response);
     }
 
     /*
      * GetSectionPageSetupOnline request implementation
      */
-    std::shared_ptr< aspose::words::cloud::models::SectionPageSetupResponse > GetSectionPageSetupOnlineResponse::getResult() const
+    std::shared_ptr< aspose::words::cloud::models::SectionPageSetupResponse > GetSectionPageSetupOnlineResponse::getModel() const
     {
-        return m_Result;
+        return m_Model;
     }
 
     void GetSectionPageSetupOnlineResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
-        m_Result = createModelInstance< aspose::words::cloud::models::SectionPageSetupResponse >(L"SectionPageSetupResponse, _", response);
+        m_Model = createModelInstance< aspose::words::cloud::models::SectionPageSetupResponse >(L"SectionPageSetupResponse, _", response);
     }
 
     /*
      * GetSections request implementation
      */
-    std::shared_ptr< aspose::words::cloud::models::SectionLinkCollectionResponse > GetSectionsResponse::getResult() const
+    std::shared_ptr< aspose::words::cloud::models::SectionLinkCollectionResponse > GetSectionsResponse::getModel() const
     {
-        return m_Result;
+        return m_Model;
     }
 
     void GetSectionsResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
-        m_Result = createModelInstance< aspose::words::cloud::models::SectionLinkCollectionResponse >(L"SectionLinkCollectionResponse, _", response);
+        m_Model = createModelInstance< aspose::words::cloud::models::SectionLinkCollectionResponse >(L"SectionLinkCollectionResponse, _", response);
     }
 
     /*
      * GetSectionsOnline request implementation
      */
-    std::shared_ptr< aspose::words::cloud::models::SectionLinkCollectionResponse > GetSectionsOnlineResponse::getResult() const
+    std::shared_ptr< aspose::words::cloud::models::SectionLinkCollectionResponse > GetSectionsOnlineResponse::getModel() const
     {
-        return m_Result;
+        return m_Model;
     }
 
     void GetSectionsOnlineResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
-        m_Result = createModelInstance< aspose::words::cloud::models::SectionLinkCollectionResponse >(L"SectionLinkCollectionResponse, _", response);
+        m_Model = createModelInstance< aspose::words::cloud::models::SectionLinkCollectionResponse >(L"SectionLinkCollectionResponse, _", response);
     }
 
     /*
      * GetStructuredDocumentTag request implementation
      */
-    std::shared_ptr< aspose::words::cloud::models::StructuredDocumentTagResponse > GetStructuredDocumentTagResponse::getResult() const
+    std::shared_ptr< aspose::words::cloud::models::StructuredDocumentTagResponse > GetStructuredDocumentTagResponse::getModel() const
     {
-        return m_Result;
+        return m_Model;
     }
 
     void GetStructuredDocumentTagResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
-        m_Result = createModelInstance< aspose::words::cloud::models::StructuredDocumentTagResponse >(L"StructuredDocumentTagResponse, _", response);
+        m_Model = createModelInstance< aspose::words::cloud::models::StructuredDocumentTagResponse >(L"StructuredDocumentTagResponse, _", response);
     }
 
     /*
      * GetStructuredDocumentTagOnline request implementation
      */
-    std::shared_ptr< aspose::words::cloud::models::StructuredDocumentTagResponse > GetStructuredDocumentTagOnlineResponse::getResult() const
+    std::shared_ptr< aspose::words::cloud::models::StructuredDocumentTagResponse > GetStructuredDocumentTagOnlineResponse::getModel() const
     {
-        return m_Result;
+        return m_Model;
     }
 
     void GetStructuredDocumentTagOnlineResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
-        m_Result = createModelInstance< aspose::words::cloud::models::StructuredDocumentTagResponse >(L"StructuredDocumentTagResponse, _", response);
+        m_Model = createModelInstance< aspose::words::cloud::models::StructuredDocumentTagResponse >(L"StructuredDocumentTagResponse, _", response);
     }
 
     /*
      * GetStructuredDocumentTags request implementation
      */
-    std::shared_ptr< aspose::words::cloud::models::StructuredDocumentTagsResponse > GetStructuredDocumentTagsResponse::getResult() const
+    std::shared_ptr< aspose::words::cloud::models::StructuredDocumentTagsResponse > GetStructuredDocumentTagsResponse::getModel() const
     {
-        return m_Result;
+        return m_Model;
     }
 
     void GetStructuredDocumentTagsResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
-        m_Result = createModelInstance< aspose::words::cloud::models::StructuredDocumentTagsResponse >(L"StructuredDocumentTagsResponse, _", response);
+        m_Model = createModelInstance< aspose::words::cloud::models::StructuredDocumentTagsResponse >(L"StructuredDocumentTagsResponse, _", response);
     }
 
     /*
      * GetStructuredDocumentTagsOnline request implementation
      */
-    std::shared_ptr< aspose::words::cloud::models::StructuredDocumentTagsResponse > GetStructuredDocumentTagsOnlineResponse::getResult() const
+    std::shared_ptr< aspose::words::cloud::models::StructuredDocumentTagsResponse > GetStructuredDocumentTagsOnlineResponse::getModel() const
     {
-        return m_Result;
+        return m_Model;
     }
 
     void GetStructuredDocumentTagsOnlineResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
-        m_Result = createModelInstance< aspose::words::cloud::models::StructuredDocumentTagsResponse >(L"StructuredDocumentTagsResponse, _", response);
+        m_Model = createModelInstance< aspose::words::cloud::models::StructuredDocumentTagsResponse >(L"StructuredDocumentTagsResponse, _", response);
     }
 
     /*
      * GetStyle request implementation
      */
-    std::shared_ptr< aspose::words::cloud::models::StyleResponse > GetStyleResponse::getResult() const
+    std::shared_ptr< aspose::words::cloud::models::StyleResponse > GetStyleResponse::getModel() const
     {
-        return m_Result;
+        return m_Model;
     }
 
     void GetStyleResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
-        m_Result = createModelInstance< aspose::words::cloud::models::StyleResponse >(L"StyleResponse, _", response);
+        m_Model = createModelInstance< aspose::words::cloud::models::StyleResponse >(L"StyleResponse, _", response);
     }
 
     /*
      * GetStyleFromDocumentElement request implementation
      */
-    std::shared_ptr< aspose::words::cloud::models::StyleResponse > GetStyleFromDocumentElementResponse::getResult() const
+    std::shared_ptr< aspose::words::cloud::models::StyleResponse > GetStyleFromDocumentElementResponse::getModel() const
     {
-        return m_Result;
+        return m_Model;
     }
 
     void GetStyleFromDocumentElementResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
-        m_Result = createModelInstance< aspose::words::cloud::models::StyleResponse >(L"StyleResponse, _", response);
+        m_Model = createModelInstance< aspose::words::cloud::models::StyleResponse >(L"StyleResponse, _", response);
     }
 
     /*
      * GetStyleFromDocumentElementOnline request implementation
      */
-    std::shared_ptr< aspose::words::cloud::models::StyleResponse > GetStyleFromDocumentElementOnlineResponse::getResult() const
+    std::shared_ptr< aspose::words::cloud::models::StyleResponse > GetStyleFromDocumentElementOnlineResponse::getModel() const
     {
-        return m_Result;
+        return m_Model;
     }
 
     void GetStyleFromDocumentElementOnlineResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
-        m_Result = createModelInstance< aspose::words::cloud::models::StyleResponse >(L"StyleResponse, _", response);
+        m_Model = createModelInstance< aspose::words::cloud::models::StyleResponse >(L"StyleResponse, _", response);
     }
 
     /*
      * GetStyleOnline request implementation
      */
-    std::shared_ptr< aspose::words::cloud::models::StyleResponse > GetStyleOnlineResponse::getResult() const
+    std::shared_ptr< aspose::words::cloud::models::StyleResponse > GetStyleOnlineResponse::getModel() const
     {
-        return m_Result;
+        return m_Model;
     }
 
     void GetStyleOnlineResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
-        m_Result = createModelInstance< aspose::words::cloud::models::StyleResponse >(L"StyleResponse, _", response);
+        m_Model = createModelInstance< aspose::words::cloud::models::StyleResponse >(L"StyleResponse, _", response);
     }
 
     /*
      * GetStyles request implementation
      */
-    std::shared_ptr< aspose::words::cloud::models::StylesResponse > GetStylesResponse::getResult() const
+    std::shared_ptr< aspose::words::cloud::models::StylesResponse > GetStylesResponse::getModel() const
     {
-        return m_Result;
+        return m_Model;
     }
 
     void GetStylesResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
-        m_Result = createModelInstance< aspose::words::cloud::models::StylesResponse >(L"StylesResponse, _", response);
+        m_Model = createModelInstance< aspose::words::cloud::models::StylesResponse >(L"StylesResponse, _", response);
     }
 
     /*
      * GetStylesOnline request implementation
      */
-    std::shared_ptr< aspose::words::cloud::models::StylesResponse > GetStylesOnlineResponse::getResult() const
+    std::shared_ptr< aspose::words::cloud::models::StylesResponse > GetStylesOnlineResponse::getModel() const
     {
-        return m_Result;
+        return m_Model;
     }
 
     void GetStylesOnlineResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
-        m_Result = createModelInstance< aspose::words::cloud::models::StylesResponse >(L"StylesResponse, _", response);
+        m_Model = createModelInstance< aspose::words::cloud::models::StylesResponse >(L"StylesResponse, _", response);
     }
 
     /*
      * GetTable request implementation
      */
-    std::shared_ptr< aspose::words::cloud::models::TableResponse > GetTableResponse::getResult() const
+    std::shared_ptr< aspose::words::cloud::models::TableResponse > GetTableResponse::getModel() const
     {
-        return m_Result;
+        return m_Model;
     }
 
     void GetTableResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
-        m_Result = createModelInstance< aspose::words::cloud::models::TableResponse >(L"TableResponse, _", response);
+        m_Model = createModelInstance< aspose::words::cloud::models::TableResponse >(L"TableResponse, _", response);
     }
 
     /*
      * GetTableCell request implementation
      */
-    std::shared_ptr< aspose::words::cloud::models::TableCellResponse > GetTableCellResponse::getResult() const
+    std::shared_ptr< aspose::words::cloud::models::TableCellResponse > GetTableCellResponse::getModel() const
     {
-        return m_Result;
+        return m_Model;
     }
 
     void GetTableCellResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
-        m_Result = createModelInstance< aspose::words::cloud::models::TableCellResponse >(L"TableCellResponse, _", response);
+        m_Model = createModelInstance< aspose::words::cloud::models::TableCellResponse >(L"TableCellResponse, _", response);
     }
 
     /*
      * GetTableCellFormat request implementation
      */
-    std::shared_ptr< aspose::words::cloud::models::TableCellFormatResponse > GetTableCellFormatResponse::getResult() const
+    std::shared_ptr< aspose::words::cloud::models::TableCellFormatResponse > GetTableCellFormatResponse::getModel() const
     {
-        return m_Result;
+        return m_Model;
     }
 
     void GetTableCellFormatResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
-        m_Result = createModelInstance< aspose::words::cloud::models::TableCellFormatResponse >(L"TableCellFormatResponse, _", response);
+        m_Model = createModelInstance< aspose::words::cloud::models::TableCellFormatResponse >(L"TableCellFormatResponse, _", response);
     }
 
     /*
      * GetTableCellFormatOnline request implementation
      */
-    std::shared_ptr< aspose::words::cloud::models::TableCellFormatResponse > GetTableCellFormatOnlineResponse::getResult() const
+    std::shared_ptr< aspose::words::cloud::models::TableCellFormatResponse > GetTableCellFormatOnlineResponse::getModel() const
     {
-        return m_Result;
+        return m_Model;
     }
 
     void GetTableCellFormatOnlineResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
-        m_Result = createModelInstance< aspose::words::cloud::models::TableCellFormatResponse >(L"TableCellFormatResponse, _", response);
+        m_Model = createModelInstance< aspose::words::cloud::models::TableCellFormatResponse >(L"TableCellFormatResponse, _", response);
     }
 
     /*
      * GetTableCellOnline request implementation
      */
-    std::shared_ptr< aspose::words::cloud::models::TableCellResponse > GetTableCellOnlineResponse::getResult() const
+    std::shared_ptr< aspose::words::cloud::models::TableCellResponse > GetTableCellOnlineResponse::getModel() const
     {
-        return m_Result;
+        return m_Model;
     }
 
     void GetTableCellOnlineResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
-        m_Result = createModelInstance< aspose::words::cloud::models::TableCellResponse >(L"TableCellResponse, _", response);
+        m_Model = createModelInstance< aspose::words::cloud::models::TableCellResponse >(L"TableCellResponse, _", response);
     }
 
     /*
      * GetTableOnline request implementation
      */
-    std::shared_ptr< aspose::words::cloud::models::TableResponse > GetTableOnlineResponse::getResult() const
+    std::shared_ptr< aspose::words::cloud::models::TableResponse > GetTableOnlineResponse::getModel() const
     {
-        return m_Result;
+        return m_Model;
     }
 
     void GetTableOnlineResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
-        m_Result = createModelInstance< aspose::words::cloud::models::TableResponse >(L"TableResponse, _", response);
+        m_Model = createModelInstance< aspose::words::cloud::models::TableResponse >(L"TableResponse, _", response);
     }
 
     /*
      * GetTableProperties request implementation
      */
-    std::shared_ptr< aspose::words::cloud::models::TablePropertiesResponse > GetTablePropertiesResponse::getResult() const
+    std::shared_ptr< aspose::words::cloud::models::TablePropertiesResponse > GetTablePropertiesResponse::getModel() const
     {
-        return m_Result;
+        return m_Model;
     }
 
     void GetTablePropertiesResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
-        m_Result = createModelInstance< aspose::words::cloud::models::TablePropertiesResponse >(L"TablePropertiesResponse, _", response);
+        m_Model = createModelInstance< aspose::words::cloud::models::TablePropertiesResponse >(L"TablePropertiesResponse, _", response);
     }
 
     /*
      * GetTablePropertiesOnline request implementation
      */
-    std::shared_ptr< aspose::words::cloud::models::TablePropertiesResponse > GetTablePropertiesOnlineResponse::getResult() const
+    std::shared_ptr< aspose::words::cloud::models::TablePropertiesResponse > GetTablePropertiesOnlineResponse::getModel() const
     {
-        return m_Result;
+        return m_Model;
     }
 
     void GetTablePropertiesOnlineResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
-        m_Result = createModelInstance< aspose::words::cloud::models::TablePropertiesResponse >(L"TablePropertiesResponse, _", response);
+        m_Model = createModelInstance< aspose::words::cloud::models::TablePropertiesResponse >(L"TablePropertiesResponse, _", response);
     }
 
     /*
      * GetTableRow request implementation
      */
-    std::shared_ptr< aspose::words::cloud::models::TableRowResponse > GetTableRowResponse::getResult() const
+    std::shared_ptr< aspose::words::cloud::models::TableRowResponse > GetTableRowResponse::getModel() const
     {
-        return m_Result;
+        return m_Model;
     }
 
     void GetTableRowResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
-        m_Result = createModelInstance< aspose::words::cloud::models::TableRowResponse >(L"TableRowResponse, _", response);
+        m_Model = createModelInstance< aspose::words::cloud::models::TableRowResponse >(L"TableRowResponse, _", response);
     }
 
     /*
      * GetTableRowFormat request implementation
      */
-    std::shared_ptr< aspose::words::cloud::models::TableRowFormatResponse > GetTableRowFormatResponse::getResult() const
+    std::shared_ptr< aspose::words::cloud::models::TableRowFormatResponse > GetTableRowFormatResponse::getModel() const
     {
-        return m_Result;
+        return m_Model;
     }
 
     void GetTableRowFormatResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
-        m_Result = createModelInstance< aspose::words::cloud::models::TableRowFormatResponse >(L"TableRowFormatResponse, _", response);
+        m_Model = createModelInstance< aspose::words::cloud::models::TableRowFormatResponse >(L"TableRowFormatResponse, _", response);
     }
 
     /*
      * GetTableRowFormatOnline request implementation
      */
-    std::shared_ptr< aspose::words::cloud::models::TableRowFormatResponse > GetTableRowFormatOnlineResponse::getResult() const
+    std::shared_ptr< aspose::words::cloud::models::TableRowFormatResponse > GetTableRowFormatOnlineResponse::getModel() const
     {
-        return m_Result;
+        return m_Model;
     }
 
     void GetTableRowFormatOnlineResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
-        m_Result = createModelInstance< aspose::words::cloud::models::TableRowFormatResponse >(L"TableRowFormatResponse, _", response);
+        m_Model = createModelInstance< aspose::words::cloud::models::TableRowFormatResponse >(L"TableRowFormatResponse, _", response);
     }
 
     /*
      * GetTableRowOnline request implementation
      */
-    std::shared_ptr< aspose::words::cloud::models::TableRowResponse > GetTableRowOnlineResponse::getResult() const
+    std::shared_ptr< aspose::words::cloud::models::TableRowResponse > GetTableRowOnlineResponse::getModel() const
     {
-        return m_Result;
+        return m_Model;
     }
 
     void GetTableRowOnlineResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
-        m_Result = createModelInstance< aspose::words::cloud::models::TableRowResponse >(L"TableRowResponse, _", response);
+        m_Model = createModelInstance< aspose::words::cloud::models::TableRowResponse >(L"TableRowResponse, _", response);
     }
 
     /*
      * GetTables request implementation
      */
-    std::shared_ptr< aspose::words::cloud::models::TableLinkCollectionResponse > GetTablesResponse::getResult() const
+    std::shared_ptr< aspose::words::cloud::models::TableLinkCollectionResponse > GetTablesResponse::getModel() const
     {
-        return m_Result;
+        return m_Model;
     }
 
     void GetTablesResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
-        m_Result = createModelInstance< aspose::words::cloud::models::TableLinkCollectionResponse >(L"TableLinkCollectionResponse, _", response);
+        m_Model = createModelInstance< aspose::words::cloud::models::TableLinkCollectionResponse >(L"TableLinkCollectionResponse, _", response);
     }
 
     /*
      * GetTablesOnline request implementation
      */
-    std::shared_ptr< aspose::words::cloud::models::TableLinkCollectionResponse > GetTablesOnlineResponse::getResult() const
+    std::shared_ptr< aspose::words::cloud::models::TableLinkCollectionResponse > GetTablesOnlineResponse::getModel() const
     {
-        return m_Result;
+        return m_Model;
     }
 
     void GetTablesOnlineResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
-        m_Result = createModelInstance< aspose::words::cloud::models::TableLinkCollectionResponse >(L"TableLinkCollectionResponse, _", response);
+        m_Model = createModelInstance< aspose::words::cloud::models::TableLinkCollectionResponse >(L"TableLinkCollectionResponse, _", response);
     }
 
     /*
      * InsertBookmark request implementation
      */
-    std::shared_ptr< aspose::words::cloud::models::BookmarkResponse > InsertBookmarkResponse::getResult() const
+    std::shared_ptr< aspose::words::cloud::models::BookmarkResponse > InsertBookmarkResponse::getModel() const
     {
-        return m_Result;
+        return m_Model;
     }
 
     void InsertBookmarkResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
-        m_Result = createModelInstance< aspose::words::cloud::models::BookmarkResponse >(L"BookmarkResponse, _", response);
+        m_Model = createModelInstance< aspose::words::cloud::models::BookmarkResponse >(L"BookmarkResponse, _", response);
     }
 
     /*
@@ -3085,14 +3085,14 @@ namespace aspose::words::cloud::responses {
     /*
      * InsertComment request implementation
      */
-    std::shared_ptr< aspose::words::cloud::models::CommentResponse > InsertCommentResponse::getResult() const
+    std::shared_ptr< aspose::words::cloud::models::CommentResponse > InsertCommentResponse::getModel() const
     {
-        return m_Result;
+        return m_Model;
     }
 
     void InsertCommentResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
-        m_Result = createModelInstance< aspose::words::cloud::models::CommentResponse >(L"CommentResponse, _", response);
+        m_Model = createModelInstance< aspose::words::cloud::models::CommentResponse >(L"CommentResponse, _", response);
     }
 
     /*
@@ -3126,14 +3126,14 @@ namespace aspose::words::cloud::responses {
     /*
      * InsertCustomXmlPart request implementation
      */
-    std::shared_ptr< aspose::words::cloud::models::CustomXmlPartResponse > InsertCustomXmlPartResponse::getResult() const
+    std::shared_ptr< aspose::words::cloud::models::CustomXmlPartResponse > InsertCustomXmlPartResponse::getModel() const
     {
-        return m_Result;
+        return m_Model;
     }
 
     void InsertCustomXmlPartResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
-        m_Result = createModelInstance< aspose::words::cloud::models::CustomXmlPartResponse >(L"CustomXmlPartResponse, _", response);
+        m_Model = createModelInstance< aspose::words::cloud::models::CustomXmlPartResponse >(L"CustomXmlPartResponse, _", response);
     }
 
     /*
@@ -3167,14 +3167,14 @@ namespace aspose::words::cloud::responses {
     /*
      * InsertDrawingObject request implementation
      */
-    std::shared_ptr< aspose::words::cloud::models::DrawingObjectResponse > InsertDrawingObjectResponse::getResult() const
+    std::shared_ptr< aspose::words::cloud::models::DrawingObjectResponse > InsertDrawingObjectResponse::getModel() const
     {
-        return m_Result;
+        return m_Model;
     }
 
     void InsertDrawingObjectResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
-        m_Result = createModelInstance< aspose::words::cloud::models::DrawingObjectResponse >(L"DrawingObjectResponse, _", response);
+        m_Model = createModelInstance< aspose::words::cloud::models::DrawingObjectResponse >(L"DrawingObjectResponse, _", response);
     }
 
     /*
@@ -3208,14 +3208,14 @@ namespace aspose::words::cloud::responses {
     /*
      * InsertField request implementation
      */
-    std::shared_ptr< aspose::words::cloud::models::FieldResponse > InsertFieldResponse::getResult() const
+    std::shared_ptr< aspose::words::cloud::models::FieldResponse > InsertFieldResponse::getModel() const
     {
-        return m_Result;
+        return m_Model;
     }
 
     void InsertFieldResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
-        m_Result = createModelInstance< aspose::words::cloud::models::FieldResponse >(L"FieldResponse, _", response);
+        m_Model = createModelInstance< aspose::words::cloud::models::FieldResponse >(L"FieldResponse, _", response);
     }
 
     /*
@@ -3249,14 +3249,14 @@ namespace aspose::words::cloud::responses {
     /*
      * InsertFootnote request implementation
      */
-    std::shared_ptr< aspose::words::cloud::models::FootnoteResponse > InsertFootnoteResponse::getResult() const
+    std::shared_ptr< aspose::words::cloud::models::FootnoteResponse > InsertFootnoteResponse::getModel() const
     {
-        return m_Result;
+        return m_Model;
     }
 
     void InsertFootnoteResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
-        m_Result = createModelInstance< aspose::words::cloud::models::FootnoteResponse >(L"FootnoteResponse, _", response);
+        m_Model = createModelInstance< aspose::words::cloud::models::FootnoteResponse >(L"FootnoteResponse, _", response);
     }
 
     /*
@@ -3290,14 +3290,14 @@ namespace aspose::words::cloud::responses {
     /*
      * InsertFormField request implementation
      */
-    std::shared_ptr< aspose::words::cloud::models::FormFieldResponse > InsertFormFieldResponse::getResult() const
+    std::shared_ptr< aspose::words::cloud::models::FormFieldResponse > InsertFormFieldResponse::getModel() const
     {
-        return m_Result;
+        return m_Model;
     }
 
     void InsertFormFieldResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
-        m_Result = createModelInstance< aspose::words::cloud::models::FormFieldResponse >(L"FormFieldResponse, _", response);
+        m_Model = createModelInstance< aspose::words::cloud::models::FormFieldResponse >(L"FormFieldResponse, _", response);
     }
 
     /*
@@ -3331,14 +3331,14 @@ namespace aspose::words::cloud::responses {
     /*
      * InsertHeaderFooter request implementation
      */
-    std::shared_ptr< aspose::words::cloud::models::HeaderFooterResponse > InsertHeaderFooterResponse::getResult() const
+    std::shared_ptr< aspose::words::cloud::models::HeaderFooterResponse > InsertHeaderFooterResponse::getModel() const
     {
-        return m_Result;
+        return m_Model;
     }
 
     void InsertHeaderFooterResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
-        m_Result = createModelInstance< aspose::words::cloud::models::HeaderFooterResponse >(L"HeaderFooterResponse, _", response);
+        m_Model = createModelInstance< aspose::words::cloud::models::HeaderFooterResponse >(L"HeaderFooterResponse, _", response);
     }
 
     /*
@@ -3372,14 +3372,14 @@ namespace aspose::words::cloud::responses {
     /*
      * InsertList request implementation
      */
-    std::shared_ptr< aspose::words::cloud::models::ListResponse > InsertListResponse::getResult() const
+    std::shared_ptr< aspose::words::cloud::models::ListResponse > InsertListResponse::getModel() const
     {
-        return m_Result;
+        return m_Model;
     }
 
     void InsertListResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
-        m_Result = createModelInstance< aspose::words::cloud::models::ListResponse >(L"ListResponse, _", response);
+        m_Model = createModelInstance< aspose::words::cloud::models::ListResponse >(L"ListResponse, _", response);
     }
 
     /*
@@ -3413,14 +3413,14 @@ namespace aspose::words::cloud::responses {
     /*
      * InsertOrUpdateParagraphTabStop request implementation
      */
-    std::shared_ptr< aspose::words::cloud::models::TabStopsResponse > InsertOrUpdateParagraphTabStopResponse::getResult() const
+    std::shared_ptr< aspose::words::cloud::models::TabStopsResponse > InsertOrUpdateParagraphTabStopResponse::getModel() const
     {
-        return m_Result;
+        return m_Model;
     }
 
     void InsertOrUpdateParagraphTabStopResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
-        m_Result = createModelInstance< aspose::words::cloud::models::TabStopsResponse >(L"TabStopsResponse, _", response);
+        m_Model = createModelInstance< aspose::words::cloud::models::TabStopsResponse >(L"TabStopsResponse, _", response);
     }
 
     /*
@@ -3454,14 +3454,14 @@ namespace aspose::words::cloud::responses {
     /*
      * InsertPageNumbers request implementation
      */
-    std::shared_ptr< aspose::words::cloud::models::DocumentResponse > InsertPageNumbersResponse::getResult() const
+    std::shared_ptr< aspose::words::cloud::models::DocumentResponse > InsertPageNumbersResponse::getModel() const
     {
-        return m_Result;
+        return m_Model;
     }
 
     void InsertPageNumbersResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
-        m_Result = createModelInstance< aspose::words::cloud::models::DocumentResponse >(L"DocumentResponse, _", response);
+        m_Model = createModelInstance< aspose::words::cloud::models::DocumentResponse >(L"DocumentResponse, _", response);
     }
 
     /*
@@ -3495,14 +3495,14 @@ namespace aspose::words::cloud::responses {
     /*
      * InsertParagraph request implementation
      */
-    std::shared_ptr< aspose::words::cloud::models::ParagraphResponse > InsertParagraphResponse::getResult() const
+    std::shared_ptr< aspose::words::cloud::models::ParagraphResponse > InsertParagraphResponse::getModel() const
     {
-        return m_Result;
+        return m_Model;
     }
 
     void InsertParagraphResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
-        m_Result = createModelInstance< aspose::words::cloud::models::ParagraphResponse >(L"ParagraphResponse, _", response);
+        m_Model = createModelInstance< aspose::words::cloud::models::ParagraphResponse >(L"ParagraphResponse, _", response);
     }
 
     /*
@@ -3536,14 +3536,14 @@ namespace aspose::words::cloud::responses {
     /*
      * InsertRun request implementation
      */
-    std::shared_ptr< aspose::words::cloud::models::RunResponse > InsertRunResponse::getResult() const
+    std::shared_ptr< aspose::words::cloud::models::RunResponse > InsertRunResponse::getModel() const
     {
-        return m_Result;
+        return m_Model;
     }
 
     void InsertRunResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
-        m_Result = createModelInstance< aspose::words::cloud::models::RunResponse >(L"RunResponse, _", response);
+        m_Model = createModelInstance< aspose::words::cloud::models::RunResponse >(L"RunResponse, _", response);
     }
 
     /*
@@ -3598,14 +3598,14 @@ namespace aspose::words::cloud::responses {
     /*
      * InsertStructuredDocumentTag request implementation
      */
-    std::shared_ptr< aspose::words::cloud::models::StructuredDocumentTagResponse > InsertStructuredDocumentTagResponse::getResult() const
+    std::shared_ptr< aspose::words::cloud::models::StructuredDocumentTagResponse > InsertStructuredDocumentTagResponse::getModel() const
     {
-        return m_Result;
+        return m_Model;
     }
 
     void InsertStructuredDocumentTagResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
-        m_Result = createModelInstance< aspose::words::cloud::models::StructuredDocumentTagResponse >(L"StructuredDocumentTagResponse, _", response);
+        m_Model = createModelInstance< aspose::words::cloud::models::StructuredDocumentTagResponse >(L"StructuredDocumentTagResponse, _", response);
     }
 
     /*
@@ -3639,14 +3639,14 @@ namespace aspose::words::cloud::responses {
     /*
      * InsertStyle request implementation
      */
-    std::shared_ptr< aspose::words::cloud::models::StyleResponse > InsertStyleResponse::getResult() const
+    std::shared_ptr< aspose::words::cloud::models::StyleResponse > InsertStyleResponse::getModel() const
     {
-        return m_Result;
+        return m_Model;
     }
 
     void InsertStyleResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
-        m_Result = createModelInstance< aspose::words::cloud::models::StyleResponse >(L"StyleResponse, _", response);
+        m_Model = createModelInstance< aspose::words::cloud::models::StyleResponse >(L"StyleResponse, _", response);
     }
 
     /*
@@ -3680,27 +3680,27 @@ namespace aspose::words::cloud::responses {
     /*
      * InsertTable request implementation
      */
-    std::shared_ptr< aspose::words::cloud::models::TableResponse > InsertTableResponse::getResult() const
+    std::shared_ptr< aspose::words::cloud::models::TableResponse > InsertTableResponse::getModel() const
     {
-        return m_Result;
+        return m_Model;
     }
 
     void InsertTableResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
-        m_Result = createModelInstance< aspose::words::cloud::models::TableResponse >(L"TableResponse, _", response);
+        m_Model = createModelInstance< aspose::words::cloud::models::TableResponse >(L"TableResponse, _", response);
     }
 
     /*
      * InsertTableCell request implementation
      */
-    std::shared_ptr< aspose::words::cloud::models::TableCellResponse > InsertTableCellResponse::getResult() const
+    std::shared_ptr< aspose::words::cloud::models::TableCellResponse > InsertTableCellResponse::getModel() const
     {
-        return m_Result;
+        return m_Model;
     }
 
     void InsertTableCellResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
-        m_Result = createModelInstance< aspose::words::cloud::models::TableCellResponse >(L"TableCellResponse, _", response);
+        m_Model = createModelInstance< aspose::words::cloud::models::TableCellResponse >(L"TableCellResponse, _", response);
     }
 
     /*
@@ -3762,14 +3762,14 @@ namespace aspose::words::cloud::responses {
     /*
      * InsertTableRow request implementation
      */
-    std::shared_ptr< aspose::words::cloud::models::TableRowResponse > InsertTableRowResponse::getResult() const
+    std::shared_ptr< aspose::words::cloud::models::TableRowResponse > InsertTableRowResponse::getModel() const
     {
-        return m_Result;
+        return m_Model;
     }
 
     void InsertTableRowResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
-        m_Result = createModelInstance< aspose::words::cloud::models::TableRowResponse >(L"TableRowResponse, _", response);
+        m_Model = createModelInstance< aspose::words::cloud::models::TableRowResponse >(L"TableRowResponse, _", response);
     }
 
     /*
@@ -3803,14 +3803,14 @@ namespace aspose::words::cloud::responses {
     /*
      * InsertWatermarkImage request implementation
      */
-    std::shared_ptr< aspose::words::cloud::models::DocumentResponse > InsertWatermarkImageResponse::getResult() const
+    std::shared_ptr< aspose::words::cloud::models::DocumentResponse > InsertWatermarkImageResponse::getModel() const
     {
-        return m_Result;
+        return m_Model;
     }
 
     void InsertWatermarkImageResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
-        m_Result = createModelInstance< aspose::words::cloud::models::DocumentResponse >(L"DocumentResponse, _", response);
+        m_Model = createModelInstance< aspose::words::cloud::models::DocumentResponse >(L"DocumentResponse, _", response);
     }
 
     /*
@@ -3844,14 +3844,14 @@ namespace aspose::words::cloud::responses {
     /*
      * InsertWatermarkText request implementation
      */
-    std::shared_ptr< aspose::words::cloud::models::DocumentResponse > InsertWatermarkTextResponse::getResult() const
+    std::shared_ptr< aspose::words::cloud::models::DocumentResponse > InsertWatermarkTextResponse::getModel() const
     {
-        return m_Result;
+        return m_Model;
     }
 
     void InsertWatermarkTextResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
-        m_Result = createModelInstance< aspose::words::cloud::models::DocumentResponse >(L"DocumentResponse, _", response);
+        m_Model = createModelInstance< aspose::words::cloud::models::DocumentResponse >(L"DocumentResponse, _", response);
     }
 
     /*
@@ -3893,14 +3893,14 @@ namespace aspose::words::cloud::responses {
     /*
      * LoadWebDocument request implementation
      */
-    std::shared_ptr< aspose::words::cloud::models::SaveResponse > LoadWebDocumentResponse::getResult() const
+    std::shared_ptr< aspose::words::cloud::models::SaveResponse > LoadWebDocumentResponse::getModel() const
     {
-        return m_Result;
+        return m_Model;
     }
 
     void LoadWebDocumentResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
-        m_Result = createModelInstance< aspose::words::cloud::models::SaveResponse >(L"SaveResponse, _", response);
+        m_Model = createModelInstance< aspose::words::cloud::models::SaveResponse >(L"SaveResponse, _", response);
     }
 
     /*
@@ -3943,14 +3943,14 @@ namespace aspose::words::cloud::responses {
     /*
      * ProtectDocument request implementation
      */
-    std::shared_ptr< aspose::words::cloud::models::ProtectionDataResponse > ProtectDocumentResponse::getResult() const
+    std::shared_ptr< aspose::words::cloud::models::ProtectionDataResponse > ProtectDocumentResponse::getModel() const
     {
-        return m_Result;
+        return m_Model;
     }
 
     void ProtectDocumentResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
-        m_Result = createModelInstance< aspose::words::cloud::models::ProtectionDataResponse >(L"ProtectionDataResponse, _", response);
+        m_Model = createModelInstance< aspose::words::cloud::models::ProtectionDataResponse >(L"ProtectionDataResponse, _", response);
     }
 
     /*
@@ -3984,14 +3984,14 @@ namespace aspose::words::cloud::responses {
     /*
      * RejectAllRevisions request implementation
      */
-    std::shared_ptr< aspose::words::cloud::models::RevisionsModificationResponse > RejectAllRevisionsResponse::getResult() const
+    std::shared_ptr< aspose::words::cloud::models::RevisionsModificationResponse > RejectAllRevisionsResponse::getModel() const
     {
-        return m_Result;
+        return m_Model;
     }
 
     void RejectAllRevisionsResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
-        m_Result = createModelInstance< aspose::words::cloud::models::RevisionsModificationResponse >(L"RevisionsModificationResponse, _", response);
+        m_Model = createModelInstance< aspose::words::cloud::models::RevisionsModificationResponse >(L"RevisionsModificationResponse, _", response);
     }
 
     /*
@@ -4025,14 +4025,14 @@ namespace aspose::words::cloud::responses {
     /*
      * RemoveRange request implementation
      */
-    std::shared_ptr< aspose::words::cloud::models::DocumentResponse > RemoveRangeResponse::getResult() const
+    std::shared_ptr< aspose::words::cloud::models::DocumentResponse > RemoveRangeResponse::getModel() const
     {
-        return m_Result;
+        return m_Model;
     }
 
     void RemoveRangeResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
-        m_Result = createModelInstance< aspose::words::cloud::models::DocumentResponse >(L"DocumentResponse, _", response);
+        m_Model = createModelInstance< aspose::words::cloud::models::DocumentResponse >(L"DocumentResponse, _", response);
     }
 
     /*
@@ -4066,144 +4066,144 @@ namespace aspose::words::cloud::responses {
     /*
      * RenderDrawingObject request implementation
      */
-    std::shared_ptr< std::istream > RenderDrawingObjectResponse::getResult() const
+    std::shared_ptr< std::istream > RenderDrawingObjectResponse::getModel() const
     {
-        return m_Result;
+        return m_Model;
     }
 
     void RenderDrawingObjectResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
-        m_Result = std::shared_ptr< std::istream >(new std::istringstream(std::string(response), std::ios_base::in));
+        m_Model = std::shared_ptr< std::istream >(new std::istringstream(std::string(response), std::ios_base::in));
     }
 
     /*
      * RenderDrawingObjectOnline request implementation
      */
-    std::shared_ptr< std::istream > RenderDrawingObjectOnlineResponse::getResult() const
+    std::shared_ptr< std::istream > RenderDrawingObjectOnlineResponse::getModel() const
     {
-        return m_Result;
+        return m_Model;
     }
 
     void RenderDrawingObjectOnlineResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
-        m_Result = std::shared_ptr< std::istream >(new std::istringstream(std::string(response), std::ios_base::in));
+        m_Model = std::shared_ptr< std::istream >(new std::istringstream(std::string(response), std::ios_base::in));
     }
 
     /*
      * RenderMathObject request implementation
      */
-    std::shared_ptr< std::istream > RenderMathObjectResponse::getResult() const
+    std::shared_ptr< std::istream > RenderMathObjectResponse::getModel() const
     {
-        return m_Result;
+        return m_Model;
     }
 
     void RenderMathObjectResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
-        m_Result = std::shared_ptr< std::istream >(new std::istringstream(std::string(response), std::ios_base::in));
+        m_Model = std::shared_ptr< std::istream >(new std::istringstream(std::string(response), std::ios_base::in));
     }
 
     /*
      * RenderMathObjectOnline request implementation
      */
-    std::shared_ptr< std::istream > RenderMathObjectOnlineResponse::getResult() const
+    std::shared_ptr< std::istream > RenderMathObjectOnlineResponse::getModel() const
     {
-        return m_Result;
+        return m_Model;
     }
 
     void RenderMathObjectOnlineResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
-        m_Result = std::shared_ptr< std::istream >(new std::istringstream(std::string(response), std::ios_base::in));
+        m_Model = std::shared_ptr< std::istream >(new std::istringstream(std::string(response), std::ios_base::in));
     }
 
     /*
      * RenderPage request implementation
      */
-    std::shared_ptr< std::istream > RenderPageResponse::getResult() const
+    std::shared_ptr< std::istream > RenderPageResponse::getModel() const
     {
-        return m_Result;
+        return m_Model;
     }
 
     void RenderPageResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
-        m_Result = std::shared_ptr< std::istream >(new std::istringstream(std::string(response), std::ios_base::in));
+        m_Model = std::shared_ptr< std::istream >(new std::istringstream(std::string(response), std::ios_base::in));
     }
 
     /*
      * RenderPageOnline request implementation
      */
-    std::shared_ptr< std::istream > RenderPageOnlineResponse::getResult() const
+    std::shared_ptr< std::istream > RenderPageOnlineResponse::getModel() const
     {
-        return m_Result;
+        return m_Model;
     }
 
     void RenderPageOnlineResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
-        m_Result = std::shared_ptr< std::istream >(new std::istringstream(std::string(response), std::ios_base::in));
+        m_Model = std::shared_ptr< std::istream >(new std::istringstream(std::string(response), std::ios_base::in));
     }
 
     /*
      * RenderParagraph request implementation
      */
-    std::shared_ptr< std::istream > RenderParagraphResponse::getResult() const
+    std::shared_ptr< std::istream > RenderParagraphResponse::getModel() const
     {
-        return m_Result;
+        return m_Model;
     }
 
     void RenderParagraphResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
-        m_Result = std::shared_ptr< std::istream >(new std::istringstream(std::string(response), std::ios_base::in));
+        m_Model = std::shared_ptr< std::istream >(new std::istringstream(std::string(response), std::ios_base::in));
     }
 
     /*
      * RenderParagraphOnline request implementation
      */
-    std::shared_ptr< std::istream > RenderParagraphOnlineResponse::getResult() const
+    std::shared_ptr< std::istream > RenderParagraphOnlineResponse::getModel() const
     {
-        return m_Result;
+        return m_Model;
     }
 
     void RenderParagraphOnlineResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
-        m_Result = std::shared_ptr< std::istream >(new std::istringstream(std::string(response), std::ios_base::in));
+        m_Model = std::shared_ptr< std::istream >(new std::istringstream(std::string(response), std::ios_base::in));
     }
 
     /*
      * RenderTable request implementation
      */
-    std::shared_ptr< std::istream > RenderTableResponse::getResult() const
+    std::shared_ptr< std::istream > RenderTableResponse::getModel() const
     {
-        return m_Result;
+        return m_Model;
     }
 
     void RenderTableResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
-        m_Result = std::shared_ptr< std::istream >(new std::istringstream(std::string(response), std::ios_base::in));
+        m_Model = std::shared_ptr< std::istream >(new std::istringstream(std::string(response), std::ios_base::in));
     }
 
     /*
      * RenderTableOnline request implementation
      */
-    std::shared_ptr< std::istream > RenderTableOnlineResponse::getResult() const
+    std::shared_ptr< std::istream > RenderTableOnlineResponse::getModel() const
     {
-        return m_Result;
+        return m_Model;
     }
 
     void RenderTableOnlineResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
-        m_Result = std::shared_ptr< std::istream >(new std::istringstream(std::string(response), std::ios_base::in));
+        m_Model = std::shared_ptr< std::istream >(new std::istringstream(std::string(response), std::ios_base::in));
     }
 
     /*
      * ReplaceText request implementation
      */
-    std::shared_ptr< aspose::words::cloud::models::ReplaceTextResponse > ReplaceTextResponse::getResult() const
+    std::shared_ptr< aspose::words::cloud::models::ReplaceTextResponse > ReplaceTextResponse::getModel() const
     {
-        return m_Result;
+        return m_Model;
     }
 
     void ReplaceTextResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
-        m_Result = createModelInstance< aspose::words::cloud::models::ReplaceTextResponse >(L"ReplaceTextResponse, _", response);
+        m_Model = createModelInstance< aspose::words::cloud::models::ReplaceTextResponse >(L"ReplaceTextResponse, _", response);
     }
 
     /*
@@ -4237,14 +4237,14 @@ namespace aspose::words::cloud::responses {
     /*
      * ReplaceWithText request implementation
      */
-    std::shared_ptr< aspose::words::cloud::models::DocumentResponse > ReplaceWithTextResponse::getResult() const
+    std::shared_ptr< aspose::words::cloud::models::DocumentResponse > ReplaceWithTextResponse::getModel() const
     {
-        return m_Result;
+        return m_Model;
     }
 
     void ReplaceWithTextResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
-        m_Result = createModelInstance< aspose::words::cloud::models::DocumentResponse >(L"DocumentResponse, _", response);
+        m_Model = createModelInstance< aspose::words::cloud::models::DocumentResponse >(L"DocumentResponse, _", response);
     }
 
     /*
@@ -4286,14 +4286,14 @@ namespace aspose::words::cloud::responses {
     /*
      * SaveAs request implementation
      */
-    std::shared_ptr< aspose::words::cloud::models::SaveResponse > SaveAsResponse::getResult() const
+    std::shared_ptr< aspose::words::cloud::models::SaveResponse > SaveAsResponse::getModel() const
     {
-        return m_Result;
+        return m_Model;
     }
 
     void SaveAsResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
-        m_Result = createModelInstance< aspose::words::cloud::models::SaveResponse >(L"SaveResponse, _", response);
+        m_Model = createModelInstance< aspose::words::cloud::models::SaveResponse >(L"SaveResponse, _", response);
     }
 
     /*
@@ -4327,14 +4327,14 @@ namespace aspose::words::cloud::responses {
     /*
      * SaveAsRange request implementation
      */
-    std::shared_ptr< aspose::words::cloud::models::DocumentResponse > SaveAsRangeResponse::getResult() const
+    std::shared_ptr< aspose::words::cloud::models::DocumentResponse > SaveAsRangeResponse::getModel() const
     {
-        return m_Result;
+        return m_Model;
     }
 
     void SaveAsRangeResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
-        m_Result = createModelInstance< aspose::words::cloud::models::DocumentResponse >(L"DocumentResponse, _", response);
+        m_Model = createModelInstance< aspose::words::cloud::models::DocumentResponse >(L"DocumentResponse, _", response);
     }
 
     /*
@@ -4368,14 +4368,14 @@ namespace aspose::words::cloud::responses {
     /*
      * SaveAsTiff request implementation
      */
-    std::shared_ptr< aspose::words::cloud::models::SaveResponse > SaveAsTiffResponse::getResult() const
+    std::shared_ptr< aspose::words::cloud::models::SaveResponse > SaveAsTiffResponse::getModel() const
     {
-        return m_Result;
+        return m_Model;
     }
 
     void SaveAsTiffResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
-        m_Result = createModelInstance< aspose::words::cloud::models::SaveResponse >(L"SaveResponse, _", response);
+        m_Model = createModelInstance< aspose::words::cloud::models::SaveResponse >(L"SaveResponse, _", response);
     }
 
     /*
@@ -4409,40 +4409,40 @@ namespace aspose::words::cloud::responses {
     /*
      * Search request implementation
      */
-    std::shared_ptr< aspose::words::cloud::models::SearchResponse > SearchResponse::getResult() const
+    std::shared_ptr< aspose::words::cloud::models::SearchResponse > SearchResponse::getModel() const
     {
-        return m_Result;
+        return m_Model;
     }
 
     void SearchResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
-        m_Result = createModelInstance< aspose::words::cloud::models::SearchResponse >(L"SearchResponse, _", response);
+        m_Model = createModelInstance< aspose::words::cloud::models::SearchResponse >(L"SearchResponse, _", response);
     }
 
     /*
      * SearchOnline request implementation
      */
-    std::shared_ptr< aspose::words::cloud::models::SearchResponse > SearchOnlineResponse::getResult() const
+    std::shared_ptr< aspose::words::cloud::models::SearchResponse > SearchOnlineResponse::getModel() const
     {
-        return m_Result;
+        return m_Model;
     }
 
     void SearchOnlineResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
-        m_Result = createModelInstance< aspose::words::cloud::models::SearchResponse >(L"SearchResponse, _", response);
+        m_Model = createModelInstance< aspose::words::cloud::models::SearchResponse >(L"SearchResponse, _", response);
     }
 
     /*
      * SplitDocument request implementation
      */
-    std::shared_ptr< aspose::words::cloud::models::SplitDocumentResponse > SplitDocumentResponse::getResult() const
+    std::shared_ptr< aspose::words::cloud::models::SplitDocumentResponse > SplitDocumentResponse::getModel() const
     {
-        return m_Result;
+        return m_Model;
     }
 
     void SplitDocumentResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
-        m_Result = createModelInstance< aspose::words::cloud::models::SplitDocumentResponse >(L"SplitDocumentResponse, _", response);
+        m_Model = createModelInstance< aspose::words::cloud::models::SplitDocumentResponse >(L"SplitDocumentResponse, _", response);
     }
 
     /*
@@ -4476,14 +4476,14 @@ namespace aspose::words::cloud::responses {
     /*
      * UnprotectDocument request implementation
      */
-    std::shared_ptr< aspose::words::cloud::models::ProtectionDataResponse > UnprotectDocumentResponse::getResult() const
+    std::shared_ptr< aspose::words::cloud::models::ProtectionDataResponse > UnprotectDocumentResponse::getModel() const
     {
-        return m_Result;
+        return m_Model;
     }
 
     void UnprotectDocumentResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
-        m_Result = createModelInstance< aspose::words::cloud::models::ProtectionDataResponse >(L"ProtectionDataResponse, _", response);
+        m_Model = createModelInstance< aspose::words::cloud::models::ProtectionDataResponse >(L"ProtectionDataResponse, _", response);
     }
 
     /*
@@ -4517,14 +4517,14 @@ namespace aspose::words::cloud::responses {
     /*
      * UpdateBookmark request implementation
      */
-    std::shared_ptr< aspose::words::cloud::models::BookmarkResponse > UpdateBookmarkResponse::getResult() const
+    std::shared_ptr< aspose::words::cloud::models::BookmarkResponse > UpdateBookmarkResponse::getModel() const
     {
-        return m_Result;
+        return m_Model;
     }
 
     void UpdateBookmarkResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
-        m_Result = createModelInstance< aspose::words::cloud::models::BookmarkResponse >(L"BookmarkResponse, _", response);
+        m_Model = createModelInstance< aspose::words::cloud::models::BookmarkResponse >(L"BookmarkResponse, _", response);
     }
 
     /*
@@ -4558,14 +4558,14 @@ namespace aspose::words::cloud::responses {
     /*
      * UpdateBorder request implementation
      */
-    std::shared_ptr< aspose::words::cloud::models::BorderResponse > UpdateBorderResponse::getResult() const
+    std::shared_ptr< aspose::words::cloud::models::BorderResponse > UpdateBorderResponse::getModel() const
     {
-        return m_Result;
+        return m_Model;
     }
 
     void UpdateBorderResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
-        m_Result = createModelInstance< aspose::words::cloud::models::BorderResponse >(L"BorderResponse, _", response);
+        m_Model = createModelInstance< aspose::words::cloud::models::BorderResponse >(L"BorderResponse, _", response);
     }
 
     /*
@@ -4599,14 +4599,14 @@ namespace aspose::words::cloud::responses {
     /*
      * UpdateComment request implementation
      */
-    std::shared_ptr< aspose::words::cloud::models::CommentResponse > UpdateCommentResponse::getResult() const
+    std::shared_ptr< aspose::words::cloud::models::CommentResponse > UpdateCommentResponse::getModel() const
     {
-        return m_Result;
+        return m_Model;
     }
 
     void UpdateCommentResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
-        m_Result = createModelInstance< aspose::words::cloud::models::CommentResponse >(L"CommentResponse, _", response);
+        m_Model = createModelInstance< aspose::words::cloud::models::CommentResponse >(L"CommentResponse, _", response);
     }
 
     /*
@@ -4640,14 +4640,14 @@ namespace aspose::words::cloud::responses {
     /*
      * UpdateCustomXmlPart request implementation
      */
-    std::shared_ptr< aspose::words::cloud::models::CustomXmlPartResponse > UpdateCustomXmlPartResponse::getResult() const
+    std::shared_ptr< aspose::words::cloud::models::CustomXmlPartResponse > UpdateCustomXmlPartResponse::getModel() const
     {
-        return m_Result;
+        return m_Model;
     }
 
     void UpdateCustomXmlPartResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
-        m_Result = createModelInstance< aspose::words::cloud::models::CustomXmlPartResponse >(L"CustomXmlPartResponse, _", response);
+        m_Model = createModelInstance< aspose::words::cloud::models::CustomXmlPartResponse >(L"CustomXmlPartResponse, _", response);
     }
 
     /*
@@ -4681,14 +4681,14 @@ namespace aspose::words::cloud::responses {
     /*
      * UpdateDrawingObject request implementation
      */
-    std::shared_ptr< aspose::words::cloud::models::DrawingObjectResponse > UpdateDrawingObjectResponse::getResult() const
+    std::shared_ptr< aspose::words::cloud::models::DrawingObjectResponse > UpdateDrawingObjectResponse::getModel() const
     {
-        return m_Result;
+        return m_Model;
     }
 
     void UpdateDrawingObjectResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
-        m_Result = createModelInstance< aspose::words::cloud::models::DrawingObjectResponse >(L"DrawingObjectResponse, _", response);
+        m_Model = createModelInstance< aspose::words::cloud::models::DrawingObjectResponse >(L"DrawingObjectResponse, _", response);
     }
 
     /*
@@ -4722,14 +4722,14 @@ namespace aspose::words::cloud::responses {
     /*
      * UpdateField request implementation
      */
-    std::shared_ptr< aspose::words::cloud::models::FieldResponse > UpdateFieldResponse::getResult() const
+    std::shared_ptr< aspose::words::cloud::models::FieldResponse > UpdateFieldResponse::getModel() const
     {
-        return m_Result;
+        return m_Model;
     }
 
     void UpdateFieldResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
-        m_Result = createModelInstance< aspose::words::cloud::models::FieldResponse >(L"FieldResponse, _", response);
+        m_Model = createModelInstance< aspose::words::cloud::models::FieldResponse >(L"FieldResponse, _", response);
     }
 
     /*
@@ -4763,14 +4763,14 @@ namespace aspose::words::cloud::responses {
     /*
      * UpdateFields request implementation
      */
-    std::shared_ptr< aspose::words::cloud::models::DocumentResponse > UpdateFieldsResponse::getResult() const
+    std::shared_ptr< aspose::words::cloud::models::DocumentResponse > UpdateFieldsResponse::getModel() const
     {
-        return m_Result;
+        return m_Model;
     }
 
     void UpdateFieldsResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
-        m_Result = createModelInstance< aspose::words::cloud::models::DocumentResponse >(L"DocumentResponse, _", response);
+        m_Model = createModelInstance< aspose::words::cloud::models::DocumentResponse >(L"DocumentResponse, _", response);
     }
 
     /*
@@ -4804,14 +4804,14 @@ namespace aspose::words::cloud::responses {
     /*
      * UpdateFootnote request implementation
      */
-    std::shared_ptr< aspose::words::cloud::models::FootnoteResponse > UpdateFootnoteResponse::getResult() const
+    std::shared_ptr< aspose::words::cloud::models::FootnoteResponse > UpdateFootnoteResponse::getModel() const
     {
-        return m_Result;
+        return m_Model;
     }
 
     void UpdateFootnoteResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
-        m_Result = createModelInstance< aspose::words::cloud::models::FootnoteResponse >(L"FootnoteResponse, _", response);
+        m_Model = createModelInstance< aspose::words::cloud::models::FootnoteResponse >(L"FootnoteResponse, _", response);
     }
 
     /*
@@ -4845,14 +4845,14 @@ namespace aspose::words::cloud::responses {
     /*
      * UpdateFormField request implementation
      */
-    std::shared_ptr< aspose::words::cloud::models::FormFieldResponse > UpdateFormFieldResponse::getResult() const
+    std::shared_ptr< aspose::words::cloud::models::FormFieldResponse > UpdateFormFieldResponse::getModel() const
     {
-        return m_Result;
+        return m_Model;
     }
 
     void UpdateFormFieldResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
-        m_Result = createModelInstance< aspose::words::cloud::models::FormFieldResponse >(L"FormFieldResponse, _", response);
+        m_Model = createModelInstance< aspose::words::cloud::models::FormFieldResponse >(L"FormFieldResponse, _", response);
     }
 
     /*
@@ -4886,27 +4886,27 @@ namespace aspose::words::cloud::responses {
     /*
      * UpdateList request implementation
      */
-    std::shared_ptr< aspose::words::cloud::models::ListResponse > UpdateListResponse::getResult() const
+    std::shared_ptr< aspose::words::cloud::models::ListResponse > UpdateListResponse::getModel() const
     {
-        return m_Result;
+        return m_Model;
     }
 
     void UpdateListResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
-        m_Result = createModelInstance< aspose::words::cloud::models::ListResponse >(L"ListResponse, _", response);
+        m_Model = createModelInstance< aspose::words::cloud::models::ListResponse >(L"ListResponse, _", response);
     }
 
     /*
      * UpdateListLevel request implementation
      */
-    std::shared_ptr< aspose::words::cloud::models::ListResponse > UpdateListLevelResponse::getResult() const
+    std::shared_ptr< aspose::words::cloud::models::ListResponse > UpdateListLevelResponse::getModel() const
     {
-        return m_Result;
+        return m_Model;
     }
 
     void UpdateListLevelResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
-        m_Result = createModelInstance< aspose::words::cloud::models::ListResponse >(L"ListResponse, _", response);
+        m_Model = createModelInstance< aspose::words::cloud::models::ListResponse >(L"ListResponse, _", response);
     }
 
     /*
@@ -4968,14 +4968,14 @@ namespace aspose::words::cloud::responses {
     /*
      * UpdateParagraphFormat request implementation
      */
-    std::shared_ptr< aspose::words::cloud::models::ParagraphFormatResponse > UpdateParagraphFormatResponse::getResult() const
+    std::shared_ptr< aspose::words::cloud::models::ParagraphFormatResponse > UpdateParagraphFormatResponse::getModel() const
     {
-        return m_Result;
+        return m_Model;
     }
 
     void UpdateParagraphFormatResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
-        m_Result = createModelInstance< aspose::words::cloud::models::ParagraphFormatResponse >(L"ParagraphFormatResponse, _", response);
+        m_Model = createModelInstance< aspose::words::cloud::models::ParagraphFormatResponse >(L"ParagraphFormatResponse, _", response);
     }
 
     /*
@@ -5009,14 +5009,14 @@ namespace aspose::words::cloud::responses {
     /*
      * UpdateParagraphListFormat request implementation
      */
-    std::shared_ptr< aspose::words::cloud::models::ParagraphListFormatResponse > UpdateParagraphListFormatResponse::getResult() const
+    std::shared_ptr< aspose::words::cloud::models::ParagraphListFormatResponse > UpdateParagraphListFormatResponse::getModel() const
     {
-        return m_Result;
+        return m_Model;
     }
 
     void UpdateParagraphListFormatResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
-        m_Result = createModelInstance< aspose::words::cloud::models::ParagraphListFormatResponse >(L"ParagraphListFormatResponse, _", response);
+        m_Model = createModelInstance< aspose::words::cloud::models::ParagraphListFormatResponse >(L"ParagraphListFormatResponse, _", response);
     }
 
     /*
@@ -5050,27 +5050,27 @@ namespace aspose::words::cloud::responses {
     /*
      * UpdateRun request implementation
      */
-    std::shared_ptr< aspose::words::cloud::models::RunResponse > UpdateRunResponse::getResult() const
+    std::shared_ptr< aspose::words::cloud::models::RunResponse > UpdateRunResponse::getModel() const
     {
-        return m_Result;
+        return m_Model;
     }
 
     void UpdateRunResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
-        m_Result = createModelInstance< aspose::words::cloud::models::RunResponse >(L"RunResponse, _", response);
+        m_Model = createModelInstance< aspose::words::cloud::models::RunResponse >(L"RunResponse, _", response);
     }
 
     /*
      * UpdateRunFont request implementation
      */
-    std::shared_ptr< aspose::words::cloud::models::FontResponse > UpdateRunFontResponse::getResult() const
+    std::shared_ptr< aspose::words::cloud::models::FontResponse > UpdateRunFontResponse::getModel() const
     {
-        return m_Result;
+        return m_Model;
     }
 
     void UpdateRunFontResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
-        m_Result = createModelInstance< aspose::words::cloud::models::FontResponse >(L"FontResponse, _", response);
+        m_Model = createModelInstance< aspose::words::cloud::models::FontResponse >(L"FontResponse, _", response);
     }
 
     /*
@@ -5132,14 +5132,14 @@ namespace aspose::words::cloud::responses {
     /*
      * UpdateSectionPageSetup request implementation
      */
-    std::shared_ptr< aspose::words::cloud::models::SectionPageSetupResponse > UpdateSectionPageSetupResponse::getResult() const
+    std::shared_ptr< aspose::words::cloud::models::SectionPageSetupResponse > UpdateSectionPageSetupResponse::getModel() const
     {
-        return m_Result;
+        return m_Model;
     }
 
     void UpdateSectionPageSetupResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
-        m_Result = createModelInstance< aspose::words::cloud::models::SectionPageSetupResponse >(L"SectionPageSetupResponse, _", response);
+        m_Model = createModelInstance< aspose::words::cloud::models::SectionPageSetupResponse >(L"SectionPageSetupResponse, _", response);
     }
 
     /*
@@ -5173,14 +5173,14 @@ namespace aspose::words::cloud::responses {
     /*
      * UpdateStructuredDocumentTag request implementation
      */
-    std::shared_ptr< aspose::words::cloud::models::StructuredDocumentTagResponse > UpdateStructuredDocumentTagResponse::getResult() const
+    std::shared_ptr< aspose::words::cloud::models::StructuredDocumentTagResponse > UpdateStructuredDocumentTagResponse::getModel() const
     {
-        return m_Result;
+        return m_Model;
     }
 
     void UpdateStructuredDocumentTagResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
-        m_Result = createModelInstance< aspose::words::cloud::models::StructuredDocumentTagResponse >(L"StructuredDocumentTagResponse, _", response);
+        m_Model = createModelInstance< aspose::words::cloud::models::StructuredDocumentTagResponse >(L"StructuredDocumentTagResponse, _", response);
     }
 
     /*
@@ -5214,14 +5214,14 @@ namespace aspose::words::cloud::responses {
     /*
      * UpdateStyle request implementation
      */
-    std::shared_ptr< aspose::words::cloud::models::StyleResponse > UpdateStyleResponse::getResult() const
+    std::shared_ptr< aspose::words::cloud::models::StyleResponse > UpdateStyleResponse::getModel() const
     {
-        return m_Result;
+        return m_Model;
     }
 
     void UpdateStyleResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
-        m_Result = createModelInstance< aspose::words::cloud::models::StyleResponse >(L"StyleResponse, _", response);
+        m_Model = createModelInstance< aspose::words::cloud::models::StyleResponse >(L"StyleResponse, _", response);
     }
 
     /*
@@ -5255,14 +5255,14 @@ namespace aspose::words::cloud::responses {
     /*
      * UpdateTableCellFormat request implementation
      */
-    std::shared_ptr< aspose::words::cloud::models::TableCellFormatResponse > UpdateTableCellFormatResponse::getResult() const
+    std::shared_ptr< aspose::words::cloud::models::TableCellFormatResponse > UpdateTableCellFormatResponse::getModel() const
     {
-        return m_Result;
+        return m_Model;
     }
 
     void UpdateTableCellFormatResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
-        m_Result = createModelInstance< aspose::words::cloud::models::TableCellFormatResponse >(L"TableCellFormatResponse, _", response);
+        m_Model = createModelInstance< aspose::words::cloud::models::TableCellFormatResponse >(L"TableCellFormatResponse, _", response);
     }
 
     /*
@@ -5296,14 +5296,14 @@ namespace aspose::words::cloud::responses {
     /*
      * UpdateTableProperties request implementation
      */
-    std::shared_ptr< aspose::words::cloud::models::TablePropertiesResponse > UpdateTablePropertiesResponse::getResult() const
+    std::shared_ptr< aspose::words::cloud::models::TablePropertiesResponse > UpdateTablePropertiesResponse::getModel() const
     {
-        return m_Result;
+        return m_Model;
     }
 
     void UpdateTablePropertiesResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
-        m_Result = createModelInstance< aspose::words::cloud::models::TablePropertiesResponse >(L"TablePropertiesResponse, _", response);
+        m_Model = createModelInstance< aspose::words::cloud::models::TablePropertiesResponse >(L"TablePropertiesResponse, _", response);
     }
 
     /*
@@ -5337,14 +5337,14 @@ namespace aspose::words::cloud::responses {
     /*
      * UpdateTableRowFormat request implementation
      */
-    std::shared_ptr< aspose::words::cloud::models::TableRowFormatResponse > UpdateTableRowFormatResponse::getResult() const
+    std::shared_ptr< aspose::words::cloud::models::TableRowFormatResponse > UpdateTableRowFormatResponse::getModel() const
     {
-        return m_Result;
+        return m_Model;
     }
 
     void UpdateTableRowFormatResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
-        m_Result = createModelInstance< aspose::words::cloud::models::TableRowFormatResponse >(L"TableRowFormatResponse, _", response);
+        m_Model = createModelInstance< aspose::words::cloud::models::TableRowFormatResponse >(L"TableRowFormatResponse, _", response);
     }
 
     /*
@@ -5378,13 +5378,13 @@ namespace aspose::words::cloud::responses {
     /*
      * UploadFile request implementation
      */
-    std::shared_ptr< aspose::words::cloud::models::FilesUploadResult > UploadFileResponse::getResult() const
+    std::shared_ptr< aspose::words::cloud::models::FilesUploadResult > UploadFileResponse::getModel() const
     {
-        return m_Result;
+        return m_Model;
     }
 
     void UploadFileResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
-        m_Result = createModelInstance< aspose::words::cloud::models::FilesUploadResult >(L"FilesUploadResult, _", response);
+        m_Model = createModelInstance< aspose::words::cloud::models::FilesUploadResult >(L"FilesUploadResult, _", response);
     }
 }

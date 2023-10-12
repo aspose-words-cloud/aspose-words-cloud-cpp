@@ -206,12 +206,44 @@ namespace aspose::words::cloud::models {
 
 
         /// <summary>
+        /// Gets or sets the height of a generated image in pixels.
+        /// This property has effect only when saving to raster image formats
+        /// and used in pair with ImageWidth.
+        /// </summary>
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< int32_t > getImageHeight() const;
+
+        /// <summary>
+        /// Gets or sets the height of a generated image in pixels.
+        /// This property has effect only when saving to raster image formats
+        /// and used in pair with ImageWidth.
+        /// </summary>
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setImageHeight(std::shared_ptr< int32_t > value);
+
+
+        /// <summary>
+        /// Gets or sets the width of a generated image in pixels.
+        /// This property has effect only when saving to raster image formats
+        /// and used in pair with ImageHeight.
+        /// </summary>
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< int32_t > getImageWidth() const;
+
+        /// <summary>
+        /// Gets or sets the width of a generated image in pixels.
+        /// This property has effect only when saving to raster image formats
+        /// and used in pair with ImageHeight.
+        /// </summary>
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setImageWidth(std::shared_ptr< int32_t > value);
+
+
+        /// <summary>
         /// Gets or sets a value indicating whether to use GDI+ or Aspose.Words metafile renderer when saving to EMF.
+        /// If set to true - GDI+ metafile renderer is used. I.e. content is written to GDI+ graphics object and saved to metafile.If set to false - Aspose.Words metafile renderer is used. I.e. content is written directly to the metafile format with Aspose.Words.The default value is true.Has effect only when saving to EMF.
         /// </summary>
         ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< bool > getUseGdiEmfRenderer() const;
 
         /// <summary>
         /// Gets or sets a value indicating whether to use GDI+ or Aspose.Words metafile renderer when saving to EMF.
+        /// If set to true - GDI+ metafile renderer is used. I.e. content is written to GDI+ graphics object and saved to metafile.If set to false - Aspose.Words metafile renderer is used. I.e. content is written directly to the metafile format with Aspose.Words.The default value is true.Has effect only when saving to EMF.
         /// </summary>
         ASPOSE_WORDS_CLOUD_EXPORT virtual void setUseGdiEmfRenderer(std::shared_ptr< bool > value);
 
@@ -228,6 +260,8 @@ namespace aspose::words::cloud::models {
         std::shared_ptr< bool > m_UseAntiAliasing;
         std::shared_ptr< bool > m_UseHighQualityRendering;
         std::shared_ptr< double > m_VerticalResolution;
+        std::shared_ptr< int32_t > m_ImageHeight;
+        std::shared_ptr< int32_t > m_ImageWidth;
         std::shared_ptr< bool > m_UseGdiEmfRenderer;
     };
 }
