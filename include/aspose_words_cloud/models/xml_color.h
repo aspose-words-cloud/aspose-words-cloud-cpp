@@ -63,29 +63,9 @@ namespace aspose::words::cloud::models {
         ASPOSE_WORDS_CLOUD_EXPORT virtual void setWeb(std::shared_ptr< std::wstring > value);
 
 
-        /// <summary>
-        /// Gets or sets the Alpha wrapper for serialization.
-        /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< int32_t > getXmlAlpha() const;
-
-        /// <summary>
-        /// Gets or sets the Alpha wrapper for serialization.
-        /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT virtual void setXmlAlpha(std::shared_ptr< int32_t > value);
-
-
-        /// <summary>
-        /// Gets a value indicating whether Alpha is specified.
-        /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< bool > getXmlAlphaSpecified() const;
-
-
-
     protected:
         std::shared_ptr< int32_t > m_Alpha;
         std::shared_ptr< std::wstring > m_Web;
-        std::shared_ptr< int32_t > m_XmlAlpha;
-        std::shared_ptr< bool > m_XmlAlphaSpecified;
     };
 }
 

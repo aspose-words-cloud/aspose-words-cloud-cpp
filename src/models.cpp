@@ -497,6 +497,13 @@ namespace aspose::words::cloud::models {
 
     void ApiError::validate()
     {
+
+        if (this->m_InnerError != nullptr)
+        {
+            this->m_InnerError->validate();
+        }
+
+
     }
 
     std::shared_ptr< std::wstring > ApiError::getCode() const
@@ -613,6 +620,44 @@ namespace aspose::words::cloud::models {
     void AvailableFontsResponse::validate()
     {
         WordsResponse::validate();
+
+        if (this->m_AdditionalFonts != nullptr)
+        {
+            for (auto& elementAdditionalFonts : *(this->m_AdditionalFonts))
+            {
+                if (elementAdditionalFonts != nullptr)
+                {
+                    elementAdditionalFonts->validate();
+                }
+            }
+        }
+
+
+
+        if (this->m_CustomFonts != nullptr)
+        {
+            for (auto& elementCustomFonts : *(this->m_CustomFonts))
+            {
+                if (elementCustomFonts != nullptr)
+                {
+                    elementCustomFonts->validate();
+                }
+            }
+        }
+
+
+
+        if (this->m_SystemFonts != nullptr)
+        {
+            for (auto& elementSystemFonts : *(this->m_SystemFonts))
+            {
+                if (elementSystemFonts != nullptr)
+                {
+                    elementSystemFonts->validate();
+                }
+            }
+        }
+
     }
 
     std::shared_ptr< std::vector<std::shared_ptr<aspose::words::cloud::models::FontInfo>> > AvailableFontsResponse::getAdditionalFonts() const
@@ -685,6 +730,12 @@ namespace aspose::words::cloud::models {
         }
 
         this->m_FileReference->validate();
+
+
+        if (this->m_FileReference != nullptr)
+        {
+            this->m_FileReference->validate();
+        }
 
     }
 
@@ -919,6 +970,19 @@ namespace aspose::words::cloud::models {
     void BookmarkInsert::validate()
     {
         BookmarkData::validate();
+
+        if (this->m_StartRange != nullptr)
+        {
+            this->m_StartRange->validate();
+        }
+
+
+
+        if (this->m_EndRange != nullptr)
+        {
+            this->m_EndRange->validate();
+        }
+
     }
 
     std::shared_ptr< aspose::words::cloud::models::NewDocumentPosition > BookmarkInsert::getStartRange() const
@@ -972,6 +1036,12 @@ namespace aspose::words::cloud::models {
     void BookmarkResponse::validate()
     {
         WordsResponse::validate();
+
+        if (this->m_Bookmark != nullptr)
+        {
+            this->m_Bookmark->validate();
+        }
+
     }
 
     std::shared_ptr< aspose::words::cloud::models::Bookmark > BookmarkResponse::getBookmark() const
@@ -1020,6 +1090,18 @@ namespace aspose::words::cloud::models {
     void Bookmarks::validate()
     {
         LinkElement::validate();
+
+        if (this->m_BookmarkList != nullptr)
+        {
+            for (auto& elementBookmarkList : *(this->m_BookmarkList))
+            {
+                if (elementBookmarkList != nullptr)
+                {
+                    elementBookmarkList->validate();
+                }
+            }
+        }
+
     }
 
     std::shared_ptr< std::vector<std::shared_ptr<aspose::words::cloud::models::Bookmark>> > Bookmarks::getBookmarkList() const
@@ -1127,6 +1209,12 @@ namespace aspose::words::cloud::models {
     void BookmarksResponse::validate()
     {
         WordsResponse::validate();
+
+        if (this->m_Bookmarks != nullptr)
+        {
+            this->m_Bookmarks->validate();
+        }
+
     }
 
     std::shared_ptr< aspose::words::cloud::models::Bookmarks > BookmarksResponse::getBookmarks() const
@@ -1300,6 +1388,16 @@ namespace aspose::words::cloud::models {
     void Border::validate()
     {
         LinkElement::validate();
+
+        if (this->m_Color != nullptr)
+        {
+            this->m_Color->validate();
+        }
+
+
+
+
+
     }
 
     std::shared_ptr< aspose::words::cloud::models::Border::BorderType > Border::getBorderType() const
@@ -1397,6 +1495,12 @@ namespace aspose::words::cloud::models {
     void BorderResponse::validate()
     {
         WordsResponse::validate();
+
+        if (this->m_Border != nullptr)
+        {
+            this->m_Border->validate();
+        }
+
     }
 
     std::shared_ptr< aspose::words::cloud::models::Border > BorderResponse::getBorder() const
@@ -1445,6 +1549,18 @@ namespace aspose::words::cloud::models {
     void BordersCollection::validate()
     {
         LinkElement::validate();
+
+        if (this->m_List != nullptr)
+        {
+            for (auto& elementList : *(this->m_List))
+            {
+                if (elementList != nullptr)
+                {
+                    elementList->validate();
+                }
+            }
+        }
+
     }
 
     std::shared_ptr< std::vector<std::shared_ptr<aspose::words::cloud::models::Border>> > BordersCollection::getList() const
@@ -1487,6 +1603,12 @@ namespace aspose::words::cloud::models {
     void BordersResponse::validate()
     {
         WordsResponse::validate();
+
+        if (this->m_Borders != nullptr)
+        {
+            this->m_Borders->validate();
+        }
+
     }
 
     std::shared_ptr< aspose::words::cloud::models::BordersCollection > BordersResponse::getBorders() const
@@ -1554,6 +1676,18 @@ namespace aspose::words::cloud::models {
         if (this->m_BestClassProbability == nullptr)
         {
             throw aspose::words::cloud::ApiException(400, L"Property BestClassProbability in ClassificationResponse is required.");
+        }
+
+
+        if (this->m_BestResults != nullptr)
+        {
+            for (auto& elementBestResults : *(this->m_BestResults))
+            {
+                if (elementBestResults != nullptr)
+                {
+                    elementBestResults->validate();
+                }
+            }
         }
 
     }
@@ -1729,6 +1863,30 @@ namespace aspose::words::cloud::models {
     void Comment::validate()
     {
         CommentLink::validate();
+
+        if (this->m_RangeStart != nullptr)
+        {
+            this->m_RangeStart->validate();
+        }
+
+
+
+        if (this->m_RangeEnd != nullptr)
+        {
+            this->m_RangeEnd->validate();
+        }
+
+
+
+
+
+
+
+        if (this->m_Content != nullptr)
+        {
+            this->m_Content->validate();
+        }
+
     }
 
     std::shared_ptr< aspose::words::cloud::models::DocumentPosition > Comment::getRangeStart() const
@@ -1887,6 +2045,23 @@ namespace aspose::words::cloud::models {
             throw aspose::words::cloud::ApiException(400, L"Property Text in CommentBase is required.");
         }
 
+
+        if (this->m_RangeStart != nullptr)
+        {
+            this->m_RangeStart->validate();
+        }
+
+
+
+        if (this->m_RangeEnd != nullptr)
+        {
+            this->m_RangeEnd->validate();
+        }
+
+
+
+
+
     }
 
     std::shared_ptr< aspose::words::cloud::models::NewDocumentPosition > CommentBase::getRangeStart() const
@@ -2034,6 +2209,12 @@ namespace aspose::words::cloud::models {
     void CommentResponse::validate()
     {
         WordsResponse::validate();
+
+        if (this->m_Comment != nullptr)
+        {
+            this->m_Comment->validate();
+        }
+
     }
 
     std::shared_ptr< aspose::words::cloud::models::Comment > CommentResponse::getComment() const
@@ -2082,6 +2263,18 @@ namespace aspose::words::cloud::models {
     void CommentsCollection::validate()
     {
         LinkElement::validate();
+
+        if (this->m_CommentList != nullptr)
+        {
+            for (auto& elementCommentList : *(this->m_CommentList))
+            {
+                if (elementCommentList != nullptr)
+                {
+                    elementCommentList->validate();
+                }
+            }
+        }
+
     }
 
     std::shared_ptr< std::vector<std::shared_ptr<aspose::words::cloud::models::Comment>> > CommentsCollection::getCommentList() const
@@ -2124,6 +2317,12 @@ namespace aspose::words::cloud::models {
     void CommentsResponse::validate()
     {
         WordsResponse::validate();
+
+        if (this->m_Comments != nullptr)
+        {
+            this->m_Comments->validate();
+        }
+
     }
 
     std::shared_ptr< aspose::words::cloud::models::CommentsCollection > CommentsResponse::getComments() const
@@ -2229,6 +2428,15 @@ namespace aspose::words::cloud::models {
         {
             throw aspose::words::cloud::ApiException(400, L"Property ComparingWithDocument in CompareData is required.");
         }
+
+
+        if (this->m_CompareOptions != nullptr)
+        {
+            this->m_CompareOptions->validate();
+        }
+
+
+
 
     }
 
@@ -2601,6 +2809,12 @@ namespace aspose::words::cloud::models {
     void CompressResponse::validate()
     {
         WordsResponse::validate();
+
+        if (this->m_Document != nullptr)
+        {
+            this->m_Document->validate();
+        }
+
     }
 
     std::shared_ptr< aspose::words::cloud::models::Document > CompressResponse::getDocument() const
@@ -2879,6 +3093,12 @@ namespace aspose::words::cloud::models {
     void CustomXmlPartResponse::validate()
     {
         WordsResponse::validate();
+
+        if (this->m_CustomXmlPart != nullptr)
+        {
+            this->m_CustomXmlPart->validate();
+        }
+
     }
 
     std::shared_ptr< aspose::words::cloud::models::CustomXmlPart > CustomXmlPartResponse::getCustomXmlPart() const
@@ -2927,6 +3147,18 @@ namespace aspose::words::cloud::models {
     void CustomXmlPartsCollection::validate()
     {
         LinkElement::validate();
+
+        if (this->m_CustomXmlPartsList != nullptr)
+        {
+            for (auto& elementCustomXmlPartsList : *(this->m_CustomXmlPartsList))
+            {
+                if (elementCustomXmlPartsList != nullptr)
+                {
+                    elementCustomXmlPartsList->validate();
+                }
+            }
+        }
+
     }
 
     std::shared_ptr< std::vector<std::shared_ptr<aspose::words::cloud::models::CustomXmlPart>> > CustomXmlPartsCollection::getCustomXmlPartsList() const
@@ -2969,6 +3201,12 @@ namespace aspose::words::cloud::models {
     void CustomXmlPartsResponse::validate()
     {
         WordsResponse::validate();
+
+        if (this->m_CustomXmlParts != nullptr)
+        {
+            this->m_CustomXmlParts->validate();
+        }
+
     }
 
     std::shared_ptr< aspose::words::cloud::models::CustomXmlPartsCollection > CustomXmlPartsResponse::getCustomXmlParts() const
@@ -3299,6 +3537,29 @@ namespace aspose::words::cloud::models {
             throw aspose::words::cloud::ApiException(400, L"Property SourceFormat in Document is required.");
         }
 
+
+        if (this->m_Links != nullptr)
+        {
+            for (auto& elementLinks : *(this->m_Links))
+            {
+                if (elementLinks != nullptr)
+                {
+                    elementLinks->validate();
+                }
+            }
+        }
+
+
+
+        if (this->m_DocumentProperties != nullptr)
+        {
+            this->m_DocumentProperties->validate();
+        }
+
+
+
+
+
     }
 
     std::shared_ptr< std::vector<std::shared_ptr<aspose::words::cloud::models::Link>> > Document::getLinks() const
@@ -3516,6 +3777,18 @@ namespace aspose::words::cloud::models {
             }
         }
 
+
+        if (this->m_DocumentEntries != nullptr)
+        {
+            for (auto& elementDocumentEntries : *(this->m_DocumentEntries))
+            {
+                if (elementDocumentEntries != nullptr)
+                {
+                    elementDocumentEntries->validate();
+                }
+            }
+        }
+
     }
 
     std::shared_ptr< bool > DocumentEntryList::getApplyBaseDocumentHeadersAndFootersToAppendingDocuments() const
@@ -3574,6 +3847,13 @@ namespace aspose::words::cloud::models {
 
     void DocumentPosition::validate()
     {
+
+        if (this->m_Node != nullptr)
+        {
+            this->m_Node->validate();
+        }
+
+
     }
 
     std::shared_ptr< aspose::words::cloud::models::NodeLink > DocumentPosition::getNode() const
@@ -3633,6 +3913,18 @@ namespace aspose::words::cloud::models {
     void DocumentProperties::validate()
     {
         LinkElement::validate();
+
+        if (this->m_List != nullptr)
+        {
+            for (auto& elementList : *(this->m_List))
+            {
+                if (elementList != nullptr)
+                {
+                    elementList->validate();
+                }
+            }
+        }
+
     }
 
     std::shared_ptr< std::vector<std::shared_ptr<aspose::words::cloud::models::DocumentProperty>> > DocumentProperties::getList() const
@@ -3675,6 +3967,12 @@ namespace aspose::words::cloud::models {
     void DocumentPropertiesResponse::validate()
     {
         WordsResponse::validate();
+
+        if (this->m_DocumentProperties != nullptr)
+        {
+            this->m_DocumentProperties->validate();
+        }
+
     }
 
     std::shared_ptr< aspose::words::cloud::models::DocumentProperties > DocumentPropertiesResponse::getDocumentProperties() const
@@ -3870,6 +4168,12 @@ namespace aspose::words::cloud::models {
     void DocumentPropertyResponse::validate()
     {
         WordsResponse::validate();
+
+        if (this->m_DocumentProperty != nullptr)
+        {
+            this->m_DocumentProperty->validate();
+        }
+
     }
 
     std::shared_ptr< aspose::words::cloud::models::DocumentProperty > DocumentPropertyResponse::getDocumentProperty() const
@@ -3912,6 +4216,12 @@ namespace aspose::words::cloud::models {
     void DocumentResponse::validate()
     {
         WordsResponse::validate();
+
+        if (this->m_Document != nullptr)
+        {
+            this->m_Document->validate();
+        }
+
     }
 
     std::shared_ptr< aspose::words::cloud::models::Document > DocumentResponse::getDocument() const
@@ -4000,6 +4310,28 @@ namespace aspose::words::cloud::models {
         if (this->m_WordCount == nullptr)
         {
             throw aspose::words::cloud::ApiException(400, L"Property WordCount in DocumentStatData is required.");
+        }
+
+
+        if (this->m_FootnotesStatData != nullptr)
+        {
+            this->m_FootnotesStatData->validate();
+        }
+
+
+
+
+
+
+        if (this->m_PageStatData != nullptr)
+        {
+            for (auto& elementPageStatData : *(this->m_PageStatData))
+            {
+                if (elementPageStatData != nullptr)
+                {
+                    elementPageStatData->validate();
+                }
+            }
         }
 
     }
@@ -4480,6 +4812,39 @@ namespace aspose::words::cloud::models {
     void DrawingObject::validate()
     {
         DrawingObjectLink::validate();
+
+        if (this->m_RenderLinks != nullptr)
+        {
+            for (auto& elementRenderLinks : *(this->m_RenderLinks))
+            {
+                if (elementRenderLinks != nullptr)
+                {
+                    elementRenderLinks->validate();
+                }
+            }
+        }
+
+
+
+
+
+        if (this->m_OleDataLink != nullptr)
+        {
+            this->m_OleDataLink->validate();
+        }
+
+
+
+        if (this->m_ImageDataLink != nullptr)
+        {
+            this->m_ImageDataLink->validate();
+        }
+
+
+
+
+
+
     }
 
     std::shared_ptr< std::vector<std::shared_ptr<aspose::words::cloud::models::WordsApiLink>> > DrawingObject::getRenderLinks() const
@@ -4627,6 +4992,18 @@ namespace aspose::words::cloud::models {
     void DrawingObjectCollection::validate()
     {
         LinkElement::validate();
+
+        if (this->m_List != nullptr)
+        {
+            for (auto& elementList : *(this->m_List))
+            {
+                if (elementList != nullptr)
+                {
+                    elementList->validate();
+                }
+            }
+        }
+
     }
 
     std::shared_ptr< std::vector<std::shared_ptr<aspose::words::cloud::models::LinkElement>> > DrawingObjectCollection::getList() const
@@ -4836,6 +5213,19 @@ namespace aspose::words::cloud::models {
             throw aspose::words::cloud::ApiException(400, L"Property WrapType in DrawingObjectInsert is required.");
         }
 
+
+        if (this->m_Position != nullptr)
+        {
+            this->m_Position->validate();
+        }
+
+
+
+
+
+
+
+
     }
 
     std::shared_ptr< aspose::words::cloud::models::NewDocumentPosition > DrawingObjectInsert::getPosition() const
@@ -4980,6 +5370,12 @@ namespace aspose::words::cloud::models {
     void DrawingObjectResponse::validate()
     {
         WordsResponse::validate();
+
+        if (this->m_DrawingObject != nullptr)
+        {
+            this->m_DrawingObject->validate();
+        }
+
     }
 
     std::shared_ptr< aspose::words::cloud::models::DrawingObject > DrawingObjectResponse::getDrawingObject() const
@@ -5022,6 +5418,12 @@ namespace aspose::words::cloud::models {
     void DrawingObjectsResponse::validate()
     {
         WordsResponse::validate();
+
+        if (this->m_DrawingObjects != nullptr)
+        {
+            this->m_DrawingObjects->validate();
+        }
+
     }
 
     std::shared_ptr< aspose::words::cloud::models::DrawingObjectCollection > DrawingObjectsResponse::getDrawingObjects() const
@@ -5458,6 +5860,13 @@ namespace aspose::words::cloud::models {
 
     void Error::validate()
     {
+
+        if (this->m_InnerError != nullptr)
+        {
+            this->m_InnerError->validate();
+        }
+
+
     }
 
     std::shared_ptr< std::wstring > Error::getCode() const
@@ -5732,6 +6141,18 @@ namespace aspose::words::cloud::models {
     void FieldCollection::validate()
     {
         LinkElement::validate();
+
+        if (this->m_List != nullptr)
+        {
+            for (auto& elementList : *(this->m_List))
+            {
+                if (elementList != nullptr)
+                {
+                    elementList->validate();
+                }
+            }
+        }
+
     }
 
     std::shared_ptr< std::vector<std::shared_ptr<aspose::words::cloud::models::Field>> > FieldCollection::getList() const
@@ -5891,6 +6312,12 @@ namespace aspose::words::cloud::models {
     void FieldNamesResponse::validate()
     {
         WordsResponse::validate();
+
+        if (this->m_FieldNames != nullptr)
+        {
+            this->m_FieldNames->validate();
+        }
+
     }
 
     std::shared_ptr< aspose::words::cloud::models::FieldNames > FieldNamesResponse::getFieldNames() const
@@ -6067,6 +6494,24 @@ namespace aspose::words::cloud::models {
 
     void FieldOptions::validate()
     {
+
+        if (this->m_CurrentUser != nullptr)
+        {
+            this->m_CurrentUser->validate();
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
     }
 
     std::shared_ptr< aspose::words::cloud::models::UserInformation > FieldOptions::getCurrentUser() const
@@ -6241,6 +6686,12 @@ namespace aspose::words::cloud::models {
     void FieldResponse::validate()
     {
         WordsResponse::validate();
+
+        if (this->m_Field != nullptr)
+        {
+            this->m_Field->validate();
+        }
+
     }
 
     std::shared_ptr< aspose::words::cloud::models::Field > FieldResponse::getField() const
@@ -6283,6 +6734,12 @@ namespace aspose::words::cloud::models {
     void FieldsResponse::validate()
     {
         WordsResponse::validate();
+
+        if (this->m_Fields != nullptr)
+        {
+            this->m_Fields->validate();
+        }
+
     }
 
     std::shared_ptr< aspose::words::cloud::models::FieldCollection > FieldsResponse::getFields() const
@@ -6378,6 +6835,18 @@ namespace aspose::words::cloud::models {
 
     void FilesList::validate()
     {
+
+        if (this->m_Value != nullptr)
+        {
+            for (auto& elementValue : *(this->m_Value))
+            {
+                if (elementValue != nullptr)
+                {
+                    elementValue->validate();
+                }
+            }
+        }
+
     }
 
     std::shared_ptr< std::vector<std::shared_ptr<aspose::words::cloud::models::StorageFile>> > FilesList::getValue() const
@@ -6435,6 +6904,19 @@ namespace aspose::words::cloud::models {
 
     void FilesUploadResult::validate()
     {
+
+        if (this->m_Errors != nullptr)
+        {
+            for (auto& elementErrors : *(this->m_Errors))
+            {
+                if (elementErrors != nullptr)
+                {
+                    elementErrors->validate();
+                }
+            }
+        }
+
+
     }
 
     std::shared_ptr< std::vector<std::shared_ptr<aspose::words::cloud::models::Error>> > FilesUploadResult::getErrors() const
@@ -6569,6 +7051,16 @@ namespace aspose::words::cloud::models {
     void FixedPageSaveOptionsData::validate()
     {
         SaveOptionsData::validate();
+
+        if (this->m_MetafileRenderingOptions != nullptr)
+        {
+            this->m_MetafileRenderingOptions->validate();
+        }
+
+
+
+
+
     }
 
     std::shared_ptr< aspose::words::cloud::models::FixedPageSaveOptionsData::ColorMode > FixedPageSaveOptionsData::getColorMode() const
@@ -7978,6 +8470,65 @@ namespace aspose::words::cloud::models {
     void Font::validate()
     {
         LinkElement::validate();
+
+        if (this->m_Border != nullptr)
+        {
+            this->m_Border->validate();
+        }
+
+
+
+        if (this->m_Color != nullptr)
+        {
+            this->m_Color->validate();
+        }
+
+
+
+
+
+
+
+
+        if (this->m_HighlightColor != nullptr)
+        {
+            this->m_HighlightColor->validate();
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        if (this->m_UnderlineColor != nullptr)
+        {
+            this->m_UnderlineColor->validate();
+        }
+
     }
 
     std::shared_ptr< bool > Font::getAllCaps() const
@@ -8547,6 +9098,12 @@ namespace aspose::words::cloud::models {
     void FontResponse::validate()
     {
         WordsResponse::validate();
+
+        if (this->m_Font != nullptr)
+        {
+            this->m_Font->validate();
+        }
+
     }
 
     std::shared_ptr< aspose::words::cloud::models::Font > FontResponse::getFont() const
@@ -8632,6 +9189,22 @@ namespace aspose::words::cloud::models {
     void Footnote::validate()
     {
         FootnoteLink::validate();
+
+        if (this->m_Position != nullptr)
+        {
+            this->m_Position->validate();
+        }
+
+
+
+
+
+
+        if (this->m_Content != nullptr)
+        {
+            this->m_Content->validate();
+        }
+
     }
 
     std::shared_ptr< aspose::words::cloud::models::DocumentPosition > Footnote::getPosition() const
@@ -8752,6 +9325,15 @@ namespace aspose::words::cloud::models {
 
     void FootnoteBase::validate()
     {
+
+        if (this->m_Position != nullptr)
+        {
+            this->m_Position->validate();
+        }
+
+
+
+
     }
 
     std::shared_ptr< aspose::words::cloud::models::NewDocumentPosition > FootnoteBase::getPosition() const
@@ -8833,6 +9415,18 @@ namespace aspose::words::cloud::models {
     void FootnoteCollection::validate()
     {
         LinkElement::validate();
+
+        if (this->m_List != nullptr)
+        {
+            for (auto& elementList : *(this->m_List))
+            {
+                if (elementList != nullptr)
+                {
+                    elementList->validate();
+                }
+            }
+        }
+
     }
 
     std::shared_ptr< std::vector<std::shared_ptr<aspose::words::cloud::models::Footnote>> > FootnoteCollection::getList() const
@@ -8925,6 +9519,12 @@ namespace aspose::words::cloud::models {
     void FootnoteResponse::validate()
     {
         WordsResponse::validate();
+
+        if (this->m_Footnote != nullptr)
+        {
+            this->m_Footnote->validate();
+        }
+
     }
 
     std::shared_ptr< aspose::words::cloud::models::Footnote > FootnoteResponse::getFootnote() const
@@ -8967,6 +9567,12 @@ namespace aspose::words::cloud::models {
     void FootnotesResponse::validate()
     {
         WordsResponse::validate();
+
+        if (this->m_Footnotes != nullptr)
+        {
+            this->m_Footnotes->validate();
+        }
+
     }
 
     std::shared_ptr< aspose::words::cloud::models::FootnoteCollection > FootnotesResponse::getFootnotes() const
@@ -9398,6 +10004,18 @@ namespace aspose::words::cloud::models {
     void FormFieldCollection::validate()
     {
         LinkElement::validate();
+
+        if (this->m_List != nullptr)
+        {
+            for (auto& elementList : *(this->m_List))
+            {
+                if (elementList != nullptr)
+                {
+                    elementList->validate();
+                }
+            }
+        }
+
     }
 
     std::shared_ptr< std::vector<std::shared_ptr<aspose::words::cloud::models::FormField>> > FormFieldCollection::getList() const
@@ -9512,6 +10130,12 @@ namespace aspose::words::cloud::models {
     void FormFieldResponse::validate()
     {
         WordsResponse::validate();
+
+        if (this->m_FormField != nullptr)
+        {
+            this->m_FormField->validate();
+        }
+
     }
 
     std::shared_ptr< aspose::words::cloud::models::FormField > FormFieldResponse::getFormField() const
@@ -9554,6 +10178,12 @@ namespace aspose::words::cloud::models {
     void FormFieldsResponse::validate()
     {
         WordsResponse::validate();
+
+        if (this->m_FormFields != nullptr)
+        {
+            this->m_FormFields->validate();
+        }
+
     }
 
     std::shared_ptr< aspose::words::cloud::models::FormFieldCollection > FormFieldsResponse::getFormFields() const
@@ -9786,6 +10416,32 @@ namespace aspose::words::cloud::models {
     void HeaderFooter::validate()
     {
         HeaderFooterLink::validate();
+
+        if (this->m_ChildNodes != nullptr)
+        {
+            for (auto& elementChildNodes : *(this->m_ChildNodes))
+            {
+                if (elementChildNodes != nullptr)
+                {
+                    elementChildNodes->validate();
+                }
+            }
+        }
+
+
+
+        if (this->m_Paragraphs != nullptr)
+        {
+            this->m_Paragraphs->validate();
+        }
+
+
+
+        if (this->m_DrawingObjects != nullptr)
+        {
+            this->m_DrawingObjects->validate();
+        }
+
     }
 
     std::shared_ptr< std::vector<std::shared_ptr<aspose::words::cloud::models::NodeLink>> > HeaderFooter::getChildNodes() const
@@ -9926,6 +10582,18 @@ namespace aspose::words::cloud::models {
     void HeaderFooterLinkCollection::validate()
     {
         LinkElement::validate();
+
+        if (this->m_List != nullptr)
+        {
+            for (auto& elementList : *(this->m_List))
+            {
+                if (elementList != nullptr)
+                {
+                    elementList->validate();
+                }
+            }
+        }
+
     }
 
     std::shared_ptr< std::vector<std::shared_ptr<aspose::words::cloud::models::HeaderFooterLink>> > HeaderFooterLinkCollection::getList() const
@@ -9968,6 +10636,12 @@ namespace aspose::words::cloud::models {
     void HeaderFooterResponse::validate()
     {
         WordsResponse::validate();
+
+        if (this->m_HeaderFooter != nullptr)
+        {
+            this->m_HeaderFooter->validate();
+        }
+
     }
 
     std::shared_ptr< aspose::words::cloud::models::HeaderFooter > HeaderFooterResponse::getHeaderFooter() const
@@ -10010,6 +10684,12 @@ namespace aspose::words::cloud::models {
     void HeaderFootersResponse::validate()
     {
         WordsResponse::validate();
+
+        if (this->m_HeaderFooters != nullptr)
+        {
+            this->m_HeaderFooters->validate();
+        }
+
     }
 
     std::shared_ptr< aspose::words::cloud::models::HeaderFooterLinkCollection > HeaderFootersResponse::getHeaderFooters() const
@@ -11343,6 +12023,12 @@ namespace aspose::words::cloud::models {
     void HyperlinkResponse::validate()
     {
         WordsResponse::validate();
+
+        if (this->m_Hyperlink != nullptr)
+        {
+            this->m_Hyperlink->validate();
+        }
+
     }
 
     std::shared_ptr< aspose::words::cloud::models::Hyperlink > HyperlinkResponse::getHyperlink() const
@@ -11391,6 +12077,18 @@ namespace aspose::words::cloud::models {
     void Hyperlinks::validate()
     {
         LinkElement::validate();
+
+        if (this->m_HyperlinkList != nullptr)
+        {
+            for (auto& elementHyperlinkList : *(this->m_HyperlinkList))
+            {
+                if (elementHyperlinkList != nullptr)
+                {
+                    elementHyperlinkList->validate();
+                }
+            }
+        }
+
     }
 
     std::shared_ptr< std::vector<std::shared_ptr<aspose::words::cloud::models::Hyperlink>> > Hyperlinks::getHyperlinkList() const
@@ -11433,6 +12131,12 @@ namespace aspose::words::cloud::models {
     void HyperlinksResponse::validate()
     {
         WordsResponse::validate();
+
+        if (this->m_Hyperlinks != nullptr)
+        {
+            this->m_Hyperlinks->validate();
+        }
+
     }
 
     std::shared_ptr< aspose::words::cloud::models::Hyperlinks > HyperlinksResponse::getHyperlinks() const
@@ -11524,6 +12228,18 @@ namespace aspose::words::cloud::models {
     void ImageEntryList::validate()
     {
         BaseEntryList::validate();
+
+        if (this->m_ImageEntries != nullptr)
+        {
+            for (auto& elementImageEntries : *(this->m_ImageEntries))
+            {
+                if (elementImageEntries != nullptr)
+                {
+                    elementImageEntries->validate();
+                }
+            }
+        }
+
     }
 
     std::shared_ptr< bool > ImageEntryList::getAppendEachImageOnNewPage() const
@@ -11997,6 +12713,20 @@ namespace aspose::words::cloud::models {
     void InfoResponse::validate()
     {
         WordsResponse::validate();
+
+        if (this->m_AdditionalInfo != nullptr)
+        {
+            for (auto& elementAdditionalInfo : *(this->m_AdditionalInfo))
+            {
+                if (elementAdditionalInfo != nullptr)
+                {
+                    elementAdditionalInfo->validate();
+                }
+            }
+        }
+
+
+
     }
 
     std::shared_ptr< std::vector<std::shared_ptr<aspose::words::cloud::models::InfoAdditionalItem>> > InfoResponse::getAdditionalInfo() const
@@ -12302,6 +13032,12 @@ namespace aspose::words::cloud::models {
 
     void LinkElement::validate()
     {
+
+        if (this->m_Link != nullptr)
+        {
+            this->m_Link->validate();
+        }
+
     }
 
     std::shared_ptr< aspose::words::cloud::models::WordsApiLink > LinkElement::getLink() const
@@ -12565,6 +13301,19 @@ namespace aspose::words::cloud::models {
         if (this->m_IsListStyleReference == nullptr)
         {
             throw aspose::words::cloud::ApiException(400, L"Property IsListStyleReference in ListInfo is required.");
+        }
+
+
+        if (this->m_Style != nullptr)
+        {
+            this->m_Style->validate();
+        }
+
+
+
+        if (this->m_ListLevels != nullptr)
+        {
+            this->m_ListLevels->validate();
         }
 
     }
@@ -13070,6 +13819,22 @@ namespace aspose::words::cloud::models {
             throw aspose::words::cloud::ApiException(400, L"Property TextPosition in ListLevel is required.");
         }
 
+
+        if (this->m_Font != nullptr)
+        {
+            this->m_Font->validate();
+        }
+
+
+
+
+
+
+        if (this->m_LinkedStyle != nullptr)
+        {
+            this->m_LinkedStyle->validate();
+        }
+
     }
 
     std::shared_ptr< int32_t > ListLevel::getStartAt() const
@@ -13239,6 +14004,18 @@ namespace aspose::words::cloud::models {
     void ListLevels::validate()
     {
         LinkElement::validate();
+
+        if (this->m_ListLevel != nullptr)
+        {
+            for (auto& elementListLevel : *(this->m_ListLevel))
+            {
+                if (elementListLevel != nullptr)
+                {
+                    elementListLevel->validate();
+                }
+            }
+        }
+
     }
 
     std::shared_ptr< std::vector<std::shared_ptr<aspose::words::cloud::models::ListLevel>> > ListLevels::getListLevel() const
@@ -13658,6 +14435,12 @@ namespace aspose::words::cloud::models {
     void ListResponse::validate()
     {
         WordsResponse::validate();
+
+        if (this->m_List != nullptr)
+        {
+            this->m_List->validate();
+        }
+
     }
 
     std::shared_ptr< aspose::words::cloud::models::ListInfo > ListResponse::getList() const
@@ -13706,6 +14489,18 @@ namespace aspose::words::cloud::models {
     void Lists::validate()
     {
         LinkElement::validate();
+
+        if (this->m_ListInfo != nullptr)
+        {
+            for (auto& elementListInfo : *(this->m_ListInfo))
+            {
+                if (elementListInfo != nullptr)
+                {
+                    elementListInfo->validate();
+                }
+            }
+        }
+
     }
 
     std::shared_ptr< std::vector<std::shared_ptr<aspose::words::cloud::models::ListInfo>> > Lists::getListInfo() const
@@ -13748,6 +14543,12 @@ namespace aspose::words::cloud::models {
     void ListsResponse::validate()
     {
         WordsResponse::validate();
+
+        if (this->m_Lists != nullptr)
+        {
+            this->m_Lists->validate();
+        }
+
     }
 
     std::shared_ptr< aspose::words::cloud::models::Lists > ListsResponse::getLists() const
@@ -13840,6 +14641,13 @@ namespace aspose::words::cloud::models {
         {
             throw aspose::words::cloud::ApiException(400, L"Property LoadingDocumentUrl in LoadWebDocumentData is required.");
         }
+
+
+        if (this->m_SaveOptions != nullptr)
+        {
+            this->m_SaveOptions->validate();
+        }
+
 
     }
 
@@ -14180,6 +14988,19 @@ namespace aspose::words::cloud::models {
 
     void ModificationOperationResult::validate()
     {
+
+        if (this->m_Dest != nullptr)
+        {
+            this->m_Dest->validate();
+        }
+
+
+
+        if (this->m_Source != nullptr)
+        {
+            this->m_Source->validate();
+        }
+
     }
 
     std::shared_ptr< aspose::words::cloud::models::FileLink > ModificationOperationResult::getDest() const
@@ -14625,6 +15446,15 @@ namespace aspose::words::cloud::models {
     void OfficeMathObject::validate()
     {
         OfficeMathLink::validate();
+
+        if (this->m_Content != nullptr)
+        {
+            this->m_Content->validate();
+        }
+
+
+
+
     }
 
     std::shared_ptr< aspose::words::cloud::models::StoryChildNodes > OfficeMathObject::getContent() const
@@ -14700,6 +15530,12 @@ namespace aspose::words::cloud::models {
     void OfficeMathObjectResponse::validate()
     {
         WordsResponse::validate();
+
+        if (this->m_OfficeMathObject != nullptr)
+        {
+            this->m_OfficeMathObject->validate();
+        }
+
     }
 
     std::shared_ptr< aspose::words::cloud::models::OfficeMathObject > OfficeMathObjectResponse::getOfficeMathObject() const
@@ -14748,6 +15584,18 @@ namespace aspose::words::cloud::models {
     void OfficeMathObjectsCollection::validate()
     {
         LinkElement::validate();
+
+        if (this->m_List != nullptr)
+        {
+            for (auto& elementList : *(this->m_List))
+            {
+                if (elementList != nullptr)
+                {
+                    elementList->validate();
+                }
+            }
+        }
+
     }
 
     std::shared_ptr< std::vector<std::shared_ptr<aspose::words::cloud::models::OfficeMathObject>> > OfficeMathObjectsCollection::getList() const
@@ -14790,6 +15638,12 @@ namespace aspose::words::cloud::models {
     void OfficeMathObjectsResponse::validate()
     {
         WordsResponse::validate();
+
+        if (this->m_OfficeMathObjects != nullptr)
+        {
+            this->m_OfficeMathObjects->validate();
+        }
+
     }
 
     std::shared_ptr< aspose::words::cloud::models::OfficeMathObjectsCollection > OfficeMathObjectsResponse::getOfficeMathObjects() const
@@ -15160,6 +16014,18 @@ namespace aspose::words::cloud::models {
 
     void OutlineOptionsData::validate()
     {
+
+        if (this->m_BookmarksOutlineLevels != nullptr)
+        {
+            for (auto& elementBookmarksOutlineLevels : *(this->m_BookmarksOutlineLevels))
+            {
+                if (elementBookmarksOutlineLevels != nullptr)
+                {
+                    elementBookmarksOutlineLevels->validate();
+                }
+            }
+        }
+
     }
 
     std::shared_ptr< bool > OutlineOptionsData::getCreateMissingOutlineLevels() const
@@ -16273,6 +17139,15 @@ namespace aspose::words::cloud::models {
             throw aspose::words::cloud::ApiException(400, L"Property PageNumber in PageStatData is required.");
         }
 
+
+        if (this->m_FootnotesStatData != nullptr)
+        {
+            this->m_FootnotesStatData->validate();
+        }
+
+
+
+
     }
 
     std::shared_ptr< aspose::words::cloud::models::FootnotesStatData > PageStatData::getFootnotesStatData() const
@@ -16354,6 +17229,18 @@ namespace aspose::words::cloud::models {
     void Paragraph::validate()
     {
         NodeLink::validate();
+
+        if (this->m_ChildNodes != nullptr)
+        {
+            for (auto& elementChildNodes : *(this->m_ChildNodes))
+            {
+                if (elementChildNodes != nullptr)
+                {
+                    elementChildNodes->validate();
+                }
+            }
+        }
+
     }
 
     std::shared_ptr< std::vector<std::shared_ptr<aspose::words::cloud::models::NodeLink>> > Paragraph::getChildNodes() const
@@ -17516,6 +18403,12 @@ namespace aspose::words::cloud::models {
     void ParagraphFormatBase::validate()
     {
         LinkElement::validate();
+
+        if (this->m_Shading != nullptr)
+        {
+            this->m_Shading->validate();
+        }
+
     }
 
     std::shared_ptr< bool > ParagraphFormatBase::getAddSpaceBetweenFarEastAndAlpha() const
@@ -17833,6 +18726,12 @@ namespace aspose::words::cloud::models {
     void ParagraphFormatResponse::validate()
     {
         WordsResponse::validate();
+
+        if (this->m_ParagraphFormat != nullptr)
+        {
+            this->m_ParagraphFormat->validate();
+        }
+
     }
 
     std::shared_ptr< aspose::words::cloud::models::ParagraphFormat > ParagraphFormatResponse::getParagraphFormat() const
@@ -17991,6 +18890,18 @@ namespace aspose::words::cloud::models {
     void ParagraphLinkCollection::validate()
     {
         LinkElement::validate();
+
+        if (this->m_ParagraphLinkList != nullptr)
+        {
+            for (auto& elementParagraphLinkList : *(this->m_ParagraphLinkList))
+            {
+                if (elementParagraphLinkList != nullptr)
+                {
+                    elementParagraphLinkList->validate();
+                }
+            }
+        }
+
     }
 
     std::shared_ptr< std::vector<std::shared_ptr<aspose::words::cloud::models::ParagraphLink>> > ParagraphLinkCollection::getParagraphLinkList() const
@@ -18033,6 +18944,12 @@ namespace aspose::words::cloud::models {
     void ParagraphLinkCollectionResponse::validate()
     {
         WordsResponse::validate();
+
+        if (this->m_Paragraphs != nullptr)
+        {
+            this->m_Paragraphs->validate();
+        }
+
     }
 
     std::shared_ptr< aspose::words::cloud::models::ParagraphLinkCollection > ParagraphLinkCollectionResponse::getParagraphs() const
@@ -18075,6 +18992,12 @@ namespace aspose::words::cloud::models {
     void ParagraphListFormatResponse::validate()
     {
         WordsResponse::validate();
+
+        if (this->m_ListFormat != nullptr)
+        {
+            this->m_ListFormat->validate();
+        }
+
     }
 
     std::shared_ptr< aspose::words::cloud::models::ListFormat > ParagraphListFormatResponse::getListFormat() const
@@ -18117,6 +19040,12 @@ namespace aspose::words::cloud::models {
     void ParagraphResponse::validate()
     {
         WordsResponse::validate();
+
+        if (this->m_Paragraph != nullptr)
+        {
+            this->m_Paragraph->validate();
+        }
+
     }
 
     std::shared_ptr< aspose::words::cloud::models::Paragraph > ParagraphResponse::getParagraph() const
@@ -18838,6 +19767,53 @@ namespace aspose::words::cloud::models {
     void PdfSaveOptionsData::validate()
     {
         FixedPageSaveOptionsData::validate();
+
+        if (this->m_DigitalSignatureDetails != nullptr)
+        {
+            this->m_DigitalSignatureDetails->validate();
+        }
+
+
+
+
+        if (this->m_DownsampleOptions != nullptr)
+        {
+            this->m_DownsampleOptions->validate();
+        }
+
+
+
+
+
+        if (this->m_EncryptionDetails != nullptr)
+        {
+            this->m_EncryptionDetails->validate();
+        }
+
+
+
+
+
+
+
+
+
+
+
+        if (this->m_OutlineOptions != nullptr)
+        {
+            this->m_OutlineOptions->validate();
+        }
+
+
+
+
+
+
+
+
+
+
     }
 
     std::shared_ptr< bool > PdfSaveOptionsData::getCacheBackgroundGraphics() const
@@ -19340,6 +20316,19 @@ namespace aspose::words::cloud::models {
     void ProtectionDataResponse::validate()
     {
         WordsResponse::validate();
+
+        if (this->m_DocumentLink != nullptr)
+        {
+            this->m_DocumentLink->validate();
+        }
+
+
+
+        if (this->m_ProtectionData != nullptr)
+        {
+            this->m_ProtectionData->validate();
+        }
+
     }
 
     std::shared_ptr< aspose::words::cloud::models::FileLink > ProtectionDataResponse::getDocumentLink() const
@@ -19912,6 +20901,13 @@ namespace aspose::words::cloud::models {
             throw aspose::words::cloud::ApiException(400, L"Property Matches in ReplaceTextResponse is required.");
         }
 
+
+        if (this->m_DocumentLink != nullptr)
+        {
+            this->m_DocumentLink->validate();
+        }
+
+
     }
 
     std::shared_ptr< aspose::words::cloud::models::FileLink > ReplaceTextResponse::getDocumentLink() const
@@ -20044,6 +21040,29 @@ namespace aspose::words::cloud::models {
             throw aspose::words::cloud::ApiException(400, L"Property DataSourceType in ReportEngineSettings is required.");
         }
 
+
+        if (this->m_CsvDataLoadOptions != nullptr)
+        {
+            this->m_CsvDataLoadOptions->validate();
+        }
+
+
+
+
+
+        if (this->m_JsonDataLoadOptions != nullptr)
+        {
+            this->m_JsonDataLoadOptions->validate();
+        }
+
+
+
+
+        if (this->m_XmlDataLoadOptions != nullptr)
+        {
+            this->m_XmlDataLoadOptions->validate();
+        }
+
     }
 
     std::shared_ptr< aspose::words::cloud::models::CsvDataLoadOptions > ReportEngineSettings::getCsvDataLoadOptions() const
@@ -20141,6 +21160,12 @@ namespace aspose::words::cloud::models {
     void RevisionsModificationResponse::validate()
     {
         WordsResponse::validate();
+
+        if (this->m_Result != nullptr)
+        {
+            this->m_Result->validate();
+        }
+
     }
 
     std::shared_ptr< aspose::words::cloud::models::ModificationOperationResult > RevisionsModificationResponse::getResult() const
@@ -20439,6 +21464,12 @@ namespace aspose::words::cloud::models {
     void RunResponse::validate()
     {
         WordsResponse::validate();
+
+        if (this->m_Run != nullptr)
+        {
+            this->m_Run->validate();
+        }
+
     }
 
     std::shared_ptr< aspose::words::cloud::models::Run > RunResponse::getRun() const
@@ -20487,6 +21518,18 @@ namespace aspose::words::cloud::models {
     void Runs::validate()
     {
         LinkElement::validate();
+
+        if (this->m_List != nullptr)
+        {
+            for (auto& elementList : *(this->m_List))
+            {
+                if (elementList != nullptr)
+                {
+                    elementList->validate();
+                }
+            }
+        }
+
     }
 
     std::shared_ptr< std::vector<std::shared_ptr<aspose::words::cloud::models::Run>> > Runs::getList() const
@@ -20529,6 +21572,12 @@ namespace aspose::words::cloud::models {
     void RunsResponse::validate()
     {
         WordsResponse::validate();
+
+        if (this->m_Runs != nullptr)
+        {
+            this->m_Runs->validate();
+        }
+
     }
 
     std::shared_ptr< aspose::words::cloud::models::Runs > RunsResponse::getRuns() const
@@ -20751,6 +21800,23 @@ namespace aspose::words::cloud::models {
             throw aspose::words::cloud::ApiException(400, L"Property FileName in SaveOptionsData is required.");
         }
 
+
+        if (this->m_CustomTimeZoneInfoData != nullptr)
+        {
+            this->m_CustomTimeZoneInfoData->validate();
+        }
+
+
+
+
+
+
+
+
+
+
+
+
     }
 
     std::shared_ptr< bool > SaveOptionsData::getAllowEmbeddingPostScriptFonts() const
@@ -20921,6 +21987,12 @@ namespace aspose::words::cloud::models {
     void SaveResponse::validate()
     {
         WordsResponse::validate();
+
+        if (this->m_SaveResult != nullptr)
+        {
+            this->m_SaveResult->validate();
+        }
+
     }
 
     std::shared_ptr< aspose::words::cloud::models::SaveResult > SaveResponse::getSaveResult() const
@@ -20978,6 +22050,32 @@ namespace aspose::words::cloud::models {
 
     void SaveResult::validate()
     {
+
+        if (this->m_DestDocument != nullptr)
+        {
+            this->m_DestDocument->validate();
+        }
+
+
+
+        if (this->m_SourceDocument != nullptr)
+        {
+            this->m_SourceDocument->validate();
+        }
+
+
+
+        if (this->m_AdditionalItems != nullptr)
+        {
+            for (auto& elementAdditionalItems : *(this->m_AdditionalItems))
+            {
+                if (elementAdditionalItems != nullptr)
+                {
+                    elementAdditionalItems->validate();
+                }
+            }
+        }
+
     }
 
     std::shared_ptr< aspose::words::cloud::models::FileLink > SaveResult::getDestDocument() const
@@ -21050,6 +22148,12 @@ namespace aspose::words::cloud::models {
     void SearchResponse::validate()
     {
         WordsResponse::validate();
+
+        if (this->m_SearchResults != nullptr)
+        {
+            this->m_SearchResults->validate();
+        }
+
     }
 
     std::shared_ptr< std::wstring > SearchResponse::getSearchingPattern() const
@@ -21106,6 +22210,19 @@ namespace aspose::words::cloud::models {
 
     void SearchResult::validate()
     {
+
+        if (this->m_RangeStart != nullptr)
+        {
+            this->m_RangeStart->validate();
+        }
+
+
+
+        if (this->m_RangeEnd != nullptr)
+        {
+            this->m_RangeEnd->validate();
+        }
+
     }
 
     std::shared_ptr< aspose::words::cloud::models::DocumentPosition > SearchResult::getRangeStart() const
@@ -21165,6 +22282,18 @@ namespace aspose::words::cloud::models {
     void SearchResultsCollection::validate()
     {
         LinkElement::validate();
+
+        if (this->m_ResultsList != nullptr)
+        {
+            for (auto& elementResultsList : *(this->m_ResultsList))
+            {
+                if (elementResultsList != nullptr)
+                {
+                    elementResultsList->validate();
+                }
+            }
+        }
+
     }
 
     std::shared_ptr< std::vector<std::shared_ptr<aspose::words::cloud::models::SearchResult>> > SearchResultsCollection::getResultsList() const
@@ -21237,6 +22366,46 @@ namespace aspose::words::cloud::models {
     void Section::validate()
     {
         LinkElement::validate();
+
+        if (this->m_ChildNodes != nullptr)
+        {
+            for (auto& elementChildNodes : *(this->m_ChildNodes))
+            {
+                if (elementChildNodes != nullptr)
+                {
+                    elementChildNodes->validate();
+                }
+            }
+        }
+
+
+
+        if (this->m_Paragraphs != nullptr)
+        {
+            this->m_Paragraphs->validate();
+        }
+
+
+
+        if (this->m_PageSetup != nullptr)
+        {
+            this->m_PageSetup->validate();
+        }
+
+
+
+        if (this->m_HeaderFooters != nullptr)
+        {
+            this->m_HeaderFooters->validate();
+        }
+
+
+
+        if (this->m_Tables != nullptr)
+        {
+            this->m_Tables->validate();
+        }
+
     }
 
     std::shared_ptr< std::vector<std::shared_ptr<aspose::words::cloud::models::NodeLink>> > Section::getChildNodes() const
@@ -21354,6 +22523,18 @@ namespace aspose::words::cloud::models {
     void SectionLinkCollection::validate()
     {
         LinkElement::validate();
+
+        if (this->m_SectionLinkList != nullptr)
+        {
+            for (auto& elementSectionLinkList : *(this->m_SectionLinkList))
+            {
+                if (elementSectionLinkList != nullptr)
+                {
+                    elementSectionLinkList->validate();
+                }
+            }
+        }
+
     }
 
     std::shared_ptr< std::vector<std::shared_ptr<aspose::words::cloud::models::SectionLink>> > SectionLinkCollection::getSectionLinkList() const
@@ -21396,6 +22577,12 @@ namespace aspose::words::cloud::models {
     void SectionLinkCollectionResponse::validate()
     {
         WordsResponse::validate();
+
+        if (this->m_Sections != nullptr)
+        {
+            this->m_Sections->validate();
+        }
+
     }
 
     std::shared_ptr< aspose::words::cloud::models::SectionLinkCollection > SectionLinkCollectionResponse::getSections() const
@@ -21438,6 +22625,12 @@ namespace aspose::words::cloud::models {
     void SectionPageSetupResponse::validate()
     {
         WordsResponse::validate();
+
+        if (this->m_PageSetup != nullptr)
+        {
+            this->m_PageSetup->validate();
+        }
+
     }
 
     std::shared_ptr< aspose::words::cloud::models::PageSetup > SectionPageSetupResponse::getPageSetup() const
@@ -21480,6 +22673,12 @@ namespace aspose::words::cloud::models {
     void SectionResponse::validate()
     {
         WordsResponse::validate();
+
+        if (this->m_Section != nullptr)
+        {
+            this->m_Section->validate();
+        }
+
     }
 
     std::shared_ptr< aspose::words::cloud::models::Section > SectionResponse::getSection() const
@@ -21650,6 +22849,20 @@ namespace aspose::words::cloud::models {
 
     void Shading::validate()
     {
+
+        if (this->m_BackgroundPatternColor != nullptr)
+        {
+            this->m_BackgroundPatternColor->validate();
+        }
+
+
+
+        if (this->m_ForegroundPatternColor != nullptr)
+        {
+            this->m_ForegroundPatternColor->validate();
+        }
+
+
     }
 
     std::shared_ptr< aspose::words::cloud::models::XmlColor > Shading::getBackgroundPatternColor() const
@@ -21714,6 +22927,12 @@ namespace aspose::words::cloud::models {
     void SplitDocumentResponse::validate()
     {
         WordsResponse::validate();
+
+        if (this->m_SplitResult != nullptr)
+        {
+            this->m_SplitResult->validate();
+        }
+
     }
 
     std::shared_ptr< aspose::words::cloud::models::SplitDocumentResult > SplitDocumentResponse::getSplitResult() const
@@ -21771,6 +22990,32 @@ namespace aspose::words::cloud::models {
 
     void SplitDocumentResult::validate()
     {
+
+        if (this->m_SourceDocument != nullptr)
+        {
+            this->m_SourceDocument->validate();
+        }
+
+
+
+        if (this->m_ZippedPages != nullptr)
+        {
+            this->m_ZippedPages->validate();
+        }
+
+
+
+        if (this->m_Pages != nullptr)
+        {
+            for (auto& elementPages : *(this->m_Pages))
+            {
+                if (elementPages != nullptr)
+                {
+                    elementPages->validate();
+                }
+            }
+        }
+
     }
 
     std::shared_ptr< aspose::words::cloud::models::FileLink > SplitDocumentResult::getSourceDocument() const
@@ -21841,6 +23086,19 @@ namespace aspose::words::cloud::models {
     void StatDataResponse::validate()
     {
         WordsResponse::validate();
+
+        if (this->m_DocumentLink != nullptr)
+        {
+            this->m_DocumentLink->validate();
+        }
+
+
+
+        if (this->m_StatData != nullptr)
+        {
+            this->m_StatData->validate();
+        }
+
     }
 
     std::shared_ptr< aspose::words::cloud::models::FileLink > StatDataResponse::getDocumentLink() const
@@ -22024,6 +23282,18 @@ namespace aspose::words::cloud::models {
 
     void StoryChildNodes::validate()
     {
+
+        if (this->m_ChildNodes != nullptr)
+        {
+            for (auto& elementChildNodes : *(this->m_ChildNodes))
+            {
+                if (elementChildNodes != nullptr)
+                {
+                    elementChildNodes->validate();
+                }
+            }
+        }
+
     }
 
     std::shared_ptr< std::vector<std::shared_ptr<aspose::words::cloud::models::NodeLink>> > StoryChildNodes::getChildNodes() const
@@ -22395,6 +23665,41 @@ namespace aspose::words::cloud::models {
     void StructuredDocumentTag::validate()
     {
         NodeLink::validate();
+
+        if (this->m_ListItems != nullptr)
+        {
+            for (auto& elementListItems : *(this->m_ListItems))
+            {
+                if (elementListItems != nullptr)
+                {
+                    elementListItems->validate();
+                }
+            }
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     }
 
     std::shared_ptr< std::vector<std::shared_ptr<aspose::words::cloud::models::StructuredDocumentTagListItem>> > StructuredDocumentTag::getListItems() const
@@ -22692,6 +23997,18 @@ namespace aspose::words::cloud::models {
     void StructuredDocumentTagCollection::validate()
     {
         LinkElement::validate();
+
+        if (this->m_List != nullptr)
+        {
+            for (auto& elementList : *(this->m_List))
+            {
+                if (elementList != nullptr)
+                {
+                    elementList->validate();
+                }
+            }
+        }
+
     }
 
     std::shared_ptr< std::vector<std::shared_ptr<aspose::words::cloud::models::StructuredDocumentTag>> > StructuredDocumentTagCollection::getList() const
@@ -22819,6 +24136,12 @@ namespace aspose::words::cloud::models {
     void StructuredDocumentTagResponse::validate()
     {
         WordsResponse::validate();
+
+        if (this->m_StructuredDocumentTag != nullptr)
+        {
+            this->m_StructuredDocumentTag->validate();
+        }
+
     }
 
     std::shared_ptr< aspose::words::cloud::models::StructuredDocumentTag > StructuredDocumentTagResponse::getStructuredDocumentTag() const
@@ -22861,6 +24184,12 @@ namespace aspose::words::cloud::models {
     void StructuredDocumentTagsResponse::validate()
     {
         WordsResponse::validate();
+
+        if (this->m_StructuredDocumentTags != nullptr)
+        {
+            this->m_StructuredDocumentTags->validate();
+        }
+
     }
 
     std::shared_ptr< aspose::words::cloud::models::StructuredDocumentTagCollection > StructuredDocumentTagsResponse::getStructuredDocumentTags() const
@@ -23820,6 +25149,22 @@ namespace aspose::words::cloud::models {
             throw aspose::words::cloud::ApiException(400, L"Property StyleIdentifier in Style is required.");
         }
 
+
+        if (this->m_Font != nullptr)
+        {
+            this->m_Font->validate();
+        }
+
+
+
+
+
+
+
+
+
+
+
     }
 
     std::shared_ptr< aspose::words::cloud::models::Font > Style::getFont() const
@@ -24136,6 +25481,12 @@ namespace aspose::words::cloud::models {
     void StyleResponse::validate()
     {
         WordsResponse::validate();
+
+        if (this->m_Style != nullptr)
+        {
+            this->m_Style->validate();
+        }
+
     }
 
     std::shared_ptr< aspose::words::cloud::models::Style > StyleResponse::getStyle() const
@@ -24184,6 +25535,18 @@ namespace aspose::words::cloud::models {
     void StylesResponse::validate()
     {
         WordsResponse::validate();
+
+        if (this->m_Styles != nullptr)
+        {
+            for (auto& elementStyles : *(this->m_Styles))
+            {
+                if (elementStyles != nullptr)
+                {
+                    elementStyles->validate();
+                }
+            }
+        }
+
     }
 
     std::shared_ptr< std::vector<std::shared_ptr<aspose::words::cloud::models::Style>> > StylesResponse::getStyles() const
@@ -24505,6 +25868,25 @@ namespace aspose::words::cloud::models {
     void Table::validate()
     {
         NodeLink::validate();
+
+        if (this->m_TableRowList != nullptr)
+        {
+            for (auto& elementTableRowList : *(this->m_TableRowList))
+            {
+                if (elementTableRowList != nullptr)
+                {
+                    elementTableRowList->validate();
+                }
+            }
+        }
+
+
+
+        if (this->m_TableProperties != nullptr)
+        {
+            this->m_TableProperties->validate();
+        }
+
     }
 
     std::shared_ptr< std::vector<std::shared_ptr<aspose::words::cloud::models::TableRow>> > Table::getTableRowList() const
@@ -24564,6 +25946,18 @@ namespace aspose::words::cloud::models {
     void TableCell::validate()
     {
         NodeLink::validate();
+
+        if (this->m_ChildNodes != nullptr)
+        {
+            for (auto& elementChildNodes : *(this->m_ChildNodes))
+            {
+                if (elementChildNodes != nullptr)
+                {
+                    elementChildNodes->validate();
+                }
+            }
+        }
+
     }
 
     std::shared_ptr< std::vector<std::shared_ptr<aspose::words::cloud::models::NodeLink>> > TableCell::getChildNodes() const
@@ -24763,6 +26157,18 @@ namespace aspose::words::cloud::models {
     void TableCellFormat::validate()
     {
         LinkElement::validate();
+
+        if (this->m_PreferredWidth != nullptr)
+        {
+            this->m_PreferredWidth->validate();
+        }
+
+
+
+
+
+
+
     }
 
     std::shared_ptr< double > TableCellFormat::getBottomPadding() const
@@ -24926,6 +26332,12 @@ namespace aspose::words::cloud::models {
     void TableCellFormatResponse::validate()
     {
         WordsResponse::validate();
+
+        if (this->m_CellFormat != nullptr)
+        {
+            this->m_CellFormat->validate();
+        }
+
     }
 
     std::shared_ptr< aspose::words::cloud::models::TableCellFormat > TableCellFormatResponse::getCellFormat() const
@@ -25009,6 +26421,12 @@ namespace aspose::words::cloud::models {
     void TableCellResponse::validate()
     {
         WordsResponse::validate();
+
+        if (this->m_Cell != nullptr)
+        {
+            this->m_Cell->validate();
+        }
+
     }
 
     std::shared_ptr< aspose::words::cloud::models::TableCell > TableCellResponse::getCell() const
@@ -25073,6 +26491,13 @@ namespace aspose::words::cloud::models {
         {
             throw aspose::words::cloud::ApiException(400, L"Property RowsCount in TableInsert is required.");
         }
+
+
+        if (this->m_Position != nullptr)
+        {
+            this->m_Position->validate();
+        }
+
 
     }
 
@@ -25169,6 +26594,18 @@ namespace aspose::words::cloud::models {
     void TableLinkCollection::validate()
     {
         LinkElement::validate();
+
+        if (this->m_TableLinkList != nullptr)
+        {
+            for (auto& elementTableLinkList : *(this->m_TableLinkList))
+            {
+                if (elementTableLinkList != nullptr)
+                {
+                    elementTableLinkList->validate();
+                }
+            }
+        }
+
     }
 
     std::shared_ptr< std::vector<std::shared_ptr<aspose::words::cloud::models::TableLink>> > TableLinkCollection::getTableLinkList() const
@@ -25211,6 +26648,12 @@ namespace aspose::words::cloud::models {
     void TableLinkCollectionResponse::validate()
     {
         WordsResponse::validate();
+
+        if (this->m_Tables != nullptr)
+        {
+            this->m_Tables->validate();
+        }
+
     }
 
     std::shared_ptr< aspose::words::cloud::models::TableLinkCollection > TableLinkCollectionResponse::getTables() const
@@ -26182,6 +27625,18 @@ namespace aspose::words::cloud::models {
     void TableProperties::validate()
     {
         LinkElement::validate();
+
+        if (this->m_PreferredWidth != nullptr)
+        {
+            this->m_PreferredWidth->validate();
+        }
+
+
+
+
+
+
+
     }
 
     std::shared_ptr< aspose::words::cloud::models::TableProperties::Alignment > TableProperties::getAlignment() const
@@ -26367,6 +27822,12 @@ namespace aspose::words::cloud::models {
     void TablePropertiesResponse::validate()
     {
         WordsResponse::validate();
+
+        if (this->m_Properties != nullptr)
+        {
+            this->m_Properties->validate();
+        }
+
     }
 
     std::shared_ptr< aspose::words::cloud::models::TableProperties > TablePropertiesResponse::getProperties() const
@@ -26409,6 +27870,12 @@ namespace aspose::words::cloud::models {
     void TableResponse::validate()
     {
         WordsResponse::validate();
+
+        if (this->m_Table != nullptr)
+        {
+            this->m_Table->validate();
+        }
+
     }
 
     std::shared_ptr< aspose::words::cloud::models::Table > TableResponse::getTable() const
@@ -26463,6 +27930,25 @@ namespace aspose::words::cloud::models {
     void TableRow::validate()
     {
         NodeLink::validate();
+
+        if (this->m_TableCellList != nullptr)
+        {
+            for (auto& elementTableCellList : *(this->m_TableCellList))
+            {
+                if (elementTableCellList != nullptr)
+                {
+                    elementTableCellList->validate();
+                }
+            }
+        }
+
+
+
+        if (this->m_RowFormat != nullptr)
+        {
+            this->m_RowFormat->validate();
+        }
+
     }
 
     std::shared_ptr< std::vector<std::shared_ptr<aspose::words::cloud::models::TableCell>> > TableRow::getTableCellList() const
@@ -26632,6 +28118,12 @@ namespace aspose::words::cloud::models {
     void TableRowFormatResponse::validate()
     {
         WordsResponse::validate();
+
+        if (this->m_RowFormat != nullptr)
+        {
+            this->m_RowFormat->validate();
+        }
+
     }
 
     std::shared_ptr< aspose::words::cloud::models::TableRowFormat > TableRowFormatResponse::getRowFormat() const
@@ -26739,6 +28231,12 @@ namespace aspose::words::cloud::models {
     void TableRowResponse::validate()
     {
         WordsResponse::validate();
+
+        if (this->m_Row != nullptr)
+        {
+            this->m_Row->validate();
+        }
+
     }
 
     std::shared_ptr< aspose::words::cloud::models::TableRow > TableRowResponse::getRow() const
@@ -27000,6 +28498,18 @@ namespace aspose::words::cloud::models {
     void TabStopsResponse::validate()
     {
         WordsResponse::validate();
+
+        if (this->m_TabStops != nullptr)
+        {
+            for (auto& elementTabStops : *(this->m_TabStops))
+            {
+                if (elementTabStops != nullptr)
+                {
+                    elementTabStops->validate();
+                }
+            }
+        }
+
     }
 
     std::shared_ptr< std::vector<std::shared_ptr<aspose::words::cloud::models::TabStop>> > TabStopsResponse::getTabStops() const
@@ -27715,6 +29225,12 @@ namespace aspose::words::cloud::models {
     void WordsApiErrorResponse::validate()
     {
         WordsResponse::validate();
+
+        if (this->m_Error != nullptr)
+        {
+            this->m_Error->validate();
+        }
+
     }
 
     std::shared_ptr< aspose::words::cloud::models::ApiError > WordsApiErrorResponse::getError() const
@@ -28003,12 +29519,6 @@ namespace aspose::words::cloud::models {
         if (this->m_Web) {
             json["Web"] = convertUtf16(*(this->m_Web));
         }
-        if (this->m_XmlAlpha) {
-            json["XmlAlpha"] = *(this->m_XmlAlpha);
-        }
-        if (this->m_XmlAlphaSpecified) {
-            json["XmlAlphaSpecified"] = *(this->m_XmlAlphaSpecified);
-        }
     }
 
     void XmlColor::fromJson(const void* jsonIfc)
@@ -28024,16 +29534,6 @@ namespace aspose::words::cloud::models {
                 convertUtf8( json["Web"].get< std::string >() )
             );
         }
-        if (json.contains("XmlAlpha") && !json["XmlAlpha"].is_null()) {
-            this->m_XmlAlpha = std::make_shared< int32_t >(
-                json["XmlAlpha"].get< int32_t >()
-            );
-        }
-        if (json.contains("XmlAlphaSpecified") && !json["XmlAlphaSpecified"].is_null()) {
-            this->m_XmlAlphaSpecified = std::make_shared< bool >(
-                json["XmlAlphaSpecified"].get< bool >()
-            );
-        }
     }
 
     void XmlColor::getFileReferences(std::vector< FileReference* >& result)
@@ -28042,16 +29542,6 @@ namespace aspose::words::cloud::models {
 
     void XmlColor::validate()
     {
-        if (this->m_XmlAlpha == nullptr)
-        {
-            throw aspose::words::cloud::ApiException(400, L"Property XmlAlpha in XmlColor is required.");
-        }
-
-        if (this->m_XmlAlphaSpecified == nullptr)
-        {
-            throw aspose::words::cloud::ApiException(400, L"Property XmlAlphaSpecified in XmlColor is required.");
-        }
-
     }
 
     std::shared_ptr< int32_t > XmlColor::getAlpha() const
@@ -28074,24 +29564,6 @@ namespace aspose::words::cloud::models {
     {
         this->m_Web = value;
     }
-
-
-    std::shared_ptr< int32_t > XmlColor::getXmlAlpha() const
-    {
-        return this->m_XmlAlpha;
-    }
-
-    void XmlColor::setXmlAlpha(std::shared_ptr< int32_t > value)
-    {
-        this->m_XmlAlpha = value;
-    }
-
-
-    std::shared_ptr< bool > XmlColor::getXmlAlphaSpecified() const
-    {
-        return this->m_XmlAlphaSpecified;
-    }
-
 
 
 
@@ -28201,6 +29673,14 @@ namespace aspose::words::cloud::models {
     void XpsSaveOptionsData::validate()
     {
         FixedPageSaveOptionsData::validate();
+
+        if (this->m_OutlineOptions != nullptr)
+        {
+            this->m_OutlineOptions->validate();
+        }
+
+
+
     }
 
     std::shared_ptr< int32_t > XpsSaveOptionsData::getBookmarksOutlineLevel() const
