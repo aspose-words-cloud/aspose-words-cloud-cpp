@@ -13005,6 +13005,9 @@ namespace aspose::words::cloud::models {
         if (this->m_EmulateRenderingToSizeOnPage) {
             json["EmulateRenderingToSizeOnPage"] = *(this->m_EmulateRenderingToSizeOnPage);
         }
+        if (this->m_EmulateRenderingToSizeOnPageResolution) {
+            json["EmulateRenderingToSizeOnPageResolution"] = *(this->m_EmulateRenderingToSizeOnPageResolution);
+        }
         if (this->m_RenderingMode) {
             json["RenderingMode"] = metafileRenderingOptionsDataRenderingModeToString(*(this->m_RenderingMode));
         }
@@ -13029,6 +13032,11 @@ namespace aspose::words::cloud::models {
         if (json.contains("EmulateRenderingToSizeOnPage") && !json["EmulateRenderingToSizeOnPage"].is_null()) {
             this->m_EmulateRenderingToSizeOnPage = std::make_shared< bool >(
                 json["EmulateRenderingToSizeOnPage"].get< bool >()
+            );
+        }
+        if (json.contains("EmulateRenderingToSizeOnPageResolution") && !json["EmulateRenderingToSizeOnPageResolution"].is_null()) {
+            this->m_EmulateRenderingToSizeOnPageResolution = std::make_shared< int32_t >(
+                json["EmulateRenderingToSizeOnPageResolution"].get< int32_t >()
             );
         }
         if (json.contains("RenderingMode") && !json["RenderingMode"].is_null()) {
@@ -13077,6 +13085,17 @@ namespace aspose::words::cloud::models {
     void MetafileRenderingOptionsData::setEmulateRenderingToSizeOnPage(std::shared_ptr< bool > value)
     {
         this->m_EmulateRenderingToSizeOnPage = value;
+    }
+
+
+    std::shared_ptr< int32_t > MetafileRenderingOptionsData::getEmulateRenderingToSizeOnPageResolution() const
+    {
+        return this->m_EmulateRenderingToSizeOnPageResolution;
+    }
+
+    void MetafileRenderingOptionsData::setEmulateRenderingToSizeOnPageResolution(std::shared_ptr< int32_t > value)
+    {
+        this->m_EmulateRenderingToSizeOnPageResolution = value;
     }
 
 
