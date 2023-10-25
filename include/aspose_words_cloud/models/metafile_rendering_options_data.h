@@ -99,6 +99,21 @@ namespace aspose::words::cloud::models {
 
 
         /// <summary>
+        /// Gets or sets the resolution in pixels per inch for the emulation of metafile rendering to the size on page.
+        /// This option is used only when EmulateRenderingToSizeOnPage is set to true.The default value is 96. This is a default display resolution. I.e. metafile rendering will emulate the display of
+        /// the metafile in MS Word with a 100% zoom factor.
+        /// </summary>
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< int32_t > getEmulateRenderingToSizeOnPageResolution() const;
+
+        /// <summary>
+        /// Gets or sets the resolution in pixels per inch for the emulation of metafile rendering to the size on page.
+        /// This option is used only when EmulateRenderingToSizeOnPage is set to true.The default value is 96. This is a default display resolution. I.e. metafile rendering will emulate the display of
+        /// the metafile in MS Word with a 100% zoom factor.
+        /// </summary>
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setEmulateRenderingToSizeOnPageResolution(std::shared_ptr< int32_t > value);
+
+
+        /// <summary>
         /// Gets or sets the option that controls how metafile images should be rendered.
         /// </summary>
         ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< aspose::words::cloud::models::MetafileRenderingOptionsData::RenderingMode > getRenderingMode() const;
@@ -124,6 +139,7 @@ namespace aspose::words::cloud::models {
         std::shared_ptr< aspose::words::cloud::models::MetafileRenderingOptionsData::EmfPlusDualRenderingMode > m_EmfPlusDualRenderingMode;
         std::shared_ptr< bool > m_EmulateRasterOperations;
         std::shared_ptr< bool > m_EmulateRenderingToSizeOnPage;
+        std::shared_ptr< int32_t > m_EmulateRenderingToSizeOnPageResolution;
         std::shared_ptr< aspose::words::cloud::models::MetafileRenderingOptionsData::RenderingMode > m_RenderingMode;
         std::shared_ptr< bool > m_UseEmfEmbeddedToWmf;
     };
