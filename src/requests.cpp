@@ -347,7 +347,7 @@ namespace aspose::words::cloud::requests {
         if (m_DocumentList)
         {
             result->addFormDataParam(L"Body", *m_DocumentList);
-            m_DocumentList->getFileReferences(additionalFilesContent);
+            m_DocumentList->validate();    m_DocumentList->getFileReferences(additionalFilesContent);
         }
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'DocumentList' is required.");
 
@@ -452,7 +452,7 @@ namespace aspose::words::cloud::requests {
         if (m_DocumentList)
         {
             result->addFormDataParam(L"documentList", *m_DocumentList);
-            m_DocumentList->getFileReferences(additionalFilesContent);
+            m_DocumentList->validate();    m_DocumentList->getFileReferences(additionalFilesContent);
         }
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'DocumentList' is required.");
 
@@ -577,7 +577,7 @@ namespace aspose::words::cloud::requests {
         if (m_StyleApply)
         {
             result->addFormDataParam(L"Body", *m_StyleApply);
-        }
+            m_StyleApply->validate();}
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'StyleApply' is required.");
 
 
@@ -690,7 +690,7 @@ namespace aspose::words::cloud::requests {
         if (m_StyleApply)
         {
             result->addFormDataParam(L"styleApply", *m_StyleApply);
-        }
+            m_StyleApply->validate();}
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'StyleApply' is required.");
 
         for (const models::FileReference* additionalFileContent : additionalFilesContent)
@@ -802,7 +802,7 @@ namespace aspose::words::cloud::requests {
         if (m_ReportEngineSettings)
         {
             result->addFormDataParam(L"reportEngineSettings", *m_ReportEngineSettings);
-        }
+            m_ReportEngineSettings->validate();}
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'ReportEngineSettings' is required.");
 
         for (const models::FileReference* additionalFileContent : additionalFilesContent)
@@ -878,7 +878,7 @@ namespace aspose::words::cloud::requests {
         if (m_ReportEngineSettings)
         {
             result->addFormDataParam(L"reportEngineSettings", *m_ReportEngineSettings);
-        }
+            m_ReportEngineSettings->validate();}
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'ReportEngineSettings' is required.");
 
         for (const models::FileReference* additionalFileContent : additionalFilesContent)
@@ -1212,7 +1212,7 @@ namespace aspose::words::cloud::requests {
         if (m_CompareData)
         {
             result->addFormDataParam(L"Body", *m_CompareData);
-        }
+            m_CompareData->validate();}
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'CompareData' is required.");
 
 
@@ -1315,7 +1315,7 @@ namespace aspose::words::cloud::requests {
         if (m_CompareData)
         {
             result->addFormDataParam(L"compareData", *m_CompareData);
-        }
+            m_CompareData->validate();}
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'CompareData' is required.");
 
         if (m_ComparingDocument)
@@ -1419,7 +1419,7 @@ namespace aspose::words::cloud::requests {
         if (m_CompressOptions)
         {
             result->addFormDataParam(L"Body", *m_CompressOptions);
-        }
+            m_CompressOptions->validate();}
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'CompressOptions' is required.");
 
 
@@ -1507,7 +1507,7 @@ namespace aspose::words::cloud::requests {
         if (m_CompressOptions)
         {
             result->addFormDataParam(L"compressOptions", *m_CompressOptions);
-        }
+            m_CompressOptions->validate();}
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'CompressOptions' is required.");
 
         for (const models::FileReference* additionalFileContent : additionalFilesContent)
@@ -1865,7 +1865,7 @@ namespace aspose::words::cloud::requests {
         if (m_StyleCopy)
         {
             result->addFormDataParam(L"Body", *m_StyleCopy);
-        }
+            m_StyleCopy->validate();}
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'StyleCopy' is required.");
 
 
@@ -1969,7 +1969,7 @@ namespace aspose::words::cloud::requests {
         if (m_StyleCopy)
         {
             result->addFormDataParam(L"styleCopy", *m_StyleCopy);
-        }
+            m_StyleCopy->validate();}
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'StyleCopy' is required.");
 
         for (const models::FileReference* additionalFileContent : additionalFilesContent)
@@ -2307,7 +2307,7 @@ namespace aspose::words::cloud::requests {
         if (m_Property)
         {
             result->addFormDataParam(L"Body", *m_Property);
-        }
+            m_Property->validate();}
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Property' is required.");
 
 
@@ -2420,7 +2420,7 @@ namespace aspose::words::cloud::requests {
         if (m_Property)
         {
             result->addFormDataParam(L"property", *m_Property);
-        }
+            m_Property->validate();}
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Property' is required.");
 
         for (const models::FileReference* additionalFileContent : additionalFilesContent)
@@ -8987,7 +8987,7 @@ namespace aspose::words::cloud::requests {
         if (m_Options)
         {
             result->addFormDataParam(L"options", *m_Options);
-        }
+            m_Options->validate();}
 
         for (const models::FileReference* additionalFileContent : additionalFilesContent)
         {
@@ -9078,7 +9078,7 @@ namespace aspose::words::cloud::requests {
         if (m_Options)
         {
             result->addFormDataParam(L"options", *m_Options);
-        }
+            m_Options->validate();}
 
         for (const models::FileReference* additionalFileContent : additionalFilesContent)
         {
@@ -18928,7 +18928,7 @@ namespace aspose::words::cloud::requests {
         if (m_Bookmark)
         {
             result->addFormDataParam(L"Body", *m_Bookmark);
-        }
+            m_Bookmark->validate();}
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Bookmark' is required.");
 
 
@@ -19032,7 +19032,7 @@ namespace aspose::words::cloud::requests {
         if (m_Bookmark)
         {
             result->addFormDataParam(L"bookmark", *m_Bookmark);
-        }
+            m_Bookmark->validate();}
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Bookmark' is required.");
 
         for (const models::FileReference* additionalFileContent : additionalFilesContent)
@@ -19147,7 +19147,7 @@ namespace aspose::words::cloud::requests {
         if (m_Comment)
         {
             result->addFormDataParam(L"Body", *m_Comment);
-        }
+            m_Comment->validate();}
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Comment' is required.");
 
 
@@ -19251,7 +19251,7 @@ namespace aspose::words::cloud::requests {
         if (m_Comment)
         {
             result->addFormDataParam(L"comment", *m_Comment);
-        }
+            m_Comment->validate();}
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Comment' is required.");
 
         for (const models::FileReference* additionalFileContent : additionalFilesContent)
@@ -19366,7 +19366,7 @@ namespace aspose::words::cloud::requests {
         if (m_CustomXmlPart)
         {
             result->addFormDataParam(L"Body", *m_CustomXmlPart);
-        }
+            m_CustomXmlPart->validate();}
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'CustomXmlPart' is required.");
 
 
@@ -19470,7 +19470,7 @@ namespace aspose::words::cloud::requests {
         if (m_CustomXmlPart)
         {
             result->addFormDataParam(L"customXmlPart", *m_CustomXmlPart);
-        }
+            m_CustomXmlPart->validate();}
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'CustomXmlPart' is required.");
 
         for (const models::FileReference* additionalFileContent : additionalFilesContent)
@@ -19600,7 +19600,7 @@ namespace aspose::words::cloud::requests {
         if (m_DrawingObject)
         {
             result->addFormDataParam(L"drawingObject", *m_DrawingObject);
-        }
+            m_DrawingObject->validate();}
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'DrawingObject' is required.");
 
         if (m_ImageFile)
@@ -19724,7 +19724,7 @@ namespace aspose::words::cloud::requests {
         if (m_DrawingObject)
         {
             result->addFormDataParam(L"drawingObject", *m_DrawingObject);
-        }
+            m_DrawingObject->validate();}
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'DrawingObject' is required.");
 
         if (m_ImageFile)
@@ -19861,7 +19861,7 @@ namespace aspose::words::cloud::requests {
         if (m_Field)
         {
             result->addFormDataParam(L"Body", *m_Field);
-        }
+            m_Field->validate();}
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Field' is required.");
 
 
@@ -19981,7 +19981,7 @@ namespace aspose::words::cloud::requests {
         if (m_Field)
         {
             result->addFormDataParam(L"field", *m_Field);
-        }
+            m_Field->validate();}
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Field' is required.");
 
         for (const models::FileReference* additionalFileContent : additionalFilesContent)
@@ -20104,7 +20104,7 @@ namespace aspose::words::cloud::requests {
         if (m_FootnoteDto)
         {
             result->addFormDataParam(L"Body", *m_FootnoteDto);
-        }
+            m_FootnoteDto->validate();}
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'FootnoteDto' is required.");
 
 
@@ -20216,7 +20216,7 @@ namespace aspose::words::cloud::requests {
         if (m_FootnoteDto)
         {
             result->addFormDataParam(L"footnoteDto", *m_FootnoteDto);
-        }
+            m_FootnoteDto->validate();}
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'FootnoteDto' is required.");
 
         for (const models::FileReference* additionalFileContent : additionalFilesContent)
@@ -20347,7 +20347,7 @@ namespace aspose::words::cloud::requests {
         if (m_FormField)
         {
             result->addFormDataParam(L"Body", *m_FormField);
-        }
+            m_FormField->validate();}
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'FormField' is required.");
 
 
@@ -20467,7 +20467,7 @@ namespace aspose::words::cloud::requests {
         if (m_FormField)
         {
             result->addFormDataParam(L"formField", *m_FormField);
-        }
+            m_FormField->validate();}
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'FormField' is required.");
 
         for (const models::FileReference* additionalFileContent : additionalFilesContent)
@@ -20819,7 +20819,7 @@ namespace aspose::words::cloud::requests {
         if (m_ListInsert)
         {
             result->addFormDataParam(L"Body", *m_ListInsert);
-        }
+            m_ListInsert->validate();}
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'ListInsert' is required.");
 
 
@@ -20923,7 +20923,7 @@ namespace aspose::words::cloud::requests {
         if (m_ListInsert)
         {
             result->addFormDataParam(L"listInsert", *m_ListInsert);
-        }
+            m_ListInsert->validate();}
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'ListInsert' is required.");
 
         for (const models::FileReference* additionalFileContent : additionalFilesContent)
@@ -21039,7 +21039,7 @@ namespace aspose::words::cloud::requests {
         if (m_TabStopInsertDto)
         {
             result->addFormDataParam(L"Body", *m_TabStopInsertDto);
-        }
+            m_TabStopInsertDto->validate();}
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'TabStopInsertDto' is required.");
 
 
@@ -21144,7 +21144,7 @@ namespace aspose::words::cloud::requests {
         if (m_TabStopInsertDto)
         {
             result->addFormDataParam(L"tabStopInsertDto", *m_TabStopInsertDto);
-        }
+            m_TabStopInsertDto->validate();}
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'TabStopInsertDto' is required.");
 
         for (const models::FileReference* additionalFileContent : additionalFilesContent)
@@ -21259,7 +21259,7 @@ namespace aspose::words::cloud::requests {
         if (m_PageNumber)
         {
             result->addFormDataParam(L"Body", *m_PageNumber);
-        }
+            m_PageNumber->validate();}
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'PageNumber' is required.");
 
 
@@ -21363,7 +21363,7 @@ namespace aspose::words::cloud::requests {
         if (m_PageNumber)
         {
             result->addFormDataParam(L"pageNumber", *m_PageNumber);
-        }
+            m_PageNumber->validate();}
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'PageNumber' is required.");
 
         for (const models::FileReference* additionalFileContent : additionalFilesContent)
@@ -21494,7 +21494,7 @@ namespace aspose::words::cloud::requests {
         if (m_Paragraph)
         {
             result->addFormDataParam(L"Body", *m_Paragraph);
-        }
+            m_Paragraph->validate();}
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Paragraph' is required.");
 
 
@@ -21614,7 +21614,7 @@ namespace aspose::words::cloud::requests {
         if (m_Paragraph)
         {
             result->addFormDataParam(L"paragraph", *m_Paragraph);
-        }
+            m_Paragraph->validate();}
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Paragraph' is required.");
 
         for (const models::FileReference* additionalFileContent : additionalFilesContent)
@@ -21746,7 +21746,7 @@ namespace aspose::words::cloud::requests {
         if (m_Run)
         {
             result->addFormDataParam(L"Body", *m_Run);
-        }
+            m_Run->validate();}
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Run' is required.");
 
 
@@ -21867,7 +21867,7 @@ namespace aspose::words::cloud::requests {
         if (m_Run)
         {
             result->addFormDataParam(L"run", *m_Run);
-        }
+            m_Run->validate();}
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Run' is required.");
 
         for (const models::FileReference* additionalFileContent : additionalFilesContent)
@@ -22201,7 +22201,7 @@ namespace aspose::words::cloud::requests {
         if (m_StructuredDocumentTag)
         {
             result->addFormDataParam(L"Body", *m_StructuredDocumentTag);
-        }
+            m_StructuredDocumentTag->validate();}
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'StructuredDocumentTag' is required.");
 
 
@@ -22313,7 +22313,7 @@ namespace aspose::words::cloud::requests {
         if (m_StructuredDocumentTag)
         {
             result->addFormDataParam(L"structuredDocumentTag", *m_StructuredDocumentTag);
-        }
+            m_StructuredDocumentTag->validate();}
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'StructuredDocumentTag' is required.");
 
         for (const models::FileReference* additionalFileContent : additionalFilesContent)
@@ -22428,7 +22428,7 @@ namespace aspose::words::cloud::requests {
         if (m_StyleInsert)
         {
             result->addFormDataParam(L"Body", *m_StyleInsert);
-        }
+            m_StyleInsert->validate();}
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'StyleInsert' is required.");
 
 
@@ -22532,7 +22532,7 @@ namespace aspose::words::cloud::requests {
         if (m_StyleInsert)
         {
             result->addFormDataParam(L"styleInsert", *m_StyleInsert);
-        }
+            m_StyleInsert->validate();}
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'StyleInsert' is required.");
 
         for (const models::FileReference* additionalFileContent : additionalFilesContent)
@@ -22655,7 +22655,7 @@ namespace aspose::words::cloud::requests {
         if (m_Table)
         {
             result->addFormDataParam(L"Body", *m_Table);
-        }
+            m_Table->validate();}
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Table' is required.");
 
 
@@ -22780,7 +22780,7 @@ namespace aspose::words::cloud::requests {
         if (m_Cell)
         {
             result->addFormDataParam(L"Body", *m_Cell);
-        }
+            m_Cell->validate();}
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Cell' is required.");
 
 
@@ -22893,7 +22893,7 @@ namespace aspose::words::cloud::requests {
         if (m_Cell)
         {
             result->addFormDataParam(L"cell", *m_Cell);
-        }
+            m_Cell->validate();}
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Cell' is required.");
 
         for (const models::FileReference* additionalFileContent : additionalFilesContent)
@@ -23004,7 +23004,7 @@ namespace aspose::words::cloud::requests {
         if (m_Table)
         {
             result->addFormDataParam(L"table", *m_Table);
-        }
+            m_Table->validate();}
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Table' is required.");
 
         for (const models::FileReference* additionalFileContent : additionalFilesContent)
@@ -23128,7 +23128,7 @@ namespace aspose::words::cloud::requests {
         if (m_Row)
         {
             result->addFormDataParam(L"Body", *m_Row);
-        }
+            m_Row->validate();}
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Row' is required.");
 
 
@@ -23241,7 +23241,7 @@ namespace aspose::words::cloud::requests {
         if (m_Row)
         {
             result->addFormDataParam(L"row", *m_Row);
-        }
+            m_Row->validate();}
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Row' is required.");
 
         for (const models::FileReference* additionalFileContent : additionalFilesContent)
@@ -23604,7 +23604,7 @@ namespace aspose::words::cloud::requests {
         if (m_WatermarkText)
         {
             result->addFormDataParam(L"Body", *m_WatermarkText);
-        }
+            m_WatermarkText->validate();}
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'WatermarkText' is required.");
 
 
@@ -23708,7 +23708,7 @@ namespace aspose::words::cloud::requests {
         if (m_WatermarkText)
         {
             result->addFormDataParam(L"watermarkText", *m_WatermarkText);
-        }
+            m_WatermarkText->validate();}
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'WatermarkText' is required.");
 
         for (const models::FileReference* additionalFileContent : additionalFilesContent)
@@ -23878,7 +23878,7 @@ namespace aspose::words::cloud::requests {
         if (m_Data)
         {
             result->addFormDataParam(L"Body", *m_Data);
-        }
+            m_Data->validate();}
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Data' is required.");
 
 
@@ -24130,7 +24130,7 @@ namespace aspose::words::cloud::requests {
         if (m_Options)
         {
             result->addFormDataParam(L"Body", *m_Options);
-        }
+            m_Options->validate();}
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Options' is required.");
 
 
@@ -24234,7 +24234,7 @@ namespace aspose::words::cloud::requests {
         if (m_Options)
         {
             result->addFormDataParam(L"options", *m_Options);
-        }
+            m_Options->validate();}
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Options' is required.");
 
         for (const models::FileReference* additionalFileContent : additionalFilesContent)
@@ -24333,7 +24333,7 @@ namespace aspose::words::cloud::requests {
         if (m_ProtectionRequest)
         {
             result->addFormDataParam(L"Body", *m_ProtectionRequest);
-        }
+            m_ProtectionRequest->validate();}
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'ProtectionRequest' is required.");
 
 
@@ -24421,7 +24421,7 @@ namespace aspose::words::cloud::requests {
         if (m_ProtectionRequest)
         {
             result->addFormDataParam(L"protectionRequest", *m_ProtectionRequest);
-        }
+            m_ProtectionRequest->validate();}
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'ProtectionRequest' is required.");
 
         for (const models::FileReference* additionalFileContent : additionalFilesContent)
@@ -26005,7 +26005,7 @@ namespace aspose::words::cloud::requests {
         if (m_ReplaceText)
         {
             result->addFormDataParam(L"Body", *m_ReplaceText);
-        }
+            m_ReplaceText->validate();}
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'ReplaceText' is required.");
 
 
@@ -26109,7 +26109,7 @@ namespace aspose::words::cloud::requests {
         if (m_ReplaceText)
         {
             result->addFormDataParam(L"replaceText", *m_ReplaceText);
-        }
+            m_ReplaceText->validate();}
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'ReplaceText' is required.");
 
         for (const models::FileReference* additionalFileContent : additionalFilesContent)
@@ -26225,7 +26225,7 @@ namespace aspose::words::cloud::requests {
         if (m_RangeText)
         {
             result->addFormDataParam(L"Body", *m_RangeText);
-        }
+            m_RangeText->validate();}
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'RangeText' is required.");
 
 
@@ -26330,7 +26330,7 @@ namespace aspose::words::cloud::requests {
         if (m_RangeText)
         {
             result->addFormDataParam(L"rangeText", *m_RangeText);
-        }
+            m_RangeText->validate();}
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'RangeText' is required.");
 
         for (const models::FileReference* additionalFileContent : additionalFilesContent)
@@ -26460,7 +26460,7 @@ namespace aspose::words::cloud::requests {
         if (m_SaveOptionsData)
         {
             result->addFormDataParam(L"Body", *m_SaveOptionsData);
-        }
+            m_SaveOptionsData->validate();}
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'SaveOptionsData' is required.");
 
 
@@ -26548,7 +26548,7 @@ namespace aspose::words::cloud::requests {
         if (m_SaveOptionsData)
         {
             result->addFormDataParam(L"saveOptionsData", *m_SaveOptionsData);
-        }
+            m_SaveOptionsData->validate();}
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'SaveOptionsData' is required.");
 
         for (const models::FileReference* additionalFileContent : additionalFilesContent)
@@ -26656,7 +26656,7 @@ namespace aspose::words::cloud::requests {
         if (m_DocumentParameters)
         {
             result->addFormDataParam(L"Body", *m_DocumentParameters);
-        }
+            m_DocumentParameters->validate();}
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'DocumentParameters' is required.");
 
 
@@ -26753,7 +26753,7 @@ namespace aspose::words::cloud::requests {
         if (m_DocumentParameters)
         {
             result->addFormDataParam(L"documentParameters", *m_DocumentParameters);
-        }
+            m_DocumentParameters->validate();}
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'DocumentParameters' is required.");
 
         for (const models::FileReference* additionalFileContent : additionalFilesContent)
@@ -26988,7 +26988,7 @@ namespace aspose::words::cloud::requests {
         if (m_SaveOptions)
         {
             result->addFormDataParam(L"Body", *m_SaveOptions);
-        }
+            m_SaveOptions->validate();}
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'SaveOptions' is required.");
 
 
@@ -27212,7 +27212,7 @@ namespace aspose::words::cloud::requests {
         if (m_SaveOptions)
         {
             result->addFormDataParam(L"saveOptions", *m_SaveOptions);
-        }
+            m_SaveOptions->validate();}
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'SaveOptions' is required.");
 
         for (const models::FileReference* additionalFileContent : additionalFilesContent)
@@ -27717,7 +27717,7 @@ namespace aspose::words::cloud::requests {
         if (m_ProtectionRequest)
         {
             result->addFormDataParam(L"Body", *m_ProtectionRequest);
-        }
+            m_ProtectionRequest->validate();}
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'ProtectionRequest' is required.");
 
 
@@ -27805,7 +27805,7 @@ namespace aspose::words::cloud::requests {
         if (m_ProtectionRequest)
         {
             result->addFormDataParam(L"protectionRequest", *m_ProtectionRequest);
-        }
+            m_ProtectionRequest->validate();}
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'ProtectionRequest' is required.");
 
         for (const models::FileReference* additionalFileContent : additionalFilesContent)
@@ -27929,7 +27929,7 @@ namespace aspose::words::cloud::requests {
         if (m_BookmarkData)
         {
             result->addFormDataParam(L"Body", *m_BookmarkData);
-        }
+            m_BookmarkData->validate();}
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'BookmarkData' is required.");
 
 
@@ -28042,7 +28042,7 @@ namespace aspose::words::cloud::requests {
         if (m_BookmarkData)
         {
             result->addFormDataParam(L"bookmarkData", *m_BookmarkData);
-        }
+            m_BookmarkData->validate();}
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'BookmarkData' is required.");
 
         for (const models::FileReference* additionalFileContent : additionalFilesContent)
@@ -28174,7 +28174,7 @@ namespace aspose::words::cloud::requests {
         if (m_BorderProperties)
         {
             result->addFormDataParam(L"Body", *m_BorderProperties);
-        }
+            m_BorderProperties->validate();}
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'BorderProperties' is required.");
 
 
@@ -28295,7 +28295,7 @@ namespace aspose::words::cloud::requests {
         if (m_BorderProperties)
         {
             result->addFormDataParam(L"borderProperties", *m_BorderProperties);
-        }
+            m_BorderProperties->validate();}
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'BorderProperties' is required.");
 
         for (const models::FileReference* additionalFileContent : additionalFilesContent)
@@ -28419,7 +28419,7 @@ namespace aspose::words::cloud::requests {
         if (m_Comment)
         {
             result->addFormDataParam(L"Body", *m_Comment);
-        }
+            m_Comment->validate();}
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Comment' is required.");
 
 
@@ -28532,7 +28532,7 @@ namespace aspose::words::cloud::requests {
         if (m_Comment)
         {
             result->addFormDataParam(L"comment", *m_Comment);
-        }
+            m_Comment->validate();}
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Comment' is required.");
 
         for (const models::FileReference* additionalFileContent : additionalFilesContent)
@@ -28656,7 +28656,7 @@ namespace aspose::words::cloud::requests {
         if (m_CustomXmlPart)
         {
             result->addFormDataParam(L"Body", *m_CustomXmlPart);
-        }
+            m_CustomXmlPart->validate();}
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'CustomXmlPart' is required.");
 
 
@@ -28769,7 +28769,7 @@ namespace aspose::words::cloud::requests {
         if (m_CustomXmlPart)
         {
             result->addFormDataParam(L"customXmlPart", *m_CustomXmlPart);
-        }
+            m_CustomXmlPart->validate();}
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'CustomXmlPart' is required.");
 
         for (const models::FileReference* additionalFileContent : additionalFilesContent)
@@ -28908,7 +28908,7 @@ namespace aspose::words::cloud::requests {
         if (m_DrawingObject)
         {
             result->addFormDataParam(L"drawingObject", *m_DrawingObject);
-        }
+            m_DrawingObject->validate();}
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'DrawingObject' is required.");
 
         if (m_ImageFile)
@@ -29041,7 +29041,7 @@ namespace aspose::words::cloud::requests {
         if (m_DrawingObject)
         {
             result->addFormDataParam(L"drawingObject", *m_DrawingObject);
-        }
+            m_DrawingObject->validate();}
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'DrawingObject' is required.");
 
         if (m_ImageFile)
@@ -29179,7 +29179,7 @@ namespace aspose::words::cloud::requests {
         if (m_Field)
         {
             result->addFormDataParam(L"Body", *m_Field);
-        }
+            m_Field->validate();}
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Field' is required.");
 
 
@@ -29300,7 +29300,7 @@ namespace aspose::words::cloud::requests {
         if (m_Field)
         {
             result->addFormDataParam(L"field", *m_Field);
-        }
+            m_Field->validate();}
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Field' is required.");
 
         for (const models::FileReference* additionalFileContent : additionalFilesContent)
@@ -29593,7 +29593,7 @@ namespace aspose::words::cloud::requests {
         if (m_FootnoteDto)
         {
             result->addFormDataParam(L"Body", *m_FootnoteDto);
-        }
+            m_FootnoteDto->validate();}
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'FootnoteDto' is required.");
 
 
@@ -29714,7 +29714,7 @@ namespace aspose::words::cloud::requests {
         if (m_FootnoteDto)
         {
             result->addFormDataParam(L"footnoteDto", *m_FootnoteDto);
-        }
+            m_FootnoteDto->validate();}
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'FootnoteDto' is required.");
 
         for (const models::FileReference* additionalFileContent : additionalFilesContent)
@@ -29846,7 +29846,7 @@ namespace aspose::words::cloud::requests {
         if (m_FormField)
         {
             result->addFormDataParam(L"Body", *m_FormField);
-        }
+            m_FormField->validate();}
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'FormField' is required.");
 
 
@@ -29967,7 +29967,7 @@ namespace aspose::words::cloud::requests {
         if (m_FormField)
         {
             result->addFormDataParam(L"formField", *m_FormField);
-        }
+            m_FormField->validate();}
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'FormField' is required.");
 
         for (const models::FileReference* additionalFileContent : additionalFilesContent)
@@ -30091,7 +30091,7 @@ namespace aspose::words::cloud::requests {
         if (m_ListUpdate)
         {
             result->addFormDataParam(L"Body", *m_ListUpdate);
-        }
+            m_ListUpdate->validate();}
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'ListUpdate' is required.");
 
 
@@ -30225,7 +30225,7 @@ namespace aspose::words::cloud::requests {
         if (m_ListUpdate)
         {
             result->addFormDataParam(L"Body", *m_ListUpdate);
-        }
+            m_ListUpdate->validate();}
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'ListUpdate' is required.");
 
 
@@ -30347,7 +30347,7 @@ namespace aspose::words::cloud::requests {
         if (m_ListUpdate)
         {
             result->addFormDataParam(L"listUpdate", *m_ListUpdate);
-        }
+            m_ListUpdate->validate();}
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'ListUpdate' is required.");
 
         for (const models::FileReference* additionalFileContent : additionalFilesContent)
@@ -30459,7 +30459,7 @@ namespace aspose::words::cloud::requests {
         if (m_ListUpdate)
         {
             result->addFormDataParam(L"listUpdate", *m_ListUpdate);
-        }
+            m_ListUpdate->validate();}
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'ListUpdate' is required.");
 
         for (const models::FileReference* additionalFileContent : additionalFilesContent)
@@ -30591,7 +30591,7 @@ namespace aspose::words::cloud::requests {
         if (m_ParagraphFormatDto)
         {
             result->addFormDataParam(L"Body", *m_ParagraphFormatDto);
-        }
+            m_ParagraphFormatDto->validate();}
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'ParagraphFormatDto' is required.");
 
 
@@ -30712,7 +30712,7 @@ namespace aspose::words::cloud::requests {
         if (m_ParagraphFormatDto)
         {
             result->addFormDataParam(L"paragraphFormatDto", *m_ParagraphFormatDto);
-        }
+            m_ParagraphFormatDto->validate();}
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'ParagraphFormatDto' is required.");
 
         for (const models::FileReference* additionalFileContent : additionalFilesContent)
@@ -30844,7 +30844,7 @@ namespace aspose::words::cloud::requests {
         if (m_ListFormatDto)
         {
             result->addFormDataParam(L"Body", *m_ListFormatDto);
-        }
+            m_ListFormatDto->validate();}
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'ListFormatDto' is required.");
 
 
@@ -30965,7 +30965,7 @@ namespace aspose::words::cloud::requests {
         if (m_ListFormatDto)
         {
             result->addFormDataParam(L"listFormatDto", *m_ListFormatDto);
-        }
+            m_ListFormatDto->validate();}
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'ListFormatDto' is required.");
 
         for (const models::FileReference* additionalFileContent : additionalFilesContent)
@@ -31098,7 +31098,7 @@ namespace aspose::words::cloud::requests {
         if (m_Run)
         {
             result->addFormDataParam(L"Body", *m_Run);
-        }
+            m_Run->validate();}
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Run' is required.");
 
 
@@ -31232,7 +31232,7 @@ namespace aspose::words::cloud::requests {
         if (m_FontDto)
         {
             result->addFormDataParam(L"Body", *m_FontDto);
-        }
+            m_FontDto->validate();}
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'FontDto' is required.");
 
 
@@ -31354,7 +31354,7 @@ namespace aspose::words::cloud::requests {
         if (m_FontDto)
         {
             result->addFormDataParam(L"fontDto", *m_FontDto);
-        }
+            m_FontDto->validate();}
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'FontDto' is required.");
 
         for (const models::FileReference* additionalFileContent : additionalFilesContent)
@@ -31475,7 +31475,7 @@ namespace aspose::words::cloud::requests {
         if (m_Run)
         {
             result->addFormDataParam(L"run", *m_Run);
-        }
+            m_Run->validate();}
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Run' is required.");
 
         for (const models::FileReference* additionalFileContent : additionalFilesContent)
@@ -31599,7 +31599,7 @@ namespace aspose::words::cloud::requests {
         if (m_PageSetup)
         {
             result->addFormDataParam(L"Body", *m_PageSetup);
-        }
+            m_PageSetup->validate();}
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'PageSetup' is required.");
 
 
@@ -31712,7 +31712,7 @@ namespace aspose::words::cloud::requests {
         if (m_PageSetup)
         {
             result->addFormDataParam(L"pageSetup", *m_PageSetup);
-        }
+            m_PageSetup->validate();}
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'PageSetup' is required.");
 
         for (const models::FileReference* additionalFileContent : additionalFilesContent)
@@ -31844,7 +31844,7 @@ namespace aspose::words::cloud::requests {
         if (m_StructuredDocumentTag)
         {
             result->addFormDataParam(L"Body", *m_StructuredDocumentTag);
-        }
+            m_StructuredDocumentTag->validate();}
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'StructuredDocumentTag' is required.");
 
 
@@ -31965,7 +31965,7 @@ namespace aspose::words::cloud::requests {
         if (m_StructuredDocumentTag)
         {
             result->addFormDataParam(L"structuredDocumentTag", *m_StructuredDocumentTag);
-        }
+            m_StructuredDocumentTag->validate();}
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'StructuredDocumentTag' is required.");
 
         for (const models::FileReference* additionalFileContent : additionalFilesContent)
@@ -32089,7 +32089,7 @@ namespace aspose::words::cloud::requests {
         if (m_StyleUpdate)
         {
             result->addFormDataParam(L"Body", *m_StyleUpdate);
-        }
+            m_StyleUpdate->validate();}
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'StyleUpdate' is required.");
 
 
@@ -32202,7 +32202,7 @@ namespace aspose::words::cloud::requests {
         if (m_StyleUpdate)
         {
             result->addFormDataParam(L"styleUpdate", *m_StyleUpdate);
-        }
+            m_StyleUpdate->validate();}
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'StyleUpdate' is required.");
 
         for (const models::FileReference* additionalFileContent : additionalFilesContent)
@@ -32335,7 +32335,7 @@ namespace aspose::words::cloud::requests {
         if (m_Format)
         {
             result->addFormDataParam(L"Body", *m_Format);
-        }
+            m_Format->validate();}
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Format' is required.");
 
 
@@ -32457,7 +32457,7 @@ namespace aspose::words::cloud::requests {
         if (m_Format)
         {
             result->addFormDataParam(L"format", *m_Format);
-        }
+            m_Format->validate();}
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Format' is required.");
 
         for (const models::FileReference* additionalFileContent : additionalFilesContent)
@@ -32589,7 +32589,7 @@ namespace aspose::words::cloud::requests {
         if (m_Properties)
         {
             result->addFormDataParam(L"Body", *m_Properties);
-        }
+            m_Properties->validate();}
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Properties' is required.");
 
 
@@ -32710,7 +32710,7 @@ namespace aspose::words::cloud::requests {
         if (m_Properties)
         {
             result->addFormDataParam(L"properties", *m_Properties);
-        }
+            m_Properties->validate();}
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Properties' is required.");
 
         for (const models::FileReference* additionalFileContent : additionalFilesContent)
@@ -32843,7 +32843,7 @@ namespace aspose::words::cloud::requests {
         if (m_Format)
         {
             result->addFormDataParam(L"Body", *m_Format);
-        }
+            m_Format->validate();}
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Format' is required.");
 
 
@@ -32965,7 +32965,7 @@ namespace aspose::words::cloud::requests {
         if (m_Format)
         {
             result->addFormDataParam(L"format", *m_Format);
-        }
+            m_Format->validate();}
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Format' is required.");
 
         for (const models::FileReference* additionalFileContent : additionalFilesContent)

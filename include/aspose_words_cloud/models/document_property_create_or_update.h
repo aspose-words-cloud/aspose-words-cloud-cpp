@@ -25,13 +25,12 @@
 
 #pragma once
 #include "model_base.h"
-#include "document_property_base.h"
 
 namespace aspose::words::cloud::models {
     /// <summary>
     /// Words document property DTO for create or update.
     /// </summary>
-    class DocumentPropertyCreateOrUpdate : public DocumentPropertyBase
+    class DocumentPropertyCreateOrUpdate : public ModelBase
     {
     public:
 
@@ -39,11 +38,22 @@ namespace aspose::words::cloud::models {
         ASPOSE_WORDS_CLOUD_EXPORT virtual void toJson(void* jsonIfc) const override;
         ASPOSE_WORDS_CLOUD_EXPORT virtual void fromJson(const void* jsonIfc) override;
         ASPOSE_WORDS_CLOUD_EXPORT virtual void getFileReferences(std::vector< FileReference* >& result) override;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void validate() override;
 
-        void abstractDocumentPropertyBase() override {}
+
+        /// <summary>
+        /// Gets or sets the value of the document property.
+        /// </summary>
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< std::wstring > getValue() const;
+
+        /// <summary>
+        /// Gets or sets the value of the document property.
+        /// </summary>
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setValue(std::shared_ptr< std::wstring > value);
 
 
     protected:
+        std::shared_ptr< std::wstring > m_Value;
     };
 }
 
