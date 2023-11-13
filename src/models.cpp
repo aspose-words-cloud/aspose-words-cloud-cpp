@@ -382,6 +382,10 @@ namespace aspose::words::cloud::models {
         }
     }
 
+    void FileReference::validate()
+    {
+    }
+
     inline std::string pdfPermissionsToString(PdfPermissions value)
     {
         if (value == PdfPermissions::DISALLOW_ALL) return "DisallowAll";
@@ -421,6 +425,7 @@ namespace aspose::words::cloud::models {
         if (value == ReportBuildOptions::INLINE_ERROR_MESSAGES) return "InlineErrorMessages";
         if (value == ReportBuildOptions::USE_LEGACY_HEADER_FOOTER_VISITING) return "UseLegacyHeaderFooterVisiting";
         if (value == ReportBuildOptions::RESPECT_JPEG_EXIF_ORIENTATION) return "RespectJpegExifOrientation";
+        if (value == ReportBuildOptions::UPDATE_FIELDS_SYNTAX_AWARE) return "UpdateFieldsSyntaxAware";
         throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
     }
 
@@ -432,6 +437,7 @@ namespace aspose::words::cloud::models {
         if (value == "InlineErrorMessages") return ReportBuildOptions::INLINE_ERROR_MESSAGES;
         if (value == "UseLegacyHeaderFooterVisiting") return ReportBuildOptions::USE_LEGACY_HEADER_FOOTER_VISITING;
         if (value == "RespectJpegExifOrientation") return ReportBuildOptions::RESPECT_JPEG_EXIF_ORIENTATION;
+        if (value == "UpdateFieldsSyntaxAware") return ReportBuildOptions::UPDATE_FIELDS_SYNTAX_AWARE;
         throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
     }
 
@@ -489,6 +495,17 @@ namespace aspose::words::cloud::models {
 
     void ApiError::getFileReferences(std::vector< FileReference* >& result)
     {
+    }
+
+    void ApiError::validate()
+    {
+
+        if (this->m_InnerError != nullptr)
+        {
+            this->m_InnerError->validate();
+        }
+
+
     }
 
     std::shared_ptr< std::wstring > ApiError::getCode() const
@@ -602,6 +619,49 @@ namespace aspose::words::cloud::models {
     {
     }
 
+    void AvailableFontsResponse::validate()
+    {
+        WordsResponse::validate();
+
+        if (this->m_AdditionalFonts != nullptr)
+        {
+            for (auto& elementAdditionalFonts : *(this->m_AdditionalFonts))
+            {
+                if (elementAdditionalFonts != nullptr)
+                {
+                    elementAdditionalFonts->validate();
+                }
+            }
+        }
+
+
+
+        if (this->m_CustomFonts != nullptr)
+        {
+            for (auto& elementCustomFonts : *(this->m_CustomFonts))
+            {
+                if (elementCustomFonts != nullptr)
+                {
+                    elementCustomFonts->validate();
+                }
+            }
+        }
+
+
+
+        if (this->m_SystemFonts != nullptr)
+        {
+            for (auto& elementSystemFonts : *(this->m_SystemFonts))
+            {
+                if (elementSystemFonts != nullptr)
+                {
+                    elementSystemFonts->validate();
+                }
+            }
+        }
+
+    }
+
     std::shared_ptr< std::vector<std::shared_ptr<aspose::words::cloud::models::FontInfo>> > AvailableFontsResponse::getAdditionalFonts() const
     {
         return this->m_AdditionalFonts;
@@ -664,6 +724,23 @@ namespace aspose::words::cloud::models {
 
     }
 
+    void BaseEntry::validate()
+    {
+        if (this->m_FileReference == nullptr)
+        {
+            throw aspose::words::cloud::ApiException(400, L"Property FileReference in BaseEntry is required.");
+        }
+
+        this->m_FileReference->validate();
+
+
+        if (this->m_FileReference != nullptr)
+        {
+            this->m_FileReference->validate();
+        }
+
+    }
+
     std::shared_ptr< aspose::words::cloud::models::FileReference > BaseEntry::getFileReference() const
     {
         return this->m_FileReference;
@@ -688,6 +765,10 @@ namespace aspose::words::cloud::models {
     }
 
     void BaseEntryList::getFileReferences(std::vector< FileReference* >& result)
+    {
+    }
+
+    void BaseEntryList::validate()
     {
     }
 
@@ -719,6 +800,11 @@ namespace aspose::words::cloud::models {
 
     void BmpSaveOptionsData::getFileReferences(std::vector< FileReference* >& result)
     {
+    }
+
+    void BmpSaveOptionsData::validate()
+    {
+        ImageSaveOptionsData::validate();
     }
 
     std::shared_ptr< std::wstring > BmpSaveOptionsData::getSaveFormat() const
@@ -762,6 +848,11 @@ namespace aspose::words::cloud::models {
 
     void Bookmark::getFileReferences(std::vector< FileReference* >& result)
     {
+    }
+
+    void Bookmark::validate()
+    {
+        LinkElement::validate();
     }
 
     std::shared_ptr< std::wstring > Bookmark::getName() const
@@ -820,6 +911,10 @@ namespace aspose::words::cloud::models {
     {
     }
 
+    void BookmarkData::validate()
+    {
+    }
+
     std::shared_ptr< std::wstring > BookmarkData::getName() const
     {
         return this->m_Name;
@@ -874,6 +969,24 @@ namespace aspose::words::cloud::models {
     {
     }
 
+    void BookmarkInsert::validate()
+    {
+        BookmarkData::validate();
+
+        if (this->m_StartRange != nullptr)
+        {
+            this->m_StartRange->validate();
+        }
+
+
+
+        if (this->m_EndRange != nullptr)
+        {
+            this->m_EndRange->validate();
+        }
+
+    }
+
     std::shared_ptr< aspose::words::cloud::models::NewDocumentPosition > BookmarkInsert::getStartRange() const
     {
         return this->m_StartRange;
@@ -922,6 +1035,17 @@ namespace aspose::words::cloud::models {
     {
     }
 
+    void BookmarkResponse::validate()
+    {
+        WordsResponse::validate();
+
+        if (this->m_Bookmark != nullptr)
+        {
+            this->m_Bookmark->validate();
+        }
+
+    }
+
     std::shared_ptr< aspose::words::cloud::models::Bookmark > BookmarkResponse::getBookmark() const
     {
         return this->m_Bookmark;
@@ -963,6 +1087,23 @@ namespace aspose::words::cloud::models {
 
     void Bookmarks::getFileReferences(std::vector< FileReference* >& result)
     {
+    }
+
+    void Bookmarks::validate()
+    {
+        LinkElement::validate();
+
+        if (this->m_BookmarkList != nullptr)
+        {
+            for (auto& elementBookmarkList : *(this->m_BookmarkList))
+            {
+                if (elementBookmarkList != nullptr)
+                {
+                    elementBookmarkList->validate();
+                }
+            }
+        }
+
     }
 
     std::shared_ptr< std::vector<std::shared_ptr<aspose::words::cloud::models::Bookmark>> > Bookmarks::getBookmarkList() const
@@ -1008,6 +1149,15 @@ namespace aspose::words::cloud::models {
 
     void BookmarksOutlineLevelData::getFileReferences(std::vector< FileReference* >& result)
     {
+    }
+
+    void BookmarksOutlineLevelData::validate()
+    {
+        if (this->m_BookmarksOutlineLevel == nullptr)
+        {
+            throw aspose::words::cloud::ApiException(400, L"Property BookmarksOutlineLevel in BookmarksOutlineLevelData is required.");
+        }
+
     }
 
     std::shared_ptr< int32_t > BookmarksOutlineLevelData::getBookmarksOutlineLevel() const
@@ -1056,6 +1206,17 @@ namespace aspose::words::cloud::models {
 
     void BookmarksResponse::getFileReferences(std::vector< FileReference* >& result)
     {
+    }
+
+    void BookmarksResponse::validate()
+    {
+        WordsResponse::validate();
+
+        if (this->m_Bookmarks != nullptr)
+        {
+            this->m_Bookmarks->validate();
+        }
+
     }
 
     std::shared_ptr< aspose::words::cloud::models::Bookmarks > BookmarksResponse::getBookmarks() const
@@ -1226,6 +1387,21 @@ namespace aspose::words::cloud::models {
     {
     }
 
+    void Border::validate()
+    {
+        LinkElement::validate();
+
+        if (this->m_Color != nullptr)
+        {
+            this->m_Color->validate();
+        }
+
+
+
+
+
+    }
+
     std::shared_ptr< aspose::words::cloud::models::Border::BorderType > Border::getBorderType() const
     {
         return this->m_BorderType;
@@ -1318,6 +1494,17 @@ namespace aspose::words::cloud::models {
     {
     }
 
+    void BorderResponse::validate()
+    {
+        WordsResponse::validate();
+
+        if (this->m_Border != nullptr)
+        {
+            this->m_Border->validate();
+        }
+
+    }
+
     std::shared_ptr< aspose::words::cloud::models::Border > BorderResponse::getBorder() const
     {
         return this->m_Border;
@@ -1361,6 +1548,23 @@ namespace aspose::words::cloud::models {
     {
     }
 
+    void BordersCollection::validate()
+    {
+        LinkElement::validate();
+
+        if (this->m_List != nullptr)
+        {
+            for (auto& elementList : *(this->m_List))
+            {
+                if (elementList != nullptr)
+                {
+                    elementList->validate();
+                }
+            }
+        }
+
+    }
+
     std::shared_ptr< std::vector<std::shared_ptr<aspose::words::cloud::models::Border>> > BordersCollection::getList() const
     {
         return this->m_List;
@@ -1396,6 +1600,17 @@ namespace aspose::words::cloud::models {
 
     void BordersResponse::getFileReferences(std::vector< FileReference* >& result)
     {
+    }
+
+    void BordersResponse::validate()
+    {
+        WordsResponse::validate();
+
+        if (this->m_Borders != nullptr)
+        {
+            this->m_Borders->validate();
+        }
+
     }
 
     std::shared_ptr< aspose::words::cloud::models::BordersCollection > BordersResponse::getBorders() const
@@ -1455,6 +1670,28 @@ namespace aspose::words::cloud::models {
 
     void ClassificationResponse::getFileReferences(std::vector< FileReference* >& result)
     {
+    }
+
+    void ClassificationResponse::validate()
+    {
+        WordsResponse::validate();
+        if (this->m_BestClassProbability == nullptr)
+        {
+            throw aspose::words::cloud::ApiException(400, L"Property BestClassProbability in ClassificationResponse is required.");
+        }
+
+
+        if (this->m_BestResults != nullptr)
+        {
+            for (auto& elementBestResults : *(this->m_BestResults))
+            {
+                if (elementBestResults != nullptr)
+                {
+                    elementBestResults->validate();
+                }
+            }
+        }
+
     }
 
     std::shared_ptr< std::wstring > ClassificationResponse::getBestClassName() const
@@ -1522,6 +1759,15 @@ namespace aspose::words::cloud::models {
 
     void ClassificationResult::getFileReferences(std::vector< FileReference* >& result)
     {
+    }
+
+    void ClassificationResult::validate()
+    {
+        if (this->m_ClassProbability == nullptr)
+        {
+            throw aspose::words::cloud::ApiException(400, L"Property ClassProbability in ClassificationResult is required.");
+        }
+
     }
 
     std::shared_ptr< std::wstring > ClassificationResult::getClassName() const
@@ -1614,6 +1860,35 @@ namespace aspose::words::cloud::models {
 
     void Comment::getFileReferences(std::vector< FileReference* >& result)
     {
+    }
+
+    void Comment::validate()
+    {
+        CommentLink::validate();
+
+        if (this->m_RangeStart != nullptr)
+        {
+            this->m_RangeStart->validate();
+        }
+
+
+
+        if (this->m_RangeEnd != nullptr)
+        {
+            this->m_RangeEnd->validate();
+        }
+
+
+
+
+
+
+
+        if (this->m_Content != nullptr)
+        {
+            this->m_Content->validate();
+        }
+
     }
 
     std::shared_ptr< aspose::words::cloud::models::DocumentPosition > Comment::getRangeStart() const
@@ -1755,6 +2030,56 @@ namespace aspose::words::cloud::models {
     {
     }
 
+    void CommentBase::validate()
+    {
+        if (this->m_RangeStart == nullptr)
+        {
+            throw aspose::words::cloud::ApiException(400, L"Property RangeStart in CommentBase is required.");
+        }
+
+        this->m_RangeStart->validate();
+
+        if (this->m_RangeEnd == nullptr)
+        {
+            throw aspose::words::cloud::ApiException(400, L"Property RangeEnd in CommentBase is required.");
+        }
+
+        this->m_RangeEnd->validate();
+
+        if (this->m_Author == nullptr)
+        {
+            throw aspose::words::cloud::ApiException(400, L"Property Author in CommentBase is required.");
+        }
+
+        if (this->m_Initial == nullptr)
+        {
+            throw aspose::words::cloud::ApiException(400, L"Property Initial in CommentBase is required.");
+        }
+
+        if (this->m_Text == nullptr)
+        {
+            throw aspose::words::cloud::ApiException(400, L"Property Text in CommentBase is required.");
+        }
+
+
+        if (this->m_RangeStart != nullptr)
+        {
+            this->m_RangeStart->validate();
+        }
+
+
+
+        if (this->m_RangeEnd != nullptr)
+        {
+            this->m_RangeEnd->validate();
+        }
+
+
+
+
+
+    }
+
     std::shared_ptr< aspose::words::cloud::models::NewDocumentPosition > CommentBase::getRangeStart() const
     {
         return this->m_RangeStart;
@@ -1839,6 +2164,11 @@ namespace aspose::words::cloud::models {
     {
     }
 
+    void CommentInsert::validate()
+    {
+        CommentBase::validate();
+    }
+
 
 
 
@@ -1857,6 +2187,11 @@ namespace aspose::words::cloud::models {
 
     void CommentLink::getFileReferences(std::vector< FileReference* >& result)
     {
+    }
+
+    void CommentLink::validate()
+    {
+        LinkElement::validate();
     }
 
 
@@ -1885,6 +2220,17 @@ namespace aspose::words::cloud::models {
 
     void CommentResponse::getFileReferences(std::vector< FileReference* >& result)
     {
+    }
+
+    void CommentResponse::validate()
+    {
+        WordsResponse::validate();
+
+        if (this->m_Comment != nullptr)
+        {
+            this->m_Comment->validate();
+        }
+
     }
 
     std::shared_ptr< aspose::words::cloud::models::Comment > CommentResponse::getComment() const
@@ -1930,6 +2276,23 @@ namespace aspose::words::cloud::models {
     {
     }
 
+    void CommentsCollection::validate()
+    {
+        LinkElement::validate();
+
+        if (this->m_CommentList != nullptr)
+        {
+            for (auto& elementCommentList : *(this->m_CommentList))
+            {
+                if (elementCommentList != nullptr)
+                {
+                    elementCommentList->validate();
+                }
+            }
+        }
+
+    }
+
     std::shared_ptr< std::vector<std::shared_ptr<aspose::words::cloud::models::Comment>> > CommentsCollection::getCommentList() const
     {
         return this->m_CommentList;
@@ -1967,6 +2330,17 @@ namespace aspose::words::cloud::models {
     {
     }
 
+    void CommentsResponse::validate()
+    {
+        WordsResponse::validate();
+
+        if (this->m_Comments != nullptr)
+        {
+            this->m_Comments->validate();
+        }
+
+    }
+
     std::shared_ptr< aspose::words::cloud::models::CommentsCollection > CommentsResponse::getComments() const
     {
         return this->m_Comments;
@@ -1994,6 +2368,11 @@ namespace aspose::words::cloud::models {
 
     void CommentUpdate::getFileReferences(std::vector< FileReference* >& result)
     {
+    }
+
+    void CommentUpdate::validate()
+    {
+        CommentBase::validate();
     }
 
 
@@ -2052,6 +2431,29 @@ namespace aspose::words::cloud::models {
 
     void CompareData::getFileReferences(std::vector< FileReference* >& result)
     {
+    }
+
+    void CompareData::validate()
+    {
+        if (this->m_Author == nullptr)
+        {
+            throw aspose::words::cloud::ApiException(400, L"Property Author in CompareData is required.");
+        }
+
+        if (this->m_ComparingWithDocument == nullptr)
+        {
+            throw aspose::words::cloud::ApiException(400, L"Property ComparingWithDocument in CompareData is required.");
+        }
+
+
+        if (this->m_CompareOptions != nullptr)
+        {
+            this->m_CompareOptions->validate();
+        }
+
+
+
+
     }
 
     std::shared_ptr< std::wstring > CompareData::getAuthor() const
@@ -2220,6 +2622,10 @@ namespace aspose::words::cloud::models {
     {
     }
 
+    void CompareOptions::validate()
+    {
+    }
+
     std::shared_ptr< bool > CompareOptions::getAcceptAllRevisionsBeforeComparison() const
     {
         return this->m_AcceptAllRevisionsBeforeComparison;
@@ -2364,6 +2770,10 @@ namespace aspose::words::cloud::models {
     {
     }
 
+    void CompressOptions::validate()
+    {
+    }
+
     std::shared_ptr< int32_t > CompressOptions::getImagesQuality() const
     {
         return this->m_ImagesQuality;
@@ -2410,6 +2820,17 @@ namespace aspose::words::cloud::models {
 
     void CompressResponse::getFileReferences(std::vector< FileReference* >& result)
     {
+    }
+
+    void CompressResponse::validate()
+    {
+        WordsResponse::validate();
+
+        if (this->m_Document != nullptr)
+        {
+            this->m_Document->validate();
+        }
+
     }
 
     std::shared_ptr< aspose::words::cloud::models::Document > CompressResponse::getDocument() const
@@ -2471,6 +2892,30 @@ namespace aspose::words::cloud::models {
 
     void CsvDataLoadOptions::getFileReferences(std::vector< FileReference* >& result)
     {
+    }
+
+    void CsvDataLoadOptions::validate()
+    {
+        if (this->m_CommentChar == nullptr)
+        {
+            throw aspose::words::cloud::ApiException(400, L"Property CommentChar in CsvDataLoadOptions is required.");
+        }
+
+        if (this->m_Delimiter == nullptr)
+        {
+            throw aspose::words::cloud::ApiException(400, L"Property Delimiter in CsvDataLoadOptions is required.");
+        }
+
+        if (this->m_HasHeaders == nullptr)
+        {
+            throw aspose::words::cloud::ApiException(400, L"Property HasHeaders in CsvDataLoadOptions is required.");
+        }
+
+        if (this->m_QuoteChar == nullptr)
+        {
+            throw aspose::words::cloud::ApiException(400, L"Property QuoteChar in CsvDataLoadOptions is required.");
+        }
+
     }
 
     std::shared_ptr< std::wstring > CsvDataLoadOptions::getCommentChar() const
@@ -2553,6 +2998,16 @@ namespace aspose::words::cloud::models {
     {
     }
 
+    void CustomXmlPart::validate()
+    {
+        CustomXmlPartLink::validate();
+        if (this->m_Data == nullptr)
+        {
+            throw aspose::words::cloud::ApiException(400, L"Property Data in CustomXmlPart is required.");
+        }
+
+    }
+
     std::shared_ptr< std::wstring > CustomXmlPart::getId() const
     {
         return this->m_Id;
@@ -2593,6 +3048,11 @@ namespace aspose::words::cloud::models {
     {
     }
 
+    void CustomXmlPartInsert::validate()
+    {
+        CustomXmlPart::validate();
+    }
+
 
 
 
@@ -2611,6 +3071,11 @@ namespace aspose::words::cloud::models {
 
     void CustomXmlPartLink::getFileReferences(std::vector< FileReference* >& result)
     {
+    }
+
+    void CustomXmlPartLink::validate()
+    {
+        LinkElement::validate();
     }
 
 
@@ -2639,6 +3104,17 @@ namespace aspose::words::cloud::models {
 
     void CustomXmlPartResponse::getFileReferences(std::vector< FileReference* >& result)
     {
+    }
+
+    void CustomXmlPartResponse::validate()
+    {
+        WordsResponse::validate();
+
+        if (this->m_CustomXmlPart != nullptr)
+        {
+            this->m_CustomXmlPart->validate();
+        }
+
     }
 
     std::shared_ptr< aspose::words::cloud::models::CustomXmlPart > CustomXmlPartResponse::getCustomXmlPart() const
@@ -2684,6 +3160,23 @@ namespace aspose::words::cloud::models {
     {
     }
 
+    void CustomXmlPartsCollection::validate()
+    {
+        LinkElement::validate();
+
+        if (this->m_CustomXmlPartsList != nullptr)
+        {
+            for (auto& elementCustomXmlPartsList : *(this->m_CustomXmlPartsList))
+            {
+                if (elementCustomXmlPartsList != nullptr)
+                {
+                    elementCustomXmlPartsList->validate();
+                }
+            }
+        }
+
+    }
+
     std::shared_ptr< std::vector<std::shared_ptr<aspose::words::cloud::models::CustomXmlPart>> > CustomXmlPartsCollection::getCustomXmlPartsList() const
     {
         return this->m_CustomXmlPartsList;
@@ -2721,6 +3214,17 @@ namespace aspose::words::cloud::models {
     {
     }
 
+    void CustomXmlPartsResponse::validate()
+    {
+        WordsResponse::validate();
+
+        if (this->m_CustomXmlParts != nullptr)
+        {
+            this->m_CustomXmlParts->validate();
+        }
+
+    }
+
     std::shared_ptr< aspose::words::cloud::models::CustomXmlPartsCollection > CustomXmlPartsResponse::getCustomXmlParts() const
     {
         return this->m_CustomXmlParts;
@@ -2748,6 +3252,11 @@ namespace aspose::words::cloud::models {
 
     void CustomXmlPartUpdate::getFileReferences(std::vector< FileReference* >& result)
     {
+    }
+
+    void CustomXmlPartUpdate::validate()
+    {
+        CustomXmlPart::validate();
     }
 
 
@@ -2778,6 +3287,11 @@ namespace aspose::words::cloud::models {
 
     void DocmSaveOptionsData::getFileReferences(std::vector< FileReference* >& result)
     {
+    }
+
+    void DocmSaveOptionsData::validate()
+    {
+        OoxmlSaveOptionsData::validate();
     }
 
     std::shared_ptr< std::wstring > DocmSaveOptionsData::getSaveFormat() const
@@ -2845,6 +3359,11 @@ namespace aspose::words::cloud::models {
 
     void DocSaveOptionsData::getFileReferences(std::vector< FileReference* >& result)
     {
+    }
+
+    void DocSaveOptionsData::validate()
+    {
+        SaveOptionsData::validate();
     }
 
     std::shared_ptr< bool > DocSaveOptionsData::getAlwaysCompressMetafiles() const
@@ -3017,6 +3536,48 @@ namespace aspose::words::cloud::models {
     {
     }
 
+    void Document::validate()
+    {
+        if (this->m_IsEncrypted == nullptr)
+        {
+            throw aspose::words::cloud::ApiException(400, L"Property IsEncrypted in Document is required.");
+        }
+
+        if (this->m_IsSigned == nullptr)
+        {
+            throw aspose::words::cloud::ApiException(400, L"Property IsSigned in Document is required.");
+        }
+
+        if (this->m_SourceFormat == nullptr)
+        {
+            throw aspose::words::cloud::ApiException(400, L"Property SourceFormat in Document is required.");
+        }
+
+
+        if (this->m_Links != nullptr)
+        {
+            for (auto& elementLinks : *(this->m_Links))
+            {
+                if (elementLinks != nullptr)
+                {
+                    elementLinks->validate();
+                }
+            }
+        }
+
+
+
+        if (this->m_DocumentProperties != nullptr)
+        {
+            this->m_DocumentProperties->validate();
+        }
+
+
+
+
+
+    }
+
     std::shared_ptr< std::vector<std::shared_ptr<aspose::words::cloud::models::Link>> > Document::getLinks() const
     {
         return this->m_Links;
@@ -3135,6 +3696,16 @@ namespace aspose::words::cloud::models {
         BaseEntry::getFileReferences(result);
     }
 
+    void DocumentEntry::validate()
+    {
+        BaseEntry::validate();
+        if (this->m_ImportFormatMode == nullptr)
+        {
+            throw aspose::words::cloud::ApiException(400, L"Property ImportFormatMode in DocumentEntry is required.");
+        }
+
+    }
+
     std::shared_ptr< std::wstring > DocumentEntry::getEncryptedPassword() const
     {
         return this->m_EncryptedPassword;
@@ -3206,6 +3777,36 @@ namespace aspose::words::cloud::models {
 
     }
 
+    void DocumentEntryList::validate()
+    {
+        BaseEntryList::validate();
+        if (this->m_DocumentEntries == nullptr)
+        {
+            throw aspose::words::cloud::ApiException(400, L"Property DocumentEntries in DocumentEntryList is required.");
+        }
+
+        for (auto& elementDocumentEntries : *(this->m_DocumentEntries))
+        {
+            if (elementDocumentEntries != nullptr)
+            {
+                elementDocumentEntries->validate();
+            }
+        }
+
+
+        if (this->m_DocumentEntries != nullptr)
+        {
+            for (auto& elementDocumentEntries : *(this->m_DocumentEntries))
+            {
+                if (elementDocumentEntries != nullptr)
+                {
+                    elementDocumentEntries->validate();
+                }
+            }
+        }
+
+    }
+
     std::shared_ptr< bool > DocumentEntryList::getApplyBaseDocumentHeadersAndFootersToAppendingDocuments() const
     {
         return this->m_ApplyBaseDocumentHeadersAndFootersToAppendingDocuments;
@@ -3258,6 +3859,17 @@ namespace aspose::words::cloud::models {
 
     void DocumentPosition::getFileReferences(std::vector< FileReference* >& result)
     {
+    }
+
+    void DocumentPosition::validate()
+    {
+
+        if (this->m_Node != nullptr)
+        {
+            this->m_Node->validate();
+        }
+
+
     }
 
     std::shared_ptr< aspose::words::cloud::models::NodeLink > DocumentPosition::getNode() const
@@ -3314,6 +3926,23 @@ namespace aspose::words::cloud::models {
     {
     }
 
+    void DocumentProperties::validate()
+    {
+        LinkElement::validate();
+
+        if (this->m_List != nullptr)
+        {
+            for (auto& elementList : *(this->m_List))
+            {
+                if (elementList != nullptr)
+                {
+                    elementList->validate();
+                }
+            }
+        }
+
+    }
+
     std::shared_ptr< std::vector<std::shared_ptr<aspose::words::cloud::models::DocumentProperty>> > DocumentProperties::getList() const
     {
         return this->m_List;
@@ -3349,6 +3978,17 @@ namespace aspose::words::cloud::models {
 
     void DocumentPropertiesResponse::getFileReferences(std::vector< FileReference* >& result)
     {
+    }
+
+    void DocumentPropertiesResponse::validate()
+    {
+        WordsResponse::validate();
+
+        if (this->m_DocumentProperties != nullptr)
+        {
+            this->m_DocumentProperties->validate();
+        }
+
     }
 
     std::shared_ptr< aspose::words::cloud::models::DocumentProperties > DocumentPropertiesResponse::getDocumentProperties() const
@@ -3406,6 +4046,16 @@ namespace aspose::words::cloud::models {
     {
     }
 
+    void DocumentProperty::validate()
+    {
+        LinkElement::validate();
+        if (this->m_BuiltIn == nullptr)
+        {
+            throw aspose::words::cloud::ApiException(400, L"Property BuiltIn in DocumentProperty is required.");
+        }
+
+    }
+
     std::shared_ptr< std::wstring > DocumentProperty::getName() const
     {
         return this->m_Name;
@@ -3441,9 +4091,9 @@ namespace aspose::words::cloud::models {
 
 
     /*
-     * DocumentPropertyBase implementation
+     * DocumentPropertyCreateOrUpdate implementation
      */
-    void DocumentPropertyBase::toJson(void* jsonIfc) const
+    void DocumentPropertyCreateOrUpdate::toJson(void* jsonIfc) const
     {
         ::nlohmann::json& json = *((::nlohmann::json*)jsonIfc);
         if (this->m_Value) {
@@ -3451,7 +4101,7 @@ namespace aspose::words::cloud::models {
         }
     }
 
-    void DocumentPropertyBase::fromJson(const void* jsonIfc)
+    void DocumentPropertyCreateOrUpdate::fromJson(const void* jsonIfc)
     {
         ::nlohmann::json& json = *((::nlohmann::json*)jsonIfc);
         if (json.contains("Value") && !json["Value"].is_null()) {
@@ -3461,39 +4111,28 @@ namespace aspose::words::cloud::models {
         }
     }
 
-    void DocumentPropertyBase::getFileReferences(std::vector< FileReference* >& result)
-    {
-    }
-
-    std::shared_ptr< std::wstring > DocumentPropertyBase::getValue() const
-    {
-        return this->m_Value;
-    }
-
-    void DocumentPropertyBase::setValue(std::shared_ptr< std::wstring > value)
-    {
-        this->m_Value = value;
-    }
-
-
-
-    /*
-     * DocumentPropertyCreateOrUpdate implementation
-     */
-    void DocumentPropertyCreateOrUpdate::toJson(void* jsonIfc) const
-    {
-        DocumentPropertyBase::toJson(jsonIfc);
-    }
-
-    void DocumentPropertyCreateOrUpdate::fromJson(const void* jsonIfc)
-    {
-        DocumentPropertyBase::fromJson(jsonIfc);
-    }
-
     void DocumentPropertyCreateOrUpdate::getFileReferences(std::vector< FileReference* >& result)
     {
     }
 
+    void DocumentPropertyCreateOrUpdate::validate()
+    {
+        if (this->m_Value == nullptr)
+        {
+            throw aspose::words::cloud::ApiException(400, L"Property Value in DocumentPropertyCreateOrUpdate is required.");
+        }
+
+    }
+
+    std::shared_ptr< std::wstring > DocumentPropertyCreateOrUpdate::getValue() const
+    {
+        return this->m_Value;
+    }
+
+    void DocumentPropertyCreateOrUpdate::setValue(std::shared_ptr< std::wstring > value)
+    {
+        this->m_Value = value;
+    }
 
 
 
@@ -3520,6 +4159,17 @@ namespace aspose::words::cloud::models {
 
     void DocumentPropertyResponse::getFileReferences(std::vector< FileReference* >& result)
     {
+    }
+
+    void DocumentPropertyResponse::validate()
+    {
+        WordsResponse::validate();
+
+        if (this->m_DocumentProperty != nullptr)
+        {
+            this->m_DocumentProperty->validate();
+        }
+
     }
 
     std::shared_ptr< aspose::words::cloud::models::DocumentProperty > DocumentPropertyResponse::getDocumentProperty() const
@@ -3557,6 +4207,17 @@ namespace aspose::words::cloud::models {
 
     void DocumentResponse::getFileReferences(std::vector< FileReference* >& result)
     {
+    }
+
+    void DocumentResponse::validate()
+    {
+        WordsResponse::validate();
+
+        if (this->m_Document != nullptr)
+        {
+            this->m_Document->validate();
+        }
+
     }
 
     std::shared_ptr< aspose::words::cloud::models::Document > DocumentResponse::getDocument() const
@@ -3628,6 +4289,47 @@ namespace aspose::words::cloud::models {
 
     void DocumentStatData::getFileReferences(std::vector< FileReference* >& result)
     {
+    }
+
+    void DocumentStatData::validate()
+    {
+        if (this->m_PageCount == nullptr)
+        {
+            throw aspose::words::cloud::ApiException(400, L"Property PageCount in DocumentStatData is required.");
+        }
+
+        if (this->m_ParagraphCount == nullptr)
+        {
+            throw aspose::words::cloud::ApiException(400, L"Property ParagraphCount in DocumentStatData is required.");
+        }
+
+        if (this->m_WordCount == nullptr)
+        {
+            throw aspose::words::cloud::ApiException(400, L"Property WordCount in DocumentStatData is required.");
+        }
+
+
+        if (this->m_FootnotesStatData != nullptr)
+        {
+            this->m_FootnotesStatData->validate();
+        }
+
+
+
+
+
+
+        if (this->m_PageStatData != nullptr)
+        {
+            for (auto& elementPageStatData : *(this->m_PageStatData))
+            {
+                if (elementPageStatData != nullptr)
+                {
+                    elementPageStatData->validate();
+                }
+            }
+        }
+
     }
 
     std::shared_ptr< aspose::words::cloud::models::FootnotesStatData > DocumentStatData::getFootnotesStatData() const
@@ -3713,6 +4415,11 @@ namespace aspose::words::cloud::models {
     {
     }
 
+    void DocxSaveOptionsData::validate()
+    {
+        OoxmlSaveOptionsData::validate();
+    }
+
     std::shared_ptr< std::wstring > DocxSaveOptionsData::getSaveFormat() const
     {
         return this->m_SaveFormat;
@@ -3746,6 +4453,11 @@ namespace aspose::words::cloud::models {
 
     void DotmSaveOptionsData::getFileReferences(std::vector< FileReference* >& result)
     {
+    }
+
+    void DotmSaveOptionsData::validate()
+    {
+        OoxmlSaveOptionsData::validate();
     }
 
     std::shared_ptr< std::wstring > DotmSaveOptionsData::getSaveFormat() const
@@ -3783,6 +4495,11 @@ namespace aspose::words::cloud::models {
     {
     }
 
+    void DotSaveOptionsData::validate()
+    {
+        DocSaveOptionsData::validate();
+    }
+
     std::shared_ptr< std::wstring > DotSaveOptionsData::getSaveFormat() const
     {
         return this->m_SaveFormat;
@@ -3816,6 +4533,11 @@ namespace aspose::words::cloud::models {
 
     void DotxSaveOptionsData::getFileReferences(std::vector< FileReference* >& result)
     {
+    }
+
+    void DotxSaveOptionsData::validate()
+    {
+        OoxmlSaveOptionsData::validate();
     }
 
     std::shared_ptr< std::wstring > DotxSaveOptionsData::getSaveFormat() const
@@ -3864,6 +4586,10 @@ namespace aspose::words::cloud::models {
     }
 
     void DownsampleOptionsData::getFileReferences(std::vector< FileReference* >& result)
+    {
+    }
+
+    void DownsampleOptionsData::validate()
     {
     }
 
@@ -4079,6 +4805,44 @@ namespace aspose::words::cloud::models {
     {
     }
 
+    void DrawingObject::validate()
+    {
+        DrawingObjectLink::validate();
+
+        if (this->m_RenderLinks != nullptr)
+        {
+            for (auto& elementRenderLinks : *(this->m_RenderLinks))
+            {
+                if (elementRenderLinks != nullptr)
+                {
+                    elementRenderLinks->validate();
+                }
+            }
+        }
+
+
+
+
+
+        if (this->m_OleDataLink != nullptr)
+        {
+            this->m_OleDataLink->validate();
+        }
+
+
+
+        if (this->m_ImageDataLink != nullptr)
+        {
+            this->m_ImageDataLink->validate();
+        }
+
+
+
+
+
+
+    }
+
     std::shared_ptr< std::vector<std::shared_ptr<aspose::words::cloud::models::WordsApiLink>> > DrawingObject::getRenderLinks() const
     {
         return this->m_RenderLinks;
@@ -4219,6 +4983,23 @@ namespace aspose::words::cloud::models {
 
     void DrawingObjectCollection::getFileReferences(std::vector< FileReference* >& result)
     {
+    }
+
+    void DrawingObjectCollection::validate()
+    {
+        LinkElement::validate();
+
+        if (this->m_List != nullptr)
+        {
+            for (auto& elementList : *(this->m_List))
+            {
+                if (elementList != nullptr)
+                {
+                    elementList->validate();
+                }
+            }
+        }
+
     }
 
     std::shared_ptr< std::vector<std::shared_ptr<aspose::words::cloud::models::LinkElement>> > DrawingObjectCollection::getList() const
@@ -4391,6 +5172,58 @@ namespace aspose::words::cloud::models {
     {
     }
 
+    void DrawingObjectInsert::validate()
+    {
+        if (this->m_RelativeHorizontalPosition == nullptr)
+        {
+            throw aspose::words::cloud::ApiException(400, L"Property RelativeHorizontalPosition in DrawingObjectInsert is required.");
+        }
+
+        if (this->m_Left == nullptr)
+        {
+            throw aspose::words::cloud::ApiException(400, L"Property Left in DrawingObjectInsert is required.");
+        }
+
+        if (this->m_RelativeVerticalPosition == nullptr)
+        {
+            throw aspose::words::cloud::ApiException(400, L"Property RelativeVerticalPosition in DrawingObjectInsert is required.");
+        }
+
+        if (this->m_Top == nullptr)
+        {
+            throw aspose::words::cloud::ApiException(400, L"Property Top in DrawingObjectInsert is required.");
+        }
+
+        if (this->m_Width == nullptr)
+        {
+            throw aspose::words::cloud::ApiException(400, L"Property Width in DrawingObjectInsert is required.");
+        }
+
+        if (this->m_Height == nullptr)
+        {
+            throw aspose::words::cloud::ApiException(400, L"Property Height in DrawingObjectInsert is required.");
+        }
+
+        if (this->m_WrapType == nullptr)
+        {
+            throw aspose::words::cloud::ApiException(400, L"Property WrapType in DrawingObjectInsert is required.");
+        }
+
+
+        if (this->m_Position != nullptr)
+        {
+            this->m_Position->validate();
+        }
+
+
+
+
+
+
+
+
+    }
+
     std::shared_ptr< aspose::words::cloud::models::NewDocumentPosition > DrawingObjectInsert::getPosition() const
     {
         return this->m_Position;
@@ -4497,6 +5330,11 @@ namespace aspose::words::cloud::models {
     {
     }
 
+    void DrawingObjectLink::validate()
+    {
+        NodeLink::validate();
+    }
+
 
 
 
@@ -4523,6 +5361,17 @@ namespace aspose::words::cloud::models {
 
     void DrawingObjectResponse::getFileReferences(std::vector< FileReference* >& result)
     {
+    }
+
+    void DrawingObjectResponse::validate()
+    {
+        WordsResponse::validate();
+
+        if (this->m_DrawingObject != nullptr)
+        {
+            this->m_DrawingObject->validate();
+        }
+
     }
 
     std::shared_ptr< aspose::words::cloud::models::DrawingObject > DrawingObjectResponse::getDrawingObject() const
@@ -4560,6 +5409,17 @@ namespace aspose::words::cloud::models {
 
     void DrawingObjectsResponse::getFileReferences(std::vector< FileReference* >& result)
     {
+    }
+
+    void DrawingObjectsResponse::validate()
+    {
+        WordsResponse::validate();
+
+        if (this->m_DrawingObjects != nullptr)
+        {
+            this->m_DrawingObjects->validate();
+        }
+
     }
 
     std::shared_ptr< aspose::words::cloud::models::DrawingObjectCollection > DrawingObjectsResponse::getDrawingObjects() const
@@ -4726,6 +5586,10 @@ namespace aspose::words::cloud::models {
     {
     }
 
+    void DrawingObjectUpdate::validate()
+    {
+    }
+
     std::shared_ptr< aspose::words::cloud::models::DrawingObjectUpdate::RelativeHorizontalPosition > DrawingObjectUpdate::getRelativeHorizontalPosition() const
     {
         return this->m_RelativeHorizontalPosition;
@@ -4831,6 +5695,11 @@ namespace aspose::words::cloud::models {
     {
     }
 
+    void EmfSaveOptionsData::validate()
+    {
+        ImageSaveOptionsData::validate();
+    }
+
     std::shared_ptr< std::wstring > EmfSaveOptionsData::getSaveFormat() const
     {
         return this->m_SaveFormat;
@@ -4864,6 +5733,11 @@ namespace aspose::words::cloud::models {
 
     void EpsSaveOptionsData::getFileReferences(std::vector< FileReference* >& result)
     {
+    }
+
+    void EpsSaveOptionsData::validate()
+    {
+        ImageSaveOptionsData::validate();
     }
 
     std::shared_ptr< std::wstring > EpsSaveOptionsData::getSaveFormat() const
@@ -4907,6 +5781,11 @@ namespace aspose::words::cloud::models {
 
     void EpubSaveOptionsData::getFileReferences(std::vector< FileReference* >& result)
     {
+    }
+
+    void EpubSaveOptionsData::validate()
+    {
+        HtmlSaveOptionsData::validate();
     }
 
     std::shared_ptr< int32_t > EpubSaveOptionsData::getNavigationMapLevel() const
@@ -4973,6 +5852,17 @@ namespace aspose::words::cloud::models {
 
     void Error::getFileReferences(std::vector< FileReference* >& result)
     {
+    }
+
+    void Error::validate()
+    {
+
+        if (this->m_InnerError != nullptr)
+        {
+            this->m_InnerError->validate();
+        }
+
+
     }
 
     std::shared_ptr< std::wstring > Error::getCode() const
@@ -5053,6 +5943,15 @@ namespace aspose::words::cloud::models {
     {
     }
 
+    void ErrorDetails::validate()
+    {
+        if (this->m_ErrorDateTime == nullptr)
+        {
+            throw aspose::words::cloud::ApiException(400, L"Property ErrorDateTime in ErrorDetails is required.");
+        }
+
+    }
+
     std::shared_ptr< std::wstring > ErrorDetails::getErrorDateTime() const
     {
         return this->m_ErrorDateTime;
@@ -5111,6 +6010,11 @@ namespace aspose::words::cloud::models {
     {
     }
 
+    void Field::validate()
+    {
+        FieldLink::validate();
+    }
+
     std::shared_ptr< std::wstring > Field::getLocaleId() const
     {
         return this->m_LocaleId;
@@ -5167,6 +6071,15 @@ namespace aspose::words::cloud::models {
     {
     }
 
+    void FieldBase::validate()
+    {
+        if (this->m_FieldCode == nullptr)
+        {
+            throw aspose::words::cloud::ApiException(400, L"Property FieldCode in FieldBase is required.");
+        }
+
+    }
+
     std::shared_ptr< std::wstring > FieldBase::getLocaleId() const
     {
         return this->m_LocaleId;
@@ -5221,6 +6134,23 @@ namespace aspose::words::cloud::models {
     {
     }
 
+    void FieldCollection::validate()
+    {
+        LinkElement::validate();
+
+        if (this->m_List != nullptr)
+        {
+            for (auto& elementList : *(this->m_List))
+            {
+                if (elementList != nullptr)
+                {
+                    elementList->validate();
+                }
+            }
+        }
+
+    }
+
     std::shared_ptr< std::vector<std::shared_ptr<aspose::words::cloud::models::Field>> > FieldCollection::getList() const
     {
         return this->m_List;
@@ -5248,6 +6178,11 @@ namespace aspose::words::cloud::models {
 
     void FieldInsert::getFileReferences(std::vector< FileReference* >& result)
     {
+    }
+
+    void FieldInsert::validate()
+    {
+        FieldBase::validate();
     }
 
 
@@ -5278,6 +6213,11 @@ namespace aspose::words::cloud::models {
 
     void FieldLink::getFileReferences(std::vector< FileReference* >& result)
     {
+    }
+
+    void FieldLink::validate()
+    {
+        NodeLink::validate();
     }
 
     std::shared_ptr< std::wstring > FieldLink::getFieldCode() const
@@ -5323,6 +6263,11 @@ namespace aspose::words::cloud::models {
     {
     }
 
+    void FieldNames::validate()
+    {
+        LinkElement::validate();
+    }
+
     std::shared_ptr< std::vector<std::shared_ptr<std::wstring>> > FieldNames::getNames() const
     {
         return this->m_Names;
@@ -5358,6 +6303,17 @@ namespace aspose::words::cloud::models {
 
     void FieldNamesResponse::getFileReferences(std::vector< FileReference* >& result)
     {
+    }
+
+    void FieldNamesResponse::validate()
+    {
+        WordsResponse::validate();
+
+        if (this->m_FieldNames != nullptr)
+        {
+            this->m_FieldNames->validate();
+        }
+
     }
 
     std::shared_ptr< aspose::words::cloud::models::FieldNames > FieldNamesResponse::getFieldNames() const
@@ -5532,6 +6488,28 @@ namespace aspose::words::cloud::models {
     {
     }
 
+    void FieldOptions::validate()
+    {
+
+        if (this->m_CurrentUser != nullptr)
+        {
+            this->m_CurrentUser->validate();
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+    }
+
     std::shared_ptr< aspose::words::cloud::models::UserInformation > FieldOptions::getCurrentUser() const
     {
         return this->m_CurrentUser;
@@ -5701,6 +6679,17 @@ namespace aspose::words::cloud::models {
     {
     }
 
+    void FieldResponse::validate()
+    {
+        WordsResponse::validate();
+
+        if (this->m_Field != nullptr)
+        {
+            this->m_Field->validate();
+        }
+
+    }
+
     std::shared_ptr< aspose::words::cloud::models::Field > FieldResponse::getField() const
     {
         return this->m_Field;
@@ -5738,6 +6727,17 @@ namespace aspose::words::cloud::models {
     {
     }
 
+    void FieldsResponse::validate()
+    {
+        WordsResponse::validate();
+
+        if (this->m_Fields != nullptr)
+        {
+            this->m_Fields->validate();
+        }
+
+    }
+
     std::shared_ptr< aspose::words::cloud::models::FieldCollection > FieldsResponse::getFields() const
     {
         return this->m_Fields;
@@ -5767,6 +6767,11 @@ namespace aspose::words::cloud::models {
     {
     }
 
+    void FieldUpdate::validate()
+    {
+        FieldBase::validate();
+    }
+
 
 
 
@@ -5785,6 +6790,11 @@ namespace aspose::words::cloud::models {
 
     void FileLink::getFileReferences(std::vector< FileReference* >& result)
     {
+    }
+
+    void FileLink::validate()
+    {
+        Link::validate();
     }
 
 
@@ -5817,6 +6827,22 @@ namespace aspose::words::cloud::models {
 
     void FilesList::getFileReferences(std::vector< FileReference* >& result)
     {
+    }
+
+    void FilesList::validate()
+    {
+
+        if (this->m_Value != nullptr)
+        {
+            for (auto& elementValue : *(this->m_Value))
+            {
+                if (elementValue != nullptr)
+                {
+                    elementValue->validate();
+                }
+            }
+        }
+
     }
 
     std::shared_ptr< std::vector<std::shared_ptr<aspose::words::cloud::models::StorageFile>> > FilesList::getValue() const
@@ -5870,6 +6896,23 @@ namespace aspose::words::cloud::models {
 
     void FilesUploadResult::getFileReferences(std::vector< FileReference* >& result)
     {
+    }
+
+    void FilesUploadResult::validate()
+    {
+
+        if (this->m_Errors != nullptr)
+        {
+            for (auto& elementErrors : *(this->m_Errors))
+            {
+                if (elementErrors != nullptr)
+                {
+                    elementErrors->validate();
+                }
+            }
+        }
+
+
     }
 
     std::shared_ptr< std::vector<std::shared_ptr<aspose::words::cloud::models::Error>> > FilesUploadResult::getErrors() const
@@ -6001,6 +7044,21 @@ namespace aspose::words::cloud::models {
     {
     }
 
+    void FixedPageSaveOptionsData::validate()
+    {
+        SaveOptionsData::validate();
+
+        if (this->m_MetafileRenderingOptions != nullptr)
+        {
+            this->m_MetafileRenderingOptions->validate();
+        }
+
+
+
+
+
+    }
+
     std::shared_ptr< aspose::words::cloud::models::FixedPageSaveOptionsData::ColorMode > FixedPageSaveOptionsData::getColorMode() const
     {
         return this->m_ColorMode;
@@ -6106,6 +7164,11 @@ namespace aspose::words::cloud::models {
     {
     }
 
+    void FlatOpcMacroSaveOptionsData::validate()
+    {
+        OoxmlSaveOptionsData::validate();
+    }
+
     std::shared_ptr< std::wstring > FlatOpcMacroSaveOptionsData::getSaveFormat() const
     {
         return this->m_SaveFormat;
@@ -6139,6 +7202,11 @@ namespace aspose::words::cloud::models {
 
     void FlatOpcSaveOptionsData::getFileReferences(std::vector< FileReference* >& result)
     {
+    }
+
+    void FlatOpcSaveOptionsData::validate()
+    {
+        OoxmlSaveOptionsData::validate();
     }
 
     std::shared_ptr< std::wstring > FlatOpcSaveOptionsData::getSaveFormat() const
@@ -6176,6 +7244,11 @@ namespace aspose::words::cloud::models {
     {
     }
 
+    void FlatOpcTemplateMacroSaveOptionsData::validate()
+    {
+        OoxmlSaveOptionsData::validate();
+    }
+
     std::shared_ptr< std::wstring > FlatOpcTemplateMacroSaveOptionsData::getSaveFormat() const
     {
         return this->m_SaveFormat;
@@ -6209,6 +7282,11 @@ namespace aspose::words::cloud::models {
 
     void FlatOpcTemplateSaveOptionsData::getFileReferences(std::vector< FileReference* >& result)
     {
+    }
+
+    void FlatOpcTemplateSaveOptionsData::validate()
+    {
+        OoxmlSaveOptionsData::validate();
     }
 
     std::shared_ptr< std::wstring > FlatOpcTemplateSaveOptionsData::getSaveFormat() const
@@ -7385,6 +8463,70 @@ namespace aspose::words::cloud::models {
     {
     }
 
+    void Font::validate()
+    {
+        LinkElement::validate();
+
+        if (this->m_Border != nullptr)
+        {
+            this->m_Border->validate();
+        }
+
+
+
+        if (this->m_Color != nullptr)
+        {
+            this->m_Color->validate();
+        }
+
+
+
+
+
+
+
+
+        if (this->m_HighlightColor != nullptr)
+        {
+            this->m_HighlightColor->validate();
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        if (this->m_UnderlineColor != nullptr)
+        {
+            this->m_UnderlineColor->validate();
+        }
+
+    }
+
     std::shared_ptr< bool > Font::getAllCaps() const
     {
         return this->m_AllCaps;
@@ -7875,6 +9017,10 @@ namespace aspose::words::cloud::models {
     {
     }
 
+    void FontInfo::validate()
+    {
+    }
+
     std::shared_ptr< std::wstring > FontInfo::getFilePath() const
     {
         return this->m_FilePath;
@@ -7943,6 +9089,17 @@ namespace aspose::words::cloud::models {
 
     void FontResponse::getFileReferences(std::vector< FileReference* >& result)
     {
+    }
+
+    void FontResponse::validate()
+    {
+        WordsResponse::validate();
+
+        if (this->m_Font != nullptr)
+        {
+            this->m_Font->validate();
+        }
+
     }
 
     std::shared_ptr< aspose::words::cloud::models::Font > FontResponse::getFont() const
@@ -8023,6 +9180,27 @@ namespace aspose::words::cloud::models {
 
     void Footnote::getFileReferences(std::vector< FileReference* >& result)
     {
+    }
+
+    void Footnote::validate()
+    {
+        FootnoteLink::validate();
+
+        if (this->m_Position != nullptr)
+        {
+            this->m_Position->validate();
+        }
+
+
+
+
+
+
+        if (this->m_Content != nullptr)
+        {
+            this->m_Content->validate();
+        }
+
     }
 
     std::shared_ptr< aspose::words::cloud::models::DocumentPosition > Footnote::getPosition() const
@@ -8141,6 +9319,19 @@ namespace aspose::words::cloud::models {
     {
     }
 
+    void FootnoteBase::validate()
+    {
+
+        if (this->m_Position != nullptr)
+        {
+            this->m_Position->validate();
+        }
+
+
+
+
+    }
+
     std::shared_ptr< aspose::words::cloud::models::NewDocumentPosition > FootnoteBase::getPosition() const
     {
         return this->m_Position;
@@ -8217,6 +9408,23 @@ namespace aspose::words::cloud::models {
     {
     }
 
+    void FootnoteCollection::validate()
+    {
+        LinkElement::validate();
+
+        if (this->m_List != nullptr)
+        {
+            for (auto& elementList : *(this->m_List))
+            {
+                if (elementList != nullptr)
+                {
+                    elementList->validate();
+                }
+            }
+        }
+
+    }
+
     std::shared_ptr< std::vector<std::shared_ptr<aspose::words::cloud::models::Footnote>> > FootnoteCollection::getList() const
     {
         return this->m_List;
@@ -8246,6 +9454,11 @@ namespace aspose::words::cloud::models {
     {
     }
 
+    void FootnoteInsert::validate()
+    {
+        FootnoteBase::validate();
+    }
+
 
 
 
@@ -8264,6 +9477,11 @@ namespace aspose::words::cloud::models {
 
     void FootnoteLink::getFileReferences(std::vector< FileReference* >& result)
     {
+    }
+
+    void FootnoteLink::validate()
+    {
+        NodeLink::validate();
     }
 
 
@@ -8292,6 +9510,17 @@ namespace aspose::words::cloud::models {
 
     void FootnoteResponse::getFileReferences(std::vector< FileReference* >& result)
     {
+    }
+
+    void FootnoteResponse::validate()
+    {
+        WordsResponse::validate();
+
+        if (this->m_Footnote != nullptr)
+        {
+            this->m_Footnote->validate();
+        }
+
     }
 
     std::shared_ptr< aspose::words::cloud::models::Footnote > FootnoteResponse::getFootnote() const
@@ -8329,6 +9558,17 @@ namespace aspose::words::cloud::models {
 
     void FootnotesResponse::getFileReferences(std::vector< FileReference* >& result)
     {
+    }
+
+    void FootnotesResponse::validate()
+    {
+        WordsResponse::validate();
+
+        if (this->m_Footnotes != nullptr)
+        {
+            this->m_Footnotes->validate();
+        }
+
     }
 
     std::shared_ptr< aspose::words::cloud::models::FootnoteCollection > FootnotesResponse::getFootnotes() const
@@ -8376,6 +9616,20 @@ namespace aspose::words::cloud::models {
     {
     }
 
+    void FootnotesStatData::validate()
+    {
+        if (this->m_ParagraphCount == nullptr)
+        {
+            throw aspose::words::cloud::ApiException(400, L"Property ParagraphCount in FootnotesStatData is required.");
+        }
+
+        if (this->m_WordCount == nullptr)
+        {
+            throw aspose::words::cloud::ApiException(400, L"Property WordCount in FootnotesStatData is required.");
+        }
+
+    }
+
     std::shared_ptr< int32_t > FootnotesStatData::getParagraphCount() const
     {
         return this->m_ParagraphCount;
@@ -8414,6 +9668,11 @@ namespace aspose::words::cloud::models {
 
     void FootnoteUpdate::getFileReferences(std::vector< FileReference* >& result)
     {
+    }
+
+    void FootnoteUpdate::validate()
+    {
+        FootnoteBase::validate();
     }
 
 
@@ -8508,6 +9767,16 @@ namespace aspose::words::cloud::models {
 
     void FormField::getFileReferences(std::vector< FileReference* >& result)
     {
+    }
+
+    void FormField::validate()
+    {
+        NodeLink::validate();
+        if (this->m_Name == nullptr)
+        {
+            throw aspose::words::cloud::ApiException(400, L"Property Name in FormField is required.");
+        }
+
     }
 
     std::shared_ptr< std::wstring > FormField::getName() const
@@ -8653,6 +9922,16 @@ namespace aspose::words::cloud::models {
     {
     }
 
+    void FormFieldCheckbox::validate()
+    {
+        FormField::validate();
+        if (this->m_Checked == nullptr)
+        {
+            throw aspose::words::cloud::ApiException(400, L"Property Checked in FormFieldCheckbox is required.");
+        }
+
+    }
+
     std::shared_ptr< bool > FormFieldCheckbox::getIsCheckBoxExactSize() const
     {
         return this->m_IsCheckBoxExactSize;
@@ -8718,6 +9997,23 @@ namespace aspose::words::cloud::models {
     {
     }
 
+    void FormFieldCollection::validate()
+    {
+        LinkElement::validate();
+
+        if (this->m_List != nullptr)
+        {
+            for (auto& elementList : *(this->m_List))
+            {
+                if (elementList != nullptr)
+                {
+                    elementList->validate();
+                }
+            }
+        }
+
+    }
+
     std::shared_ptr< std::vector<std::shared_ptr<aspose::words::cloud::models::FormField>> > FormFieldCollection::getList() const
     {
         return this->m_List;
@@ -8769,6 +10065,16 @@ namespace aspose::words::cloud::models {
     {
     }
 
+    void FormFieldDropDown::validate()
+    {
+        FormField::validate();
+        if (this->m_DropDownItems == nullptr)
+        {
+            throw aspose::words::cloud::ApiException(400, L"Property DropDownItems in FormFieldDropDown is required.");
+        }
+
+    }
+
     std::shared_ptr< std::vector<std::shared_ptr<std::wstring>> > FormFieldDropDown::getDropDownItems() const
     {
         return this->m_DropDownItems;
@@ -8817,6 +10123,17 @@ namespace aspose::words::cloud::models {
     {
     }
 
+    void FormFieldResponse::validate()
+    {
+        WordsResponse::validate();
+
+        if (this->m_FormField != nullptr)
+        {
+            this->m_FormField->validate();
+        }
+
+    }
+
     std::shared_ptr< aspose::words::cloud::models::FormField > FormFieldResponse::getFormField() const
     {
         return this->m_FormField;
@@ -8852,6 +10169,17 @@ namespace aspose::words::cloud::models {
 
     void FormFieldsResponse::getFileReferences(std::vector< FileReference* >& result)
     {
+    }
+
+    void FormFieldsResponse::validate()
+    {
+        WordsResponse::validate();
+
+        if (this->m_FormFields != nullptr)
+        {
+            this->m_FormFields->validate();
+        }
+
     }
 
     std::shared_ptr< aspose::words::cloud::models::FormFieldCollection > FormFieldsResponse::getFormFields() const
@@ -8938,6 +10266,21 @@ namespace aspose::words::cloud::models {
     {
     }
 
+    void FormFieldTextInput::validate()
+    {
+        FormField::validate();
+        if (this->m_TextInputFormat == nullptr)
+        {
+            throw aspose::words::cloud::ApiException(400, L"Property TextInputFormat in FormFieldTextInput is required.");
+        }
+
+        if (this->m_TextInputDefault == nullptr)
+        {
+            throw aspose::words::cloud::ApiException(400, L"Property TextInputDefault in FormFieldTextInput is required.");
+        }
+
+    }
+
     std::shared_ptr< std::wstring > FormFieldTextInput::getTextInputFormat() const
     {
         return this->m_TextInputFormat;
@@ -9010,6 +10353,11 @@ namespace aspose::words::cloud::models {
     {
     }
 
+    void GifSaveOptionsData::validate()
+    {
+        ImageSaveOptionsData::validate();
+    }
+
     std::shared_ptr< std::wstring > GifSaveOptionsData::getSaveFormat() const
     {
         return this->m_SaveFormat;
@@ -9059,6 +10407,37 @@ namespace aspose::words::cloud::models {
 
     void HeaderFooter::getFileReferences(std::vector< FileReference* >& result)
     {
+    }
+
+    void HeaderFooter::validate()
+    {
+        HeaderFooterLink::validate();
+
+        if (this->m_ChildNodes != nullptr)
+        {
+            for (auto& elementChildNodes : *(this->m_ChildNodes))
+            {
+                if (elementChildNodes != nullptr)
+                {
+                    elementChildNodes->validate();
+                }
+            }
+        }
+
+
+
+        if (this->m_Paragraphs != nullptr)
+        {
+            this->m_Paragraphs->validate();
+        }
+
+
+
+        if (this->m_DrawingObjects != nullptr)
+        {
+            this->m_DrawingObjects->validate();
+        }
+
     }
 
     std::shared_ptr< std::vector<std::shared_ptr<aspose::words::cloud::models::NodeLink>> > HeaderFooter::getChildNodes() const
@@ -9143,6 +10522,16 @@ namespace aspose::words::cloud::models {
     {
     }
 
+    void HeaderFooterLink::validate()
+    {
+        LinkElement::validate();
+        if (this->m_Type == nullptr)
+        {
+            throw aspose::words::cloud::ApiException(400, L"Property Type in HeaderFooterLink is required.");
+        }
+
+    }
+
     std::shared_ptr< aspose::words::cloud::models::HeaderFooterLink::Type > HeaderFooterLink::getType() const
     {
         return this->m_Type;
@@ -9186,6 +10575,23 @@ namespace aspose::words::cloud::models {
     {
     }
 
+    void HeaderFooterLinkCollection::validate()
+    {
+        LinkElement::validate();
+
+        if (this->m_List != nullptr)
+        {
+            for (auto& elementList : *(this->m_List))
+            {
+                if (elementList != nullptr)
+                {
+                    elementList->validate();
+                }
+            }
+        }
+
+    }
+
     std::shared_ptr< std::vector<std::shared_ptr<aspose::words::cloud::models::HeaderFooterLink>> > HeaderFooterLinkCollection::getList() const
     {
         return this->m_List;
@@ -9223,6 +10629,17 @@ namespace aspose::words::cloud::models {
     {
     }
 
+    void HeaderFooterResponse::validate()
+    {
+        WordsResponse::validate();
+
+        if (this->m_HeaderFooter != nullptr)
+        {
+            this->m_HeaderFooter->validate();
+        }
+
+    }
+
     std::shared_ptr< aspose::words::cloud::models::HeaderFooter > HeaderFooterResponse::getHeaderFooter() const
     {
         return this->m_HeaderFooter;
@@ -9258,6 +10675,17 @@ namespace aspose::words::cloud::models {
 
     void HeaderFootersResponse::getFileReferences(std::vector< FileReference* >& result)
     {
+    }
+
+    void HeaderFootersResponse::validate()
+    {
+        WordsResponse::validate();
+
+        if (this->m_HeaderFooters != nullptr)
+        {
+            this->m_HeaderFooters->validate();
+        }
+
     }
 
     std::shared_ptr< aspose::words::cloud::models::HeaderFooterLinkCollection > HeaderFootersResponse::getHeaderFooters() const
@@ -9438,6 +10866,11 @@ namespace aspose::words::cloud::models {
 
     void HtmlFixedSaveOptionsData::getFileReferences(std::vector< FileReference* >& result)
     {
+    }
+
+    void HtmlFixedSaveOptionsData::validate()
+    {
+        FixedPageSaveOptionsData::validate();
     }
 
     std::shared_ptr< std::wstring > HtmlFixedSaveOptionsData::getCssClassNamesPrefix() const
@@ -10064,6 +11497,11 @@ namespace aspose::words::cloud::models {
     {
     }
 
+    void HtmlSaveOptionsData::validate()
+    {
+        SaveOptionsData::validate();
+    }
+
     std::shared_ptr< bool > HtmlSaveOptionsData::getAllowNegativeIndent() const
     {
         return this->m_AllowNegativeIndent;
@@ -10525,6 +11963,11 @@ namespace aspose::words::cloud::models {
     {
     }
 
+    void Hyperlink::validate()
+    {
+        LinkElement::validate();
+    }
+
     std::shared_ptr< std::wstring > Hyperlink::getDisplayText() const
     {
         return this->m_DisplayText;
@@ -10573,6 +12016,17 @@ namespace aspose::words::cloud::models {
     {
     }
 
+    void HyperlinkResponse::validate()
+    {
+        WordsResponse::validate();
+
+        if (this->m_Hyperlink != nullptr)
+        {
+            this->m_Hyperlink->validate();
+        }
+
+    }
+
     std::shared_ptr< aspose::words::cloud::models::Hyperlink > HyperlinkResponse::getHyperlink() const
     {
         return this->m_Hyperlink;
@@ -10616,6 +12070,23 @@ namespace aspose::words::cloud::models {
     {
     }
 
+    void Hyperlinks::validate()
+    {
+        LinkElement::validate();
+
+        if (this->m_HyperlinkList != nullptr)
+        {
+            for (auto& elementHyperlinkList : *(this->m_HyperlinkList))
+            {
+                if (elementHyperlinkList != nullptr)
+                {
+                    elementHyperlinkList->validate();
+                }
+            }
+        }
+
+    }
+
     std::shared_ptr< std::vector<std::shared_ptr<aspose::words::cloud::models::Hyperlink>> > Hyperlinks::getHyperlinkList() const
     {
         return this->m_HyperlinkList;
@@ -10653,6 +12124,17 @@ namespace aspose::words::cloud::models {
     {
     }
 
+    void HyperlinksResponse::validate()
+    {
+        WordsResponse::validate();
+
+        if (this->m_Hyperlinks != nullptr)
+        {
+            this->m_Hyperlinks->validate();
+        }
+
+    }
+
     std::shared_ptr< aspose::words::cloud::models::Hyperlinks > HyperlinksResponse::getHyperlinks() const
     {
         return this->m_Hyperlinks;
@@ -10681,6 +12163,11 @@ namespace aspose::words::cloud::models {
     void ImageEntry::getFileReferences(std::vector< FileReference* >& result)
     {
         BaseEntry::getFileReferences(result);
+    }
+
+    void ImageEntry::validate()
+    {
+        BaseEntry::validate();
     }
 
 
@@ -10729,6 +12216,36 @@ namespace aspose::words::cloud::models {
             for (auto& element : *getImageEntries())
             {
                 element->getFileReferences(result);
+            }
+        }
+
+    }
+
+    void ImageEntryList::validate()
+    {
+        BaseEntryList::validate();
+        if (this->m_ImageEntries == nullptr)
+        {
+            throw aspose::words::cloud::ApiException(400, L"Property ImageEntries in ImageEntryList is required.");
+        }
+
+        for (auto& elementImageEntries : *(this->m_ImageEntries))
+        {
+            if (elementImageEntries != nullptr)
+            {
+                elementImageEntries->validate();
+            }
+        }
+
+
+        if (this->m_ImageEntries != nullptr)
+        {
+            for (auto& elementImageEntries : *(this->m_ImageEntries))
+            {
+                if (elementImageEntries != nullptr)
+                {
+                    elementImageEntries->validate();
+                }
             }
         }
 
@@ -10935,6 +12452,11 @@ namespace aspose::words::cloud::models {
     {
     }
 
+    void ImageSaveOptionsData::validate()
+    {
+        FixedPageSaveOptionsData::validate();
+    }
+
     std::shared_ptr< double > ImageSaveOptionsData::getHorizontalResolution() const
     {
         return this->m_HorizontalResolution;
@@ -11123,6 +12645,10 @@ namespace aspose::words::cloud::models {
     {
     }
 
+    void InfoAdditionalItem::validate()
+    {
+    }
+
     std::shared_ptr< std::wstring > InfoAdditionalItem::getKey() const
     {
         return this->m_Key;
@@ -11193,6 +12719,25 @@ namespace aspose::words::cloud::models {
     {
     }
 
+    void InfoResponse::validate()
+    {
+        WordsResponse::validate();
+
+        if (this->m_AdditionalInfo != nullptr)
+        {
+            for (auto& elementAdditionalInfo : *(this->m_AdditionalInfo))
+            {
+                if (elementAdditionalInfo != nullptr)
+                {
+                    elementAdditionalInfo->validate();
+                }
+            }
+        }
+
+
+
+    }
+
     std::shared_ptr< std::vector<std::shared_ptr<aspose::words::cloud::models::InfoAdditionalItem>> > InfoResponse::getAdditionalInfo() const
     {
         return this->m_AdditionalInfo;
@@ -11252,6 +12797,11 @@ namespace aspose::words::cloud::models {
 
     void JpegSaveOptionsData::getFileReferences(std::vector< FileReference* >& result)
     {
+    }
+
+    void JpegSaveOptionsData::validate()
+    {
+        ImageSaveOptionsData::validate();
     }
 
     std::shared_ptr< std::wstring > JpegSaveOptionsData::getSaveFormat() const
@@ -11318,6 +12868,20 @@ namespace aspose::words::cloud::models {
 
     void JsonDataLoadOptions::getFileReferences(std::vector< FileReference* >& result)
     {
+    }
+
+    void JsonDataLoadOptions::validate()
+    {
+        if (this->m_AlwaysGenerateRootObject == nullptr)
+        {
+            throw aspose::words::cloud::ApiException(400, L"Property AlwaysGenerateRootObject in JsonDataLoadOptions is required.");
+        }
+
+        if (this->m_SimpleValueParseMode == nullptr)
+        {
+            throw aspose::words::cloud::ApiException(400, L"Property SimpleValueParseMode in JsonDataLoadOptions is required.");
+        }
+
     }
 
     std::shared_ptr< bool > JsonDataLoadOptions::getAlwaysGenerateRootObject() const
@@ -11403,6 +12967,10 @@ namespace aspose::words::cloud::models {
     {
     }
 
+    void Link::validate()
+    {
+    }
+
     std::shared_ptr< std::wstring > Link::getHref() const
     {
         return this->m_Href;
@@ -11471,6 +13039,16 @@ namespace aspose::words::cloud::models {
     {
     }
 
+    void LinkElement::validate()
+    {
+
+        if (this->m_Link != nullptr)
+        {
+            this->m_Link->validate();
+        }
+
+    }
+
     std::shared_ptr< aspose::words::cloud::models::WordsApiLink > LinkElement::getLink() const
     {
         return this->m_Link;
@@ -11524,6 +13102,21 @@ namespace aspose::words::cloud::models {
 
     void ListFormat::getFileReferences(std::vector< FileReference* >& result)
     {
+    }
+
+    void ListFormat::validate()
+    {
+        LinkElement::validate();
+        if (this->m_ListLevelNumber == nullptr)
+        {
+            throw aspose::words::cloud::ApiException(400, L"Property ListLevelNumber in ListFormat is required.");
+        }
+
+        if (this->m_IsListItem == nullptr)
+        {
+            throw aspose::words::cloud::ApiException(400, L"Property IsListItem in ListFormat is required.");
+        }
+
     }
 
     std::shared_ptr< int32_t > ListFormat::getListLevelNumber() const
@@ -11590,6 +13183,10 @@ namespace aspose::words::cloud::models {
     }
 
     void ListFormatUpdate::getFileReferences(std::vector< FileReference* >& result)
+    {
+    }
+
+    void ListFormatUpdate::validate()
     {
     }
 
@@ -11685,6 +13282,49 @@ namespace aspose::words::cloud::models {
 
     void ListInfo::getFileReferences(std::vector< FileReference* >& result)
     {
+    }
+
+    void ListInfo::validate()
+    {
+        LinkElement::validate();
+        if (this->m_ListId == nullptr)
+        {
+            throw aspose::words::cloud::ApiException(400, L"Property ListId in ListInfo is required.");
+        }
+
+        if (this->m_IsMultiLevel == nullptr)
+        {
+            throw aspose::words::cloud::ApiException(400, L"Property IsMultiLevel in ListInfo is required.");
+        }
+
+        if (this->m_IsRestartAtEachSection == nullptr)
+        {
+            throw aspose::words::cloud::ApiException(400, L"Property IsRestartAtEachSection in ListInfo is required.");
+        }
+
+        if (this->m_IsListStyleDefinition == nullptr)
+        {
+            throw aspose::words::cloud::ApiException(400, L"Property IsListStyleDefinition in ListInfo is required.");
+        }
+
+        if (this->m_IsListStyleReference == nullptr)
+        {
+            throw aspose::words::cloud::ApiException(400, L"Property IsListStyleReference in ListInfo is required.");
+        }
+
+
+        if (this->m_Style != nullptr)
+        {
+            this->m_Style->validate();
+        }
+
+
+
+        if (this->m_ListLevels != nullptr)
+        {
+            this->m_ListLevels->validate();
+        }
+
     }
 
     std::shared_ptr< int32_t > ListInfo::getListId() const
@@ -11841,6 +13481,15 @@ namespace aspose::words::cloud::models {
 
     void ListInsert::getFileReferences(std::vector< FileReference* >& result)
     {
+    }
+
+    void ListInsert::validate()
+    {
+        if (this->m_Template == nullptr)
+        {
+            throw aspose::words::cloud::ApiException(400, L"Property Template in ListInsert is required.");
+        }
+
     }
 
     std::shared_ptr< aspose::words::cloud::models::ListInsert::Template > ListInsert::getTemplate() const
@@ -12131,6 +13780,72 @@ namespace aspose::words::cloud::models {
     {
     }
 
+    void ListLevel::validate()
+    {
+        LinkElement::validate();
+        if (this->m_StartAt == nullptr)
+        {
+            throw aspose::words::cloud::ApiException(400, L"Property StartAt in ListLevel is required.");
+        }
+
+        if (this->m_NumberStyle == nullptr)
+        {
+            throw aspose::words::cloud::ApiException(400, L"Property NumberStyle in ListLevel is required.");
+        }
+
+        if (this->m_Alignment == nullptr)
+        {
+            throw aspose::words::cloud::ApiException(400, L"Property Alignment in ListLevel is required.");
+        }
+
+        if (this->m_IsLegal == nullptr)
+        {
+            throw aspose::words::cloud::ApiException(400, L"Property IsLegal in ListLevel is required.");
+        }
+
+        if (this->m_RestartAfterLevel == nullptr)
+        {
+            throw aspose::words::cloud::ApiException(400, L"Property RestartAfterLevel in ListLevel is required.");
+        }
+
+        if (this->m_TrailingCharacter == nullptr)
+        {
+            throw aspose::words::cloud::ApiException(400, L"Property TrailingCharacter in ListLevel is required.");
+        }
+
+        if (this->m_TabPosition == nullptr)
+        {
+            throw aspose::words::cloud::ApiException(400, L"Property TabPosition in ListLevel is required.");
+        }
+
+        if (this->m_NumberPosition == nullptr)
+        {
+            throw aspose::words::cloud::ApiException(400, L"Property NumberPosition in ListLevel is required.");
+        }
+
+        if (this->m_TextPosition == nullptr)
+        {
+            throw aspose::words::cloud::ApiException(400, L"Property TextPosition in ListLevel is required.");
+        }
+
+
+        if (this->m_Font != nullptr)
+        {
+            this->m_Font->validate();
+        }
+
+
+
+
+
+
+        if (this->m_LinkedStyle != nullptr)
+        {
+            this->m_LinkedStyle->validate();
+        }
+
+    }
+
     std::shared_ptr< int32_t > ListLevel::getStartAt() const
     {
         return this->m_StartAt;
@@ -12293,6 +14008,23 @@ namespace aspose::words::cloud::models {
 
     void ListLevels::getFileReferences(std::vector< FileReference* >& result)
     {
+    }
+
+    void ListLevels::validate()
+    {
+        LinkElement::validate();
+
+        if (this->m_ListLevel != nullptr)
+        {
+            for (auto& elementListLevel : *(this->m_ListLevel))
+            {
+                if (elementListLevel != nullptr)
+                {
+                    elementListLevel->validate();
+                }
+            }
+        }
+
     }
 
     std::shared_ptr< std::vector<std::shared_ptr<aspose::words::cloud::models::ListLevel>> > ListLevels::getListLevel() const
@@ -12569,6 +14301,10 @@ namespace aspose::words::cloud::models {
     {
     }
 
+    void ListLevelUpdate::validate()
+    {
+    }
+
     std::shared_ptr< int32_t > ListLevelUpdate::getStartAt() const
     {
         return this->m_StartAt;
@@ -12705,6 +14441,17 @@ namespace aspose::words::cloud::models {
     {
     }
 
+    void ListResponse::validate()
+    {
+        WordsResponse::validate();
+
+        if (this->m_List != nullptr)
+        {
+            this->m_List->validate();
+        }
+
+    }
+
     std::shared_ptr< aspose::words::cloud::models::ListInfo > ListResponse::getList() const
     {
         return this->m_List;
@@ -12748,6 +14495,23 @@ namespace aspose::words::cloud::models {
     {
     }
 
+    void Lists::validate()
+    {
+        LinkElement::validate();
+
+        if (this->m_ListInfo != nullptr)
+        {
+            for (auto& elementListInfo : *(this->m_ListInfo))
+            {
+                if (elementListInfo != nullptr)
+                {
+                    elementListInfo->validate();
+                }
+            }
+        }
+
+    }
+
     std::shared_ptr< std::vector<std::shared_ptr<aspose::words::cloud::models::ListInfo>> > Lists::getListInfo() const
     {
         return this->m_ListInfo;
@@ -12785,6 +14549,17 @@ namespace aspose::words::cloud::models {
     {
     }
 
+    void ListsResponse::validate()
+    {
+        WordsResponse::validate();
+
+        if (this->m_Lists != nullptr)
+        {
+            this->m_Lists->validate();
+        }
+
+    }
+
     std::shared_ptr< aspose::words::cloud::models::Lists > ListsResponse::getLists() const
     {
         return this->m_Lists;
@@ -12819,6 +14594,10 @@ namespace aspose::words::cloud::models {
     }
 
     void ListUpdate::getFileReferences(std::vector< FileReference* >& result)
+    {
+    }
+
+    void ListUpdate::validate()
     {
     }
 
@@ -12863,6 +14642,22 @@ namespace aspose::words::cloud::models {
 
     void LoadWebDocumentData::getFileReferences(std::vector< FileReference* >& result)
     {
+    }
+
+    void LoadWebDocumentData::validate()
+    {
+        if (this->m_LoadingDocumentUrl == nullptr)
+        {
+            throw aspose::words::cloud::ApiException(400, L"Property LoadingDocumentUrl in LoadWebDocumentData is required.");
+        }
+
+
+        if (this->m_SaveOptions != nullptr)
+        {
+            this->m_SaveOptions->validate();
+        }
+
+
     }
 
     std::shared_ptr< aspose::words::cloud::models::SaveOptionsData > LoadWebDocumentData::getSaveOptions() const
@@ -12940,6 +14735,11 @@ namespace aspose::words::cloud::models {
     {
     }
 
+    void MarkdownSaveOptionsData::validate()
+    {
+        TxtSaveOptionsBaseData::validate();
+    }
+
     std::shared_ptr< aspose::words::cloud::models::MarkdownSaveOptionsData::TableContentAlignment > MarkdownSaveOptionsData::getTableContentAlignment() const
     {
         return this->m_TableContentAlignment;
@@ -13005,6 +14805,9 @@ namespace aspose::words::cloud::models {
         if (this->m_EmulateRenderingToSizeOnPage) {
             json["EmulateRenderingToSizeOnPage"] = *(this->m_EmulateRenderingToSizeOnPage);
         }
+        if (this->m_EmulateRenderingToSizeOnPageResolution) {
+            json["EmulateRenderingToSizeOnPageResolution"] = *(this->m_EmulateRenderingToSizeOnPageResolution);
+        }
         if (this->m_RenderingMode) {
             json["RenderingMode"] = metafileRenderingOptionsDataRenderingModeToString(*(this->m_RenderingMode));
         }
@@ -13031,6 +14834,11 @@ namespace aspose::words::cloud::models {
                 json["EmulateRenderingToSizeOnPage"].get< bool >()
             );
         }
+        if (json.contains("EmulateRenderingToSizeOnPageResolution") && !json["EmulateRenderingToSizeOnPageResolution"].is_null()) {
+            this->m_EmulateRenderingToSizeOnPageResolution = std::make_shared< int32_t >(
+                json["EmulateRenderingToSizeOnPageResolution"].get< int32_t >()
+            );
+        }
         if (json.contains("RenderingMode") && !json["RenderingMode"].is_null()) {
             this->m_RenderingMode = std::make_shared< aspose::words::cloud::models::MetafileRenderingOptionsData::RenderingMode >(
                 metafileRenderingOptionsDataRenderingModeFromString(json["RenderingMode"].get< std::string >())
@@ -13044,6 +14852,10 @@ namespace aspose::words::cloud::models {
     }
 
     void MetafileRenderingOptionsData::getFileReferences(std::vector< FileReference* >& result)
+    {
+    }
+
+    void MetafileRenderingOptionsData::validate()
     {
     }
 
@@ -13077,6 +14889,17 @@ namespace aspose::words::cloud::models {
     void MetafileRenderingOptionsData::setEmulateRenderingToSizeOnPage(std::shared_ptr< bool > value)
     {
         this->m_EmulateRenderingToSizeOnPage = value;
+    }
+
+
+    std::shared_ptr< int32_t > MetafileRenderingOptionsData::getEmulateRenderingToSizeOnPageResolution() const
+    {
+        return this->m_EmulateRenderingToSizeOnPageResolution;
+    }
+
+    void MetafileRenderingOptionsData::setEmulateRenderingToSizeOnPageResolution(std::shared_ptr< int32_t > value)
+    {
+        this->m_EmulateRenderingToSizeOnPageResolution = value;
     }
 
 
@@ -13138,6 +14961,11 @@ namespace aspose::words::cloud::models {
     {
     }
 
+    void MhtmlSaveOptionsData::validate()
+    {
+        HtmlSaveOptionsData::validate();
+    }
+
     std::shared_ptr< bool > MhtmlSaveOptionsData::getExportCidUrlsForMhtmlResources() const
     {
         return this->m_ExportCidUrlsForMhtmlResources;
@@ -13184,6 +15012,23 @@ namespace aspose::words::cloud::models {
 
     void ModificationOperationResult::getFileReferences(std::vector< FileReference* >& result)
     {
+    }
+
+    void ModificationOperationResult::validate()
+    {
+
+        if (this->m_Dest != nullptr)
+        {
+            this->m_Dest->validate();
+        }
+
+
+
+        if (this->m_Source != nullptr)
+        {
+            this->m_Source->validate();
+        }
+
     }
 
     std::shared_ptr< aspose::words::cloud::models::FileLink > ModificationOperationResult::getDest() const
@@ -13242,6 +15087,15 @@ namespace aspose::words::cloud::models {
     {
     }
 
+    void NewDocumentPosition::validate()
+    {
+        if (this->m_NodeId == nullptr)
+        {
+            throw aspose::words::cloud::ApiException(400, L"Property NodeId in NewDocumentPosition is required.");
+        }
+
+    }
+
     std::shared_ptr< std::wstring > NewDocumentPosition::getNodeId() const
     {
         return this->m_NodeId;
@@ -13290,6 +15144,11 @@ namespace aspose::words::cloud::models {
 
     void NodeLink::getFileReferences(std::vector< FileReference* >& result)
     {
+    }
+
+    void NodeLink::validate()
+    {
+        LinkElement::validate();
     }
 
     std::shared_ptr< std::wstring > NodeLink::getNodeId() const
@@ -13376,6 +15235,11 @@ namespace aspose::words::cloud::models {
     {
     }
 
+    void OdtSaveOptionsData::validate()
+    {
+        SaveOptionsData::validate();
+    }
+
     std::shared_ptr< bool > OdtSaveOptionsData::getIsStrictSchema11() const
     {
         return this->m_IsStrictSchema11;
@@ -13443,6 +15307,11 @@ namespace aspose::words::cloud::models {
 
     void OfficeMathLink::getFileReferences(std::vector< FileReference* >& result)
     {
+    }
+
+    void OfficeMathLink::validate()
+    {
+        NodeLink::validate();
     }
 
 
@@ -13602,6 +15471,20 @@ namespace aspose::words::cloud::models {
     {
     }
 
+    void OfficeMathObject::validate()
+    {
+        OfficeMathLink::validate();
+
+        if (this->m_Content != nullptr)
+        {
+            this->m_Content->validate();
+        }
+
+
+
+
+    }
+
     std::shared_ptr< aspose::words::cloud::models::StoryChildNodes > OfficeMathObject::getContent() const
     {
         return this->m_Content;
@@ -13672,6 +15555,17 @@ namespace aspose::words::cloud::models {
     {
     }
 
+    void OfficeMathObjectResponse::validate()
+    {
+        WordsResponse::validate();
+
+        if (this->m_OfficeMathObject != nullptr)
+        {
+            this->m_OfficeMathObject->validate();
+        }
+
+    }
+
     std::shared_ptr< aspose::words::cloud::models::OfficeMathObject > OfficeMathObjectResponse::getOfficeMathObject() const
     {
         return this->m_OfficeMathObject;
@@ -13715,6 +15609,23 @@ namespace aspose::words::cloud::models {
     {
     }
 
+    void OfficeMathObjectsCollection::validate()
+    {
+        LinkElement::validate();
+
+        if (this->m_List != nullptr)
+        {
+            for (auto& elementList : *(this->m_List))
+            {
+                if (elementList != nullptr)
+                {
+                    elementList->validate();
+                }
+            }
+        }
+
+    }
+
     std::shared_ptr< std::vector<std::shared_ptr<aspose::words::cloud::models::OfficeMathObject>> > OfficeMathObjectsCollection::getList() const
     {
         return this->m_List;
@@ -13750,6 +15661,17 @@ namespace aspose::words::cloud::models {
 
     void OfficeMathObjectsResponse::getFileReferences(std::vector< FileReference* >& result)
     {
+    }
+
+    void OfficeMathObjectsResponse::validate()
+    {
+        WordsResponse::validate();
+
+        if (this->m_OfficeMathObjects != nullptr)
+        {
+            this->m_OfficeMathObjects->validate();
+        }
+
     }
 
     std::shared_ptr< aspose::words::cloud::models::OfficeMathObjectsCollection > OfficeMathObjectsResponse::getOfficeMathObjects() const
@@ -13848,6 +15770,11 @@ namespace aspose::words::cloud::models {
     {
     }
 
+    void OoxmlSaveOptionsData::validate()
+    {
+        SaveOptionsData::validate();
+    }
+
     std::shared_ptr< aspose::words::cloud::models::OoxmlSaveOptionsData::Compliance > OoxmlSaveOptionsData::getCompliance() const
     {
         return this->m_Compliance;
@@ -13920,6 +15847,11 @@ namespace aspose::words::cloud::models {
     {
     }
 
+    void OpenXpsSaveOptionsData::validate()
+    {
+        XpsSaveOptionsData::validate();
+    }
+
     std::shared_ptr< std::wstring > OpenXpsSaveOptionsData::getSaveFormat() const
     {
         return this->m_SaveFormat;
@@ -13978,6 +15910,15 @@ namespace aspose::words::cloud::models {
     {
     }
 
+    void OptimizationOptions::validate()
+    {
+        if (this->m_MsWordVersion == nullptr)
+        {
+            throw aspose::words::cloud::ApiException(400, L"Property MsWordVersion in OptimizationOptions is required.");
+        }
+
+    }
+
     std::shared_ptr< aspose::words::cloud::models::OptimizationOptions::MsWordVersion > OptimizationOptions::getMsWordVersion() const
     {
         return this->m_MsWordVersion;
@@ -14015,6 +15956,11 @@ namespace aspose::words::cloud::models {
 
     void OttSaveOptionsData::getFileReferences(std::vector< FileReference* >& result)
     {
+    }
+
+    void OttSaveOptionsData::validate()
+    {
+        OdtSaveOptionsData::validate();
     }
 
     std::shared_ptr< std::wstring > OttSaveOptionsData::getSaveFormat() const
@@ -14092,6 +16038,22 @@ namespace aspose::words::cloud::models {
 
     void OutlineOptionsData::getFileReferences(std::vector< FileReference* >& result)
     {
+    }
+
+    void OutlineOptionsData::validate()
+    {
+
+        if (this->m_BookmarksOutlineLevels != nullptr)
+        {
+            for (auto& elementBookmarksOutlineLevels : *(this->m_BookmarksOutlineLevels))
+            {
+                if (elementBookmarksOutlineLevels != nullptr)
+                {
+                    elementBookmarksOutlineLevels->validate();
+                }
+            }
+        }
+
     }
 
     std::shared_ptr< bool > OutlineOptionsData::getCreateMissingOutlineLevels() const
@@ -14216,6 +16178,20 @@ namespace aspose::words::cloud::models {
 
     void PageNumber::getFileReferences(std::vector< FileReference* >& result)
     {
+    }
+
+    void PageNumber::validate()
+    {
+        if (this->m_IsTop == nullptr)
+        {
+            throw aspose::words::cloud::ApiException(400, L"Property IsTop in PageNumber is required.");
+        }
+
+        if (this->m_SetPageNumberOnFirstPage == nullptr)
+        {
+            throw aspose::words::cloud::ApiException(400, L"Property SetPageNumberOnFirstPage in PageNumber is required.");
+        }
+
     }
 
     std::shared_ptr< std::wstring > PageNumber::getAlignment() const
@@ -14802,6 +16778,11 @@ namespace aspose::words::cloud::models {
     {
     }
 
+    void PageSetup::validate()
+    {
+        LinkElement::validate();
+    }
+
     std::shared_ptr< bool > PageSetup::getBidi() const
     {
         return this->m_Bidi;
@@ -15169,6 +17150,34 @@ namespace aspose::words::cloud::models {
     {
     }
 
+    void PageStatData::validate()
+    {
+        if (this->m_ParagraphCount == nullptr)
+        {
+            throw aspose::words::cloud::ApiException(400, L"Property ParagraphCount in PageStatData is required.");
+        }
+
+        if (this->m_WordCount == nullptr)
+        {
+            throw aspose::words::cloud::ApiException(400, L"Property WordCount in PageStatData is required.");
+        }
+
+        if (this->m_PageNumber == nullptr)
+        {
+            throw aspose::words::cloud::ApiException(400, L"Property PageNumber in PageStatData is required.");
+        }
+
+
+        if (this->m_FootnotesStatData != nullptr)
+        {
+            this->m_FootnotesStatData->validate();
+        }
+
+
+
+
+    }
+
     std::shared_ptr< aspose::words::cloud::models::FootnotesStatData > PageStatData::getFootnotesStatData() const
     {
         return this->m_FootnotesStatData;
@@ -15245,6 +17254,23 @@ namespace aspose::words::cloud::models {
     {
     }
 
+    void Paragraph::validate()
+    {
+        NodeLink::validate();
+
+        if (this->m_ChildNodes != nullptr)
+        {
+            for (auto& elementChildNodes : *(this->m_ChildNodes))
+            {
+                if (elementChildNodes != nullptr)
+                {
+                    elementChildNodes->validate();
+                }
+            }
+        }
+
+    }
+
     std::shared_ptr< std::vector<std::shared_ptr<aspose::words::cloud::models::NodeLink>> > Paragraph::getChildNodes() const
     {
         return this->m_ChildNodes;
@@ -15290,6 +17316,11 @@ namespace aspose::words::cloud::models {
 
     void ParagraphFormat::getFileReferences(std::vector< FileReference* >& result)
     {
+    }
+
+    void ParagraphFormat::validate()
+    {
+        ParagraphFormatBase::validate();
     }
 
     std::shared_ptr< bool > ParagraphFormat::getIsListItem() const
@@ -16397,6 +18428,17 @@ namespace aspose::words::cloud::models {
     {
     }
 
+    void ParagraphFormatBase::validate()
+    {
+        LinkElement::validate();
+
+        if (this->m_Shading != nullptr)
+        {
+            this->m_Shading->validate();
+        }
+
+    }
+
     std::shared_ptr< bool > ParagraphFormatBase::getAddSpaceBetweenFarEastAndAlpha() const
     {
         return this->m_AddSpaceBetweenFarEastAndAlpha;
@@ -16709,6 +18751,17 @@ namespace aspose::words::cloud::models {
     {
     }
 
+    void ParagraphFormatResponse::validate()
+    {
+        WordsResponse::validate();
+
+        if (this->m_ParagraphFormat != nullptr)
+        {
+            this->m_ParagraphFormat->validate();
+        }
+
+    }
+
     std::shared_ptr< aspose::words::cloud::models::ParagraphFormat > ParagraphFormatResponse::getParagraphFormat() const
     {
         return this->m_ParagraphFormat;
@@ -16738,6 +18791,11 @@ namespace aspose::words::cloud::models {
     {
     }
 
+    void ParagraphFormatUpdate::validate()
+    {
+        ParagraphFormatBase::validate();
+    }
+
 
 
 
@@ -16764,6 +18822,15 @@ namespace aspose::words::cloud::models {
 
     void ParagraphInsert::getFileReferences(std::vector< FileReference* >& result)
     {
+    }
+
+    void ParagraphInsert::validate()
+    {
+        if (this->m_Text == nullptr)
+        {
+            throw aspose::words::cloud::ApiException(400, L"Property Text in ParagraphInsert is required.");
+        }
+
     }
 
     std::shared_ptr< std::wstring > ParagraphInsert::getText() const
@@ -16803,6 +18870,11 @@ namespace aspose::words::cloud::models {
 
     void ParagraphLink::getFileReferences(std::vector< FileReference* >& result)
     {
+    }
+
+    void ParagraphLink::validate()
+    {
+        NodeLink::validate();
     }
 
     std::shared_ptr< std::wstring > ParagraphLink::getText() const
@@ -16848,6 +18920,23 @@ namespace aspose::words::cloud::models {
     {
     }
 
+    void ParagraphLinkCollection::validate()
+    {
+        LinkElement::validate();
+
+        if (this->m_ParagraphLinkList != nullptr)
+        {
+            for (auto& elementParagraphLinkList : *(this->m_ParagraphLinkList))
+            {
+                if (elementParagraphLinkList != nullptr)
+                {
+                    elementParagraphLinkList->validate();
+                }
+            }
+        }
+
+    }
+
     std::shared_ptr< std::vector<std::shared_ptr<aspose::words::cloud::models::ParagraphLink>> > ParagraphLinkCollection::getParagraphLinkList() const
     {
         return this->m_ParagraphLinkList;
@@ -16883,6 +18972,17 @@ namespace aspose::words::cloud::models {
 
     void ParagraphLinkCollectionResponse::getFileReferences(std::vector< FileReference* >& result)
     {
+    }
+
+    void ParagraphLinkCollectionResponse::validate()
+    {
+        WordsResponse::validate();
+
+        if (this->m_Paragraphs != nullptr)
+        {
+            this->m_Paragraphs->validate();
+        }
+
     }
 
     std::shared_ptr< aspose::words::cloud::models::ParagraphLinkCollection > ParagraphLinkCollectionResponse::getParagraphs() const
@@ -16922,6 +19022,17 @@ namespace aspose::words::cloud::models {
     {
     }
 
+    void ParagraphListFormatResponse::validate()
+    {
+        WordsResponse::validate();
+
+        if (this->m_ListFormat != nullptr)
+        {
+            this->m_ListFormat->validate();
+        }
+
+    }
+
     std::shared_ptr< aspose::words::cloud::models::ListFormat > ParagraphListFormatResponse::getListFormat() const
     {
         return this->m_ListFormat;
@@ -16957,6 +19068,17 @@ namespace aspose::words::cloud::models {
 
     void ParagraphResponse::getFileReferences(std::vector< FileReference* >& result)
     {
+    }
+
+    void ParagraphResponse::validate()
+    {
+        WordsResponse::validate();
+
+        if (this->m_Paragraph != nullptr)
+        {
+            this->m_Paragraph->validate();
+        }
+
     }
 
     std::shared_ptr< aspose::words::cloud::models::Paragraph > ParagraphResponse::getParagraph() const
@@ -17012,6 +19134,11 @@ namespace aspose::words::cloud::models {
 
     void PclSaveOptionsData::getFileReferences(std::vector< FileReference* >& result)
     {
+    }
+
+    void PclSaveOptionsData::validate()
+    {
+        FixedPageSaveOptionsData::validate();
     }
 
     std::shared_ptr< std::wstring > PclSaveOptionsData::getFalllbackFontName() const
@@ -17115,6 +19242,10 @@ namespace aspose::words::cloud::models {
     }
 
     void PdfDigitalSignatureDetailsData::getFileReferences(std::vector< FileReference* >& result)
+    {
+    }
+
+    void PdfDigitalSignatureDetailsData::validate()
     {
     }
 
@@ -17245,6 +19376,10 @@ namespace aspose::words::cloud::models {
     }
 
     void PdfEncryptionDetailsData::getFileReferences(std::vector< FileReference* >& result)
+    {
+    }
+
+    void PdfEncryptionDetailsData::validate()
     {
     }
 
@@ -17662,6 +19797,58 @@ namespace aspose::words::cloud::models {
     {
     }
 
+    void PdfSaveOptionsData::validate()
+    {
+        FixedPageSaveOptionsData::validate();
+
+        if (this->m_DigitalSignatureDetails != nullptr)
+        {
+            this->m_DigitalSignatureDetails->validate();
+        }
+
+
+
+
+        if (this->m_DownsampleOptions != nullptr)
+        {
+            this->m_DownsampleOptions->validate();
+        }
+
+
+
+
+
+        if (this->m_EncryptionDetails != nullptr)
+        {
+            this->m_EncryptionDetails->validate();
+        }
+
+
+
+
+
+
+
+
+
+
+
+        if (this->m_OutlineOptions != nullptr)
+        {
+            this->m_OutlineOptions->validate();
+        }
+
+
+
+
+
+
+
+
+
+
+    }
+
     std::shared_ptr< bool > PdfSaveOptionsData::getCacheBackgroundGraphics() const
     {
         return this->m_CacheBackgroundGraphics;
@@ -17994,6 +20181,11 @@ namespace aspose::words::cloud::models {
     {
     }
 
+    void PngSaveOptionsData::validate()
+    {
+        ImageSaveOptionsData::validate();
+    }
+
     std::shared_ptr< std::wstring > PngSaveOptionsData::getSaveFormat() const
     {
         return this->m_SaveFormat;
@@ -18050,6 +20242,15 @@ namespace aspose::words::cloud::models {
     {
     }
 
+    void PreferredWidth::validate()
+    {
+        if (this->m_Type == nullptr)
+        {
+            throw aspose::words::cloud::ApiException(400, L"Property Type in PreferredWidth is required.");
+        }
+
+    }
+
     std::shared_ptr< aspose::words::cloud::models::PreferredWidth::Type > PreferredWidth::getType() const
     {
         return this->m_Type;
@@ -18098,6 +20299,10 @@ namespace aspose::words::cloud::models {
     {
     }
 
+    void ProtectionData::validate()
+    {
+    }
+
     std::shared_ptr< std::wstring > ProtectionData::getProtectionType() const
     {
         return this->m_ProtectionType;
@@ -18139,6 +20344,24 @@ namespace aspose::words::cloud::models {
 
     void ProtectionDataResponse::getFileReferences(std::vector< FileReference* >& result)
     {
+    }
+
+    void ProtectionDataResponse::validate()
+    {
+        WordsResponse::validate();
+
+        if (this->m_DocumentLink != nullptr)
+        {
+            this->m_DocumentLink->validate();
+        }
+
+
+
+        if (this->m_ProtectionData != nullptr)
+        {
+            this->m_ProtectionData->validate();
+        }
+
     }
 
     std::shared_ptr< aspose::words::cloud::models::FileLink > ProtectionDataResponse::getDocumentLink() const
@@ -18203,6 +20426,15 @@ namespace aspose::words::cloud::models {
 
     void ProtectionRequest::getFileReferences(std::vector< FileReference* >& result)
     {
+    }
+
+    void ProtectionRequest::validate()
+    {
+        if (this->m_Password == nullptr)
+        {
+            throw aspose::words::cloud::ApiException(400, L"Property Password in ProtectionRequest is required.");
+        }
+
     }
 
     std::shared_ptr< std::wstring > ProtectionRequest::getNewPassword() const
@@ -18274,6 +20506,11 @@ namespace aspose::words::cloud::models {
     {
     }
 
+    void PsSaveOptionsData::validate()
+    {
+        FixedPageSaveOptionsData::validate();
+    }
+
     std::shared_ptr< bool > PsSaveOptionsData::getUseBookFoldPrintingSettings() const
     {
         return this->m_UseBookFoldPrintingSettings;
@@ -18328,6 +20565,11 @@ namespace aspose::words::cloud::models {
     {
     }
 
+    void PublicKeyResponse::validate()
+    {
+        WordsResponse::validate();
+    }
+
     std::shared_ptr< std::wstring > PublicKeyResponse::getExponent() const
     {
         return this->m_Exponent;
@@ -18376,6 +20618,15 @@ namespace aspose::words::cloud::models {
     {
     }
 
+    void RangeDocument::validate()
+    {
+        if (this->m_DocumentName == nullptr)
+        {
+            throw aspose::words::cloud::ApiException(400, L"Property DocumentName in RangeDocument is required.");
+        }
+
+    }
+
     std::shared_ptr< std::wstring > RangeDocument::getDocumentName() const
     {
         return this->m_DocumentName;
@@ -18413,6 +20664,11 @@ namespace aspose::words::cloud::models {
 
     void RangeTextResponse::getFileReferences(std::vector< FileReference* >& result)
     {
+    }
+
+    void RangeTextResponse::validate()
+    {
+        WordsResponse::validate();
     }
 
     std::shared_ptr< std::wstring > RangeTextResponse::getText() const
@@ -18471,6 +20727,15 @@ namespace aspose::words::cloud::models {
 
     void ReplaceRange::getFileReferences(std::vector< FileReference* >& result)
     {
+    }
+
+    void ReplaceRange::validate()
+    {
+        if (this->m_Text == nullptr)
+        {
+            throw aspose::words::cloud::ApiException(400, L"Property Text in ReplaceRange is required.");
+        }
+
     }
 
     std::shared_ptr< std::wstring > ReplaceRange::getText() const
@@ -18551,6 +20816,35 @@ namespace aspose::words::cloud::models {
 
     void ReplaceTextParameters::getFileReferences(std::vector< FileReference* >& result)
     {
+    }
+
+    void ReplaceTextParameters::validate()
+    {
+        if (this->m_IsMatchCase == nullptr)
+        {
+            throw aspose::words::cloud::ApiException(400, L"Property IsMatchCase in ReplaceTextParameters is required.");
+        }
+
+        if (this->m_IsMatchWholeWord == nullptr)
+        {
+            throw aspose::words::cloud::ApiException(400, L"Property IsMatchWholeWord in ReplaceTextParameters is required.");
+        }
+
+        if (this->m_IsOldValueRegex == nullptr)
+        {
+            throw aspose::words::cloud::ApiException(400, L"Property IsOldValueRegex in ReplaceTextParameters is required.");
+        }
+
+        if (this->m_NewValue == nullptr)
+        {
+            throw aspose::words::cloud::ApiException(400, L"Property NewValue in ReplaceTextParameters is required.");
+        }
+
+        if (this->m_OldValue == nullptr)
+        {
+            throw aspose::words::cloud::ApiException(400, L"Property OldValue in ReplaceTextParameters is required.");
+        }
+
     }
 
     std::shared_ptr< bool > ReplaceTextParameters::getIsMatchCase() const
@@ -18642,6 +20936,23 @@ namespace aspose::words::cloud::models {
     {
     }
 
+    void ReplaceTextResponse::validate()
+    {
+        WordsResponse::validate();
+        if (this->m_Matches == nullptr)
+        {
+            throw aspose::words::cloud::ApiException(400, L"Property Matches in ReplaceTextResponse is required.");
+        }
+
+
+        if (this->m_DocumentLink != nullptr)
+        {
+            this->m_DocumentLink->validate();
+        }
+
+
+    }
+
     std::shared_ptr< aspose::words::cloud::models::FileLink > ReplaceTextResponse::getDocumentLink() const
     {
         return this->m_DocumentLink;
@@ -18692,6 +21003,7 @@ namespace aspose::words::cloud::models {
         if (value == aspose::words::cloud::models::ReportBuildOptions::INLINE_ERROR_MESSAGES) return "InlineErrorMessages";
         if (value == aspose::words::cloud::models::ReportBuildOptions::USE_LEGACY_HEADER_FOOTER_VISITING) return "UseLegacyHeaderFooterVisiting";
         if (value == aspose::words::cloud::models::ReportBuildOptions::RESPECT_JPEG_EXIF_ORIENTATION) return "RespectJpegExifOrientation";
+        if (value == aspose::words::cloud::models::ReportBuildOptions::UPDATE_FIELDS_SYNTAX_AWARE) return "UpdateFieldsSyntaxAware";
         throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
     }
 
@@ -18703,6 +21015,7 @@ namespace aspose::words::cloud::models {
         if (value == "InlineErrorMessages") return aspose::words::cloud::models::ReportBuildOptions::INLINE_ERROR_MESSAGES;
         if (value == "UseLegacyHeaderFooterVisiting") return aspose::words::cloud::models::ReportBuildOptions::USE_LEGACY_HEADER_FOOTER_VISITING;
         if (value == "RespectJpegExifOrientation") return aspose::words::cloud::models::ReportBuildOptions::RESPECT_JPEG_EXIF_ORIENTATION;
+        if (value == "UpdateFieldsSyntaxAware") return aspose::words::cloud::models::ReportBuildOptions::UPDATE_FIELDS_SYNTAX_AWARE;
         throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
     }
     void ReportEngineSettings::toJson(void* jsonIfc) const
@@ -18763,6 +21076,38 @@ namespace aspose::words::cloud::models {
 
     void ReportEngineSettings::getFileReferences(std::vector< FileReference* >& result)
     {
+    }
+
+    void ReportEngineSettings::validate()
+    {
+        if (this->m_DataSourceType == nullptr)
+        {
+            throw aspose::words::cloud::ApiException(400, L"Property DataSourceType in ReportEngineSettings is required.");
+        }
+
+
+        if (this->m_CsvDataLoadOptions != nullptr)
+        {
+            this->m_CsvDataLoadOptions->validate();
+        }
+
+
+
+
+
+        if (this->m_JsonDataLoadOptions != nullptr)
+        {
+            this->m_JsonDataLoadOptions->validate();
+        }
+
+
+
+
+        if (this->m_XmlDataLoadOptions != nullptr)
+        {
+            this->m_XmlDataLoadOptions->validate();
+        }
+
     }
 
     std::shared_ptr< aspose::words::cloud::models::CsvDataLoadOptions > ReportEngineSettings::getCsvDataLoadOptions() const
@@ -18857,6 +21202,17 @@ namespace aspose::words::cloud::models {
     {
     }
 
+    void RevisionsModificationResponse::validate()
+    {
+        WordsResponse::validate();
+
+        if (this->m_Result != nullptr)
+        {
+            this->m_Result->validate();
+        }
+
+    }
+
     std::shared_ptr< aspose::words::cloud::models::ModificationOperationResult > RevisionsModificationResponse::getResult() const
     {
         return this->m_Result;
@@ -18928,6 +21284,11 @@ namespace aspose::words::cloud::models {
     {
     }
 
+    void RtfSaveOptionsData::validate()
+    {
+        SaveOptionsData::validate();
+    }
+
     std::shared_ptr< bool > RtfSaveOptionsData::getExportCompactSize() const
     {
         return this->m_ExportCompactSize;
@@ -18997,6 +21358,11 @@ namespace aspose::words::cloud::models {
     {
     }
 
+    void Run::validate()
+    {
+        RunLink::validate();
+    }
+
 
 
 
@@ -19023,6 +21389,15 @@ namespace aspose::words::cloud::models {
 
     void RunBase::getFileReferences(std::vector< FileReference* >& result)
     {
+    }
+
+    void RunBase::validate()
+    {
+        if (this->m_Text == nullptr)
+        {
+            throw aspose::words::cloud::ApiException(400, L"Property Text in RunBase is required.");
+        }
+
     }
 
     std::shared_ptr< std::wstring > RunBase::getText() const
@@ -19054,6 +21429,11 @@ namespace aspose::words::cloud::models {
     {
     }
 
+    void RunInsert::validate()
+    {
+        RunBase::validate();
+    }
+
 
 
 
@@ -19082,6 +21462,11 @@ namespace aspose::words::cloud::models {
 
     void RunLink::getFileReferences(std::vector< FileReference* >& result)
     {
+    }
+
+    void RunLink::validate()
+    {
+        NodeLink::validate();
     }
 
     std::shared_ptr< std::wstring > RunLink::getText() const
@@ -19119,6 +21504,17 @@ namespace aspose::words::cloud::models {
 
     void RunResponse::getFileReferences(std::vector< FileReference* >& result)
     {
+    }
+
+    void RunResponse::validate()
+    {
+        WordsResponse::validate();
+
+        if (this->m_Run != nullptr)
+        {
+            this->m_Run->validate();
+        }
+
     }
 
     std::shared_ptr< aspose::words::cloud::models::Run > RunResponse::getRun() const
@@ -19164,6 +21560,23 @@ namespace aspose::words::cloud::models {
     {
     }
 
+    void Runs::validate()
+    {
+        LinkElement::validate();
+
+        if (this->m_List != nullptr)
+        {
+            for (auto& elementList : *(this->m_List))
+            {
+                if (elementList != nullptr)
+                {
+                    elementList->validate();
+                }
+            }
+        }
+
+    }
+
     std::shared_ptr< std::vector<std::shared_ptr<aspose::words::cloud::models::Run>> > Runs::getList() const
     {
         return this->m_List;
@@ -19201,6 +21614,17 @@ namespace aspose::words::cloud::models {
     {
     }
 
+    void RunsResponse::validate()
+    {
+        WordsResponse::validate();
+
+        if (this->m_Runs != nullptr)
+        {
+            this->m_Runs->validate();
+        }
+
+    }
+
     std::shared_ptr< aspose::words::cloud::models::Runs > RunsResponse::getRuns() const
     {
         return this->m_Runs;
@@ -19228,6 +21652,11 @@ namespace aspose::words::cloud::models {
 
     void RunUpdate::getFileReferences(std::vector< FileReference* >& result)
     {
+    }
+
+    void RunUpdate::validate()
+    {
+        RunBase::validate();
     }
 
 
@@ -19409,6 +21838,32 @@ namespace aspose::words::cloud::models {
     {
     }
 
+    void SaveOptionsData::validate()
+    {
+        if (this->m_FileName == nullptr)
+        {
+            throw aspose::words::cloud::ApiException(400, L"Property FileName in SaveOptionsData is required.");
+        }
+
+
+        if (this->m_CustomTimeZoneInfoData != nullptr)
+        {
+            this->m_CustomTimeZoneInfoData->validate();
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+    }
+
     std::shared_ptr< bool > SaveOptionsData::getAllowEmbeddingPostScriptFonts() const
     {
         return this->m_AllowEmbeddingPostScriptFonts;
@@ -19574,6 +22029,17 @@ namespace aspose::words::cloud::models {
     {
     }
 
+    void SaveResponse::validate()
+    {
+        WordsResponse::validate();
+
+        if (this->m_SaveResult != nullptr)
+        {
+            this->m_SaveResult->validate();
+        }
+
+    }
+
     std::shared_ptr< aspose::words::cloud::models::SaveResult > SaveResponse::getSaveResult() const
     {
         return this->m_SaveResult;
@@ -19625,6 +22091,36 @@ namespace aspose::words::cloud::models {
 
     void SaveResult::getFileReferences(std::vector< FileReference* >& result)
     {
+    }
+
+    void SaveResult::validate()
+    {
+
+        if (this->m_DestDocument != nullptr)
+        {
+            this->m_DestDocument->validate();
+        }
+
+
+
+        if (this->m_SourceDocument != nullptr)
+        {
+            this->m_SourceDocument->validate();
+        }
+
+
+
+        if (this->m_AdditionalItems != nullptr)
+        {
+            for (auto& elementAdditionalItems : *(this->m_AdditionalItems))
+            {
+                if (elementAdditionalItems != nullptr)
+                {
+                    elementAdditionalItems->validate();
+                }
+            }
+        }
+
     }
 
     std::shared_ptr< aspose::words::cloud::models::FileLink > SaveResult::getDestDocument() const
@@ -19694,6 +22190,17 @@ namespace aspose::words::cloud::models {
     {
     }
 
+    void SearchResponse::validate()
+    {
+        WordsResponse::validate();
+
+        if (this->m_SearchResults != nullptr)
+        {
+            this->m_SearchResults->validate();
+        }
+
+    }
+
     std::shared_ptr< std::wstring > SearchResponse::getSearchingPattern() const
     {
         return this->m_SearchingPattern;
@@ -19744,6 +22251,23 @@ namespace aspose::words::cloud::models {
 
     void SearchResult::getFileReferences(std::vector< FileReference* >& result)
     {
+    }
+
+    void SearchResult::validate()
+    {
+
+        if (this->m_RangeStart != nullptr)
+        {
+            this->m_RangeStart->validate();
+        }
+
+
+
+        if (this->m_RangeEnd != nullptr)
+        {
+            this->m_RangeEnd->validate();
+        }
+
     }
 
     std::shared_ptr< aspose::words::cloud::models::DocumentPosition > SearchResult::getRangeStart() const
@@ -19798,6 +22322,23 @@ namespace aspose::words::cloud::models {
 
     void SearchResultsCollection::getFileReferences(std::vector< FileReference* >& result)
     {
+    }
+
+    void SearchResultsCollection::validate()
+    {
+        LinkElement::validate();
+
+        if (this->m_ResultsList != nullptr)
+        {
+            for (auto& elementResultsList : *(this->m_ResultsList))
+            {
+                if (elementResultsList != nullptr)
+                {
+                    elementResultsList->validate();
+                }
+            }
+        }
+
     }
 
     std::shared_ptr< std::vector<std::shared_ptr<aspose::words::cloud::models::SearchResult>> > SearchResultsCollection::getResultsList() const
@@ -19865,6 +22406,51 @@ namespace aspose::words::cloud::models {
 
     void Section::getFileReferences(std::vector< FileReference* >& result)
     {
+    }
+
+    void Section::validate()
+    {
+        LinkElement::validate();
+
+        if (this->m_ChildNodes != nullptr)
+        {
+            for (auto& elementChildNodes : *(this->m_ChildNodes))
+            {
+                if (elementChildNodes != nullptr)
+                {
+                    elementChildNodes->validate();
+                }
+            }
+        }
+
+
+
+        if (this->m_Paragraphs != nullptr)
+        {
+            this->m_Paragraphs->validate();
+        }
+
+
+
+        if (this->m_PageSetup != nullptr)
+        {
+            this->m_PageSetup->validate();
+        }
+
+
+
+        if (this->m_HeaderFooters != nullptr)
+        {
+            this->m_HeaderFooters->validate();
+        }
+
+
+
+        if (this->m_Tables != nullptr)
+        {
+            this->m_Tables->validate();
+        }
+
     }
 
     std::shared_ptr< std::vector<std::shared_ptr<aspose::words::cloud::models::NodeLink>> > Section::getChildNodes() const
@@ -19940,6 +22526,11 @@ namespace aspose::words::cloud::models {
     {
     }
 
+    void SectionLink::validate()
+    {
+        NodeLink::validate();
+    }
+
 
 
 
@@ -19972,6 +22563,23 @@ namespace aspose::words::cloud::models {
 
     void SectionLinkCollection::getFileReferences(std::vector< FileReference* >& result)
     {
+    }
+
+    void SectionLinkCollection::validate()
+    {
+        LinkElement::validate();
+
+        if (this->m_SectionLinkList != nullptr)
+        {
+            for (auto& elementSectionLinkList : *(this->m_SectionLinkList))
+            {
+                if (elementSectionLinkList != nullptr)
+                {
+                    elementSectionLinkList->validate();
+                }
+            }
+        }
+
     }
 
     std::shared_ptr< std::vector<std::shared_ptr<aspose::words::cloud::models::SectionLink>> > SectionLinkCollection::getSectionLinkList() const
@@ -20011,6 +22619,17 @@ namespace aspose::words::cloud::models {
     {
     }
 
+    void SectionLinkCollectionResponse::validate()
+    {
+        WordsResponse::validate();
+
+        if (this->m_Sections != nullptr)
+        {
+            this->m_Sections->validate();
+        }
+
+    }
+
     std::shared_ptr< aspose::words::cloud::models::SectionLinkCollection > SectionLinkCollectionResponse::getSections() const
     {
         return this->m_Sections;
@@ -20048,6 +22667,17 @@ namespace aspose::words::cloud::models {
     {
     }
 
+    void SectionPageSetupResponse::validate()
+    {
+        WordsResponse::validate();
+
+        if (this->m_PageSetup != nullptr)
+        {
+            this->m_PageSetup->validate();
+        }
+
+    }
+
     std::shared_ptr< aspose::words::cloud::models::PageSetup > SectionPageSetupResponse::getPageSetup() const
     {
         return this->m_PageSetup;
@@ -20083,6 +22713,17 @@ namespace aspose::words::cloud::models {
 
     void SectionResponse::getFileReferences(std::vector< FileReference* >& result)
     {
+    }
+
+    void SectionResponse::validate()
+    {
+        WordsResponse::validate();
+
+        if (this->m_Section != nullptr)
+        {
+            this->m_Section->validate();
+        }
+
     }
 
     std::shared_ptr< aspose::words::cloud::models::Section > SectionResponse::getSection() const
@@ -20251,6 +22892,24 @@ namespace aspose::words::cloud::models {
     {
     }
 
+    void Shading::validate()
+    {
+
+        if (this->m_BackgroundPatternColor != nullptr)
+        {
+            this->m_BackgroundPatternColor->validate();
+        }
+
+
+
+        if (this->m_ForegroundPatternColor != nullptr)
+        {
+            this->m_ForegroundPatternColor->validate();
+        }
+
+
+    }
+
     std::shared_ptr< aspose::words::cloud::models::XmlColor > Shading::getBackgroundPatternColor() const
     {
         return this->m_BackgroundPatternColor;
@@ -20310,6 +22969,17 @@ namespace aspose::words::cloud::models {
     {
     }
 
+    void SplitDocumentResponse::validate()
+    {
+        WordsResponse::validate();
+
+        if (this->m_SplitResult != nullptr)
+        {
+            this->m_SplitResult->validate();
+        }
+
+    }
+
     std::shared_ptr< aspose::words::cloud::models::SplitDocumentResult > SplitDocumentResponse::getSplitResult() const
     {
         return this->m_SplitResult;
@@ -20361,6 +23031,36 @@ namespace aspose::words::cloud::models {
 
     void SplitDocumentResult::getFileReferences(std::vector< FileReference* >& result)
     {
+    }
+
+    void SplitDocumentResult::validate()
+    {
+
+        if (this->m_SourceDocument != nullptr)
+        {
+            this->m_SourceDocument->validate();
+        }
+
+
+
+        if (this->m_ZippedPages != nullptr)
+        {
+            this->m_ZippedPages->validate();
+        }
+
+
+
+        if (this->m_Pages != nullptr)
+        {
+            for (auto& elementPages : *(this->m_Pages))
+            {
+                if (elementPages != nullptr)
+                {
+                    elementPages->validate();
+                }
+            }
+        }
+
     }
 
     std::shared_ptr< aspose::words::cloud::models::FileLink > SplitDocumentResult::getSourceDocument() const
@@ -20426,6 +23126,24 @@ namespace aspose::words::cloud::models {
 
     void StatDataResponse::getFileReferences(std::vector< FileReference* >& result)
     {
+    }
+
+    void StatDataResponse::validate()
+    {
+        WordsResponse::validate();
+
+        if (this->m_DocumentLink != nullptr)
+        {
+            this->m_DocumentLink->validate();
+        }
+
+
+
+        if (this->m_StatData != nullptr)
+        {
+            this->m_StatData->validate();
+        }
+
     }
 
     std::shared_ptr< aspose::words::cloud::models::FileLink > StatDataResponse::getDocumentLink() const
@@ -20506,6 +23224,20 @@ namespace aspose::words::cloud::models {
 
     void StorageFile::getFileReferences(std::vector< FileReference* >& result)
     {
+    }
+
+    void StorageFile::validate()
+    {
+        if (this->m_IsFolder == nullptr)
+        {
+            throw aspose::words::cloud::ApiException(400, L"Property IsFolder in StorageFile is required.");
+        }
+
+        if (this->m_Size == nullptr)
+        {
+            throw aspose::words::cloud::ApiException(400, L"Property Size in StorageFile is required.");
+        }
+
     }
 
     std::shared_ptr< bool > StorageFile::getIsFolder() const
@@ -20593,6 +23325,22 @@ namespace aspose::words::cloud::models {
     {
     }
 
+    void StoryChildNodes::validate()
+    {
+
+        if (this->m_ChildNodes != nullptr)
+        {
+            for (auto& elementChildNodes : *(this->m_ChildNodes))
+            {
+                if (elementChildNodes != nullptr)
+                {
+                    elementChildNodes->validate();
+                }
+            }
+        }
+
+    }
+
     std::shared_ptr< std::vector<std::shared_ptr<aspose::words::cloud::models::NodeLink>> > StoryChildNodes::getChildNodes() const
     {
         return this->m_ChildNodes;
@@ -20608,82 +23356,6 @@ namespace aspose::words::cloud::models {
     /*
      * StructuredDocumentTag implementation
      */
-    inline std::string structuredDocumentTagAppearanceToString(aspose::words::cloud::models::StructuredDocumentTag::Appearance value)
-    {
-        if (value == aspose::words::cloud::models::StructuredDocumentTag::Appearance::DEFAULT) return "Default";
-        if (value == aspose::words::cloud::models::StructuredDocumentTag::Appearance::BOUNDING_BOX) return "BoundingBox";
-        if (value == aspose::words::cloud::models::StructuredDocumentTag::Appearance::TAGS) return "Tags";
-        if (value == aspose::words::cloud::models::StructuredDocumentTag::Appearance::HIDDEN) return "Hidden";
-        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
-    }
-
-    inline aspose::words::cloud::models::StructuredDocumentTag::Appearance structuredDocumentTagAppearanceFromString(const std::string& value)
-    {
-        if (value == "Default") return aspose::words::cloud::models::StructuredDocumentTag::Appearance::DEFAULT;
-        if (value == "BoundingBox") return aspose::words::cloud::models::StructuredDocumentTag::Appearance::BOUNDING_BOX;
-        if (value == "Tags") return aspose::words::cloud::models::StructuredDocumentTag::Appearance::TAGS;
-        if (value == "Hidden") return aspose::words::cloud::models::StructuredDocumentTag::Appearance::HIDDEN;
-        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
-    }
-
-    inline std::string structuredDocumentTagDateStorageFormatToString(aspose::words::cloud::models::StructuredDocumentTag::DateStorageFormat value)
-    {
-        if (value == aspose::words::cloud::models::StructuredDocumentTag::DateStorageFormat::DATE) return "Date";
-        if (value == aspose::words::cloud::models::StructuredDocumentTag::DateStorageFormat::DATE_TIME) return "DateTime";
-        if (value == aspose::words::cloud::models::StructuredDocumentTag::DateStorageFormat::DEFAULT) return "Default";
-        if (value == aspose::words::cloud::models::StructuredDocumentTag::DateStorageFormat::TEXT) return "Text";
-        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
-    }
-
-    inline aspose::words::cloud::models::StructuredDocumentTag::DateStorageFormat structuredDocumentTagDateStorageFormatFromString(const std::string& value)
-    {
-        if (value == "Date") return aspose::words::cloud::models::StructuredDocumentTag::DateStorageFormat::DATE;
-        if (value == "DateTime") return aspose::words::cloud::models::StructuredDocumentTag::DateStorageFormat::DATE_TIME;
-        if (value == "Default") return aspose::words::cloud::models::StructuredDocumentTag::DateStorageFormat::DEFAULT;
-        if (value == "Text") return aspose::words::cloud::models::StructuredDocumentTag::DateStorageFormat::TEXT;
-        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
-    }
-
-    inline std::string structuredDocumentTagCalendarTypeToString(aspose::words::cloud::models::StructuredDocumentTag::CalendarType value)
-    {
-        if (value == aspose::words::cloud::models::StructuredDocumentTag::CalendarType::DEFAULT) return "Default";
-        if (value == aspose::words::cloud::models::StructuredDocumentTag::CalendarType::GREGORIAN) return "Gregorian";
-        if (value == aspose::words::cloud::models::StructuredDocumentTag::CalendarType::GREGORIAN_ARABIC) return "GregorianArabic";
-        if (value == aspose::words::cloud::models::StructuredDocumentTag::CalendarType::GREGORIAN_ME_FRENCH) return "GregorianMeFrench";
-        if (value == aspose::words::cloud::models::StructuredDocumentTag::CalendarType::GREGORIAN_US) return "GregorianUs";
-        if (value == aspose::words::cloud::models::StructuredDocumentTag::CalendarType::GREGORIAN_XLIT_ENGLISH) return "GregorianXlitEnglish";
-        if (value == aspose::words::cloud::models::StructuredDocumentTag::CalendarType::GREGORIAN_XLIT_FRENCH) return "GregorianXlitFrench";
-        if (value == aspose::words::cloud::models::StructuredDocumentTag::CalendarType::HEBREW) return "Hebrew";
-        if (value == aspose::words::cloud::models::StructuredDocumentTag::CalendarType::HIJRI) return "Hijri";
-        if (value == aspose::words::cloud::models::StructuredDocumentTag::CalendarType::JAPAN) return "Japan";
-        if (value == aspose::words::cloud::models::StructuredDocumentTag::CalendarType::KOREA) return "Korea";
-        if (value == aspose::words::cloud::models::StructuredDocumentTag::CalendarType::NONE) return "None";
-        if (value == aspose::words::cloud::models::StructuredDocumentTag::CalendarType::SAKA) return "Saka";
-        if (value == aspose::words::cloud::models::StructuredDocumentTag::CalendarType::TAIWAN) return "Taiwan";
-        if (value == aspose::words::cloud::models::StructuredDocumentTag::CalendarType::THAI) return "Thai";
-        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
-    }
-
-    inline aspose::words::cloud::models::StructuredDocumentTag::CalendarType structuredDocumentTagCalendarTypeFromString(const std::string& value)
-    {
-        if (value == "Default") return aspose::words::cloud::models::StructuredDocumentTag::CalendarType::DEFAULT;
-        if (value == "Gregorian") return aspose::words::cloud::models::StructuredDocumentTag::CalendarType::GREGORIAN;
-        if (value == "GregorianArabic") return aspose::words::cloud::models::StructuredDocumentTag::CalendarType::GREGORIAN_ARABIC;
-        if (value == "GregorianMeFrench") return aspose::words::cloud::models::StructuredDocumentTag::CalendarType::GREGORIAN_ME_FRENCH;
-        if (value == "GregorianUs") return aspose::words::cloud::models::StructuredDocumentTag::CalendarType::GREGORIAN_US;
-        if (value == "GregorianXlitEnglish") return aspose::words::cloud::models::StructuredDocumentTag::CalendarType::GREGORIAN_XLIT_ENGLISH;
-        if (value == "GregorianXlitFrench") return aspose::words::cloud::models::StructuredDocumentTag::CalendarType::GREGORIAN_XLIT_FRENCH;
-        if (value == "Hebrew") return aspose::words::cloud::models::StructuredDocumentTag::CalendarType::HEBREW;
-        if (value == "Hijri") return aspose::words::cloud::models::StructuredDocumentTag::CalendarType::HIJRI;
-        if (value == "Japan") return aspose::words::cloud::models::StructuredDocumentTag::CalendarType::JAPAN;
-        if (value == "Korea") return aspose::words::cloud::models::StructuredDocumentTag::CalendarType::KOREA;
-        if (value == "None") return aspose::words::cloud::models::StructuredDocumentTag::CalendarType::NONE;
-        if (value == "Saka") return aspose::words::cloud::models::StructuredDocumentTag::CalendarType::SAKA;
-        if (value == "Taiwan") return aspose::words::cloud::models::StructuredDocumentTag::CalendarType::TAIWAN;
-        if (value == "Thai") return aspose::words::cloud::models::StructuredDocumentTag::CalendarType::THAI;
-        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
-    }
-
     inline std::string structuredDocumentTagLevelToString(aspose::words::cloud::models::StructuredDocumentTag::Level value)
     {
         if (value == aspose::words::cloud::models::StructuredDocumentTag::Level::UNKNOWN) return "Unknown";
@@ -20749,6 +23421,144 @@ namespace aspose::words::cloud::models {
     }
     void StructuredDocumentTag::toJson(void* jsonIfc) const
     {
+        StructuredDocumentTagBase::toJson(jsonIfc);
+        ::nlohmann::json& json = *((::nlohmann::json*)jsonIfc);
+        if (this->m_Level) {
+            json["Level"] = structuredDocumentTagLevelToString(*(this->m_Level));
+        }
+        if (this->m_SdtType) {
+            json["SdtType"] = structuredDocumentTagSdtTypeToString(*(this->m_SdtType));
+        }
+    }
+
+    void StructuredDocumentTag::fromJson(const void* jsonIfc)
+    {
+        StructuredDocumentTagBase::fromJson(jsonIfc);
+        ::nlohmann::json& json = *((::nlohmann::json*)jsonIfc);
+        if (json.contains("Level") && !json["Level"].is_null()) {
+            this->m_Level = std::make_shared< aspose::words::cloud::models::StructuredDocumentTag::Level >(
+                structuredDocumentTagLevelFromString(json["Level"].get< std::string >())
+            );
+        }
+        if (json.contains("SdtType") && !json["SdtType"].is_null()) {
+            this->m_SdtType = std::make_shared< aspose::words::cloud::models::StructuredDocumentTag::SdtType >(
+                structuredDocumentTagSdtTypeFromString(json["SdtType"].get< std::string >())
+            );
+        }
+    }
+
+    void StructuredDocumentTag::getFileReferences(std::vector< FileReference* >& result)
+    {
+    }
+
+    void StructuredDocumentTag::validate()
+    {
+        StructuredDocumentTagBase::validate();
+    }
+
+    std::shared_ptr< aspose::words::cloud::models::StructuredDocumentTag::Level > StructuredDocumentTag::getLevel() const
+    {
+        return this->m_Level;
+    }
+
+    void StructuredDocumentTag::setLevel(std::shared_ptr< aspose::words::cloud::models::StructuredDocumentTag::Level > value)
+    {
+        this->m_Level = value;
+    }
+
+
+    std::shared_ptr< aspose::words::cloud::models::StructuredDocumentTag::SdtType > StructuredDocumentTag::getSdtType() const
+    {
+        return this->m_SdtType;
+    }
+
+    void StructuredDocumentTag::setSdtType(std::shared_ptr< aspose::words::cloud::models::StructuredDocumentTag::SdtType > value)
+    {
+        this->m_SdtType = value;
+    }
+
+
+
+    /*
+     * StructuredDocumentTagBase implementation
+     */
+    inline std::string structuredDocumentTagBaseAppearanceToString(aspose::words::cloud::models::StructuredDocumentTagBase::Appearance value)
+    {
+        if (value == aspose::words::cloud::models::StructuredDocumentTagBase::Appearance::DEFAULT) return "Default";
+        if (value == aspose::words::cloud::models::StructuredDocumentTagBase::Appearance::BOUNDING_BOX) return "BoundingBox";
+        if (value == aspose::words::cloud::models::StructuredDocumentTagBase::Appearance::TAGS) return "Tags";
+        if (value == aspose::words::cloud::models::StructuredDocumentTagBase::Appearance::HIDDEN) return "Hidden";
+        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
+    }
+
+    inline aspose::words::cloud::models::StructuredDocumentTagBase::Appearance structuredDocumentTagBaseAppearanceFromString(const std::string& value)
+    {
+        if (value == "Default") return aspose::words::cloud::models::StructuredDocumentTagBase::Appearance::DEFAULT;
+        if (value == "BoundingBox") return aspose::words::cloud::models::StructuredDocumentTagBase::Appearance::BOUNDING_BOX;
+        if (value == "Tags") return aspose::words::cloud::models::StructuredDocumentTagBase::Appearance::TAGS;
+        if (value == "Hidden") return aspose::words::cloud::models::StructuredDocumentTagBase::Appearance::HIDDEN;
+        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
+    }
+
+    inline std::string structuredDocumentTagBaseDateStorageFormatToString(aspose::words::cloud::models::StructuredDocumentTagBase::DateStorageFormat value)
+    {
+        if (value == aspose::words::cloud::models::StructuredDocumentTagBase::DateStorageFormat::DATE) return "Date";
+        if (value == aspose::words::cloud::models::StructuredDocumentTagBase::DateStorageFormat::DATE_TIME) return "DateTime";
+        if (value == aspose::words::cloud::models::StructuredDocumentTagBase::DateStorageFormat::DEFAULT) return "Default";
+        if (value == aspose::words::cloud::models::StructuredDocumentTagBase::DateStorageFormat::TEXT) return "Text";
+        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
+    }
+
+    inline aspose::words::cloud::models::StructuredDocumentTagBase::DateStorageFormat structuredDocumentTagBaseDateStorageFormatFromString(const std::string& value)
+    {
+        if (value == "Date") return aspose::words::cloud::models::StructuredDocumentTagBase::DateStorageFormat::DATE;
+        if (value == "DateTime") return aspose::words::cloud::models::StructuredDocumentTagBase::DateStorageFormat::DATE_TIME;
+        if (value == "Default") return aspose::words::cloud::models::StructuredDocumentTagBase::DateStorageFormat::DEFAULT;
+        if (value == "Text") return aspose::words::cloud::models::StructuredDocumentTagBase::DateStorageFormat::TEXT;
+        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
+    }
+
+    inline std::string structuredDocumentTagBaseCalendarTypeToString(aspose::words::cloud::models::StructuredDocumentTagBase::CalendarType value)
+    {
+        if (value == aspose::words::cloud::models::StructuredDocumentTagBase::CalendarType::DEFAULT) return "Default";
+        if (value == aspose::words::cloud::models::StructuredDocumentTagBase::CalendarType::GREGORIAN) return "Gregorian";
+        if (value == aspose::words::cloud::models::StructuredDocumentTagBase::CalendarType::GREGORIAN_ARABIC) return "GregorianArabic";
+        if (value == aspose::words::cloud::models::StructuredDocumentTagBase::CalendarType::GREGORIAN_ME_FRENCH) return "GregorianMeFrench";
+        if (value == aspose::words::cloud::models::StructuredDocumentTagBase::CalendarType::GREGORIAN_US) return "GregorianUs";
+        if (value == aspose::words::cloud::models::StructuredDocumentTagBase::CalendarType::GREGORIAN_XLIT_ENGLISH) return "GregorianXlitEnglish";
+        if (value == aspose::words::cloud::models::StructuredDocumentTagBase::CalendarType::GREGORIAN_XLIT_FRENCH) return "GregorianXlitFrench";
+        if (value == aspose::words::cloud::models::StructuredDocumentTagBase::CalendarType::HEBREW) return "Hebrew";
+        if (value == aspose::words::cloud::models::StructuredDocumentTagBase::CalendarType::HIJRI) return "Hijri";
+        if (value == aspose::words::cloud::models::StructuredDocumentTagBase::CalendarType::JAPAN) return "Japan";
+        if (value == aspose::words::cloud::models::StructuredDocumentTagBase::CalendarType::KOREA) return "Korea";
+        if (value == aspose::words::cloud::models::StructuredDocumentTagBase::CalendarType::NONE) return "None";
+        if (value == aspose::words::cloud::models::StructuredDocumentTagBase::CalendarType::SAKA) return "Saka";
+        if (value == aspose::words::cloud::models::StructuredDocumentTagBase::CalendarType::TAIWAN) return "Taiwan";
+        if (value == aspose::words::cloud::models::StructuredDocumentTagBase::CalendarType::THAI) return "Thai";
+        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
+    }
+
+    inline aspose::words::cloud::models::StructuredDocumentTagBase::CalendarType structuredDocumentTagBaseCalendarTypeFromString(const std::string& value)
+    {
+        if (value == "Default") return aspose::words::cloud::models::StructuredDocumentTagBase::CalendarType::DEFAULT;
+        if (value == "Gregorian") return aspose::words::cloud::models::StructuredDocumentTagBase::CalendarType::GREGORIAN;
+        if (value == "GregorianArabic") return aspose::words::cloud::models::StructuredDocumentTagBase::CalendarType::GREGORIAN_ARABIC;
+        if (value == "GregorianMeFrench") return aspose::words::cloud::models::StructuredDocumentTagBase::CalendarType::GREGORIAN_ME_FRENCH;
+        if (value == "GregorianUs") return aspose::words::cloud::models::StructuredDocumentTagBase::CalendarType::GREGORIAN_US;
+        if (value == "GregorianXlitEnglish") return aspose::words::cloud::models::StructuredDocumentTagBase::CalendarType::GREGORIAN_XLIT_ENGLISH;
+        if (value == "GregorianXlitFrench") return aspose::words::cloud::models::StructuredDocumentTagBase::CalendarType::GREGORIAN_XLIT_FRENCH;
+        if (value == "Hebrew") return aspose::words::cloud::models::StructuredDocumentTagBase::CalendarType::HEBREW;
+        if (value == "Hijri") return aspose::words::cloud::models::StructuredDocumentTagBase::CalendarType::HIJRI;
+        if (value == "Japan") return aspose::words::cloud::models::StructuredDocumentTagBase::CalendarType::JAPAN;
+        if (value == "Korea") return aspose::words::cloud::models::StructuredDocumentTagBase::CalendarType::KOREA;
+        if (value == "None") return aspose::words::cloud::models::StructuredDocumentTagBase::CalendarType::NONE;
+        if (value == "Saka") return aspose::words::cloud::models::StructuredDocumentTagBase::CalendarType::SAKA;
+        if (value == "Taiwan") return aspose::words::cloud::models::StructuredDocumentTagBase::CalendarType::TAIWAN;
+        if (value == "Thai") return aspose::words::cloud::models::StructuredDocumentTagBase::CalendarType::THAI;
+        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
+    }
+    void StructuredDocumentTagBase::toJson(void* jsonIfc) const
+    {
         NodeLink::toJson(jsonIfc);
         ::nlohmann::json& json = *((::nlohmann::json*)jsonIfc);
         if (this->m_ListItems) {
@@ -20761,7 +23571,7 @@ namespace aspose::words::cloud::models {
             json["Checked"] = *(this->m_Checked);
         }
         if (this->m_Appearance) {
-            json["Appearance"] = structuredDocumentTagAppearanceToString(*(this->m_Appearance));
+            json["Appearance"] = structuredDocumentTagBaseAppearanceToString(*(this->m_Appearance));
         }
         if (this->m_DateDisplayLocale) {
             json["DateDisplayLocale"] = *(this->m_DateDisplayLocale);
@@ -20776,7 +23586,7 @@ namespace aspose::words::cloud::models {
             json["Title"] = convertUtf16(*(this->m_Title));
         }
         if (this->m_DateStorageFormat) {
-            json["DateStorageFormat"] = structuredDocumentTagDateStorageFormatToString(*(this->m_DateStorageFormat));
+            json["DateStorageFormat"] = structuredDocumentTagBaseDateStorageFormatToString(*(this->m_DateStorageFormat));
         }
         if (this->m_BuildingBlockGallery) {
             json["BuildingBlockGallery"] = convertUtf16(*(this->m_BuildingBlockGallery));
@@ -20794,16 +23604,10 @@ namespace aspose::words::cloud::models {
             json["StyleName"] = convertUtf16(*(this->m_StyleName));
         }
         if (this->m_CalendarType) {
-            json["CalendarType"] = structuredDocumentTagCalendarTypeToString(*(this->m_CalendarType));
+            json["CalendarType"] = structuredDocumentTagBaseCalendarTypeToString(*(this->m_CalendarType));
         }
         if (this->m_IsTemporary) {
             json["IsTemporary"] = *(this->m_IsTemporary);
-        }
-        if (this->m_Level) {
-            json["Level"] = structuredDocumentTagLevelToString(*(this->m_Level));
-        }
-        if (this->m_SdtType) {
-            json["SdtType"] = structuredDocumentTagSdtTypeToString(*(this->m_SdtType));
         }
         if (this->m_PlaceholderName) {
             json["PlaceholderName"] = convertUtf16(*(this->m_PlaceholderName));
@@ -20828,7 +23632,7 @@ namespace aspose::words::cloud::models {
         }
     }
 
-    void StructuredDocumentTag::fromJson(const void* jsonIfc)
+    void StructuredDocumentTagBase::fromJson(const void* jsonIfc)
     {
         NodeLink::fromJson(jsonIfc);
         ::nlohmann::json& json = *((::nlohmann::json*)jsonIfc);
@@ -20844,8 +23648,8 @@ namespace aspose::words::cloud::models {
             );
         }
         if (json.contains("Appearance") && !json["Appearance"].is_null()) {
-            this->m_Appearance = std::make_shared< aspose::words::cloud::models::StructuredDocumentTag::Appearance >(
-                structuredDocumentTagAppearanceFromString(json["Appearance"].get< std::string >())
+            this->m_Appearance = std::make_shared< aspose::words::cloud::models::StructuredDocumentTagBase::Appearance >(
+                structuredDocumentTagBaseAppearanceFromString(json["Appearance"].get< std::string >())
             );
         }
         if (json.contains("DateDisplayLocale") && !json["DateDisplayLocale"].is_null()) {
@@ -20869,8 +23673,8 @@ namespace aspose::words::cloud::models {
             );
         }
         if (json.contains("DateStorageFormat") && !json["DateStorageFormat"].is_null()) {
-            this->m_DateStorageFormat = std::make_shared< aspose::words::cloud::models::StructuredDocumentTag::DateStorageFormat >(
-                structuredDocumentTagDateStorageFormatFromString(json["DateStorageFormat"].get< std::string >())
+            this->m_DateStorageFormat = std::make_shared< aspose::words::cloud::models::StructuredDocumentTagBase::DateStorageFormat >(
+                structuredDocumentTagBaseDateStorageFormatFromString(json["DateStorageFormat"].get< std::string >())
             );
         }
         if (json.contains("BuildingBlockGallery") && !json["BuildingBlockGallery"].is_null()) {
@@ -20899,23 +23703,13 @@ namespace aspose::words::cloud::models {
             );
         }
         if (json.contains("CalendarType") && !json["CalendarType"].is_null()) {
-            this->m_CalendarType = std::make_shared< aspose::words::cloud::models::StructuredDocumentTag::CalendarType >(
-                structuredDocumentTagCalendarTypeFromString(json["CalendarType"].get< std::string >())
+            this->m_CalendarType = std::make_shared< aspose::words::cloud::models::StructuredDocumentTagBase::CalendarType >(
+                structuredDocumentTagBaseCalendarTypeFromString(json["CalendarType"].get< std::string >())
             );
         }
         if (json.contains("IsTemporary") && !json["IsTemporary"].is_null()) {
             this->m_IsTemporary = std::make_shared< bool >(
                 json["IsTemporary"].get< bool >()
-            );
-        }
-        if (json.contains("Level") && !json["Level"].is_null()) {
-            this->m_Level = std::make_shared< aspose::words::cloud::models::StructuredDocumentTag::Level >(
-                structuredDocumentTagLevelFromString(json["Level"].get< std::string >())
-            );
-        }
-        if (json.contains("SdtType") && !json["SdtType"].is_null()) {
-            this->m_SdtType = std::make_shared< aspose::words::cloud::models::StructuredDocumentTag::SdtType >(
-                structuredDocumentTagSdtTypeFromString(json["SdtType"].get< std::string >())
             );
         }
         if (json.contains("PlaceholderName") && !json["PlaceholderName"].is_null()) {
@@ -20955,264 +23749,280 @@ namespace aspose::words::cloud::models {
         }
     }
 
-    void StructuredDocumentTag::getFileReferences(std::vector< FileReference* >& result)
+    void StructuredDocumentTagBase::getFileReferences(std::vector< FileReference* >& result)
     {
     }
 
-    std::shared_ptr< std::vector<std::shared_ptr<aspose::words::cloud::models::StructuredDocumentTagListItem>> > StructuredDocumentTag::getListItems() const
+    void StructuredDocumentTagBase::validate()
+    {
+        NodeLink::validate();
+
+        if (this->m_ListItems != nullptr)
+        {
+            for (auto& elementListItems : *(this->m_ListItems))
+            {
+                if (elementListItems != nullptr)
+                {
+                    elementListItems->validate();
+                }
+            }
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    }
+
+    std::shared_ptr< std::vector<std::shared_ptr<aspose::words::cloud::models::StructuredDocumentTagListItem>> > StructuredDocumentTagBase::getListItems() const
     {
         return this->m_ListItems;
     }
 
-    void StructuredDocumentTag::setListItems(std::shared_ptr< std::vector<std::shared_ptr<aspose::words::cloud::models::StructuredDocumentTagListItem>> > value)
+    void StructuredDocumentTagBase::setListItems(std::shared_ptr< std::vector<std::shared_ptr<aspose::words::cloud::models::StructuredDocumentTagListItem>> > value)
     {
         this->m_ListItems = value;
     }
 
 
-    std::shared_ptr< bool > StructuredDocumentTag::getChecked() const
+    std::shared_ptr< bool > StructuredDocumentTagBase::getChecked() const
     {
         return this->m_Checked;
     }
 
-    void StructuredDocumentTag::setChecked(std::shared_ptr< bool > value)
+    void StructuredDocumentTagBase::setChecked(std::shared_ptr< bool > value)
     {
         this->m_Checked = value;
     }
 
 
-    std::shared_ptr< aspose::words::cloud::models::StructuredDocumentTag::Appearance > StructuredDocumentTag::getAppearance() const
+    std::shared_ptr< aspose::words::cloud::models::StructuredDocumentTagBase::Appearance > StructuredDocumentTagBase::getAppearance() const
     {
         return this->m_Appearance;
     }
 
-    void StructuredDocumentTag::setAppearance(std::shared_ptr< aspose::words::cloud::models::StructuredDocumentTag::Appearance > value)
+    void StructuredDocumentTagBase::setAppearance(std::shared_ptr< aspose::words::cloud::models::StructuredDocumentTagBase::Appearance > value)
     {
         this->m_Appearance = value;
     }
 
 
-    std::shared_ptr< int32_t > StructuredDocumentTag::getDateDisplayLocale() const
+    std::shared_ptr< int32_t > StructuredDocumentTagBase::getDateDisplayLocale() const
     {
         return this->m_DateDisplayLocale;
     }
 
-    void StructuredDocumentTag::setDateDisplayLocale(std::shared_ptr< int32_t > value)
+    void StructuredDocumentTagBase::setDateDisplayLocale(std::shared_ptr< int32_t > value)
     {
         this->m_DateDisplayLocale = value;
     }
 
 
-    std::shared_ptr< std::wstring > StructuredDocumentTag::getDateDisplayFormat() const
+    std::shared_ptr< std::wstring > StructuredDocumentTagBase::getDateDisplayFormat() const
     {
         return this->m_DateDisplayFormat;
     }
 
-    void StructuredDocumentTag::setDateDisplayFormat(std::shared_ptr< std::wstring > value)
+    void StructuredDocumentTagBase::setDateDisplayFormat(std::shared_ptr< std::wstring > value)
     {
         this->m_DateDisplayFormat = value;
     }
 
 
-    std::shared_ptr< std::wstring > StructuredDocumentTag::getFullDate() const
+    std::shared_ptr< std::wstring > StructuredDocumentTagBase::getFullDate() const
     {
         return this->m_FullDate;
     }
 
-    void StructuredDocumentTag::setFullDate(std::shared_ptr< std::wstring > value)
+    void StructuredDocumentTagBase::setFullDate(std::shared_ptr< std::wstring > value)
     {
         this->m_FullDate = value;
     }
 
 
-    std::shared_ptr< std::wstring > StructuredDocumentTag::getTitle() const
+    std::shared_ptr< std::wstring > StructuredDocumentTagBase::getTitle() const
     {
         return this->m_Title;
     }
 
-    void StructuredDocumentTag::setTitle(std::shared_ptr< std::wstring > value)
+    void StructuredDocumentTagBase::setTitle(std::shared_ptr< std::wstring > value)
     {
         this->m_Title = value;
     }
 
 
-    std::shared_ptr< aspose::words::cloud::models::StructuredDocumentTag::DateStorageFormat > StructuredDocumentTag::getDateStorageFormat() const
+    std::shared_ptr< aspose::words::cloud::models::StructuredDocumentTagBase::DateStorageFormat > StructuredDocumentTagBase::getDateStorageFormat() const
     {
         return this->m_DateStorageFormat;
     }
 
-    void StructuredDocumentTag::setDateStorageFormat(std::shared_ptr< aspose::words::cloud::models::StructuredDocumentTag::DateStorageFormat > value)
+    void StructuredDocumentTagBase::setDateStorageFormat(std::shared_ptr< aspose::words::cloud::models::StructuredDocumentTagBase::DateStorageFormat > value)
     {
         this->m_DateStorageFormat = value;
     }
 
 
-    std::shared_ptr< std::wstring > StructuredDocumentTag::getBuildingBlockGallery() const
+    std::shared_ptr< std::wstring > StructuredDocumentTagBase::getBuildingBlockGallery() const
     {
         return this->m_BuildingBlockGallery;
     }
 
-    void StructuredDocumentTag::setBuildingBlockGallery(std::shared_ptr< std::wstring > value)
+    void StructuredDocumentTagBase::setBuildingBlockGallery(std::shared_ptr< std::wstring > value)
     {
         this->m_BuildingBlockGallery = value;
     }
 
 
-    std::shared_ptr< std::wstring > StructuredDocumentTag::getBuildingBlockCategory() const
+    std::shared_ptr< std::wstring > StructuredDocumentTagBase::getBuildingBlockCategory() const
     {
         return this->m_BuildingBlockCategory;
     }
 
-    void StructuredDocumentTag::setBuildingBlockCategory(std::shared_ptr< std::wstring > value)
+    void StructuredDocumentTagBase::setBuildingBlockCategory(std::shared_ptr< std::wstring > value)
     {
         this->m_BuildingBlockCategory = value;
     }
 
 
-    std::shared_ptr< bool > StructuredDocumentTag::getMultiline() const
+    std::shared_ptr< bool > StructuredDocumentTagBase::getMultiline() const
     {
         return this->m_Multiline;
     }
 
-    void StructuredDocumentTag::setMultiline(std::shared_ptr< bool > value)
+    void StructuredDocumentTagBase::setMultiline(std::shared_ptr< bool > value)
     {
         this->m_Multiline = value;
     }
 
 
-    std::shared_ptr< std::wstring > StructuredDocumentTag::getColor() const
+    std::shared_ptr< std::wstring > StructuredDocumentTagBase::getColor() const
     {
         return this->m_Color;
     }
 
-    void StructuredDocumentTag::setColor(std::shared_ptr< std::wstring > value)
+    void StructuredDocumentTagBase::setColor(std::shared_ptr< std::wstring > value)
     {
         this->m_Color = value;
     }
 
 
-    std::shared_ptr< std::wstring > StructuredDocumentTag::getStyleName() const
+    std::shared_ptr< std::wstring > StructuredDocumentTagBase::getStyleName() const
     {
         return this->m_StyleName;
     }
 
-    void StructuredDocumentTag::setStyleName(std::shared_ptr< std::wstring > value)
+    void StructuredDocumentTagBase::setStyleName(std::shared_ptr< std::wstring > value)
     {
         this->m_StyleName = value;
     }
 
 
-    std::shared_ptr< aspose::words::cloud::models::StructuredDocumentTag::CalendarType > StructuredDocumentTag::getCalendarType() const
+    std::shared_ptr< aspose::words::cloud::models::StructuredDocumentTagBase::CalendarType > StructuredDocumentTagBase::getCalendarType() const
     {
         return this->m_CalendarType;
     }
 
-    void StructuredDocumentTag::setCalendarType(std::shared_ptr< aspose::words::cloud::models::StructuredDocumentTag::CalendarType > value)
+    void StructuredDocumentTagBase::setCalendarType(std::shared_ptr< aspose::words::cloud::models::StructuredDocumentTagBase::CalendarType > value)
     {
         this->m_CalendarType = value;
     }
 
 
-    std::shared_ptr< bool > StructuredDocumentTag::getIsTemporary() const
+    std::shared_ptr< bool > StructuredDocumentTagBase::getIsTemporary() const
     {
         return this->m_IsTemporary;
     }
 
-    void StructuredDocumentTag::setIsTemporary(std::shared_ptr< bool > value)
+    void StructuredDocumentTagBase::setIsTemporary(std::shared_ptr< bool > value)
     {
         this->m_IsTemporary = value;
     }
 
 
-    std::shared_ptr< aspose::words::cloud::models::StructuredDocumentTag::Level > StructuredDocumentTag::getLevel() const
-    {
-        return this->m_Level;
-    }
-
-    void StructuredDocumentTag::setLevel(std::shared_ptr< aspose::words::cloud::models::StructuredDocumentTag::Level > value)
-    {
-        this->m_Level = value;
-    }
-
-
-    std::shared_ptr< aspose::words::cloud::models::StructuredDocumentTag::SdtType > StructuredDocumentTag::getSdtType() const
-    {
-        return this->m_SdtType;
-    }
-
-    void StructuredDocumentTag::setSdtType(std::shared_ptr< aspose::words::cloud::models::StructuredDocumentTag::SdtType > value)
-    {
-        this->m_SdtType = value;
-    }
-
-
-    std::shared_ptr< std::wstring > StructuredDocumentTag::getPlaceholderName() const
+    std::shared_ptr< std::wstring > StructuredDocumentTagBase::getPlaceholderName() const
     {
         return this->m_PlaceholderName;
     }
 
-    void StructuredDocumentTag::setPlaceholderName(std::shared_ptr< std::wstring > value)
+    void StructuredDocumentTagBase::setPlaceholderName(std::shared_ptr< std::wstring > value)
     {
         this->m_PlaceholderName = value;
     }
 
 
-    std::shared_ptr< bool > StructuredDocumentTag::getLockContentControl() const
+    std::shared_ptr< bool > StructuredDocumentTagBase::getLockContentControl() const
     {
         return this->m_LockContentControl;
     }
 
-    void StructuredDocumentTag::setLockContentControl(std::shared_ptr< bool > value)
+    void StructuredDocumentTagBase::setLockContentControl(std::shared_ptr< bool > value)
     {
         this->m_LockContentControl = value;
     }
 
 
-    std::shared_ptr< bool > StructuredDocumentTag::getLockContents() const
+    std::shared_ptr< bool > StructuredDocumentTagBase::getLockContents() const
     {
         return this->m_LockContents;
     }
 
-    void StructuredDocumentTag::setLockContents(std::shared_ptr< bool > value)
+    void StructuredDocumentTagBase::setLockContents(std::shared_ptr< bool > value)
     {
         this->m_LockContents = value;
     }
 
 
-    std::shared_ptr< bool > StructuredDocumentTag::getIsShowingPlaceholderText() const
+    std::shared_ptr< bool > StructuredDocumentTagBase::getIsShowingPlaceholderText() const
     {
         return this->m_IsShowingPlaceholderText;
     }
 
-    void StructuredDocumentTag::setIsShowingPlaceholderText(std::shared_ptr< bool > value)
+    void StructuredDocumentTagBase::setIsShowingPlaceholderText(std::shared_ptr< bool > value)
     {
         this->m_IsShowingPlaceholderText = value;
     }
 
 
-    std::shared_ptr< std::wstring > StructuredDocumentTag::getTag() const
+    std::shared_ptr< std::wstring > StructuredDocumentTagBase::getTag() const
     {
         return this->m_Tag;
     }
 
-    void StructuredDocumentTag::setTag(std::shared_ptr< std::wstring > value)
+    void StructuredDocumentTagBase::setTag(std::shared_ptr< std::wstring > value)
     {
         this->m_Tag = value;
     }
 
 
-    std::shared_ptr< int32_t > StructuredDocumentTag::getId() const
+    std::shared_ptr< int32_t > StructuredDocumentTagBase::getId() const
     {
         return this->m_Id;
     }
 
-    void StructuredDocumentTag::setId(std::shared_ptr< int32_t > value)
+    void StructuredDocumentTagBase::setId(std::shared_ptr< int32_t > value)
     {
         this->m_Id = value;
     }
 
 
-    std::shared_ptr< std::wstring > StructuredDocumentTag::getWordOpenXML() const
+    std::shared_ptr< std::wstring > StructuredDocumentTagBase::getWordOpenXML() const
     {
         return this->m_WordOpenXML;
     }
@@ -21251,6 +24061,23 @@ namespace aspose::words::cloud::models {
     {
     }
 
+    void StructuredDocumentTagCollection::validate()
+    {
+        LinkElement::validate();
+
+        if (this->m_List != nullptr)
+        {
+            for (auto& elementList : *(this->m_List))
+            {
+                if (elementList != nullptr)
+                {
+                    elementList->validate();
+                }
+            }
+        }
+
+    }
+
     std::shared_ptr< std::vector<std::shared_ptr<aspose::words::cloud::models::StructuredDocumentTag>> > StructuredDocumentTagCollection::getList() const
     {
         return this->m_List;
@@ -21266,20 +24093,136 @@ namespace aspose::words::cloud::models {
     /*
      * StructuredDocumentTagInsert implementation
      */
+    inline std::string structuredDocumentTagInsertLevelToString(aspose::words::cloud::models::StructuredDocumentTagInsert::Level value)
+    {
+        if (value == aspose::words::cloud::models::StructuredDocumentTagInsert::Level::UNKNOWN) return "Unknown";
+        if (value == aspose::words::cloud::models::StructuredDocumentTagInsert::Level::INLINE) return "Inline";
+        if (value == aspose::words::cloud::models::StructuredDocumentTagInsert::Level::BLOCK) return "Block";
+        if (value == aspose::words::cloud::models::StructuredDocumentTagInsert::Level::ROW) return "Row";
+        if (value == aspose::words::cloud::models::StructuredDocumentTagInsert::Level::CELL) return "Cell";
+        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
+    }
+
+    inline aspose::words::cloud::models::StructuredDocumentTagInsert::Level structuredDocumentTagInsertLevelFromString(const std::string& value)
+    {
+        if (value == "Unknown") return aspose::words::cloud::models::StructuredDocumentTagInsert::Level::UNKNOWN;
+        if (value == "Inline") return aspose::words::cloud::models::StructuredDocumentTagInsert::Level::INLINE;
+        if (value == "Block") return aspose::words::cloud::models::StructuredDocumentTagInsert::Level::BLOCK;
+        if (value == "Row") return aspose::words::cloud::models::StructuredDocumentTagInsert::Level::ROW;
+        if (value == "Cell") return aspose::words::cloud::models::StructuredDocumentTagInsert::Level::CELL;
+        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
+    }
+
+    inline std::string structuredDocumentTagInsertSdtTypeToString(aspose::words::cloud::models::StructuredDocumentTagInsert::SdtType value)
+    {
+        if (value == aspose::words::cloud::models::StructuredDocumentTagInsert::SdtType::NONE) return "None";
+        if (value == aspose::words::cloud::models::StructuredDocumentTagInsert::SdtType::BIBLIOGRAPHY) return "Bibliography";
+        if (value == aspose::words::cloud::models::StructuredDocumentTagInsert::SdtType::CITATION) return "Citation";
+        if (value == aspose::words::cloud::models::StructuredDocumentTagInsert::SdtType::EQUATION) return "Equation";
+        if (value == aspose::words::cloud::models::StructuredDocumentTagInsert::SdtType::DROP_DOWN_LIST) return "DropDownList";
+        if (value == aspose::words::cloud::models::StructuredDocumentTagInsert::SdtType::COMBO_BOX) return "ComboBox";
+        if (value == aspose::words::cloud::models::StructuredDocumentTagInsert::SdtType::DATE) return "Date";
+        if (value == aspose::words::cloud::models::StructuredDocumentTagInsert::SdtType::BUILDING_BLOCK_GALLERY) return "BuildingBlockGallery";
+        if (value == aspose::words::cloud::models::StructuredDocumentTagInsert::SdtType::DOC_PART_OBJ) return "DocPartObj";
+        if (value == aspose::words::cloud::models::StructuredDocumentTagInsert::SdtType::GROUP) return "Group";
+        if (value == aspose::words::cloud::models::StructuredDocumentTagInsert::SdtType::PICTURE) return "Picture";
+        if (value == aspose::words::cloud::models::StructuredDocumentTagInsert::SdtType::RICH_TEXT) return "RichText";
+        if (value == aspose::words::cloud::models::StructuredDocumentTagInsert::SdtType::PLAIN_TEXT) return "PlainText";
+        if (value == aspose::words::cloud::models::StructuredDocumentTagInsert::SdtType::CHECKBOX) return "Checkbox";
+        if (value == aspose::words::cloud::models::StructuredDocumentTagInsert::SdtType::REPEATING_SECTION) return "RepeatingSection";
+        if (value == aspose::words::cloud::models::StructuredDocumentTagInsert::SdtType::REPEATING_SECTION_ITEM) return "RepeatingSectionItem";
+        if (value == aspose::words::cloud::models::StructuredDocumentTagInsert::SdtType::ENTITY_PICKER) return "EntityPicker";
+        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
+    }
+
+    inline aspose::words::cloud::models::StructuredDocumentTagInsert::SdtType structuredDocumentTagInsertSdtTypeFromString(const std::string& value)
+    {
+        if (value == "None") return aspose::words::cloud::models::StructuredDocumentTagInsert::SdtType::NONE;
+        if (value == "Bibliography") return aspose::words::cloud::models::StructuredDocumentTagInsert::SdtType::BIBLIOGRAPHY;
+        if (value == "Citation") return aspose::words::cloud::models::StructuredDocumentTagInsert::SdtType::CITATION;
+        if (value == "Equation") return aspose::words::cloud::models::StructuredDocumentTagInsert::SdtType::EQUATION;
+        if (value == "DropDownList") return aspose::words::cloud::models::StructuredDocumentTagInsert::SdtType::DROP_DOWN_LIST;
+        if (value == "ComboBox") return aspose::words::cloud::models::StructuredDocumentTagInsert::SdtType::COMBO_BOX;
+        if (value == "Date") return aspose::words::cloud::models::StructuredDocumentTagInsert::SdtType::DATE;
+        if (value == "BuildingBlockGallery") return aspose::words::cloud::models::StructuredDocumentTagInsert::SdtType::BUILDING_BLOCK_GALLERY;
+        if (value == "DocPartObj") return aspose::words::cloud::models::StructuredDocumentTagInsert::SdtType::DOC_PART_OBJ;
+        if (value == "Group") return aspose::words::cloud::models::StructuredDocumentTagInsert::SdtType::GROUP;
+        if (value == "Picture") return aspose::words::cloud::models::StructuredDocumentTagInsert::SdtType::PICTURE;
+        if (value == "RichText") return aspose::words::cloud::models::StructuredDocumentTagInsert::SdtType::RICH_TEXT;
+        if (value == "PlainText") return aspose::words::cloud::models::StructuredDocumentTagInsert::SdtType::PLAIN_TEXT;
+        if (value == "Checkbox") return aspose::words::cloud::models::StructuredDocumentTagInsert::SdtType::CHECKBOX;
+        if (value == "RepeatingSection") return aspose::words::cloud::models::StructuredDocumentTagInsert::SdtType::REPEATING_SECTION;
+        if (value == "RepeatingSectionItem") return aspose::words::cloud::models::StructuredDocumentTagInsert::SdtType::REPEATING_SECTION_ITEM;
+        if (value == "EntityPicker") return aspose::words::cloud::models::StructuredDocumentTagInsert::SdtType::ENTITY_PICKER;
+        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
+    }
     void StructuredDocumentTagInsert::toJson(void* jsonIfc) const
     {
-        StructuredDocumentTag::toJson(jsonIfc);
+        StructuredDocumentTagBase::toJson(jsonIfc);
+        ::nlohmann::json& json = *((::nlohmann::json*)jsonIfc);
+        if (this->m_Level) {
+            json["Level"] = structuredDocumentTagInsertLevelToString(*(this->m_Level));
+        }
+        if (this->m_SdtType) {
+            json["SdtType"] = structuredDocumentTagInsertSdtTypeToString(*(this->m_SdtType));
+        }
     }
 
     void StructuredDocumentTagInsert::fromJson(const void* jsonIfc)
     {
-        StructuredDocumentTag::fromJson(jsonIfc);
+        StructuredDocumentTagBase::fromJson(jsonIfc);
+        ::nlohmann::json& json = *((::nlohmann::json*)jsonIfc);
+        if (json.contains("Level") && !json["Level"].is_null()) {
+            this->m_Level = std::make_shared< aspose::words::cloud::models::StructuredDocumentTagInsert::Level >(
+                structuredDocumentTagInsertLevelFromString(json["Level"].get< std::string >())
+            );
+        }
+        if (json.contains("SdtType") && !json["SdtType"].is_null()) {
+            this->m_SdtType = std::make_shared< aspose::words::cloud::models::StructuredDocumentTagInsert::SdtType >(
+                structuredDocumentTagInsertSdtTypeFromString(json["SdtType"].get< std::string >())
+            );
+        }
     }
 
     void StructuredDocumentTagInsert::getFileReferences(std::vector< FileReference* >& result)
     {
     }
 
+    void StructuredDocumentTagInsert::validate()
+    {
+        StructuredDocumentTagBase::validate();
+        if (this->m_Level == nullptr)
+        {
+            throw aspose::words::cloud::ApiException(400, L"Property Level in StructuredDocumentTagInsert is required.");
+        }
+
+        if (this->m_SdtType == nullptr)
+        {
+            throw aspose::words::cloud::ApiException(400, L"Property SdtType in StructuredDocumentTagInsert is required.");
+        }
+
+    }
+
+    std::shared_ptr< aspose::words::cloud::models::StructuredDocumentTagInsert::Level > StructuredDocumentTagInsert::getLevel() const
+    {
+        return this->m_Level;
+    }
+
+    void StructuredDocumentTagInsert::setLevel(std::shared_ptr< aspose::words::cloud::models::StructuredDocumentTagInsert::Level > value)
+    {
+        this->m_Level = value;
+    }
+
+
+    std::shared_ptr< aspose::words::cloud::models::StructuredDocumentTagInsert::SdtType > StructuredDocumentTagInsert::getSdtType() const
+    {
+        return this->m_SdtType;
+    }
+
+    void StructuredDocumentTagInsert::setSdtType(std::shared_ptr< aspose::words::cloud::models::StructuredDocumentTagInsert::SdtType > value)
+    {
+        this->m_SdtType = value;
+    }
 
 
 
@@ -21313,6 +24256,10 @@ namespace aspose::words::cloud::models {
     }
 
     void StructuredDocumentTagListItem::getFileReferences(std::vector< FileReference* >& result)
+    {
+    }
+
+    void StructuredDocumentTagListItem::validate()
     {
     }
 
@@ -21364,6 +24311,17 @@ namespace aspose::words::cloud::models {
     {
     }
 
+    void StructuredDocumentTagResponse::validate()
+    {
+        WordsResponse::validate();
+
+        if (this->m_StructuredDocumentTag != nullptr)
+        {
+            this->m_StructuredDocumentTag->validate();
+        }
+
+    }
+
     std::shared_ptr< aspose::words::cloud::models::StructuredDocumentTag > StructuredDocumentTagResponse::getStructuredDocumentTag() const
     {
         return this->m_StructuredDocumentTag;
@@ -21401,6 +24359,17 @@ namespace aspose::words::cloud::models {
     {
     }
 
+    void StructuredDocumentTagsResponse::validate()
+    {
+        WordsResponse::validate();
+
+        if (this->m_StructuredDocumentTags != nullptr)
+        {
+            this->m_StructuredDocumentTags->validate();
+        }
+
+    }
+
     std::shared_ptr< aspose::words::cloud::models::StructuredDocumentTagCollection > StructuredDocumentTagsResponse::getStructuredDocumentTags() const
     {
         return this->m_StructuredDocumentTags;
@@ -21428,6 +24397,11 @@ namespace aspose::words::cloud::models {
 
     void StructuredDocumentTagUpdate::getFileReferences(std::vector< FileReference* >& result)
     {
+    }
+
+    void StructuredDocumentTagUpdate::validate()
+    {
+        StructuredDocumentTag::validate();
     }
 
 
@@ -22325,6 +25299,52 @@ namespace aspose::words::cloud::models {
     {
     }
 
+    void Style::validate()
+    {
+        LinkElement::validate();
+        if (this->m_BuiltIn == nullptr)
+        {
+            throw aspose::words::cloud::ApiException(400, L"Property BuiltIn in Style is required.");
+        }
+
+        if (this->m_IsQuickStyle == nullptr)
+        {
+            throw aspose::words::cloud::ApiException(400, L"Property IsQuickStyle in Style is required.");
+        }
+
+        if (this->m_Type == nullptr)
+        {
+            throw aspose::words::cloud::ApiException(400, L"Property Type in Style is required.");
+        }
+
+        if (this->m_IsHeading == nullptr)
+        {
+            throw aspose::words::cloud::ApiException(400, L"Property IsHeading in Style is required.");
+        }
+
+        if (this->m_StyleIdentifier == nullptr)
+        {
+            throw aspose::words::cloud::ApiException(400, L"Property StyleIdentifier in Style is required.");
+        }
+
+
+        if (this->m_Font != nullptr)
+        {
+            this->m_Font->validate();
+        }
+
+
+
+
+
+
+
+
+
+
+
+    }
+
     std::shared_ptr< aspose::words::cloud::models::Font > Style::getFont() const
     {
         return this->m_Font;
@@ -22472,6 +25492,15 @@ namespace aspose::words::cloud::models {
     {
     }
 
+    void StyleApply::validate()
+    {
+        if (this->m_StyleName == nullptr)
+        {
+            throw aspose::words::cloud::ApiException(400, L"Property StyleName in StyleApply is required.");
+        }
+
+    }
+
     std::shared_ptr< std::wstring > StyleApply::getStyleName() const
     {
         return this->m_StyleName;
@@ -22507,6 +25536,15 @@ namespace aspose::words::cloud::models {
 
     void StyleCopy::getFileReferences(std::vector< FileReference* >& result)
     {
+    }
+
+    void StyleCopy::validate()
+    {
+        if (this->m_StyleName == nullptr)
+        {
+            throw aspose::words::cloud::ApiException(400, L"Property StyleName in StyleCopy is required.");
+        }
+
     }
 
     std::shared_ptr< std::wstring > StyleCopy::getStyleName() const
@@ -22571,6 +25609,20 @@ namespace aspose::words::cloud::models {
     {
     }
 
+    void StyleInsert::validate()
+    {
+        if (this->m_StyleName == nullptr)
+        {
+            throw aspose::words::cloud::ApiException(400, L"Property StyleName in StyleInsert is required.");
+        }
+
+        if (this->m_StyleType == nullptr)
+        {
+            throw aspose::words::cloud::ApiException(400, L"Property StyleType in StyleInsert is required.");
+        }
+
+    }
+
     std::shared_ptr< std::wstring > StyleInsert::getStyleName() const
     {
         return this->m_StyleName;
@@ -22619,6 +25671,17 @@ namespace aspose::words::cloud::models {
     {
     }
 
+    void StyleResponse::validate()
+    {
+        WordsResponse::validate();
+
+        if (this->m_Style != nullptr)
+        {
+            this->m_Style->validate();
+        }
+
+    }
+
     std::shared_ptr< aspose::words::cloud::models::Style > StyleResponse::getStyle() const
     {
         return this->m_Style;
@@ -22660,6 +25723,23 @@ namespace aspose::words::cloud::models {
 
     void StylesResponse::getFileReferences(std::vector< FileReference* >& result)
     {
+    }
+
+    void StylesResponse::validate()
+    {
+        WordsResponse::validate();
+
+        if (this->m_Styles != nullptr)
+        {
+            for (auto& elementStyles : *(this->m_Styles))
+            {
+                if (elementStyles != nullptr)
+                {
+                    elementStyles->validate();
+                }
+            }
+        }
+
     }
 
     std::shared_ptr< std::vector<std::shared_ptr<aspose::words::cloud::models::Style>> > StylesResponse::getStyles() const
@@ -22720,6 +25800,10 @@ namespace aspose::words::cloud::models {
     }
 
     void StyleUpdate::getFileReferences(std::vector< FileReference* >& result)
+    {
+    }
+
+    void StyleUpdate::validate()
     {
     }
 
@@ -22858,6 +25942,11 @@ namespace aspose::words::cloud::models {
     {
     }
 
+    void SvgSaveOptionsData::validate()
+    {
+        FixedPageSaveOptionsData::validate();
+    }
+
     std::shared_ptr< bool > SvgSaveOptionsData::getExportEmbeddedImages() const
     {
         return this->m_ExportEmbeddedImages;
@@ -22969,6 +26058,30 @@ namespace aspose::words::cloud::models {
     {
     }
 
+    void Table::validate()
+    {
+        NodeLink::validate();
+
+        if (this->m_TableRowList != nullptr)
+        {
+            for (auto& elementTableRowList : *(this->m_TableRowList))
+            {
+                if (elementTableRowList != nullptr)
+                {
+                    elementTableRowList->validate();
+                }
+            }
+        }
+
+
+
+        if (this->m_TableProperties != nullptr)
+        {
+            this->m_TableProperties->validate();
+        }
+
+    }
+
     std::shared_ptr< std::vector<std::shared_ptr<aspose::words::cloud::models::TableRow>> > Table::getTableRowList() const
     {
         return this->m_TableRowList;
@@ -23021,6 +26134,23 @@ namespace aspose::words::cloud::models {
 
     void TableCell::getFileReferences(std::vector< FileReference* >& result)
     {
+    }
+
+    void TableCell::validate()
+    {
+        NodeLink::validate();
+
+        if (this->m_ChildNodes != nullptr)
+        {
+            for (auto& elementChildNodes : *(this->m_ChildNodes))
+            {
+                if (elementChildNodes != nullptr)
+                {
+                    elementChildNodes->validate();
+                }
+            }
+        }
+
     }
 
     std::shared_ptr< std::vector<std::shared_ptr<aspose::words::cloud::models::NodeLink>> > TableCell::getChildNodes() const
@@ -23217,6 +26347,23 @@ namespace aspose::words::cloud::models {
     {
     }
 
+    void TableCellFormat::validate()
+    {
+        LinkElement::validate();
+
+        if (this->m_PreferredWidth != nullptr)
+        {
+            this->m_PreferredWidth->validate();
+        }
+
+
+
+
+
+
+
+    }
+
     std::shared_ptr< double > TableCellFormat::getBottomPadding() const
     {
         return this->m_BottomPadding;
@@ -23375,6 +26522,17 @@ namespace aspose::words::cloud::models {
     {
     }
 
+    void TableCellFormatResponse::validate()
+    {
+        WordsResponse::validate();
+
+        if (this->m_CellFormat != nullptr)
+        {
+            this->m_CellFormat->validate();
+        }
+
+    }
+
     std::shared_ptr< aspose::words::cloud::models::TableCellFormat > TableCellFormatResponse::getCellFormat() const
     {
         return this->m_CellFormat;
@@ -23409,6 +26567,10 @@ namespace aspose::words::cloud::models {
     }
 
     void TableCellInsert::getFileReferences(std::vector< FileReference* >& result)
+    {
+    }
+
+    void TableCellInsert::validate()
     {
     }
 
@@ -23447,6 +26609,17 @@ namespace aspose::words::cloud::models {
 
     void TableCellResponse::getFileReferences(std::vector< FileReference* >& result)
     {
+    }
+
+    void TableCellResponse::validate()
+    {
+        WordsResponse::validate();
+
+        if (this->m_Cell != nullptr)
+        {
+            this->m_Cell->validate();
+        }
+
     }
 
     std::shared_ptr< aspose::words::cloud::models::TableCell > TableCellResponse::getCell() const
@@ -23500,6 +26673,27 @@ namespace aspose::words::cloud::models {
     {
     }
 
+    void TableInsert::validate()
+    {
+        if (this->m_ColumnsCount == nullptr)
+        {
+            throw aspose::words::cloud::ApiException(400, L"Property ColumnsCount in TableInsert is required.");
+        }
+
+        if (this->m_RowsCount == nullptr)
+        {
+            throw aspose::words::cloud::ApiException(400, L"Property RowsCount in TableInsert is required.");
+        }
+
+
+        if (this->m_Position != nullptr)
+        {
+            this->m_Position->validate();
+        }
+
+
+    }
+
     std::shared_ptr< int32_t > TableInsert::getColumnsCount() const
     {
         return this->m_ColumnsCount;
@@ -23551,6 +26745,11 @@ namespace aspose::words::cloud::models {
     {
     }
 
+    void TableLink::validate()
+    {
+        NodeLink::validate();
+    }
+
 
 
 
@@ -23583,6 +26782,23 @@ namespace aspose::words::cloud::models {
 
     void TableLinkCollection::getFileReferences(std::vector< FileReference* >& result)
     {
+    }
+
+    void TableLinkCollection::validate()
+    {
+        LinkElement::validate();
+
+        if (this->m_TableLinkList != nullptr)
+        {
+            for (auto& elementTableLinkList : *(this->m_TableLinkList))
+            {
+                if (elementTableLinkList != nullptr)
+                {
+                    elementTableLinkList->validate();
+                }
+            }
+        }
+
     }
 
     std::shared_ptr< std::vector<std::shared_ptr<aspose::words::cloud::models::TableLink>> > TableLinkCollection::getTableLinkList() const
@@ -23620,6 +26836,17 @@ namespace aspose::words::cloud::models {
 
     void TableLinkCollectionResponse::getFileReferences(std::vector< FileReference* >& result)
     {
+    }
+
+    void TableLinkCollectionResponse::validate()
+    {
+        WordsResponse::validate();
+
+        if (this->m_Tables != nullptr)
+        {
+            this->m_Tables->validate();
+        }
+
     }
 
     std::shared_ptr< aspose::words::cloud::models::TableLinkCollection > TableLinkCollectionResponse::getTables() const
@@ -24588,6 +27815,23 @@ namespace aspose::words::cloud::models {
     {
     }
 
+    void TableProperties::validate()
+    {
+        LinkElement::validate();
+
+        if (this->m_PreferredWidth != nullptr)
+        {
+            this->m_PreferredWidth->validate();
+        }
+
+
+
+
+
+
+
+    }
+
     std::shared_ptr< aspose::words::cloud::models::TableProperties::Alignment > TableProperties::getAlignment() const
     {
         return this->m_Alignment;
@@ -24768,6 +28012,17 @@ namespace aspose::words::cloud::models {
     {
     }
 
+    void TablePropertiesResponse::validate()
+    {
+        WordsResponse::validate();
+
+        if (this->m_Properties != nullptr)
+        {
+            this->m_Properties->validate();
+        }
+
+    }
+
     std::shared_ptr< aspose::words::cloud::models::TableProperties > TablePropertiesResponse::getProperties() const
     {
         return this->m_Properties;
@@ -24803,6 +28058,17 @@ namespace aspose::words::cloud::models {
 
     void TableResponse::getFileReferences(std::vector< FileReference* >& result)
     {
+    }
+
+    void TableResponse::validate()
+    {
+        WordsResponse::validate();
+
+        if (this->m_Table != nullptr)
+        {
+            this->m_Table->validate();
+        }
+
     }
 
     std::shared_ptr< aspose::words::cloud::models::Table > TableResponse::getTable() const
@@ -24852,6 +28118,30 @@ namespace aspose::words::cloud::models {
 
     void TableRow::getFileReferences(std::vector< FileReference* >& result)
     {
+    }
+
+    void TableRow::validate()
+    {
+        NodeLink::validate();
+
+        if (this->m_TableCellList != nullptr)
+        {
+            for (auto& elementTableCellList : *(this->m_TableCellList))
+            {
+                if (elementTableCellList != nullptr)
+                {
+                    elementTableCellList->validate();
+                }
+            }
+        }
+
+
+
+        if (this->m_RowFormat != nullptr)
+        {
+            this->m_RowFormat->validate();
+        }
+
     }
 
     std::shared_ptr< std::vector<std::shared_ptr<aspose::words::cloud::models::TableCell>> > TableRow::getTableCellList() const
@@ -24943,6 +28233,11 @@ namespace aspose::words::cloud::models {
     {
     }
 
+    void TableRowFormat::validate()
+    {
+        LinkElement::validate();
+    }
+
     std::shared_ptr< double > TableRowFormat::getHeight() const
     {
         return this->m_Height;
@@ -25013,6 +28308,17 @@ namespace aspose::words::cloud::models {
     {
     }
 
+    void TableRowFormatResponse::validate()
+    {
+        WordsResponse::validate();
+
+        if (this->m_RowFormat != nullptr)
+        {
+            this->m_RowFormat->validate();
+        }
+
+    }
+
     std::shared_ptr< aspose::words::cloud::models::TableRowFormat > TableRowFormatResponse::getRowFormat() const
     {
         return this->m_RowFormat;
@@ -25056,6 +28362,15 @@ namespace aspose::words::cloud::models {
 
     void TableRowInsert::getFileReferences(std::vector< FileReference* >& result)
     {
+    }
+
+    void TableRowInsert::validate()
+    {
+        if (this->m_ColumnsCount == nullptr)
+        {
+            throw aspose::words::cloud::ApiException(400, L"Property ColumnsCount in TableRowInsert is required.");
+        }
+
     }
 
     std::shared_ptr< int32_t > TableRowInsert::getColumnsCount() const
@@ -25106,6 +28421,17 @@ namespace aspose::words::cloud::models {
     {
     }
 
+    void TableRowResponse::validate()
+    {
+        WordsResponse::validate();
+
+        if (this->m_Row != nullptr)
+        {
+            this->m_Row->validate();
+        }
+
+    }
+
     std::shared_ptr< aspose::words::cloud::models::TableRow > TableRowResponse::getRow() const
     {
         return this->m_Row;
@@ -25143,6 +28469,16 @@ namespace aspose::words::cloud::models {
 
     void TabStop::getFileReferences(std::vector< FileReference* >& result)
     {
+    }
+
+    void TabStop::validate()
+    {
+        TabStopBase::validate();
+        if (this->m_IsClear == nullptr)
+        {
+            throw aspose::words::cloud::ApiException(400, L"Property IsClear in TabStop is required.");
+        }
+
     }
 
     std::shared_ptr< bool > TabStop::getIsClear() const
@@ -25243,6 +28579,25 @@ namespace aspose::words::cloud::models {
     {
     }
 
+    void TabStopBase::validate()
+    {
+        if (this->m_Alignment == nullptr)
+        {
+            throw aspose::words::cloud::ApiException(400, L"Property Alignment in TabStopBase is required.");
+        }
+
+        if (this->m_Leader == nullptr)
+        {
+            throw aspose::words::cloud::ApiException(400, L"Property Leader in TabStopBase is required.");
+        }
+
+        if (this->m_Position == nullptr)
+        {
+            throw aspose::words::cloud::ApiException(400, L"Property Position in TabStopBase is required.");
+        }
+
+    }
+
     std::shared_ptr< aspose::words::cloud::models::TabStopBase::Alignment > TabStopBase::getAlignment() const
     {
         return this->m_Alignment;
@@ -25294,6 +28649,11 @@ namespace aspose::words::cloud::models {
     {
     }
 
+    void TabStopInsert::validate()
+    {
+        TabStopBase::validate();
+    }
+
 
 
 
@@ -25326,6 +28686,23 @@ namespace aspose::words::cloud::models {
 
     void TabStopsResponse::getFileReferences(std::vector< FileReference* >& result)
     {
+    }
+
+    void TabStopsResponse::validate()
+    {
+        WordsResponse::validate();
+
+        if (this->m_TabStops != nullptr)
+        {
+            for (auto& elementTabStops : *(this->m_TabStops))
+            {
+                if (elementTabStops != nullptr)
+                {
+                    elementTabStops->validate();
+                }
+            }
+        }
+
     }
 
     std::shared_ptr< std::vector<std::shared_ptr<aspose::words::cloud::models::TabStop>> > TabStopsResponse::getTabStops() const
@@ -25397,6 +28774,16 @@ namespace aspose::words::cloud::models {
 
     void TextSaveOptionsData::getFileReferences(std::vector< FileReference* >& result)
     {
+    }
+
+    void TextSaveOptionsData::validate()
+    {
+        TxtSaveOptionsBaseData::validate();
+        if (this->m_MaxCharactersPerLine == nullptr)
+        {
+            throw aspose::words::cloud::ApiException(400, L"Property MaxCharactersPerLine in TextSaveOptionsData is required.");
+        }
+
     }
 
     std::shared_ptr< bool > TextSaveOptionsData::getAddBidiMarks() const
@@ -25535,6 +28922,11 @@ namespace aspose::words::cloud::models {
     {
     }
 
+    void TiffSaveOptionsData::validate()
+    {
+        ImageSaveOptionsData::validate();
+    }
+
     std::shared_ptr< int32_t > TiffSaveOptionsData::getThresholdForFloydSteinbergDithering() const
     {
         return this->m_ThresholdForFloydSteinbergDithering;
@@ -25622,6 +29014,10 @@ namespace aspose::words::cloud::models {
     }
 
     void TimeZoneInfoData::getFileReferences(std::vector< FileReference* >& result)
+    {
+    }
+
+    void TimeZoneInfoData::validate()
     {
     }
 
@@ -25736,6 +29132,11 @@ namespace aspose::words::cloud::models {
     {
     }
 
+    void TxtSaveOptionsBaseData::validate()
+    {
+        SaveOptionsData::validate();
+    }
+
     std::shared_ptr< std::wstring > TxtSaveOptionsBaseData::getEncoding() const
     {
         return this->m_Encoding;
@@ -25822,6 +29223,10 @@ namespace aspose::words::cloud::models {
     {
     }
 
+    void UserInformation::validate()
+    {
+    }
+
     std::shared_ptr< std::wstring > UserInformation::getAddress() const
     {
         return this->m_Address;
@@ -25889,6 +29294,20 @@ namespace aspose::words::cloud::models {
     {
     }
 
+    void WatermarkText::validate()
+    {
+        if (this->m_RotationAngle == nullptr)
+        {
+            throw aspose::words::cloud::ApiException(400, L"Property RotationAngle in WatermarkText is required.");
+        }
+
+        if (this->m_Text == nullptr)
+        {
+            throw aspose::words::cloud::ApiException(400, L"Property Text in WatermarkText is required.");
+        }
+
+    }
+
     std::shared_ptr< double > WatermarkText::getRotationAngle() const
     {
         return this->m_RotationAngle;
@@ -25947,6 +29366,11 @@ namespace aspose::words::cloud::models {
     {
     }
 
+    void WordMLSaveOptionsData::validate()
+    {
+        SaveOptionsData::validate();
+    }
+
     std::shared_ptr< bool > WordMLSaveOptionsData::getPrettyFormat() const
     {
         return this->m_PrettyFormat;
@@ -25991,6 +29415,17 @@ namespace aspose::words::cloud::models {
     {
     }
 
+    void WordsApiErrorResponse::validate()
+    {
+        WordsResponse::validate();
+
+        if (this->m_Error != nullptr)
+        {
+            this->m_Error->validate();
+        }
+
+    }
+
     std::shared_ptr< aspose::words::cloud::models::ApiError > WordsApiErrorResponse::getError() const
     {
         return this->m_Error;
@@ -26020,6 +29455,11 @@ namespace aspose::words::cloud::models {
     {
     }
 
+    void WordsApiLink::validate()
+    {
+        Link::validate();
+    }
+
 
 
 
@@ -26045,6 +29485,10 @@ namespace aspose::words::cloud::models {
     }
 
     void WordsResponse::getFileReferences(std::vector< FileReference* >& result)
+    {
+    }
+
+    void WordsResponse::validate()
     {
     }
 
@@ -26101,6 +29545,11 @@ namespace aspose::words::cloud::models {
 
     void XamlFixedSaveOptionsData::getFileReferences(std::vector< FileReference* >& result)
     {
+    }
+
+    void XamlFixedSaveOptionsData::validate()
+    {
+        FixedPageSaveOptionsData::validate();
     }
 
     std::shared_ptr< std::wstring > XamlFixedSaveOptionsData::getResourcesFolder() const
@@ -26160,6 +29609,11 @@ namespace aspose::words::cloud::models {
     {
     }
 
+    void XamlFlowPackSaveOptionsData::validate()
+    {
+        XamlFlowSaveOptionsData::validate();
+    }
+
     std::shared_ptr< std::wstring > XamlFlowPackSaveOptionsData::getSaveFormat() const
     {
         return this->m_SaveFormat;
@@ -26211,6 +29665,11 @@ namespace aspose::words::cloud::models {
     {
     }
 
+    void XamlFlowSaveOptionsData::validate()
+    {
+        SaveOptionsData::validate();
+    }
+
     std::shared_ptr< std::wstring > XamlFlowSaveOptionsData::getImagesFolder() const
     {
         return this->m_ImagesFolder;
@@ -26253,12 +29712,6 @@ namespace aspose::words::cloud::models {
         if (this->m_Web) {
             json["Web"] = convertUtf16(*(this->m_Web));
         }
-        if (this->m_XmlAlpha) {
-            json["XmlAlpha"] = *(this->m_XmlAlpha);
-        }
-        if (this->m_XmlAlphaSpecified) {
-            json["XmlAlphaSpecified"] = *(this->m_XmlAlphaSpecified);
-        }
     }
 
     void XmlColor::fromJson(const void* jsonIfc)
@@ -26274,19 +29727,13 @@ namespace aspose::words::cloud::models {
                 convertUtf8( json["Web"].get< std::string >() )
             );
         }
-        if (json.contains("XmlAlpha") && !json["XmlAlpha"].is_null()) {
-            this->m_XmlAlpha = std::make_shared< int32_t >(
-                json["XmlAlpha"].get< int32_t >()
-            );
-        }
-        if (json.contains("XmlAlphaSpecified") && !json["XmlAlphaSpecified"].is_null()) {
-            this->m_XmlAlphaSpecified = std::make_shared< bool >(
-                json["XmlAlphaSpecified"].get< bool >()
-            );
-        }
     }
 
     void XmlColor::getFileReferences(std::vector< FileReference* >& result)
+    {
+    }
+
+    void XmlColor::validate()
     {
     }
 
@@ -26310,24 +29757,6 @@ namespace aspose::words::cloud::models {
     {
         this->m_Web = value;
     }
-
-
-    std::shared_ptr< int32_t > XmlColor::getXmlAlpha() const
-    {
-        return this->m_XmlAlpha;
-    }
-
-    void XmlColor::setXmlAlpha(std::shared_ptr< int32_t > value)
-    {
-        this->m_XmlAlpha = value;
-    }
-
-
-    std::shared_ptr< bool > XmlColor::getXmlAlphaSpecified() const
-    {
-        return this->m_XmlAlphaSpecified;
-    }
-
 
 
 
@@ -26354,6 +29783,15 @@ namespace aspose::words::cloud::models {
 
     void XmlDataLoadOptions::getFileReferences(std::vector< FileReference* >& result)
     {
+    }
+
+    void XmlDataLoadOptions::validate()
+    {
+        if (this->m_AlwaysGenerateRootObject == nullptr)
+        {
+            throw aspose::words::cloud::ApiException(400, L"Property AlwaysGenerateRootObject in XmlDataLoadOptions is required.");
+        }
+
     }
 
     std::shared_ptr< bool > XmlDataLoadOptions::getAlwaysGenerateRootObject() const
@@ -26423,6 +29861,19 @@ namespace aspose::words::cloud::models {
 
     void XpsSaveOptionsData::getFileReferences(std::vector< FileReference* >& result)
     {
+    }
+
+    void XpsSaveOptionsData::validate()
+    {
+        FixedPageSaveOptionsData::validate();
+
+        if (this->m_OutlineOptions != nullptr)
+        {
+            this->m_OutlineOptions->validate();
+        }
+
+
+
     }
 
     std::shared_ptr< int32_t > XpsSaveOptionsData::getBookmarksOutlineLevel() const

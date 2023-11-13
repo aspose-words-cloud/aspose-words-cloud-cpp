@@ -25,24 +25,87 @@
 
 #pragma once
 #include "model_base.h"
-#include "structured_document_tag.h"
+#include "structured_document_tag_base.h"
 
 namespace aspose::words::cloud::models {
     /// <summary>
     /// DTO container with a StructuredDocumentTag.
     /// </summary>
-    class StructuredDocumentTagInsert : public StructuredDocumentTag
+    class StructuredDocumentTagInsert : public StructuredDocumentTagBase
     {
     public:
+        /// <summary>
+        /// Gets or sets the level at which this SDT occurs in the document tree.
+        /// </summary>
+        enum class Level
+        { 
+            UNKNOWN,
+            INLINE,
+            BLOCK,
+            ROW,
+            CELL
+        };
+
+        /// <summary>
+        /// Gets or sets type of this Structured document tag.
+        /// </summary>
+        enum class SdtType
+        { 
+            NONE,
+            BIBLIOGRAPHY,
+            CITATION,
+            EQUATION,
+            DROP_DOWN_LIST,
+            COMBO_BOX,
+            DATE,
+            BUILDING_BLOCK_GALLERY,
+            DOC_PART_OBJ,
+            GROUP,
+            PICTURE,
+            RICH_TEXT,
+            PLAIN_TEXT,
+            CHECKBOX,
+            REPEATING_SECTION,
+            REPEATING_SECTION_ITEM,
+            ENTITY_PICKER
+        };
+
 
         ASPOSE_WORDS_CLOUD_EXPORT virtual ~StructuredDocumentTagInsert() = default;
         ASPOSE_WORDS_CLOUD_EXPORT virtual void toJson(void* jsonIfc) const override;
         ASPOSE_WORDS_CLOUD_EXPORT virtual void fromJson(const void* jsonIfc) override;
         ASPOSE_WORDS_CLOUD_EXPORT virtual void getFileReferences(std::vector< FileReference* >& result) override;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void validate() override;
 
+        void abstractStructuredDocumentTagBase() override {}
+
+
+
+        /// <summary>
+        /// Gets or sets the level at which this SDT occurs in the document tree.
+        /// </summary>
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< aspose::words::cloud::models::StructuredDocumentTagInsert::Level > getLevel() const;
+
+        /// <summary>
+        /// Gets or sets the level at which this SDT occurs in the document tree.
+        /// </summary>
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setLevel(std::shared_ptr< aspose::words::cloud::models::StructuredDocumentTagInsert::Level > value);
+
+
+        /// <summary>
+        /// Gets or sets type of this Structured document tag.
+        /// </summary>
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< aspose::words::cloud::models::StructuredDocumentTagInsert::SdtType > getSdtType() const;
+
+        /// <summary>
+        /// Gets or sets type of this Structured document tag.
+        /// </summary>
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setSdtType(std::shared_ptr< aspose::words::cloud::models::StructuredDocumentTagInsert::SdtType > value);
 
 
     protected:
+        std::shared_ptr< aspose::words::cloud::models::StructuredDocumentTagInsert::Level > m_Level;
+        std::shared_ptr< aspose::words::cloud::models::StructuredDocumentTagInsert::SdtType > m_SdtType;
     };
 }
 

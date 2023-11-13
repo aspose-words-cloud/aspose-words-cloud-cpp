@@ -39,6 +39,7 @@ namespace aspose::words::cloud::models {
         ASPOSE_WORDS_CLOUD_EXPORT virtual void toJson(void* jsonIfc) const = 0;
         ASPOSE_WORDS_CLOUD_EXPORT virtual void fromJson(const void* jsonIfc) = 0;
         ASPOSE_WORDS_CLOUD_EXPORT virtual void getFileReferences(std::vector< FileReference* >& result) = 0;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void validate() = 0;
     };
 
     ModelBase* createModelInstance(const std::wstring& type);

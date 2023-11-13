@@ -72,7 +72,8 @@ TEST_F(DocumentProtectionTests, TestProtectDocument) {
 TEST_F(DocumentProtectionTests, TestProtectDocumentOnline) {
     auto requestDocument = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(localFile)), std::istream::binary));
     auto requestProtectionRequest = std::make_shared< aspose::words::cloud::models::ProtectionRequest >();
-    requestProtectionRequest->setNewPassword(std::make_shared< std::wstring >(L"123"));
+    requestProtectionRequest->setPassword(std::make_shared< std::wstring >(L"123"));
+    requestProtectionRequest->setProtectionType(std::make_shared< std::wstring >(L"ReadOnly"));
     std::shared_ptr<requests::ProtectDocumentOnlineRequest> request(new requests::ProtectDocumentOnlineRequest(
         requestDocument,
         requestProtectionRequest,

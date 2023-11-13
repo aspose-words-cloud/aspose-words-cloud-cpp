@@ -130,8 +130,8 @@ TEST_F(StructuredDocumentTagTests, TestInsertStructuredDocumentTag) {
     );
 
     auto requestStructuredDocumentTag = std::make_shared< aspose::words::cloud::models::StructuredDocumentTagInsert >();
-    requestStructuredDocumentTag->setSdtType(std::make_shared< aspose::words::cloud::models::StructuredDocumentTag::SdtType >(aspose::words::cloud::models::StructuredDocumentTag::SdtType::COMBO_BOX));
-    requestStructuredDocumentTag->setLevel(std::make_shared< aspose::words::cloud::models::StructuredDocumentTag::Level >(aspose::words::cloud::models::StructuredDocumentTag::Level::INLINE));
+    requestStructuredDocumentTag->setSdtType(std::make_shared< aspose::words::cloud::models::StructuredDocumentTagInsert::SdtType >(aspose::words::cloud::models::StructuredDocumentTagInsert::SdtType::COMBO_BOX));
+    requestStructuredDocumentTag->setLevel(std::make_shared< aspose::words::cloud::models::StructuredDocumentTagInsert::Level >(aspose::words::cloud::models::StructuredDocumentTagInsert::Level::INLINE));
     std::shared_ptr<requests::InsertStructuredDocumentTagRequest> request(new requests::InsertStructuredDocumentTagRequest(
         std::make_shared< std::wstring >(remoteFileName),
         requestStructuredDocumentTag,
@@ -155,8 +155,8 @@ TEST_F(StructuredDocumentTagTests, TestInsertStructuredDocumentTag) {
 TEST_F(StructuredDocumentTagTests, TestInsertStructuredDocumentTagOnline) {
     auto requestDocument = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(localFile)), std::istream::binary));
     auto requestStructuredDocumentTag = std::make_shared< aspose::words::cloud::models::StructuredDocumentTagInsert >();
-    requestStructuredDocumentTag->setSdtType(std::make_shared< aspose::words::cloud::models::StructuredDocumentTag::SdtType >(aspose::words::cloud::models::StructuredDocumentTag::SdtType::COMBO_BOX));
-    requestStructuredDocumentTag->setLevel(std::make_shared< aspose::words::cloud::models::StructuredDocumentTag::Level >(aspose::words::cloud::models::StructuredDocumentTag::Level::INLINE));
+    requestStructuredDocumentTag->setSdtType(std::make_shared< aspose::words::cloud::models::StructuredDocumentTagInsert::SdtType >(aspose::words::cloud::models::StructuredDocumentTagInsert::SdtType::COMBO_BOX));
+    requestStructuredDocumentTag->setLevel(std::make_shared< aspose::words::cloud::models::StructuredDocumentTagInsert::Level >(aspose::words::cloud::models::StructuredDocumentTagInsert::Level::INLINE));
     std::shared_ptr<requests::InsertStructuredDocumentTagOnlineRequest> request(new requests::InsertStructuredDocumentTagOnlineRequest(
         requestDocument,
         requestStructuredDocumentTag,

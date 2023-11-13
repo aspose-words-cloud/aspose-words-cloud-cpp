@@ -54,6 +54,7 @@ TEST_F(FormFieldTests, TestUpdateFormField) {
     requestFormField->setStatusText(std::make_shared< std::wstring >(L""));
     requestFormField->setTextInputType(std::make_shared< aspose::words::cloud::models::FormFieldTextInput::TextInputType >(aspose::words::cloud::models::FormFieldTextInput::TextInputType::REGULAR));
     requestFormField->setTextInputDefault(std::make_shared< std::wstring >(L"No name"));
+    requestFormField->setTextInputFormat(std::make_shared< std::wstring >(L""));
     std::shared_ptr<requests::UpdateFormFieldRequest> request(new requests::UpdateFormFieldRequest(
         std::make_shared< std::wstring >(remoteFileName),
         std::make_shared< int32_t >(0),
@@ -87,6 +88,7 @@ TEST_F(FormFieldTests, TestUpdateFormFieldOnline) {
     requestFormField->setStatusText(std::make_shared< std::wstring >(L""));
     requestFormField->setTextInputType(std::make_shared< aspose::words::cloud::models::FormFieldTextInput::TextInputType >(aspose::words::cloud::models::FormFieldTextInput::TextInputType::REGULAR));
     requestFormField->setTextInputDefault(std::make_shared< std::wstring >(L"No name"));
+    requestFormField->setTextInputFormat(std::make_shared< std::wstring >(L""));
     std::shared_ptr<requests::UpdateFormFieldOnlineRequest> request(new requests::UpdateFormFieldOnlineRequest(
         requestDocument,
         requestFormField,
@@ -121,6 +123,7 @@ TEST_F(FormFieldTests, TestUpdateFormFieldWithoutNodePath) {
     requestFormField->setStatusText(std::make_shared< std::wstring >(L""));
     requestFormField->setTextInputType(std::make_shared< aspose::words::cloud::models::FormFieldTextInput::TextInputType >(aspose::words::cloud::models::FormFieldTextInput::TextInputType::REGULAR));
     requestFormField->setTextInputDefault(std::make_shared< std::wstring >(L"No name"));
+    requestFormField->setTextInputFormat(std::make_shared< std::wstring >(L""));
     std::shared_ptr<requests::UpdateFormFieldRequest> request(new requests::UpdateFormFieldRequest(
         std::make_shared< std::wstring >(remoteFileName),
         std::make_shared< int32_t >(0),

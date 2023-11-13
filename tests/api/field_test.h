@@ -350,6 +350,8 @@ TEST_F(FieldTests, TestInsertPageNumbers) {
     auto requestPageNumber = std::make_shared< aspose::words::cloud::models::PageNumber >();
     requestPageNumber->setAlignment(std::make_shared< std::wstring >(L"center"));
     requestPageNumber->setFormat(std::make_shared< std::wstring >(L"{PAGE} of {NUMPAGES}"));
+    requestPageNumber->setIsTop(std::make_shared< bool >(true));
+    requestPageNumber->setSetPageNumberOnFirstPage(std::make_shared< bool >(true));
     std::shared_ptr<requests::InsertPageNumbersRequest> request(new requests::InsertPageNumbersRequest(
         std::make_shared< std::wstring >(remoteFileName),
         requestPageNumber,
@@ -378,6 +380,8 @@ TEST_F(FieldTests, TestInsertPageNumbersOnline) {
     auto requestPageNumber = std::make_shared< aspose::words::cloud::models::PageNumber >();
     requestPageNumber->setAlignment(std::make_shared< std::wstring >(L"center"));
     requestPageNumber->setFormat(std::make_shared< std::wstring >(L"{PAGE} of {NUMPAGES}"));
+    requestPageNumber->setIsTop(std::make_shared< bool >(true));
+    requestPageNumber->setSetPageNumberOnFirstPage(std::make_shared< bool >(true));
     std::shared_ptr<requests::InsertPageNumbersOnlineRequest> request(new requests::InsertPageNumbersOnlineRequest(
         requestDocument,
         requestPageNumber,
