@@ -17,6 +17,11 @@ Feel free to explore the [Developer's Guide](https://docs.aspose.cloud/display/w
 - Read & write access to Document Object Model.
 - Thread safe
 
+## Enhancements in Version 23.12
+
+- Properties Name, Text, StartRange, EndRange marked as required for InsertBookmark operation.
+
+
 ## Enhancements in Version 23.11
 
 - Support of required properties in models.

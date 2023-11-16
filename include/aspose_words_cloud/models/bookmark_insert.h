@@ -25,14 +25,13 @@
 
 #pragma once
 #include "model_base.h"
-#include "bookmark_data.h"
 #include "new_document_position.h"
 
 namespace aspose::words::cloud::models {
     /// <summary>
     /// Represents a bookmark to insert.
     /// </summary>
-    class BookmarkInsert : public BookmarkData
+    class BookmarkInsert : public ModelBase
     {
     public:
 
@@ -41,6 +40,28 @@ namespace aspose::words::cloud::models {
         ASPOSE_WORDS_CLOUD_EXPORT virtual void fromJson(const void* jsonIfc) override;
         ASPOSE_WORDS_CLOUD_EXPORT virtual void getFileReferences(std::vector< FileReference* >& result) override;
         ASPOSE_WORDS_CLOUD_EXPORT virtual void validate() override;
+
+
+        /// <summary>
+        /// Gets or sets the name of the bookmark.
+        /// </summary>
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< std::wstring > getName() const;
+
+        /// <summary>
+        /// Gets or sets the name of the bookmark.
+        /// </summary>
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setName(std::shared_ptr< std::wstring > value);
+
+
+        /// <summary>
+        /// Gets or sets text, enclosed in the bookmark.
+        /// </summary>
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< std::wstring > getText() const;
+
+        /// <summary>
+        /// Gets or sets text, enclosed in the bookmark.
+        /// </summary>
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setText(std::shared_ptr< std::wstring > value);
 
 
         /// <summary>
@@ -66,6 +87,8 @@ namespace aspose::words::cloud::models {
 
 
     protected:
+        std::shared_ptr< std::wstring > m_Name;
+        std::shared_ptr< std::wstring > m_Text;
         std::shared_ptr< aspose::words::cloud::models::NewDocumentPosition > m_StartRange;
         std::shared_ptr< aspose::words::cloud::models::NewDocumentPosition > m_EndRange;
     };

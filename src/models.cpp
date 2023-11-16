@@ -943,8 +943,13 @@ namespace aspose::words::cloud::models {
      */
     void BookmarkInsert::toJson(void* jsonIfc) const
     {
-        BookmarkData::toJson(jsonIfc);
         ::nlohmann::json& json = *((::nlohmann::json*)jsonIfc);
+        if (this->m_Name) {
+            json["Name"] = convertUtf16(*(this->m_Name));
+        }
+        if (this->m_Text) {
+            json["Text"] = convertUtf16(*(this->m_Text));
+        }
         if (this->m_StartRange) {
             this->m_StartRange->toJson(&json["StartRange"]);
         }
@@ -955,8 +960,17 @@ namespace aspose::words::cloud::models {
 
     void BookmarkInsert::fromJson(const void* jsonIfc)
     {
-        BookmarkData::fromJson(jsonIfc);
         ::nlohmann::json& json = *((::nlohmann::json*)jsonIfc);
+        if (json.contains("Name") && !json["Name"].is_null()) {
+            this->m_Name = std::make_shared< std::wstring >(
+                convertUtf8( json["Name"].get< std::string >() )
+            );
+        }
+        if (json.contains("Text") && !json["Text"].is_null()) {
+            this->m_Text = std::make_shared< std::wstring >(
+                convertUtf8( json["Text"].get< std::string >() )
+            );
+        }
         if (json.contains("StartRange") && !json["StartRange"].is_null()) {
             this->m_StartRange = createModelInstance< aspose::words::cloud::models::NewDocumentPosition >(L"NewDocumentPosition, _", json["StartRange"]);
         }
@@ -971,7 +985,30 @@ namespace aspose::words::cloud::models {
 
     void BookmarkInsert::validate()
     {
-        BookmarkData::validate();
+        if (this->m_Name == nullptr)
+        {
+            throw aspose::words::cloud::ApiException(400, L"Property Name in BookmarkInsert is required.");
+        }
+
+        if (this->m_Text == nullptr)
+        {
+            throw aspose::words::cloud::ApiException(400, L"Property Text in BookmarkInsert is required.");
+        }
+
+        if (this->m_StartRange == nullptr)
+        {
+            throw aspose::words::cloud::ApiException(400, L"Property StartRange in BookmarkInsert is required.");
+        }
+
+        this->m_StartRange->validate();
+
+        if (this->m_EndRange == nullptr)
+        {
+            throw aspose::words::cloud::ApiException(400, L"Property EndRange in BookmarkInsert is required.");
+        }
+
+        this->m_EndRange->validate();
+
 
         if (this->m_StartRange != nullptr)
         {
@@ -986,6 +1023,28 @@ namespace aspose::words::cloud::models {
         }
 
     }
+
+    std::shared_ptr< std::wstring > BookmarkInsert::getName() const
+    {
+        return this->m_Name;
+    }
+
+    void BookmarkInsert::setName(std::shared_ptr< std::wstring > value)
+    {
+        this->m_Name = value;
+    }
+
+
+    std::shared_ptr< std::wstring > BookmarkInsert::getText() const
+    {
+        return this->m_Text;
+    }
+
+    void BookmarkInsert::setText(std::shared_ptr< std::wstring > value)
+    {
+        this->m_Text = value;
+    }
+
 
     std::shared_ptr< aspose::words::cloud::models::NewDocumentPosition > BookmarkInsert::getStartRange() const
     {
