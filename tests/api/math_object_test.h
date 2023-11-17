@@ -330,3 +330,47 @@ TEST_F(MathObjectTests, TestDeleteOfficeMathObjectWithoutNodePath) {
 
 getApi()->deleteOfficeMathObject(request);
 }
+
+/// <summary>
+/// Test for deleting math objects.
+/// </summary>
+TEST_F(MathObjectTests, TestDeleteOfficeMathObjects) {
+    std::wstring remoteFileName = L"TestDeleteOfficeMathObject.docx";
+
+    uploadFileToStorage(
+        localTestDataFolder + L"/" + localFile,
+        remoteDataFolder + L"/" + remoteFileName
+    );
+
+    std::shared_ptr<requests::DeleteOfficeMathObjectsRequest> request(new requests::DeleteOfficeMathObjectsRequest(
+        std::make_shared< std::wstring >(remoteFileName),
+        std::make_shared< std::wstring >(remoteDataFolder),
+        nullptr,
+        nullptr,
+        nullptr,
+        nullptr,
+        nullptr,
+        nullptr,
+        nullptr
+    ));
+
+getApi()->deleteOfficeMathObjects(request);
+}
+
+/// <summary>
+/// Test for deleting math objects online.
+/// </summary>
+TEST_F(MathObjectTests, TestDeleteOfficeMathObjectsOnline) {
+    auto requestDocument = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(localFile)), std::istream::binary));
+    std::shared_ptr<requests::DeleteOfficeMathObjectsOnlineRequest> request(new requests::DeleteOfficeMathObjectsOnlineRequest(
+        requestDocument,
+        nullptr,
+        nullptr,
+        nullptr,
+        nullptr,
+        nullptr,
+        nullptr
+    ));
+
+    auto actual = getApi()->deleteOfficeMathObjectsOnline(request);
+}

@@ -702,6 +702,26 @@ namespace aspose::words::cloud::api {
         return response->getDocument();
     }
 
+    void WordsApi::deleteOfficeMathObjects(std::shared_ptr<aspose::words::cloud::requests::DeleteOfficeMathObjectsRequest> request)
+    {
+        auto response = std::make_shared< aspose::words::cloud::responses::DeleteOfficeMathObjectsResponse >();
+        m_ApiClient->call( request->createHttpRequest(), *response);
+        if (response->getStatusCode() != 200) {
+            throw aspose::words::cloud::ApiException(response->getStatusCode(), response->getErrorMessage());
+        }
+    }
+
+    std::shared_ptr< std::map<std::wstring, std::shared_ptr<std::istream>> > WordsApi::deleteOfficeMathObjectsOnline(std::shared_ptr<aspose::words::cloud::requests::DeleteOfficeMathObjectsOnlineRequest> request)
+    {
+        auto response = std::make_shared< aspose::words::cloud::responses::DeleteOfficeMathObjectsOnlineResponse >();
+        m_ApiClient->call( request->createHttpRequest(), *response);
+        if (response->getStatusCode() != 200) {
+            throw aspose::words::cloud::ApiException(response->getStatusCode(), response->getErrorMessage());
+        }
+
+        return response->getDocument();
+    }
+
     void WordsApi::deleteParagraph(std::shared_ptr<aspose::words::cloud::requests::DeleteParagraphRequest> request)
     {
         auto response = std::make_shared< aspose::words::cloud::responses::DeleteParagraphResponse >();

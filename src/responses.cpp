@@ -1199,6 +1199,27 @@ namespace aspose::words::cloud::responses {
     }
 
     /*
+     * DeleteOfficeMathObjects request implementation
+     */
+
+    void DeleteOfficeMathObjectsResponse::deserialize(const std::string& contentType, const std::string_view& response)
+    {
+    }
+
+    /*
+     * DeleteOfficeMathObjectsOnline request implementation
+     */
+    std::shared_ptr< std::map<std::wstring, std::shared_ptr<std::istream>> > DeleteOfficeMathObjectsOnlineResponse::getDocument() const
+    {
+        return m_Document;
+    }
+
+    void DeleteOfficeMathObjectsOnlineResponse::deserialize(const std::string& contentType, const std::string_view& response)
+    {
+        m_Document = parseFilesCollection(std::make_tuple("", contentType, response));
+    }
+
+    /*
      * DeleteParagraph request implementation
      */
 
