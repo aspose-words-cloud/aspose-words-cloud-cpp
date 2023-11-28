@@ -1,5 +1,5 @@
 ﻿/** --------------------------------------------------------------------------------------------------------------------
-* <copyright company="Aspose" file="protection_data.h">
+* <copyright company="Aspose" file="protection_request_v2.h">
 *   Copyright (c) 2023 Aspose.Words for Cloud
 * </copyright>
 * <summary>
@@ -25,16 +25,17 @@
 
 #pragma once
 #include "model_base.h"
+#include "protection_request_base.h"
 
 namespace aspose::words::cloud::models {
     /// <summary>
-    /// Container for the data about protection of the document.
+    /// Request on changing of protection.
     /// </summary>
-    class ProtectionData : public ModelBase
+    class ProtectionRequestV2 : public ProtectionRequestBase
     {
     public:
         /// <summary>
-        /// Gets or sets type of the protection.
+        /// Gets or sets the new type of the document protection.
         /// </summary>
         enum class ProtectionType
         { 
@@ -46,26 +47,41 @@ namespace aspose::words::cloud::models {
         };
 
 
-        ASPOSE_WORDS_CLOUD_EXPORT virtual ~ProtectionData() = default;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual ~ProtectionRequestV2() = default;
         ASPOSE_WORDS_CLOUD_EXPORT virtual void toJson(void* jsonIfc) const override;
         ASPOSE_WORDS_CLOUD_EXPORT virtual void fromJson(const void* jsonIfc) override;
         ASPOSE_WORDS_CLOUD_EXPORT virtual void getFileReferences(std::vector< FileReference* >& result) override;
         ASPOSE_WORDS_CLOUD_EXPORT virtual void validate() override;
 
+        void abstractProtectionRequestBase() override {}
 
         /// <summary>
-        /// Gets or sets type of the protection.
+        /// Gets or sets the new password for the document protection.
+        /// This property is required, but empty value is allowed.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< aspose::words::cloud::models::ProtectionData::ProtectionType > getProtectionType() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< std::wstring > getProtectionPassword() const;
 
         /// <summary>
-        /// Gets or sets type of the protection.
+        /// Gets or sets the new password for the document protection.
+        /// This property is required, but empty value is allowed.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT virtual void setProtectionType(std::shared_ptr< aspose::words::cloud::models::ProtectionData::ProtectionType > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setProtectionPassword(std::shared_ptr< std::wstring > value);
+
+
+        /// <summary>
+        /// Gets or sets the new type of the document protection.
+        /// </summary>
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< aspose::words::cloud::models::ProtectionRequestV2::ProtectionType > getProtectionType() const;
+
+        /// <summary>
+        /// Gets or sets the new type of the document protection.
+        /// </summary>
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setProtectionType(std::shared_ptr< aspose::words::cloud::models::ProtectionRequestV2::ProtectionType > value);
 
 
     protected:
-        std::shared_ptr< aspose::words::cloud::models::ProtectionData::ProtectionType > m_ProtectionType;
+        std::shared_ptr< std::wstring > m_ProtectionPassword;
+        std::shared_ptr< aspose::words::cloud::models::ProtectionRequestV2::ProtectionType > m_ProtectionType;
     };
 }
 

@@ -24450,7 +24450,7 @@ namespace aspose::words::cloud::requests {
      */
     ProtectDocumentRequest::ProtectDocumentRequest(
         const std::shared_ptr< std::wstring > name,
-        const std::shared_ptr< aspose::words::cloud::models::ProtectionRequest > protectionRequest,
+        const std::shared_ptr< aspose::words::cloud::models::ProtectionRequestBase > protectionRequest,
         const std::shared_ptr< std::wstring > folder,
         const std::shared_ptr< std::wstring > storage,
         const std::shared_ptr< std::wstring > loadEncoding,
@@ -24474,7 +24474,7 @@ namespace aspose::words::cloud::requests {
         return m_Name;
     }
 
-    const std::shared_ptr< aspose::words::cloud::models::ProtectionRequest > ProtectDocumentRequest::getProtectionRequest() const
+    const std::shared_ptr< aspose::words::cloud::models::ProtectionRequestBase > ProtectDocumentRequest::getProtectionRequest() const
     {
         return m_ProtectionRequest;
     }
@@ -24550,7 +24550,7 @@ namespace aspose::words::cloud::requests {
      */
     ProtectDocumentOnlineRequest::ProtectDocumentOnlineRequest(
         const std::shared_ptr< std::istream > document,
-        const std::shared_ptr< aspose::words::cloud::models::ProtectionRequest > protectionRequest,
+        const std::shared_ptr< aspose::words::cloud::models::ProtectionRequestBase > protectionRequest,
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
         const std::shared_ptr< std::wstring > encryptedPassword,
@@ -24570,7 +24570,7 @@ namespace aspose::words::cloud::requests {
         return m_Document;
     }
 
-    const std::shared_ptr< aspose::words::cloud::models::ProtectionRequest > ProtectDocumentOnlineRequest::getProtectionRequest() const
+    const std::shared_ptr< aspose::words::cloud::models::ProtectionRequestBase > ProtectDocumentOnlineRequest::getProtectionRequest() const
     {
         return m_ProtectionRequest;
     }
@@ -27834,7 +27834,6 @@ namespace aspose::words::cloud::requests {
      */
     UnprotectDocumentRequest::UnprotectDocumentRequest(
         const std::shared_ptr< std::wstring > name,
-        const std::shared_ptr< aspose::words::cloud::models::ProtectionRequest > protectionRequest,
         const std::shared_ptr< std::wstring > folder,
         const std::shared_ptr< std::wstring > storage,
         const std::shared_ptr< std::wstring > loadEncoding,
@@ -27843,7 +27842,6 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > destFileName
     ) : 
         m_Name(name),
-        m_ProtectionRequest(protectionRequest),
         m_Folder(folder),
         m_Storage(storage),
         m_LoadEncoding(loadEncoding),
@@ -27856,11 +27854,6 @@ namespace aspose::words::cloud::requests {
     const std::shared_ptr< std::wstring > UnprotectDocumentRequest::getName() const
     {
         return m_Name;
-    }
-
-    const std::shared_ptr< aspose::words::cloud::models::ProtectionRequest > UnprotectDocumentRequest::getProtectionRequest() const
-    {
-        return m_ProtectionRequest;
     }
 
     const std::shared_ptr< std::wstring > UnprotectDocumentRequest::getFolder() const
@@ -27907,12 +27900,6 @@ namespace aspose::words::cloud::requests {
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
-        if (m_ProtectionRequest)
-        {
-            result->addFormDataParam(L"Body", *m_ProtectionRequest);
-            m_ProtectionRequest->validate();}
-        else throw aspose::words::cloud::ApiException(400, L"Parameter 'ProtectionRequest' is required.");
-
 
         for (const models::FileReference* additionalFileContent : additionalFilesContent)
         {
@@ -27934,14 +27921,12 @@ namespace aspose::words::cloud::requests {
      */
     UnprotectDocumentOnlineRequest::UnprotectDocumentOnlineRequest(
         const std::shared_ptr< std::istream > document,
-        const std::shared_ptr< aspose::words::cloud::models::ProtectionRequest > protectionRequest,
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
         const std::shared_ptr< std::wstring > encryptedPassword,
         const std::shared_ptr< std::wstring > destFileName
     ) : 
         m_Document(document),
-        m_ProtectionRequest(protectionRequest),
         m_LoadEncoding(loadEncoding),
         m_Password(password),
         m_EncryptedPassword(encryptedPassword),
@@ -27952,11 +27937,6 @@ namespace aspose::words::cloud::requests {
     const std::shared_ptr< std::istream > UnprotectDocumentOnlineRequest::getDocument() const
     {
         return m_Document;
-    }
-
-    const std::shared_ptr< aspose::words::cloud::models::ProtectionRequest > UnprotectDocumentOnlineRequest::getProtectionRequest() const
-    {
-        return m_ProtectionRequest;
     }
 
     const std::shared_ptr< std::wstring > UnprotectDocumentOnlineRequest::getLoadEncoding() const
@@ -27994,12 +27974,6 @@ namespace aspose::words::cloud::requests {
             result->addFormDataParam(L"document", *m_Document);
         }
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Document' is required.");
-
-        if (m_ProtectionRequest)
-        {
-            result->addFormDataParam(L"protectionRequest", *m_ProtectionRequest);
-            m_ProtectionRequest->validate();}
-        else throw aspose::words::cloud::ApiException(400, L"Parameter 'ProtectionRequest' is required.");
 
         for (const models::FileReference* additionalFileContent : additionalFilesContent)
         {

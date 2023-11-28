@@ -25,14 +25,14 @@
 
 #pragma once
 #include "./request_model_base.h"
-#include "aspose_words_cloud/models/protection_request.h"
+#include "aspose_words_cloud/models/protection_request_base.h"
 
 namespace aspose::words::cloud::requests {
     class ProtectDocumentRequest : public RequestModelBase {
     public:
         ASPOSE_WORDS_CLOUD_EXPORT ProtectDocumentRequest(
             const std::shared_ptr< std::wstring > name,
-            const std::shared_ptr< aspose::words::cloud::models::ProtectionRequest > protectionRequest,
+            const std::shared_ptr< aspose::words::cloud::models::ProtectionRequestBase > protectionRequest,
             const std::shared_ptr< std::wstring > folder = nullptr,
             const std::shared_ptr< std::wstring > storage = nullptr,
             const std::shared_ptr< std::wstring > loadEncoding = nullptr,
@@ -42,7 +42,7 @@ namespace aspose::words::cloud::requests {
         );
 
         ASPOSE_WORDS_CLOUD_EXPORT const std::shared_ptr< std::wstring > getName() const;
-        ASPOSE_WORDS_CLOUD_EXPORT const std::shared_ptr< aspose::words::cloud::models::ProtectionRequest > getProtectionRequest() const;
+        ASPOSE_WORDS_CLOUD_EXPORT const std::shared_ptr< aspose::words::cloud::models::ProtectionRequestBase > getProtectionRequest() const;
         ASPOSE_WORDS_CLOUD_EXPORT const std::shared_ptr< std::wstring > getFolder() const;
         ASPOSE_WORDS_CLOUD_EXPORT const std::shared_ptr< std::wstring > getStorage() const;
         ASPOSE_WORDS_CLOUD_EXPORT const std::shared_ptr< std::wstring > getLoadEncoding() const;
@@ -55,7 +55,7 @@ namespace aspose::words::cloud::requests {
 
     private:
         const std::shared_ptr< std::wstring > m_Name;
-        const std::shared_ptr< aspose::words::cloud::models::ProtectionRequest > m_ProtectionRequest;
+        const std::shared_ptr< aspose::words::cloud::models::ProtectionRequestBase > m_ProtectionRequest;
         const std::shared_ptr< std::wstring > m_Folder;
         const std::shared_ptr< std::wstring > m_Storage;
         const std::shared_ptr< std::wstring > m_LoadEncoding;
