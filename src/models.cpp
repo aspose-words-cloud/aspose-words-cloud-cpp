@@ -200,6 +200,7 @@ namespace aspose::words::cloud::models {
         { L"ProtectionData, _", [] () { return dynamic_cast< ModelBase* >(new ProtectionData()); }},
         { L"ProtectionDataResponse, _", [] () { return dynamic_cast< ModelBase* >(new ProtectionDataResponse()); }},
         { L"ProtectionRequest, _", [] () { return dynamic_cast< ModelBase* >(new ProtectionRequest()); }},
+        { L"ProtectionRequestV2, _", [] () { return dynamic_cast< ModelBase* >(new ProtectionRequestV2()); }},
         { L"PsSaveOptionsData, _", [] () { return dynamic_cast< ModelBase* >(new PsSaveOptionsData()); }},
         { L"PublicKeyResponse, _", [] () { return dynamic_cast< ModelBase* >(new PublicKeyResponse()); }},
         { L"RangeDocument, _", [] () { return dynamic_cast< ModelBase* >(new RangeDocument()); }},
@@ -20336,11 +20337,30 @@ namespace aspose::words::cloud::models {
     /*
      * ProtectionData implementation
      */
+    inline std::string protectionDataProtectionTypeToString(aspose::words::cloud::models::ProtectionData::ProtectionType value)
+    {
+        if (value == aspose::words::cloud::models::ProtectionData::ProtectionType::ALLOW_ONLY_REVISIONS) return "AllowOnlyRevisions";
+        if (value == aspose::words::cloud::models::ProtectionData::ProtectionType::ALLOW_ONLY_COMMENTS) return "AllowOnlyComments";
+        if (value == aspose::words::cloud::models::ProtectionData::ProtectionType::ALLOW_ONLY_FORM_FIELDS) return "AllowOnlyFormFields";
+        if (value == aspose::words::cloud::models::ProtectionData::ProtectionType::READ_ONLY) return "ReadOnly";
+        if (value == aspose::words::cloud::models::ProtectionData::ProtectionType::NO_PROTECTION) return "NoProtection";
+        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
+    }
+
+    inline aspose::words::cloud::models::ProtectionData::ProtectionType protectionDataProtectionTypeFromString(const std::string& value)
+    {
+        if (value == "AllowOnlyRevisions") return aspose::words::cloud::models::ProtectionData::ProtectionType::ALLOW_ONLY_REVISIONS;
+        if (value == "AllowOnlyComments") return aspose::words::cloud::models::ProtectionData::ProtectionType::ALLOW_ONLY_COMMENTS;
+        if (value == "AllowOnlyFormFields") return aspose::words::cloud::models::ProtectionData::ProtectionType::ALLOW_ONLY_FORM_FIELDS;
+        if (value == "ReadOnly") return aspose::words::cloud::models::ProtectionData::ProtectionType::READ_ONLY;
+        if (value == "NoProtection") return aspose::words::cloud::models::ProtectionData::ProtectionType::NO_PROTECTION;
+        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
+    }
     void ProtectionData::toJson(void* jsonIfc) const
     {
         ::nlohmann::json& json = *((::nlohmann::json*)jsonIfc);
         if (this->m_ProtectionType) {
-            json["ProtectionType"] = convertUtf16(*(this->m_ProtectionType));
+            json["ProtectionType"] = protectionDataProtectionTypeToString(*(this->m_ProtectionType));
         }
     }
 
@@ -20348,8 +20368,8 @@ namespace aspose::words::cloud::models {
     {
         ::nlohmann::json& json = *((::nlohmann::json*)jsonIfc);
         if (json.contains("ProtectionType") && !json["ProtectionType"].is_null()) {
-            this->m_ProtectionType = std::make_shared< std::wstring >(
-                convertUtf8( json["ProtectionType"].get< std::string >() )
+            this->m_ProtectionType = std::make_shared< aspose::words::cloud::models::ProtectionData::ProtectionType >(
+                protectionDataProtectionTypeFromString(json["ProtectionType"].get< std::string >())
             );
         }
     }
@@ -20360,14 +20380,19 @@ namespace aspose::words::cloud::models {
 
     void ProtectionData::validate()
     {
+        if (this->m_ProtectionType == nullptr)
+        {
+            throw aspose::words::cloud::ApiException(400, L"Property ProtectionType in ProtectionData is required.");
+        }
+
     }
 
-    std::shared_ptr< std::wstring > ProtectionData::getProtectionType() const
+    std::shared_ptr< aspose::words::cloud::models::ProtectionData::ProtectionType > ProtectionData::getProtectionType() const
     {
         return this->m_ProtectionType;
     }
 
-    void ProtectionData::setProtectionType(std::shared_ptr< std::wstring > value)
+    void ProtectionData::setProtectionType(std::shared_ptr< aspose::words::cloud::models::ProtectionData::ProtectionType > value)
     {
         this->m_ProtectionType = value;
     }
@@ -20451,6 +20476,7 @@ namespace aspose::words::cloud::models {
      */
     void ProtectionRequest::toJson(void* jsonIfc) const
     {
+        ProtectionRequestBase::toJson(jsonIfc);
         ::nlohmann::json& json = *((::nlohmann::json*)jsonIfc);
         if (this->m_NewPassword) {
             json["NewPassword"] = convertUtf16(*(this->m_NewPassword));
@@ -20465,6 +20491,7 @@ namespace aspose::words::cloud::models {
 
     void ProtectionRequest::fromJson(const void* jsonIfc)
     {
+        ProtectionRequestBase::fromJson(jsonIfc);
         ::nlohmann::json& json = *((::nlohmann::json*)jsonIfc);
         if (json.contains("NewPassword") && !json["NewPassword"].is_null()) {
             this->m_NewPassword = std::make_shared< std::wstring >(
@@ -20489,6 +20516,7 @@ namespace aspose::words::cloud::models {
 
     void ProtectionRequest::validate()
     {
+        ProtectionRequestBase::validate();
         if (this->m_Password == nullptr)
         {
             throw aspose::words::cloud::ApiException(400, L"Property Password in ProtectionRequest is required.");
@@ -20524,6 +20552,120 @@ namespace aspose::words::cloud::models {
     }
 
     void ProtectionRequest::setProtectionType(std::shared_ptr< std::wstring > value)
+    {
+        this->m_ProtectionType = value;
+    }
+
+
+
+    /*
+     * ProtectionRequestBase implementation
+     */
+    void ProtectionRequestBase::toJson(void* jsonIfc) const
+    {
+    }
+
+    void ProtectionRequestBase::fromJson(const void* jsonIfc)
+    {
+    }
+
+    void ProtectionRequestBase::getFileReferences(std::vector< FileReference* >& result)
+    {
+    }
+
+    void ProtectionRequestBase::validate()
+    {
+    }
+
+
+
+
+    /*
+     * ProtectionRequestV2 implementation
+     */
+    inline std::string protectionRequestV2ProtectionTypeToString(aspose::words::cloud::models::ProtectionRequestV2::ProtectionType value)
+    {
+        if (value == aspose::words::cloud::models::ProtectionRequestV2::ProtectionType::ALLOW_ONLY_REVISIONS) return "AllowOnlyRevisions";
+        if (value == aspose::words::cloud::models::ProtectionRequestV2::ProtectionType::ALLOW_ONLY_COMMENTS) return "AllowOnlyComments";
+        if (value == aspose::words::cloud::models::ProtectionRequestV2::ProtectionType::ALLOW_ONLY_FORM_FIELDS) return "AllowOnlyFormFields";
+        if (value == aspose::words::cloud::models::ProtectionRequestV2::ProtectionType::READ_ONLY) return "ReadOnly";
+        if (value == aspose::words::cloud::models::ProtectionRequestV2::ProtectionType::NO_PROTECTION) return "NoProtection";
+        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
+    }
+
+    inline aspose::words::cloud::models::ProtectionRequestV2::ProtectionType protectionRequestV2ProtectionTypeFromString(const std::string& value)
+    {
+        if (value == "AllowOnlyRevisions") return aspose::words::cloud::models::ProtectionRequestV2::ProtectionType::ALLOW_ONLY_REVISIONS;
+        if (value == "AllowOnlyComments") return aspose::words::cloud::models::ProtectionRequestV2::ProtectionType::ALLOW_ONLY_COMMENTS;
+        if (value == "AllowOnlyFormFields") return aspose::words::cloud::models::ProtectionRequestV2::ProtectionType::ALLOW_ONLY_FORM_FIELDS;
+        if (value == "ReadOnly") return aspose::words::cloud::models::ProtectionRequestV2::ProtectionType::READ_ONLY;
+        if (value == "NoProtection") return aspose::words::cloud::models::ProtectionRequestV2::ProtectionType::NO_PROTECTION;
+        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
+    }
+    void ProtectionRequestV2::toJson(void* jsonIfc) const
+    {
+        ProtectionRequestBase::toJson(jsonIfc);
+        ::nlohmann::json& json = *((::nlohmann::json*)jsonIfc);
+        if (this->m_ProtectionPassword) {
+            json["ProtectionPassword"] = convertUtf16(*(this->m_ProtectionPassword));
+        }
+        if (this->m_ProtectionType) {
+            json["ProtectionType"] = protectionRequestV2ProtectionTypeToString(*(this->m_ProtectionType));
+        }
+    }
+
+    void ProtectionRequestV2::fromJson(const void* jsonIfc)
+    {
+        ProtectionRequestBase::fromJson(jsonIfc);
+        ::nlohmann::json& json = *((::nlohmann::json*)jsonIfc);
+        if (json.contains("ProtectionPassword") && !json["ProtectionPassword"].is_null()) {
+            this->m_ProtectionPassword = std::make_shared< std::wstring >(
+                convertUtf8( json["ProtectionPassword"].get< std::string >() )
+            );
+        }
+        if (json.contains("ProtectionType") && !json["ProtectionType"].is_null()) {
+            this->m_ProtectionType = std::make_shared< aspose::words::cloud::models::ProtectionRequestV2::ProtectionType >(
+                protectionRequestV2ProtectionTypeFromString(json["ProtectionType"].get< std::string >())
+            );
+        }
+    }
+
+    void ProtectionRequestV2::getFileReferences(std::vector< FileReference* >& result)
+    {
+    }
+
+    void ProtectionRequestV2::validate()
+    {
+        ProtectionRequestBase::validate();
+        if (this->m_ProtectionPassword == nullptr)
+        {
+            throw aspose::words::cloud::ApiException(400, L"Property ProtectionPassword in ProtectionRequestV2 is required.");
+        }
+
+        if (this->m_ProtectionType == nullptr)
+        {
+            throw aspose::words::cloud::ApiException(400, L"Property ProtectionType in ProtectionRequestV2 is required.");
+        }
+
+    }
+
+    std::shared_ptr< std::wstring > ProtectionRequestV2::getProtectionPassword() const
+    {
+        return this->m_ProtectionPassword;
+    }
+
+    void ProtectionRequestV2::setProtectionPassword(std::shared_ptr< std::wstring > value)
+    {
+        this->m_ProtectionPassword = value;
+    }
+
+
+    std::shared_ptr< aspose::words::cloud::models::ProtectionRequestV2::ProtectionType > ProtectionRequestV2::getProtectionType() const
+    {
+        return this->m_ProtectionType;
+    }
+
+    void ProtectionRequestV2::setProtectionType(std::shared_ptr< aspose::words::cloud::models::ProtectionRequestV2::ProtectionType > value)
     {
         this->m_ProtectionType = value;
     }

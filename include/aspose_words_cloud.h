@@ -208,6 +208,8 @@
 #include "./aspose_words_cloud/models/protection_data.h"
 #include "./aspose_words_cloud/models/protection_data_response.h"
 #include "./aspose_words_cloud/models/protection_request.h"
+#include "./aspose_words_cloud/models/protection_request_base.h"
+#include "./aspose_words_cloud/models/protection_request_v2.h"
 #include "./aspose_words_cloud/models/ps_save_options_data.h"
 #include "./aspose_words_cloud/models/public_key_response.h"
 #include "./aspose_words_cloud/models/range_document.h"

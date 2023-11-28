@@ -25,12 +25,14 @@
 
 #pragma once
 #include "model_base.h"
+#include "protection_request_base.h"
 
 namespace aspose::words::cloud::models {
     /// <summary>
     /// Request on changing of protection.
     /// </summary>
-    class ProtectionRequest : public ModelBase
+    [[deprecated("ProtectionRequest is deprecated and remains for backwards compatibility only.")]]
+    class ProtectionRequest : public ProtectionRequestBase
     {
     public:
 
@@ -40,6 +42,7 @@ namespace aspose::words::cloud::models {
         ASPOSE_WORDS_CLOUD_EXPORT virtual void getFileReferences(std::vector< FileReference* >& result) override;
         ASPOSE_WORDS_CLOUD_EXPORT virtual void validate() override;
 
+        void abstractProtectionRequestBase() override {}
 
         /// <summary>
         /// Gets or sets the new password.
