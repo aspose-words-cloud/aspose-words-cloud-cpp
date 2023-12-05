@@ -1212,7 +1212,8 @@ namespace aspose::words::cloud::requests {
         if (m_CompareData)
         {
             result->addFormDataParam(L"Body", *m_CompareData);
-            m_CompareData->validate();}
+            m_CompareData->validate();    m_CompareData->getFileReferences(additionalFilesContent);
+        }
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'CompareData' is required.");
 
 
@@ -1237,7 +1238,6 @@ namespace aspose::words::cloud::requests {
     CompareDocumentOnlineRequest::CompareDocumentOnlineRequest(
         const std::shared_ptr< std::istream > document,
         const std::shared_ptr< aspose::words::cloud::models::CompareData > compareData,
-        const std::shared_ptr< std::istream > comparingDocument,
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
         const std::shared_ptr< std::wstring > encryptedPassword,
@@ -1246,7 +1246,6 @@ namespace aspose::words::cloud::requests {
     ) : 
         m_Document(document),
         m_CompareData(compareData),
-        m_ComparingDocument(comparingDocument),
         m_LoadEncoding(loadEncoding),
         m_Password(password),
         m_EncryptedPassword(encryptedPassword),
@@ -1263,11 +1262,6 @@ namespace aspose::words::cloud::requests {
     const std::shared_ptr< aspose::words::cloud::models::CompareData > CompareDocumentOnlineRequest::getCompareData() const
     {
         return m_CompareData;
-    }
-
-    const std::shared_ptr< std::istream > CompareDocumentOnlineRequest::getComparingDocument() const
-    {
-        return m_ComparingDocument;
     }
 
     const std::shared_ptr< std::wstring > CompareDocumentOnlineRequest::getLoadEncoding() const
@@ -1315,13 +1309,9 @@ namespace aspose::words::cloud::requests {
         if (m_CompareData)
         {
             result->addFormDataParam(L"compareData", *m_CompareData);
-            m_CompareData->validate();}
-        else throw aspose::words::cloud::ApiException(400, L"Parameter 'CompareData' is required.");
-
-        if (m_ComparingDocument)
-        {
-            result->addFormDataParam(L"comparingDocument", *m_ComparingDocument);
+            m_CompareData->validate();    m_CompareData->getFileReferences(additionalFilesContent);
         }
+        else throw aspose::words::cloud::ApiException(400, L"Parameter 'CompareData' is required.");
 
         for (const models::FileReference* additionalFileContent : additionalFilesContent)
         {
@@ -23453,6 +23443,123 @@ namespace aspose::words::cloud::requests {
     }
 
     /*
+     * InsertWatermark request implementation
+     */
+    InsertWatermarkRequest::InsertWatermarkRequest(
+        const std::shared_ptr< std::wstring > name,
+        const std::shared_ptr< aspose::words::cloud::models::WatermarkDataBase > watermarkData,
+        const std::shared_ptr< std::wstring > folder,
+        const std::shared_ptr< std::wstring > storage,
+        const std::shared_ptr< std::wstring > loadEncoding,
+        const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< std::wstring > destFileName,
+        const std::shared_ptr< std::wstring > revisionAuthor,
+        const std::shared_ptr< std::wstring > revisionDateTime
+    ) : 
+        m_Name(name),
+        m_WatermarkData(watermarkData),
+        m_Folder(folder),
+        m_Storage(storage),
+        m_LoadEncoding(loadEncoding),
+        m_Password(password),
+        m_EncryptedPassword(encryptedPassword),
+        m_DestFileName(destFileName),
+        m_RevisionAuthor(revisionAuthor),
+        m_RevisionDateTime(revisionDateTime)
+    {
+    }
+
+    const std::shared_ptr< std::wstring > InsertWatermarkRequest::getName() const
+    {
+        return m_Name;
+    }
+
+    const std::shared_ptr< aspose::words::cloud::models::WatermarkDataBase > InsertWatermarkRequest::getWatermarkData() const
+    {
+        return m_WatermarkData;
+    }
+
+    const std::shared_ptr< std::wstring > InsertWatermarkRequest::getFolder() const
+    {
+        return m_Folder;
+    }
+
+    const std::shared_ptr< std::wstring > InsertWatermarkRequest::getStorage() const
+    {
+        return m_Storage;
+    }
+
+    const std::shared_ptr< std::wstring > InsertWatermarkRequest::getLoadEncoding() const
+    {
+        return m_LoadEncoding;
+    }
+
+    const std::shared_ptr< std::wstring > InsertWatermarkRequest::getPassword() const
+    {
+        return m_Password;
+    }
+
+    const std::shared_ptr< std::wstring > InsertWatermarkRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
+    }
+
+    const std::shared_ptr< std::wstring > InsertWatermarkRequest::getDestFileName() const
+    {
+        return m_DestFileName;
+    }
+
+    const std::shared_ptr< std::wstring > InsertWatermarkRequest::getRevisionAuthor() const
+    {
+        return m_RevisionAuthor;
+    }
+
+    const std::shared_ptr< std::wstring > InsertWatermarkRequest::getRevisionDateTime() const
+    {
+        return m_RevisionDateTime;
+    }
+
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > InsertWatermarkRequest::createHttpRequest() const
+    {
+        std::vector<models::FileReference*> additionalFilesContent;
+        auto result = std::make_shared<HttpRequestData>();
+        result->setMethod(HttpRequestMethod::HttpPOST);
+        result->setPath(L"/words/{name}/watermarks/insert");
+        if (!m_Name) throw aspose::words::cloud::ApiException(400, L"Parameter 'Name' is required.");
+        result->setPathParam(L"{name}", *m_Name);
+        if (m_Folder) result->addQueryParam(L"folder", *m_Folder);
+        if (m_Storage) result->addQueryParam(L"storage", *m_Storage);
+        if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
+        if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
+        if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
+        if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
+        if (m_WatermarkData)
+        {
+            result->addFormDataParam(L"Body", *m_WatermarkData);
+            m_WatermarkData->validate();    m_WatermarkData->getFileReferences(additionalFilesContent);
+        }
+        else throw aspose::words::cloud::ApiException(400, L"Parameter 'WatermarkData' is required.");
+
+
+        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        {
+            result->addFormDataParam(additionalFileContent);
+        }
+
+        return result;
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > InsertWatermarkRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::InsertWatermarkResponse()
+        );
+    }
+
+    /*
      * InsertWatermarkImage request implementation
      */
     InsertWatermarkImageRequest::InsertWatermarkImageRequest(
@@ -23697,6 +23804,110 @@ namespace aspose::words::cloud::requests {
     {
         return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
             new aspose::words::cloud::responses::InsertWatermarkImageOnlineResponse()
+        );
+    }
+
+    /*
+     * InsertWatermarkOnline request implementation
+     */
+    InsertWatermarkOnlineRequest::InsertWatermarkOnlineRequest(
+        const std::shared_ptr< std::istream > document,
+        const std::shared_ptr< aspose::words::cloud::models::WatermarkDataBase > watermarkData,
+        const std::shared_ptr< std::wstring > loadEncoding,
+        const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< std::wstring > destFileName,
+        const std::shared_ptr< std::wstring > revisionAuthor,
+        const std::shared_ptr< std::wstring > revisionDateTime
+    ) : 
+        m_Document(document),
+        m_WatermarkData(watermarkData),
+        m_LoadEncoding(loadEncoding),
+        m_Password(password),
+        m_EncryptedPassword(encryptedPassword),
+        m_DestFileName(destFileName),
+        m_RevisionAuthor(revisionAuthor),
+        m_RevisionDateTime(revisionDateTime)
+    {
+    }
+
+    const std::shared_ptr< std::istream > InsertWatermarkOnlineRequest::getDocument() const
+    {
+        return m_Document;
+    }
+
+    const std::shared_ptr< aspose::words::cloud::models::WatermarkDataBase > InsertWatermarkOnlineRequest::getWatermarkData() const
+    {
+        return m_WatermarkData;
+    }
+
+    const std::shared_ptr< std::wstring > InsertWatermarkOnlineRequest::getLoadEncoding() const
+    {
+        return m_LoadEncoding;
+    }
+
+    const std::shared_ptr< std::wstring > InsertWatermarkOnlineRequest::getPassword() const
+    {
+        return m_Password;
+    }
+
+    const std::shared_ptr< std::wstring > InsertWatermarkOnlineRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
+    }
+
+    const std::shared_ptr< std::wstring > InsertWatermarkOnlineRequest::getDestFileName() const
+    {
+        return m_DestFileName;
+    }
+
+    const std::shared_ptr< std::wstring > InsertWatermarkOnlineRequest::getRevisionAuthor() const
+    {
+        return m_RevisionAuthor;
+    }
+
+    const std::shared_ptr< std::wstring > InsertWatermarkOnlineRequest::getRevisionDateTime() const
+    {
+        return m_RevisionDateTime;
+    }
+
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > InsertWatermarkOnlineRequest::createHttpRequest() const
+    {
+        std::vector<models::FileReference*> additionalFilesContent;
+        auto result = std::make_shared<HttpRequestData>();
+        result->setMethod(HttpRequestMethod::HttpPUT);
+        result->setPath(L"/words/online/post/watermarks/insert");
+        if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
+        if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
+        if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
+        if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
+        if (m_Document)
+        {
+            result->addFormDataParam(L"document", *m_Document);
+        }
+        else throw aspose::words::cloud::ApiException(400, L"Parameter 'Document' is required.");
+
+        if (m_WatermarkData)
+        {
+            result->addFormDataParam(L"watermarkData", *m_WatermarkData);
+            m_WatermarkData->validate();    m_WatermarkData->getFileReferences(additionalFilesContent);
+        }
+        else throw aspose::words::cloud::ApiException(400, L"Parameter 'WatermarkData' is required.");
+
+        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        {
+            result->addFormDataParam(additionalFileContent);
+        }
+
+        return result;
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > InsertWatermarkOnlineRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::InsertWatermarkOnlineResponse()
         );
     }
 

@@ -276,6 +276,8 @@ namespace aspose::words::cloud::models {
         { L"TiffSaveOptionsData, _", [] () { return dynamic_cast< ModelBase* >(new TiffSaveOptionsData()); }},
         { L"TimeZoneInfoData, _", [] () { return dynamic_cast< ModelBase* >(new TimeZoneInfoData()); }},
         { L"UserInformation, _", [] () { return dynamic_cast< ModelBase* >(new UserInformation()); }},
+        { L"WatermarkDataImage, _", [] () { return dynamic_cast< ModelBase* >(new WatermarkDataImage()); }},
+        { L"WatermarkDataText, _", [] () { return dynamic_cast< ModelBase* >(new WatermarkDataText()); }},
         { L"WatermarkText, _", [] () { return dynamic_cast< ModelBase* >(new WatermarkText()); }},
         { L"WordMLSaveOptionsData, _", [] () { return dynamic_cast< ModelBase* >(new WordMLSaveOptionsData()); }},
         { L"WordsApiErrorResponse, _", [] () { return dynamic_cast< ModelBase* >(new WordsApiErrorResponse()); }},
@@ -2456,6 +2458,9 @@ namespace aspose::words::cloud::models {
         if (this->m_DateTime) {
             json["DateTime"] = convertUtf16(*(this->m_DateTime));
         }
+        if (this->m_FileReference) {
+            this->m_FileReference->toJson(&json["FileReference"]);
+        }
         if (this->m_ResultDocumentFormat) {
             json["ResultDocumentFormat"] = convertUtf16(*(this->m_ResultDocumentFormat));
         }
@@ -2482,6 +2487,9 @@ namespace aspose::words::cloud::models {
                 convertUtf8( json["DateTime"].get< std::string >() )
             );
         }
+        if (json.contains("FileReference") && !json["FileReference"].is_null()) {
+            this->m_FileReference = createModelInstance< aspose::words::cloud::models::FileReference >(L"FileReference, _", json["FileReference"]);
+        }
         if (json.contains("ResultDocumentFormat") && !json["ResultDocumentFormat"].is_null()) {
             this->m_ResultDocumentFormat = std::make_shared< std::wstring >(
                 convertUtf8( json["ResultDocumentFormat"].get< std::string >() )
@@ -2491,6 +2499,12 @@ namespace aspose::words::cloud::models {
 
     void CompareData::getFileReferences(std::vector< FileReference* >& result)
     {
+        if (getFileReference() != nullptr)
+        {
+            getFileReference()->getFileReferences(result);
+        }
+
+
     }
 
     void CompareData::validate()
@@ -2500,10 +2514,12 @@ namespace aspose::words::cloud::models {
             throw aspose::words::cloud::ApiException(400, L"Property Author in CompareData is required.");
         }
 
-        if (this->m_ComparingWithDocument == nullptr)
+        if (this->m_FileReference == nullptr)
         {
-            throw aspose::words::cloud::ApiException(400, L"Property ComparingWithDocument in CompareData is required.");
+            throw aspose::words::cloud::ApiException(400, L"Property FileReference in CompareData is required.");
         }
+
+        this->m_FileReference->validate();
 
 
         if (this->m_CompareOptions != nullptr)
@@ -2512,6 +2528,13 @@ namespace aspose::words::cloud::models {
         }
 
 
+
+
+
+        if (this->m_FileReference != nullptr)
+        {
+            this->m_FileReference->validate();
+        }
 
 
     }
@@ -2557,6 +2580,17 @@ namespace aspose::words::cloud::models {
     void CompareData::setDateTime(std::shared_ptr< std::wstring > value)
     {
         this->m_DateTime = value;
+    }
+
+
+    std::shared_ptr< aspose::words::cloud::models::FileReference > CompareData::getFileReference() const
+    {
+        return this->m_FileReference;
+    }
+
+    void CompareData::setFileReference(std::shared_ptr< aspose::words::cloud::models::FileReference > value)
+    {
+        this->m_FileReference = value;
     }
 
 
@@ -23799,7 +23833,7 @@ namespace aspose::words::cloud::models {
             json["Multiline"] = *(this->m_Multiline);
         }
         if (this->m_Color) {
-            json["Color"] = convertUtf16(*(this->m_Color));
+            this->m_Color->toJson(&json["Color"]);
         }
         if (this->m_StyleName) {
             json["StyleName"] = convertUtf16(*(this->m_StyleName));
@@ -23894,9 +23928,7 @@ namespace aspose::words::cloud::models {
             );
         }
         if (json.contains("Color") && !json["Color"].is_null()) {
-            this->m_Color = std::make_shared< std::wstring >(
-                convertUtf8( json["Color"].get< std::string >() )
-            );
+            this->m_Color = createModelInstance< aspose::words::cloud::models::XmlColor >(L"XmlColor, _", json["Color"]);
         }
         if (json.contains("StyleName") && !json["StyleName"].is_null()) {
             this->m_StyleName = std::make_shared< std::wstring >(
@@ -23979,6 +24011,12 @@ namespace aspose::words::cloud::models {
 
 
 
+
+
+        if (this->m_Color != nullptr)
+        {
+            this->m_Color->validate();
+        }
 
 
 
@@ -24113,12 +24151,12 @@ namespace aspose::words::cloud::models {
     }
 
 
-    std::shared_ptr< std::wstring > StructuredDocumentTagBase::getColor() const
+    std::shared_ptr< aspose::words::cloud::models::XmlColor > StructuredDocumentTagBase::getColor() const
     {
         return this->m_Color;
     }
 
-    void StructuredDocumentTagBase::setColor(std::shared_ptr< std::wstring > value)
+    void StructuredDocumentTagBase::setColor(std::shared_ptr< aspose::words::cloud::models::XmlColor > value)
     {
         this->m_Color = value;
     }
@@ -29458,6 +29496,297 @@ namespace aspose::words::cloud::models {
     void UserInformation::setName(std::shared_ptr< std::wstring > value)
     {
         this->m_Name = value;
+    }
+
+
+
+    /*
+     * WatermarkDataBase implementation
+     */
+    void WatermarkDataBase::toJson(void* jsonIfc) const
+    {
+    }
+
+    void WatermarkDataBase::fromJson(const void* jsonIfc)
+    {
+    }
+
+    void WatermarkDataBase::getFileReferences(std::vector< FileReference* >& result)
+    {
+    }
+
+    void WatermarkDataBase::validate()
+    {
+    }
+
+
+
+
+    /*
+     * WatermarkDataImage implementation
+     */
+    void WatermarkDataImage::toJson(void* jsonIfc) const
+    {
+        WatermarkDataBase::toJson(jsonIfc);
+        ::nlohmann::json& json = *((::nlohmann::json*)jsonIfc);
+        if (this->m_Image) {
+            this->m_Image->toJson(&json["Image"]);
+        }
+        if (this->m_IsWashout) {
+            json["IsWashout"] = *(this->m_IsWashout);
+        }
+        if (this->m_Scale) {
+            json["Scale"] = *(this->m_Scale);
+        }
+    }
+
+    void WatermarkDataImage::fromJson(const void* jsonIfc)
+    {
+        WatermarkDataBase::fromJson(jsonIfc);
+        ::nlohmann::json& json = *((::nlohmann::json*)jsonIfc);
+        if (json.contains("Image") && !json["Image"].is_null()) {
+            this->m_Image = createModelInstance< aspose::words::cloud::models::FileReference >(L"FileReference, _", json["Image"]);
+        }
+        if (json.contains("IsWashout") && !json["IsWashout"].is_null()) {
+            this->m_IsWashout = std::make_shared< bool >(
+                json["IsWashout"].get< bool >()
+            );
+        }
+        if (json.contains("Scale") && !json["Scale"].is_null()) {
+            this->m_Scale = std::make_shared< double >(
+                json["Scale"].get< double >()
+            );
+        }
+    }
+
+    void WatermarkDataImage::getFileReferences(std::vector< FileReference* >& result)
+    {
+        WatermarkDataBase::getFileReferences(result);
+        if (getImage() != nullptr)
+        {
+            getImage()->getFileReferences(result);
+        }
+
+
+
+    }
+
+    void WatermarkDataImage::validate()
+    {
+        WatermarkDataBase::validate();
+        if (this->m_Image == nullptr)
+        {
+            throw aspose::words::cloud::ApiException(400, L"Property Image in WatermarkDataImage is required.");
+        }
+
+        this->m_Image->validate();
+
+
+        if (this->m_Image != nullptr)
+        {
+            this->m_Image->validate();
+        }
+
+
+
+    }
+
+    std::shared_ptr< aspose::words::cloud::models::FileReference > WatermarkDataImage::getImage() const
+    {
+        return this->m_Image;
+    }
+
+    void WatermarkDataImage::setImage(std::shared_ptr< aspose::words::cloud::models::FileReference > value)
+    {
+        this->m_Image = value;
+    }
+
+
+    std::shared_ptr< bool > WatermarkDataImage::getIsWashout() const
+    {
+        return this->m_IsWashout;
+    }
+
+    void WatermarkDataImage::setIsWashout(std::shared_ptr< bool > value)
+    {
+        this->m_IsWashout = value;
+    }
+
+
+    std::shared_ptr< double > WatermarkDataImage::getScale() const
+    {
+        return this->m_Scale;
+    }
+
+    void WatermarkDataImage::setScale(std::shared_ptr< double > value)
+    {
+        this->m_Scale = value;
+    }
+
+
+
+    /*
+     * WatermarkDataText implementation
+     */
+    inline std::string watermarkDataTextLayoutToString(aspose::words::cloud::models::WatermarkDataText::Layout value)
+    {
+        if (value == aspose::words::cloud::models::WatermarkDataText::Layout::HORIZONTAL) return "Horizontal";
+        if (value == aspose::words::cloud::models::WatermarkDataText::Layout::DIAGONAL) return "Diagonal";
+        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
+    }
+
+    inline aspose::words::cloud::models::WatermarkDataText::Layout watermarkDataTextLayoutFromString(const std::string& value)
+    {
+        if (value == "Horizontal") return aspose::words::cloud::models::WatermarkDataText::Layout::HORIZONTAL;
+        if (value == "Diagonal") return aspose::words::cloud::models::WatermarkDataText::Layout::DIAGONAL;
+        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
+    }
+    void WatermarkDataText::toJson(void* jsonIfc) const
+    {
+        WatermarkDataBase::toJson(jsonIfc);
+        ::nlohmann::json& json = *((::nlohmann::json*)jsonIfc);
+        if (this->m_Color) {
+            this->m_Color->toJson(&json["Color"]);
+        }
+        if (this->m_FontFamily) {
+            json["FontFamily"] = convertUtf16(*(this->m_FontFamily));
+        }
+        if (this->m_FontSize) {
+            json["FontSize"] = *(this->m_FontSize);
+        }
+        if (this->m_IsSemitrasparent) {
+            json["IsSemitrasparent"] = *(this->m_IsSemitrasparent);
+        }
+        if (this->m_Layout) {
+            json["Layout"] = watermarkDataTextLayoutToString(*(this->m_Layout));
+        }
+        if (this->m_Text) {
+            json["Text"] = convertUtf16(*(this->m_Text));
+        }
+    }
+
+    void WatermarkDataText::fromJson(const void* jsonIfc)
+    {
+        WatermarkDataBase::fromJson(jsonIfc);
+        ::nlohmann::json& json = *((::nlohmann::json*)jsonIfc);
+        if (json.contains("Color") && !json["Color"].is_null()) {
+            this->m_Color = createModelInstance< aspose::words::cloud::models::XmlColor >(L"XmlColor, _", json["Color"]);
+        }
+        if (json.contains("FontFamily") && !json["FontFamily"].is_null()) {
+            this->m_FontFamily = std::make_shared< std::wstring >(
+                convertUtf8( json["FontFamily"].get< std::string >() )
+            );
+        }
+        if (json.contains("FontSize") && !json["FontSize"].is_null()) {
+            this->m_FontSize = std::make_shared< double >(
+                json["FontSize"].get< double >()
+            );
+        }
+        if (json.contains("IsSemitrasparent") && !json["IsSemitrasparent"].is_null()) {
+            this->m_IsSemitrasparent = std::make_shared< bool >(
+                json["IsSemitrasparent"].get< bool >()
+            );
+        }
+        if (json.contains("Layout") && !json["Layout"].is_null()) {
+            this->m_Layout = std::make_shared< aspose::words::cloud::models::WatermarkDataText::Layout >(
+                watermarkDataTextLayoutFromString(json["Layout"].get< std::string >())
+            );
+        }
+        if (json.contains("Text") && !json["Text"].is_null()) {
+            this->m_Text = std::make_shared< std::wstring >(
+                convertUtf8( json["Text"].get< std::string >() )
+            );
+        }
+    }
+
+    void WatermarkDataText::getFileReferences(std::vector< FileReference* >& result)
+    {
+    }
+
+    void WatermarkDataText::validate()
+    {
+        WatermarkDataBase::validate();
+        if (this->m_Text == nullptr)
+        {
+            throw aspose::words::cloud::ApiException(400, L"Property Text in WatermarkDataText is required.");
+        }
+
+
+        if (this->m_Color != nullptr)
+        {
+            this->m_Color->validate();
+        }
+
+
+
+
+
+
+    }
+
+    std::shared_ptr< aspose::words::cloud::models::XmlColor > WatermarkDataText::getColor() const
+    {
+        return this->m_Color;
+    }
+
+    void WatermarkDataText::setColor(std::shared_ptr< aspose::words::cloud::models::XmlColor > value)
+    {
+        this->m_Color = value;
+    }
+
+
+    std::shared_ptr< std::wstring > WatermarkDataText::getFontFamily() const
+    {
+        return this->m_FontFamily;
+    }
+
+    void WatermarkDataText::setFontFamily(std::shared_ptr< std::wstring > value)
+    {
+        this->m_FontFamily = value;
+    }
+
+
+    std::shared_ptr< double > WatermarkDataText::getFontSize() const
+    {
+        return this->m_FontSize;
+    }
+
+    void WatermarkDataText::setFontSize(std::shared_ptr< double > value)
+    {
+        this->m_FontSize = value;
+    }
+
+
+    std::shared_ptr< bool > WatermarkDataText::getIsSemitrasparent() const
+    {
+        return this->m_IsSemitrasparent;
+    }
+
+    void WatermarkDataText::setIsSemitrasparent(std::shared_ptr< bool > value)
+    {
+        this->m_IsSemitrasparent = value;
+    }
+
+
+    std::shared_ptr< aspose::words::cloud::models::WatermarkDataText::Layout > WatermarkDataText::getLayout() const
+    {
+        return this->m_Layout;
+    }
+
+    void WatermarkDataText::setLayout(std::shared_ptr< aspose::words::cloud::models::WatermarkDataText::Layout > value)
+    {
+        this->m_Layout = value;
+    }
+
+
+    std::shared_ptr< std::wstring > WatermarkDataText::getText() const
+    {
+        return this->m_Text;
+    }
+
+    void WatermarkDataText::setText(std::shared_ptr< std::wstring > value)
+    {
+        this->m_Text = value;
     }
 
 

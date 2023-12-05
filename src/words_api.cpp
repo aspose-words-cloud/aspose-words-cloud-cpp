@@ -2675,6 +2675,17 @@ namespace aspose::words::cloud::api {
         return response;
     }
 
+    std::shared_ptr< aspose::words::cloud::models::DocumentResponse > WordsApi::insertWatermark(std::shared_ptr<aspose::words::cloud::requests::InsertWatermarkRequest> request)
+    {
+        auto response = std::make_shared< aspose::words::cloud::responses::InsertWatermarkResponse >();
+        m_ApiClient->call( request->createHttpRequest(), *response);
+        if (response->getStatusCode() != 200) {
+            throw aspose::words::cloud::ApiException(response->getStatusCode(), response->getErrorMessage());
+        }
+
+        return response->getModel();
+    }
+
     std::shared_ptr< aspose::words::cloud::models::DocumentResponse > WordsApi::insertWatermarkImage(std::shared_ptr<aspose::words::cloud::requests::InsertWatermarkImageRequest> request)
     {
         auto response = std::make_shared< aspose::words::cloud::responses::InsertWatermarkImageResponse >();
@@ -2689,6 +2700,17 @@ namespace aspose::words::cloud::api {
     std::shared_ptr<aspose::words::cloud::responses::InsertWatermarkImageOnlineResponse> WordsApi::insertWatermarkImageOnline(std::shared_ptr<aspose::words::cloud::requests::InsertWatermarkImageOnlineRequest> request)
     {
         auto response = std::make_shared< aspose::words::cloud::responses::InsertWatermarkImageOnlineResponse >();
+        m_ApiClient->call( request->createHttpRequest(), *response);
+        if (response->getStatusCode() != 200) {
+            throw aspose::words::cloud::ApiException(response->getStatusCode(), response->getErrorMessage());
+        }
+
+        return response;
+    }
+
+    std::shared_ptr<aspose::words::cloud::responses::InsertWatermarkOnlineResponse> WordsApi::insertWatermarkOnline(std::shared_ptr<aspose::words::cloud::requests::InsertWatermarkOnlineRequest> request)
+    {
+        auto response = std::make_shared< aspose::words::cloud::responses::InsertWatermarkOnlineResponse >();
         m_ApiClient->call( request->createHttpRequest(), *response);
         if (response->getStatusCode() != 200) {
             throw aspose::words::cloud::ApiException(response->getStatusCode(), response->getErrorMessage());
