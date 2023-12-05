@@ -103,7 +103,7 @@ TEST_F(WatermarkTests, TestInsertWatermarkImage) {
         remoteImagePath
     );
 
-    auto requestWatermarkDataImage = std::make_shared< aspose::words::cloud::models::FileReference >(std::make_shared< std::wstring >(remoteDataFolder + L"/" + remoteFileName));
+    auto requestWatermarkDataImage = std::make_shared< aspose::words::cloud::models::FileReference >(std::make_shared< std::wstring >(remoteImagePath));
     auto requestWatermarkData = std::make_shared< aspose::words::cloud::models::WatermarkDataImage >();
     requestWatermarkData->setImage(requestWatermarkDataImage);
     std::shared_ptr<requests::InsertWatermarkRequest> request(new requests::InsertWatermarkRequest(
@@ -128,7 +128,7 @@ TEST_F(WatermarkTests, TestInsertWatermarkImage) {
 /// </summary>
 TEST_F(WatermarkTests, TestInsertWatermarkImageOnline) {
     auto requestDocument = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(localFile)), std::istream::binary));
-    auto requestWatermarkDataImageStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(localFile)), std::istream::binary));
+    auto requestWatermarkDataImageStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(L"Common/aspose-cloud.png")), std::istream::binary));
     auto requestWatermarkDataImage = std::make_shared< aspose::words::cloud::models::FileReference >(requestWatermarkDataImageStream);
     auto requestWatermarkData = std::make_shared< aspose::words::cloud::models::WatermarkDataImage >();
     requestWatermarkData->setImage(requestWatermarkDataImage);
