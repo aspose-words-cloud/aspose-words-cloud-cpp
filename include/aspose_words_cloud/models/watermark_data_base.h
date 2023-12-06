@@ -1,5 +1,5 @@
 ﻿/** --------------------------------------------------------------------------------------------------------------------
-* <copyright company="Aspose" file="watermark_text.h">
+* <copyright company="Aspose" file="watermark_data_base.h">
 *   Copyright (c) 2023 Aspose.Words for Cloud
 * </copyright>
 * <summary>
@@ -30,43 +30,20 @@ namespace aspose::words::cloud::models {
     /// <summary>
     /// Class for insert watermark text request building.
     /// </summary>
-    [[deprecated("This model will be removed in the future.")]]
-    class WatermarkText : public ModelBase
+    class WatermarkDataBase : public ModelBase
     {
     public:
 
-        ASPOSE_WORDS_CLOUD_EXPORT virtual ~WatermarkText() = default;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual ~WatermarkDataBase() = default;
         ASPOSE_WORDS_CLOUD_EXPORT virtual void toJson(void* jsonIfc) const override;
         ASPOSE_WORDS_CLOUD_EXPORT virtual void fromJson(const void* jsonIfc) override;
         ASPOSE_WORDS_CLOUD_EXPORT virtual void getFileReferences(std::vector< FileReference* >& result) override;
         ASPOSE_WORDS_CLOUD_EXPORT virtual void validate() override;
 
-
-        /// <summary>
-        /// Gets or sets the watermark rotation angle.
-        /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< double > getRotationAngle() const;
-
-        /// <summary>
-        /// Gets or sets the watermark rotation angle.
-        /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT virtual void setRotationAngle(std::shared_ptr< double > value);
-
-
-        /// <summary>
-        /// Gets or sets the watermark text.
-        /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< std::wstring > getText() const;
-
-        /// <summary>
-        /// Gets or sets the watermark text.
-        /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT virtual void setText(std::shared_ptr< std::wstring > value);
+        virtual void abstractWatermarkDataBase() = 0;
 
 
     protected:
-        std::shared_ptr< double > m_RotationAngle;
-        std::shared_ptr< std::wstring > m_Text;
     };
 }
 

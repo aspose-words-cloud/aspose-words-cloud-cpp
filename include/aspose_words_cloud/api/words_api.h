@@ -521,10 +521,14 @@
 #include "aspose_words_cloud/responses/insert_table_row_response.h"
 #include "aspose_words_cloud/requests/insert_table_row_online_request.h"
 #include "aspose_words_cloud/responses/insert_table_row_online_response.h"
+#include "aspose_words_cloud/requests/insert_watermark_request.h"
+#include "aspose_words_cloud/responses/insert_watermark_response.h"
 #include "aspose_words_cloud/requests/insert_watermark_image_request.h"
 #include "aspose_words_cloud/responses/insert_watermark_image_response.h"
 #include "aspose_words_cloud/requests/insert_watermark_image_online_request.h"
 #include "aspose_words_cloud/responses/insert_watermark_image_online_response.h"
+#include "aspose_words_cloud/requests/insert_watermark_online_request.h"
+#include "aspose_words_cloud/responses/insert_watermark_online_response.h"
 #include "aspose_words_cloud/requests/insert_watermark_text_request.h"
 #include "aspose_words_cloud/responses/insert_watermark_text_response.h"
 #include "aspose_words_cloud/requests/insert_watermark_text_online_request.h"
@@ -851,7 +855,6 @@ namespace aspose::words::cloud::api {
         /// </summary>
         /// <param name="document">The document.</param>
         /// <param name="compareData">Compare data.</param>
-        /// <param name="comparingDocument">The comparing document.</param>
         /// <param name="loadEncoding">Encoding that will be used to load an HTML (or TXT) document if the encoding is not specified in HTML.</param>
         /// <param name="password">Password of protected Word document. Use the parameter to pass a password via SDK. SDK encrypts it automatically. We don't recommend to use the parameter to pass a plain password for direct call of API.</param>
         /// <param name="encryptedPassword">Password of protected Word document. Use the parameter to pass an encrypted password for direct calls of API. See SDK code for encyption details.</param>
@@ -3805,6 +3808,21 @@ namespace aspose::words::cloud::api {
         ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr<aspose::words::cloud::responses::InsertTableRowOnlineResponse> insertTableRowOnline(std::shared_ptr<aspose::words::cloud::requests::InsertTableRowOnlineRequest> request);
 
         /// <summary>
+        /// Insert a watermark to the document.
+        /// </summary>
+        /// <param name="name">The filename of the input document.</param>
+        /// <param name="watermarkData">The watermark data.</param>
+        /// <param name="folder">Original document folder.</param>
+        /// <param name="storage">Original document storage.</param>
+        /// <param name="loadEncoding">Encoding that will be used to load an HTML (or TXT) document if the encoding is not specified in HTML.</param>
+        /// <param name="password">Password of protected Word document. Use the parameter to pass a password via SDK. SDK encrypts it automatically. We don't recommend to use the parameter to pass a plain password for direct call of API.</param>
+        /// <param name="encryptedPassword">Password of protected Word document. Use the parameter to pass an encrypted password for direct calls of API. See SDK code for encyption details.</param>
+        /// <param name="destFileName">Result path of the document after the operation. If this parameter is omitted then result of the operation will be saved as the source document.</param>
+        /// <param name="revisionAuthor">Initials of the author to use for revisions.If you set this parameter and then make some changes to the document programmatically, save the document and later open the document in MS Word you will see these changes as revisions.</param>
+        /// <param name="revisionDateTime">The date and time to use for revisions.</param>
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::DocumentResponse > insertWatermark(std::shared_ptr<aspose::words::cloud::requests::InsertWatermarkRequest> request);
+
+        /// <summary>
         /// Inserts a new watermark image to the document.
         /// </summary>
         /// <param name="name">The filename of the input document.</param>
@@ -3819,6 +3837,7 @@ namespace aspose::words::cloud::api {
         /// <param name="revisionDateTime">The date and time to use for revisions.</param>
         /// <param name="rotationAngle">The rotation angle of the watermark.</param>
         /// <param name="image">The filename of the image. If the parameter value is missing — the image data is expected in the request content.</param>
+        [[deprecated("This operation is deprecated and is used for backward compatibility only. Please use InsertWatermark instead.")]]
         ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::DocumentResponse > insertWatermarkImage(std::shared_ptr<aspose::words::cloud::requests::InsertWatermarkImageRequest> request);
 
         /// <summary>
@@ -3834,7 +3853,21 @@ namespace aspose::words::cloud::api {
         /// <param name="revisionDateTime">The date and time to use for revisions.</param>
         /// <param name="rotationAngle">The rotation angle of the watermark.</param>
         /// <param name="image">The filename of the image. If the parameter value is missing — the image data is expected in the request content.</param>
+        [[deprecated("This operation is deprecated and is used for backward compatibility only. Please use InsertWatermark instead.")]]
         ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr<aspose::words::cloud::responses::InsertWatermarkImageOnlineResponse> insertWatermarkImageOnline(std::shared_ptr<aspose::words::cloud::requests::InsertWatermarkImageOnlineRequest> request);
+
+        /// <summary>
+        /// Insert a watermark to the document.
+        /// </summary>
+        /// <param name="document">The document.</param>
+        /// <param name="watermarkData">The watermark data.</param>
+        /// <param name="loadEncoding">Encoding that will be used to load an HTML (or TXT) document if the encoding is not specified in HTML.</param>
+        /// <param name="password">Password of protected Word document. Use the parameter to pass a password via SDK. SDK encrypts it automatically. We don't recommend to use the parameter to pass a plain password for direct call of API.</param>
+        /// <param name="encryptedPassword">Password of protected Word document. Use the parameter to pass an encrypted password for direct calls of API. See SDK code for encyption details.</param>
+        /// <param name="destFileName">Result path of the document after the operation. If this parameter is omitted then result of the operation will be saved as the source document.</param>
+        /// <param name="revisionAuthor">Initials of the author to use for revisions.If you set this parameter and then make some changes to the document programmatically, save the document and later open the document in MS Word you will see these changes as revisions.</param>
+        /// <param name="revisionDateTime">The date and time to use for revisions.</param>
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr<aspose::words::cloud::responses::InsertWatermarkOnlineResponse> insertWatermarkOnline(std::shared_ptr<aspose::words::cloud::requests::InsertWatermarkOnlineRequest> request);
 
         /// <summary>
         /// Inserts a new watermark text to the document.
@@ -3849,6 +3882,7 @@ namespace aspose::words::cloud::api {
         /// <param name="destFileName">Result path of the document after the operation. If this parameter is omitted then result of the operation will be saved as the source document.</param>
         /// <param name="revisionAuthor">Initials of the author to use for revisions.If you set this parameter and then make some changes to the document programmatically, save the document and later open the document in MS Word you will see these changes as revisions.</param>
         /// <param name="revisionDateTime">The date and time to use for revisions.</param>
+        [[deprecated("This operation is deprecated and is used for backward compatibility only. Please use InsertWatermark instead.")]]
         ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::DocumentResponse > insertWatermarkText(std::shared_ptr<aspose::words::cloud::requests::InsertWatermarkTextRequest> request);
 
         /// <summary>
@@ -3862,6 +3896,7 @@ namespace aspose::words::cloud::api {
         /// <param name="destFileName">Result path of the document after the operation. If this parameter is omitted then result of the operation will be saved as the source document.</param>
         /// <param name="revisionAuthor">Initials of the author to use for revisions.If you set this parameter and then make some changes to the document programmatically, save the document and later open the document in MS Word you will see these changes as revisions.</param>
         /// <param name="revisionDateTime">The date and time to use for revisions.</param>
+        [[deprecated("This operation is deprecated and is used for backward compatibility only. Please use InsertWatermark instead.")]]
         ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr<aspose::words::cloud::responses::InsertWatermarkTextOnlineResponse> insertWatermarkTextOnline(std::shared_ptr<aspose::words::cloud::requests::InsertWatermarkTextOnlineRequest> request);
 
         /// <summary>
