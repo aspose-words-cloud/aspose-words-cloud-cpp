@@ -200,6 +200,7 @@ namespace aspose::words::cloud::models {
         { L"ProtectionData, _", [] () { return dynamic_cast< ModelBase* >(new ProtectionData()); }},
         { L"ProtectionDataResponse, _", [] () { return dynamic_cast< ModelBase* >(new ProtectionDataResponse()); }},
         { L"ProtectionRequest, _", [] () { return dynamic_cast< ModelBase* >(new ProtectionRequest()); }},
+        { L"ProtectionRequestV2, _", [] () { return dynamic_cast< ModelBase* >(new ProtectionRequestV2()); }},
         { L"PsSaveOptionsData, _", [] () { return dynamic_cast< ModelBase* >(new PsSaveOptionsData()); }},
         { L"PublicKeyResponse, _", [] () { return dynamic_cast< ModelBase* >(new PublicKeyResponse()); }},
         { L"RangeDocument, _", [] () { return dynamic_cast< ModelBase* >(new RangeDocument()); }},
@@ -275,6 +276,8 @@ namespace aspose::words::cloud::models {
         { L"TiffSaveOptionsData, _", [] () { return dynamic_cast< ModelBase* >(new TiffSaveOptionsData()); }},
         { L"TimeZoneInfoData, _", [] () { return dynamic_cast< ModelBase* >(new TimeZoneInfoData()); }},
         { L"UserInformation, _", [] () { return dynamic_cast< ModelBase* >(new UserInformation()); }},
+        { L"WatermarkDataImage, _", [] () { return dynamic_cast< ModelBase* >(new WatermarkDataImage()); }},
+        { L"WatermarkDataText, _", [] () { return dynamic_cast< ModelBase* >(new WatermarkDataText()); }},
         { L"WatermarkText, _", [] () { return dynamic_cast< ModelBase* >(new WatermarkText()); }},
         { L"WordMLSaveOptionsData, _", [] () { return dynamic_cast< ModelBase* >(new WordMLSaveOptionsData()); }},
         { L"WordsApiErrorResponse, _", [] () { return dynamic_cast< ModelBase* >(new WordsApiErrorResponse()); }},
@@ -943,8 +946,13 @@ namespace aspose::words::cloud::models {
      */
     void BookmarkInsert::toJson(void* jsonIfc) const
     {
-        BookmarkData::toJson(jsonIfc);
         ::nlohmann::json& json = *((::nlohmann::json*)jsonIfc);
+        if (this->m_Name) {
+            json["Name"] = convertUtf16(*(this->m_Name));
+        }
+        if (this->m_Text) {
+            json["Text"] = convertUtf16(*(this->m_Text));
+        }
         if (this->m_StartRange) {
             this->m_StartRange->toJson(&json["StartRange"]);
         }
@@ -955,8 +963,17 @@ namespace aspose::words::cloud::models {
 
     void BookmarkInsert::fromJson(const void* jsonIfc)
     {
-        BookmarkData::fromJson(jsonIfc);
         ::nlohmann::json& json = *((::nlohmann::json*)jsonIfc);
+        if (json.contains("Name") && !json["Name"].is_null()) {
+            this->m_Name = std::make_shared< std::wstring >(
+                convertUtf8( json["Name"].get< std::string >() )
+            );
+        }
+        if (json.contains("Text") && !json["Text"].is_null()) {
+            this->m_Text = std::make_shared< std::wstring >(
+                convertUtf8( json["Text"].get< std::string >() )
+            );
+        }
         if (json.contains("StartRange") && !json["StartRange"].is_null()) {
             this->m_StartRange = createModelInstance< aspose::words::cloud::models::NewDocumentPosition >(L"NewDocumentPosition, _", json["StartRange"]);
         }
@@ -971,7 +988,30 @@ namespace aspose::words::cloud::models {
 
     void BookmarkInsert::validate()
     {
-        BookmarkData::validate();
+        if (this->m_Name == nullptr)
+        {
+            throw aspose::words::cloud::ApiException(400, L"Property Name in BookmarkInsert is required.");
+        }
+
+        if (this->m_Text == nullptr)
+        {
+            throw aspose::words::cloud::ApiException(400, L"Property Text in BookmarkInsert is required.");
+        }
+
+        if (this->m_StartRange == nullptr)
+        {
+            throw aspose::words::cloud::ApiException(400, L"Property StartRange in BookmarkInsert is required.");
+        }
+
+        this->m_StartRange->validate();
+
+        if (this->m_EndRange == nullptr)
+        {
+            throw aspose::words::cloud::ApiException(400, L"Property EndRange in BookmarkInsert is required.");
+        }
+
+        this->m_EndRange->validate();
+
 
         if (this->m_StartRange != nullptr)
         {
@@ -986,6 +1026,28 @@ namespace aspose::words::cloud::models {
         }
 
     }
+
+    std::shared_ptr< std::wstring > BookmarkInsert::getName() const
+    {
+        return this->m_Name;
+    }
+
+    void BookmarkInsert::setName(std::shared_ptr< std::wstring > value)
+    {
+        this->m_Name = value;
+    }
+
+
+    std::shared_ptr< std::wstring > BookmarkInsert::getText() const
+    {
+        return this->m_Text;
+    }
+
+    void BookmarkInsert::setText(std::shared_ptr< std::wstring > value)
+    {
+        this->m_Text = value;
+    }
+
 
     std::shared_ptr< aspose::words::cloud::models::NewDocumentPosition > BookmarkInsert::getStartRange() const
     {
@@ -2396,6 +2458,9 @@ namespace aspose::words::cloud::models {
         if (this->m_DateTime) {
             json["DateTime"] = convertUtf16(*(this->m_DateTime));
         }
+        if (this->m_FileReference) {
+            this->m_FileReference->toJson(&json["FileReference"]);
+        }
         if (this->m_ResultDocumentFormat) {
             json["ResultDocumentFormat"] = convertUtf16(*(this->m_ResultDocumentFormat));
         }
@@ -2422,6 +2487,9 @@ namespace aspose::words::cloud::models {
                 convertUtf8( json["DateTime"].get< std::string >() )
             );
         }
+        if (json.contains("FileReference") && !json["FileReference"].is_null()) {
+            this->m_FileReference = createModelInstance< aspose::words::cloud::models::FileReference >(L"FileReference, _", json["FileReference"]);
+        }
         if (json.contains("ResultDocumentFormat") && !json["ResultDocumentFormat"].is_null()) {
             this->m_ResultDocumentFormat = std::make_shared< std::wstring >(
                 convertUtf8( json["ResultDocumentFormat"].get< std::string >() )
@@ -2431,6 +2499,12 @@ namespace aspose::words::cloud::models {
 
     void CompareData::getFileReferences(std::vector< FileReference* >& result)
     {
+        if (getFileReference() != nullptr)
+        {
+            getFileReference()->getFileReferences(result);
+        }
+
+
     }
 
     void CompareData::validate()
@@ -2440,10 +2514,12 @@ namespace aspose::words::cloud::models {
             throw aspose::words::cloud::ApiException(400, L"Property Author in CompareData is required.");
         }
 
-        if (this->m_ComparingWithDocument == nullptr)
+        if (this->m_FileReference == nullptr)
         {
-            throw aspose::words::cloud::ApiException(400, L"Property ComparingWithDocument in CompareData is required.");
+            throw aspose::words::cloud::ApiException(400, L"Property FileReference in CompareData is required.");
         }
+
+        this->m_FileReference->validate();
 
 
         if (this->m_CompareOptions != nullptr)
@@ -2452,6 +2528,13 @@ namespace aspose::words::cloud::models {
         }
 
 
+
+
+
+        if (this->m_FileReference != nullptr)
+        {
+            this->m_FileReference->validate();
+        }
 
 
     }
@@ -2497,6 +2580,17 @@ namespace aspose::words::cloud::models {
     void CompareData::setDateTime(std::shared_ptr< std::wstring > value)
     {
         this->m_DateTime = value;
+    }
+
+
+    std::shared_ptr< aspose::words::cloud::models::FileReference > CompareData::getFileReference() const
+    {
+        return this->m_FileReference;
+    }
+
+    void CompareData::setFileReference(std::shared_ptr< aspose::words::cloud::models::FileReference > value)
+    {
+        this->m_FileReference = value;
     }
 
 
@@ -20277,11 +20371,30 @@ namespace aspose::words::cloud::models {
     /*
      * ProtectionData implementation
      */
+    inline std::string protectionDataProtectionTypeToString(aspose::words::cloud::models::ProtectionData::ProtectionType value)
+    {
+        if (value == aspose::words::cloud::models::ProtectionData::ProtectionType::ALLOW_ONLY_REVISIONS) return "AllowOnlyRevisions";
+        if (value == aspose::words::cloud::models::ProtectionData::ProtectionType::ALLOW_ONLY_COMMENTS) return "AllowOnlyComments";
+        if (value == aspose::words::cloud::models::ProtectionData::ProtectionType::ALLOW_ONLY_FORM_FIELDS) return "AllowOnlyFormFields";
+        if (value == aspose::words::cloud::models::ProtectionData::ProtectionType::READ_ONLY) return "ReadOnly";
+        if (value == aspose::words::cloud::models::ProtectionData::ProtectionType::NO_PROTECTION) return "NoProtection";
+        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
+    }
+
+    inline aspose::words::cloud::models::ProtectionData::ProtectionType protectionDataProtectionTypeFromString(const std::string& value)
+    {
+        if (value == "AllowOnlyRevisions") return aspose::words::cloud::models::ProtectionData::ProtectionType::ALLOW_ONLY_REVISIONS;
+        if (value == "AllowOnlyComments") return aspose::words::cloud::models::ProtectionData::ProtectionType::ALLOW_ONLY_COMMENTS;
+        if (value == "AllowOnlyFormFields") return aspose::words::cloud::models::ProtectionData::ProtectionType::ALLOW_ONLY_FORM_FIELDS;
+        if (value == "ReadOnly") return aspose::words::cloud::models::ProtectionData::ProtectionType::READ_ONLY;
+        if (value == "NoProtection") return aspose::words::cloud::models::ProtectionData::ProtectionType::NO_PROTECTION;
+        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
+    }
     void ProtectionData::toJson(void* jsonIfc) const
     {
         ::nlohmann::json& json = *((::nlohmann::json*)jsonIfc);
         if (this->m_ProtectionType) {
-            json["ProtectionType"] = convertUtf16(*(this->m_ProtectionType));
+            json["ProtectionType"] = protectionDataProtectionTypeToString(*(this->m_ProtectionType));
         }
     }
 
@@ -20289,8 +20402,8 @@ namespace aspose::words::cloud::models {
     {
         ::nlohmann::json& json = *((::nlohmann::json*)jsonIfc);
         if (json.contains("ProtectionType") && !json["ProtectionType"].is_null()) {
-            this->m_ProtectionType = std::make_shared< std::wstring >(
-                convertUtf8( json["ProtectionType"].get< std::string >() )
+            this->m_ProtectionType = std::make_shared< aspose::words::cloud::models::ProtectionData::ProtectionType >(
+                protectionDataProtectionTypeFromString(json["ProtectionType"].get< std::string >())
             );
         }
     }
@@ -20301,14 +20414,19 @@ namespace aspose::words::cloud::models {
 
     void ProtectionData::validate()
     {
+        if (this->m_ProtectionType == nullptr)
+        {
+            throw aspose::words::cloud::ApiException(400, L"Property ProtectionType in ProtectionData is required.");
+        }
+
     }
 
-    std::shared_ptr< std::wstring > ProtectionData::getProtectionType() const
+    std::shared_ptr< aspose::words::cloud::models::ProtectionData::ProtectionType > ProtectionData::getProtectionType() const
     {
         return this->m_ProtectionType;
     }
 
-    void ProtectionData::setProtectionType(std::shared_ptr< std::wstring > value)
+    void ProtectionData::setProtectionType(std::shared_ptr< aspose::words::cloud::models::ProtectionData::ProtectionType > value)
     {
         this->m_ProtectionType = value;
     }
@@ -20392,6 +20510,7 @@ namespace aspose::words::cloud::models {
      */
     void ProtectionRequest::toJson(void* jsonIfc) const
     {
+        ProtectionRequestBase::toJson(jsonIfc);
         ::nlohmann::json& json = *((::nlohmann::json*)jsonIfc);
         if (this->m_NewPassword) {
             json["NewPassword"] = convertUtf16(*(this->m_NewPassword));
@@ -20406,6 +20525,7 @@ namespace aspose::words::cloud::models {
 
     void ProtectionRequest::fromJson(const void* jsonIfc)
     {
+        ProtectionRequestBase::fromJson(jsonIfc);
         ::nlohmann::json& json = *((::nlohmann::json*)jsonIfc);
         if (json.contains("NewPassword") && !json["NewPassword"].is_null()) {
             this->m_NewPassword = std::make_shared< std::wstring >(
@@ -20430,6 +20550,7 @@ namespace aspose::words::cloud::models {
 
     void ProtectionRequest::validate()
     {
+        ProtectionRequestBase::validate();
         if (this->m_Password == nullptr)
         {
             throw aspose::words::cloud::ApiException(400, L"Property Password in ProtectionRequest is required.");
@@ -20465,6 +20586,120 @@ namespace aspose::words::cloud::models {
     }
 
     void ProtectionRequest::setProtectionType(std::shared_ptr< std::wstring > value)
+    {
+        this->m_ProtectionType = value;
+    }
+
+
+
+    /*
+     * ProtectionRequestBase implementation
+     */
+    void ProtectionRequestBase::toJson(void* jsonIfc) const
+    {
+    }
+
+    void ProtectionRequestBase::fromJson(const void* jsonIfc)
+    {
+    }
+
+    void ProtectionRequestBase::getFileReferences(std::vector< FileReference* >& result)
+    {
+    }
+
+    void ProtectionRequestBase::validate()
+    {
+    }
+
+
+
+
+    /*
+     * ProtectionRequestV2 implementation
+     */
+    inline std::string protectionRequestV2ProtectionTypeToString(aspose::words::cloud::models::ProtectionRequestV2::ProtectionType value)
+    {
+        if (value == aspose::words::cloud::models::ProtectionRequestV2::ProtectionType::ALLOW_ONLY_REVISIONS) return "AllowOnlyRevisions";
+        if (value == aspose::words::cloud::models::ProtectionRequestV2::ProtectionType::ALLOW_ONLY_COMMENTS) return "AllowOnlyComments";
+        if (value == aspose::words::cloud::models::ProtectionRequestV2::ProtectionType::ALLOW_ONLY_FORM_FIELDS) return "AllowOnlyFormFields";
+        if (value == aspose::words::cloud::models::ProtectionRequestV2::ProtectionType::READ_ONLY) return "ReadOnly";
+        if (value == aspose::words::cloud::models::ProtectionRequestV2::ProtectionType::NO_PROTECTION) return "NoProtection";
+        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
+    }
+
+    inline aspose::words::cloud::models::ProtectionRequestV2::ProtectionType protectionRequestV2ProtectionTypeFromString(const std::string& value)
+    {
+        if (value == "AllowOnlyRevisions") return aspose::words::cloud::models::ProtectionRequestV2::ProtectionType::ALLOW_ONLY_REVISIONS;
+        if (value == "AllowOnlyComments") return aspose::words::cloud::models::ProtectionRequestV2::ProtectionType::ALLOW_ONLY_COMMENTS;
+        if (value == "AllowOnlyFormFields") return aspose::words::cloud::models::ProtectionRequestV2::ProtectionType::ALLOW_ONLY_FORM_FIELDS;
+        if (value == "ReadOnly") return aspose::words::cloud::models::ProtectionRequestV2::ProtectionType::READ_ONLY;
+        if (value == "NoProtection") return aspose::words::cloud::models::ProtectionRequestV2::ProtectionType::NO_PROTECTION;
+        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
+    }
+    void ProtectionRequestV2::toJson(void* jsonIfc) const
+    {
+        ProtectionRequestBase::toJson(jsonIfc);
+        ::nlohmann::json& json = *((::nlohmann::json*)jsonIfc);
+        if (this->m_ProtectionPassword) {
+            json["ProtectionPassword"] = convertUtf16(*(this->m_ProtectionPassword));
+        }
+        if (this->m_ProtectionType) {
+            json["ProtectionType"] = protectionRequestV2ProtectionTypeToString(*(this->m_ProtectionType));
+        }
+    }
+
+    void ProtectionRequestV2::fromJson(const void* jsonIfc)
+    {
+        ProtectionRequestBase::fromJson(jsonIfc);
+        ::nlohmann::json& json = *((::nlohmann::json*)jsonIfc);
+        if (json.contains("ProtectionPassword") && !json["ProtectionPassword"].is_null()) {
+            this->m_ProtectionPassword = std::make_shared< std::wstring >(
+                convertUtf8( json["ProtectionPassword"].get< std::string >() )
+            );
+        }
+        if (json.contains("ProtectionType") && !json["ProtectionType"].is_null()) {
+            this->m_ProtectionType = std::make_shared< aspose::words::cloud::models::ProtectionRequestV2::ProtectionType >(
+                protectionRequestV2ProtectionTypeFromString(json["ProtectionType"].get< std::string >())
+            );
+        }
+    }
+
+    void ProtectionRequestV2::getFileReferences(std::vector< FileReference* >& result)
+    {
+    }
+
+    void ProtectionRequestV2::validate()
+    {
+        ProtectionRequestBase::validate();
+        if (this->m_ProtectionPassword == nullptr)
+        {
+            throw aspose::words::cloud::ApiException(400, L"Property ProtectionPassword in ProtectionRequestV2 is required.");
+        }
+
+        if (this->m_ProtectionType == nullptr)
+        {
+            throw aspose::words::cloud::ApiException(400, L"Property ProtectionType in ProtectionRequestV2 is required.");
+        }
+
+    }
+
+    std::shared_ptr< std::wstring > ProtectionRequestV2::getProtectionPassword() const
+    {
+        return this->m_ProtectionPassword;
+    }
+
+    void ProtectionRequestV2::setProtectionPassword(std::shared_ptr< std::wstring > value)
+    {
+        this->m_ProtectionPassword = value;
+    }
+
+
+    std::shared_ptr< aspose::words::cloud::models::ProtectionRequestV2::ProtectionType > ProtectionRequestV2::getProtectionType() const
+    {
+        return this->m_ProtectionType;
+    }
+
+    void ProtectionRequestV2::setProtectionType(std::shared_ptr< aspose::words::cloud::models::ProtectionRequestV2::ProtectionType > value)
     {
         this->m_ProtectionType = value;
     }
@@ -23598,7 +23833,7 @@ namespace aspose::words::cloud::models {
             json["Multiline"] = *(this->m_Multiline);
         }
         if (this->m_Color) {
-            json["Color"] = convertUtf16(*(this->m_Color));
+            this->m_Color->toJson(&json["Color"]);
         }
         if (this->m_StyleName) {
             json["StyleName"] = convertUtf16(*(this->m_StyleName));
@@ -23693,9 +23928,7 @@ namespace aspose::words::cloud::models {
             );
         }
         if (json.contains("Color") && !json["Color"].is_null()) {
-            this->m_Color = std::make_shared< std::wstring >(
-                convertUtf8( json["Color"].get< std::string >() )
-            );
+            this->m_Color = createModelInstance< aspose::words::cloud::models::XmlColor >(L"XmlColor, _", json["Color"]);
         }
         if (json.contains("StyleName") && !json["StyleName"].is_null()) {
             this->m_StyleName = std::make_shared< std::wstring >(
@@ -23778,6 +24011,12 @@ namespace aspose::words::cloud::models {
 
 
 
+
+
+        if (this->m_Color != nullptr)
+        {
+            this->m_Color->validate();
+        }
 
 
 
@@ -23912,12 +24151,12 @@ namespace aspose::words::cloud::models {
     }
 
 
-    std::shared_ptr< std::wstring > StructuredDocumentTagBase::getColor() const
+    std::shared_ptr< aspose::words::cloud::models::XmlColor > StructuredDocumentTagBase::getColor() const
     {
         return this->m_Color;
     }
 
-    void StructuredDocumentTagBase::setColor(std::shared_ptr< std::wstring > value)
+    void StructuredDocumentTagBase::setColor(std::shared_ptr< aspose::words::cloud::models::XmlColor > value)
     {
         this->m_Color = value;
     }
@@ -29257,6 +29496,297 @@ namespace aspose::words::cloud::models {
     void UserInformation::setName(std::shared_ptr< std::wstring > value)
     {
         this->m_Name = value;
+    }
+
+
+
+    /*
+     * WatermarkDataBase implementation
+     */
+    void WatermarkDataBase::toJson(void* jsonIfc) const
+    {
+    }
+
+    void WatermarkDataBase::fromJson(const void* jsonIfc)
+    {
+    }
+
+    void WatermarkDataBase::getFileReferences(std::vector< FileReference* >& result)
+    {
+    }
+
+    void WatermarkDataBase::validate()
+    {
+    }
+
+
+
+
+    /*
+     * WatermarkDataImage implementation
+     */
+    void WatermarkDataImage::toJson(void* jsonIfc) const
+    {
+        WatermarkDataBase::toJson(jsonIfc);
+        ::nlohmann::json& json = *((::nlohmann::json*)jsonIfc);
+        if (this->m_Image) {
+            this->m_Image->toJson(&json["Image"]);
+        }
+        if (this->m_IsWashout) {
+            json["IsWashout"] = *(this->m_IsWashout);
+        }
+        if (this->m_Scale) {
+            json["Scale"] = *(this->m_Scale);
+        }
+    }
+
+    void WatermarkDataImage::fromJson(const void* jsonIfc)
+    {
+        WatermarkDataBase::fromJson(jsonIfc);
+        ::nlohmann::json& json = *((::nlohmann::json*)jsonIfc);
+        if (json.contains("Image") && !json["Image"].is_null()) {
+            this->m_Image = createModelInstance< aspose::words::cloud::models::FileReference >(L"FileReference, _", json["Image"]);
+        }
+        if (json.contains("IsWashout") && !json["IsWashout"].is_null()) {
+            this->m_IsWashout = std::make_shared< bool >(
+                json["IsWashout"].get< bool >()
+            );
+        }
+        if (json.contains("Scale") && !json["Scale"].is_null()) {
+            this->m_Scale = std::make_shared< double >(
+                json["Scale"].get< double >()
+            );
+        }
+    }
+
+    void WatermarkDataImage::getFileReferences(std::vector< FileReference* >& result)
+    {
+        WatermarkDataBase::getFileReferences(result);
+        if (getImage() != nullptr)
+        {
+            getImage()->getFileReferences(result);
+        }
+
+
+
+    }
+
+    void WatermarkDataImage::validate()
+    {
+        WatermarkDataBase::validate();
+        if (this->m_Image == nullptr)
+        {
+            throw aspose::words::cloud::ApiException(400, L"Property Image in WatermarkDataImage is required.");
+        }
+
+        this->m_Image->validate();
+
+
+        if (this->m_Image != nullptr)
+        {
+            this->m_Image->validate();
+        }
+
+
+
+    }
+
+    std::shared_ptr< aspose::words::cloud::models::FileReference > WatermarkDataImage::getImage() const
+    {
+        return this->m_Image;
+    }
+
+    void WatermarkDataImage::setImage(std::shared_ptr< aspose::words::cloud::models::FileReference > value)
+    {
+        this->m_Image = value;
+    }
+
+
+    std::shared_ptr< bool > WatermarkDataImage::getIsWashout() const
+    {
+        return this->m_IsWashout;
+    }
+
+    void WatermarkDataImage::setIsWashout(std::shared_ptr< bool > value)
+    {
+        this->m_IsWashout = value;
+    }
+
+
+    std::shared_ptr< double > WatermarkDataImage::getScale() const
+    {
+        return this->m_Scale;
+    }
+
+    void WatermarkDataImage::setScale(std::shared_ptr< double > value)
+    {
+        this->m_Scale = value;
+    }
+
+
+
+    /*
+     * WatermarkDataText implementation
+     */
+    inline std::string watermarkDataTextLayoutToString(aspose::words::cloud::models::WatermarkDataText::Layout value)
+    {
+        if (value == aspose::words::cloud::models::WatermarkDataText::Layout::HORIZONTAL) return "Horizontal";
+        if (value == aspose::words::cloud::models::WatermarkDataText::Layout::DIAGONAL) return "Diagonal";
+        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
+    }
+
+    inline aspose::words::cloud::models::WatermarkDataText::Layout watermarkDataTextLayoutFromString(const std::string& value)
+    {
+        if (value == "Horizontal") return aspose::words::cloud::models::WatermarkDataText::Layout::HORIZONTAL;
+        if (value == "Diagonal") return aspose::words::cloud::models::WatermarkDataText::Layout::DIAGONAL;
+        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
+    }
+    void WatermarkDataText::toJson(void* jsonIfc) const
+    {
+        WatermarkDataBase::toJson(jsonIfc);
+        ::nlohmann::json& json = *((::nlohmann::json*)jsonIfc);
+        if (this->m_Color) {
+            this->m_Color->toJson(&json["Color"]);
+        }
+        if (this->m_FontFamily) {
+            json["FontFamily"] = convertUtf16(*(this->m_FontFamily));
+        }
+        if (this->m_FontSize) {
+            json["FontSize"] = *(this->m_FontSize);
+        }
+        if (this->m_IsSemitrasparent) {
+            json["IsSemitrasparent"] = *(this->m_IsSemitrasparent);
+        }
+        if (this->m_Layout) {
+            json["Layout"] = watermarkDataTextLayoutToString(*(this->m_Layout));
+        }
+        if (this->m_Text) {
+            json["Text"] = convertUtf16(*(this->m_Text));
+        }
+    }
+
+    void WatermarkDataText::fromJson(const void* jsonIfc)
+    {
+        WatermarkDataBase::fromJson(jsonIfc);
+        ::nlohmann::json& json = *((::nlohmann::json*)jsonIfc);
+        if (json.contains("Color") && !json["Color"].is_null()) {
+            this->m_Color = createModelInstance< aspose::words::cloud::models::XmlColor >(L"XmlColor, _", json["Color"]);
+        }
+        if (json.contains("FontFamily") && !json["FontFamily"].is_null()) {
+            this->m_FontFamily = std::make_shared< std::wstring >(
+                convertUtf8( json["FontFamily"].get< std::string >() )
+            );
+        }
+        if (json.contains("FontSize") && !json["FontSize"].is_null()) {
+            this->m_FontSize = std::make_shared< double >(
+                json["FontSize"].get< double >()
+            );
+        }
+        if (json.contains("IsSemitrasparent") && !json["IsSemitrasparent"].is_null()) {
+            this->m_IsSemitrasparent = std::make_shared< bool >(
+                json["IsSemitrasparent"].get< bool >()
+            );
+        }
+        if (json.contains("Layout") && !json["Layout"].is_null()) {
+            this->m_Layout = std::make_shared< aspose::words::cloud::models::WatermarkDataText::Layout >(
+                watermarkDataTextLayoutFromString(json["Layout"].get< std::string >())
+            );
+        }
+        if (json.contains("Text") && !json["Text"].is_null()) {
+            this->m_Text = std::make_shared< std::wstring >(
+                convertUtf8( json["Text"].get< std::string >() )
+            );
+        }
+    }
+
+    void WatermarkDataText::getFileReferences(std::vector< FileReference* >& result)
+    {
+    }
+
+    void WatermarkDataText::validate()
+    {
+        WatermarkDataBase::validate();
+        if (this->m_Text == nullptr)
+        {
+            throw aspose::words::cloud::ApiException(400, L"Property Text in WatermarkDataText is required.");
+        }
+
+
+        if (this->m_Color != nullptr)
+        {
+            this->m_Color->validate();
+        }
+
+
+
+
+
+
+    }
+
+    std::shared_ptr< aspose::words::cloud::models::XmlColor > WatermarkDataText::getColor() const
+    {
+        return this->m_Color;
+    }
+
+    void WatermarkDataText::setColor(std::shared_ptr< aspose::words::cloud::models::XmlColor > value)
+    {
+        this->m_Color = value;
+    }
+
+
+    std::shared_ptr< std::wstring > WatermarkDataText::getFontFamily() const
+    {
+        return this->m_FontFamily;
+    }
+
+    void WatermarkDataText::setFontFamily(std::shared_ptr< std::wstring > value)
+    {
+        this->m_FontFamily = value;
+    }
+
+
+    std::shared_ptr< double > WatermarkDataText::getFontSize() const
+    {
+        return this->m_FontSize;
+    }
+
+    void WatermarkDataText::setFontSize(std::shared_ptr< double > value)
+    {
+        this->m_FontSize = value;
+    }
+
+
+    std::shared_ptr< bool > WatermarkDataText::getIsSemitrasparent() const
+    {
+        return this->m_IsSemitrasparent;
+    }
+
+    void WatermarkDataText::setIsSemitrasparent(std::shared_ptr< bool > value)
+    {
+        this->m_IsSemitrasparent = value;
+    }
+
+
+    std::shared_ptr< aspose::words::cloud::models::WatermarkDataText::Layout > WatermarkDataText::getLayout() const
+    {
+        return this->m_Layout;
+    }
+
+    void WatermarkDataText::setLayout(std::shared_ptr< aspose::words::cloud::models::WatermarkDataText::Layout > value)
+    {
+        this->m_Layout = value;
+    }
+
+
+    std::shared_ptr< std::wstring > WatermarkDataText::getText() const
+    {
+        return this->m_Text;
+    }
+
+    void WatermarkDataText::setText(std::shared_ptr< std::wstring > value)
+    {
+        this->m_Text = value;
     }
 
 

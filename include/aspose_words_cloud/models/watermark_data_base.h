@@ -1,5 +1,5 @@
 ﻿/** --------------------------------------------------------------------------------------------------------------------
-* <copyright company="Aspose" file="protection_data.h">
+* <copyright company="Aspose" file="watermark_data_base.h">
 *   Copyright (c) 2023 Aspose.Words for Cloud
 * </copyright>
 * <summary>
@@ -28,44 +28,22 @@
 
 namespace aspose::words::cloud::models {
     /// <summary>
-    /// Container for the data about protection of the document.
+    /// Class for insert watermark text request building.
     /// </summary>
-    class ProtectionData : public ModelBase
+    class WatermarkDataBase : public ModelBase
     {
     public:
-        /// <summary>
-        /// Gets or sets type of the protection.
-        /// </summary>
-        enum class ProtectionType
-        { 
-            ALLOW_ONLY_REVISIONS,
-            ALLOW_ONLY_COMMENTS,
-            ALLOW_ONLY_FORM_FIELDS,
-            READ_ONLY,
-            NO_PROTECTION
-        };
 
-
-        ASPOSE_WORDS_CLOUD_EXPORT virtual ~ProtectionData() = default;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual ~WatermarkDataBase() = default;
         ASPOSE_WORDS_CLOUD_EXPORT virtual void toJson(void* jsonIfc) const override;
         ASPOSE_WORDS_CLOUD_EXPORT virtual void fromJson(const void* jsonIfc) override;
         ASPOSE_WORDS_CLOUD_EXPORT virtual void getFileReferences(std::vector< FileReference* >& result) override;
         ASPOSE_WORDS_CLOUD_EXPORT virtual void validate() override;
 
-
-        /// <summary>
-        /// Gets or sets type of the protection.
-        /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< aspose::words::cloud::models::ProtectionData::ProtectionType > getProtectionType() const;
-
-        /// <summary>
-        /// Gets or sets type of the protection.
-        /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT virtual void setProtectionType(std::shared_ptr< aspose::words::cloud::models::ProtectionData::ProtectionType > value);
+        virtual void abstractWatermarkDataBase() = 0;
 
 
     protected:
-        std::shared_ptr< aspose::words::cloud::models::ProtectionData::ProtectionType > m_ProtectionType;
     };
 }
 

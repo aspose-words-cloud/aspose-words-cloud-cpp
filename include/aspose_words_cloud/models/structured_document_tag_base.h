@@ -27,6 +27,7 @@
 #include "model_base.h"
 #include "node_link.h"
 #include "structured_document_tag_list_item.h"
+#include "xml_color.h"
 
 namespace aspose::words::cloud::models {
     /// <summary>
@@ -257,12 +258,12 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the color of the structured document tag.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< std::wstring > getColor() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< aspose::words::cloud::models::XmlColor > getColor() const;
 
         /// <summary>
         /// Gets or sets the color of the structured document tag.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT virtual void setColor(std::shared_ptr< std::wstring > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setColor(std::shared_ptr< aspose::words::cloud::models::XmlColor > value);
 
 
         /// <summary>
@@ -409,7 +410,7 @@ namespace aspose::words::cloud::models {
         std::shared_ptr< std::wstring > m_BuildingBlockGallery;
         std::shared_ptr< std::wstring > m_BuildingBlockCategory;
         std::shared_ptr< bool > m_Multiline;
-        std::shared_ptr< std::wstring > m_Color;
+        std::shared_ptr< aspose::words::cloud::models::XmlColor > m_Color;
         std::shared_ptr< std::wstring > m_StyleName;
         std::shared_ptr< aspose::words::cloud::models::StructuredDocumentTagBase::CalendarType > m_CalendarType;
         std::shared_ptr< bool > m_IsTemporary;

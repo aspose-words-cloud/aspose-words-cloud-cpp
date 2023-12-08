@@ -702,6 +702,26 @@ namespace aspose::words::cloud::api {
         return response->getDocument();
     }
 
+    void WordsApi::deleteOfficeMathObjects(std::shared_ptr<aspose::words::cloud::requests::DeleteOfficeMathObjectsRequest> request)
+    {
+        auto response = std::make_shared< aspose::words::cloud::responses::DeleteOfficeMathObjectsResponse >();
+        m_ApiClient->call( request->createHttpRequest(), *response);
+        if (response->getStatusCode() != 200) {
+            throw aspose::words::cloud::ApiException(response->getStatusCode(), response->getErrorMessage());
+        }
+    }
+
+    std::shared_ptr< std::map<std::wstring, std::shared_ptr<std::istream>> > WordsApi::deleteOfficeMathObjectsOnline(std::shared_ptr<aspose::words::cloud::requests::DeleteOfficeMathObjectsOnlineRequest> request)
+    {
+        auto response = std::make_shared< aspose::words::cloud::responses::DeleteOfficeMathObjectsOnlineResponse >();
+        m_ApiClient->call( request->createHttpRequest(), *response);
+        if (response->getStatusCode() != 200) {
+            throw aspose::words::cloud::ApiException(response->getStatusCode(), response->getErrorMessage());
+        }
+
+        return response->getDocument();
+    }
+
     void WordsApi::deleteParagraph(std::shared_ptr<aspose::words::cloud::requests::DeleteParagraphRequest> request)
     {
         auto response = std::make_shared< aspose::words::cloud::responses::DeleteParagraphResponse >();
@@ -2655,6 +2675,17 @@ namespace aspose::words::cloud::api {
         return response;
     }
 
+    std::shared_ptr< aspose::words::cloud::models::DocumentResponse > WordsApi::insertWatermark(std::shared_ptr<aspose::words::cloud::requests::InsertWatermarkRequest> request)
+    {
+        auto response = std::make_shared< aspose::words::cloud::responses::InsertWatermarkResponse >();
+        m_ApiClient->call( request->createHttpRequest(), *response);
+        if (response->getStatusCode() != 200) {
+            throw aspose::words::cloud::ApiException(response->getStatusCode(), response->getErrorMessage());
+        }
+
+        return response->getModel();
+    }
+
     std::shared_ptr< aspose::words::cloud::models::DocumentResponse > WordsApi::insertWatermarkImage(std::shared_ptr<aspose::words::cloud::requests::InsertWatermarkImageRequest> request)
     {
         auto response = std::make_shared< aspose::words::cloud::responses::InsertWatermarkImageResponse >();
@@ -2669,6 +2700,17 @@ namespace aspose::words::cloud::api {
     std::shared_ptr<aspose::words::cloud::responses::InsertWatermarkImageOnlineResponse> WordsApi::insertWatermarkImageOnline(std::shared_ptr<aspose::words::cloud::requests::InsertWatermarkImageOnlineRequest> request)
     {
         auto response = std::make_shared< aspose::words::cloud::responses::InsertWatermarkImageOnlineResponse >();
+        m_ApiClient->call( request->createHttpRequest(), *response);
+        if (response->getStatusCode() != 200) {
+            throw aspose::words::cloud::ApiException(response->getStatusCode(), response->getErrorMessage());
+        }
+
+        return response;
+    }
+
+    std::shared_ptr<aspose::words::cloud::responses::InsertWatermarkOnlineResponse> WordsApi::insertWatermarkOnline(std::shared_ptr<aspose::words::cloud::requests::InsertWatermarkOnlineRequest> request)
+    {
+        auto response = std::make_shared< aspose::words::cloud::responses::InsertWatermarkOnlineResponse >();
         m_ApiClient->call( request->createHttpRequest(), *response);
         if (response->getStatusCode() != 200) {
             throw aspose::words::cloud::ApiException(response->getStatusCode(), response->getErrorMessage());

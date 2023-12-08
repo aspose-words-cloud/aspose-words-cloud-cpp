@@ -25,14 +25,12 @@
 
 #pragma once
 #include "./request_model_base.h"
-#include "aspose_words_cloud/models/protection_request.h"
 
 namespace aspose::words::cloud::requests {
     class UnprotectDocumentOnlineRequest : public RequestModelBase {
     public:
         ASPOSE_WORDS_CLOUD_EXPORT UnprotectDocumentOnlineRequest(
             const std::shared_ptr< std::istream > document,
-            const std::shared_ptr< aspose::words::cloud::models::ProtectionRequest > protectionRequest,
             const std::shared_ptr< std::wstring > loadEncoding = nullptr,
             const std::shared_ptr< std::wstring > password = nullptr,
             const std::shared_ptr< std::wstring > encryptedPassword = nullptr,
@@ -40,7 +38,6 @@ namespace aspose::words::cloud::requests {
         );
 
         ASPOSE_WORDS_CLOUD_EXPORT const std::shared_ptr< std::istream > getDocument() const;
-        ASPOSE_WORDS_CLOUD_EXPORT const std::shared_ptr< aspose::words::cloud::models::ProtectionRequest > getProtectionRequest() const;
         ASPOSE_WORDS_CLOUD_EXPORT const std::shared_ptr< std::wstring > getLoadEncoding() const;
         ASPOSE_WORDS_CLOUD_EXPORT const std::shared_ptr< std::wstring > getPassword() const;
         ASPOSE_WORDS_CLOUD_EXPORT const std::shared_ptr< std::wstring > getEncryptedPassword() const;
@@ -51,7 +48,6 @@ namespace aspose::words::cloud::requests {
 
     private:
         const std::shared_ptr< std::istream > m_Document;
-        const std::shared_ptr< aspose::words::cloud::models::ProtectionRequest > m_ProtectionRequest;
         const std::shared_ptr< std::wstring > m_LoadEncoding;
         const std::shared_ptr< std::wstring > m_Password;
         const std::shared_ptr< std::wstring > m_EncryptedPassword;

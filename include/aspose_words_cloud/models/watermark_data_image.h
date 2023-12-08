@@ -1,5 +1,5 @@
 ﻿/** --------------------------------------------------------------------------------------------------------------------
-* <copyright company="Aspose" file="bookmark_insert.h">
+* <copyright company="Aspose" file="watermark_data_image.h">
 *   Copyright (c) 2023 Aspose.Words for Cloud
 * </copyright>
 * <summary>
@@ -25,72 +25,64 @@
 
 #pragma once
 #include "model_base.h"
-#include "new_document_position.h"
+#include "file_reference.h"
+#include "watermark_data_base.h"
 
 namespace aspose::words::cloud::models {
     /// <summary>
-    /// Represents a bookmark to insert.
+    /// Class for insert watermark image request building.
     /// </summary>
-    class BookmarkInsert : public ModelBase
+    class WatermarkDataImage : public WatermarkDataBase
     {
     public:
 
-        ASPOSE_WORDS_CLOUD_EXPORT virtual ~BookmarkInsert() = default;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual ~WatermarkDataImage() = default;
         ASPOSE_WORDS_CLOUD_EXPORT virtual void toJson(void* jsonIfc) const override;
         ASPOSE_WORDS_CLOUD_EXPORT virtual void fromJson(const void* jsonIfc) override;
         ASPOSE_WORDS_CLOUD_EXPORT virtual void getFileReferences(std::vector< FileReference* >& result) override;
         ASPOSE_WORDS_CLOUD_EXPORT virtual void validate() override;
 
+        void abstractWatermarkDataBase() override {}
 
         /// <summary>
-        /// Gets or sets the name of the bookmark.
+        /// Gets or sets the watermark image.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< std::wstring > getName() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< aspose::words::cloud::models::FileReference > getImage() const;
 
         /// <summary>
-        /// Gets or sets the name of the bookmark.
+        /// Gets or sets the watermark image.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT virtual void setName(std::shared_ptr< std::wstring > value);
-
-
-        /// <summary>
-        /// Gets or sets text, enclosed in the bookmark.
-        /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< std::wstring > getText() const;
-
-        /// <summary>
-        /// Gets or sets text, enclosed in the bookmark.
-        /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT virtual void setText(std::shared_ptr< std::wstring > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setImage(std::shared_ptr< aspose::words::cloud::models::FileReference > value);
 
 
         /// <summary>
-        /// Gets or sets the link to start bookmark node.
+        /// Gets or sets a boolean value which is responsible for washout effect of the watermark. The default value is true.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< aspose::words::cloud::models::NewDocumentPosition > getStartRange() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< bool > getIsWashout() const;
 
         /// <summary>
-        /// Gets or sets the link to start bookmark node.
+        /// Gets or sets a boolean value which is responsible for washout effect of the watermark. The default value is true.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT virtual void setStartRange(std::shared_ptr< aspose::words::cloud::models::NewDocumentPosition > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setIsWashout(std::shared_ptr< bool > value);
 
 
         /// <summary>
-        /// Gets or sets the link to end bookmark node.
+        /// Gets or sets the scale factor expressed as a fraction of the image. The default value is 0 - auto.
+        /// Valid values range from 0 to 65.5 inclusive. Auto scale means that the watermark will be scaled to its max width and max height relative to the page margins.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< aspose::words::cloud::models::NewDocumentPosition > getEndRange() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< double > getScale() const;
 
         /// <summary>
-        /// Gets or sets the link to end bookmark node.
+        /// Gets or sets the scale factor expressed as a fraction of the image. The default value is 0 - auto.
+        /// Valid values range from 0 to 65.5 inclusive. Auto scale means that the watermark will be scaled to its max width and max height relative to the page margins.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT virtual void setEndRange(std::shared_ptr< aspose::words::cloud::models::NewDocumentPosition > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setScale(std::shared_ptr< double > value);
 
 
     protected:
-        std::shared_ptr< std::wstring > m_Name;
-        std::shared_ptr< std::wstring > m_Text;
-        std::shared_ptr< aspose::words::cloud::models::NewDocumentPosition > m_StartRange;
-        std::shared_ptr< aspose::words::cloud::models::NewDocumentPosition > m_EndRange;
+        std::shared_ptr< aspose::words::cloud::models::FileReference > m_Image;
+        std::shared_ptr< bool > m_IsWashout;
+        std::shared_ptr< double > m_Scale;
     };
 }
 

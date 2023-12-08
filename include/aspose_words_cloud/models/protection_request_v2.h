@@ -1,5 +1,5 @@
 ﻿/** --------------------------------------------------------------------------------------------------------------------
-* <copyright company="Aspose" file="bookmark_insert.h">
+* <copyright company="Aspose" file="protection_request_v2.h">
 *   Copyright (c) 2023 Aspose.Words for Cloud
 * </copyright>
 * <summary>
@@ -25,72 +25,63 @@
 
 #pragma once
 #include "model_base.h"
-#include "new_document_position.h"
+#include "protection_request_base.h"
 
 namespace aspose::words::cloud::models {
     /// <summary>
-    /// Represents a bookmark to insert.
+    /// Request on changing of protection.
     /// </summary>
-    class BookmarkInsert : public ModelBase
+    class ProtectionRequestV2 : public ProtectionRequestBase
     {
     public:
+        /// <summary>
+        /// Gets or sets the new type of the document protection.
+        /// </summary>
+        enum class ProtectionType
+        { 
+            ALLOW_ONLY_REVISIONS,
+            ALLOW_ONLY_COMMENTS,
+            ALLOW_ONLY_FORM_FIELDS,
+            READ_ONLY,
+            NO_PROTECTION
+        };
 
-        ASPOSE_WORDS_CLOUD_EXPORT virtual ~BookmarkInsert() = default;
+
+        ASPOSE_WORDS_CLOUD_EXPORT virtual ~ProtectionRequestV2() = default;
         ASPOSE_WORDS_CLOUD_EXPORT virtual void toJson(void* jsonIfc) const override;
         ASPOSE_WORDS_CLOUD_EXPORT virtual void fromJson(const void* jsonIfc) override;
         ASPOSE_WORDS_CLOUD_EXPORT virtual void getFileReferences(std::vector< FileReference* >& result) override;
         ASPOSE_WORDS_CLOUD_EXPORT virtual void validate() override;
 
+        void abstractProtectionRequestBase() override {}
 
         /// <summary>
-        /// Gets or sets the name of the bookmark.
+        /// Gets or sets the new password for the document protection.
+        /// This property is required, but empty value is allowed.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< std::wstring > getName() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< std::wstring > getProtectionPassword() const;
 
         /// <summary>
-        /// Gets or sets the name of the bookmark.
+        /// Gets or sets the new password for the document protection.
+        /// This property is required, but empty value is allowed.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT virtual void setName(std::shared_ptr< std::wstring > value);
-
-
-        /// <summary>
-        /// Gets or sets text, enclosed in the bookmark.
-        /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< std::wstring > getText() const;
-
-        /// <summary>
-        /// Gets or sets text, enclosed in the bookmark.
-        /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT virtual void setText(std::shared_ptr< std::wstring > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setProtectionPassword(std::shared_ptr< std::wstring > value);
 
 
         /// <summary>
-        /// Gets or sets the link to start bookmark node.
+        /// Gets or sets the new type of the document protection.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< aspose::words::cloud::models::NewDocumentPosition > getStartRange() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< aspose::words::cloud::models::ProtectionRequestV2::ProtectionType > getProtectionType() const;
 
         /// <summary>
-        /// Gets or sets the link to start bookmark node.
+        /// Gets or sets the new type of the document protection.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT virtual void setStartRange(std::shared_ptr< aspose::words::cloud::models::NewDocumentPosition > value);
-
-
-        /// <summary>
-        /// Gets or sets the link to end bookmark node.
-        /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< aspose::words::cloud::models::NewDocumentPosition > getEndRange() const;
-
-        /// <summary>
-        /// Gets or sets the link to end bookmark node.
-        /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT virtual void setEndRange(std::shared_ptr< aspose::words::cloud::models::NewDocumentPosition > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setProtectionType(std::shared_ptr< aspose::words::cloud::models::ProtectionRequestV2::ProtectionType > value);
 
 
     protected:
-        std::shared_ptr< std::wstring > m_Name;
-        std::shared_ptr< std::wstring > m_Text;
-        std::shared_ptr< aspose::words::cloud::models::NewDocumentPosition > m_StartRange;
-        std::shared_ptr< aspose::words::cloud::models::NewDocumentPosition > m_EndRange;
+        std::shared_ptr< std::wstring > m_ProtectionPassword;
+        std::shared_ptr< aspose::words::cloud::models::ProtectionRequestV2::ProtectionType > m_ProtectionType;
     };
 }
 
