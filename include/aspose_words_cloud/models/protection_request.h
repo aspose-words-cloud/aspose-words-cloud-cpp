@@ -31,8 +31,7 @@ namespace aspose::words::cloud::models {
     /// <summary>
     /// Request on changing of protection.
     /// </summary>
-    [[deprecated("ProtectionRequest is deprecated and remains for backwards compatibility only.")]]
-    class ProtectionRequest : public ProtectionRequestBase
+    class [[deprecated("ProtectionRequest is deprecated and remains for backwards compatibility only.")]] ProtectionRequest : public ProtectionRequestBase
     {
     public:
 
