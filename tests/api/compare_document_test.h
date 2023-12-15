@@ -155,7 +155,7 @@ TEST_F(CompareDocumentTests, TestCompareDocumentWithPassword) {
         remoteFolder + L"/" + remoteName2
     );
 
-    auto requestCompareDataFileReference = std::make_shared< aspose::words::cloud::models::FileReference >(std::make_shared< std::wstring >(remoteFolder + L"/" + remoteName2), std::make_shared< std::wstring >("12345"));
+    auto requestCompareDataFileReference = std::make_shared< aspose::words::cloud::models::FileReference >(std::make_shared< std::wstring >(remoteFolder + L"/" + remoteName2), std::make_shared< std::wstring >(L"12345"));
     auto requestCompareData = std::make_shared< aspose::words::cloud::models::CompareData >();
     requestCompareData->setAuthor(std::make_shared< std::wstring >(L"author"));
     requestCompareData->setDateTime(std::make_shared< std::wstring >(L"2015-10-26T00:00:00.0000000Z"));
