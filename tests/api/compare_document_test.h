@@ -137,3 +137,41 @@ TEST_F(CompareDocumentTests, TestCompareTwoDocumentOnline) {
 
     auto actual = getApi()->compareDocumentOnline(request);
 }
+
+/// <summary>
+/// Test for document comparison with password protection.
+/// </summary>
+TEST_F(CompareDocumentTests, TestCompareDocumentWithPassword) {
+    std::wstring localName = L"DocWithPassword.docx";
+    std::wstring remoteName1 = L"TestCompareDocument1.docx";
+    std::wstring remoteName2 = L"TestCompareDocument2.docx";
+
+    uploadFileToStorage(
+        localTestDataFolder + L"/" + L"Common/" + localName,
+        remoteFolder + L"/" + remoteName1
+    );
+    uploadFileToStorage(
+        localTestDataFolder + L"/" + L"Common/" + localName,
+        remoteFolder + L"/" + remoteName2
+    );
+
+    auto requestCompareDataFileReference = std::make_shared< aspose::words::cloud::models::FileReference >(std::make_shared< std::wstring >(remoteFolder + L"/" + remoteName2), std::make_shared< std::wstring >("12345"));
+    auto requestCompareData = std::make_shared< aspose::words::cloud::models::CompareData >();
+    requestCompareData->setAuthor(std::make_shared< std::wstring >(L"author"));
+    requestCompareData->setDateTime(std::make_shared< std::wstring >(L"2015-10-26T00:00:00.0000000Z"));
+    requestCompareData->setFileReference(requestCompareDataFileReference);
+    std::shared_ptr<requests::CompareDocumentRequest> request(new requests::CompareDocumentRequest(
+        std::make_shared< std::wstring >(remoteName1),
+        requestCompareData,
+        std::make_shared< std::wstring >(remoteFolder),
+        nullptr,
+        nullptr,
+        std::make_shared< std::wstring >(L"12345"),
+        nullptr,
+        std::make_shared< std::wstring >(baseTestOutPath + L"/TestCompareDocumentOut.docx")
+    ));
+
+    auto actual = getApi()->compareDocument(request);
+    ASSERT_TRUE(actual->getDocument() != nullptr);
+    ASSERT_TRUE(actual->getDocument()->getFileName()->compare(L"TestCompareDocumentOut.docx") == 0);
+}
