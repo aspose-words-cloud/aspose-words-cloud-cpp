@@ -26,6 +26,10 @@
 #pragma once
 #include "./model_base.h"
 
+namespace aspose::words::cloud {
+    class ApiClient;
+}
+
 namespace aspose::words::cloud::models {
     enum class FileSource { Request, Storage };
 
@@ -36,13 +40,14 @@ namespace aspose::words::cloud::models {
     {
     public:
         FileReference();
-        ASPOSE_WORDS_CLOUD_EXPORT FileReference(const std::shared_ptr< std::wstring > remoteStoragePath);
-        ASPOSE_WORDS_CLOUD_EXPORT FileReference(const std::shared_ptr< std::istream > localFileContent);
+        ASPOSE_WORDS_CLOUD_EXPORT FileReference(const std::shared_ptr< std::wstring > remoteStoragePath, const std::shared_ptr< std::wstring > password = nullptr);
+        ASPOSE_WORDS_CLOUD_EXPORT FileReference(const std::shared_ptr< std::istream > localFileContent, const std::shared_ptr< std::wstring > password = nullptr);
         ASPOSE_WORDS_CLOUD_EXPORT virtual ~FileReference() = default;
         ASPOSE_WORDS_CLOUD_EXPORT virtual void toJson(void* jsonIfc) const override;
         ASPOSE_WORDS_CLOUD_EXPORT virtual void fromJson(const void* jsonIfc) override;
         ASPOSE_WORDS_CLOUD_EXPORT virtual void getFileReferences(std::vector< FileReference* >& result) override;
         ASPOSE_WORDS_CLOUD_EXPORT virtual void validate() override;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void encryptPassword(ApiClient* apiClient);
 
         /// <summary>
         /// Gets the file source.
@@ -63,6 +68,8 @@ namespace aspose::words::cloud::models {
         FileSource m_Source;
         std::shared_ptr< std::wstring > m_Reference;
         std::shared_ptr< std::istream > m_Content;
+        std::shared_ptr< std::wstring > m_Password;
+        std::shared_ptr< std::wstring > m_EncryptedPassword;
     };
 }
 

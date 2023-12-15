@@ -30,8 +30,7 @@ namespace aspose::words::cloud::models {
     /// <summary>
     /// Class for insert watermark text request building.
     /// </summary>
-    [[deprecated("This model will be removed in the future.")]]
-    class WatermarkText : public ModelBase
+    class [[deprecated("This model will be removed in the future.")]] WatermarkText : public ModelBase
     {
     public:
 

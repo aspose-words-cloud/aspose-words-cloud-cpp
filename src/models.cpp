@@ -336,19 +336,25 @@ namespace aspose::words::cloud::models {
     FileReference::FileReference() :
         m_Source(FileSource::Storage),
         m_Reference(nullptr),
-        m_Content(nullptr)
+        m_Content(nullptr),
+        m_Password(nullptr),
+        m_EncryptedPassword(nullptr)
     { }
 
-    FileReference::FileReference(const std::shared_ptr< std::wstring > remoteStoragePath) :
+    FileReference::FileReference(const std::shared_ptr< std::wstring > remoteStoragePath, const std::shared_ptr< std::wstring > password) :
         m_Source(FileSource::Storage),
         m_Reference(remoteStoragePath),
-        m_Content(nullptr)
+        m_Content(nullptr),
+        m_Password(password),
+        m_EncryptedPassword(nullptr)
     { }
 
-    FileReference::FileReference(const std::shared_ptr< std::istream > localFileContent) :
+    FileReference::FileReference(const std::shared_ptr< std::istream > localFileContent, const std::shared_ptr< std::wstring > password) :
         m_Source(FileSource::Request),
         m_Reference(std::make_shared<std::wstring>(convertUtf8(aspose::words::cloud::ApiClient::createRandomGuid()))),
-        m_Content(localFileContent)
+        m_Content(localFileContent),
+        m_Password(password),
+        m_EncryptedPassword(nullptr)
     { }
 
     void FileReference::toJson(void* jsonIfc) const
@@ -356,6 +362,16 @@ namespace aspose::words::cloud::models {
         ::nlohmann::json& json = *((::nlohmann::json*)jsonIfc);
         json["Reference"] = convertUtf16(*(this->m_Reference));
         json["Source"] = (m_Source == FileSource::Storage) ? "Storage" : "Request";
+
+        if (this->m_Password != nullptr)
+        {
+            json["Password"] = convertUtf16(*(this->m_Password));
+        }
+
+        if (this->m_EncryptedPassword != nullptr)
+        {
+            json["EncryptedPassword"] = convertUtf16(*(this->m_EncryptedPassword));
+        }
     }
 
     void FileReference::fromJson(const void* jsonIfc)
@@ -380,13 +396,20 @@ namespace aspose::words::cloud::models {
 
     void FileReference::getFileReferences(std::vector< FileReference* >& result)
     {
-        if (m_Source == aspose::words::cloud::models::FileSource::Request) {
-            result.push_back(this);
-        }
+        result.push_back(this);
     }
 
     void FileReference::validate()
     {
+    }
+
+    void FileReference::encryptPassword(ApiClient* apiClient)
+    {
+        if (this->m_Password != nullptr)
+        {
+            this->m_EncryptedPassword = std::make_shared<std::wstring>(apiClient->encryptString(*this->m_Password));
+            this->m_Password = nullptr;
+        }
     }
 
     inline std::string pdfPermissionsToString(PdfPermissions value)

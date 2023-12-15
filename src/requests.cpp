@@ -46,7 +46,7 @@ namespace aspose::words::cloud::requests {
     }
 
     void BatchRequest::serialize(ApiClient* apiClient, std::string& body) const {
-        auto httpRequest = m_Request->createHttpRequest();
+        auto httpRequest = m_Request->createHttpRequest(apiClient);
         httpRequest->encryptSecureData(apiClient);
 
         auto method = httpRequest->getMethod();
@@ -146,7 +146,7 @@ namespace aspose::words::cloud::requests {
         return m_DestFileName;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > AcceptAllRevisionsRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > AcceptAllRevisionsRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -161,9 +161,13 @@ namespace aspose::words::cloud::requests {
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -219,7 +223,7 @@ namespace aspose::words::cloud::requests {
         return m_DestFileName;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > AcceptAllRevisionsOnlineRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > AcceptAllRevisionsOnlineRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -235,9 +239,13 @@ namespace aspose::words::cloud::requests {
         }
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Document' is required.");
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -328,7 +336,7 @@ namespace aspose::words::cloud::requests {
         return m_RevisionDateTime;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > AppendDocumentRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > AppendDocumentRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -352,9 +360,13 @@ namespace aspose::words::cloud::requests {
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'DocumentList' is required.");
 
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -431,7 +443,7 @@ namespace aspose::words::cloud::requests {
         return m_RevisionDateTime;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > AppendDocumentOnlineRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > AppendDocumentOnlineRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -456,9 +468,13 @@ namespace aspose::words::cloud::requests {
         }
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'DocumentList' is required.");
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -556,7 +572,7 @@ namespace aspose::words::cloud::requests {
         return m_RevisionDateTime;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > ApplyStyleToDocumentElementRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > ApplyStyleToDocumentElementRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -581,9 +597,13 @@ namespace aspose::words::cloud::requests {
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'StyleApply' is required.");
 
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -667,7 +687,7 @@ namespace aspose::words::cloud::requests {
         return m_RevisionDateTime;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > ApplyStyleToDocumentElementOnlineRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > ApplyStyleToDocumentElementOnlineRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -693,9 +713,13 @@ namespace aspose::words::cloud::requests {
             m_StyleApply->validate();}
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'StyleApply' is required.");
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -779,7 +803,7 @@ namespace aspose::words::cloud::requests {
         return m_DestFileName;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > BuildReportRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > BuildReportRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -805,9 +829,13 @@ namespace aspose::words::cloud::requests {
             m_ReportEngineSettings->validate();}
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'ReportEngineSettings' is required.");
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -856,7 +884,7 @@ namespace aspose::words::cloud::requests {
         return m_DocumentFileName;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > BuildReportOnlineRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > BuildReportOnlineRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -881,9 +909,13 @@ namespace aspose::words::cloud::requests {
             m_ReportEngineSettings->validate();}
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'ReportEngineSettings' is required.");
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -918,7 +950,7 @@ namespace aspose::words::cloud::requests {
         return m_BestClassesCount;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > ClassifyRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > ClassifyRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -931,9 +963,13 @@ namespace aspose::words::cloud::requests {
         }
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Text' is required.");
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -1010,7 +1046,7 @@ namespace aspose::words::cloud::requests {
         return m_Taxonomy;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > ClassifyDocumentRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > ClassifyDocumentRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -1026,9 +1062,13 @@ namespace aspose::words::cloud::requests {
         if (m_BestClassesCount) result->addQueryParam(L"bestClassesCount", *m_BestClassesCount);
         if (m_Taxonomy) result->addQueryParam(L"taxonomy", *m_Taxonomy);
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -1091,7 +1131,7 @@ namespace aspose::words::cloud::requests {
         return m_Taxonomy;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > ClassifyDocumentOnlineRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > ClassifyDocumentOnlineRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -1108,9 +1148,13 @@ namespace aspose::words::cloud::requests {
         }
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Document' is required.");
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -1134,8 +1178,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
         const std::shared_ptr< std::wstring > encryptedPassword,
-        const std::shared_ptr< std::wstring > destFileName,
-        const std::shared_ptr< std::wstring > encryptedPassword2
+        const std::shared_ptr< std::wstring > destFileName
     ) : 
         m_Name(name),
         m_CompareData(compareData),
@@ -1144,8 +1187,7 @@ namespace aspose::words::cloud::requests {
         m_LoadEncoding(loadEncoding),
         m_Password(password),
         m_EncryptedPassword(encryptedPassword),
-        m_DestFileName(destFileName),
-        m_EncryptedPassword2(encryptedPassword2)
+        m_DestFileName(destFileName)
     {
     }
 
@@ -1189,12 +1231,7 @@ namespace aspose::words::cloud::requests {
         return m_DestFileName;
     }
 
-    const std::shared_ptr< std::wstring > CompareDocumentRequest::getEncryptedPassword2() const
-    {
-        return m_EncryptedPassword2;
-    }
-
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > CompareDocumentRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > CompareDocumentRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -1208,7 +1245,6 @@ namespace aspose::words::cloud::requests {
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
-        if (m_EncryptedPassword2) result->addQueryParam(L"encryptedPassword2", *m_EncryptedPassword2);
         if (m_CompareData)
         {
             result->addFormDataParam(L"Body", *m_CompareData);
@@ -1217,9 +1253,13 @@ namespace aspose::words::cloud::requests {
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'CompareData' is required.");
 
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -1241,16 +1281,14 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
         const std::shared_ptr< std::wstring > encryptedPassword,
-        const std::shared_ptr< std::wstring > destFileName,
-        const std::shared_ptr< std::wstring > encryptedPassword2
+        const std::shared_ptr< std::wstring > destFileName
     ) : 
         m_Document(document),
         m_CompareData(compareData),
         m_LoadEncoding(loadEncoding),
         m_Password(password),
         m_EncryptedPassword(encryptedPassword),
-        m_DestFileName(destFileName),
-        m_EncryptedPassword2(encryptedPassword2)
+        m_DestFileName(destFileName)
     {
     }
 
@@ -1284,12 +1322,7 @@ namespace aspose::words::cloud::requests {
         return m_DestFileName;
     }
 
-    const std::shared_ptr< std::wstring > CompareDocumentOnlineRequest::getEncryptedPassword2() const
-    {
-        return m_EncryptedPassword2;
-    }
-
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > CompareDocumentOnlineRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > CompareDocumentOnlineRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -1299,7 +1332,6 @@ namespace aspose::words::cloud::requests {
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
-        if (m_EncryptedPassword2) result->addQueryParam(L"encryptedPassword2", *m_EncryptedPassword2);
         if (m_Document)
         {
             result->addFormDataParam(L"document", *m_Document);
@@ -1313,9 +1345,13 @@ namespace aspose::words::cloud::requests {
         }
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'CompareData' is required.");
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -1392,7 +1428,7 @@ namespace aspose::words::cloud::requests {
         return m_DestFileName;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > CompressDocumentRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > CompressDocumentRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -1413,9 +1449,13 @@ namespace aspose::words::cloud::requests {
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'CompressOptions' is required.");
 
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -1478,7 +1518,7 @@ namespace aspose::words::cloud::requests {
         return m_DestFileName;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > CompressDocumentOnlineRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > CompressDocumentOnlineRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -1500,9 +1540,13 @@ namespace aspose::words::cloud::requests {
             m_CompressOptions->validate();}
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'CompressOptions' is required.");
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -1586,7 +1630,7 @@ namespace aspose::words::cloud::requests {
         return m_FontsLocation;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > ConvertDocumentRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > ConvertDocumentRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -1607,9 +1651,13 @@ namespace aspose::words::cloud::requests {
         }
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Document' is required.");
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -1665,7 +1713,7 @@ namespace aspose::words::cloud::requests {
         return m_VersionId;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > CopyFileRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > CopyFileRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -1679,9 +1727,13 @@ namespace aspose::words::cloud::requests {
         if (m_DestStorageName) result->addQueryParam(L"destStorageName", *m_DestStorageName);
         if (m_VersionId) result->addQueryParam(L"versionId", *m_VersionId);
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -1730,7 +1782,7 @@ namespace aspose::words::cloud::requests {
         return m_DestStorageName;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > CopyFolderRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > CopyFolderRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -1743,9 +1795,13 @@ namespace aspose::words::cloud::requests {
         if (m_SrcStorageName) result->addQueryParam(L"srcStorageName", *m_SrcStorageName);
         if (m_DestStorageName) result->addQueryParam(L"destStorageName", *m_DestStorageName);
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -1836,7 +1892,7 @@ namespace aspose::words::cloud::requests {
         return m_RevisionDateTime;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > CopyStyleRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > CopyStyleRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -1859,9 +1915,13 @@ namespace aspose::words::cloud::requests {
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'StyleCopy' is required.");
 
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -1938,7 +1998,7 @@ namespace aspose::words::cloud::requests {
         return m_RevisionDateTime;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > CopyStyleOnlineRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > CopyStyleOnlineRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -1962,9 +2022,13 @@ namespace aspose::words::cloud::requests {
             m_StyleCopy->validate();}
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'StyleCopy' is required.");
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -2055,7 +2119,7 @@ namespace aspose::words::cloud::requests {
         return m_RevisionDateTime;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > CopyStylesFromTemplateRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > CopyStylesFromTemplateRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -2074,9 +2138,13 @@ namespace aspose::words::cloud::requests {
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -2118,7 +2186,7 @@ namespace aspose::words::cloud::requests {
         return m_Storage;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > CreateDocumentRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > CreateDocumentRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -2129,9 +2197,13 @@ namespace aspose::words::cloud::requests {
         if (m_Folder) result->addQueryParam(L"folder", *m_Folder);
         if (m_Storage) result->addQueryParam(L"storage", *m_Storage);
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -2166,7 +2238,7 @@ namespace aspose::words::cloud::requests {
         return m_StorageName;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > CreateFolderRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > CreateFolderRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -2176,9 +2248,13 @@ namespace aspose::words::cloud::requests {
         result->setPathParam(L"{path}", *m_Path);
         if (m_StorageName) result->addQueryParam(L"storageName", *m_StorageName);
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -2276,7 +2352,7 @@ namespace aspose::words::cloud::requests {
         return m_RevisionDateTime;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > CreateOrUpdateDocumentPropertyRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > CreateOrUpdateDocumentPropertyRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -2301,9 +2377,13 @@ namespace aspose::words::cloud::requests {
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Property' is required.");
 
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -2387,7 +2467,7 @@ namespace aspose::words::cloud::requests {
         return m_RevisionDateTime;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > CreateOrUpdateDocumentPropertyOnlineRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > CreateOrUpdateDocumentPropertyOnlineRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -2413,9 +2493,13 @@ namespace aspose::words::cloud::requests {
             m_Property->validate();}
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Property' is required.");
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -2499,7 +2583,7 @@ namespace aspose::words::cloud::requests {
         return m_DestFileName;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > DeleteAllParagraphTabStopsRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > DeleteAllParagraphTabStopsRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -2517,9 +2601,13 @@ namespace aspose::words::cloud::requests {
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -2589,7 +2677,7 @@ namespace aspose::words::cloud::requests {
         return m_DestFileName;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > DeleteAllParagraphTabStopsOnlineRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > DeleteAllParagraphTabStopsOnlineRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -2608,9 +2696,13 @@ namespace aspose::words::cloud::requests {
         }
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Document' is required.");
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -2701,7 +2793,7 @@ namespace aspose::words::cloud::requests {
         return m_RevisionDateTime;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > DeleteBookmarkRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > DeleteBookmarkRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -2720,9 +2812,13 @@ namespace aspose::words::cloud::requests {
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -2799,7 +2895,7 @@ namespace aspose::words::cloud::requests {
         return m_RevisionDateTime;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > DeleteBookmarkOnlineRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > DeleteBookmarkOnlineRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -2819,9 +2915,13 @@ namespace aspose::words::cloud::requests {
         }
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Document' is required.");
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -2905,7 +3005,7 @@ namespace aspose::words::cloud::requests {
         return m_RevisionDateTime;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > DeleteBookmarksRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > DeleteBookmarksRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -2922,9 +3022,13 @@ namespace aspose::words::cloud::requests {
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -2994,7 +3098,7 @@ namespace aspose::words::cloud::requests {
         return m_RevisionDateTime;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > DeleteBookmarksOnlineRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > DeleteBookmarksOnlineRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -3012,9 +3116,13 @@ namespace aspose::words::cloud::requests {
         }
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Document' is required.");
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -3112,7 +3220,7 @@ namespace aspose::words::cloud::requests {
         return m_RevisionDateTime;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > DeleteBorderRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > DeleteBorderRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -3132,9 +3240,13 @@ namespace aspose::words::cloud::requests {
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -3218,7 +3330,7 @@ namespace aspose::words::cloud::requests {
         return m_RevisionDateTime;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > DeleteBorderOnlineRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > DeleteBorderOnlineRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -3239,9 +3351,13 @@ namespace aspose::words::cloud::requests {
         }
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Document' is required.");
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -3332,7 +3448,7 @@ namespace aspose::words::cloud::requests {
         return m_RevisionDateTime;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > DeleteBordersRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > DeleteBordersRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -3350,9 +3466,13 @@ namespace aspose::words::cloud::requests {
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -3429,7 +3549,7 @@ namespace aspose::words::cloud::requests {
         return m_RevisionDateTime;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > DeleteBordersOnlineRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > DeleteBordersOnlineRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -3448,9 +3568,13 @@ namespace aspose::words::cloud::requests {
         }
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Document' is required.");
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -3541,7 +3665,7 @@ namespace aspose::words::cloud::requests {
         return m_RevisionDateTime;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > DeleteCommentRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > DeleteCommentRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -3560,9 +3684,13 @@ namespace aspose::words::cloud::requests {
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -3639,7 +3767,7 @@ namespace aspose::words::cloud::requests {
         return m_RevisionDateTime;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > DeleteCommentOnlineRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > DeleteCommentOnlineRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -3659,9 +3787,13 @@ namespace aspose::words::cloud::requests {
         }
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Document' is required.");
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -3745,7 +3877,7 @@ namespace aspose::words::cloud::requests {
         return m_RevisionDateTime;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > DeleteCommentsRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > DeleteCommentsRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -3762,9 +3894,13 @@ namespace aspose::words::cloud::requests {
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -3834,7 +3970,7 @@ namespace aspose::words::cloud::requests {
         return m_RevisionDateTime;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > DeleteCommentsOnlineRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > DeleteCommentsOnlineRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -3852,9 +3988,13 @@ namespace aspose::words::cloud::requests {
         }
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Document' is required.");
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -3945,7 +4085,7 @@ namespace aspose::words::cloud::requests {
         return m_RevisionDateTime;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > DeleteCustomXmlPartRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > DeleteCustomXmlPartRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -3964,9 +4104,13 @@ namespace aspose::words::cloud::requests {
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -4043,7 +4187,7 @@ namespace aspose::words::cloud::requests {
         return m_RevisionDateTime;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > DeleteCustomXmlPartOnlineRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > DeleteCustomXmlPartOnlineRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -4063,9 +4207,13 @@ namespace aspose::words::cloud::requests {
         }
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Document' is required.");
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -4149,7 +4297,7 @@ namespace aspose::words::cloud::requests {
         return m_RevisionDateTime;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > DeleteCustomXmlPartsRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > DeleteCustomXmlPartsRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -4166,9 +4314,13 @@ namespace aspose::words::cloud::requests {
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -4238,7 +4390,7 @@ namespace aspose::words::cloud::requests {
         return m_RevisionDateTime;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > DeleteCustomXmlPartsOnlineRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > DeleteCustomXmlPartsOnlineRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -4256,9 +4408,13 @@ namespace aspose::words::cloud::requests {
         }
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Document' is required.");
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -4349,7 +4505,7 @@ namespace aspose::words::cloud::requests {
         return m_RevisionDateTime;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > DeleteDocumentPropertyRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > DeleteDocumentPropertyRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -4368,9 +4524,13 @@ namespace aspose::words::cloud::requests {
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -4447,7 +4607,7 @@ namespace aspose::words::cloud::requests {
         return m_RevisionDateTime;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > DeleteDocumentPropertyOnlineRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > DeleteDocumentPropertyOnlineRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -4467,9 +4627,13 @@ namespace aspose::words::cloud::requests {
         }
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Document' is required.");
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -4567,7 +4731,7 @@ namespace aspose::words::cloud::requests {
         return m_RevisionDateTime;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > DeleteDrawingObjectRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > DeleteDrawingObjectRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -4587,9 +4751,13 @@ namespace aspose::words::cloud::requests {
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -4673,7 +4841,7 @@ namespace aspose::words::cloud::requests {
         return m_RevisionDateTime;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > DeleteDrawingObjectOnlineRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > DeleteDrawingObjectOnlineRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -4694,9 +4862,13 @@ namespace aspose::words::cloud::requests {
         }
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Document' is required.");
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -4794,7 +4966,7 @@ namespace aspose::words::cloud::requests {
         return m_RevisionDateTime;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > DeleteFieldRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > DeleteFieldRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -4814,9 +4986,13 @@ namespace aspose::words::cloud::requests {
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -4900,7 +5076,7 @@ namespace aspose::words::cloud::requests {
         return m_RevisionDateTime;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > DeleteFieldOnlineRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > DeleteFieldOnlineRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -4921,9 +5097,13 @@ namespace aspose::words::cloud::requests {
         }
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Document' is required.");
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -5014,7 +5194,7 @@ namespace aspose::words::cloud::requests {
         return m_RevisionDateTime;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > DeleteFieldsRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > DeleteFieldsRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -5032,9 +5212,13 @@ namespace aspose::words::cloud::requests {
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -5111,7 +5295,7 @@ namespace aspose::words::cloud::requests {
         return m_RevisionDateTime;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > DeleteFieldsOnlineRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > DeleteFieldsOnlineRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -5130,9 +5314,13 @@ namespace aspose::words::cloud::requests {
         }
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Document' is required.");
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -5174,7 +5362,7 @@ namespace aspose::words::cloud::requests {
         return m_VersionId;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > DeleteFileRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > DeleteFileRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -5185,9 +5373,13 @@ namespace aspose::words::cloud::requests {
         if (m_StorageName) result->addQueryParam(L"storageName", *m_StorageName);
         if (m_VersionId) result->addQueryParam(L"versionId", *m_VersionId);
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -5229,7 +5421,7 @@ namespace aspose::words::cloud::requests {
         return m_Recursive;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > DeleteFolderRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > DeleteFolderRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -5240,9 +5432,13 @@ namespace aspose::words::cloud::requests {
         if (m_StorageName) result->addQueryParam(L"storageName", *m_StorageName);
         if (m_Recursive) result->addQueryParam(L"recursive", *m_Recursive);
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -5340,7 +5536,7 @@ namespace aspose::words::cloud::requests {
         return m_RevisionDateTime;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > DeleteFootnoteRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > DeleteFootnoteRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -5360,9 +5556,13 @@ namespace aspose::words::cloud::requests {
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -5446,7 +5646,7 @@ namespace aspose::words::cloud::requests {
         return m_RevisionDateTime;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > DeleteFootnoteOnlineRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > DeleteFootnoteOnlineRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -5467,9 +5667,13 @@ namespace aspose::words::cloud::requests {
         }
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Document' is required.");
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -5567,7 +5771,7 @@ namespace aspose::words::cloud::requests {
         return m_RevisionDateTime;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > DeleteFormFieldRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > DeleteFormFieldRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -5587,9 +5791,13 @@ namespace aspose::words::cloud::requests {
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -5673,7 +5881,7 @@ namespace aspose::words::cloud::requests {
         return m_RevisionDateTime;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > DeleteFormFieldOnlineRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > DeleteFormFieldOnlineRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -5694,9 +5902,13 @@ namespace aspose::words::cloud::requests {
         }
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Document' is required.");
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -5794,7 +6006,7 @@ namespace aspose::words::cloud::requests {
         return m_RevisionDateTime;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > DeleteHeaderFooterRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > DeleteHeaderFooterRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -5815,9 +6027,13 @@ namespace aspose::words::cloud::requests {
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -5901,7 +6117,7 @@ namespace aspose::words::cloud::requests {
         return m_RevisionDateTime;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > DeleteHeaderFooterOnlineRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > DeleteHeaderFooterOnlineRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -5923,9 +6139,13 @@ namespace aspose::words::cloud::requests {
         }
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Document' is required.");
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -6023,7 +6243,7 @@ namespace aspose::words::cloud::requests {
         return m_HeadersFootersTypes;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > DeleteHeadersFootersRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > DeleteHeadersFootersRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -6043,9 +6263,13 @@ namespace aspose::words::cloud::requests {
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
         if (m_HeadersFootersTypes) result->addQueryParam(L"headersFootersTypes", *m_HeadersFootersTypes);
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -6129,7 +6353,7 @@ namespace aspose::words::cloud::requests {
         return m_HeadersFootersTypes;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > DeleteHeadersFootersOnlineRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > DeleteHeadersFootersOnlineRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -6150,9 +6374,13 @@ namespace aspose::words::cloud::requests {
         }
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Document' is required.");
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -6236,7 +6464,7 @@ namespace aspose::words::cloud::requests {
         return m_RevisionDateTime;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > DeleteMacrosRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > DeleteMacrosRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -6253,9 +6481,13 @@ namespace aspose::words::cloud::requests {
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -6325,7 +6557,7 @@ namespace aspose::words::cloud::requests {
         return m_RevisionDateTime;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > DeleteMacrosOnlineRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > DeleteMacrosOnlineRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -6343,9 +6575,13 @@ namespace aspose::words::cloud::requests {
         }
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Document' is required.");
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -6443,7 +6679,7 @@ namespace aspose::words::cloud::requests {
         return m_RevisionDateTime;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > DeleteOfficeMathObjectRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > DeleteOfficeMathObjectRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -6463,9 +6699,13 @@ namespace aspose::words::cloud::requests {
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -6549,7 +6789,7 @@ namespace aspose::words::cloud::requests {
         return m_RevisionDateTime;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > DeleteOfficeMathObjectOnlineRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > DeleteOfficeMathObjectOnlineRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -6570,9 +6810,13 @@ namespace aspose::words::cloud::requests {
         }
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Document' is required.");
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -6656,7 +6900,7 @@ namespace aspose::words::cloud::requests {
         return m_RevisionDateTime;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > DeleteOfficeMathObjectsRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > DeleteOfficeMathObjectsRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -6673,9 +6917,13 @@ namespace aspose::words::cloud::requests {
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -6745,7 +6993,7 @@ namespace aspose::words::cloud::requests {
         return m_RevisionDateTime;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > DeleteOfficeMathObjectsOnlineRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > DeleteOfficeMathObjectsOnlineRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -6763,9 +7011,13 @@ namespace aspose::words::cloud::requests {
         }
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Document' is required.");
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -6863,7 +7115,7 @@ namespace aspose::words::cloud::requests {
         return m_RevisionDateTime;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > DeleteParagraphRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > DeleteParagraphRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -6883,9 +7135,13 @@ namespace aspose::words::cloud::requests {
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -6983,7 +7239,7 @@ namespace aspose::words::cloud::requests {
         return m_RevisionDateTime;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > DeleteParagraphListFormatRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > DeleteParagraphListFormatRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -7003,9 +7259,13 @@ namespace aspose::words::cloud::requests {
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -7089,7 +7349,7 @@ namespace aspose::words::cloud::requests {
         return m_RevisionDateTime;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > DeleteParagraphListFormatOnlineRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > DeleteParagraphListFormatOnlineRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -7110,9 +7370,13 @@ namespace aspose::words::cloud::requests {
         }
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Document' is required.");
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -7196,7 +7460,7 @@ namespace aspose::words::cloud::requests {
         return m_RevisionDateTime;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > DeleteParagraphOnlineRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > DeleteParagraphOnlineRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -7217,9 +7481,13 @@ namespace aspose::words::cloud::requests {
         }
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Document' is required.");
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -7310,7 +7578,7 @@ namespace aspose::words::cloud::requests {
         return m_DestFileName;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > DeleteParagraphTabStopRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > DeleteParagraphTabStopRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -7330,9 +7598,13 @@ namespace aspose::words::cloud::requests {
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -7409,7 +7681,7 @@ namespace aspose::words::cloud::requests {
         return m_DestFileName;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > DeleteParagraphTabStopOnlineRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > DeleteParagraphTabStopOnlineRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -7430,9 +7702,13 @@ namespace aspose::words::cloud::requests {
         }
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Document' is required.");
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -7530,7 +7806,7 @@ namespace aspose::words::cloud::requests {
         return m_RevisionDateTime;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > DeleteRunRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > DeleteRunRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -7551,9 +7827,13 @@ namespace aspose::words::cloud::requests {
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -7637,7 +7917,7 @@ namespace aspose::words::cloud::requests {
         return m_RevisionDateTime;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > DeleteRunOnlineRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > DeleteRunOnlineRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -7659,9 +7939,13 @@ namespace aspose::words::cloud::requests {
         }
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Document' is required.");
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -7752,7 +8036,7 @@ namespace aspose::words::cloud::requests {
         return m_RevisionDateTime;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > DeleteSectionRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > DeleteSectionRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -7771,9 +8055,13 @@ namespace aspose::words::cloud::requests {
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -7850,7 +8138,7 @@ namespace aspose::words::cloud::requests {
         return m_RevisionDateTime;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > DeleteSectionOnlineRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > DeleteSectionOnlineRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -7870,9 +8158,13 @@ namespace aspose::words::cloud::requests {
         }
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Document' is required.");
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -7970,7 +8262,7 @@ namespace aspose::words::cloud::requests {
         return m_RevisionDateTime;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > DeleteStructuredDocumentTagRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > DeleteStructuredDocumentTagRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -7990,9 +8282,13 @@ namespace aspose::words::cloud::requests {
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -8076,7 +8372,7 @@ namespace aspose::words::cloud::requests {
         return m_RevisionDateTime;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > DeleteStructuredDocumentTagOnlineRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > DeleteStructuredDocumentTagOnlineRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -8097,9 +8393,13 @@ namespace aspose::words::cloud::requests {
         }
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Document' is required.");
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -8197,7 +8497,7 @@ namespace aspose::words::cloud::requests {
         return m_RevisionDateTime;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > DeleteTableRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > DeleteTableRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -8217,9 +8517,13 @@ namespace aspose::words::cloud::requests {
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -8317,7 +8621,7 @@ namespace aspose::words::cloud::requests {
         return m_RevisionDateTime;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > DeleteTableCellRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > DeleteTableCellRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -8338,9 +8642,13 @@ namespace aspose::words::cloud::requests {
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -8424,7 +8732,7 @@ namespace aspose::words::cloud::requests {
         return m_RevisionDateTime;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > DeleteTableCellOnlineRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > DeleteTableCellOnlineRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -8446,9 +8754,13 @@ namespace aspose::words::cloud::requests {
         }
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Document' is required.");
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -8532,7 +8844,7 @@ namespace aspose::words::cloud::requests {
         return m_RevisionDateTime;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > DeleteTableOnlineRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > DeleteTableOnlineRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -8553,9 +8865,13 @@ namespace aspose::words::cloud::requests {
         }
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Document' is required.");
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -8653,7 +8969,7 @@ namespace aspose::words::cloud::requests {
         return m_RevisionDateTime;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > DeleteTableRowRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > DeleteTableRowRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -8674,9 +8990,13 @@ namespace aspose::words::cloud::requests {
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -8760,7 +9080,7 @@ namespace aspose::words::cloud::requests {
         return m_RevisionDateTime;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > DeleteTableRowOnlineRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > DeleteTableRowOnlineRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -8782,9 +9102,13 @@ namespace aspose::words::cloud::requests {
         }
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Document' is required.");
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -8868,7 +9192,7 @@ namespace aspose::words::cloud::requests {
         return m_RevisionDateTime;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > DeleteWatermarkRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > DeleteWatermarkRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -8885,9 +9209,13 @@ namespace aspose::words::cloud::requests {
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -8957,7 +9285,7 @@ namespace aspose::words::cloud::requests {
         return m_RevisionDateTime;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > DeleteWatermarkOnlineRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > DeleteWatermarkOnlineRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -8975,9 +9303,13 @@ namespace aspose::words::cloud::requests {
         }
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Document' is required.");
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -9019,7 +9351,7 @@ namespace aspose::words::cloud::requests {
         return m_VersionId;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > DownloadFileRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > DownloadFileRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -9030,9 +9362,13 @@ namespace aspose::words::cloud::requests {
         if (m_StorageName) result->addQueryParam(L"storageName", *m_StorageName);
         if (m_VersionId) result->addQueryParam(L"versionId", *m_VersionId);
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -9144,7 +9480,7 @@ namespace aspose::words::cloud::requests {
         return m_DestFileName;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > ExecuteMailMergeRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > ExecuteMailMergeRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -9172,9 +9508,13 @@ namespace aspose::words::cloud::requests {
             result->addFormDataParam(L"options", *m_Options);
             m_Options->validate();}
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -9237,7 +9577,7 @@ namespace aspose::words::cloud::requests {
         return m_DocumentFileName;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > ExecuteMailMergeOnlineRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > ExecuteMailMergeOnlineRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -9263,9 +9603,13 @@ namespace aspose::words::cloud::requests {
             result->addFormDataParam(L"options", *m_Options);
             m_Options->validate();}
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -9293,7 +9637,7 @@ namespace aspose::words::cloud::requests {
         return m_FontsLocation;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetAvailableFontsRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetAvailableFontsRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -9301,9 +9645,13 @@ namespace aspose::words::cloud::requests {
         result->setPath(L"/words/fonts/available");
         if (m_FontsLocation) result->addQueryParam(L"fontsLocation", *m_FontsLocation);
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -9373,7 +9721,7 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetBookmarkByNameRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetBookmarkByNameRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -9389,9 +9737,13 @@ namespace aspose::words::cloud::requests {
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -9447,7 +9799,7 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetBookmarkByNameOnlineRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetBookmarkByNameOnlineRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -9464,9 +9816,13 @@ namespace aspose::words::cloud::requests {
         }
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Document' is required.");
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -9529,7 +9885,7 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetBookmarksRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetBookmarksRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -9543,9 +9899,13 @@ namespace aspose::words::cloud::requests {
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -9594,7 +9954,7 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetBookmarksOnlineRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetBookmarksOnlineRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -9609,9 +9969,13 @@ namespace aspose::words::cloud::requests {
         }
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Document' is required.");
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -9688,7 +10052,7 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetBorderRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetBorderRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -9705,9 +10069,13 @@ namespace aspose::words::cloud::requests {
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -9770,7 +10138,7 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetBorderOnlineRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetBorderOnlineRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -9788,9 +10156,13 @@ namespace aspose::words::cloud::requests {
         }
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Document' is required.");
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -9860,7 +10232,7 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetBordersRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetBordersRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -9875,9 +10247,13 @@ namespace aspose::words::cloud::requests {
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -9933,7 +10309,7 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetBordersOnlineRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetBordersOnlineRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -9949,9 +10325,13 @@ namespace aspose::words::cloud::requests {
         }
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Document' is required.");
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -10021,7 +10401,7 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetCommentRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetCommentRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -10037,9 +10417,13 @@ namespace aspose::words::cloud::requests {
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -10095,7 +10479,7 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetCommentOnlineRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetCommentOnlineRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -10112,9 +10496,13 @@ namespace aspose::words::cloud::requests {
         }
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Document' is required.");
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -10177,7 +10565,7 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetCommentsRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetCommentsRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -10191,9 +10579,13 @@ namespace aspose::words::cloud::requests {
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -10242,7 +10634,7 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetCommentsOnlineRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetCommentsOnlineRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -10257,9 +10649,13 @@ namespace aspose::words::cloud::requests {
         }
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Document' is required.");
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -10329,7 +10725,7 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetCustomXmlPartRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetCustomXmlPartRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -10345,9 +10741,13 @@ namespace aspose::words::cloud::requests {
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -10403,7 +10803,7 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetCustomXmlPartOnlineRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetCustomXmlPartOnlineRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -10420,9 +10820,13 @@ namespace aspose::words::cloud::requests {
         }
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Document' is required.");
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -10485,7 +10889,7 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetCustomXmlPartsRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetCustomXmlPartsRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -10499,9 +10903,13 @@ namespace aspose::words::cloud::requests {
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -10550,7 +10958,7 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetCustomXmlPartsOnlineRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetCustomXmlPartsOnlineRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -10565,9 +10973,13 @@ namespace aspose::words::cloud::requests {
         }
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Document' is required.");
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -10630,7 +11042,7 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetDocumentRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetDocumentRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -10644,9 +11056,13 @@ namespace aspose::words::cloud::requests {
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -10723,7 +11139,7 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetDocumentDrawingObjectByIndexRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetDocumentDrawingObjectByIndexRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -10740,9 +11156,13 @@ namespace aspose::words::cloud::requests {
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -10805,7 +11225,7 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetDocumentDrawingObjectByIndexOnlineRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetDocumentDrawingObjectByIndexOnlineRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -10823,9 +11243,13 @@ namespace aspose::words::cloud::requests {
         }
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Document' is required.");
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -10902,7 +11326,7 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetDocumentDrawingObjectImageDataRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetDocumentDrawingObjectImageDataRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -10919,9 +11343,13 @@ namespace aspose::words::cloud::requests {
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -10984,7 +11412,7 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetDocumentDrawingObjectImageDataOnlineRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetDocumentDrawingObjectImageDataOnlineRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -11002,9 +11430,13 @@ namespace aspose::words::cloud::requests {
         }
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Document' is required.");
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -11081,7 +11513,7 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetDocumentDrawingObjectOleDataRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetDocumentDrawingObjectOleDataRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -11098,9 +11530,13 @@ namespace aspose::words::cloud::requests {
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -11163,7 +11599,7 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetDocumentDrawingObjectOleDataOnlineRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetDocumentDrawingObjectOleDataOnlineRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -11181,9 +11617,13 @@ namespace aspose::words::cloud::requests {
         }
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Document' is required.");
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -11253,7 +11693,7 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetDocumentDrawingObjectsRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetDocumentDrawingObjectsRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -11268,9 +11708,13 @@ namespace aspose::words::cloud::requests {
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -11326,7 +11770,7 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetDocumentDrawingObjectsOnlineRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetDocumentDrawingObjectsOnlineRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -11342,9 +11786,13 @@ namespace aspose::words::cloud::requests {
         }
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Document' is required.");
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -11414,7 +11862,7 @@ namespace aspose::words::cloud::requests {
         return m_UseNonMergeFields;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetDocumentFieldNamesRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetDocumentFieldNamesRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -11429,9 +11877,13 @@ namespace aspose::words::cloud::requests {
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
         if (m_UseNonMergeFields) result->addQueryParam(L"useNonMergeFields", *m_UseNonMergeFields);
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -11487,7 +11939,7 @@ namespace aspose::words::cloud::requests {
         return m_UseNonMergeFields;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetDocumentFieldNamesOnlineRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetDocumentFieldNamesOnlineRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -11503,9 +11955,13 @@ namespace aspose::words::cloud::requests {
         }
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Template' is required.");
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -11575,7 +12031,7 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetDocumentHyperlinkByIndexRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetDocumentHyperlinkByIndexRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -11591,9 +12047,13 @@ namespace aspose::words::cloud::requests {
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -11649,7 +12109,7 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetDocumentHyperlinkByIndexOnlineRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetDocumentHyperlinkByIndexOnlineRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -11666,9 +12126,13 @@ namespace aspose::words::cloud::requests {
         }
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Document' is required.");
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -11731,7 +12195,7 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetDocumentHyperlinksRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetDocumentHyperlinksRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -11745,9 +12209,13 @@ namespace aspose::words::cloud::requests {
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -11796,7 +12264,7 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetDocumentHyperlinksOnlineRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetDocumentHyperlinksOnlineRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -11811,9 +12279,13 @@ namespace aspose::words::cloud::requests {
         }
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Document' is required.");
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -11876,7 +12348,7 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetDocumentPropertiesRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetDocumentPropertiesRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -11890,9 +12362,13 @@ namespace aspose::words::cloud::requests {
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -11941,7 +12417,7 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetDocumentPropertiesOnlineRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetDocumentPropertiesOnlineRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -11956,9 +12432,13 @@ namespace aspose::words::cloud::requests {
         }
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Document' is required.");
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -12028,7 +12508,7 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetDocumentPropertyRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetDocumentPropertyRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -12044,9 +12524,13 @@ namespace aspose::words::cloud::requests {
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -12102,7 +12586,7 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetDocumentPropertyOnlineRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetDocumentPropertyOnlineRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -12119,9 +12603,13 @@ namespace aspose::words::cloud::requests {
         }
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Document' is required.");
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -12184,7 +12672,7 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetDocumentProtectionRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetDocumentProtectionRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -12198,9 +12686,13 @@ namespace aspose::words::cloud::requests {
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -12249,7 +12741,7 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetDocumentProtectionOnlineRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetDocumentProtectionOnlineRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -12264,9 +12756,13 @@ namespace aspose::words::cloud::requests {
         }
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Document' is required.");
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -12350,7 +12846,7 @@ namespace aspose::words::cloud::requests {
         return m_IncludeTextInShapes;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetDocumentStatisticsRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetDocumentStatisticsRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -12367,9 +12863,13 @@ namespace aspose::words::cloud::requests {
         if (m_IncludeFootnotes) result->addQueryParam(L"includeFootnotes", *m_IncludeFootnotes);
         if (m_IncludeTextInShapes) result->addQueryParam(L"includeTextInShapes", *m_IncludeTextInShapes);
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -12439,7 +12939,7 @@ namespace aspose::words::cloud::requests {
         return m_IncludeTextInShapes;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetDocumentStatisticsOnlineRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetDocumentStatisticsOnlineRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -12457,9 +12957,13 @@ namespace aspose::words::cloud::requests {
         }
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Document' is required.");
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -12543,7 +13047,7 @@ namespace aspose::words::cloud::requests {
         return m_FontsLocation;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetDocumentWithFormatRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetDocumentWithFormatRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -12561,9 +13065,13 @@ namespace aspose::words::cloud::requests {
         if (m_OutPath) result->addQueryParam(L"outPath", *m_OutPath);
         if (m_FontsLocation) result->addQueryParam(L"fontsLocation", *m_FontsLocation);
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -12640,7 +13148,7 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetFieldRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetFieldRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -12657,9 +13165,13 @@ namespace aspose::words::cloud::requests {
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -12722,7 +13234,7 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetFieldOnlineRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetFieldOnlineRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -12740,9 +13252,13 @@ namespace aspose::words::cloud::requests {
         }
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Document' is required.");
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -12812,7 +13328,7 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetFieldsRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetFieldsRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -12827,9 +13343,13 @@ namespace aspose::words::cloud::requests {
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -12885,7 +13405,7 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetFieldsOnlineRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetFieldsOnlineRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -12901,9 +13421,13 @@ namespace aspose::words::cloud::requests {
         }
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Document' is required.");
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -12938,7 +13462,7 @@ namespace aspose::words::cloud::requests {
         return m_StorageName;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetFilesListRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetFilesListRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -12948,9 +13472,13 @@ namespace aspose::words::cloud::requests {
         result->setPathParam(L"{path}", *m_Path);
         if (m_StorageName) result->addQueryParam(L"storageName", *m_StorageName);
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -13027,7 +13555,7 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetFootnoteRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetFootnoteRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -13044,9 +13572,13 @@ namespace aspose::words::cloud::requests {
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -13109,7 +13641,7 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetFootnoteOnlineRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetFootnoteOnlineRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -13127,9 +13659,13 @@ namespace aspose::words::cloud::requests {
         }
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Document' is required.");
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -13199,7 +13735,7 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetFootnotesRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetFootnotesRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -13214,9 +13750,13 @@ namespace aspose::words::cloud::requests {
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -13272,7 +13812,7 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetFootnotesOnlineRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetFootnotesOnlineRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -13288,9 +13828,13 @@ namespace aspose::words::cloud::requests {
         }
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Document' is required.");
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -13367,7 +13911,7 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetFormFieldRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetFormFieldRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -13384,9 +13928,13 @@ namespace aspose::words::cloud::requests {
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -13449,7 +13997,7 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetFormFieldOnlineRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetFormFieldOnlineRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -13467,9 +14015,13 @@ namespace aspose::words::cloud::requests {
         }
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Document' is required.");
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -13539,7 +14091,7 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetFormFieldsRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetFormFieldsRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -13554,9 +14106,13 @@ namespace aspose::words::cloud::requests {
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -13612,7 +14168,7 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetFormFieldsOnlineRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetFormFieldsOnlineRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -13628,9 +14184,13 @@ namespace aspose::words::cloud::requests {
         }
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Document' is required.");
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -13707,7 +14267,7 @@ namespace aspose::words::cloud::requests {
         return m_FilterByType;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetHeaderFooterRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetHeaderFooterRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -13724,9 +14284,13 @@ namespace aspose::words::cloud::requests {
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
         if (m_FilterByType) result->addQueryParam(L"filterByType", *m_FilterByType);
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -13810,7 +14374,7 @@ namespace aspose::words::cloud::requests {
         return m_FilterByType;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetHeaderFooterOfSectionRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetHeaderFooterOfSectionRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -13829,9 +14393,13 @@ namespace aspose::words::cloud::requests {
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
         if (m_FilterByType) result->addQueryParam(L"filterByType", *m_FilterByType);
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -13901,7 +14469,7 @@ namespace aspose::words::cloud::requests {
         return m_FilterByType;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetHeaderFooterOfSectionOnlineRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetHeaderFooterOfSectionOnlineRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -13921,9 +14489,13 @@ namespace aspose::words::cloud::requests {
         }
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Document' is required.");
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -13986,7 +14558,7 @@ namespace aspose::words::cloud::requests {
         return m_FilterByType;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetHeaderFooterOnlineRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetHeaderFooterOnlineRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -14004,9 +14576,13 @@ namespace aspose::words::cloud::requests {
         }
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Document' is required.");
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -14083,7 +14659,7 @@ namespace aspose::words::cloud::requests {
         return m_FilterByType;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetHeaderFootersRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetHeaderFootersRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -14100,9 +14676,13 @@ namespace aspose::words::cloud::requests {
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
         if (m_FilterByType) result->addQueryParam(L"filterByType", *m_FilterByType);
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -14165,7 +14745,7 @@ namespace aspose::words::cloud::requests {
         return m_FilterByType;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetHeaderFootersOnlineRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetHeaderFootersOnlineRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -14183,9 +14763,13 @@ namespace aspose::words::cloud::requests {
         }
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Document' is required.");
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -14207,16 +14791,20 @@ namespace aspose::words::cloud::requests {
     }
 
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetInfoRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetInfoRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
         result->setMethod(HttpRequestMethod::HttpGET);
         result->setPath(L"/words/info");
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -14286,7 +14874,7 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetListRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetListRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -14302,9 +14890,13 @@ namespace aspose::words::cloud::requests {
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -14360,7 +14952,7 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetListOnlineRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetListOnlineRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -14377,9 +14969,13 @@ namespace aspose::words::cloud::requests {
         }
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Document' is required.");
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -14442,7 +15038,7 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetListsRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetListsRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -14456,9 +15052,13 @@ namespace aspose::words::cloud::requests {
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -14507,7 +15107,7 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetListsOnlineRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetListsOnlineRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -14522,9 +15122,13 @@ namespace aspose::words::cloud::requests {
         }
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Document' is required.");
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -14601,7 +15205,7 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetOfficeMathObjectRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetOfficeMathObjectRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -14618,9 +15222,13 @@ namespace aspose::words::cloud::requests {
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -14683,7 +15291,7 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetOfficeMathObjectOnlineRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetOfficeMathObjectOnlineRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -14701,9 +15309,13 @@ namespace aspose::words::cloud::requests {
         }
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Document' is required.");
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -14773,7 +15385,7 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetOfficeMathObjectsRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetOfficeMathObjectsRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -14788,9 +15400,13 @@ namespace aspose::words::cloud::requests {
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -14846,7 +15462,7 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetOfficeMathObjectsOnlineRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetOfficeMathObjectsOnlineRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -14862,9 +15478,13 @@ namespace aspose::words::cloud::requests {
         }
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Document' is required.");
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -14941,7 +15561,7 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetParagraphRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetParagraphRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -14958,9 +15578,13 @@ namespace aspose::words::cloud::requests {
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -15037,7 +15661,7 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetParagraphFormatRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetParagraphFormatRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -15054,9 +15678,13 @@ namespace aspose::words::cloud::requests {
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -15119,7 +15747,7 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetParagraphFormatOnlineRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetParagraphFormatOnlineRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -15137,9 +15765,13 @@ namespace aspose::words::cloud::requests {
         }
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Document' is required.");
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -15216,7 +15848,7 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetParagraphListFormatRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetParagraphListFormatRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -15233,9 +15865,13 @@ namespace aspose::words::cloud::requests {
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -15298,7 +15934,7 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetParagraphListFormatOnlineRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetParagraphListFormatOnlineRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -15316,9 +15952,13 @@ namespace aspose::words::cloud::requests {
         }
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Document' is required.");
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -15381,7 +16021,7 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetParagraphOnlineRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetParagraphOnlineRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -15399,9 +16039,13 @@ namespace aspose::words::cloud::requests {
         }
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Document' is required.");
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -15471,7 +16115,7 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetParagraphsRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetParagraphsRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -15486,9 +16130,13 @@ namespace aspose::words::cloud::requests {
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -15544,7 +16192,7 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetParagraphsOnlineRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetParagraphsOnlineRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -15560,9 +16208,13 @@ namespace aspose::words::cloud::requests {
         }
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Document' is required.");
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -15639,7 +16291,7 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetParagraphTabStopsRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetParagraphTabStopsRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -15656,9 +16308,13 @@ namespace aspose::words::cloud::requests {
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -15721,7 +16377,7 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetParagraphTabStopsOnlineRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetParagraphTabStopsOnlineRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -15739,9 +16395,13 @@ namespace aspose::words::cloud::requests {
         }
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Document' is required.");
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -15763,16 +16423,20 @@ namespace aspose::words::cloud::requests {
     }
 
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetPublicKeyRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetPublicKeyRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
         result->setMethod(HttpRequestMethod::HttpGET);
         result->setPath(L"/words/encryption/publickey");
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -15849,7 +16513,7 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetRangeTextRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetRangeTextRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -15866,9 +16530,13 @@ namespace aspose::words::cloud::requests {
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -15931,7 +16599,7 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetRangeTextOnlineRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetRangeTextOnlineRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -15949,9 +16617,13 @@ namespace aspose::words::cloud::requests {
         }
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Document' is required.");
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -16028,7 +16700,7 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetRunRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetRunRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -16046,9 +16718,13 @@ namespace aspose::words::cloud::requests {
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -16125,7 +16801,7 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetRunFontRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetRunFontRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -16143,9 +16819,13 @@ namespace aspose::words::cloud::requests {
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -16208,7 +16888,7 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetRunFontOnlineRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetRunFontOnlineRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -16227,9 +16907,13 @@ namespace aspose::words::cloud::requests {
         }
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Document' is required.");
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -16292,7 +16976,7 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetRunOnlineRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetRunOnlineRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -16311,9 +16995,13 @@ namespace aspose::words::cloud::requests {
         }
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Document' is required.");
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -16383,7 +17071,7 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetRunsRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetRunsRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -16399,9 +17087,13 @@ namespace aspose::words::cloud::requests {
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -16457,7 +17149,7 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetRunsOnlineRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetRunsOnlineRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -16474,9 +17166,13 @@ namespace aspose::words::cloud::requests {
         }
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Document' is required.");
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -16546,7 +17242,7 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetSectionRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetSectionRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -16562,9 +17258,13 @@ namespace aspose::words::cloud::requests {
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -16620,7 +17320,7 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetSectionOnlineRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetSectionOnlineRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -16637,9 +17337,13 @@ namespace aspose::words::cloud::requests {
         }
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Document' is required.");
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -16709,7 +17413,7 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetSectionPageSetupRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetSectionPageSetupRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -16725,9 +17429,13 @@ namespace aspose::words::cloud::requests {
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -16783,7 +17491,7 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetSectionPageSetupOnlineRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetSectionPageSetupOnlineRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -16800,9 +17508,13 @@ namespace aspose::words::cloud::requests {
         }
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Document' is required.");
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -16865,7 +17577,7 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetSectionsRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetSectionsRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -16879,9 +17591,13 @@ namespace aspose::words::cloud::requests {
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -16930,7 +17646,7 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetSectionsOnlineRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetSectionsOnlineRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -16945,9 +17661,13 @@ namespace aspose::words::cloud::requests {
         }
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Document' is required.");
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -17024,7 +17744,7 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetStructuredDocumentTagRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetStructuredDocumentTagRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -17041,9 +17761,13 @@ namespace aspose::words::cloud::requests {
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -17106,7 +17830,7 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetStructuredDocumentTagOnlineRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetStructuredDocumentTagOnlineRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -17124,9 +17848,13 @@ namespace aspose::words::cloud::requests {
         }
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Document' is required.");
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -17196,7 +17924,7 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetStructuredDocumentTagsRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetStructuredDocumentTagsRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -17211,9 +17939,13 @@ namespace aspose::words::cloud::requests {
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -17269,7 +18001,7 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetStructuredDocumentTagsOnlineRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetStructuredDocumentTagsOnlineRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -17285,9 +18017,13 @@ namespace aspose::words::cloud::requests {
         }
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Document' is required.");
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -17357,7 +18093,7 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetStyleRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetStyleRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -17373,9 +18109,13 @@ namespace aspose::words::cloud::requests {
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -17445,7 +18185,7 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetStyleFromDocumentElementRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetStyleFromDocumentElementRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -17461,9 +18201,13 @@ namespace aspose::words::cloud::requests {
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -17519,7 +18263,7 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetStyleFromDocumentElementOnlineRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetStyleFromDocumentElementOnlineRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -17536,9 +18280,13 @@ namespace aspose::words::cloud::requests {
         }
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Document' is required.");
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -17594,7 +18342,7 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetStyleOnlineRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetStyleOnlineRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -17611,9 +18359,13 @@ namespace aspose::words::cloud::requests {
         }
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Document' is required.");
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -17676,7 +18428,7 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetStylesRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetStylesRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -17690,9 +18442,13 @@ namespace aspose::words::cloud::requests {
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -17741,7 +18497,7 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetStylesOnlineRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetStylesOnlineRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -17756,9 +18512,13 @@ namespace aspose::words::cloud::requests {
         }
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Document' is required.");
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -17835,7 +18595,7 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetTableRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetTableRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -17852,9 +18612,13 @@ namespace aspose::words::cloud::requests {
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -17931,7 +18695,7 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetTableCellRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetTableCellRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -17949,9 +18713,13 @@ namespace aspose::words::cloud::requests {
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -18028,7 +18796,7 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetTableCellFormatRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetTableCellFormatRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -18046,9 +18814,13 @@ namespace aspose::words::cloud::requests {
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -18111,7 +18883,7 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetTableCellFormatOnlineRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetTableCellFormatOnlineRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -18130,9 +18902,13 @@ namespace aspose::words::cloud::requests {
         }
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Document' is required.");
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -18195,7 +18971,7 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetTableCellOnlineRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetTableCellOnlineRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -18214,9 +18990,13 @@ namespace aspose::words::cloud::requests {
         }
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Document' is required.");
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -18279,7 +19059,7 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetTableOnlineRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetTableOnlineRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -18297,9 +19077,13 @@ namespace aspose::words::cloud::requests {
         }
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Document' is required.");
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -18376,7 +19160,7 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetTablePropertiesRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetTablePropertiesRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -18393,9 +19177,13 @@ namespace aspose::words::cloud::requests {
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -18458,7 +19246,7 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetTablePropertiesOnlineRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetTablePropertiesOnlineRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -18476,9 +19264,13 @@ namespace aspose::words::cloud::requests {
         }
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Document' is required.");
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -18555,7 +19347,7 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetTableRowRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetTableRowRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -18573,9 +19365,13 @@ namespace aspose::words::cloud::requests {
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -18652,7 +19448,7 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetTableRowFormatRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetTableRowFormatRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -18670,9 +19466,13 @@ namespace aspose::words::cloud::requests {
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -18735,7 +19535,7 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetTableRowFormatOnlineRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetTableRowFormatOnlineRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -18754,9 +19554,13 @@ namespace aspose::words::cloud::requests {
         }
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Document' is required.");
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -18819,7 +19623,7 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetTableRowOnlineRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetTableRowOnlineRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -18838,9 +19642,13 @@ namespace aspose::words::cloud::requests {
         }
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Document' is required.");
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -18910,7 +19718,7 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetTablesRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetTablesRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -18925,9 +19733,13 @@ namespace aspose::words::cloud::requests {
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -18983,7 +19795,7 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetTablesOnlineRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetTablesOnlineRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -18999,9 +19811,13 @@ namespace aspose::words::cloud::requests {
         }
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Document' is required.");
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -19092,7 +19908,7 @@ namespace aspose::words::cloud::requests {
         return m_RevisionDateTime;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > InsertBookmarkRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > InsertBookmarkRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -19115,9 +19931,13 @@ namespace aspose::words::cloud::requests {
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Bookmark' is required.");
 
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -19194,7 +20014,7 @@ namespace aspose::words::cloud::requests {
         return m_RevisionDateTime;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > InsertBookmarkOnlineRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > InsertBookmarkOnlineRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -19218,9 +20038,13 @@ namespace aspose::words::cloud::requests {
             m_Bookmark->validate();}
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Bookmark' is required.");
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -19311,7 +20135,7 @@ namespace aspose::words::cloud::requests {
         return m_RevisionDateTime;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > InsertCommentRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > InsertCommentRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -19334,9 +20158,13 @@ namespace aspose::words::cloud::requests {
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Comment' is required.");
 
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -19413,7 +20241,7 @@ namespace aspose::words::cloud::requests {
         return m_RevisionDateTime;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > InsertCommentOnlineRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > InsertCommentOnlineRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -19437,9 +20265,13 @@ namespace aspose::words::cloud::requests {
             m_Comment->validate();}
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Comment' is required.");
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -19530,7 +20362,7 @@ namespace aspose::words::cloud::requests {
         return m_RevisionDateTime;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > InsertCustomXmlPartRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > InsertCustomXmlPartRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -19553,9 +20385,13 @@ namespace aspose::words::cloud::requests {
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'CustomXmlPart' is required.");
 
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -19632,7 +20468,7 @@ namespace aspose::words::cloud::requests {
         return m_RevisionDateTime;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > InsertCustomXmlPartOnlineRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > InsertCustomXmlPartOnlineRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -19656,9 +20492,13 @@ namespace aspose::words::cloud::requests {
             m_CustomXmlPart->validate();}
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'CustomXmlPart' is required.");
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -19763,7 +20603,7 @@ namespace aspose::words::cloud::requests {
         return m_RevisionDateTime;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > InsertDrawingObjectRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > InsertDrawingObjectRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -19792,9 +20632,13 @@ namespace aspose::words::cloud::requests {
         }
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'ImageFile' is required.");
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -19885,7 +20729,7 @@ namespace aspose::words::cloud::requests {
         return m_RevisionDateTime;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > InsertDrawingObjectOnlineRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > InsertDrawingObjectOnlineRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -19916,9 +20760,13 @@ namespace aspose::words::cloud::requests {
         }
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'ImageFile' is required.");
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -20023,7 +20871,7 @@ namespace aspose::words::cloud::requests {
         return m_InsertBeforeNode;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > InsertFieldRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > InsertFieldRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -20048,9 +20896,13 @@ namespace aspose::words::cloud::requests {
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Field' is required.");
 
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -20141,7 +20993,7 @@ namespace aspose::words::cloud::requests {
         return m_InsertBeforeNode;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > InsertFieldOnlineRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > InsertFieldOnlineRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -20167,9 +21019,13 @@ namespace aspose::words::cloud::requests {
             m_Field->validate();}
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Field' is required.");
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -20267,7 +21123,7 @@ namespace aspose::words::cloud::requests {
         return m_RevisionDateTime;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > InsertFootnoteRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > InsertFootnoteRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -20291,9 +21147,13 @@ namespace aspose::words::cloud::requests {
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'FootnoteDto' is required.");
 
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -20377,7 +21237,7 @@ namespace aspose::words::cloud::requests {
         return m_RevisionDateTime;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > InsertFootnoteOnlineRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > InsertFootnoteOnlineRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -20402,9 +21262,13 @@ namespace aspose::words::cloud::requests {
             m_FootnoteDto->validate();}
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'FootnoteDto' is required.");
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -20509,7 +21373,7 @@ namespace aspose::words::cloud::requests {
         return m_InsertBeforeNode;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > InsertFormFieldRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > InsertFormFieldRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -20534,9 +21398,13 @@ namespace aspose::words::cloud::requests {
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'FormField' is required.");
 
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -20627,7 +21495,7 @@ namespace aspose::words::cloud::requests {
         return m_InsertBeforeNode;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > InsertFormFieldOnlineRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > InsertFormFieldOnlineRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -20653,9 +21521,13 @@ namespace aspose::words::cloud::requests {
             m_FormField->validate();}
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'FormField' is required.");
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -20753,7 +21625,7 @@ namespace aspose::words::cloud::requests {
         return m_RevisionDateTime;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > InsertHeaderFooterRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > InsertHeaderFooterRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -20778,9 +21650,13 @@ namespace aspose::words::cloud::requests {
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'HeaderFooterType' is required.");
 
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -20864,7 +21740,7 @@ namespace aspose::words::cloud::requests {
         return m_RevisionDateTime;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > InsertHeaderFooterOnlineRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > InsertHeaderFooterOnlineRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -20890,9 +21766,13 @@ namespace aspose::words::cloud::requests {
         }
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'HeaderFooterType' is required.");
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -20983,7 +21863,7 @@ namespace aspose::words::cloud::requests {
         return m_RevisionDateTime;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > InsertListRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > InsertListRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -21006,9 +21886,13 @@ namespace aspose::words::cloud::requests {
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'ListInsert' is required.");
 
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -21085,7 +21969,7 @@ namespace aspose::words::cloud::requests {
         return m_RevisionDateTime;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > InsertListOnlineRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > InsertListOnlineRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -21109,9 +21993,13 @@ namespace aspose::words::cloud::requests {
             m_ListInsert->validate();}
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'ListInsert' is required.");
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -21202,7 +22090,7 @@ namespace aspose::words::cloud::requests {
         return m_DestFileName;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > InsertOrUpdateParagraphTabStopRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > InsertOrUpdateParagraphTabStopRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -21226,9 +22114,13 @@ namespace aspose::words::cloud::requests {
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'TabStopInsertDto' is required.");
 
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -21305,7 +22197,7 @@ namespace aspose::words::cloud::requests {
         return m_DestFileName;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > InsertOrUpdateParagraphTabStopOnlineRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > InsertOrUpdateParagraphTabStopOnlineRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -21330,9 +22222,13 @@ namespace aspose::words::cloud::requests {
             m_TabStopInsertDto->validate();}
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'TabStopInsertDto' is required.");
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -21423,7 +22319,7 @@ namespace aspose::words::cloud::requests {
         return m_RevisionDateTime;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > InsertPageNumbersRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > InsertPageNumbersRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -21446,9 +22342,13 @@ namespace aspose::words::cloud::requests {
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'PageNumber' is required.");
 
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -21525,7 +22425,7 @@ namespace aspose::words::cloud::requests {
         return m_RevisionDateTime;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > InsertPageNumbersOnlineRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > InsertPageNumbersOnlineRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -21549,9 +22449,13 @@ namespace aspose::words::cloud::requests {
             m_PageNumber->validate();}
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'PageNumber' is required.");
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -21656,7 +22560,7 @@ namespace aspose::words::cloud::requests {
         return m_InsertBeforeNode;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > InsertParagraphRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > InsertParagraphRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -21681,9 +22585,13 @@ namespace aspose::words::cloud::requests {
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Paragraph' is required.");
 
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -21774,7 +22682,7 @@ namespace aspose::words::cloud::requests {
         return m_InsertBeforeNode;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > InsertParagraphOnlineRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > InsertParagraphOnlineRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -21800,9 +22708,13 @@ namespace aspose::words::cloud::requests {
             m_Paragraph->validate();}
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Paragraph' is required.");
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -21907,7 +22819,7 @@ namespace aspose::words::cloud::requests {
         return m_InsertBeforeNode;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > InsertRunRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > InsertRunRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -21933,9 +22845,13 @@ namespace aspose::words::cloud::requests {
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Run' is required.");
 
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -22026,7 +22942,7 @@ namespace aspose::words::cloud::requests {
         return m_InsertBeforeNode;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > InsertRunOnlineRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > InsertRunOnlineRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -22053,9 +22969,13 @@ namespace aspose::words::cloud::requests {
             m_Run->validate();}
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Run' is required.");
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -22146,7 +23066,7 @@ namespace aspose::words::cloud::requests {
         return m_RevisionDateTime;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > InsertSectionRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > InsertSectionRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -22165,9 +23085,13 @@ namespace aspose::words::cloud::requests {
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -22244,7 +23168,7 @@ namespace aspose::words::cloud::requests {
         return m_RevisionDateTime;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > InsertSectionOnlineRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > InsertSectionOnlineRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -22264,9 +23188,13 @@ namespace aspose::words::cloud::requests {
         }
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Document' is required.");
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -22364,7 +23292,7 @@ namespace aspose::words::cloud::requests {
         return m_RevisionDateTime;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > InsertStructuredDocumentTagRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > InsertStructuredDocumentTagRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -22388,9 +23316,13 @@ namespace aspose::words::cloud::requests {
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'StructuredDocumentTag' is required.");
 
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -22474,7 +23406,7 @@ namespace aspose::words::cloud::requests {
         return m_RevisionDateTime;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > InsertStructuredDocumentTagOnlineRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > InsertStructuredDocumentTagOnlineRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -22499,9 +23431,13 @@ namespace aspose::words::cloud::requests {
             m_StructuredDocumentTag->validate();}
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'StructuredDocumentTag' is required.");
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -22592,7 +23528,7 @@ namespace aspose::words::cloud::requests {
         return m_RevisionDateTime;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > InsertStyleRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > InsertStyleRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -22615,9 +23551,13 @@ namespace aspose::words::cloud::requests {
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'StyleInsert' is required.");
 
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -22694,7 +23634,7 @@ namespace aspose::words::cloud::requests {
         return m_RevisionDateTime;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > InsertStyleOnlineRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > InsertStyleOnlineRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -22718,9 +23658,13 @@ namespace aspose::words::cloud::requests {
             m_StyleInsert->validate();}
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'StyleInsert' is required.");
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -22818,7 +23762,7 @@ namespace aspose::words::cloud::requests {
         return m_RevisionDateTime;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > InsertTableRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > InsertTableRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -22842,9 +23786,13 @@ namespace aspose::words::cloud::requests {
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Table' is required.");
 
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -22942,7 +23890,7 @@ namespace aspose::words::cloud::requests {
         return m_RevisionDateTime;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > InsertTableCellRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > InsertTableCellRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -22967,9 +23915,13 @@ namespace aspose::words::cloud::requests {
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Cell' is required.");
 
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -23053,7 +24005,7 @@ namespace aspose::words::cloud::requests {
         return m_RevisionDateTime;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > InsertTableCellOnlineRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > InsertTableCellOnlineRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -23079,9 +24031,13 @@ namespace aspose::words::cloud::requests {
             m_Cell->validate();}
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Cell' is required.");
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -23165,7 +24121,7 @@ namespace aspose::words::cloud::requests {
         return m_RevisionDateTime;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > InsertTableOnlineRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > InsertTableOnlineRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -23190,9 +24146,13 @@ namespace aspose::words::cloud::requests {
             m_Table->validate();}
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Table' is required.");
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -23290,7 +24250,7 @@ namespace aspose::words::cloud::requests {
         return m_RevisionDateTime;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > InsertTableRowRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > InsertTableRowRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -23315,9 +24275,13 @@ namespace aspose::words::cloud::requests {
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Row' is required.");
 
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -23401,7 +24365,7 @@ namespace aspose::words::cloud::requests {
         return m_RevisionDateTime;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > InsertTableRowOnlineRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > InsertTableRowOnlineRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -23427,9 +24391,13 @@ namespace aspose::words::cloud::requests {
             m_Row->validate();}
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Row' is required.");
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -23520,7 +24488,7 @@ namespace aspose::words::cloud::requests {
         return m_RevisionDateTime;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > InsertWatermarkRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > InsertWatermarkRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -23544,9 +24512,13 @@ namespace aspose::words::cloud::requests {
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'WatermarkData' is required.");
 
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -23651,7 +24623,7 @@ namespace aspose::words::cloud::requests {
         return m_Image;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > InsertWatermarkImageRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > InsertWatermarkImageRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -23674,9 +24646,13 @@ namespace aspose::words::cloud::requests {
             result->addFormDataParam(L"imageFile", *m_ImageFile);
         }
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -23767,7 +24743,7 @@ namespace aspose::words::cloud::requests {
         return m_Image;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > InsertWatermarkImageOnlineRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > InsertWatermarkImageOnlineRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -23792,9 +24768,13 @@ namespace aspose::words::cloud::requests {
             result->addFormDataParam(L"imageFile", *m_ImageFile);
         }
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -23871,7 +24851,7 @@ namespace aspose::words::cloud::requests {
         return m_RevisionDateTime;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > InsertWatermarkOnlineRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > InsertWatermarkOnlineRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -23896,9 +24876,13 @@ namespace aspose::words::cloud::requests {
         }
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'WatermarkData' is required.");
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -23989,7 +24973,7 @@ namespace aspose::words::cloud::requests {
         return m_RevisionDateTime;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > InsertWatermarkTextRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > InsertWatermarkTextRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -24012,9 +24996,13 @@ namespace aspose::words::cloud::requests {
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'WatermarkText' is required.");
 
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -24091,7 +25079,7 @@ namespace aspose::words::cloud::requests {
         return m_RevisionDateTime;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > InsertWatermarkTextOnlineRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > InsertWatermarkTextOnlineRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -24115,9 +25103,13 @@ namespace aspose::words::cloud::requests {
             m_WatermarkText->validate();}
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'WatermarkText' is required.");
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -24215,7 +25207,7 @@ namespace aspose::words::cloud::requests {
         return m_Mode;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > LinkHeaderFootersToPreviousRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > LinkHeaderFootersToPreviousRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -24235,9 +25227,13 @@ namespace aspose::words::cloud::requests {
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
         if (m_Mode) result->addQueryParam(L"mode", *m_Mode);
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -24272,7 +25268,7 @@ namespace aspose::words::cloud::requests {
         return m_Storage;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > LoadWebDocumentRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > LoadWebDocumentRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -24286,9 +25282,13 @@ namespace aspose::words::cloud::requests {
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Data' is required.");
 
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -24344,7 +25344,7 @@ namespace aspose::words::cloud::requests {
         return m_VersionId;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > MoveFileRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > MoveFileRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -24358,9 +25358,13 @@ namespace aspose::words::cloud::requests {
         if (m_DestStorageName) result->addQueryParam(L"destStorageName", *m_DestStorageName);
         if (m_VersionId) result->addQueryParam(L"versionId", *m_VersionId);
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -24409,7 +25413,7 @@ namespace aspose::words::cloud::requests {
         return m_DestStorageName;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > MoveFolderRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > MoveFolderRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -24422,9 +25426,13 @@ namespace aspose::words::cloud::requests {
         if (m_SrcStorageName) result->addQueryParam(L"srcStorageName", *m_SrcStorageName);
         if (m_DestStorageName) result->addQueryParam(L"destStorageName", *m_DestStorageName);
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -24515,7 +25523,7 @@ namespace aspose::words::cloud::requests {
         return m_RevisionDateTime;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > OptimizeDocumentRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > OptimizeDocumentRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -24538,9 +25546,13 @@ namespace aspose::words::cloud::requests {
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Options' is required.");
 
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -24617,7 +25629,7 @@ namespace aspose::words::cloud::requests {
         return m_RevisionDateTime;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > OptimizeDocumentOnlineRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > OptimizeDocumentOnlineRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -24641,9 +25653,13 @@ namespace aspose::words::cloud::requests {
             m_Options->validate();}
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Options' is required.");
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -24720,7 +25736,7 @@ namespace aspose::words::cloud::requests {
         return m_DestFileName;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > ProtectDocumentRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > ProtectDocumentRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -24741,9 +25757,13 @@ namespace aspose::words::cloud::requests {
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'ProtectionRequest' is required.");
 
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -24806,7 +25826,7 @@ namespace aspose::words::cloud::requests {
         return m_DestFileName;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > ProtectDocumentOnlineRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > ProtectDocumentOnlineRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -24828,9 +25848,13 @@ namespace aspose::words::cloud::requests {
             m_ProtectionRequest->validate();}
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'ProtectionRequest' is required.");
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -24900,7 +25924,7 @@ namespace aspose::words::cloud::requests {
         return m_DestFileName;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > RejectAllRevisionsRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > RejectAllRevisionsRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -24915,9 +25939,13 @@ namespace aspose::words::cloud::requests {
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -24973,7 +26001,7 @@ namespace aspose::words::cloud::requests {
         return m_DestFileName;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > RejectAllRevisionsOnlineRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > RejectAllRevisionsOnlineRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -24989,9 +26017,13 @@ namespace aspose::words::cloud::requests {
         }
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Document' is required.");
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -25075,7 +26107,7 @@ namespace aspose::words::cloud::requests {
         return m_DestFileName;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > RemoveRangeRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > RemoveRangeRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -25093,9 +26125,13 @@ namespace aspose::words::cloud::requests {
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -25165,7 +26201,7 @@ namespace aspose::words::cloud::requests {
         return m_DestFileName;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > RemoveRangeOnlineRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > RemoveRangeOnlineRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -25184,9 +26220,13 @@ namespace aspose::words::cloud::requests {
         }
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Document' is required.");
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -25284,7 +26324,7 @@ namespace aspose::words::cloud::requests {
         return m_FontsLocation;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > RenderDrawingObjectRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > RenderDrawingObjectRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -25305,9 +26345,13 @@ namespace aspose::words::cloud::requests {
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_FontsLocation) result->addQueryParam(L"fontsLocation", *m_FontsLocation);
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -25391,7 +26435,7 @@ namespace aspose::words::cloud::requests {
         return m_FontsLocation;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > RenderDrawingObjectOnlineRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > RenderDrawingObjectOnlineRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -25413,9 +26457,13 @@ namespace aspose::words::cloud::requests {
         }
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Document' is required.");
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -25513,7 +26561,7 @@ namespace aspose::words::cloud::requests {
         return m_FontsLocation;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > RenderMathObjectRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > RenderMathObjectRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -25534,9 +26582,13 @@ namespace aspose::words::cloud::requests {
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_FontsLocation) result->addQueryParam(L"fontsLocation", *m_FontsLocation);
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -25620,7 +26672,7 @@ namespace aspose::words::cloud::requests {
         return m_FontsLocation;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > RenderMathObjectOnlineRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > RenderMathObjectOnlineRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -25642,9 +26694,13 @@ namespace aspose::words::cloud::requests {
         }
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Document' is required.");
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -25728,7 +26784,7 @@ namespace aspose::words::cloud::requests {
         return m_FontsLocation;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > RenderPageRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > RenderPageRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -25747,9 +26803,13 @@ namespace aspose::words::cloud::requests {
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
         if (m_FontsLocation) result->addQueryParam(L"fontsLocation", *m_FontsLocation);
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -25819,7 +26879,7 @@ namespace aspose::words::cloud::requests {
         return m_FontsLocation;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > RenderPageOnlineRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > RenderPageOnlineRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -25839,9 +26899,13 @@ namespace aspose::words::cloud::requests {
         }
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Document' is required.");
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -25939,7 +27003,7 @@ namespace aspose::words::cloud::requests {
         return m_FontsLocation;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > RenderParagraphRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > RenderParagraphRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -25960,9 +27024,13 @@ namespace aspose::words::cloud::requests {
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_FontsLocation) result->addQueryParam(L"fontsLocation", *m_FontsLocation);
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -26046,7 +27114,7 @@ namespace aspose::words::cloud::requests {
         return m_FontsLocation;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > RenderParagraphOnlineRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > RenderParagraphOnlineRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -26068,9 +27136,13 @@ namespace aspose::words::cloud::requests {
         }
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Document' is required.");
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -26168,7 +27240,7 @@ namespace aspose::words::cloud::requests {
         return m_FontsLocation;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > RenderTableRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > RenderTableRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -26189,9 +27261,13 @@ namespace aspose::words::cloud::requests {
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_FontsLocation) result->addQueryParam(L"fontsLocation", *m_FontsLocation);
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -26275,7 +27351,7 @@ namespace aspose::words::cloud::requests {
         return m_FontsLocation;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > RenderTableOnlineRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > RenderTableOnlineRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -26297,9 +27373,13 @@ namespace aspose::words::cloud::requests {
         }
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Document' is required.");
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -26390,7 +27470,7 @@ namespace aspose::words::cloud::requests {
         return m_RevisionDateTime;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > ReplaceTextRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > ReplaceTextRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -26413,9 +27493,13 @@ namespace aspose::words::cloud::requests {
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'ReplaceText' is required.");
 
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -26492,7 +27576,7 @@ namespace aspose::words::cloud::requests {
         return m_RevisionDateTime;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > ReplaceTextOnlineRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > ReplaceTextOnlineRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -26516,9 +27600,13 @@ namespace aspose::words::cloud::requests {
             m_ReplaceText->validate();}
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'ReplaceText' is required.");
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -26609,7 +27697,7 @@ namespace aspose::words::cloud::requests {
         return m_DestFileName;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > ReplaceWithTextRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > ReplaceWithTextRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -26633,9 +27721,13 @@ namespace aspose::words::cloud::requests {
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'RangeText' is required.");
 
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -26712,7 +27804,7 @@ namespace aspose::words::cloud::requests {
         return m_DestFileName;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > ReplaceWithTextOnlineRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > ReplaceWithTextOnlineRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -26737,9 +27829,13 @@ namespace aspose::words::cloud::requests {
             m_RangeText->validate();}
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'RangeText' is required.");
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -26761,16 +27857,20 @@ namespace aspose::words::cloud::requests {
     }
 
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > ResetCacheRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > ResetCacheRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
         result->setMethod(HttpRequestMethod::HttpDELETE);
         result->setPath(L"/words/fonts/cache");
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -26847,7 +27947,7 @@ namespace aspose::words::cloud::requests {
         return m_FontsLocation;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > SaveAsRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > SaveAsRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -26868,9 +27968,13 @@ namespace aspose::words::cloud::requests {
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'SaveOptionsData' is required.");
 
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -26933,7 +28037,7 @@ namespace aspose::words::cloud::requests {
         return m_FontsLocation;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > SaveAsOnlineRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > SaveAsOnlineRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -26955,9 +28059,13 @@ namespace aspose::words::cloud::requests {
             m_SaveOptionsData->validate();}
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'SaveOptionsData' is required.");
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -27041,7 +28149,7 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > SaveAsRangeRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > SaveAsRangeRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -27064,9 +28172,13 @@ namespace aspose::words::cloud::requests {
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'DocumentParameters' is required.");
 
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -27136,7 +28248,7 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > SaveAsRangeOnlineRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > SaveAsRangeOnlineRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -27160,9 +28272,13 @@ namespace aspose::words::cloud::requests {
             m_DocumentParameters->validate();}
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'DocumentParameters' is required.");
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -27358,7 +28474,7 @@ namespace aspose::words::cloud::requests {
         return m_FontsLocation;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > SaveAsTiffRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > SaveAsTiffRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -27396,9 +28512,13 @@ namespace aspose::words::cloud::requests {
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'SaveOptions' is required.");
 
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -27580,7 +28700,7 @@ namespace aspose::words::cloud::requests {
         return m_FontsLocation;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > SaveAsTiffOnlineRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > SaveAsTiffOnlineRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -27619,9 +28739,13 @@ namespace aspose::words::cloud::requests {
             m_SaveOptions->validate();}
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'SaveOptions' is required.");
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -27691,7 +28815,7 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > SearchRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > SearchRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -27707,9 +28831,13 @@ namespace aspose::words::cloud::requests {
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -27765,7 +28893,7 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > SearchOnlineRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > SearchOnlineRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -27782,9 +28910,13 @@ namespace aspose::words::cloud::requests {
         }
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Document' is required.");
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -27889,7 +29021,7 @@ namespace aspose::words::cloud::requests {
         return m_FontsLocation;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > SplitDocumentRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > SplitDocumentRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -27910,9 +29042,13 @@ namespace aspose::words::cloud::requests {
         if (m_ZipOutput) result->addQueryParam(L"zipOutput", *m_ZipOutput);
         if (m_FontsLocation) result->addQueryParam(L"fontsLocation", *m_FontsLocation);
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -28003,7 +29139,7 @@ namespace aspose::words::cloud::requests {
         return m_FontsLocation;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > SplitDocumentOnlineRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > SplitDocumentOnlineRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -28025,9 +29161,13 @@ namespace aspose::words::cloud::requests {
         }
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Document' is required.");
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -28097,7 +29237,7 @@ namespace aspose::words::cloud::requests {
         return m_DestFileName;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > UnprotectDocumentRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > UnprotectDocumentRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -28112,9 +29252,13 @@ namespace aspose::words::cloud::requests {
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -28170,7 +29314,7 @@ namespace aspose::words::cloud::requests {
         return m_DestFileName;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > UnprotectDocumentOnlineRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > UnprotectDocumentOnlineRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -28186,9 +29330,13 @@ namespace aspose::words::cloud::requests {
         }
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Document' is required.");
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -28286,7 +29434,7 @@ namespace aspose::words::cloud::requests {
         return m_RevisionDateTime;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > UpdateBookmarkRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > UpdateBookmarkRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -28311,9 +29459,13 @@ namespace aspose::words::cloud::requests {
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'BookmarkData' is required.");
 
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -28397,7 +29549,7 @@ namespace aspose::words::cloud::requests {
         return m_RevisionDateTime;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > UpdateBookmarkOnlineRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > UpdateBookmarkOnlineRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -28423,9 +29575,13 @@ namespace aspose::words::cloud::requests {
             m_BookmarkData->validate();}
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'BookmarkData' is required.");
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -28530,7 +29686,7 @@ namespace aspose::words::cloud::requests {
         return m_RevisionDateTime;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > UpdateBorderRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > UpdateBorderRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -28556,9 +29712,13 @@ namespace aspose::words::cloud::requests {
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'BorderProperties' is required.");
 
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -28649,7 +29809,7 @@ namespace aspose::words::cloud::requests {
         return m_RevisionDateTime;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > UpdateBorderOnlineRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > UpdateBorderOnlineRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -28676,9 +29836,13 @@ namespace aspose::words::cloud::requests {
             m_BorderProperties->validate();}
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'BorderProperties' is required.");
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -28776,7 +29940,7 @@ namespace aspose::words::cloud::requests {
         return m_RevisionDateTime;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > UpdateCommentRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > UpdateCommentRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -28801,9 +29965,13 @@ namespace aspose::words::cloud::requests {
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Comment' is required.");
 
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -28887,7 +30055,7 @@ namespace aspose::words::cloud::requests {
         return m_RevisionDateTime;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > UpdateCommentOnlineRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > UpdateCommentOnlineRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -28913,9 +30081,13 @@ namespace aspose::words::cloud::requests {
             m_Comment->validate();}
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Comment' is required.");
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -29013,7 +30185,7 @@ namespace aspose::words::cloud::requests {
         return m_RevisionDateTime;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > UpdateCustomXmlPartRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > UpdateCustomXmlPartRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -29038,9 +30210,13 @@ namespace aspose::words::cloud::requests {
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'CustomXmlPart' is required.");
 
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -29124,7 +30300,7 @@ namespace aspose::words::cloud::requests {
         return m_RevisionDateTime;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > UpdateCustomXmlPartOnlineRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > UpdateCustomXmlPartOnlineRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -29150,9 +30326,13 @@ namespace aspose::words::cloud::requests {
             m_CustomXmlPart->validate();}
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'CustomXmlPart' is required.");
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -29264,7 +30444,7 @@ namespace aspose::words::cloud::requests {
         return m_RevisionDateTime;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > UpdateDrawingObjectRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > UpdateDrawingObjectRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -29295,9 +30475,13 @@ namespace aspose::words::cloud::requests {
         }
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'ImageFile' is required.");
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -29395,7 +30579,7 @@ namespace aspose::words::cloud::requests {
         return m_RevisionDateTime;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > UpdateDrawingObjectOnlineRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > UpdateDrawingObjectOnlineRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -29428,9 +30612,13 @@ namespace aspose::words::cloud::requests {
         }
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'ImageFile' is required.");
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -29535,7 +30723,7 @@ namespace aspose::words::cloud::requests {
         return m_RevisionDateTime;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > UpdateFieldRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > UpdateFieldRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -29561,9 +30749,13 @@ namespace aspose::words::cloud::requests {
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Field' is required.");
 
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -29654,7 +30846,7 @@ namespace aspose::words::cloud::requests {
         return m_RevisionDateTime;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > UpdateFieldOnlineRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > UpdateFieldOnlineRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -29681,9 +30873,13 @@ namespace aspose::words::cloud::requests {
             m_Field->validate();}
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Field' is required.");
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -29753,7 +30949,7 @@ namespace aspose::words::cloud::requests {
         return m_DestFileName;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > UpdateFieldsRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > UpdateFieldsRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -29768,9 +30964,13 @@ namespace aspose::words::cloud::requests {
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -29826,7 +31026,7 @@ namespace aspose::words::cloud::requests {
         return m_DestFileName;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > UpdateFieldsOnlineRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > UpdateFieldsOnlineRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -29842,9 +31042,13 @@ namespace aspose::words::cloud::requests {
         }
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Document' is required.");
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -29949,7 +31153,7 @@ namespace aspose::words::cloud::requests {
         return m_RevisionDateTime;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > UpdateFootnoteRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > UpdateFootnoteRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -29975,9 +31179,13 @@ namespace aspose::words::cloud::requests {
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'FootnoteDto' is required.");
 
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -30068,7 +31276,7 @@ namespace aspose::words::cloud::requests {
         return m_RevisionDateTime;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > UpdateFootnoteOnlineRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > UpdateFootnoteOnlineRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -30095,9 +31303,13 @@ namespace aspose::words::cloud::requests {
             m_FootnoteDto->validate();}
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'FootnoteDto' is required.");
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -30202,7 +31414,7 @@ namespace aspose::words::cloud::requests {
         return m_RevisionDateTime;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > UpdateFormFieldRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > UpdateFormFieldRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -30228,9 +31440,13 @@ namespace aspose::words::cloud::requests {
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'FormField' is required.");
 
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -30321,7 +31537,7 @@ namespace aspose::words::cloud::requests {
         return m_RevisionDateTime;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > UpdateFormFieldOnlineRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > UpdateFormFieldOnlineRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -30348,9 +31564,13 @@ namespace aspose::words::cloud::requests {
             m_FormField->validate();}
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'FormField' is required.");
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -30448,7 +31668,7 @@ namespace aspose::words::cloud::requests {
         return m_RevisionDateTime;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > UpdateListRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > UpdateListRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -30473,9 +31693,13 @@ namespace aspose::words::cloud::requests {
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'ListUpdate' is required.");
 
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -30580,7 +31804,7 @@ namespace aspose::words::cloud::requests {
         return m_RevisionDateTime;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > UpdateListLevelRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > UpdateListLevelRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -30607,9 +31831,13 @@ namespace aspose::words::cloud::requests {
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'ListUpdate' is required.");
 
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -30700,7 +31928,7 @@ namespace aspose::words::cloud::requests {
         return m_RevisionDateTime;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > UpdateListLevelOnlineRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > UpdateListLevelOnlineRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -30728,9 +31956,13 @@ namespace aspose::words::cloud::requests {
             m_ListUpdate->validate();}
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'ListUpdate' is required.");
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -30814,7 +32046,7 @@ namespace aspose::words::cloud::requests {
         return m_RevisionDateTime;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > UpdateListOnlineRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > UpdateListOnlineRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -30840,9 +32072,13 @@ namespace aspose::words::cloud::requests {
             m_ListUpdate->validate();}
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'ListUpdate' is required.");
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -30947,7 +32183,7 @@ namespace aspose::words::cloud::requests {
         return m_RevisionDateTime;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > UpdateParagraphFormatRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > UpdateParagraphFormatRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -30973,9 +32209,13 @@ namespace aspose::words::cloud::requests {
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'ParagraphFormatDto' is required.");
 
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -31066,7 +32306,7 @@ namespace aspose::words::cloud::requests {
         return m_RevisionDateTime;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > UpdateParagraphFormatOnlineRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > UpdateParagraphFormatOnlineRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -31093,9 +32333,13 @@ namespace aspose::words::cloud::requests {
             m_ParagraphFormatDto->validate();}
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'ParagraphFormatDto' is required.");
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -31200,7 +32444,7 @@ namespace aspose::words::cloud::requests {
         return m_RevisionDateTime;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > UpdateParagraphListFormatRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > UpdateParagraphListFormatRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -31226,9 +32470,13 @@ namespace aspose::words::cloud::requests {
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'ListFormatDto' is required.");
 
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -31319,7 +32567,7 @@ namespace aspose::words::cloud::requests {
         return m_RevisionDateTime;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > UpdateParagraphListFormatOnlineRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > UpdateParagraphListFormatOnlineRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -31346,9 +32594,13 @@ namespace aspose::words::cloud::requests {
             m_ListFormatDto->validate();}
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'ListFormatDto' is required.");
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -31453,7 +32705,7 @@ namespace aspose::words::cloud::requests {
         return m_RevisionDateTime;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > UpdateRunRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > UpdateRunRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -31480,9 +32732,13 @@ namespace aspose::words::cloud::requests {
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Run' is required.");
 
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -31587,7 +32843,7 @@ namespace aspose::words::cloud::requests {
         return m_RevisionDateTime;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > UpdateRunFontRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > UpdateRunFontRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -31614,9 +32870,13 @@ namespace aspose::words::cloud::requests {
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'FontDto' is required.");
 
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -31707,7 +32967,7 @@ namespace aspose::words::cloud::requests {
         return m_RevisionDateTime;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > UpdateRunFontOnlineRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > UpdateRunFontOnlineRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -31735,9 +32995,13 @@ namespace aspose::words::cloud::requests {
             m_FontDto->validate();}
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'FontDto' is required.");
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -31828,7 +33092,7 @@ namespace aspose::words::cloud::requests {
         return m_RevisionDateTime;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > UpdateRunOnlineRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > UpdateRunOnlineRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -31856,9 +33120,13 @@ namespace aspose::words::cloud::requests {
             m_Run->validate();}
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Run' is required.");
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -31956,7 +33224,7 @@ namespace aspose::words::cloud::requests {
         return m_RevisionDateTime;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > UpdateSectionPageSetupRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > UpdateSectionPageSetupRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -31981,9 +33249,13 @@ namespace aspose::words::cloud::requests {
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'PageSetup' is required.");
 
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -32067,7 +33339,7 @@ namespace aspose::words::cloud::requests {
         return m_RevisionDateTime;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > UpdateSectionPageSetupOnlineRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > UpdateSectionPageSetupOnlineRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -32093,9 +33365,13 @@ namespace aspose::words::cloud::requests {
             m_PageSetup->validate();}
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'PageSetup' is required.");
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -32200,7 +33476,7 @@ namespace aspose::words::cloud::requests {
         return m_RevisionDateTime;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > UpdateStructuredDocumentTagRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > UpdateStructuredDocumentTagRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -32226,9 +33502,13 @@ namespace aspose::words::cloud::requests {
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'StructuredDocumentTag' is required.");
 
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -32319,7 +33599,7 @@ namespace aspose::words::cloud::requests {
         return m_RevisionDateTime;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > UpdateStructuredDocumentTagOnlineRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > UpdateStructuredDocumentTagOnlineRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -32346,9 +33626,13 @@ namespace aspose::words::cloud::requests {
             m_StructuredDocumentTag->validate();}
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'StructuredDocumentTag' is required.");
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -32446,7 +33730,7 @@ namespace aspose::words::cloud::requests {
         return m_RevisionDateTime;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > UpdateStyleRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > UpdateStyleRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -32471,9 +33755,13 @@ namespace aspose::words::cloud::requests {
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'StyleUpdate' is required.");
 
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -32557,7 +33845,7 @@ namespace aspose::words::cloud::requests {
         return m_RevisionDateTime;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > UpdateStyleOnlineRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > UpdateStyleOnlineRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -32583,9 +33871,13 @@ namespace aspose::words::cloud::requests {
             m_StyleUpdate->validate();}
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'StyleUpdate' is required.");
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -32690,7 +33982,7 @@ namespace aspose::words::cloud::requests {
         return m_RevisionDateTime;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > UpdateTableCellFormatRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > UpdateTableCellFormatRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -32717,9 +34009,13 @@ namespace aspose::words::cloud::requests {
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Format' is required.");
 
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -32810,7 +34106,7 @@ namespace aspose::words::cloud::requests {
         return m_RevisionDateTime;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > UpdateTableCellFormatOnlineRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > UpdateTableCellFormatOnlineRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -32838,9 +34134,13 @@ namespace aspose::words::cloud::requests {
             m_Format->validate();}
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Format' is required.");
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -32945,7 +34245,7 @@ namespace aspose::words::cloud::requests {
         return m_RevisionDateTime;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > UpdateTablePropertiesRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > UpdateTablePropertiesRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -32971,9 +34271,13 @@ namespace aspose::words::cloud::requests {
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Properties' is required.");
 
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -33064,7 +34368,7 @@ namespace aspose::words::cloud::requests {
         return m_RevisionDateTime;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > UpdateTablePropertiesOnlineRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > UpdateTablePropertiesOnlineRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -33091,9 +34395,13 @@ namespace aspose::words::cloud::requests {
             m_Properties->validate();}
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Properties' is required.");
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -33198,7 +34506,7 @@ namespace aspose::words::cloud::requests {
         return m_RevisionDateTime;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > UpdateTableRowFormatRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > UpdateTableRowFormatRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -33225,9 +34533,13 @@ namespace aspose::words::cloud::requests {
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Format' is required.");
 
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -33318,7 +34630,7 @@ namespace aspose::words::cloud::requests {
         return m_RevisionDateTime;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > UpdateTableRowFormatOnlineRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > UpdateTableRowFormatOnlineRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -33346,9 +34658,13 @@ namespace aspose::words::cloud::requests {
             m_Format->validate();}
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'Format' is required.");
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;
@@ -33390,7 +34706,7 @@ namespace aspose::words::cloud::requests {
         return m_StorageName;
     }
 
-    std::shared_ptr< aspose::words::cloud::HttpRequestData > UploadFileRequest::createHttpRequest() const
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > UploadFileRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
@@ -33405,9 +34721,13 @@ namespace aspose::words::cloud::requests {
         }
         else throw aspose::words::cloud::ApiException(400, L"Parameter 'FileContent' is required.");
 
-        for (const models::FileReference* additionalFileContent : additionalFilesContent)
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
-            result->addFormDataParam(additionalFileContent);
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
         }
 
         return result;

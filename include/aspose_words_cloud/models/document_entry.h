@@ -56,11 +56,13 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets document password encrypted on API public key. The default value is null (the document has no password).
         /// </summary>
+        [[deprecated("This field is deprecated and used only for backward compatibility. Please use 'Password' or 'EncryptedPassword' from 'FileReference' instead.")]]
         ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< std::wstring > getEncryptedPassword() const;
 
         /// <summary>
         /// Gets or sets document password encrypted on API public key. The default value is null (the document has no password).
         /// </summary>
+        [[deprecated("This field is deprecated and used only for backward compatibility. Please use 'Password' or 'EncryptedPassword' from 'FileReference' instead.")]]
         ASPOSE_WORDS_CLOUD_EXPORT virtual void setEncryptedPassword(std::shared_ptr< std::wstring > value);
 
 

@@ -315,7 +315,7 @@ namespace aspose::words::cloud {
         {
             auto request = std::make_shared<aspose::words::cloud::requests::GetPublicKeyRequest>();
             auto response = std::make_shared<aspose::words::cloud::responses::GetPublicKeyResponse>();
-            this->call(request->createHttpRequest(), *response);
+            this->call(request->createHttpRequest(this), *response);
             if (response->getStatusCode() != 200) {
                 throw aspose::words::cloud::ApiException(response->getStatusCode(), response->getErrorMessage());
             }

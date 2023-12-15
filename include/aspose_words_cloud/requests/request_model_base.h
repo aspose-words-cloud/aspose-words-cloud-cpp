@@ -36,7 +36,7 @@ namespace aspose::words::cloud::requests {
     {
     public:
         ASPOSE_WORDS_CLOUD_EXPORT virtual ~RequestModelBase() = default;
-        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< aspose::words::cloud::HttpRequestData > createHttpRequest() const = 0;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< aspose::words::cloud::HttpRequestData > createHttpRequest(ApiClient* apiClient) const = 0;
         ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > createResponse() const = 0;
     };
 }

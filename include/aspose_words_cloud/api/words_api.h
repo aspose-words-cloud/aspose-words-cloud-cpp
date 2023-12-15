@@ -847,7 +847,6 @@ namespace aspose::words::cloud::api {
         /// <param name="password">Password of protected Word document. Use the parameter to pass a password via SDK. SDK encrypts it automatically. We don't recommend to use the parameter to pass a plain password for direct call of API.</param>
         /// <param name="encryptedPassword">Password of protected Word document. Use the parameter to pass an encrypted password for direct calls of API. See SDK code for encyption details.</param>
         /// <param name="destFileName">Result path of the document after the operation. If this parameter is omitted then result of the operation will be saved as the source document.</param>
-        /// <param name="encryptedPassword2">encrypted password for the second document.</param>
         ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::DocumentResponse > compareDocument(std::shared_ptr<aspose::words::cloud::requests::CompareDocumentRequest> request);
 
         /// <summary>
@@ -859,7 +858,6 @@ namespace aspose::words::cloud::api {
         /// <param name="password">Password of protected Word document. Use the parameter to pass a password via SDK. SDK encrypts it automatically. We don't recommend to use the parameter to pass a plain password for direct call of API.</param>
         /// <param name="encryptedPassword">Password of protected Word document. Use the parameter to pass an encrypted password for direct calls of API. See SDK code for encyption details.</param>
         /// <param name="destFileName">Result path of the document after the operation. If this parameter is omitted then result of the operation will be saved as the source document.</param>
-        /// <param name="encryptedPassword2">encrypted password for the second document.</param>
         ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr<aspose::words::cloud::responses::CompareDocumentOnlineResponse> compareDocumentOnline(std::shared_ptr<aspose::words::cloud::requests::CompareDocumentOnlineRequest> request);
 
         /// <summary>
