@@ -1,6 +1,6 @@
 ﻿/** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="run_test.h">
-*   Copyright (c) 2023 Aspose.Words for Cloud
+*   Copyright (c) 2024 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -107,10 +107,9 @@ TEST_F(RunTests, TestInsertRun) {
     requestRun->setText(std::make_shared< std::wstring >(L"run with text"));
     std::shared_ptr<requests::InsertRunRequest> request(new requests::InsertRunRequest(
         std::make_shared< std::wstring >(remoteFileName),
-        std::make_shared< std::wstring >(L"paragraphs/1"),
         requestRun,
+        std::make_shared< std::wstring >(L"paragraphs/1"),
         std::make_shared< std::wstring >(remoteDataFolder),
-        nullptr,
         nullptr,
         nullptr,
         nullptr,
@@ -135,9 +134,8 @@ TEST_F(RunTests, TestInsertRunOnline) {
     requestRun->setText(std::make_shared< std::wstring >(L"run with text"));
     std::shared_ptr<requests::InsertRunOnlineRequest> request(new requests::InsertRunOnlineRequest(
         requestDocument,
-        std::make_shared< std::wstring >(L"paragraphs/1"),
         requestRun,
-        nullptr,
+        std::make_shared< std::wstring >(L"paragraphs/1"),
         nullptr,
         nullptr,
         nullptr,

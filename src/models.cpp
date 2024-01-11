@@ -1,6 +1,6 @@
 ﻿/** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="models.cpp">
-*   Copyright (c) 2023 Aspose.Words for Cloud
+*   Copyright (c) 2024 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -165,7 +165,6 @@ namespace aspose::words::cloud::models {
         { L"MetafileRenderingOptionsData, _", [] () { return dynamic_cast< ModelBase* >(new MetafileRenderingOptionsData()); }},
         { L"MhtmlSaveOptionsData, _", [] () { return dynamic_cast< ModelBase* >(new MhtmlSaveOptionsData()); }},
         { L"ModificationOperationResult, _", [] () { return dynamic_cast< ModelBase* >(new ModificationOperationResult()); }},
-        { L"NewDocumentPosition, _", [] () { return dynamic_cast< ModelBase* >(new NewDocumentPosition()); }},
         { L"NodeLink, _", [] () { return dynamic_cast< ModelBase* >(new NodeLink()); }},
         { L"OdtSaveOptionsData, _", [] () { return dynamic_cast< ModelBase* >(new OdtSaveOptionsData()); }},
         { L"OfficeMathLink, _", [] () { return dynamic_cast< ModelBase* >(new OfficeMathLink()); }},
@@ -196,6 +195,9 @@ namespace aspose::words::cloud::models {
         { L"PdfPermissions, _", [] () { return nullptr; }},
         { L"PdfSaveOptionsData, _", [] () { return dynamic_cast< ModelBase* >(new PdfSaveOptionsData()); }},
         { L"PngSaveOptionsData, _", [] () { return dynamic_cast< ModelBase* >(new PngSaveOptionsData()); }},
+        { L"PositionAfterNode, _", [] () { return dynamic_cast< ModelBase* >(new PositionAfterNode()); }},
+        { L"PositionBeforeNode, _", [] () { return dynamic_cast< ModelBase* >(new PositionBeforeNode()); }},
+        { L"PositionInsideNode, _", [] () { return dynamic_cast< ModelBase* >(new PositionInsideNode()); }},
         { L"PreferredWidth, _", [] () { return dynamic_cast< ModelBase* >(new PreferredWidth()); }},
         { L"ProtectionData, _", [] () { return dynamic_cast< ModelBase* >(new ProtectionData()); }},
         { L"ProtectionDataResponse, _", [] () { return dynamic_cast< ModelBase* >(new ProtectionDataResponse()); }},
@@ -998,10 +1000,10 @@ namespace aspose::words::cloud::models {
             );
         }
         if (json.contains("StartRange") && !json["StartRange"].is_null()) {
-            this->m_StartRange = createModelInstance< aspose::words::cloud::models::NewDocumentPosition >(L"NewDocumentPosition, _", json["StartRange"]);
+            this->m_StartRange = createModelInstance< aspose::words::cloud::models::Position >(L"Position, _", json["StartRange"]);
         }
         if (json.contains("EndRange") && !json["EndRange"].is_null()) {
-            this->m_EndRange = createModelInstance< aspose::words::cloud::models::NewDocumentPosition >(L"NewDocumentPosition, _", json["EndRange"]);
+            this->m_EndRange = createModelInstance< aspose::words::cloud::models::Position >(L"Position, _", json["EndRange"]);
         }
     }
 
@@ -1072,23 +1074,23 @@ namespace aspose::words::cloud::models {
     }
 
 
-    std::shared_ptr< aspose::words::cloud::models::NewDocumentPosition > BookmarkInsert::getStartRange() const
+    std::shared_ptr< aspose::words::cloud::models::Position > BookmarkInsert::getStartRange() const
     {
         return this->m_StartRange;
     }
 
-    void BookmarkInsert::setStartRange(std::shared_ptr< aspose::words::cloud::models::NewDocumentPosition > value)
+    void BookmarkInsert::setStartRange(std::shared_ptr< aspose::words::cloud::models::Position > value)
     {
         this->m_StartRange = value;
     }
 
 
-    std::shared_ptr< aspose::words::cloud::models::NewDocumentPosition > BookmarkInsert::getEndRange() const
+    std::shared_ptr< aspose::words::cloud::models::Position > BookmarkInsert::getEndRange() const
     {
         return this->m_EndRange;
     }
 
-    void BookmarkInsert::setEndRange(std::shared_ptr< aspose::words::cloud::models::NewDocumentPosition > value)
+    void BookmarkInsert::setEndRange(std::shared_ptr< aspose::words::cloud::models::Position > value)
     {
         this->m_EndRange = value;
     }
@@ -2084,10 +2086,10 @@ namespace aspose::words::cloud::models {
     {
         ::nlohmann::json& json = *((::nlohmann::json*)jsonIfc);
         if (json.contains("RangeStart") && !json["RangeStart"].is_null()) {
-            this->m_RangeStart = createModelInstance< aspose::words::cloud::models::NewDocumentPosition >(L"NewDocumentPosition, _", json["RangeStart"]);
+            this->m_RangeStart = createModelInstance< aspose::words::cloud::models::PositionInsideNode >(L"PositionInsideNode, _", json["RangeStart"]);
         }
         if (json.contains("RangeEnd") && !json["RangeEnd"].is_null()) {
-            this->m_RangeEnd = createModelInstance< aspose::words::cloud::models::NewDocumentPosition >(L"NewDocumentPosition, _", json["RangeEnd"]);
+            this->m_RangeEnd = createModelInstance< aspose::words::cloud::models::PositionInsideNode >(L"PositionInsideNode, _", json["RangeEnd"]);
         }
         if (json.contains("Author") && !json["Author"].is_null()) {
             this->m_Author = std::make_shared< std::wstring >(
@@ -2165,23 +2167,23 @@ namespace aspose::words::cloud::models {
 
     }
 
-    std::shared_ptr< aspose::words::cloud::models::NewDocumentPosition > CommentBase::getRangeStart() const
+    std::shared_ptr< aspose::words::cloud::models::PositionInsideNode > CommentBase::getRangeStart() const
     {
         return this->m_RangeStart;
     }
 
-    void CommentBase::setRangeStart(std::shared_ptr< aspose::words::cloud::models::NewDocumentPosition > value)
+    void CommentBase::setRangeStart(std::shared_ptr< aspose::words::cloud::models::PositionInsideNode > value)
     {
         this->m_RangeStart = value;
     }
 
 
-    std::shared_ptr< aspose::words::cloud::models::NewDocumentPosition > CommentBase::getRangeEnd() const
+    std::shared_ptr< aspose::words::cloud::models::PositionInsideNode > CommentBase::getRangeEnd() const
     {
         return this->m_RangeEnd;
     }
 
-    void CommentBase::setRangeEnd(std::shared_ptr< aspose::words::cloud::models::NewDocumentPosition > value)
+    void CommentBase::setRangeEnd(std::shared_ptr< aspose::words::cloud::models::PositionInsideNode > value)
     {
         this->m_RangeEnd = value;
     }
@@ -5246,7 +5248,7 @@ namespace aspose::words::cloud::models {
     {
         ::nlohmann::json& json = *((::nlohmann::json*)jsonIfc);
         if (json.contains("Position") && !json["Position"].is_null()) {
-            this->m_Position = createModelInstance< aspose::words::cloud::models::NewDocumentPosition >(L"NewDocumentPosition, _", json["Position"]);
+            this->m_Position = createModelInstance< aspose::words::cloud::models::Position >(L"Position, _", json["Position"]);
         }
         if (json.contains("RelativeHorizontalPosition") && !json["RelativeHorizontalPosition"].is_null()) {
             this->m_RelativeHorizontalPosition = std::make_shared< aspose::words::cloud::models::DrawingObjectInsert::RelativeHorizontalPosition >(
@@ -5341,12 +5343,12 @@ namespace aspose::words::cloud::models {
 
     }
 
-    std::shared_ptr< aspose::words::cloud::models::NewDocumentPosition > DrawingObjectInsert::getPosition() const
+    std::shared_ptr< aspose::words::cloud::models::Position > DrawingObjectInsert::getPosition() const
     {
         return this->m_Position;
     }
 
-    void DrawingObjectInsert::setPosition(std::shared_ptr< aspose::words::cloud::models::NewDocumentPosition > value)
+    void DrawingObjectInsert::setPosition(std::shared_ptr< aspose::words::cloud::models::Position > value)
     {
         this->m_Position = value;
     }
@@ -6286,11 +6288,19 @@ namespace aspose::words::cloud::models {
     void FieldInsert::toJson(void* jsonIfc) const
     {
         FieldBase::toJson(jsonIfc);
+        ::nlohmann::json& json = *((::nlohmann::json*)jsonIfc);
+        if (this->m_Position) {
+            this->m_Position->toJson(&json["Position"]);
+        }
     }
 
     void FieldInsert::fromJson(const void* jsonIfc)
     {
         FieldBase::fromJson(jsonIfc);
+        ::nlohmann::json& json = *((::nlohmann::json*)jsonIfc);
+        if (json.contains("Position") && !json["Position"].is_null()) {
+            this->m_Position = createModelInstance< aspose::words::cloud::models::Position >(L"Position, _", json["Position"]);
+        }
     }
 
     void FieldInsert::getFileReferences(std::vector< FileReference* >& result)
@@ -6300,8 +6310,23 @@ namespace aspose::words::cloud::models {
     void FieldInsert::validate()
     {
         FieldBase::validate();
+
+        if (this->m_Position != nullptr)
+        {
+            this->m_Position->validate();
+        }
+
     }
 
+    std::shared_ptr< aspose::words::cloud::models::Position > FieldInsert::getPosition() const
+    {
+        return this->m_Position;
+    }
+
+    void FieldInsert::setPosition(std::shared_ptr< aspose::words::cloud::models::Position > value)
+    {
+        this->m_Position = value;
+    }
 
 
 
@@ -9413,7 +9438,7 @@ namespace aspose::words::cloud::models {
     {
         ::nlohmann::json& json = *((::nlohmann::json*)jsonIfc);
         if (json.contains("Position") && !json["Position"].is_null()) {
-            this->m_Position = createModelInstance< aspose::words::cloud::models::NewDocumentPosition >(L"NewDocumentPosition, _", json["Position"]);
+            this->m_Position = createModelInstance< aspose::words::cloud::models::Position >(L"Position, _", json["Position"]);
         }
         if (json.contains("FootnoteType") && !json["FootnoteType"].is_null()) {
             this->m_FootnoteType = std::make_shared< aspose::words::cloud::models::FootnoteBase::FootnoteType >(
@@ -9449,12 +9474,12 @@ namespace aspose::words::cloud::models {
 
     }
 
-    std::shared_ptr< aspose::words::cloud::models::NewDocumentPosition > FootnoteBase::getPosition() const
+    std::shared_ptr< aspose::words::cloud::models::Position > FootnoteBase::getPosition() const
     {
         return this->m_Position;
     }
 
-    void FootnoteBase::setPosition(std::shared_ptr< aspose::words::cloud::models::NewDocumentPosition > value)
+    void FootnoteBase::setPosition(std::shared_ptr< aspose::words::cloud::models::Position > value)
     {
         this->m_Position = value;
     }
@@ -15172,71 +15197,6 @@ namespace aspose::words::cloud::models {
 
 
     /*
-     * NewDocumentPosition implementation
-     */
-    void NewDocumentPosition::toJson(void* jsonIfc) const
-    {
-        ::nlohmann::json& json = *((::nlohmann::json*)jsonIfc);
-        if (this->m_NodeId) {
-            json["NodeId"] = convertUtf16(*(this->m_NodeId));
-        }
-        if (this->m_Offset) {
-            json["Offset"] = *(this->m_Offset);
-        }
-    }
-
-    void NewDocumentPosition::fromJson(const void* jsonIfc)
-    {
-        ::nlohmann::json& json = *((::nlohmann::json*)jsonIfc);
-        if (json.contains("NodeId") && !json["NodeId"].is_null()) {
-            this->m_NodeId = std::make_shared< std::wstring >(
-                convertUtf8( json["NodeId"].get< std::string >() )
-            );
-        }
-        if (json.contains("Offset") && !json["Offset"].is_null()) {
-            this->m_Offset = std::make_shared< int32_t >(
-                json["Offset"].get< int32_t >()
-            );
-        }
-    }
-
-    void NewDocumentPosition::getFileReferences(std::vector< FileReference* >& result)
-    {
-    }
-
-    void NewDocumentPosition::validate()
-    {
-        if (this->m_NodeId == nullptr)
-        {
-            throw aspose::words::cloud::ApiException(400, L"Property NodeId in NewDocumentPosition is required.");
-        }
-
-    }
-
-    std::shared_ptr< std::wstring > NewDocumentPosition::getNodeId() const
-    {
-        return this->m_NodeId;
-    }
-
-    void NewDocumentPosition::setNodeId(std::shared_ptr< std::wstring > value)
-    {
-        this->m_NodeId = value;
-    }
-
-
-    std::shared_ptr< int32_t > NewDocumentPosition::getOffset() const
-    {
-        return this->m_Offset;
-    }
-
-    void NewDocumentPosition::setOffset(std::shared_ptr< int32_t > value)
-    {
-        this->m_Offset = value;
-    }
-
-
-
-    /*
      * NodeLink implementation
      */
     void NodeLink::toJson(void* jsonIfc) const
@@ -18925,6 +18885,9 @@ namespace aspose::words::cloud::models {
         if (this->m_Text) {
             json["Text"] = convertUtf16(*(this->m_Text));
         }
+        if (this->m_Position) {
+            this->m_Position->toJson(&json["Position"]);
+        }
     }
 
     void ParagraphInsert::fromJson(const void* jsonIfc)
@@ -18934,6 +18897,9 @@ namespace aspose::words::cloud::models {
             this->m_Text = std::make_shared< std::wstring >(
                 convertUtf8( json["Text"].get< std::string >() )
             );
+        }
+        if (json.contains("Position") && !json["Position"].is_null()) {
+            this->m_Position = createModelInstance< aspose::words::cloud::models::Position >(L"Position, _", json["Position"]);
         }
     }
 
@@ -18948,6 +18914,12 @@ namespace aspose::words::cloud::models {
             throw aspose::words::cloud::ApiException(400, L"Property Text in ParagraphInsert is required.");
         }
 
+
+        if (this->m_Position != nullptr)
+        {
+            this->m_Position->validate();
+        }
+
     }
 
     std::shared_ptr< std::wstring > ParagraphInsert::getText() const
@@ -18958,6 +18930,17 @@ namespace aspose::words::cloud::models {
     void ParagraphInsert::setText(std::shared_ptr< std::wstring > value)
     {
         this->m_Text = value;
+    }
+
+
+    std::shared_ptr< aspose::words::cloud::models::Position > ParagraphInsert::getPosition() const
+    {
+        return this->m_Position;
+    }
+
+    void ParagraphInsert::setPosition(std::shared_ptr< aspose::words::cloud::models::Position > value)
+    {
+        this->m_Position = value;
     }
 
 
@@ -20308,6 +20291,206 @@ namespace aspose::words::cloud::models {
         return this->m_SaveFormat;
     }
 
+
+
+
+    /*
+     * Position implementation
+     */
+    void Position::toJson(void* jsonIfc) const
+    {
+        ::nlohmann::json& json = *((::nlohmann::json*)jsonIfc);
+        if (this->m_NodeId) {
+            json["NodeId"] = convertUtf16(*(this->m_NodeId));
+        }
+        if (this->m_Type) {
+            json["Type"] = convertUtf16(*(this->m_Type));
+        }
+    }
+
+    void Position::fromJson(const void* jsonIfc)
+    {
+        ::nlohmann::json& json = *((::nlohmann::json*)jsonIfc);
+        if (json.contains("NodeId") && !json["NodeId"].is_null()) {
+            this->m_NodeId = std::make_shared< std::wstring >(
+                convertUtf8( json["NodeId"].get< std::string >() )
+            );
+        }
+        if (json.contains("Type") && !json["Type"].is_null()) {
+            this->m_Type = std::make_shared< std::wstring >(
+                convertUtf8( json["Type"].get< std::string >() )
+            );
+        }
+    }
+
+    void Position::getFileReferences(std::vector< FileReference* >& result)
+    {
+    }
+
+    void Position::validate()
+    {
+        if (this->m_NodeId == nullptr)
+        {
+            throw aspose::words::cloud::ApiException(400, L"Property NodeId in Position is required.");
+        }
+
+    }
+
+    std::shared_ptr< std::wstring > Position::getNodeId() const
+    {
+        return this->m_NodeId;
+    }
+
+    void Position::setNodeId(std::shared_ptr< std::wstring > value)
+    {
+        this->m_NodeId = value;
+    }
+
+
+    std::shared_ptr< std::wstring > Position::getType() const
+    {
+        return this->m_Type;
+    }
+
+
+
+
+    /*
+     * PositionAfterNode implementation
+     */
+    void PositionAfterNode::toJson(void* jsonIfc) const
+    {
+        Position::toJson(jsonIfc);
+        ::nlohmann::json& json = *((::nlohmann::json*)jsonIfc);
+        if (this->m_Type) {
+            json["Type"] = convertUtf16(*(this->m_Type));
+        }
+    }
+
+    void PositionAfterNode::fromJson(const void* jsonIfc)
+    {
+        Position::fromJson(jsonIfc);
+        ::nlohmann::json& json = *((::nlohmann::json*)jsonIfc);
+        if (json.contains("Type") && !json["Type"].is_null()) {
+            this->m_Type = std::make_shared< std::wstring >(
+                convertUtf8( json["Type"].get< std::string >() )
+            );
+        }
+    }
+
+    void PositionAfterNode::getFileReferences(std::vector< FileReference* >& result)
+    {
+    }
+
+    void PositionAfterNode::validate()
+    {
+        Position::validate();
+    }
+
+    std::shared_ptr< std::wstring > PositionAfterNode::getType() const
+    {
+        return this->m_Type;
+    }
+
+
+
+
+    /*
+     * PositionBeforeNode implementation
+     */
+    void PositionBeforeNode::toJson(void* jsonIfc) const
+    {
+        Position::toJson(jsonIfc);
+        ::nlohmann::json& json = *((::nlohmann::json*)jsonIfc);
+        if (this->m_Type) {
+            json["Type"] = convertUtf16(*(this->m_Type));
+        }
+    }
+
+    void PositionBeforeNode::fromJson(const void* jsonIfc)
+    {
+        Position::fromJson(jsonIfc);
+        ::nlohmann::json& json = *((::nlohmann::json*)jsonIfc);
+        if (json.contains("Type") && !json["Type"].is_null()) {
+            this->m_Type = std::make_shared< std::wstring >(
+                convertUtf8( json["Type"].get< std::string >() )
+            );
+        }
+    }
+
+    void PositionBeforeNode::getFileReferences(std::vector< FileReference* >& result)
+    {
+    }
+
+    void PositionBeforeNode::validate()
+    {
+        Position::validate();
+    }
+
+    std::shared_ptr< std::wstring > PositionBeforeNode::getType() const
+    {
+        return this->m_Type;
+    }
+
+
+
+
+    /*
+     * PositionInsideNode implementation
+     */
+    void PositionInsideNode::toJson(void* jsonIfc) const
+    {
+        Position::toJson(jsonIfc);
+        ::nlohmann::json& json = *((::nlohmann::json*)jsonIfc);
+        if (this->m_Type) {
+            json["Type"] = convertUtf16(*(this->m_Type));
+        }
+        if (this->m_Offset) {
+            json["Offset"] = *(this->m_Offset);
+        }
+    }
+
+    void PositionInsideNode::fromJson(const void* jsonIfc)
+    {
+        Position::fromJson(jsonIfc);
+        ::nlohmann::json& json = *((::nlohmann::json*)jsonIfc);
+        if (json.contains("Type") && !json["Type"].is_null()) {
+            this->m_Type = std::make_shared< std::wstring >(
+                convertUtf8( json["Type"].get< std::string >() )
+            );
+        }
+        if (json.contains("Offset") && !json["Offset"].is_null()) {
+            this->m_Offset = std::make_shared< int32_t >(
+                json["Offset"].get< int32_t >()
+            );
+        }
+    }
+
+    void PositionInsideNode::getFileReferences(std::vector< FileReference* >& result)
+    {
+    }
+
+    void PositionInsideNode::validate()
+    {
+        Position::validate();
+    }
+
+    std::shared_ptr< std::wstring > PositionInsideNode::getType() const
+    {
+        return this->m_Type;
+    }
+
+
+
+    std::shared_ptr< int32_t > PositionInsideNode::getOffset() const
+    {
+        return this->m_Offset;
+    }
+
+    void PositionInsideNode::setOffset(std::shared_ptr< int32_t > value)
+    {
+        this->m_Offset = value;
+    }
 
 
 
@@ -21676,11 +21859,19 @@ namespace aspose::words::cloud::models {
     void RunInsert::toJson(void* jsonIfc) const
     {
         RunBase::toJson(jsonIfc);
+        ::nlohmann::json& json = *((::nlohmann::json*)jsonIfc);
+        if (this->m_Position) {
+            this->m_Position->toJson(&json["Position"]);
+        }
     }
 
     void RunInsert::fromJson(const void* jsonIfc)
     {
         RunBase::fromJson(jsonIfc);
+        ::nlohmann::json& json = *((::nlohmann::json*)jsonIfc);
+        if (json.contains("Position") && !json["Position"].is_null()) {
+            this->m_Position = createModelInstance< aspose::words::cloud::models::Position >(L"Position, _", json["Position"]);
+        }
     }
 
     void RunInsert::getFileReferences(std::vector< FileReference* >& result)
@@ -21690,8 +21881,23 @@ namespace aspose::words::cloud::models {
     void RunInsert::validate()
     {
         RunBase::validate();
+
+        if (this->m_Position != nullptr)
+        {
+            this->m_Position->validate();
+        }
+
     }
 
+    std::shared_ptr< aspose::words::cloud::models::Position > RunInsert::getPosition() const
+    {
+        return this->m_Position;
+    }
+
+    void RunInsert::setPosition(std::shared_ptr< aspose::words::cloud::models::Position > value)
+    {
+        this->m_Position = value;
+    }
 
 
 
@@ -24428,6 +24634,9 @@ namespace aspose::words::cloud::models {
         if (this->m_SdtType) {
             json["SdtType"] = structuredDocumentTagInsertSdtTypeToString(*(this->m_SdtType));
         }
+        if (this->m_Position) {
+            this->m_Position->toJson(&json["Position"]);
+        }
     }
 
     void StructuredDocumentTagInsert::fromJson(const void* jsonIfc)
@@ -24443,6 +24652,9 @@ namespace aspose::words::cloud::models {
             this->m_SdtType = std::make_shared< aspose::words::cloud::models::StructuredDocumentTagInsert::SdtType >(
                 structuredDocumentTagInsertSdtTypeFromString(json["SdtType"].get< std::string >())
             );
+        }
+        if (json.contains("Position") && !json["Position"].is_null()) {
+            this->m_Position = createModelInstance< aspose::words::cloud::models::Position >(L"Position, _", json["Position"]);
         }
     }
 
@@ -24461,6 +24673,12 @@ namespace aspose::words::cloud::models {
         if (this->m_SdtType == nullptr)
         {
             throw aspose::words::cloud::ApiException(400, L"Property SdtType in StructuredDocumentTagInsert is required.");
+        }
+
+
+        if (this->m_Position != nullptr)
+        {
+            this->m_Position->validate();
         }
 
     }
@@ -24484,6 +24702,17 @@ namespace aspose::words::cloud::models {
     void StructuredDocumentTagInsert::setSdtType(std::shared_ptr< aspose::words::cloud::models::StructuredDocumentTagInsert::SdtType > value)
     {
         this->m_SdtType = value;
+    }
+
+
+    std::shared_ptr< aspose::words::cloud::models::Position > StructuredDocumentTagInsert::getPosition() const
+    {
+        return this->m_Position;
+    }
+
+    void StructuredDocumentTagInsert::setPosition(std::shared_ptr< aspose::words::cloud::models::Position > value)
+    {
+        this->m_Position = value;
     }
 
 
@@ -26813,6 +27042,9 @@ namespace aspose::words::cloud::models {
     void TableCellInsert::toJson(void* jsonIfc) const
     {
         ::nlohmann::json& json = *((::nlohmann::json*)jsonIfc);
+        if (this->m_ExistingCellPosition) {
+            this->m_ExistingCellPosition->toJson(&json["ExistingCellPosition"]);
+        }
         if (this->m_InsertAfter) {
             json["InsertAfter"] = *(this->m_InsertAfter);
         }
@@ -26821,6 +27053,9 @@ namespace aspose::words::cloud::models {
     void TableCellInsert::fromJson(const void* jsonIfc)
     {
         ::nlohmann::json& json = *((::nlohmann::json*)jsonIfc);
+        if (json.contains("ExistingCellPosition") && !json["ExistingCellPosition"].is_null()) {
+            this->m_ExistingCellPosition = createModelInstance< aspose::words::cloud::models::Position >(L"Position, _", json["ExistingCellPosition"]);
+        }
         if (json.contains("InsertAfter") && !json["InsertAfter"].is_null()) {
             this->m_InsertAfter = std::make_shared< int32_t >(
                 json["InsertAfter"].get< int32_t >()
@@ -26834,7 +27069,25 @@ namespace aspose::words::cloud::models {
 
     void TableCellInsert::validate()
     {
+
+        if (this->m_ExistingCellPosition != nullptr)
+        {
+            this->m_ExistingCellPosition->validate();
+        }
+
+
     }
+
+    std::shared_ptr< aspose::words::cloud::models::Position > TableCellInsert::getExistingCellPosition() const
+    {
+        return this->m_ExistingCellPosition;
+    }
+
+    void TableCellInsert::setExistingCellPosition(std::shared_ptr< aspose::words::cloud::models::Position > value)
+    {
+        this->m_ExistingCellPosition = value;
+    }
+
 
     std::shared_ptr< int32_t > TableCellInsert::getInsertAfter() const
     {
@@ -26922,7 +27175,7 @@ namespace aspose::words::cloud::models {
             );
         }
         if (json.contains("Position") && !json["Position"].is_null()) {
-            this->m_Position = createModelInstance< aspose::words::cloud::models::NewDocumentPosition >(L"NewDocumentPosition, _", json["Position"]);
+            this->m_Position = createModelInstance< aspose::words::cloud::models::Position >(L"Position, _", json["Position"]);
         }
         if (json.contains("RowsCount") && !json["RowsCount"].is_null()) {
             this->m_RowsCount = std::make_shared< int32_t >(
@@ -26967,12 +27220,12 @@ namespace aspose::words::cloud::models {
     }
 
 
-    std::shared_ptr< aspose::words::cloud::models::NewDocumentPosition > TableInsert::getPosition() const
+    std::shared_ptr< aspose::words::cloud::models::Position > TableInsert::getPosition() const
     {
         return this->m_Position;
     }
 
-    void TableInsert::setPosition(std::shared_ptr< aspose::words::cloud::models::NewDocumentPosition > value)
+    void TableInsert::setPosition(std::shared_ptr< aspose::words::cloud::models::Position > value)
     {
         this->m_Position = value;
     }
@@ -28602,6 +28855,9 @@ namespace aspose::words::cloud::models {
         if (this->m_ColumnsCount) {
             json["ColumnsCount"] = *(this->m_ColumnsCount);
         }
+        if (this->m_ExistingRowPosition) {
+            this->m_ExistingRowPosition->toJson(&json["ExistingRowPosition"]);
+        }
         if (this->m_InsertAfter) {
             json["InsertAfter"] = *(this->m_InsertAfter);
         }
@@ -28614,6 +28870,9 @@ namespace aspose::words::cloud::models {
             this->m_ColumnsCount = std::make_shared< int32_t >(
                 json["ColumnsCount"].get< int32_t >()
             );
+        }
+        if (json.contains("ExistingRowPosition") && !json["ExistingRowPosition"].is_null()) {
+            this->m_ExistingRowPosition = createModelInstance< aspose::words::cloud::models::Position >(L"Position, _", json["ExistingRowPosition"]);
         }
         if (json.contains("InsertAfter") && !json["InsertAfter"].is_null()) {
             this->m_InsertAfter = std::make_shared< int32_t >(
@@ -28633,6 +28892,13 @@ namespace aspose::words::cloud::models {
             throw aspose::words::cloud::ApiException(400, L"Property ColumnsCount in TableRowInsert is required.");
         }
 
+
+        if (this->m_ExistingRowPosition != nullptr)
+        {
+            this->m_ExistingRowPosition->validate();
+        }
+
+
     }
 
     std::shared_ptr< int32_t > TableRowInsert::getColumnsCount() const
@@ -28643,6 +28909,17 @@ namespace aspose::words::cloud::models {
     void TableRowInsert::setColumnsCount(std::shared_ptr< int32_t > value)
     {
         this->m_ColumnsCount = value;
+    }
+
+
+    std::shared_ptr< aspose::words::cloud::models::Position > TableRowInsert::getExistingRowPosition() const
+    {
+        return this->m_ExistingRowPosition;
+    }
+
+    void TableRowInsert::setExistingRowPosition(std::shared_ptr< aspose::words::cloud::models::Position > value)
+    {
+        this->m_ExistingRowPosition = value;
     }
 
 

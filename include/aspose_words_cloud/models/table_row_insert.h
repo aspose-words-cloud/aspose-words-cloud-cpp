@@ -1,6 +1,6 @@
 ﻿/** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="table_row_insert.h">
-*   Copyright (c) 2023 Aspose.Words for Cloud
+*   Copyright (c) 2024 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -25,6 +25,7 @@
 
 #pragma once
 #include "model_base.h"
+#include "position.h"
 
 namespace aspose::words::cloud::models {
     /// <summary>
@@ -53,18 +54,32 @@ namespace aspose::words::cloud::models {
 
 
         /// <summary>
+        /// Gets or sets the position of the table row that will be used to determine the placement of a new row.
+        /// </summary>
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< aspose::words::cloud::models::Position > getExistingRowPosition() const;
+
+        /// <summary>
+        /// Gets or sets the position of the table row that will be used to determine the placement of a new row.
+        /// </summary>
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setExistingRowPosition(std::shared_ptr< aspose::words::cloud::models::Position > value);
+
+
+        /// <summary>
         /// Gets or sets table row will be inserted after row with specified 0-based index.
         /// </summary>
+        [[deprecated("This property will be removed in the future.")]]
         ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< int32_t > getInsertAfter() const;
 
         /// <summary>
         /// Gets or sets table row will be inserted after row with specified 0-based index.
         /// </summary>
+        [[deprecated("This property will be removed in the future.")]]
         ASPOSE_WORDS_CLOUD_EXPORT virtual void setInsertAfter(std::shared_ptr< int32_t > value);
 
 
     protected:
         std::shared_ptr< int32_t > m_ColumnsCount;
+        std::shared_ptr< aspose::words::cloud::models::Position > m_ExistingRowPosition;
         std::shared_ptr< int32_t > m_InsertAfter;
     };
 }

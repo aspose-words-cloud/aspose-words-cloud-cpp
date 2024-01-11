@@ -1,6 +1,6 @@
 ﻿/** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="drawing_object_insert.h">
-*   Copyright (c) 2023 Aspose.Words for Cloud
+*   Copyright (c) 2024 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -25,7 +25,7 @@
 
 #pragma once
 #include "model_base.h"
-#include "new_document_position.h"
+#include "position.h"
 
 namespace aspose::words::cloud::models {
     /// <summary>
@@ -89,14 +89,14 @@ namespace aspose::words::cloud::models {
 
 
         /// <summary>
-        /// Gets or sets the position, before which the DrawingObject will be inserted.
+        /// Gets or sets the position, where the DrawingObject will be inserted.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< aspose::words::cloud::models::NewDocumentPosition > getPosition() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< aspose::words::cloud::models::Position > getPosition() const;
 
         /// <summary>
-        /// Gets or sets the position, before which the DrawingObject will be inserted.
+        /// Gets or sets the position, where the DrawingObject will be inserted.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT virtual void setPosition(std::shared_ptr< aspose::words::cloud::models::NewDocumentPosition > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setPosition(std::shared_ptr< aspose::words::cloud::models::Position > value);
 
 
         /// <summary>
@@ -177,7 +177,7 @@ namespace aspose::words::cloud::models {
 
 
     protected:
-        std::shared_ptr< aspose::words::cloud::models::NewDocumentPosition > m_Position;
+        std::shared_ptr< aspose::words::cloud::models::Position > m_Position;
         std::shared_ptr< aspose::words::cloud::models::DrawingObjectInsert::RelativeHorizontalPosition > m_RelativeHorizontalPosition;
         std::shared_ptr< double > m_Left;
         std::shared_ptr< aspose::words::cloud::models::DrawingObjectInsert::RelativeVerticalPosition > m_RelativeVerticalPosition;

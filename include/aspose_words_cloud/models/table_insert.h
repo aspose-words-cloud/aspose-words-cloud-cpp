@@ -1,6 +1,6 @@
 ﻿/** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="table_insert.h">
-*   Copyright (c) 2023 Aspose.Words for Cloud
+*   Copyright (c) 2024 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -25,7 +25,7 @@
 
 #pragma once
 #include "model_base.h"
-#include "new_document_position.h"
+#include "position.h"
 
 namespace aspose::words::cloud::models {
     /// <summary>
@@ -54,14 +54,14 @@ namespace aspose::words::cloud::models {
 
 
         /// <summary>
-        /// Gets or sets the position to insert the table. The table will be inserted before the specified position.
+        /// Gets or sets the position to insert the table. The table will be inserted using the specified position.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< aspose::words::cloud::models::NewDocumentPosition > getPosition() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< aspose::words::cloud::models::Position > getPosition() const;
 
         /// <summary>
-        /// Gets or sets the position to insert the table. The table will be inserted before the specified position.
+        /// Gets or sets the position to insert the table. The table will be inserted using the specified position.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT virtual void setPosition(std::shared_ptr< aspose::words::cloud::models::NewDocumentPosition > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setPosition(std::shared_ptr< aspose::words::cloud::models::Position > value);
 
 
         /// <summary>
@@ -77,7 +77,7 @@ namespace aspose::words::cloud::models {
 
     protected:
         std::shared_ptr< int32_t > m_ColumnsCount;
-        std::shared_ptr< aspose::words::cloud::models::NewDocumentPosition > m_Position;
+        std::shared_ptr< aspose::words::cloud::models::Position > m_Position;
         std::shared_ptr< int32_t > m_RowsCount;
     };
 }

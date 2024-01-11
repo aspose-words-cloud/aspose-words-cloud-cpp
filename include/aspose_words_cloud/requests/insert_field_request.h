@@ -1,6 +1,6 @@
 ﻿/** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="insert_field_request.h">
-*   Copyright (c) 2023 Aspose.Words for Cloud
+*   Copyright (c) 2024 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -41,8 +41,7 @@ namespace aspose::words::cloud::requests {
             const std::shared_ptr< std::wstring > encryptedPassword = nullptr,
             const std::shared_ptr< std::wstring > destFileName = nullptr,
             const std::shared_ptr< std::wstring > revisionAuthor = nullptr,
-            const std::shared_ptr< std::wstring > revisionDateTime = nullptr,
-            const std::shared_ptr< std::wstring > insertBeforeNode = nullptr
+            const std::shared_ptr< std::wstring > revisionDateTime = nullptr
         );
 
         ASPOSE_WORDS_CLOUD_EXPORT const std::shared_ptr< std::wstring > getName() const;
@@ -56,7 +55,6 @@ namespace aspose::words::cloud::requests {
         ASPOSE_WORDS_CLOUD_EXPORT const std::shared_ptr< std::wstring > getDestFileName() const;
         ASPOSE_WORDS_CLOUD_EXPORT const std::shared_ptr< std::wstring > getRevisionAuthor() const;
         ASPOSE_WORDS_CLOUD_EXPORT const std::shared_ptr< std::wstring > getRevisionDateTime() const;
-        ASPOSE_WORDS_CLOUD_EXPORT const std::shared_ptr< std::wstring > getInsertBeforeNode() const;
 
         ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< aspose::words::cloud::HttpRequestData > createHttpRequest(ApiClient* apiClient) const override;
         ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > createResponse() const override;
@@ -73,6 +71,5 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > m_DestFileName;
         const std::shared_ptr< std::wstring > m_RevisionAuthor;
         const std::shared_ptr< std::wstring > m_RevisionDateTime;
-        const std::shared_ptr< std::wstring > m_InsertBeforeNode;
     };
 }

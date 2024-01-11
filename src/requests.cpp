@@ -1,6 +1,6 @@
 ﻿/** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="requests.cpp">
-*   Copyright (c) 2023 Aspose.Words for Cloud
+*   Copyright (c) 2024 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -20793,8 +20793,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > encryptedPassword,
         const std::shared_ptr< std::wstring > destFileName,
         const std::shared_ptr< std::wstring > revisionAuthor,
-        const std::shared_ptr< std::wstring > revisionDateTime,
-        const std::shared_ptr< std::wstring > insertBeforeNode
+        const std::shared_ptr< std::wstring > revisionDateTime
     ) : 
         m_Name(name),
         m_Field(field),
@@ -20806,8 +20805,7 @@ namespace aspose::words::cloud::requests {
         m_EncryptedPassword(encryptedPassword),
         m_DestFileName(destFileName),
         m_RevisionAuthor(revisionAuthor),
-        m_RevisionDateTime(revisionDateTime),
-        m_InsertBeforeNode(insertBeforeNode)
+        m_RevisionDateTime(revisionDateTime)
     {
     }
 
@@ -20866,11 +20864,6 @@ namespace aspose::words::cloud::requests {
         return m_RevisionDateTime;
     }
 
-    const std::shared_ptr< std::wstring > InsertFieldRequest::getInsertBeforeNode() const
-    {
-        return m_InsertBeforeNode;
-    }
-
     std::shared_ptr< aspose::words::cloud::HttpRequestData > InsertFieldRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
@@ -20888,7 +20881,6 @@ namespace aspose::words::cloud::requests {
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
-        if (m_InsertBeforeNode) result->addQueryParam(L"insertBeforeNode", *m_InsertBeforeNode);
         if (m_Field)
         {
             result->addFormDataParam(L"Body", *m_Field);
@@ -20927,8 +20919,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > encryptedPassword,
         const std::shared_ptr< std::wstring > destFileName,
         const std::shared_ptr< std::wstring > revisionAuthor,
-        const std::shared_ptr< std::wstring > revisionDateTime,
-        const std::shared_ptr< std::wstring > insertBeforeNode
+        const std::shared_ptr< std::wstring > revisionDateTime
     ) : 
         m_Document(document),
         m_Field(field),
@@ -20938,8 +20929,7 @@ namespace aspose::words::cloud::requests {
         m_EncryptedPassword(encryptedPassword),
         m_DestFileName(destFileName),
         m_RevisionAuthor(revisionAuthor),
-        m_RevisionDateTime(revisionDateTime),
-        m_InsertBeforeNode(insertBeforeNode)
+        m_RevisionDateTime(revisionDateTime)
     {
     }
 
@@ -20988,11 +20978,6 @@ namespace aspose::words::cloud::requests {
         return m_RevisionDateTime;
     }
 
-    const std::shared_ptr< std::wstring > InsertFieldOnlineRequest::getInsertBeforeNode() const
-    {
-        return m_InsertBeforeNode;
-    }
-
     std::shared_ptr< aspose::words::cloud::HttpRequestData > InsertFieldOnlineRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
@@ -21006,7 +20991,6 @@ namespace aspose::words::cloud::requests {
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
-        if (m_InsertBeforeNode) result->addQueryParam(L"insertBeforeNode", *m_InsertBeforeNode);
         if (m_Document)
         {
             result->addFormDataParam(L"document", *m_Document);
@@ -22482,8 +22466,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > encryptedPassword,
         const std::shared_ptr< std::wstring > destFileName,
         const std::shared_ptr< std::wstring > revisionAuthor,
-        const std::shared_ptr< std::wstring > revisionDateTime,
-        const std::shared_ptr< std::wstring > insertBeforeNode
+        const std::shared_ptr< std::wstring > revisionDateTime
     ) : 
         m_Name(name),
         m_Paragraph(paragraph),
@@ -22495,8 +22478,7 @@ namespace aspose::words::cloud::requests {
         m_EncryptedPassword(encryptedPassword),
         m_DestFileName(destFileName),
         m_RevisionAuthor(revisionAuthor),
-        m_RevisionDateTime(revisionDateTime),
-        m_InsertBeforeNode(insertBeforeNode)
+        m_RevisionDateTime(revisionDateTime)
     {
     }
 
@@ -22555,11 +22537,6 @@ namespace aspose::words::cloud::requests {
         return m_RevisionDateTime;
     }
 
-    const std::shared_ptr< std::wstring > InsertParagraphRequest::getInsertBeforeNode() const
-    {
-        return m_InsertBeforeNode;
-    }
-
     std::shared_ptr< aspose::words::cloud::HttpRequestData > InsertParagraphRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
@@ -22577,7 +22554,6 @@ namespace aspose::words::cloud::requests {
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
-        if (m_InsertBeforeNode) result->addQueryParam(L"insertBeforeNode", *m_InsertBeforeNode);
         if (m_Paragraph)
         {
             result->addFormDataParam(L"Body", *m_Paragraph);
@@ -22616,8 +22592,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > encryptedPassword,
         const std::shared_ptr< std::wstring > destFileName,
         const std::shared_ptr< std::wstring > revisionAuthor,
-        const std::shared_ptr< std::wstring > revisionDateTime,
-        const std::shared_ptr< std::wstring > insertBeforeNode
+        const std::shared_ptr< std::wstring > revisionDateTime
     ) : 
         m_Document(document),
         m_Paragraph(paragraph),
@@ -22627,8 +22602,7 @@ namespace aspose::words::cloud::requests {
         m_EncryptedPassword(encryptedPassword),
         m_DestFileName(destFileName),
         m_RevisionAuthor(revisionAuthor),
-        m_RevisionDateTime(revisionDateTime),
-        m_InsertBeforeNode(insertBeforeNode)
+        m_RevisionDateTime(revisionDateTime)
     {
     }
 
@@ -22677,11 +22651,6 @@ namespace aspose::words::cloud::requests {
         return m_RevisionDateTime;
     }
 
-    const std::shared_ptr< std::wstring > InsertParagraphOnlineRequest::getInsertBeforeNode() const
-    {
-        return m_InsertBeforeNode;
-    }
-
     std::shared_ptr< aspose::words::cloud::HttpRequestData > InsertParagraphOnlineRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
@@ -22695,7 +22664,6 @@ namespace aspose::words::cloud::requests {
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
-        if (m_InsertBeforeNode) result->addQueryParam(L"insertBeforeNode", *m_InsertBeforeNode);
         if (m_Document)
         {
             result->addFormDataParam(L"document", *m_Document);
@@ -22732,8 +22700,8 @@ namespace aspose::words::cloud::requests {
      */
     InsertRunRequest::InsertRunRequest(
         const std::shared_ptr< std::wstring > name,
-        const std::shared_ptr< std::wstring > paragraphPath,
         const std::shared_ptr< aspose::words::cloud::models::RunInsert > run,
+        const std::shared_ptr< std::wstring > paragraphPath,
         const std::shared_ptr< std::wstring > folder,
         const std::shared_ptr< std::wstring > storage,
         const std::shared_ptr< std::wstring > loadEncoding,
@@ -22741,12 +22709,11 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > encryptedPassword,
         const std::shared_ptr< std::wstring > destFileName,
         const std::shared_ptr< std::wstring > revisionAuthor,
-        const std::shared_ptr< std::wstring > revisionDateTime,
-        const std::shared_ptr< std::wstring > insertBeforeNode
+        const std::shared_ptr< std::wstring > revisionDateTime
     ) : 
         m_Name(name),
-        m_ParagraphPath(paragraphPath),
         m_Run(run),
+        m_ParagraphPath(paragraphPath),
         m_Folder(folder),
         m_Storage(storage),
         m_LoadEncoding(loadEncoding),
@@ -22754,8 +22721,7 @@ namespace aspose::words::cloud::requests {
         m_EncryptedPassword(encryptedPassword),
         m_DestFileName(destFileName),
         m_RevisionAuthor(revisionAuthor),
-        m_RevisionDateTime(revisionDateTime),
-        m_InsertBeforeNode(insertBeforeNode)
+        m_RevisionDateTime(revisionDateTime)
     {
     }
 
@@ -22764,14 +22730,14 @@ namespace aspose::words::cloud::requests {
         return m_Name;
     }
 
-    const std::shared_ptr< std::wstring > InsertRunRequest::getParagraphPath() const
-    {
-        return m_ParagraphPath;
-    }
-
     const std::shared_ptr< aspose::words::cloud::models::RunInsert > InsertRunRequest::getRun() const
     {
         return m_Run;
+    }
+
+    const std::shared_ptr< std::wstring > InsertRunRequest::getParagraphPath() const
+    {
+        return m_ParagraphPath;
     }
 
     const std::shared_ptr< std::wstring > InsertRunRequest::getFolder() const
@@ -22814,11 +22780,6 @@ namespace aspose::words::cloud::requests {
         return m_RevisionDateTime;
     }
 
-    const std::shared_ptr< std::wstring > InsertRunRequest::getInsertBeforeNode() const
-    {
-        return m_InsertBeforeNode;
-    }
-
     std::shared_ptr< aspose::words::cloud::HttpRequestData > InsertRunRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
@@ -22827,8 +22788,7 @@ namespace aspose::words::cloud::requests {
         result->setPath(L"/words/{name}/{paragraphPath}/runs");
         if (!m_Name) throw aspose::words::cloud::ApiException(400, L"Parameter 'Name' is required.");
         result->setPathParam(L"{name}", *m_Name);
-        if (!m_ParagraphPath) throw aspose::words::cloud::ApiException(400, L"Parameter 'ParagraphPath' is required.");
-        result->setPathParam(L"{paragraphPath}", *m_ParagraphPath);
+        result->setPathParam(L"{paragraphPath}", m_ParagraphPath ? *m_ParagraphPath : L"");
         if (m_Folder) result->addQueryParam(L"folder", *m_Folder);
         if (m_Storage) result->addQueryParam(L"storage", *m_Storage);
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
@@ -22837,7 +22797,6 @@ namespace aspose::words::cloud::requests {
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
-        if (m_InsertBeforeNode) result->addQueryParam(L"insertBeforeNode", *m_InsertBeforeNode);
         if (m_Run)
         {
             result->addFormDataParam(L"Body", *m_Run);
@@ -22869,26 +22828,24 @@ namespace aspose::words::cloud::requests {
      */
     InsertRunOnlineRequest::InsertRunOnlineRequest(
         const std::shared_ptr< std::istream > document,
-        const std::shared_ptr< std::wstring > paragraphPath,
         const std::shared_ptr< aspose::words::cloud::models::RunInsert > run,
+        const std::shared_ptr< std::wstring > paragraphPath,
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
         const std::shared_ptr< std::wstring > encryptedPassword,
         const std::shared_ptr< std::wstring > destFileName,
         const std::shared_ptr< std::wstring > revisionAuthor,
-        const std::shared_ptr< std::wstring > revisionDateTime,
-        const std::shared_ptr< std::wstring > insertBeforeNode
+        const std::shared_ptr< std::wstring > revisionDateTime
     ) : 
         m_Document(document),
-        m_ParagraphPath(paragraphPath),
         m_Run(run),
+        m_ParagraphPath(paragraphPath),
         m_LoadEncoding(loadEncoding),
         m_Password(password),
         m_EncryptedPassword(encryptedPassword),
         m_DestFileName(destFileName),
         m_RevisionAuthor(revisionAuthor),
-        m_RevisionDateTime(revisionDateTime),
-        m_InsertBeforeNode(insertBeforeNode)
+        m_RevisionDateTime(revisionDateTime)
     {
     }
 
@@ -22897,14 +22854,14 @@ namespace aspose::words::cloud::requests {
         return m_Document;
     }
 
-    const std::shared_ptr< std::wstring > InsertRunOnlineRequest::getParagraphPath() const
-    {
-        return m_ParagraphPath;
-    }
-
     const std::shared_ptr< aspose::words::cloud::models::RunInsert > InsertRunOnlineRequest::getRun() const
     {
         return m_Run;
+    }
+
+    const std::shared_ptr< std::wstring > InsertRunOnlineRequest::getParagraphPath() const
+    {
+        return m_ParagraphPath;
     }
 
     const std::shared_ptr< std::wstring > InsertRunOnlineRequest::getLoadEncoding() const
@@ -22937,26 +22894,19 @@ namespace aspose::words::cloud::requests {
         return m_RevisionDateTime;
     }
 
-    const std::shared_ptr< std::wstring > InsertRunOnlineRequest::getInsertBeforeNode() const
-    {
-        return m_InsertBeforeNode;
-    }
-
     std::shared_ptr< aspose::words::cloud::HttpRequestData > InsertRunOnlineRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
         result->setMethod(HttpRequestMethod::HttpPUT);
         result->setPath(L"/words/online/post/{paragraphPath}/runs");
-        if (!m_ParagraphPath) throw aspose::words::cloud::ApiException(400, L"Parameter 'ParagraphPath' is required.");
-        result->setPathParam(L"{paragraphPath}", *m_ParagraphPath);
+        result->setPathParam(L"{paragraphPath}", m_ParagraphPath ? *m_ParagraphPath : L"");
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
-        if (m_InsertBeforeNode) result->addQueryParam(L"insertBeforeNode", *m_InsertBeforeNode);
         if (m_Document)
         {
             result->addFormDataParam(L"document", *m_Document);
@@ -23810,8 +23760,8 @@ namespace aspose::words::cloud::requests {
      */
     InsertTableCellRequest::InsertTableCellRequest(
         const std::shared_ptr< std::wstring > name,
-        const std::shared_ptr< std::wstring > tableRowPath,
         const std::shared_ptr< aspose::words::cloud::models::TableCellInsert > cell,
+        const std::shared_ptr< std::wstring > tableRowPath,
         const std::shared_ptr< std::wstring > folder,
         const std::shared_ptr< std::wstring > storage,
         const std::shared_ptr< std::wstring > loadEncoding,
@@ -23822,8 +23772,8 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > revisionDateTime
     ) : 
         m_Name(name),
-        m_TableRowPath(tableRowPath),
         m_Cell(cell),
+        m_TableRowPath(tableRowPath),
         m_Folder(folder),
         m_Storage(storage),
         m_LoadEncoding(loadEncoding),
@@ -23840,14 +23790,14 @@ namespace aspose::words::cloud::requests {
         return m_Name;
     }
 
-    const std::shared_ptr< std::wstring > InsertTableCellRequest::getTableRowPath() const
-    {
-        return m_TableRowPath;
-    }
-
     const std::shared_ptr< aspose::words::cloud::models::TableCellInsert > InsertTableCellRequest::getCell() const
     {
         return m_Cell;
+    }
+
+    const std::shared_ptr< std::wstring > InsertTableCellRequest::getTableRowPath() const
+    {
+        return m_TableRowPath;
     }
 
     const std::shared_ptr< std::wstring > InsertTableCellRequest::getFolder() const
@@ -23898,8 +23848,7 @@ namespace aspose::words::cloud::requests {
         result->setPath(L"/words/{name}/{tableRowPath}/cells");
         if (!m_Name) throw aspose::words::cloud::ApiException(400, L"Parameter 'Name' is required.");
         result->setPathParam(L"{name}", *m_Name);
-        if (!m_TableRowPath) throw aspose::words::cloud::ApiException(400, L"Parameter 'TableRowPath' is required.");
-        result->setPathParam(L"{tableRowPath}", *m_TableRowPath);
+        result->setPathParam(L"{tableRowPath}", m_TableRowPath ? *m_TableRowPath : L"");
         if (m_Folder) result->addQueryParam(L"folder", *m_Folder);
         if (m_Storage) result->addQueryParam(L"storage", *m_Storage);
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
@@ -23939,8 +23888,8 @@ namespace aspose::words::cloud::requests {
      */
     InsertTableCellOnlineRequest::InsertTableCellOnlineRequest(
         const std::shared_ptr< std::istream > document,
-        const std::shared_ptr< std::wstring > tableRowPath,
         const std::shared_ptr< aspose::words::cloud::models::TableCellInsert > cell,
+        const std::shared_ptr< std::wstring > tableRowPath,
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
         const std::shared_ptr< std::wstring > encryptedPassword,
@@ -23949,8 +23898,8 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > revisionDateTime
     ) : 
         m_Document(document),
-        m_TableRowPath(tableRowPath),
         m_Cell(cell),
+        m_TableRowPath(tableRowPath),
         m_LoadEncoding(loadEncoding),
         m_Password(password),
         m_EncryptedPassword(encryptedPassword),
@@ -23965,14 +23914,14 @@ namespace aspose::words::cloud::requests {
         return m_Document;
     }
 
-    const std::shared_ptr< std::wstring > InsertTableCellOnlineRequest::getTableRowPath() const
-    {
-        return m_TableRowPath;
-    }
-
     const std::shared_ptr< aspose::words::cloud::models::TableCellInsert > InsertTableCellOnlineRequest::getCell() const
     {
         return m_Cell;
+    }
+
+    const std::shared_ptr< std::wstring > InsertTableCellOnlineRequest::getTableRowPath() const
+    {
+        return m_TableRowPath;
     }
 
     const std::shared_ptr< std::wstring > InsertTableCellOnlineRequest::getLoadEncoding() const
@@ -24011,8 +23960,7 @@ namespace aspose::words::cloud::requests {
         auto result = std::make_shared<HttpRequestData>();
         result->setMethod(HttpRequestMethod::HttpPUT);
         result->setPath(L"/words/online/post/{tableRowPath}/cells");
-        if (!m_TableRowPath) throw aspose::words::cloud::ApiException(400, L"Parameter 'TableRowPath' is required.");
-        result->setPathParam(L"{tableRowPath}", *m_TableRowPath);
+        result->setPathParam(L"{tableRowPath}", m_TableRowPath ? *m_TableRowPath : L"");
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
@@ -24170,8 +24118,8 @@ namespace aspose::words::cloud::requests {
      */
     InsertTableRowRequest::InsertTableRowRequest(
         const std::shared_ptr< std::wstring > name,
-        const std::shared_ptr< std::wstring > tablePath,
         const std::shared_ptr< aspose::words::cloud::models::TableRowInsert > row,
+        const std::shared_ptr< std::wstring > nodePath,
         const std::shared_ptr< std::wstring > folder,
         const std::shared_ptr< std::wstring > storage,
         const std::shared_ptr< std::wstring > loadEncoding,
@@ -24182,8 +24130,8 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > revisionDateTime
     ) : 
         m_Name(name),
-        m_TablePath(tablePath),
         m_Row(row),
+        m_NodePath(nodePath),
         m_Folder(folder),
         m_Storage(storage),
         m_LoadEncoding(loadEncoding),
@@ -24200,14 +24148,14 @@ namespace aspose::words::cloud::requests {
         return m_Name;
     }
 
-    const std::shared_ptr< std::wstring > InsertTableRowRequest::getTablePath() const
-    {
-        return m_TablePath;
-    }
-
     const std::shared_ptr< aspose::words::cloud::models::TableRowInsert > InsertTableRowRequest::getRow() const
     {
         return m_Row;
+    }
+
+    const std::shared_ptr< std::wstring > InsertTableRowRequest::getNodePath() const
+    {
+        return m_NodePath;
     }
 
     const std::shared_ptr< std::wstring > InsertTableRowRequest::getFolder() const
@@ -24255,11 +24203,10 @@ namespace aspose::words::cloud::requests {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
         result->setMethod(HttpRequestMethod::HttpPOST);
-        result->setPath(L"/words/{name}/{tablePath}/rows");
+        result->setPath(L"/words/{name}/{nodePath}/rows");
         if (!m_Name) throw aspose::words::cloud::ApiException(400, L"Parameter 'Name' is required.");
         result->setPathParam(L"{name}", *m_Name);
-        if (!m_TablePath) throw aspose::words::cloud::ApiException(400, L"Parameter 'TablePath' is required.");
-        result->setPathParam(L"{tablePath}", *m_TablePath);
+        result->setPathParam(L"{nodePath}", m_NodePath ? *m_NodePath : L"");
         if (m_Folder) result->addQueryParam(L"folder", *m_Folder);
         if (m_Storage) result->addQueryParam(L"storage", *m_Storage);
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
@@ -24299,8 +24246,8 @@ namespace aspose::words::cloud::requests {
      */
     InsertTableRowOnlineRequest::InsertTableRowOnlineRequest(
         const std::shared_ptr< std::istream > document,
-        const std::shared_ptr< std::wstring > tablePath,
         const std::shared_ptr< aspose::words::cloud::models::TableRowInsert > row,
+        const std::shared_ptr< std::wstring > nodePath,
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
         const std::shared_ptr< std::wstring > encryptedPassword,
@@ -24309,8 +24256,8 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > revisionDateTime
     ) : 
         m_Document(document),
-        m_TablePath(tablePath),
         m_Row(row),
+        m_NodePath(nodePath),
         m_LoadEncoding(loadEncoding),
         m_Password(password),
         m_EncryptedPassword(encryptedPassword),
@@ -24325,14 +24272,14 @@ namespace aspose::words::cloud::requests {
         return m_Document;
     }
 
-    const std::shared_ptr< std::wstring > InsertTableRowOnlineRequest::getTablePath() const
-    {
-        return m_TablePath;
-    }
-
     const std::shared_ptr< aspose::words::cloud::models::TableRowInsert > InsertTableRowOnlineRequest::getRow() const
     {
         return m_Row;
+    }
+
+    const std::shared_ptr< std::wstring > InsertTableRowOnlineRequest::getNodePath() const
+    {
+        return m_NodePath;
     }
 
     const std::shared_ptr< std::wstring > InsertTableRowOnlineRequest::getLoadEncoding() const
@@ -24370,9 +24317,8 @@ namespace aspose::words::cloud::requests {
         std::vector<models::FileReference*> additionalFilesContent;
         auto result = std::make_shared<HttpRequestData>();
         result->setMethod(HttpRequestMethod::HttpPUT);
-        result->setPath(L"/words/online/post/{tablePath}/rows");
-        if (!m_TablePath) throw aspose::words::cloud::ApiException(400, L"Parameter 'TablePath' is required.");
-        result->setPathParam(L"{tablePath}", *m_TablePath);
+        result->setPath(L"/words/online/post/{nodePath}/rows");
+        result->setPathParam(L"{nodePath}", m_NodePath ? *m_NodePath : L"");
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);

@@ -1,6 +1,6 @@
 ﻿/** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="insert_table_cell_request.h">
-*   Copyright (c) 2023 Aspose.Words for Cloud
+*   Copyright (c) 2024 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -32,8 +32,8 @@ namespace aspose::words::cloud::requests {
     public:
         ASPOSE_WORDS_CLOUD_EXPORT InsertTableCellRequest(
             const std::shared_ptr< std::wstring > name,
-            const std::shared_ptr< std::wstring > tableRowPath,
             const std::shared_ptr< aspose::words::cloud::models::TableCellInsert > cell,
+            const std::shared_ptr< std::wstring > tableRowPath = nullptr,
             const std::shared_ptr< std::wstring > folder = nullptr,
             const std::shared_ptr< std::wstring > storage = nullptr,
             const std::shared_ptr< std::wstring > loadEncoding = nullptr,
@@ -45,8 +45,8 @@ namespace aspose::words::cloud::requests {
         );
 
         ASPOSE_WORDS_CLOUD_EXPORT const std::shared_ptr< std::wstring > getName() const;
-        ASPOSE_WORDS_CLOUD_EXPORT const std::shared_ptr< std::wstring > getTableRowPath() const;
         ASPOSE_WORDS_CLOUD_EXPORT const std::shared_ptr< aspose::words::cloud::models::TableCellInsert > getCell() const;
+        ASPOSE_WORDS_CLOUD_EXPORT const std::shared_ptr< std::wstring > getTableRowPath() const;
         ASPOSE_WORDS_CLOUD_EXPORT const std::shared_ptr< std::wstring > getFolder() const;
         ASPOSE_WORDS_CLOUD_EXPORT const std::shared_ptr< std::wstring > getStorage() const;
         ASPOSE_WORDS_CLOUD_EXPORT const std::shared_ptr< std::wstring > getLoadEncoding() const;
@@ -61,8 +61,8 @@ namespace aspose::words::cloud::requests {
 
     private:
         const std::shared_ptr< std::wstring > m_Name;
-        const std::shared_ptr< std::wstring > m_TableRowPath;
         const std::shared_ptr< aspose::words::cloud::models::TableCellInsert > m_Cell;
+        const std::shared_ptr< std::wstring > m_TableRowPath;
         const std::shared_ptr< std::wstring > m_Folder;
         const std::shared_ptr< std::wstring > m_Storage;
         const std::shared_ptr< std::wstring > m_LoadEncoding;

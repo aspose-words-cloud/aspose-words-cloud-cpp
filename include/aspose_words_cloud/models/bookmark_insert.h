@@ -1,6 +1,6 @@
 ﻿/** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="bookmark_insert.h">
-*   Copyright (c) 2023 Aspose.Words for Cloud
+*   Copyright (c) 2024 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -25,7 +25,7 @@
 
 #pragma once
 #include "model_base.h"
-#include "new_document_position.h"
+#include "position.h"
 
 namespace aspose::words::cloud::models {
     /// <summary>
@@ -67,30 +67,30 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the link to start bookmark node.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< aspose::words::cloud::models::NewDocumentPosition > getStartRange() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< aspose::words::cloud::models::Position > getStartRange() const;
 
         /// <summary>
         /// Gets or sets the link to start bookmark node.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT virtual void setStartRange(std::shared_ptr< aspose::words::cloud::models::NewDocumentPosition > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setStartRange(std::shared_ptr< aspose::words::cloud::models::Position > value);
 
 
         /// <summary>
         /// Gets or sets the link to end bookmark node.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< aspose::words::cloud::models::NewDocumentPosition > getEndRange() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< aspose::words::cloud::models::Position > getEndRange() const;
 
         /// <summary>
         /// Gets or sets the link to end bookmark node.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT virtual void setEndRange(std::shared_ptr< aspose::words::cloud::models::NewDocumentPosition > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setEndRange(std::shared_ptr< aspose::words::cloud::models::Position > value);
 
 
     protected:
         std::shared_ptr< std::wstring > m_Name;
         std::shared_ptr< std::wstring > m_Text;
-        std::shared_ptr< aspose::words::cloud::models::NewDocumentPosition > m_StartRange;
-        std::shared_ptr< aspose::words::cloud::models::NewDocumentPosition > m_EndRange;
+        std::shared_ptr< aspose::words::cloud::models::Position > m_StartRange;
+        std::shared_ptr< aspose::words::cloud::models::Position > m_EndRange;
     };
 }
 

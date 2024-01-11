@@ -1,6 +1,6 @@
 ﻿/** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="table_test.h">
-*   Copyright (c) 2023 Aspose.Words for Cloud
+*   Copyright (c) 2024 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -645,8 +645,8 @@ TEST_F(TableTests, TestInsertTableRow) {
     requestRow->setColumnsCount(std::make_shared< int32_t >(5));
     std::shared_ptr<requests::InsertTableRowRequest> request(new requests::InsertTableRowRequest(
         std::make_shared< std::wstring >(remoteFileName),
-        std::make_shared< std::wstring >(L"sections/0/tables/2"),
         requestRow,
+        std::make_shared< std::wstring >(L"sections/0/tables/2"),
         std::make_shared< std::wstring >(remoteDataFolder),
         nullptr,
         nullptr,
@@ -672,8 +672,8 @@ TEST_F(TableTests, TestInsertTableRowOnline) {
     requestRow->setColumnsCount(std::make_shared< int32_t >(5));
     std::shared_ptr<requests::InsertTableRowOnlineRequest> request(new requests::InsertTableRowOnlineRequest(
         requestDocument,
-        std::make_shared< std::wstring >(L"sections/0/tables/2"),
         requestRow,
+        std::make_shared< std::wstring >(L"sections/0/tables/2"),
         nullptr,
         nullptr,
         nullptr,
@@ -900,8 +900,8 @@ TEST_F(TableTests, TestInsertTableCell) {
 
     std::shared_ptr<requests::InsertTableCellRequest> request(new requests::InsertTableCellRequest(
         std::make_shared< std::wstring >(remoteFileName),
-        std::make_shared< std::wstring >(L"sections/0/tables/2/rows/0"),
         requestCell,
+        std::make_shared< std::wstring >(L"sections/0/tables/2/rows/0"),
         std::make_shared< std::wstring >(remoteDataFolder),
         nullptr,
         nullptr,
@@ -926,8 +926,8 @@ TEST_F(TableTests, TestInsertTableCellOnline) {
 
     std::shared_ptr<requests::InsertTableCellOnlineRequest> request(new requests::InsertTableCellOnlineRequest(
         requestDocument,
-        std::make_shared< std::wstring >(L"sections/0/tables/2/rows/0"),
         requestCell,
+        std::make_shared< std::wstring >(L"sections/0/tables/2/rows/0"),
         nullptr,
         nullptr,
         nullptr,
