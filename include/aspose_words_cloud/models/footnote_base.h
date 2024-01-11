@@ -1,6 +1,6 @@
 ﻿/** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="footnote_base.h">
-*   Copyright (c) 2023 Aspose.Words for Cloud
+*   Copyright (c) 2024 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -25,7 +25,7 @@
 
 #pragma once
 #include "model_base.h"
-#include "new_document_position.h"
+#include "position.h"
 
 namespace aspose::words::cloud::models {
     /// <summary>
@@ -53,14 +53,14 @@ namespace aspose::words::cloud::models {
         virtual void abstractFootnoteBase() = 0;
 
         /// <summary>
-        /// Gets or sets the link to comment range start node.
+        /// Gets or sets the link to range start node.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< aspose::words::cloud::models::NewDocumentPosition > getPosition() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< aspose::words::cloud::models::Position > getPosition() const;
 
         /// <summary>
-        /// Gets or sets the link to comment range start node.
+        /// Gets or sets the link to range start node.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT virtual void setPosition(std::shared_ptr< aspose::words::cloud::models::NewDocumentPosition > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setPosition(std::shared_ptr< aspose::words::cloud::models::Position > value);
 
 
         /// <summary>
@@ -103,7 +103,7 @@ namespace aspose::words::cloud::models {
 
 
     protected:
-        std::shared_ptr< aspose::words::cloud::models::NewDocumentPosition > m_Position;
+        std::shared_ptr< aspose::words::cloud::models::Position > m_Position;
         std::shared_ptr< aspose::words::cloud::models::FootnoteBase::FootnoteType > m_FootnoteType;
         std::shared_ptr< std::wstring > m_ReferenceMark;
         std::shared_ptr< std::wstring > m_Text;

@@ -1,6 +1,6 @@
 ﻿/** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="run_insert.h">
-*   Copyright (c) 2023 Aspose.Words for Cloud
+*   Copyright (c) 2024 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -25,6 +25,7 @@
 
 #pragma once
 #include "model_base.h"
+#include "position.h"
 #include "run_base.h"
 
 namespace aspose::words::cloud::models {
@@ -43,8 +44,19 @@ namespace aspose::words::cloud::models {
 
         void abstractRunBase() override {}
 
+        /// <summary>
+        /// Gets or sets the position of the node that will be used to determine the placement of a new run.
+        /// </summary>
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< aspose::words::cloud::models::Position > getPosition() const;
+
+        /// <summary>
+        /// Gets or sets the position of the node that will be used to determine the placement of a new run.
+        /// </summary>
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setPosition(std::shared_ptr< aspose::words::cloud::models::Position > value);
+
 
     protected:
+        std::shared_ptr< aspose::words::cloud::models::Position > m_Position;
     };
 }
 

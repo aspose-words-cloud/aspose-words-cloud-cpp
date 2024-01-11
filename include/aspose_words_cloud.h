@@ -1,6 +1,6 @@
 ﻿/** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="aspose_words_cloud.h">
-*   Copyright (c) 2023 Aspose.Words for Cloud
+*   Copyright (c) 2024 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -171,7 +171,6 @@
 #include "./aspose_words_cloud/models/metafile_rendering_options_data.h"
 #include "./aspose_words_cloud/models/mhtml_save_options_data.h"
 #include "./aspose_words_cloud/models/modification_operation_result.h"
-#include "./aspose_words_cloud/models/new_document_position.h"
 #include "./aspose_words_cloud/models/node_link.h"
 #include "./aspose_words_cloud/models/odt_save_options_data.h"
 #include "./aspose_words_cloud/models/office_math_link.h"
@@ -204,6 +203,10 @@
 #include "./aspose_words_cloud/models/pdf_permissions.h"
 #include "./aspose_words_cloud/models/pdf_save_options_data.h"
 #include "./aspose_words_cloud/models/png_save_options_data.h"
+#include "./aspose_words_cloud/models/position.h"
+#include "./aspose_words_cloud/models/position_after_node.h"
+#include "./aspose_words_cloud/models/position_before_node.h"
+#include "./aspose_words_cloud/models/position_inside_node.h"
 #include "./aspose_words_cloud/models/preferred_width.h"
 #include "./aspose_words_cloud/models/protection_data.h"
 #include "./aspose_words_cloud/models/protection_data_response.h"

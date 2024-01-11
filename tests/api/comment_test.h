@@ -1,6 +1,6 @@
 ﻿/** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="comment_test.h">
-*   Copyright (c) 2023 Aspose.Words for Cloud
+*   Copyright (c) 2024 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -131,10 +131,10 @@ TEST_F(CommentTests, TestInsertComment) {
         remoteDataFolder + L"/" + remoteFileName
     );
 
-    auto requestCommentRangeStart = std::make_shared< aspose::words::cloud::models::NewDocumentPosition >();
+    auto requestCommentRangeStart = std::make_shared< aspose::words::cloud::models::PositionInsideNode >();
     requestCommentRangeStart->setNodeId(std::make_shared< std::wstring >(L"0.3.0.3"));
     requestCommentRangeStart->setOffset(std::make_shared< int32_t >(0));
-    auto requestCommentRangeEnd = std::make_shared< aspose::words::cloud::models::NewDocumentPosition >();
+    auto requestCommentRangeEnd = std::make_shared< aspose::words::cloud::models::PositionInsideNode >();
     requestCommentRangeEnd->setNodeId(std::make_shared< std::wstring >(L"0.3.0.3"));
     requestCommentRangeEnd->setOffset(std::make_shared< int32_t >(0));
     auto requestComment = std::make_shared< aspose::words::cloud::models::CommentInsert >();
@@ -169,10 +169,10 @@ TEST_F(CommentTests, TestInsertComment) {
 /// </summary>
 TEST_F(CommentTests, TestInsertCommentOnline) {
     auto requestDocument = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(localFile)), std::istream::binary));
-    auto requestCommentRangeStart = std::make_shared< aspose::words::cloud::models::NewDocumentPosition >();
+    auto requestCommentRangeStart = std::make_shared< aspose::words::cloud::models::PositionInsideNode >();
     requestCommentRangeStart->setNodeId(std::make_shared< std::wstring >(L"0.3.0.3"));
     requestCommentRangeStart->setOffset(std::make_shared< int32_t >(0));
-    auto requestCommentRangeEnd = std::make_shared< aspose::words::cloud::models::NewDocumentPosition >();
+    auto requestCommentRangeEnd = std::make_shared< aspose::words::cloud::models::PositionInsideNode >();
     requestCommentRangeEnd->setNodeId(std::make_shared< std::wstring >(L"0.3.0.3"));
     requestCommentRangeEnd->setOffset(std::make_shared< int32_t >(0));
     auto requestComment = std::make_shared< aspose::words::cloud::models::CommentInsert >();
@@ -206,10 +206,10 @@ TEST_F(CommentTests, TestUpdateComment) {
         remoteDataFolder + L"/" + remoteFileName
     );
 
-    auto requestCommentRangeStart = std::make_shared< aspose::words::cloud::models::NewDocumentPosition >();
+    auto requestCommentRangeStart = std::make_shared< aspose::words::cloud::models::PositionInsideNode >();
     requestCommentRangeStart->setNodeId(std::make_shared< std::wstring >(L"0.3.0"));
     requestCommentRangeStart->setOffset(std::make_shared< int32_t >(0));
-    auto requestCommentRangeEnd = std::make_shared< aspose::words::cloud::models::NewDocumentPosition >();
+    auto requestCommentRangeEnd = std::make_shared< aspose::words::cloud::models::PositionInsideNode >();
     requestCommentRangeEnd->setNodeId(std::make_shared< std::wstring >(L"0.3.0"));
     requestCommentRangeEnd->setOffset(std::make_shared< int32_t >(0));
     auto requestComment = std::make_shared< aspose::words::cloud::models::CommentUpdate >();
@@ -245,10 +245,10 @@ TEST_F(CommentTests, TestUpdateComment) {
 /// </summary>
 TEST_F(CommentTests, TestUpdateCommentOnline) {
     auto requestDocument = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(localFile)), std::istream::binary));
-    auto requestCommentRangeStart = std::make_shared< aspose::words::cloud::models::NewDocumentPosition >();
+    auto requestCommentRangeStart = std::make_shared< aspose::words::cloud::models::PositionInsideNode >();
     requestCommentRangeStart->setNodeId(std::make_shared< std::wstring >(L"0.3.0"));
     requestCommentRangeStart->setOffset(std::make_shared< int32_t >(0));
-    auto requestCommentRangeEnd = std::make_shared< aspose::words::cloud::models::NewDocumentPosition >();
+    auto requestCommentRangeEnd = std::make_shared< aspose::words::cloud::models::PositionInsideNode >();
     requestCommentRangeEnd->setNodeId(std::make_shared< std::wstring >(L"0.3.0"));
     requestCommentRangeEnd->setOffset(std::make_shared< int32_t >(0));
     auto requestComment = std::make_shared< aspose::words::cloud::models::CommentUpdate >();

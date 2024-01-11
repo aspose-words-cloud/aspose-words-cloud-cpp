@@ -1,6 +1,6 @@
 ﻿/** --------------------------------------------------------------------------------------------------------------------
-* <copyright company="Aspose" file="new_document_position.h">
-*   Copyright (c) 2023 Aspose.Words for Cloud
+* <copyright company="Aspose" file="position_after_node.h">
+*   Copyright (c) 2024 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -25,47 +25,33 @@
 
 #pragma once
 #include "model_base.h"
+#include "position.h"
 
 namespace aspose::words::cloud::models {
     /// <summary>
-    /// DTO container with a new position in the document tree.
+    /// Describes the location of the node after specified node.
     /// </summary>
-    class NewDocumentPosition : public ModelBase
+    class PositionAfterNode : public Position
     {
     public:
 
-        ASPOSE_WORDS_CLOUD_EXPORT virtual ~NewDocumentPosition() = default;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual ~PositionAfterNode() = default;
         ASPOSE_WORDS_CLOUD_EXPORT virtual void toJson(void* jsonIfc) const override;
         ASPOSE_WORDS_CLOUD_EXPORT virtual void fromJson(const void* jsonIfc) override;
         ASPOSE_WORDS_CLOUD_EXPORT virtual void getFileReferences(std::vector< FileReference* >& result) override;
         ASPOSE_WORDS_CLOUD_EXPORT virtual void validate() override;
 
+        void abstractPosition() override {}
 
         /// <summary>
-        /// Gets or sets the node id.
+        /// Gets position type.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< std::wstring > getNodeId() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< std::wstring > getType() const override;
 
-        /// <summary>
-        /// Gets or sets the node id.
-        /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT virtual void setNodeId(std::shared_ptr< std::wstring > value);
-
-
-        /// <summary>
-        /// Gets or sets the offset in the node.
-        /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< int32_t > getOffset() const;
-
-        /// <summary>
-        /// Gets or sets the offset in the node.
-        /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT virtual void setOffset(std::shared_ptr< int32_t > value);
 
 
     protected:
-        std::shared_ptr< std::wstring > m_NodeId;
-        std::shared_ptr< int32_t > m_Offset;
+        std::shared_ptr< std::wstring > m_Type = std::make_shared<std::wstring>(L"After");
     };
 }
 

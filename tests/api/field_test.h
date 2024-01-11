@@ -1,6 +1,6 @@
 ﻿/** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="field_test.h">
-*   Copyright (c) 2023 Aspose.Words for Cloud
+*   Copyright (c) 2024 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -209,7 +209,6 @@ TEST_F(FieldTests, TestInsertField) {
         nullptr,
         nullptr,
         nullptr,
-        nullptr,
         nullptr
     ));
 
@@ -230,7 +229,6 @@ TEST_F(FieldTests, TestInsertFieldOnline) {
         requestDocument,
         requestField,
         std::make_shared< std::wstring >(L"sections/0/paragraphs/0"),
-        nullptr,
         nullptr,
         nullptr,
         nullptr,
@@ -261,7 +259,6 @@ TEST_F(FieldTests, TestInsertFieldWithoutNodePath) {
         requestField,
         nullptr,
         std::make_shared< std::wstring >(remoteDataFolder),
-        nullptr,
         nullptr,
         nullptr,
         nullptr,

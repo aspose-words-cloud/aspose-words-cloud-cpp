@@ -1,6 +1,6 @@
 ﻿/** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="words_api.h">
-*   Copyright (c) 2023 Aspose.Words for Cloud
+*   Copyright (c) 2024 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -847,7 +847,6 @@ namespace aspose::words::cloud::api {
         /// <param name="password">Password of protected Word document. Use the parameter to pass a password via SDK. SDK encrypts it automatically. We don't recommend to use the parameter to pass a plain password for direct call of API.</param>
         /// <param name="encryptedPassword">Password of protected Word document. Use the parameter to pass an encrypted password for direct calls of API. See SDK code for encyption details.</param>
         /// <param name="destFileName">Result path of the document after the operation. If this parameter is omitted then result of the operation will be saved as the source document.</param>
-        /// <param name="encryptedPassword2">encrypted password for the second document.</param>
         ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::DocumentResponse > compareDocument(std::shared_ptr<aspose::words::cloud::requests::CompareDocumentRequest> request);
 
         /// <summary>
@@ -859,7 +858,6 @@ namespace aspose::words::cloud::api {
         /// <param name="password">Password of protected Word document. Use the parameter to pass a password via SDK. SDK encrypts it automatically. We don't recommend to use the parameter to pass a plain password for direct call of API.</param>
         /// <param name="encryptedPassword">Password of protected Word document. Use the parameter to pass an encrypted password for direct calls of API. See SDK code for encyption details.</param>
         /// <param name="destFileName">Result path of the document after the operation. If this parameter is omitted then result of the operation will be saved as the source document.</param>
-        /// <param name="encryptedPassword2">encrypted password for the second document.</param>
         ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr<aspose::words::cloud::responses::CompareDocumentOnlineResponse> compareDocumentOnline(std::shared_ptr<aspose::words::cloud::requests::CompareDocumentOnlineRequest> request);
 
         /// <summary>
@@ -3373,7 +3371,6 @@ namespace aspose::words::cloud::api {
         /// <param name="destFileName">Result path of the document after the operation. If this parameter is omitted then result of the operation will be saved as the source document.</param>
         /// <param name="revisionAuthor">Initials of the author to use for revisions.If you set this parameter and then make some changes to the document programmatically, save the document and later open the document in MS Word you will see these changes as revisions.</param>
         /// <param name="revisionDateTime">The date and time to use for revisions.</param>
-        /// <param name="insertBeforeNode">The index of the node. A new field will be inserted before the node with the specified node Id.</param>
         ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::FieldResponse > insertField(std::shared_ptr<aspose::words::cloud::requests::InsertFieldRequest> request);
 
         /// <summary>
@@ -3388,7 +3385,6 @@ namespace aspose::words::cloud::api {
         /// <param name="destFileName">Result path of the document after the operation. If this parameter is omitted then result of the operation will be saved as the source document.</param>
         /// <param name="revisionAuthor">Initials of the author to use for revisions.If you set this parameter and then make some changes to the document programmatically, save the document and later open the document in MS Word you will see these changes as revisions.</param>
         /// <param name="revisionDateTime">The date and time to use for revisions.</param>
-        /// <param name="insertBeforeNode">The index of the node. A new field will be inserted before the node with the specified node Id.</param>
         ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr<aspose::words::cloud::responses::InsertFieldOnlineResponse> insertFieldOnline(std::shared_ptr<aspose::words::cloud::requests::InsertFieldOnlineRequest> request);
 
         /// <summary>
@@ -3581,7 +3577,6 @@ namespace aspose::words::cloud::api {
         /// <param name="destFileName">Result path of the document after the operation. If this parameter is omitted then result of the operation will be saved as the source document.</param>
         /// <param name="revisionAuthor">Initials of the author to use for revisions.If you set this parameter and then make some changes to the document programmatically, save the document and later open the document in MS Word you will see these changes as revisions.</param>
         /// <param name="revisionDateTime">The date and time to use for revisions.</param>
-        /// <param name="insertBeforeNode">The index of the node. A new paragraph will be inserted before the node with the specified index.</param>
         ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::ParagraphResponse > insertParagraph(std::shared_ptr<aspose::words::cloud::requests::InsertParagraphRequest> request);
 
         /// <summary>
@@ -3596,15 +3591,14 @@ namespace aspose::words::cloud::api {
         /// <param name="destFileName">Result path of the document after the operation. If this parameter is omitted then result of the operation will be saved as the source document.</param>
         /// <param name="revisionAuthor">Initials of the author to use for revisions.If you set this parameter and then make some changes to the document programmatically, save the document and later open the document in MS Word you will see these changes as revisions.</param>
         /// <param name="revisionDateTime">The date and time to use for revisions.</param>
-        /// <param name="insertBeforeNode">The index of the node. A new paragraph will be inserted before the node with the specified index.</param>
         ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr<aspose::words::cloud::responses::InsertParagraphOnlineResponse> insertParagraphOnline(std::shared_ptr<aspose::words::cloud::requests::InsertParagraphOnlineRequest> request);
 
         /// <summary>
         /// Inserts a new Run object to the paragraph.
         /// </summary>
         /// <param name="name">The filename of the input document.</param>
-        /// <param name="paragraphPath">The path to the paragraph in the document tree.</param>
         /// <param name="run">Run data.</param>
+        /// <param name="paragraphPath">The path to the paragraph in the document tree.</param>
         /// <param name="folder">Original document folder.</param>
         /// <param name="storage">Original document storage.</param>
         /// <param name="loadEncoding">Encoding that will be used to load an HTML (or TXT) document if the encoding is not specified in HTML.</param>
@@ -3613,22 +3607,20 @@ namespace aspose::words::cloud::api {
         /// <param name="destFileName">Result path of the document after the operation. If this parameter is omitted then result of the operation will be saved as the source document.</param>
         /// <param name="revisionAuthor">Initials of the author to use for revisions.If you set this parameter and then make some changes to the document programmatically, save the document and later open the document in MS Word you will see these changes as revisions.</param>
         /// <param name="revisionDateTime">The date and time to use for revisions.</param>
-        /// <param name="insertBeforeNode">The index of the node. A new Run object will be inserted before the node with the specified node Id.</param>
         ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::RunResponse > insertRun(std::shared_ptr<aspose::words::cloud::requests::InsertRunRequest> request);
 
         /// <summary>
         /// Inserts a new Run object to the paragraph.
         /// </summary>
         /// <param name="document">The document.</param>
-        /// <param name="paragraphPath">The path to the paragraph in the document tree.</param>
         /// <param name="run">Run data.</param>
+        /// <param name="paragraphPath">The path to the paragraph in the document tree.</param>
         /// <param name="loadEncoding">Encoding that will be used to load an HTML (or TXT) document if the encoding is not specified in HTML.</param>
         /// <param name="password">Password of protected Word document. Use the parameter to pass a password via SDK. SDK encrypts it automatically. We don't recommend to use the parameter to pass a plain password for direct call of API.</param>
         /// <param name="encryptedPassword">Password of protected Word document. Use the parameter to pass an encrypted password for direct calls of API. See SDK code for encyption details.</param>
         /// <param name="destFileName">Result path of the document after the operation. If this parameter is omitted then result of the operation will be saved as the source document.</param>
         /// <param name="revisionAuthor">Initials of the author to use for revisions.If you set this parameter and then make some changes to the document programmatically, save the document and later open the document in MS Word you will see these changes as revisions.</param>
         /// <param name="revisionDateTime">The date and time to use for revisions.</param>
-        /// <param name="insertBeforeNode">The index of the node. A new Run object will be inserted before the node with the specified node Id.</param>
         ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr<aspose::words::cloud::responses::InsertRunOnlineResponse> insertRunOnline(std::shared_ptr<aspose::words::cloud::requests::InsertRunOnlineRequest> request);
 
         /// <summary>
@@ -3737,8 +3729,8 @@ namespace aspose::words::cloud::api {
         /// Inserts a new cell to the table row.
         /// </summary>
         /// <param name="name">The filename of the input document.</param>
-        /// <param name="tableRowPath">The path to the table row in the document tree.</param>
         /// <param name="cell">Table cell parameters.</param>
+        /// <param name="tableRowPath">The path to the table row in the document tree.</param>
         /// <param name="folder">Original document folder.</param>
         /// <param name="storage">Original document storage.</param>
         /// <param name="loadEncoding">Encoding that will be used to load an HTML (or TXT) document if the encoding is not specified in HTML.</param>
@@ -3753,8 +3745,8 @@ namespace aspose::words::cloud::api {
         /// Inserts a new cell to the table row.
         /// </summary>
         /// <param name="document">The document.</param>
-        /// <param name="tableRowPath">The path to the table row in the document tree.</param>
         /// <param name="cell">Table cell parameters.</param>
+        /// <param name="tableRowPath">The path to the table row in the document tree.</param>
         /// <param name="loadEncoding">Encoding that will be used to load an HTML (or TXT) document if the encoding is not specified in HTML.</param>
         /// <param name="password">Password of protected Word document. Use the parameter to pass a password via SDK. SDK encrypts it automatically. We don't recommend to use the parameter to pass a plain password for direct call of API.</param>
         /// <param name="encryptedPassword">Password of protected Word document. Use the parameter to pass an encrypted password for direct calls of API. See SDK code for encyption details.</param>
@@ -3781,8 +3773,8 @@ namespace aspose::words::cloud::api {
         /// Inserts a new row to the table.
         /// </summary>
         /// <param name="name">The filename of the input document.</param>
-        /// <param name="tablePath">The path to the table in the document tree.</param>
         /// <param name="row">Table row parameters.</param>
+        /// <param name="nodePath">The path to the table in the document tree.</param>
         /// <param name="folder">Original document folder.</param>
         /// <param name="storage">Original document storage.</param>
         /// <param name="loadEncoding">Encoding that will be used to load an HTML (or TXT) document if the encoding is not specified in HTML.</param>
@@ -3797,8 +3789,8 @@ namespace aspose::words::cloud::api {
         /// Inserts a new row to the table.
         /// </summary>
         /// <param name="document">The document.</param>
-        /// <param name="tablePath">The path to the table in the document tree.</param>
         /// <param name="row">Table row parameters.</param>
+        /// <param name="nodePath">The path to the table in the document tree.</param>
         /// <param name="loadEncoding">Encoding that will be used to load an HTML (or TXT) document if the encoding is not specified in HTML.</param>
         /// <param name="password">Password of protected Word document. Use the parameter to pass a password via SDK. SDK encrypts it automatically. We don't recommend to use the parameter to pass a plain password for direct call of API.</param>
         /// <param name="encryptedPassword">Password of protected Word document. Use the parameter to pass an encrypted password for direct calls of API. See SDK code for encyption details.</param>

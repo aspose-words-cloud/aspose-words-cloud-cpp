@@ -1,6 +1,6 @@
 ﻿/** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="watermark_text.h">
-*   Copyright (c) 2023 Aspose.Words for Cloud
+*   Copyright (c) 2024 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -30,8 +30,7 @@ namespace aspose::words::cloud::models {
     /// <summary>
     /// Class for insert watermark text request building.
     /// </summary>
-    [[deprecated("This model will be removed in the future.")]]
-    class WatermarkText : public ModelBase
+    class [[deprecated("This model will be removed in the future.")]] WatermarkText : public ModelBase
     {
     public:
 

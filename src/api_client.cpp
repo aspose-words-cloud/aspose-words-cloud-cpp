@@ -1,6 +1,6 @@
 ﻿/** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="api_client.cpp">
-*   Copyright (c) 2023 Aspose.Words for Cloud
+*   Copyright (c) 2024 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -168,7 +168,7 @@ namespace aspose::words::cloud {
 
         ::httplib::Headers headers;
         headers.emplace("Authorization", m_AccessToken);
-        headers.emplace("x-aspose-client-version", "23.12");
+        headers.emplace("x-aspose-client-version", "24.1");
         headers.emplace("x-aspose-client", "C++ SDK");
 
         for (auto& pair : httpRequest->getHeaders()) {
@@ -315,7 +315,7 @@ namespace aspose::words::cloud {
         {
             auto request = std::make_shared<aspose::words::cloud::requests::GetPublicKeyRequest>();
             auto response = std::make_shared<aspose::words::cloud::responses::GetPublicKeyResponse>();
-            this->call(request->createHttpRequest(), *response);
+            this->call(request->createHttpRequest(this), *response);
             if (response->getStatusCode() != 200) {
                 throw aspose::words::cloud::ApiException(response->getStatusCode(), response->getErrorMessage());
             }
