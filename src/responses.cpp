@@ -3966,6 +3966,27 @@ namespace aspose::words::cloud::responses {
     }
 
     /*
+     * MergeWithNext request implementation
+     */
+
+    void MergeWithNextResponse::deserialize(const std::string& contentType, const std::string_view& response)
+    {
+    }
+
+    /*
+     * MergeWithNextOnline request implementation
+     */
+    std::shared_ptr< std::map<std::wstring, std::shared_ptr<std::istream>> > MergeWithNextOnlineResponse::getDocument() const
+    {
+        return m_Document;
+    }
+
+    void MergeWithNextOnlineResponse::deserialize(const std::string& contentType, const std::string_view& response)
+    {
+        m_Document = parseFilesCollection(std::make_tuple("", contentType, response));
+    }
+
+    /*
      * MoveFile request implementation
      */
 

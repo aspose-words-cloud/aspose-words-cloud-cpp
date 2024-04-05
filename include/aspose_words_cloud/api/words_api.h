@@ -537,6 +537,10 @@
 #include "aspose_words_cloud/responses/link_header_footers_to_previous_response.h"
 #include "aspose_words_cloud/requests/load_web_document_request.h"
 #include "aspose_words_cloud/responses/load_web_document_response.h"
+#include "aspose_words_cloud/requests/merge_with_next_request.h"
+#include "aspose_words_cloud/responses/merge_with_next_response.h"
+#include "aspose_words_cloud/requests/merge_with_next_online_request.h"
+#include "aspose_words_cloud/responses/merge_with_next_online_response.h"
 #include "aspose_words_cloud/requests/move_file_request.h"
 #include "aspose_words_cloud/responses/move_file_response.h"
 #include "aspose_words_cloud/requests/move_folder_request.h"
@@ -3913,6 +3917,34 @@ namespace aspose::words::cloud::api {
         /// <param name="data">The properties of data downloading.</param>
         /// <param name="storage">Original document storage.</param>
         ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::SaveResponse > loadWebDocument(std::shared_ptr<aspose::words::cloud::requests::LoadWebDocumentRequest> request);
+
+        /// <summary>
+        /// Merge the section with the next one.
+        /// </summary>
+        /// <param name="name">The filename of the input document.</param>
+        /// <param name="sectionIndex">The index of the section.</param>
+        /// <param name="folder">Original document folder.</param>
+        /// <param name="storage">Original document storage.</param>
+        /// <param name="loadEncoding">Encoding that will be used to load an HTML (or TXT) document if the encoding is not specified in HTML.</param>
+        /// <param name="password">Password of protected Word document. Use the parameter to pass a password via SDK. SDK encrypts it automatically. We don't recommend to use the parameter to pass a plain password for direct call of API.</param>
+        /// <param name="encryptedPassword">Password of protected Word document. Use the parameter to pass an encrypted password for direct calls of API. See SDK code for encyption details.</param>
+        /// <param name="destFileName">Result path of the document after the operation. If this parameter is omitted then result of the operation will be saved as the source document.</param>
+        /// <param name="revisionAuthor">Initials of the author to use for revisions.If you set this parameter and then make some changes to the document programmatically, save the document and later open the document in MS Word you will see these changes as revisions.</param>
+        /// <param name="revisionDateTime">The date and time to use for revisions.</param>
+        ASPOSE_WORDS_CLOUD_EXPORT void mergeWithNext(std::shared_ptr<aspose::words::cloud::requests::MergeWithNextRequest> request);
+
+        /// <summary>
+        /// Merge the section with the next one.
+        /// </summary>
+        /// <param name="document">The document.</param>
+        /// <param name="sectionIndex">The index of the section.</param>
+        /// <param name="loadEncoding">Encoding that will be used to load an HTML (or TXT) document if the encoding is not specified in HTML.</param>
+        /// <param name="password">Password of protected Word document. Use the parameter to pass a password via SDK. SDK encrypts it automatically. We don't recommend to use the parameter to pass a plain password for direct call of API.</param>
+        /// <param name="encryptedPassword">Password of protected Word document. Use the parameter to pass an encrypted password for direct calls of API. See SDK code for encyption details.</param>
+        /// <param name="destFileName">Result path of the document after the operation. If this parameter is omitted then result of the operation will be saved as the source document.</param>
+        /// <param name="revisionAuthor">Initials of the author to use for revisions.If you set this parameter and then make some changes to the document programmatically, save the document and later open the document in MS Word you will see these changes as revisions.</param>
+        /// <param name="revisionDateTime">The date and time to use for revisions.</param>
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::map<std::wstring, std::shared_ptr<std::istream>> > mergeWithNextOnline(std::shared_ptr<aspose::words::cloud::requests::MergeWithNextOnlineRequest> request);
 
         /// <summary>
         /// Move file.

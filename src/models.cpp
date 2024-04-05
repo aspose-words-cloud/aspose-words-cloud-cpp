@@ -23948,8 +23948,8 @@ namespace aspose::words::cloud::models {
      */
     inline std::string structuredDocumentTagBaseAppearanceToString(aspose::words::cloud::models::StructuredDocumentTagBase::Appearance value)
     {
-        if (value == aspose::words::cloud::models::StructuredDocumentTagBase::Appearance::DEFAULT) return "Default";
         if (value == aspose::words::cloud::models::StructuredDocumentTagBase::Appearance::BOUNDING_BOX) return "BoundingBox";
+        if (value == aspose::words::cloud::models::StructuredDocumentTagBase::Appearance::DEFAULT) return "Default";
         if (value == aspose::words::cloud::models::StructuredDocumentTagBase::Appearance::TAGS) return "Tags";
         if (value == aspose::words::cloud::models::StructuredDocumentTagBase::Appearance::HIDDEN) return "Hidden";
         throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
@@ -23957,8 +23957,8 @@ namespace aspose::words::cloud::models {
 
     inline aspose::words::cloud::models::StructuredDocumentTagBase::Appearance structuredDocumentTagBaseAppearanceFromString(const std::string& value)
     {
-        if (value == "Default") return aspose::words::cloud::models::StructuredDocumentTagBase::Appearance::DEFAULT;
         if (value == "BoundingBox") return aspose::words::cloud::models::StructuredDocumentTagBase::Appearance::BOUNDING_BOX;
+        if (value == "Default") return aspose::words::cloud::models::StructuredDocumentTagBase::Appearance::DEFAULT;
         if (value == "Tags") return aspose::words::cloud::models::StructuredDocumentTagBase::Appearance::TAGS;
         if (value == "Hidden") return aspose::words::cloud::models::StructuredDocumentTagBase::Appearance::HIDDEN;
         throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
@@ -28191,16 +28191,16 @@ namespace aspose::words::cloud::models {
 
     inline std::string tablePropertiesTextWrappingToString(aspose::words::cloud::models::TableProperties::TextWrapping value)
     {
-        if (value == aspose::words::cloud::models::TableProperties::TextWrapping::DEFAULT) return "Default";
         if (value == aspose::words::cloud::models::TableProperties::TextWrapping::NONE) return "None";
+        if (value == aspose::words::cloud::models::TableProperties::TextWrapping::DEFAULT) return "Default";
         if (value == aspose::words::cloud::models::TableProperties::TextWrapping::AROUND) return "Around";
         throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
     }
 
     inline aspose::words::cloud::models::TableProperties::TextWrapping tablePropertiesTextWrappingFromString(const std::string& value)
     {
-        if (value == "Default") return aspose::words::cloud::models::TableProperties::TextWrapping::DEFAULT;
         if (value == "None") return aspose::words::cloud::models::TableProperties::TextWrapping::NONE;
+        if (value == "Default") return aspose::words::cloud::models::TableProperties::TextWrapping::DEFAULT;
         if (value == "Around") return aspose::words::cloud::models::TableProperties::TextWrapping::AROUND;
         throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
     }

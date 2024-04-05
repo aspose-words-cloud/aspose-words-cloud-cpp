@@ -452,8 +452,8 @@ namespace aspose::words::cloud::models {
         /// </summary>
         enum class TextWrapping
         { 
-            DEFAULT,
             NONE,
+            DEFAULT,
             AROUND
         };
 
