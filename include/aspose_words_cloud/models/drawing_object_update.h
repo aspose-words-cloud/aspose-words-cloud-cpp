@@ -164,6 +164,17 @@ namespace aspose::words::cloud::models {
         ASPOSE_WORDS_CLOUD_EXPORT virtual void setWrapType(std::shared_ptr< aspose::words::cloud::models::DrawingObjectUpdate::WrapType > value);
 
 
+        /// <summary>
+        /// Gets or sets a value indicating whether AspectRatioLocked option on or off.
+        /// </summary>
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< bool > getAspectRatioLocked() const;
+
+        /// <summary>
+        /// Gets or sets a value indicating whether AspectRatioLocked option on or off.
+        /// </summary>
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setAspectRatioLocked(std::shared_ptr< bool > value);
+
+
     protected:
         std::shared_ptr< aspose::words::cloud::models::DrawingObjectUpdate::RelativeHorizontalPosition > m_RelativeHorizontalPosition;
         std::shared_ptr< double > m_Left;
@@ -172,6 +183,7 @@ namespace aspose::words::cloud::models {
         std::shared_ptr< double > m_Width;
         std::shared_ptr< double > m_Height;
         std::shared_ptr< aspose::words::cloud::models::DrawingObjectUpdate::WrapType > m_WrapType;
+        std::shared_ptr< bool > m_AspectRatioLocked;
     };
 }
 

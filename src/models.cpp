@@ -5242,6 +5242,9 @@ namespace aspose::words::cloud::models {
         if (this->m_WrapType) {
             json["WrapType"] = drawingObjectInsertWrapTypeToString(*(this->m_WrapType));
         }
+        if (this->m_AspectRatioLocked) {
+            json["AspectRatioLocked"] = *(this->m_AspectRatioLocked);
+        }
     }
 
     void DrawingObjectInsert::fromJson(const void* jsonIfc)
@@ -5283,6 +5286,11 @@ namespace aspose::words::cloud::models {
         if (json.contains("WrapType") && !json["WrapType"].is_null()) {
             this->m_WrapType = std::make_shared< aspose::words::cloud::models::DrawingObjectInsert::WrapType >(
                 drawingObjectInsertWrapTypeFromString(json["WrapType"].get< std::string >())
+            );
+        }
+        if (json.contains("AspectRatioLocked") && !json["AspectRatioLocked"].is_null()) {
+            this->m_AspectRatioLocked = std::make_shared< bool >(
+                json["AspectRatioLocked"].get< bool >()
             );
         }
     }
@@ -5333,6 +5341,7 @@ namespace aspose::words::cloud::models {
         {
             this->m_Position->validate();
         }
+
 
 
 
@@ -5428,6 +5437,17 @@ namespace aspose::words::cloud::models {
     void DrawingObjectInsert::setWrapType(std::shared_ptr< aspose::words::cloud::models::DrawingObjectInsert::WrapType > value)
     {
         this->m_WrapType = value;
+    }
+
+
+    std::shared_ptr< bool > DrawingObjectInsert::getAspectRatioLocked() const
+    {
+        return this->m_AspectRatioLocked;
+    }
+
+    void DrawingObjectInsert::setAspectRatioLocked(std::shared_ptr< bool > value)
+    {
+        this->m_AspectRatioLocked = value;
     }
 
 
@@ -5659,6 +5679,9 @@ namespace aspose::words::cloud::models {
         if (this->m_WrapType) {
             json["WrapType"] = drawingObjectUpdateWrapTypeToString(*(this->m_WrapType));
         }
+        if (this->m_AspectRatioLocked) {
+            json["AspectRatioLocked"] = *(this->m_AspectRatioLocked);
+        }
     }
 
     void DrawingObjectUpdate::fromJson(const void* jsonIfc)
@@ -5697,6 +5720,11 @@ namespace aspose::words::cloud::models {
         if (json.contains("WrapType") && !json["WrapType"].is_null()) {
             this->m_WrapType = std::make_shared< aspose::words::cloud::models::DrawingObjectUpdate::WrapType >(
                 drawingObjectUpdateWrapTypeFromString(json["WrapType"].get< std::string >())
+            );
+        }
+        if (json.contains("AspectRatioLocked") && !json["AspectRatioLocked"].is_null()) {
+            this->m_AspectRatioLocked = std::make_shared< bool >(
+                json["AspectRatioLocked"].get< bool >()
             );
         }
     }
@@ -5783,6 +5811,17 @@ namespace aspose::words::cloud::models {
     void DrawingObjectUpdate::setWrapType(std::shared_ptr< aspose::words::cloud::models::DrawingObjectUpdate::WrapType > value)
     {
         this->m_WrapType = value;
+    }
+
+
+    std::shared_ptr< bool > DrawingObjectUpdate::getAspectRatioLocked() const
+    {
+        return this->m_AspectRatioLocked;
+    }
+
+    void DrawingObjectUpdate::setAspectRatioLocked(std::shared_ptr< bool > value)
+    {
+        this->m_AspectRatioLocked = value;
     }
 
 
