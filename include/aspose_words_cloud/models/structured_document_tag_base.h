@@ -41,8 +41,8 @@ namespace aspose::words::cloud::models {
         /// </summary>
         enum class Appearance
         { 
-            DEFAULT,
             BOUNDING_BOX,
+            DEFAULT,
             TAGS,
             HIDDEN
         };

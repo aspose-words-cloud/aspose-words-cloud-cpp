@@ -2761,6 +2761,26 @@ namespace aspose::words::cloud::api {
         return response->getModel();
     }
 
+    void WordsApi::mergeWithNext(std::shared_ptr<aspose::words::cloud::requests::MergeWithNextRequest> request)
+    {
+        auto response = std::make_shared< aspose::words::cloud::responses::MergeWithNextResponse >();
+        m_ApiClient->call( request->createHttpRequest(m_ApiClient.get()), *response);
+        if (response->getStatusCode() != 200) {
+            throw aspose::words::cloud::ApiException(response->getStatusCode(), response->getErrorMessage());
+        }
+    }
+
+    std::shared_ptr< std::map<std::wstring, std::shared_ptr<std::istream>> > WordsApi::mergeWithNextOnline(std::shared_ptr<aspose::words::cloud::requests::MergeWithNextOnlineRequest> request)
+    {
+        auto response = std::make_shared< aspose::words::cloud::responses::MergeWithNextOnlineResponse >();
+        m_ApiClient->call( request->createHttpRequest(m_ApiClient.get()), *response);
+        if (response->getStatusCode() != 200) {
+            throw aspose::words::cloud::ApiException(response->getStatusCode(), response->getErrorMessage());
+        }
+
+        return response->getDocument();
+    }
+
     void WordsApi::moveFile(std::shared_ptr<aspose::words::cloud::requests::MoveFileRequest> request)
     {
         auto response = std::make_shared< aspose::words::cloud::responses::MoveFileResponse >();

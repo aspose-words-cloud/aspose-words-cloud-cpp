@@ -169,6 +169,52 @@ TEST_F(SectionTests, TestDeleteSectionOnline) {
 }
 
 /// <summary>
+/// Test for merge a section with the next one.
+/// </summary>
+TEST_F(SectionTests, TestMergeWithNext) {
+    std::wstring remoteFileName = L"TestMergeWithNext.docx";
+
+    uploadFileToStorage(
+        localTestDataFolder + L"/" + L"DocumentElements/Sections/Source.docx",
+        remoteDataFolder + L"/" + remoteFileName
+    );
+
+    std::shared_ptr<requests::MergeWithNextRequest> request(new requests::MergeWithNextRequest(
+        std::make_shared< std::wstring >(remoteFileName),
+        std::make_shared< int32_t >(0),
+        std::make_shared< std::wstring >(remoteDataFolder),
+        nullptr,
+        nullptr,
+        nullptr,
+        nullptr,
+        nullptr,
+        nullptr,
+        nullptr
+    ));
+
+getApi()->mergeWithNext(request);
+}
+
+/// <summary>
+/// Test for merge a section with the next one online.
+/// </summary>
+TEST_F(SectionTests, TestMergeWithNextOnline) {
+    auto requestDocument = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(L"DocumentElements/Sections/Source.docx")), std::istream::binary));
+    std::shared_ptr<requests::MergeWithNextOnlineRequest> request(new requests::MergeWithNextOnlineRequest(
+        requestDocument,
+        std::make_shared< int32_t >(0),
+        nullptr,
+        nullptr,
+        nullptr,
+        nullptr,
+        nullptr,
+        nullptr
+    ));
+
+    auto actual = getApi()->mergeWithNextOnline(request);
+}
+
+/// <summary>
 /// Test for insertion a section.
 /// </summary>
 TEST_F(SectionTests, TestInsertSection) {

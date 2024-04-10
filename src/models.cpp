@@ -5242,6 +5242,9 @@ namespace aspose::words::cloud::models {
         if (this->m_WrapType) {
             json["WrapType"] = drawingObjectInsertWrapTypeToString(*(this->m_WrapType));
         }
+        if (this->m_AspectRatioLocked) {
+            json["AspectRatioLocked"] = *(this->m_AspectRatioLocked);
+        }
     }
 
     void DrawingObjectInsert::fromJson(const void* jsonIfc)
@@ -5283,6 +5286,11 @@ namespace aspose::words::cloud::models {
         if (json.contains("WrapType") && !json["WrapType"].is_null()) {
             this->m_WrapType = std::make_shared< aspose::words::cloud::models::DrawingObjectInsert::WrapType >(
                 drawingObjectInsertWrapTypeFromString(json["WrapType"].get< std::string >())
+            );
+        }
+        if (json.contains("AspectRatioLocked") && !json["AspectRatioLocked"].is_null()) {
+            this->m_AspectRatioLocked = std::make_shared< bool >(
+                json["AspectRatioLocked"].get< bool >()
             );
         }
     }
@@ -5333,6 +5341,7 @@ namespace aspose::words::cloud::models {
         {
             this->m_Position->validate();
         }
+
 
 
 
@@ -5428,6 +5437,17 @@ namespace aspose::words::cloud::models {
     void DrawingObjectInsert::setWrapType(std::shared_ptr< aspose::words::cloud::models::DrawingObjectInsert::WrapType > value)
     {
         this->m_WrapType = value;
+    }
+
+
+    std::shared_ptr< bool > DrawingObjectInsert::getAspectRatioLocked() const
+    {
+        return this->m_AspectRatioLocked;
+    }
+
+    void DrawingObjectInsert::setAspectRatioLocked(std::shared_ptr< bool > value)
+    {
+        this->m_AspectRatioLocked = value;
     }
 
 
@@ -5659,6 +5679,9 @@ namespace aspose::words::cloud::models {
         if (this->m_WrapType) {
             json["WrapType"] = drawingObjectUpdateWrapTypeToString(*(this->m_WrapType));
         }
+        if (this->m_AspectRatioLocked) {
+            json["AspectRatioLocked"] = *(this->m_AspectRatioLocked);
+        }
     }
 
     void DrawingObjectUpdate::fromJson(const void* jsonIfc)
@@ -5697,6 +5720,11 @@ namespace aspose::words::cloud::models {
         if (json.contains("WrapType") && !json["WrapType"].is_null()) {
             this->m_WrapType = std::make_shared< aspose::words::cloud::models::DrawingObjectUpdate::WrapType >(
                 drawingObjectUpdateWrapTypeFromString(json["WrapType"].get< std::string >())
+            );
+        }
+        if (json.contains("AspectRatioLocked") && !json["AspectRatioLocked"].is_null()) {
+            this->m_AspectRatioLocked = std::make_shared< bool >(
+                json["AspectRatioLocked"].get< bool >()
             );
         }
     }
@@ -5783,6 +5811,17 @@ namespace aspose::words::cloud::models {
     void DrawingObjectUpdate::setWrapType(std::shared_ptr< aspose::words::cloud::models::DrawingObjectUpdate::WrapType > value)
     {
         this->m_WrapType = value;
+    }
+
+
+    std::shared_ptr< bool > DrawingObjectUpdate::getAspectRatioLocked() const
+    {
+        return this->m_AspectRatioLocked;
+    }
+
+    void DrawingObjectUpdate::setAspectRatioLocked(std::shared_ptr< bool > value)
+    {
+        this->m_AspectRatioLocked = value;
     }
 
 
@@ -23948,8 +23987,8 @@ namespace aspose::words::cloud::models {
      */
     inline std::string structuredDocumentTagBaseAppearanceToString(aspose::words::cloud::models::StructuredDocumentTagBase::Appearance value)
     {
-        if (value == aspose::words::cloud::models::StructuredDocumentTagBase::Appearance::DEFAULT) return "Default";
         if (value == aspose::words::cloud::models::StructuredDocumentTagBase::Appearance::BOUNDING_BOX) return "BoundingBox";
+        if (value == aspose::words::cloud::models::StructuredDocumentTagBase::Appearance::DEFAULT) return "Default";
         if (value == aspose::words::cloud::models::StructuredDocumentTagBase::Appearance::TAGS) return "Tags";
         if (value == aspose::words::cloud::models::StructuredDocumentTagBase::Appearance::HIDDEN) return "Hidden";
         throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
@@ -23957,8 +23996,8 @@ namespace aspose::words::cloud::models {
 
     inline aspose::words::cloud::models::StructuredDocumentTagBase::Appearance structuredDocumentTagBaseAppearanceFromString(const std::string& value)
     {
-        if (value == "Default") return aspose::words::cloud::models::StructuredDocumentTagBase::Appearance::DEFAULT;
         if (value == "BoundingBox") return aspose::words::cloud::models::StructuredDocumentTagBase::Appearance::BOUNDING_BOX;
+        if (value == "Default") return aspose::words::cloud::models::StructuredDocumentTagBase::Appearance::DEFAULT;
         if (value == "Tags") return aspose::words::cloud::models::StructuredDocumentTagBase::Appearance::TAGS;
         if (value == "Hidden") return aspose::words::cloud::models::StructuredDocumentTagBase::Appearance::HIDDEN;
         throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
@@ -28191,16 +28230,16 @@ namespace aspose::words::cloud::models {
 
     inline std::string tablePropertiesTextWrappingToString(aspose::words::cloud::models::TableProperties::TextWrapping value)
     {
-        if (value == aspose::words::cloud::models::TableProperties::TextWrapping::DEFAULT) return "Default";
         if (value == aspose::words::cloud::models::TableProperties::TextWrapping::NONE) return "None";
+        if (value == aspose::words::cloud::models::TableProperties::TextWrapping::DEFAULT) return "Default";
         if (value == aspose::words::cloud::models::TableProperties::TextWrapping::AROUND) return "Around";
         throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
     }
 
     inline aspose::words::cloud::models::TableProperties::TextWrapping tablePropertiesTextWrappingFromString(const std::string& value)
     {
-        if (value == "Default") return aspose::words::cloud::models::TableProperties::TextWrapping::DEFAULT;
         if (value == "None") return aspose::words::cloud::models::TableProperties::TextWrapping::NONE;
+        if (value == "Default") return aspose::words::cloud::models::TableProperties::TextWrapping::DEFAULT;
         if (value == "Around") return aspose::words::cloud::models::TableProperties::TextWrapping::AROUND;
         throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
     }
