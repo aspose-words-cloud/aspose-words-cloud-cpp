@@ -49,7 +49,7 @@ TEST_F(ExecuteMailMergeTests, TestExecuteMailMergeOnline) {
         requestTemplate,
         requestData,
         nullptr,
-        nullptr,
+        std::make_shared< bool >(true),
         nullptr,
         nullptr
     ));
@@ -79,7 +79,7 @@ TEST_F(ExecuteMailMergeTests, TestExecuteMailMerge) {
         nullptr,
         nullptr,
         nullptr,
-        std::make_shared< bool >(false),
+        std::make_shared< bool >(true),
         nullptr,
         nullptr,
         nullptr,

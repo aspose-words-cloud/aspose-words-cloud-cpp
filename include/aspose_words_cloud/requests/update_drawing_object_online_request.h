@@ -33,9 +33,10 @@ namespace aspose::words::cloud::requests {
         ASPOSE_WORDS_CLOUD_EXPORT UpdateDrawingObjectOnlineRequest(
             const std::shared_ptr< std::istream > document,
             const std::shared_ptr< aspose::words::cloud::models::DrawingObjectUpdate > drawingObject,
-            const std::shared_ptr< std::istream > imageFile,
             const std::shared_ptr< int32_t > index,
             const std::shared_ptr< std::wstring > nodePath = nullptr,
+            const std::shared_ptr< std::istream > imageFile = nullptr,
+            const std::shared_ptr< std::wstring > url = nullptr,
             const std::shared_ptr< std::wstring > loadEncoding = nullptr,
             const std::shared_ptr< std::wstring > password = nullptr,
             const std::shared_ptr< std::wstring > encryptedPassword = nullptr,
@@ -46,9 +47,10 @@ namespace aspose::words::cloud::requests {
 
         ASPOSE_WORDS_CLOUD_EXPORT const std::shared_ptr< std::istream > getDocument() const;
         ASPOSE_WORDS_CLOUD_EXPORT const std::shared_ptr< aspose::words::cloud::models::DrawingObjectUpdate > getDrawingObject() const;
-        ASPOSE_WORDS_CLOUD_EXPORT const std::shared_ptr< std::istream > getImageFile() const;
         ASPOSE_WORDS_CLOUD_EXPORT const std::shared_ptr< int32_t > getIndex() const;
         ASPOSE_WORDS_CLOUD_EXPORT const std::shared_ptr< std::wstring > getNodePath() const;
+        ASPOSE_WORDS_CLOUD_EXPORT const std::shared_ptr< std::istream > getImageFile() const;
+        ASPOSE_WORDS_CLOUD_EXPORT const std::shared_ptr< std::wstring > getUrl() const;
         ASPOSE_WORDS_CLOUD_EXPORT const std::shared_ptr< std::wstring > getLoadEncoding() const;
         ASPOSE_WORDS_CLOUD_EXPORT const std::shared_ptr< std::wstring > getPassword() const;
         ASPOSE_WORDS_CLOUD_EXPORT const std::shared_ptr< std::wstring > getEncryptedPassword() const;
@@ -62,9 +64,10 @@ namespace aspose::words::cloud::requests {
     private:
         const std::shared_ptr< std::istream > m_Document;
         const std::shared_ptr< aspose::words::cloud::models::DrawingObjectUpdate > m_DrawingObject;
-        const std::shared_ptr< std::istream > m_ImageFile;
         const std::shared_ptr< int32_t > m_Index;
         const std::shared_ptr< std::wstring > m_NodePath;
+        const std::shared_ptr< std::istream > m_ImageFile;
+        const std::shared_ptr< std::wstring > m_Url;
         const std::shared_ptr< std::wstring > m_LoadEncoding;
         const std::shared_ptr< std::wstring > m_Password;
         const std::shared_ptr< std::wstring > m_EncryptedPassword;
