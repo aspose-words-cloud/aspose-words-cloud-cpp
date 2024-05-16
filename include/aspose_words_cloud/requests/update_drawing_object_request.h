@@ -33,10 +33,9 @@ namespace aspose::words::cloud::requests {
         ASPOSE_WORDS_CLOUD_EXPORT UpdateDrawingObjectRequest(
             const std::shared_ptr< std::wstring > name,
             const std::shared_ptr< aspose::words::cloud::models::DrawingObjectUpdate > drawingObject,
+            const std::shared_ptr< std::istream > imageFile,
             const std::shared_ptr< int32_t > index,
             const std::shared_ptr< std::wstring > nodePath = nullptr,
-            const std::shared_ptr< std::istream > imageFile = nullptr,
-            const std::shared_ptr< std::wstring > url = nullptr,
             const std::shared_ptr< std::wstring > folder = nullptr,
             const std::shared_ptr< std::wstring > storage = nullptr,
             const std::shared_ptr< std::wstring > loadEncoding = nullptr,
@@ -49,10 +48,9 @@ namespace aspose::words::cloud::requests {
 
         ASPOSE_WORDS_CLOUD_EXPORT const std::shared_ptr< std::wstring > getName() const;
         ASPOSE_WORDS_CLOUD_EXPORT const std::shared_ptr< aspose::words::cloud::models::DrawingObjectUpdate > getDrawingObject() const;
+        ASPOSE_WORDS_CLOUD_EXPORT const std::shared_ptr< std::istream > getImageFile() const;
         ASPOSE_WORDS_CLOUD_EXPORT const std::shared_ptr< int32_t > getIndex() const;
         ASPOSE_WORDS_CLOUD_EXPORT const std::shared_ptr< std::wstring > getNodePath() const;
-        ASPOSE_WORDS_CLOUD_EXPORT const std::shared_ptr< std::istream > getImageFile() const;
-        ASPOSE_WORDS_CLOUD_EXPORT const std::shared_ptr< std::wstring > getUrl() const;
         ASPOSE_WORDS_CLOUD_EXPORT const std::shared_ptr< std::wstring > getFolder() const;
         ASPOSE_WORDS_CLOUD_EXPORT const std::shared_ptr< std::wstring > getStorage() const;
         ASPOSE_WORDS_CLOUD_EXPORT const std::shared_ptr< std::wstring > getLoadEncoding() const;
@@ -68,10 +66,9 @@ namespace aspose::words::cloud::requests {
     private:
         const std::shared_ptr< std::wstring > m_Name;
         const std::shared_ptr< aspose::words::cloud::models::DrawingObjectUpdate > m_DrawingObject;
+        const std::shared_ptr< std::istream > m_ImageFile;
         const std::shared_ptr< int32_t > m_Index;
         const std::shared_ptr< std::wstring > m_NodePath;
-        const std::shared_ptr< std::istream > m_ImageFile;
-        const std::shared_ptr< std::wstring > m_Url;
         const std::shared_ptr< std::wstring > m_Folder;
         const std::shared_ptr< std::wstring > m_Storage;
         const std::shared_ptr< std::wstring > m_LoadEncoding;

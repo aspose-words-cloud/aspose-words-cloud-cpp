@@ -3334,9 +3334,8 @@ namespace aspose::words::cloud::api {
         /// </summary>
         /// <param name="name">The filename of the input document.</param>
         /// <param name="drawingObject">Drawing object parameters.</param>
-        /// <param name="nodePath">The path to the node in the document tree.</param>
         /// <param name="imageFile">File with image.</param>
-        /// <param name="url">The link to the image.</param>
+        /// <param name="nodePath">The path to the node in the document tree.</param>
         /// <param name="folder">Original document folder.</param>
         /// <param name="storage">Original document storage.</param>
         /// <param name="loadEncoding">Encoding that will be used to load an HTML (or TXT) document if the encoding is not specified in HTML.</param>
@@ -3352,9 +3351,8 @@ namespace aspose::words::cloud::api {
         /// </summary>
         /// <param name="document">The document.</param>
         /// <param name="drawingObject">Drawing object parameters.</param>
-        /// <param name="nodePath">The path to the node in the document tree.</param>
         /// <param name="imageFile">File with image.</param>
-        /// <param name="url">The link to the image.</param>
+        /// <param name="nodePath">The path to the node in the document tree.</param>
         /// <param name="loadEncoding">Encoding that will be used to load an HTML (or TXT) document if the encoding is not specified in HTML.</param>
         /// <param name="password">Password of protected Word document. Use the parameter to pass a password via SDK. SDK encrypts it automatically. We don't recommend to use the parameter to pass a plain password for direct call of API.</param>
         /// <param name="encryptedPassword">Password of protected Word document. Use the parameter to pass an encrypted password for direct calls of API. See SDK code for encyption details.</param>
@@ -4589,10 +4587,9 @@ namespace aspose::words::cloud::api {
         /// </summary>
         /// <param name="name">The filename of the input document.</param>
         /// <param name="drawingObject">Drawing object parameters.</param>
+        /// <param name="imageFile">File with image.</param>
         /// <param name="index">Object index.</param>
         /// <param name="nodePath">The path to the node in the document tree.</param>
-        /// <param name="imageFile">File with image.</param>
-        /// <param name="url">The link to the image.</param>
         /// <param name="folder">Original document folder.</param>
         /// <param name="storage">Original document storage.</param>
         /// <param name="loadEncoding">Encoding that will be used to load an HTML (or TXT) document if the encoding is not specified in HTML.</param>
@@ -4608,10 +4605,9 @@ namespace aspose::words::cloud::api {
         /// </summary>
         /// <param name="document">The document.</param>
         /// <param name="drawingObject">Drawing object parameters.</param>
+        /// <param name="imageFile">File with image.</param>
         /// <param name="index">Object index.</param>
         /// <param name="nodePath">The path to the node in the document tree.</param>
-        /// <param name="imageFile">File with image.</param>
-        /// <param name="url">The link to the image.</param>
         /// <param name="loadEncoding">Encoding that will be used to load an HTML (or TXT) document if the encoding is not specified in HTML.</param>
         /// <param name="password">Password of protected Word document. Use the parameter to pass a password via SDK. SDK encrypts it automatically. We don't recommend to use the parameter to pass a plain password for direct call of API.</param>
         /// <param name="encryptedPassword">Password of protected Word document. Use the parameter to pass an encrypted password for direct calls of API. See SDK code for encyption details.</param>

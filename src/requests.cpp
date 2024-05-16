@@ -20517,9 +20517,8 @@ namespace aspose::words::cloud::requests {
     InsertDrawingObjectRequest::InsertDrawingObjectRequest(
         const std::shared_ptr< std::wstring > name,
         const std::shared_ptr< aspose::words::cloud::models::DrawingObjectInsert > drawingObject,
-        const std::shared_ptr< std::wstring > nodePath,
         const std::shared_ptr< std::istream > imageFile,
-        const std::shared_ptr< std::wstring > url,
+        const std::shared_ptr< std::wstring > nodePath,
         const std::shared_ptr< std::wstring > folder,
         const std::shared_ptr< std::wstring > storage,
         const std::shared_ptr< std::wstring > loadEncoding,
@@ -20531,9 +20530,8 @@ namespace aspose::words::cloud::requests {
     ) : 
         m_Name(name),
         m_DrawingObject(drawingObject),
-        m_NodePath(nodePath),
         m_ImageFile(imageFile),
-        m_Url(url),
+        m_NodePath(nodePath),
         m_Folder(folder),
         m_Storage(storage),
         m_LoadEncoding(loadEncoding),
@@ -20555,19 +20553,14 @@ namespace aspose::words::cloud::requests {
         return m_DrawingObject;
     }
 
-    const std::shared_ptr< std::wstring > InsertDrawingObjectRequest::getNodePath() const
-    {
-        return m_NodePath;
-    }
-
     const std::shared_ptr< std::istream > InsertDrawingObjectRequest::getImageFile() const
     {
         return m_ImageFile;
     }
 
-    const std::shared_ptr< std::wstring > InsertDrawingObjectRequest::getUrl() const
+    const std::shared_ptr< std::wstring > InsertDrawingObjectRequest::getNodePath() const
     {
-        return m_Url;
+        return m_NodePath;
     }
 
     const std::shared_ptr< std::wstring > InsertDrawingObjectRequest::getFolder() const
@@ -20619,7 +20612,6 @@ namespace aspose::words::cloud::requests {
         if (!m_Name) throw aspose::words::cloud::ApiException(400, L"Parameter 'Name' is required.");
         result->setPathParam(L"{name}", *m_Name);
         result->setPathParam(L"{nodePath}", m_NodePath ? *m_NodePath : L"");
-        if (m_Url) result->addQueryParam(L"url", *m_Url);
         if (m_Folder) result->addQueryParam(L"folder", *m_Folder);
         if (m_Storage) result->addQueryParam(L"storage", *m_Storage);
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
@@ -20638,6 +20630,7 @@ namespace aspose::words::cloud::requests {
         {
             result->addFormDataParam(L"imageFile", *m_ImageFile);
         }
+        else throw aspose::words::cloud::ApiException(400, L"Parameter 'ImageFile' is required.");
 
         for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
@@ -20664,9 +20657,8 @@ namespace aspose::words::cloud::requests {
     InsertDrawingObjectOnlineRequest::InsertDrawingObjectOnlineRequest(
         const std::shared_ptr< std::istream > document,
         const std::shared_ptr< aspose::words::cloud::models::DrawingObjectInsert > drawingObject,
-        const std::shared_ptr< std::wstring > nodePath,
         const std::shared_ptr< std::istream > imageFile,
-        const std::shared_ptr< std::wstring > url,
+        const std::shared_ptr< std::wstring > nodePath,
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
         const std::shared_ptr< std::wstring > encryptedPassword,
@@ -20676,9 +20668,8 @@ namespace aspose::words::cloud::requests {
     ) : 
         m_Document(document),
         m_DrawingObject(drawingObject),
-        m_NodePath(nodePath),
         m_ImageFile(imageFile),
-        m_Url(url),
+        m_NodePath(nodePath),
         m_LoadEncoding(loadEncoding),
         m_Password(password),
         m_EncryptedPassword(encryptedPassword),
@@ -20698,19 +20689,14 @@ namespace aspose::words::cloud::requests {
         return m_DrawingObject;
     }
 
-    const std::shared_ptr< std::wstring > InsertDrawingObjectOnlineRequest::getNodePath() const
-    {
-        return m_NodePath;
-    }
-
     const std::shared_ptr< std::istream > InsertDrawingObjectOnlineRequest::getImageFile() const
     {
         return m_ImageFile;
     }
 
-    const std::shared_ptr< std::wstring > InsertDrawingObjectOnlineRequest::getUrl() const
+    const std::shared_ptr< std::wstring > InsertDrawingObjectOnlineRequest::getNodePath() const
     {
-        return m_Url;
+        return m_NodePath;
     }
 
     const std::shared_ptr< std::wstring > InsertDrawingObjectOnlineRequest::getLoadEncoding() const
@@ -20750,7 +20736,6 @@ namespace aspose::words::cloud::requests {
         result->setMethod(HttpRequestMethod::HttpPUT);
         result->setPath(L"/words/online/post/{nodePath}/drawingObjects");
         result->setPathParam(L"{nodePath}", m_NodePath ? *m_NodePath : L"");
-        if (m_Url) result->addQueryParam(L"url", *m_Url);
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
@@ -20773,6 +20758,7 @@ namespace aspose::words::cloud::requests {
         {
             result->addFormDataParam(L"imageFile", *m_ImageFile);
         }
+        else throw aspose::words::cloud::ApiException(400, L"Parameter 'ImageFile' is required.");
 
         for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
@@ -30530,10 +30516,9 @@ namespace aspose::words::cloud::requests {
     UpdateDrawingObjectRequest::UpdateDrawingObjectRequest(
         const std::shared_ptr< std::wstring > name,
         const std::shared_ptr< aspose::words::cloud::models::DrawingObjectUpdate > drawingObject,
+        const std::shared_ptr< std::istream > imageFile,
         const std::shared_ptr< int32_t > index,
         const std::shared_ptr< std::wstring > nodePath,
-        const std::shared_ptr< std::istream > imageFile,
-        const std::shared_ptr< std::wstring > url,
         const std::shared_ptr< std::wstring > folder,
         const std::shared_ptr< std::wstring > storage,
         const std::shared_ptr< std::wstring > loadEncoding,
@@ -30545,10 +30530,9 @@ namespace aspose::words::cloud::requests {
     ) : 
         m_Name(name),
         m_DrawingObject(drawingObject),
+        m_ImageFile(imageFile),
         m_Index(index),
         m_NodePath(nodePath),
-        m_ImageFile(imageFile),
-        m_Url(url),
         m_Folder(folder),
         m_Storage(storage),
         m_LoadEncoding(loadEncoding),
@@ -30570,6 +30554,11 @@ namespace aspose::words::cloud::requests {
         return m_DrawingObject;
     }
 
+    const std::shared_ptr< std::istream > UpdateDrawingObjectRequest::getImageFile() const
+    {
+        return m_ImageFile;
+    }
+
     const std::shared_ptr< int32_t > UpdateDrawingObjectRequest::getIndex() const
     {
         return m_Index;
@@ -30578,16 +30567,6 @@ namespace aspose::words::cloud::requests {
     const std::shared_ptr< std::wstring > UpdateDrawingObjectRequest::getNodePath() const
     {
         return m_NodePath;
-    }
-
-    const std::shared_ptr< std::istream > UpdateDrawingObjectRequest::getImageFile() const
-    {
-        return m_ImageFile;
-    }
-
-    const std::shared_ptr< std::wstring > UpdateDrawingObjectRequest::getUrl() const
-    {
-        return m_Url;
     }
 
     const std::shared_ptr< std::wstring > UpdateDrawingObjectRequest::getFolder() const
@@ -30641,7 +30620,6 @@ namespace aspose::words::cloud::requests {
         if (!m_Index) throw aspose::words::cloud::ApiException(400, L"Parameter 'Index' is required.");
         result->setPathParam(L"{index}", *m_Index);
         result->setPathParam(L"{nodePath}", m_NodePath ? *m_NodePath : L"");
-        if (m_Url) result->addQueryParam(L"url", *m_Url);
         if (m_Folder) result->addQueryParam(L"folder", *m_Folder);
         if (m_Storage) result->addQueryParam(L"storage", *m_Storage);
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
@@ -30660,6 +30638,7 @@ namespace aspose::words::cloud::requests {
         {
             result->addFormDataParam(L"imageFile", *m_ImageFile);
         }
+        else throw aspose::words::cloud::ApiException(400, L"Parameter 'ImageFile' is required.");
 
         for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
@@ -30686,10 +30665,9 @@ namespace aspose::words::cloud::requests {
     UpdateDrawingObjectOnlineRequest::UpdateDrawingObjectOnlineRequest(
         const std::shared_ptr< std::istream > document,
         const std::shared_ptr< aspose::words::cloud::models::DrawingObjectUpdate > drawingObject,
+        const std::shared_ptr< std::istream > imageFile,
         const std::shared_ptr< int32_t > index,
         const std::shared_ptr< std::wstring > nodePath,
-        const std::shared_ptr< std::istream > imageFile,
-        const std::shared_ptr< std::wstring > url,
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
         const std::shared_ptr< std::wstring > encryptedPassword,
@@ -30699,10 +30677,9 @@ namespace aspose::words::cloud::requests {
     ) : 
         m_Document(document),
         m_DrawingObject(drawingObject),
+        m_ImageFile(imageFile),
         m_Index(index),
         m_NodePath(nodePath),
-        m_ImageFile(imageFile),
-        m_Url(url),
         m_LoadEncoding(loadEncoding),
         m_Password(password),
         m_EncryptedPassword(encryptedPassword),
@@ -30722,6 +30699,11 @@ namespace aspose::words::cloud::requests {
         return m_DrawingObject;
     }
 
+    const std::shared_ptr< std::istream > UpdateDrawingObjectOnlineRequest::getImageFile() const
+    {
+        return m_ImageFile;
+    }
+
     const std::shared_ptr< int32_t > UpdateDrawingObjectOnlineRequest::getIndex() const
     {
         return m_Index;
@@ -30730,16 +30712,6 @@ namespace aspose::words::cloud::requests {
     const std::shared_ptr< std::wstring > UpdateDrawingObjectOnlineRequest::getNodePath() const
     {
         return m_NodePath;
-    }
-
-    const std::shared_ptr< std::istream > UpdateDrawingObjectOnlineRequest::getImageFile() const
-    {
-        return m_ImageFile;
-    }
-
-    const std::shared_ptr< std::wstring > UpdateDrawingObjectOnlineRequest::getUrl() const
-    {
-        return m_Url;
     }
 
     const std::shared_ptr< std::wstring > UpdateDrawingObjectOnlineRequest::getLoadEncoding() const
@@ -30781,7 +30753,6 @@ namespace aspose::words::cloud::requests {
         if (!m_Index) throw aspose::words::cloud::ApiException(400, L"Parameter 'Index' is required.");
         result->setPathParam(L"{index}", *m_Index);
         result->setPathParam(L"{nodePath}", m_NodePath ? *m_NodePath : L"");
-        if (m_Url) result->addQueryParam(L"url", *m_Url);
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
@@ -30804,6 +30775,7 @@ namespace aspose::words::cloud::requests {
         {
             result->addFormDataParam(L"imageFile", *m_ImageFile);
         }
+        else throw aspose::words::cloud::ApiException(400, L"Parameter 'ImageFile' is required.");
 
         for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
