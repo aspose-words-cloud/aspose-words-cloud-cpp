@@ -239,7 +239,7 @@ TEST_F(RangeTests, TestTranslateNodeId) {
     std::shared_ptr<requests::TranslateNodeIdRequest> request(new requests::TranslateNodeIdRequest(
         std::make_shared< std::wstring >(remoteFileName),
         std::make_shared< std::wstring >(L"id0.0.0"),
-        nullptr,
+        std::make_shared< std::wstring >(remoteDataFolder),
         nullptr,
         nullptr,
         nullptr,
