@@ -247,7 +247,7 @@ TEST_F(RangeTests, TestTranslateNodeId) {
     ));
 
     auto actual = getApi()->translateNodeId(request);
-    ASSERT_TRUE(actual->getText()->compare(L"sections/0/body/paragraphs/0") == 0);
+    ASSERT_TRUE(actual->getPath()->compare(L"sections/0/body/paragraphs/0") == 0);
 }
 
 /// <summary>
