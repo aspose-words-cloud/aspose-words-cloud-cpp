@@ -29346,6 +29346,177 @@ namespace aspose::words::cloud::requests {
     }
 
     /*
+     * TranslateNodeId request implementation
+     */
+    TranslateNodeIdRequest::TranslateNodeIdRequest(
+        const std::shared_ptr< std::wstring > name,
+        const std::shared_ptr< std::wstring > nodeId,
+        const std::shared_ptr< std::wstring > folder,
+        const std::shared_ptr< std::wstring > storage,
+        const std::shared_ptr< std::wstring > loadEncoding,
+        const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword
+    ) : 
+        m_Name(name),
+        m_NodeId(nodeId),
+        m_Folder(folder),
+        m_Storage(storage),
+        m_LoadEncoding(loadEncoding),
+        m_Password(password),
+        m_EncryptedPassword(encryptedPassword)
+    {
+    }
+
+    const std::shared_ptr< std::wstring > TranslateNodeIdRequest::getName() const
+    {
+        return m_Name;
+    }
+
+    const std::shared_ptr< std::wstring > TranslateNodeIdRequest::getNodeId() const
+    {
+        return m_NodeId;
+    }
+
+    const std::shared_ptr< std::wstring > TranslateNodeIdRequest::getFolder() const
+    {
+        return m_Folder;
+    }
+
+    const std::shared_ptr< std::wstring > TranslateNodeIdRequest::getStorage() const
+    {
+        return m_Storage;
+    }
+
+    const std::shared_ptr< std::wstring > TranslateNodeIdRequest::getLoadEncoding() const
+    {
+        return m_LoadEncoding;
+    }
+
+    const std::shared_ptr< std::wstring > TranslateNodeIdRequest::getPassword() const
+    {
+        return m_Password;
+    }
+
+    const std::shared_ptr< std::wstring > TranslateNodeIdRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
+    }
+
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > TranslateNodeIdRequest::createHttpRequest(ApiClient* apiClient) const
+    {
+        std::vector<models::FileReference*> additionalFilesContent;
+        auto result = std::make_shared<HttpRequestData>();
+        result->setMethod(HttpRequestMethod::HttpGET);
+        result->setPath(L"/words/{name}/translate/{nodeId}");
+        if (!m_Name) throw aspose::words::cloud::ApiException(400, L"Parameter 'Name' is required.");
+        result->setPathParam(L"{name}", *m_Name);
+        if (!m_NodeId) throw aspose::words::cloud::ApiException(400, L"Parameter 'NodeId' is required.");
+        result->setPathParam(L"{nodeId}", *m_NodeId);
+        if (m_Folder) result->addQueryParam(L"folder", *m_Folder);
+        if (m_Storage) result->addQueryParam(L"storage", *m_Storage);
+        if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
+        if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
+        {
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
+        }
+
+        return result;
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > TranslateNodeIdRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::TranslateNodeIdResponse()
+        );
+    }
+
+    /*
+     * TranslateNodeIdOnline request implementation
+     */
+    TranslateNodeIdOnlineRequest::TranslateNodeIdOnlineRequest(
+        const std::shared_ptr< std::istream > document,
+        const std::shared_ptr< std::wstring > nodeId,
+        const std::shared_ptr< std::wstring > loadEncoding,
+        const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword
+    ) : 
+        m_Document(document),
+        m_NodeId(nodeId),
+        m_LoadEncoding(loadEncoding),
+        m_Password(password),
+        m_EncryptedPassword(encryptedPassword)
+    {
+    }
+
+    const std::shared_ptr< std::istream > TranslateNodeIdOnlineRequest::getDocument() const
+    {
+        return m_Document;
+    }
+
+    const std::shared_ptr< std::wstring > TranslateNodeIdOnlineRequest::getNodeId() const
+    {
+        return m_NodeId;
+    }
+
+    const std::shared_ptr< std::wstring > TranslateNodeIdOnlineRequest::getLoadEncoding() const
+    {
+        return m_LoadEncoding;
+    }
+
+    const std::shared_ptr< std::wstring > TranslateNodeIdOnlineRequest::getPassword() const
+    {
+        return m_Password;
+    }
+
+    const std::shared_ptr< std::wstring > TranslateNodeIdOnlineRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
+    }
+
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > TranslateNodeIdOnlineRequest::createHttpRequest(ApiClient* apiClient) const
+    {
+        std::vector<models::FileReference*> additionalFilesContent;
+        auto result = std::make_shared<HttpRequestData>();
+        result->setMethod(HttpRequestMethod::HttpPUT);
+        result->setPath(L"/words/online/get/translate/{nodeId}");
+        if (!m_NodeId) throw aspose::words::cloud::ApiException(400, L"Parameter 'NodeId' is required.");
+        result->setPathParam(L"{nodeId}", *m_NodeId);
+        if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
+        if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_Document)
+        {
+            result->addFormDataParam(L"document", *m_Document);
+        }
+        else throw aspose::words::cloud::ApiException(400, L"Parameter 'Document' is required.");
+
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
+        {
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
+        }
+
+        return result;
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > TranslateNodeIdOnlineRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::TranslateNodeIdOnlineResponse()
+        );
+    }
+
+    /*
      * UnprotectDocument request implementation
      */
     UnprotectDocumentRequest::UnprotectDocumentRequest(

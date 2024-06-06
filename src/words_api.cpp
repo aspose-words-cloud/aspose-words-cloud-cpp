@@ -3158,6 +3158,28 @@ namespace aspose::words::cloud::api {
         return response;
     }
 
+    std::shared_ptr< aspose::words::cloud::models::TranslateNodeIdResponse > WordsApi::translateNodeId(std::shared_ptr<aspose::words::cloud::requests::TranslateNodeIdRequest> request)
+    {
+        auto response = std::make_shared< aspose::words::cloud::responses::TranslateNodeIdResponse >();
+        m_ApiClient->call( request->createHttpRequest(m_ApiClient.get()), *response);
+        if (response->getStatusCode() != 200) {
+            throw aspose::words::cloud::ApiException(response->getStatusCode(), response->getErrorMessage());
+        }
+
+        return response->getModel();
+    }
+
+    std::shared_ptr< aspose::words::cloud::models::TranslateNodeIdResponse > WordsApi::translateNodeIdOnline(std::shared_ptr<aspose::words::cloud::requests::TranslateNodeIdOnlineRequest> request)
+    {
+        auto response = std::make_shared< aspose::words::cloud::responses::TranslateNodeIdOnlineResponse >();
+        m_ApiClient->call( request->createHttpRequest(m_ApiClient.get()), *response);
+        if (response->getStatusCode() != 200) {
+            throw aspose::words::cloud::ApiException(response->getStatusCode(), response->getErrorMessage());
+        }
+
+        return response->getModel();
+    }
+
     std::shared_ptr< aspose::words::cloud::models::ProtectionDataResponse > WordsApi::unprotectDocument(std::shared_ptr<aspose::words::cloud::requests::UnprotectDocumentRequest> request)
     {
         auto response = std::make_shared< aspose::words::cloud::responses::UnprotectDocumentResponse >();
