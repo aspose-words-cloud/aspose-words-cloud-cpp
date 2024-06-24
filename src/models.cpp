@@ -277,6 +277,7 @@ namespace aspose::words::cloud::models {
         { L"TextSaveOptionsData, _", [] () { return dynamic_cast< ModelBase* >(new TextSaveOptionsData()); }},
         { L"TiffSaveOptionsData, _", [] () { return dynamic_cast< ModelBase* >(new TiffSaveOptionsData()); }},
         { L"TimeZoneInfoData, _", [] () { return dynamic_cast< ModelBase* >(new TimeZoneInfoData()); }},
+        { L"TranslateNodeIdResponse, _", [] () { return dynamic_cast< ModelBase* >(new TranslateNodeIdResponse()); }},
         { L"UserInformation, _", [] () { return dynamic_cast< ModelBase* >(new UserInformation()); }},
         { L"WatermarkDataImage, _", [] () { return dynamic_cast< ModelBase* >(new WatermarkDataImage()); }},
         { L"WatermarkDataText, _", [] () { return dynamic_cast< ModelBase* >(new WatermarkDataText()); }},
@@ -29640,6 +29641,50 @@ namespace aspose::words::cloud::models {
     void TimeZoneInfoData::setStandardDisplayName(std::shared_ptr< std::wstring > value)
     {
         this->m_StandardDisplayName = value;
+    }
+
+
+
+    /*
+     * TranslateNodeIdResponse implementation
+     */
+    void TranslateNodeIdResponse::toJson(void* jsonIfc) const
+    {
+        WordsResponse::toJson(jsonIfc);
+        ::nlohmann::json& json = *((::nlohmann::json*)jsonIfc);
+        if (this->m_Path) {
+            json["Path"] = convertUtf16(*(this->m_Path));
+        }
+    }
+
+    void TranslateNodeIdResponse::fromJson(const void* jsonIfc)
+    {
+        WordsResponse::fromJson(jsonIfc);
+        ::nlohmann::json& json = *((::nlohmann::json*)jsonIfc);
+        if (json.contains("Path") && !json["Path"].is_null()) {
+            this->m_Path = std::make_shared< std::wstring >(
+                convertUtf8( json["Path"].get< std::string >() )
+            );
+        }
+    }
+
+    void TranslateNodeIdResponse::getFileReferences(std::vector< FileReference* >& result)
+    {
+    }
+
+    void TranslateNodeIdResponse::validate()
+    {
+        WordsResponse::validate();
+    }
+
+    std::shared_ptr< std::wstring > TranslateNodeIdResponse::getPath() const
+    {
+        return this->m_Path;
+    }
+
+    void TranslateNodeIdResponse::setPath(std::shared_ptr< std::wstring > value)
+    {
+        this->m_Path = value;
     }
 
 

@@ -224,3 +224,44 @@ TEST_F(RangeTests, TestReplaceWithTextOnline) {
 
     auto actual = getApi()->replaceWithTextOnline(request);
 }
+
+/// <summary>
+/// Test to translate node id to node path.
+/// </summary>
+TEST_F(RangeTests, TestTranslateNodeId) {
+    std::wstring remoteFileName = L"TestTranslateNodeId.docx";
+
+    uploadFileToStorage(
+        localTestDataFolder + L"/" + localFile,
+        remoteDataFolder + L"/" + remoteFileName
+    );
+
+    std::shared_ptr<requests::TranslateNodeIdRequest> request(new requests::TranslateNodeIdRequest(
+        std::make_shared< std::wstring >(remoteFileName),
+        std::make_shared< std::wstring >(L"id0.0.0"),
+        std::make_shared< std::wstring >(remoteDataFolder),
+        nullptr,
+        nullptr,
+        nullptr,
+        nullptr
+    ));
+
+    auto actual = getApi()->translateNodeId(request);
+    ASSERT_TRUE(actual->getPath()->compare(L"sections/0/body/paragraphs/0") == 0);
+}
+
+/// <summary>
+/// Test to translate node id to node path online.
+/// </summary>
+TEST_F(RangeTests, TestTranslateNodeIdOnline) {
+    auto requestDocument = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(localFile)), std::istream::binary));
+    std::shared_ptr<requests::TranslateNodeIdOnlineRequest> request(new requests::TranslateNodeIdOnlineRequest(
+        requestDocument,
+        std::make_shared< std::wstring >(L"id0.0.0"),
+        nullptr,
+        nullptr,
+        nullptr
+    ));
+
+    auto actual = getApi()->translateNodeIdOnline(request);
+}

@@ -611,6 +611,10 @@
 #include "aspose_words_cloud/responses/split_document_response.h"
 #include "aspose_words_cloud/requests/split_document_online_request.h"
 #include "aspose_words_cloud/responses/split_document_online_response.h"
+#include "aspose_words_cloud/requests/translate_node_id_request.h"
+#include "aspose_words_cloud/responses/translate_node_id_response.h"
+#include "aspose_words_cloud/requests/translate_node_id_online_request.h"
+#include "aspose_words_cloud/responses/translate_node_id_online_response.h"
 #include "aspose_words_cloud/requests/unprotect_document_request.h"
 #include "aspose_words_cloud/responses/unprotect_document_response.h"
 #include "aspose_words_cloud/requests/unprotect_document_online_request.h"
@@ -4435,6 +4439,28 @@ namespace aspose::words::cloud::api {
         /// <param name="zipOutput">The flag indicating whether to ZIP the output.</param>
         /// <param name="fontsLocation">Folder in filestorage with custom fonts.</param>
         ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr<aspose::words::cloud::responses::SplitDocumentOnlineResponse> splitDocumentOnline(std::shared_ptr<aspose::words::cloud::requests::SplitDocumentOnlineRequest> request);
+
+        /// <summary>
+        /// Translate a node id to a node path.
+        /// </summary>
+        /// <param name="name">The filename of the input document.</param>
+        /// <param name="nodeId">The node identifier. Identifier examples: id0.0.0.</param>
+        /// <param name="folder">Original document folder.</param>
+        /// <param name="storage">Original document storage.</param>
+        /// <param name="loadEncoding">Encoding that will be used to load an HTML (or TXT) document if the encoding is not specified in HTML.</param>
+        /// <param name="password">Password of protected Word document. Use the parameter to pass a password via SDK. SDK encrypts it automatically. We don't recommend to use the parameter to pass a plain password for direct call of API.</param>
+        /// <param name="encryptedPassword">Password of protected Word document. Use the parameter to pass an encrypted password for direct calls of API. See SDK code for encyption details.</param>
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::TranslateNodeIdResponse > translateNodeId(std::shared_ptr<aspose::words::cloud::requests::TranslateNodeIdRequest> request);
+
+        /// <summary>
+        /// Translate a node id to a node path.
+        /// </summary>
+        /// <param name="document">The document.</param>
+        /// <param name="nodeId">The node identifier. Identifier examples: id0.0.0.</param>
+        /// <param name="loadEncoding">Encoding that will be used to load an HTML (or TXT) document if the encoding is not specified in HTML.</param>
+        /// <param name="password">Password of protected Word document. Use the parameter to pass a password via SDK. SDK encrypts it automatically. We don't recommend to use the parameter to pass a plain password for direct call of API.</param>
+        /// <param name="encryptedPassword">Password of protected Word document. Use the parameter to pass an encrypted password for direct calls of API. See SDK code for encyption details.</param>
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::TranslateNodeIdResponse > translateNodeIdOnline(std::shared_ptr<aspose::words::cloud::requests::TranslateNodeIdOnlineRequest> request);
 
         /// <summary>
         /// Removes protection from the document.

@@ -4557,6 +4557,32 @@ namespace aspose::words::cloud::responses {
     }
 
     /*
+     * TranslateNodeId request implementation
+     */
+    std::shared_ptr< aspose::words::cloud::models::TranslateNodeIdResponse > TranslateNodeIdResponse::getModel() const
+    {
+        return m_Model;
+    }
+
+    void TranslateNodeIdResponse::deserialize(const std::string& contentType, const std::string_view& response)
+    {
+        m_Model = createModelInstance< aspose::words::cloud::models::TranslateNodeIdResponse >(L"TranslateNodeIdResponse, _", response);
+    }
+
+    /*
+     * TranslateNodeIdOnline request implementation
+     */
+    std::shared_ptr< aspose::words::cloud::models::TranslateNodeIdResponse > TranslateNodeIdOnlineResponse::getModel() const
+    {
+        return m_Model;
+    }
+
+    void TranslateNodeIdOnlineResponse::deserialize(const std::string& contentType, const std::string_view& response)
+    {
+        m_Model = createModelInstance< aspose::words::cloud::models::TranslateNodeIdResponse >(L"TranslateNodeIdResponse, _", response);
+    }
+
+    /*
      * UnprotectDocument request implementation
      */
     std::shared_ptr< aspose::words::cloud::models::ProtectionDataResponse > UnprotectDocumentResponse::getModel() const
