@@ -32,6 +32,7 @@ namespace aspose::words::cloud::models {
     static std::unordered_map< std::wstring, std::function< ModelBase*() > > *modelsFactory = new std::unordered_map< std::wstring, std::function< ModelBase* () > > {
         { L"ApiError, _", [] () { return dynamic_cast< ModelBase* >(new ApiError()); }},
         { L"AvailableFontsResponse, _", [] () { return dynamic_cast< ModelBase* >(new AvailableFontsResponse()); }},
+        { L"Azw3SaveOptionsData, _", [] () { return dynamic_cast< ModelBase* >(new Azw3SaveOptionsData()); }},
         { L"BmpSaveOptionsData, _", [] () { return dynamic_cast< ModelBase* >(new BmpSaveOptionsData()); }},
         { L"Bookmark, _", [] () { return dynamic_cast< ModelBase* >(new Bookmark()); }},
         { L"BookmarkData, _", [] () { return dynamic_cast< ModelBase* >(new BookmarkData()); }},
@@ -722,6 +723,65 @@ namespace aspose::words::cloud::models {
     {
         this->m_SystemFonts = value;
     }
+
+
+
+    /*
+     * Azw3SaveOptionsData implementation
+     */
+    void Azw3SaveOptionsData::toJson(void* jsonIfc) const
+    {
+        HtmlSaveOptionsData::toJson(jsonIfc);
+        ::nlohmann::json& json = *((::nlohmann::json*)jsonIfc);
+        if (this->m_NavigationMapLevel) {
+            json["NavigationMapLevel"] = *(this->m_NavigationMapLevel);
+        }
+        if (this->m_SaveFormat) {
+            json["SaveFormat"] = convertUtf16(*(this->m_SaveFormat));
+        }
+    }
+
+    void Azw3SaveOptionsData::fromJson(const void* jsonIfc)
+    {
+        HtmlSaveOptionsData::fromJson(jsonIfc);
+        ::nlohmann::json& json = *((::nlohmann::json*)jsonIfc);
+        if (json.contains("NavigationMapLevel") && !json["NavigationMapLevel"].is_null()) {
+            this->m_NavigationMapLevel = std::make_shared< int32_t >(
+                json["NavigationMapLevel"].get< int32_t >()
+            );
+        }
+        if (json.contains("SaveFormat") && !json["SaveFormat"].is_null()) {
+            this->m_SaveFormat = std::make_shared< std::wstring >(
+                convertUtf8( json["SaveFormat"].get< std::string >() )
+            );
+        }
+    }
+
+    void Azw3SaveOptionsData::getFileReferences(std::vector< FileReference* >& result)
+    {
+    }
+
+    void Azw3SaveOptionsData::validate()
+    {
+        HtmlSaveOptionsData::validate();
+    }
+
+    std::shared_ptr< int32_t > Azw3SaveOptionsData::getNavigationMapLevel() const
+    {
+        return this->m_NavigationMapLevel;
+    }
+
+    void Azw3SaveOptionsData::setNavigationMapLevel(std::shared_ptr< int32_t > value)
+    {
+        this->m_NavigationMapLevel = value;
+    }
+
+
+    std::shared_ptr< std::wstring > Azw3SaveOptionsData::getSaveFormat() const
+    {
+        return this->m_SaveFormat;
+    }
+
 
 
 
@@ -3564,6 +3624,7 @@ namespace aspose::words::cloud::models {
         if (value == aspose::words::cloud::models::Document::SourceFormat::XPS) return "Xps";
         if (value == aspose::words::cloud::models::Document::SourceFormat::TIFF) return "Tiff";
         if (value == aspose::words::cloud::models::Document::SourceFormat::SVG) return "Svg";
+        if (value == aspose::words::cloud::models::Document::SourceFormat::AZW3) return "Azw3";
         throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
     }
 
@@ -3590,6 +3651,7 @@ namespace aspose::words::cloud::models {
         if (value == "Xps") return aspose::words::cloud::models::Document::SourceFormat::XPS;
         if (value == "Tiff") return aspose::words::cloud::models::Document::SourceFormat::TIFF;
         if (value == "Svg") return aspose::words::cloud::models::Document::SourceFormat::SVG;
+        if (value == "Azw3") return aspose::words::cloud::models::Document::SourceFormat::AZW3;
         throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
     }
     void Document::toJson(void* jsonIfc) const

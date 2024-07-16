@@ -60,7 +60,8 @@ namespace aspose::words::cloud::models {
             PDF,
             XPS,
             TIFF,
-            SVG
+            SVG,
+            AZW3
         };
 
 
