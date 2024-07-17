@@ -19631,7 +19631,9 @@ namespace aspose::words::cloud::models {
         if (value == aspose::words::cloud::models::PdfSaveOptionsData::Compliance::PDF_A2A) return "PdfA2a";
         if (value == aspose::words::cloud::models::PdfSaveOptionsData::Compliance::PDF_A2U) return "PdfA2u";
         if (value == aspose::words::cloud::models::PdfSaveOptionsData::Compliance::PDF_A4) return "PdfA4";
+        if (value == aspose::words::cloud::models::PdfSaveOptionsData::Compliance::PDF_A4_UA2) return "PdfA4Ua2";
         if (value == aspose::words::cloud::models::PdfSaveOptionsData::Compliance::PDF_UA1) return "PdfUa1";
+        if (value == aspose::words::cloud::models::PdfSaveOptionsData::Compliance::PDF_UA2) return "PdfUa2";
         throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
     }
 
@@ -19644,7 +19646,9 @@ namespace aspose::words::cloud::models {
         if (value == "PdfA2a") return aspose::words::cloud::models::PdfSaveOptionsData::Compliance::PDF_A2A;
         if (value == "PdfA2u") return aspose::words::cloud::models::PdfSaveOptionsData::Compliance::PDF_A2U;
         if (value == "PdfA4") return aspose::words::cloud::models::PdfSaveOptionsData::Compliance::PDF_A4;
+        if (value == "PdfA4Ua2") return aspose::words::cloud::models::PdfSaveOptionsData::Compliance::PDF_A4_UA2;
         if (value == "PdfUa1") return aspose::words::cloud::models::PdfSaveOptionsData::Compliance::PDF_UA1;
+        if (value == "PdfUa2") return aspose::words::cloud::models::PdfSaveOptionsData::Compliance::PDF_UA2;
         throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
     }
 
