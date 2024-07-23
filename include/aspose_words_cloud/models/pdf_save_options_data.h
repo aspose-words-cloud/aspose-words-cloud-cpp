@@ -50,7 +50,9 @@ namespace aspose::words::cloud::models {
             PDF_A2A,
             PDF_A2U,
             PDF_A4,
-            PDF_UA1
+            PDF_A4_UA2,
+            PDF_UA1,
+            PDF_UA2
         };
 
         /// <summary>

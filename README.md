@@ -17,6 +17,11 @@ Feel free to explore the [Developer's Guide](https://docs.aspose.cloud/display/w
 - Read & write access to Document Object Model.
 - Thread safe
 
+## Enhancements in Version 24.7
+
+- Added support for azw3 (Amazon Kindle Format) documents.
+
+
 ## Enhancements in Version 24.6
 
 - Added the 'TranslateNodeId' method to transalate a node id to a node path.

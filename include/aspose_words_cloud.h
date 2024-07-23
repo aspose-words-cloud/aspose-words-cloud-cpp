@@ -30,6 +30,7 @@
 #include "./aspose_words_cloud/models/file_reference.h"
 #include "./aspose_words_cloud/models/api_error.h"
 #include "./aspose_words_cloud/models/available_fonts_response.h"
+#include "./aspose_words_cloud/models/azw3_save_options_data.h"
 #include "./aspose_words_cloud/models/base_entry.h"
 #include "./aspose_words_cloud/models/base_entry_list.h"
 #include "./aspose_words_cloud/models/bmp_save_options_data.h"
