@@ -56,6 +56,7 @@ TEST_F(FieldTests, TestGetFields) {
         nullptr,
         nullptr,
         nullptr,
+        nullptr,
         nullptr
     ));
 
@@ -74,6 +75,7 @@ TEST_F(FieldTests, TestGetFieldsOnline) {
     std::shared_ptr<requests::GetFieldsOnlineRequest> request(new requests::GetFieldsOnlineRequest(
         requestDocument,
         std::make_shared< std::wstring >(L"sections/0"),
+        nullptr,
         nullptr,
         nullptr,
         nullptr
@@ -98,6 +100,7 @@ TEST_F(FieldTests, TestGetFieldsWithoutNodePath) {
         std::make_shared< std::wstring >(remoteFileName),
         nullptr,
         std::make_shared< std::wstring >(remoteDataFolder),
+        nullptr,
         nullptr,
         nullptr,
         nullptr,
@@ -131,6 +134,7 @@ TEST_F(FieldTests, TestGetField) {
         nullptr,
         nullptr,
         nullptr,
+        nullptr,
         nullptr
     ));
 
@@ -148,6 +152,7 @@ TEST_F(FieldTests, TestGetFieldOnline) {
         requestDocument,
         std::make_shared< int32_t >(0),
         std::make_shared< std::wstring >(L"sections/0/paragraphs/0"),
+        nullptr,
         nullptr,
         nullptr,
         nullptr
@@ -173,6 +178,7 @@ TEST_F(FieldTests, TestGetFieldWithoutNodePath) {
         std::make_shared< int32_t >(0),
         nullptr,
         std::make_shared< std::wstring >(remoteDataFolder),
+        nullptr,
         nullptr,
         nullptr,
         nullptr,
@@ -209,6 +215,7 @@ TEST_F(FieldTests, TestInsertField) {
         nullptr,
         nullptr,
         nullptr,
+        nullptr,
         nullptr
     ));
 
@@ -229,6 +236,7 @@ TEST_F(FieldTests, TestInsertFieldOnline) {
         requestDocument,
         requestField,
         std::make_shared< std::wstring >(L"sections/0/paragraphs/0"),
+        nullptr,
         nullptr,
         nullptr,
         nullptr,
@@ -259,6 +267,7 @@ TEST_F(FieldTests, TestInsertFieldWithoutNodePath) {
         requestField,
         nullptr,
         std::make_shared< std::wstring >(remoteDataFolder),
+        nullptr,
         nullptr,
         nullptr,
         nullptr,
@@ -300,6 +309,7 @@ TEST_F(FieldTests, TestUpdateField) {
         nullptr,
         nullptr,
         nullptr,
+        nullptr,
         nullptr
     ));
 
@@ -321,6 +331,7 @@ TEST_F(FieldTests, TestUpdateFieldOnline) {
         requestField,
         std::make_shared< int32_t >(0),
         std::make_shared< std::wstring >(L"sections/0/paragraphs/0"),
+        nullptr,
         nullptr,
         nullptr,
         nullptr,
@@ -357,6 +368,7 @@ TEST_F(FieldTests, TestInsertPageNumbers) {
         nullptr,
         nullptr,
         nullptr,
+        nullptr,
         std::make_shared< std::wstring >(baseTestOutPath + L"/" + remoteFileName),
         nullptr,
         nullptr
@@ -382,6 +394,7 @@ TEST_F(FieldTests, TestInsertPageNumbersOnline) {
     std::shared_ptr<requests::InsertPageNumbersOnlineRequest> request(new requests::InsertPageNumbersOnlineRequest(
         requestDocument,
         requestPageNumber,
+        nullptr,
         nullptr,
         nullptr,
         nullptr,
@@ -416,6 +429,7 @@ TEST_F(FieldTests, TestDeleteField) {
         nullptr,
         nullptr,
         nullptr,
+        nullptr,
         nullptr
     ));
 
@@ -431,6 +445,7 @@ TEST_F(FieldTests, TestDeleteFieldOnline) {
         requestDocument,
         std::make_shared< int32_t >(0),
         std::make_shared< std::wstring >(L"sections/0/paragraphs/0"),
+        nullptr,
         nullptr,
         nullptr,
         nullptr,
@@ -465,6 +480,7 @@ TEST_F(FieldTests, TestDeleteFieldWithoutNodePath) {
         nullptr,
         nullptr,
         nullptr,
+        nullptr,
         nullptr
     ));
 
@@ -487,6 +503,7 @@ TEST_F(FieldTests, TestDeleteParagraphFields) {
         std::make_shared< std::wstring >(remoteFileName),
         std::make_shared< std::wstring >(L"paragraphs/0"),
         std::make_shared< std::wstring >(remoteDataFolder),
+        nullptr,
         nullptr,
         nullptr,
         nullptr,
@@ -521,6 +538,7 @@ TEST_F(FieldTests, TestDeleteParagraphFieldsWithoutNodePath) {
         nullptr,
         nullptr,
         nullptr,
+        nullptr,
         nullptr
     ));
 
@@ -543,6 +561,7 @@ TEST_F(FieldTests, TestDeleteSectionFields) {
         std::make_shared< std::wstring >(remoteFileName),
         std::make_shared< std::wstring >(L"sections/0"),
         std::make_shared< std::wstring >(remoteDataFolder),
+        nullptr,
         nullptr,
         nullptr,
         nullptr,
@@ -577,6 +596,7 @@ TEST_F(FieldTests, TestDeleteSectionFieldsWithoutNodePath) {
         nullptr,
         nullptr,
         nullptr,
+        nullptr,
         nullptr
     ));
 
@@ -599,6 +619,7 @@ TEST_F(FieldTests, TestDeleteSectionParagraphFields) {
         std::make_shared< std::wstring >(remoteFileName),
         std::make_shared< std::wstring >(L"sections/0/paragraphs/0"),
         std::make_shared< std::wstring >(remoteDataFolder),
+        nullptr,
         nullptr,
         nullptr,
         nullptr,
@@ -633,6 +654,7 @@ TEST_F(FieldTests, TestDeleteDocumentFields) {
         nullptr,
         nullptr,
         nullptr,
+        nullptr,
         nullptr
     ));
 
@@ -649,6 +671,7 @@ TEST_F(FieldTests, TestDeleteDocumentFieldsOnline) {
     std::shared_ptr<requests::DeleteFieldsOnlineRequest> request(new requests::DeleteFieldsOnlineRequest(
         requestDocument,
         std::make_shared< std::wstring >(L""),
+        nullptr,
         nullptr,
         nullptr,
         nullptr,
@@ -679,6 +702,7 @@ TEST_F(FieldTests, TestUpdateDocumentFields) {
         nullptr,
         nullptr,
         nullptr,
+        nullptr,
         nullptr
     ));
 
@@ -696,6 +720,7 @@ TEST_F(FieldTests, TestUpdateDocumentFieldsOnline) {
     auto requestDocument = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(localFile)), std::istream::binary));
     std::shared_ptr<requests::UpdateFieldsOnlineRequest> request(new requests::UpdateFieldsOnlineRequest(
         requestDocument,
+        nullptr,
         nullptr,
         nullptr,
         nullptr,

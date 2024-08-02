@@ -61,6 +61,7 @@ TEST_F(FootnoteTests, TestInsertFootnote) {
         nullptr,
         nullptr,
         nullptr,
+        nullptr,
         nullptr
     ));
 
@@ -82,6 +83,7 @@ TEST_F(FootnoteTests, TestInsertFootnoteOnline) {
         requestDocument,
         requestFootnoteDto,
         std::make_shared< std::wstring >(L""),
+        nullptr,
         nullptr,
         nullptr,
         nullptr,
@@ -112,6 +114,7 @@ TEST_F(FootnoteTests, TestInsertFootnoteWithoutNodePath) {
         requestFootnoteDto,
         nullptr,
         std::make_shared< std::wstring >(remoteDataFolder),
+        nullptr,
         nullptr,
         nullptr,
         nullptr,
@@ -149,6 +152,7 @@ TEST_F(FootnoteTests, TestDeleteFootnote) {
         nullptr,
         nullptr,
         nullptr,
+        nullptr,
         nullptr
     ));
 
@@ -164,6 +168,7 @@ TEST_F(FootnoteTests, TestDeleteFootnoteOnline) {
         requestDocument,
         std::make_shared< int32_t >(0),
         std::make_shared< std::wstring >(L""),
+        nullptr,
         nullptr,
         nullptr,
         nullptr,
@@ -197,6 +202,7 @@ TEST_F(FootnoteTests, TestDeleteFootnoteWithoutNodePath) {
         nullptr,
         nullptr,
         nullptr,
+        nullptr,
         nullptr
     ));
 
@@ -221,6 +227,7 @@ TEST_F(FootnoteTests, TestGetFootnotes) {
         nullptr,
         nullptr,
         nullptr,
+        nullptr,
         nullptr
     ));
 
@@ -239,6 +246,7 @@ TEST_F(FootnoteTests, TestGetFootnotesOnline) {
     std::shared_ptr<requests::GetFootnotesOnlineRequest> request(new requests::GetFootnotesOnlineRequest(
         requestDocument,
         std::make_shared< std::wstring >(L""),
+        nullptr,
         nullptr,
         nullptr,
         nullptr
@@ -262,6 +270,7 @@ TEST_F(FootnoteTests, TestGetFootnotesWithoutNodePath) {
         std::make_shared< std::wstring >(remoteFileName),
         nullptr,
         std::make_shared< std::wstring >(remoteDataFolder),
+        nullptr,
         nullptr,
         nullptr,
         nullptr,
@@ -294,6 +303,7 @@ TEST_F(FootnoteTests, TestGetFootnote) {
         nullptr,
         nullptr,
         nullptr,
+        nullptr,
         nullptr
     ));
 
@@ -311,6 +321,7 @@ TEST_F(FootnoteTests, TestGetFootnoteOnline) {
         requestDocument,
         std::make_shared< int32_t >(0),
         std::make_shared< std::wstring >(L""),
+        nullptr,
         nullptr,
         nullptr,
         nullptr
@@ -335,6 +346,7 @@ TEST_F(FootnoteTests, TestGetFootnoteWithoutNodePath) {
         std::make_shared< int32_t >(0),
         nullptr,
         std::make_shared< std::wstring >(remoteDataFolder),
+        nullptr,
         nullptr,
         nullptr,
         nullptr,
@@ -371,6 +383,7 @@ TEST_F(FootnoteTests, TestUpdateFootnote) {
         nullptr,
         nullptr,
         nullptr,
+        nullptr,
         nullptr
     ));
 
@@ -391,6 +404,7 @@ TEST_F(FootnoteTests, TestUpdateFootnoteOnline) {
         requestFootnoteDto,
         std::make_shared< int32_t >(0),
         std::make_shared< std::wstring >(L""),
+        nullptr,
         nullptr,
         nullptr,
         nullptr,
@@ -421,6 +435,7 @@ TEST_F(FootnoteTests, TestUpdateFootnoteWithoutNodePath) {
         requestFootnoteDto,
         nullptr,
         std::make_shared< std::wstring >(remoteDataFolder),
+        nullptr,
         nullptr,
         nullptr,
         nullptr,

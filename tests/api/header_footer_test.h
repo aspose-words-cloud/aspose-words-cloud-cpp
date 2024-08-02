@@ -55,6 +55,7 @@ TEST_F(HeaderFooterTests, TestGetHeaderFooters) {
         nullptr,
         nullptr,
         nullptr,
+        nullptr,
         nullptr
     ));
 
@@ -72,6 +73,7 @@ TEST_F(HeaderFooterTests, TestGetHeaderFootersOnline) {
     std::shared_ptr<requests::GetHeaderFootersOnlineRequest> request(new requests::GetHeaderFootersOnlineRequest(
         requestDocument,
         std::make_shared< std::wstring >(L""),
+        nullptr,
         nullptr,
         nullptr,
         nullptr,
@@ -100,6 +102,7 @@ TEST_F(HeaderFooterTests, TestGetHeaderFooter) {
         nullptr,
         nullptr,
         nullptr,
+        nullptr,
         nullptr
     ));
 
@@ -118,6 +121,7 @@ TEST_F(HeaderFooterTests, TestGetHeaderFooterOnline) {
     std::shared_ptr<requests::GetHeaderFooterOnlineRequest> request(new requests::GetHeaderFooterOnlineRequest(
         requestDocument,
         std::make_shared< int32_t >(0),
+        nullptr,
         nullptr,
         nullptr,
         nullptr,
@@ -147,6 +151,7 @@ TEST_F(HeaderFooterTests, TestGetHeaderFooterOfSection) {
         nullptr,
         nullptr,
         nullptr,
+        nullptr,
         nullptr
     ));
 
@@ -166,6 +171,7 @@ TEST_F(HeaderFooterTests, TestGetHeaderFooterOfSectionOnline) {
         requestDocument,
         std::make_shared< int32_t >(0),
         std::make_shared< int32_t >(0),
+        nullptr,
         nullptr,
         nullptr,
         nullptr,
@@ -197,6 +203,7 @@ TEST_F(HeaderFooterTests, TestDeleteHeaderFooter) {
         nullptr,
         nullptr,
         nullptr,
+        nullptr,
         nullptr
     ));
 
@@ -212,6 +219,7 @@ TEST_F(HeaderFooterTests, TestDeleteHeaderFooterOnline) {
         requestDocument,
         std::make_shared< std::wstring >(L""),
         std::make_shared< int32_t >(0),
+        nullptr,
         nullptr,
         nullptr,
         nullptr,
@@ -245,6 +253,7 @@ TEST_F(HeaderFooterTests, TestDeleteHeadersFooters) {
         nullptr,
         nullptr,
         nullptr,
+        nullptr,
         nullptr
     ));
 
@@ -259,6 +268,7 @@ TEST_F(HeaderFooterTests, TestDeleteHeadersFootersOnline) {
     std::shared_ptr<requests::DeleteHeadersFootersOnlineRequest> request(new requests::DeleteHeadersFootersOnlineRequest(
         requestDocument,
         std::make_shared< std::wstring >(L""),
+        nullptr,
         nullptr,
         nullptr,
         nullptr,
@@ -293,6 +303,7 @@ TEST_F(HeaderFooterTests, TestInsertHeaderFooter) {
         nullptr,
         nullptr,
         nullptr,
+        nullptr,
         nullptr
     ));
 
@@ -308,6 +319,7 @@ TEST_F(HeaderFooterTests, TestInsertHeaderFooterOnline) {
         requestDocument,
         std::make_shared< std::wstring >(L""),
         std::make_shared< std::wstring >(L"FooterEven"),
+        nullptr,
         nullptr,
         nullptr,
         nullptr,

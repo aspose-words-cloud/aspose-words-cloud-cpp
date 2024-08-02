@@ -54,6 +54,7 @@ TEST_F(TableBorderTests, TestGetBorders) {
         nullptr,
         nullptr,
         nullptr,
+        nullptr,
         nullptr
     ));
 
@@ -73,6 +74,7 @@ TEST_F(TableBorderTests, TestGetBordersOnline) {
     std::shared_ptr<requests::GetBordersOnlineRequest> request(new requests::GetBordersOnlineRequest(
         requestDocument,
         std::make_shared< std::wstring >(L"tables/1/rows/0/cells/0"),
+        nullptr,
         nullptr,
         nullptr,
         nullptr
@@ -100,6 +102,7 @@ TEST_F(TableBorderTests, TestGetBorder) {
         nullptr,
         nullptr,
         nullptr,
+        nullptr,
         nullptr
     ));
 
@@ -118,6 +121,7 @@ TEST_F(TableBorderTests, TestGetBorderOnline) {
         requestDocument,
         std::make_shared< std::wstring >(L"left"),
         std::make_shared< std::wstring >(L"tables/1/rows/0/cells/0"),
+        nullptr,
         nullptr,
         nullptr,
         nullptr
@@ -147,6 +151,7 @@ TEST_F(TableBorderTests, TestDeleteBorders) {
         nullptr,
         nullptr,
         nullptr,
+        nullptr,
         nullptr
     ));
 
@@ -161,6 +166,7 @@ TEST_F(TableBorderTests, TestDeleteBordersOnline) {
     std::shared_ptr<requests::DeleteBordersOnlineRequest> request(new requests::DeleteBordersOnlineRequest(
         requestDocument,
         std::make_shared< std::wstring >(L"tables/1/rows/0/cells/0"),
+        nullptr,
         nullptr,
         nullptr,
         nullptr,
@@ -194,6 +200,7 @@ TEST_F(TableBorderTests, TestDeleteBorder) {
         nullptr,
         nullptr,
         nullptr,
+        nullptr,
         nullptr
     ));
 
@@ -209,6 +216,7 @@ TEST_F(TableBorderTests, TestDeleteBorderOnline) {
         requestDocument,
         std::make_shared< std::wstring >(L"left"),
         std::make_shared< std::wstring >(L"tables/1/rows/0/cells/0"),
+        nullptr,
         nullptr,
         nullptr,
         nullptr,
@@ -252,6 +260,7 @@ TEST_F(TableBorderTests, TestUpdateBorder) {
         nullptr,
         nullptr,
         nullptr,
+        nullptr,
         nullptr
     ));
 
@@ -283,6 +292,7 @@ TEST_F(TableBorderTests, TestUpdateBorderOnline) {
         requestBorderProperties,
         std::make_shared< std::wstring >(L"left"),
         std::make_shared< std::wstring >(L"tables/1/rows/0/cells/0"),
+        nullptr,
         nullptr,
         nullptr,
         nullptr,

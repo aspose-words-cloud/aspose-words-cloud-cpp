@@ -39,6 +39,7 @@ namespace aspose::words::cloud::requests {
             const std::shared_ptr< std::wstring > loadEncoding = nullptr,
             const std::shared_ptr< std::wstring > password = nullptr,
             const std::shared_ptr< std::wstring > encryptedPassword = nullptr,
+            const std::shared_ptr< bool > openTypeSupport = nullptr,
             const std::shared_ptr< bool > withRegions = nullptr,
             const std::shared_ptr< std::wstring > mailMergeDataFile = nullptr,
             const std::shared_ptr< std::wstring > cleanup = nullptr,
@@ -54,6 +55,7 @@ namespace aspose::words::cloud::requests {
         ASPOSE_WORDS_CLOUD_EXPORT const std::shared_ptr< std::wstring > getLoadEncoding() const;
         ASPOSE_WORDS_CLOUD_EXPORT const std::shared_ptr< std::wstring > getPassword() const;
         ASPOSE_WORDS_CLOUD_EXPORT const std::shared_ptr< std::wstring > getEncryptedPassword() const;
+        ASPOSE_WORDS_CLOUD_EXPORT const std::shared_ptr< bool > getOpenTypeSupport() const;
         ASPOSE_WORDS_CLOUD_EXPORT const std::shared_ptr< bool > getWithRegions() const;
         ASPOSE_WORDS_CLOUD_EXPORT const std::shared_ptr< std::wstring > getMailMergeDataFile() const;
         ASPOSE_WORDS_CLOUD_EXPORT const std::shared_ptr< std::wstring > getCleanup() const;
@@ -72,6 +74,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > m_LoadEncoding;
         const std::shared_ptr< std::wstring > m_Password;
         const std::shared_ptr< std::wstring > m_EncryptedPassword;
+        const std::shared_ptr< bool > m_OpenTypeSupport;
         const std::shared_ptr< bool > m_WithRegions;
         const std::shared_ptr< std::wstring > m_MailMergeDataFile;
         const std::shared_ptr< std::wstring > m_Cleanup;

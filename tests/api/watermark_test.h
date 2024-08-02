@@ -57,6 +57,7 @@ TEST_F(WatermarkTests, TestInsertWatermarkText) {
         nullptr,
         nullptr,
         nullptr,
+        nullptr,
         std::make_shared< std::wstring >(baseTestOutPath + L"/" + remoteFileName),
         nullptr,
         nullptr
@@ -76,6 +77,7 @@ TEST_F(WatermarkTests, TestInsertWatermarkTextOnline) {
     std::shared_ptr<requests::InsertWatermarkOnlineRequest> request(new requests::InsertWatermarkOnlineRequest(
         requestDocument,
         requestWatermarkData,
+        nullptr,
         nullptr,
         nullptr,
         nullptr,
@@ -114,6 +116,7 @@ TEST_F(WatermarkTests, TestInsertWatermarkImage) {
         nullptr,
         nullptr,
         nullptr,
+        nullptr,
         std::make_shared< std::wstring >(baseTestOutPath + L"/" + remoteFileName),
         nullptr,
         nullptr
@@ -135,6 +138,7 @@ TEST_F(WatermarkTests, TestInsertWatermarkImageOnline) {
     std::shared_ptr<requests::InsertWatermarkOnlineRequest> request(new requests::InsertWatermarkOnlineRequest(
         requestDocument,
         requestWatermarkData,
+        nullptr,
         nullptr,
         nullptr,
         nullptr,
@@ -170,6 +174,7 @@ TEST_F(WatermarkTests, TestInsertWatermarkImageDeprecated) {
         nullptr,
         nullptr,
         nullptr,
+        nullptr,
         std::make_shared< std::wstring >(baseTestOutPath + L"/" + remoteFileName),
         nullptr,
         nullptr,
@@ -191,6 +196,7 @@ TEST_F(WatermarkTests, TestInsertWatermarkImageDeprecatedOnline) {
     std::shared_ptr<requests::InsertWatermarkImageOnlineRequest> request(new requests::InsertWatermarkImageOnlineRequest(
         requestDocument,
         requestImageFile,
+        nullptr,
         nullptr,
         nullptr,
         nullptr,
@@ -226,6 +232,7 @@ TEST_F(WatermarkTests, TestInsertWatermarkTextDeprecated) {
         nullptr,
         nullptr,
         nullptr,
+        nullptr,
         std::make_shared< std::wstring >(baseTestOutPath + L"/" + remoteFileName),
         nullptr,
         nullptr
@@ -247,6 +254,7 @@ TEST_F(WatermarkTests, TestInsertWatermarkTextDeprecatedOnline) {
     std::shared_ptr<requests::InsertWatermarkTextOnlineRequest> request(new requests::InsertWatermarkTextOnlineRequest(
         requestDocument,
         requestWatermarkText,
+        nullptr,
         nullptr,
         nullptr,
         nullptr,
@@ -276,6 +284,7 @@ TEST_F(WatermarkTests, TestDeleteWatermark) {
         nullptr,
         nullptr,
         nullptr,
+        nullptr,
         std::make_shared< std::wstring >(baseTestOutPath + L"/" + remoteFileName),
         nullptr,
         nullptr
@@ -293,6 +302,7 @@ TEST_F(WatermarkTests, TestDeleteWatermarkOnline) {
     auto requestDocument = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(localFile)), std::istream::binary));
     std::shared_ptr<requests::DeleteWatermarkOnlineRequest> request(new requests::DeleteWatermarkOnlineRequest(
         requestDocument,
+        nullptr,
         nullptr,
         nullptr,
         nullptr,

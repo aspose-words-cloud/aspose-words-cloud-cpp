@@ -58,6 +58,7 @@ TEST_F(CompressDocumentTests, TestCompressDocument) {
         nullptr,
         nullptr,
         nullptr,
+        nullptr,
         nullptr
     ));
 
@@ -77,6 +78,7 @@ TEST_F(CompressDocumentTests, TestCompressDocumentOnline) {
     std::shared_ptr<requests::CompressDocumentOnlineRequest> request(new requests::CompressDocumentOnlineRequest(
         requestDocument,
         requestCompressOptions,
+        nullptr,
         nullptr,
         nullptr,
         nullptr,

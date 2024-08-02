@@ -56,6 +56,7 @@ TEST_F(DocumentStatisticsTests, TestGetDocumentStatistics) {
         nullptr,
         nullptr,
         nullptr,
+        nullptr,
         nullptr
     ));
 
@@ -71,6 +72,7 @@ TEST_F(DocumentStatisticsTests, TestGetDocumentStatisticsOnline) {
     auto requestDocument = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(localFile)), std::istream::binary));
     std::shared_ptr<requests::GetDocumentStatisticsOnlineRequest> request(new requests::GetDocumentStatisticsOnlineRequest(
         requestDocument,
+        nullptr,
         nullptr,
         nullptr,
         nullptr,

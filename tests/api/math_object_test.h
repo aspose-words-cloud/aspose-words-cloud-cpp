@@ -54,6 +54,7 @@ TEST_F(MathObjectTests, TestGetOfficeMathObjects) {
         nullptr,
         nullptr,
         nullptr,
+        nullptr,
         nullptr
     ));
 
@@ -72,6 +73,7 @@ TEST_F(MathObjectTests, TestGetOfficeMathObjectsOnline) {
     std::shared_ptr<requests::GetOfficeMathObjectsOnlineRequest> request(new requests::GetOfficeMathObjectsOnlineRequest(
         requestDocument,
         std::make_shared< std::wstring >(L""),
+        nullptr,
         nullptr,
         nullptr,
         nullptr
@@ -95,6 +97,7 @@ TEST_F(MathObjectTests, TestGetOfficeMathObjectsWithoutNodePath) {
         std::make_shared< std::wstring >(remoteFileName),
         nullptr,
         std::make_shared< std::wstring >(remoteDataFolder),
+        nullptr,
         nullptr,
         nullptr,
         nullptr,
@@ -127,6 +130,7 @@ TEST_F(MathObjectTests, TestGetOfficeMathObject) {
         nullptr,
         nullptr,
         nullptr,
+        nullptr,
         nullptr
     ));
 
@@ -144,6 +148,7 @@ TEST_F(MathObjectTests, TestGetOfficeMathObjectOnline) {
         requestDocument,
         std::make_shared< int32_t >(0),
         std::make_shared< std::wstring >(L""),
+        nullptr,
         nullptr,
         nullptr,
         nullptr
@@ -168,6 +173,7 @@ TEST_F(MathObjectTests, TestGetOfficeMathObjectWithoutNodePath) {
         std::make_shared< int32_t >(0),
         nullptr,
         std::make_shared< std::wstring >(remoteDataFolder),
+        nullptr,
         nullptr,
         nullptr,
         nullptr,
@@ -201,6 +207,7 @@ TEST_F(MathObjectTests, TestRenderMathObject) {
         nullptr,
         nullptr,
         nullptr,
+        nullptr,
         nullptr
     ));
 
@@ -217,6 +224,7 @@ TEST_F(MathObjectTests, TestRenderMathObjectOnline) {
         std::make_shared< std::wstring >(L"png"),
         std::make_shared< int32_t >(0),
         std::make_shared< std::wstring >(L""),
+        nullptr,
         nullptr,
         nullptr,
         nullptr,
@@ -244,6 +252,7 @@ TEST_F(MathObjectTests, TestRenderMathObjectWithoutNodePath) {
         std::make_shared< int32_t >(0),
         nullptr,
         std::make_shared< std::wstring >(remoteDataFolder),
+        nullptr,
         nullptr,
         nullptr,
         nullptr,
@@ -277,6 +286,7 @@ TEST_F(MathObjectTests, TestDeleteOfficeMathObject) {
         nullptr,
         nullptr,
         nullptr,
+        nullptr,
         nullptr
     ));
 
@@ -292,6 +302,7 @@ TEST_F(MathObjectTests, TestDeleteOfficeMathObjectOnline) {
         requestDocument,
         std::make_shared< int32_t >(0),
         std::make_shared< std::wstring >(L""),
+        nullptr,
         nullptr,
         nullptr,
         nullptr,
@@ -325,6 +336,7 @@ TEST_F(MathObjectTests, TestDeleteOfficeMathObjectWithoutNodePath) {
         nullptr,
         nullptr,
         nullptr,
+        nullptr,
         nullptr
     ));
 
@@ -351,6 +363,7 @@ TEST_F(MathObjectTests, TestDeleteOfficeMathObjects) {
         nullptr,
         nullptr,
         nullptr,
+        nullptr,
         nullptr
     ));
 
@@ -364,6 +377,7 @@ TEST_F(MathObjectTests, TestDeleteOfficeMathObjectsOnline) {
     auto requestDocument = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(localFile)), std::istream::binary));
     std::shared_ptr<requests::DeleteOfficeMathObjectsOnlineRequest> request(new requests::DeleteOfficeMathObjectsOnlineRequest(
         requestDocument,
+        nullptr,
         nullptr,
         nullptr,
         nullptr,

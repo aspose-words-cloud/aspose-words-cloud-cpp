@@ -54,6 +54,7 @@ TEST_F(CommentTests, TestGetComment) {
         nullptr,
         nullptr,
         nullptr,
+        nullptr,
         nullptr
     ));
 
@@ -70,6 +71,7 @@ TEST_F(CommentTests, TestGetCommentOnline) {
     std::shared_ptr<requests::GetCommentOnlineRequest> request(new requests::GetCommentOnlineRequest(
         requestDocument,
         std::make_shared< int32_t >(0),
+        nullptr,
         nullptr,
         nullptr,
         nullptr
@@ -95,6 +97,7 @@ TEST_F(CommentTests, TestGetComments) {
         nullptr,
         nullptr,
         nullptr,
+        nullptr,
         nullptr
     ));
 
@@ -112,6 +115,7 @@ TEST_F(CommentTests, TestGetCommentsOnline) {
     auto requestDocument = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(localFile)), std::istream::binary));
     std::shared_ptr<requests::GetCommentsOnlineRequest> request(new requests::GetCommentsOnlineRequest(
         requestDocument,
+        nullptr,
         nullptr,
         nullptr,
         nullptr
@@ -153,6 +157,7 @@ TEST_F(CommentTests, TestInsertComment) {
         nullptr,
         nullptr,
         nullptr,
+        nullptr,
         nullptr
     ));
 
@@ -184,6 +189,7 @@ TEST_F(CommentTests, TestInsertCommentOnline) {
     std::shared_ptr<requests::InsertCommentOnlineRequest> request(new requests::InsertCommentOnlineRequest(
         requestDocument,
         requestComment,
+        nullptr,
         nullptr,
         nullptr,
         nullptr,
@@ -229,6 +235,7 @@ TEST_F(CommentTests, TestUpdateComment) {
         nullptr,
         nullptr,
         nullptr,
+        nullptr,
         nullptr
     ));
 
@@ -266,6 +273,7 @@ TEST_F(CommentTests, TestUpdateCommentOnline) {
         nullptr,
         nullptr,
         nullptr,
+        nullptr,
         nullptr
     ));
 
@@ -291,6 +299,7 @@ TEST_F(CommentTests, TestDeleteComment) {
         nullptr,
         nullptr,
         nullptr,
+        nullptr,
         std::make_shared< std::wstring >(baseTestOutPath + L"/" + remoteFileName),
         nullptr,
         nullptr
@@ -307,6 +316,7 @@ TEST_F(CommentTests, TestDeleteCommentOnline) {
     std::shared_ptr<requests::DeleteCommentOnlineRequest> request(new requests::DeleteCommentOnlineRequest(
         requestDocument,
         std::make_shared< int32_t >(0),
+        nullptr,
         nullptr,
         nullptr,
         nullptr,
@@ -336,6 +346,7 @@ TEST_F(CommentTests, TestDeleteComments) {
         nullptr,
         nullptr,
         nullptr,
+        nullptr,
         std::make_shared< std::wstring >(baseTestOutPath + L"/" + remoteFileName),
         nullptr,
         nullptr
@@ -351,6 +362,7 @@ TEST_F(CommentTests, TestDeleteCommentsOnline) {
     auto requestDocument = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(localFile)), std::istream::binary));
     std::shared_ptr<requests::DeleteCommentsOnlineRequest> request(new requests::DeleteCommentsOnlineRequest(
         requestDocument,
+        nullptr,
         nullptr,
         nullptr,
         nullptr,

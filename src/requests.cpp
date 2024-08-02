@@ -99,6 +99,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
         const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport,
         const std::shared_ptr< std::wstring > destFileName
     ) : 
         m_Name(name),
@@ -107,6 +108,7 @@ namespace aspose::words::cloud::requests {
         m_LoadEncoding(loadEncoding),
         m_Password(password),
         m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport),
         m_DestFileName(destFileName)
     {
     }
@@ -141,6 +143,11 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
+    const std::shared_ptr< bool > AcceptAllRevisionsRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
     const std::shared_ptr< std::wstring > AcceptAllRevisionsRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -159,6 +166,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
 
         for (models::FileReference* additionalFileContent : additionalFilesContent)
@@ -188,12 +196,14 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
         const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport,
         const std::shared_ptr< std::wstring > destFileName
     ) : 
         m_Document(document),
         m_LoadEncoding(loadEncoding),
         m_Password(password),
         m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport),
         m_DestFileName(destFileName)
     {
     }
@@ -218,6 +228,11 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
+    const std::shared_ptr< bool > AcceptAllRevisionsOnlineRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
     const std::shared_ptr< std::wstring > AcceptAllRevisionsOnlineRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -232,6 +247,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_Document)
         {
@@ -269,6 +285,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
         const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport,
         const std::shared_ptr< std::wstring > destFileName,
         const std::shared_ptr< std::wstring > revisionAuthor,
         const std::shared_ptr< std::wstring > revisionDateTime
@@ -280,6 +297,7 @@ namespace aspose::words::cloud::requests {
         m_LoadEncoding(loadEncoding),
         m_Password(password),
         m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport),
         m_DestFileName(destFileName),
         m_RevisionAuthor(revisionAuthor),
         m_RevisionDateTime(revisionDateTime)
@@ -321,6 +339,11 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
+    const std::shared_ptr< bool > AppendDocumentRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
     const std::shared_ptr< std::wstring > AppendDocumentRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -349,6 +372,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
@@ -388,6 +412,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
         const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport,
         const std::shared_ptr< std::wstring > destFileName,
         const std::shared_ptr< std::wstring > revisionAuthor,
         const std::shared_ptr< std::wstring > revisionDateTime
@@ -397,6 +422,7 @@ namespace aspose::words::cloud::requests {
         m_LoadEncoding(loadEncoding),
         m_Password(password),
         m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport),
         m_DestFileName(destFileName),
         m_RevisionAuthor(revisionAuthor),
         m_RevisionDateTime(revisionDateTime)
@@ -428,6 +454,11 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
+    const std::shared_ptr< bool > AppendDocumentOnlineRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
     const std::shared_ptr< std::wstring > AppendDocumentOnlineRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -452,6 +483,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
@@ -499,6 +531,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
         const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport,
         const std::shared_ptr< std::wstring > destFileName,
         const std::shared_ptr< std::wstring > revisionAuthor,
         const std::shared_ptr< std::wstring > revisionDateTime
@@ -511,6 +544,7 @@ namespace aspose::words::cloud::requests {
         m_LoadEncoding(loadEncoding),
         m_Password(password),
         m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport),
         m_DestFileName(destFileName),
         m_RevisionAuthor(revisionAuthor),
         m_RevisionDateTime(revisionDateTime)
@@ -557,6 +591,11 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
+    const std::shared_ptr< bool > ApplyStyleToDocumentElementRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
     const std::shared_ptr< std::wstring > ApplyStyleToDocumentElementRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -587,6 +626,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
@@ -626,6 +666,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
         const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport,
         const std::shared_ptr< std::wstring > destFileName,
         const std::shared_ptr< std::wstring > revisionAuthor,
         const std::shared_ptr< std::wstring > revisionDateTime
@@ -636,6 +677,7 @@ namespace aspose::words::cloud::requests {
         m_LoadEncoding(loadEncoding),
         m_Password(password),
         m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport),
         m_DestFileName(destFileName),
         m_RevisionAuthor(revisionAuthor),
         m_RevisionDateTime(revisionDateTime)
@@ -672,6 +714,11 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
+    const std::shared_ptr< bool > ApplyStyleToDocumentElementOnlineRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
     const std::shared_ptr< std::wstring > ApplyStyleToDocumentElementOnlineRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -698,6 +745,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
@@ -744,6 +792,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
         const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport,
         const std::shared_ptr< std::wstring > destFileName
     ) : 
         m_Name(name),
@@ -754,6 +803,7 @@ namespace aspose::words::cloud::requests {
         m_LoadEncoding(loadEncoding),
         m_Password(password),
         m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport),
         m_DestFileName(destFileName)
     {
     }
@@ -798,6 +848,11 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
+    const std::shared_ptr< bool > BuildReportRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
     const std::shared_ptr< std::wstring > BuildReportRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -816,6 +871,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_Data)
         {
@@ -992,6 +1048,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
         const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport,
         const std::shared_ptr< std::wstring > bestClassesCount,
         const std::shared_ptr< std::wstring > taxonomy
     ) : 
@@ -1001,6 +1058,7 @@ namespace aspose::words::cloud::requests {
         m_LoadEncoding(loadEncoding),
         m_Password(password),
         m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport),
         m_BestClassesCount(bestClassesCount),
         m_Taxonomy(taxonomy)
     {
@@ -1036,6 +1094,11 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
+    const std::shared_ptr< bool > ClassifyDocumentRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
     const std::shared_ptr< std::wstring > ClassifyDocumentRequest::getBestClassesCount() const
     {
         return m_BestClassesCount;
@@ -1059,6 +1122,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
         if (m_BestClassesCount) result->addQueryParam(L"bestClassesCount", *m_BestClassesCount);
         if (m_Taxonomy) result->addQueryParam(L"taxonomy", *m_Taxonomy);
 
@@ -1089,6 +1153,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
         const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport,
         const std::shared_ptr< std::wstring > bestClassesCount,
         const std::shared_ptr< std::wstring > taxonomy
     ) : 
@@ -1096,6 +1161,7 @@ namespace aspose::words::cloud::requests {
         m_LoadEncoding(loadEncoding),
         m_Password(password),
         m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport),
         m_BestClassesCount(bestClassesCount),
         m_Taxonomy(taxonomy)
     {
@@ -1121,6 +1187,11 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
+    const std::shared_ptr< bool > ClassifyDocumentOnlineRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
     const std::shared_ptr< std::wstring > ClassifyDocumentOnlineRequest::getBestClassesCount() const
     {
         return m_BestClassesCount;
@@ -1140,6 +1211,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
         if (m_BestClassesCount) result->addQueryParam(L"bestClassesCount", *m_BestClassesCount);
         if (m_Taxonomy) result->addQueryParam(L"taxonomy", *m_Taxonomy);
         if (m_Document)
@@ -1178,6 +1250,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
         const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport,
         const std::shared_ptr< std::wstring > destFileName
     ) : 
         m_Name(name),
@@ -1187,6 +1260,7 @@ namespace aspose::words::cloud::requests {
         m_LoadEncoding(loadEncoding),
         m_Password(password),
         m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport),
         m_DestFileName(destFileName)
     {
     }
@@ -1226,6 +1300,11 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
+    const std::shared_ptr< bool > CompareDocumentRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
     const std::shared_ptr< std::wstring > CompareDocumentRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -1244,6 +1323,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_CompareData)
         {
@@ -1281,6 +1361,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
         const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport,
         const std::shared_ptr< std::wstring > destFileName
     ) : 
         m_Document(document),
@@ -1288,6 +1369,7 @@ namespace aspose::words::cloud::requests {
         m_LoadEncoding(loadEncoding),
         m_Password(password),
         m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport),
         m_DestFileName(destFileName)
     {
     }
@@ -1317,6 +1399,11 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
+    const std::shared_ptr< bool > CompareDocumentOnlineRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
     const std::shared_ptr< std::wstring > CompareDocumentOnlineRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -1331,6 +1418,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_Document)
         {
@@ -1375,6 +1463,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
         const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport,
         const std::shared_ptr< std::wstring > destFileName
     ) : 
         m_Name(name),
@@ -1384,6 +1473,7 @@ namespace aspose::words::cloud::requests {
         m_LoadEncoding(loadEncoding),
         m_Password(password),
         m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport),
         m_DestFileName(destFileName)
     {
     }
@@ -1423,6 +1513,11 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
+    const std::shared_ptr< bool > CompressDocumentRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
     const std::shared_ptr< std::wstring > CompressDocumentRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -1441,6 +1536,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_CompressOptions)
         {
@@ -1477,6 +1573,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
         const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport,
         const std::shared_ptr< std::wstring > destFileName
     ) : 
         m_Document(document),
@@ -1484,6 +1581,7 @@ namespace aspose::words::cloud::requests {
         m_LoadEncoding(loadEncoding),
         m_Password(password),
         m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport),
         m_DestFileName(destFileName)
     {
     }
@@ -1513,6 +1611,11 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
+    const std::shared_ptr< bool > CompressDocumentOnlineRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
     const std::shared_ptr< std::wstring > CompressDocumentOnlineRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -1527,6 +1630,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_Document)
         {
@@ -1571,6 +1675,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
         const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport,
         const std::shared_ptr< std::wstring > fontsLocation
     ) : 
         m_Document(document),
@@ -1581,6 +1686,7 @@ namespace aspose::words::cloud::requests {
         m_LoadEncoding(loadEncoding),
         m_Password(password),
         m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport),
         m_FontsLocation(fontsLocation)
     {
     }
@@ -1625,6 +1731,11 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
+    const std::shared_ptr< bool > ConvertDocumentRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
     const std::shared_ptr< std::wstring > ConvertDocumentRequest::getFontsLocation() const
     {
         return m_FontsLocation;
@@ -1644,6 +1755,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
         if (m_FontsLocation) result->addQueryParam(L"fontsLocation", *m_FontsLocation);
         if (m_Document)
         {
@@ -1825,6 +1937,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
         const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport,
         const std::shared_ptr< std::wstring > destFileName,
         const std::shared_ptr< std::wstring > revisionAuthor,
         const std::shared_ptr< std::wstring > revisionDateTime
@@ -1836,6 +1949,7 @@ namespace aspose::words::cloud::requests {
         m_LoadEncoding(loadEncoding),
         m_Password(password),
         m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport),
         m_DestFileName(destFileName),
         m_RevisionAuthor(revisionAuthor),
         m_RevisionDateTime(revisionDateTime)
@@ -1877,6 +1991,11 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
+    const std::shared_ptr< bool > CopyStyleRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
     const std::shared_ptr< std::wstring > CopyStyleRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -1905,6 +2024,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
@@ -1943,6 +2063,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
         const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport,
         const std::shared_ptr< std::wstring > destFileName,
         const std::shared_ptr< std::wstring > revisionAuthor,
         const std::shared_ptr< std::wstring > revisionDateTime
@@ -1952,6 +2073,7 @@ namespace aspose::words::cloud::requests {
         m_LoadEncoding(loadEncoding),
         m_Password(password),
         m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport),
         m_DestFileName(destFileName),
         m_RevisionAuthor(revisionAuthor),
         m_RevisionDateTime(revisionDateTime)
@@ -1983,6 +2105,11 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
+    const std::shared_ptr< bool > CopyStyleOnlineRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
     const std::shared_ptr< std::wstring > CopyStyleOnlineRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -2007,6 +2134,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
@@ -2052,6 +2180,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
         const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport,
         const std::shared_ptr< std::wstring > destFileName,
         const std::shared_ptr< std::wstring > revisionAuthor,
         const std::shared_ptr< std::wstring > revisionDateTime
@@ -2063,6 +2192,7 @@ namespace aspose::words::cloud::requests {
         m_LoadEncoding(loadEncoding),
         m_Password(password),
         m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport),
         m_DestFileName(destFileName),
         m_RevisionAuthor(revisionAuthor),
         m_RevisionDateTime(revisionDateTime)
@@ -2104,6 +2234,11 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
+    const std::shared_ptr< bool > CopyStylesFromTemplateRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
     const std::shared_ptr< std::wstring > CopyStylesFromTemplateRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -2134,6 +2269,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
@@ -2279,6 +2415,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
         const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport,
         const std::shared_ptr< std::wstring > destFileName,
         const std::shared_ptr< std::wstring > revisionAuthor,
         const std::shared_ptr< std::wstring > revisionDateTime
@@ -2291,6 +2428,7 @@ namespace aspose::words::cloud::requests {
         m_LoadEncoding(loadEncoding),
         m_Password(password),
         m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport),
         m_DestFileName(destFileName),
         m_RevisionAuthor(revisionAuthor),
         m_RevisionDateTime(revisionDateTime)
@@ -2337,6 +2475,11 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
+    const std::shared_ptr< bool > CreateOrUpdateDocumentPropertyRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
     const std::shared_ptr< std::wstring > CreateOrUpdateDocumentPropertyRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -2367,6 +2510,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
@@ -2406,6 +2550,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
         const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport,
         const std::shared_ptr< std::wstring > destFileName,
         const std::shared_ptr< std::wstring > revisionAuthor,
         const std::shared_ptr< std::wstring > revisionDateTime
@@ -2416,6 +2561,7 @@ namespace aspose::words::cloud::requests {
         m_LoadEncoding(loadEncoding),
         m_Password(password),
         m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport),
         m_DestFileName(destFileName),
         m_RevisionAuthor(revisionAuthor),
         m_RevisionDateTime(revisionDateTime)
@@ -2452,6 +2598,11 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
+    const std::shared_ptr< bool > CreateOrUpdateDocumentPropertyOnlineRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
     const std::shared_ptr< std::wstring > CreateOrUpdateDocumentPropertyOnlineRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -2478,6 +2629,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
@@ -2524,6 +2676,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
         const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport,
         const std::shared_ptr< std::wstring > destFileName
     ) : 
         m_Name(name),
@@ -2534,6 +2687,7 @@ namespace aspose::words::cloud::requests {
         m_LoadEncoding(loadEncoding),
         m_Password(password),
         m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport),
         m_DestFileName(destFileName)
     {
     }
@@ -2578,6 +2732,11 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
+    const std::shared_ptr< bool > DeleteAllParagraphTabStopsRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
     const std::shared_ptr< std::wstring > DeleteAllParagraphTabStopsRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -2599,6 +2758,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
 
         for (models::FileReference* additionalFileContent : additionalFilesContent)
@@ -2630,6 +2790,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
         const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport,
         const std::shared_ptr< std::wstring > destFileName
     ) : 
         m_Document(document),
@@ -2638,6 +2799,7 @@ namespace aspose::words::cloud::requests {
         m_LoadEncoding(loadEncoding),
         m_Password(password),
         m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport),
         m_DestFileName(destFileName)
     {
     }
@@ -2672,6 +2834,11 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
+    const std::shared_ptr< bool > DeleteAllParagraphTabStopsOnlineRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
     const std::shared_ptr< std::wstring > DeleteAllParagraphTabStopsOnlineRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -2689,6 +2856,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_Document)
         {
@@ -2726,6 +2894,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
         const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport,
         const std::shared_ptr< std::wstring > destFileName,
         const std::shared_ptr< std::wstring > revisionAuthor,
         const std::shared_ptr< std::wstring > revisionDateTime
@@ -2737,6 +2906,7 @@ namespace aspose::words::cloud::requests {
         m_LoadEncoding(loadEncoding),
         m_Password(password),
         m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport),
         m_DestFileName(destFileName),
         m_RevisionAuthor(revisionAuthor),
         m_RevisionDateTime(revisionDateTime)
@@ -2778,6 +2948,11 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
+    const std::shared_ptr< bool > DeleteBookmarkRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
     const std::shared_ptr< std::wstring > DeleteBookmarkRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -2808,6 +2983,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
@@ -2840,6 +3016,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
         const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport,
         const std::shared_ptr< std::wstring > destFileName,
         const std::shared_ptr< std::wstring > revisionAuthor,
         const std::shared_ptr< std::wstring > revisionDateTime
@@ -2849,6 +3026,7 @@ namespace aspose::words::cloud::requests {
         m_LoadEncoding(loadEncoding),
         m_Password(password),
         m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport),
         m_DestFileName(destFileName),
         m_RevisionAuthor(revisionAuthor),
         m_RevisionDateTime(revisionDateTime)
@@ -2880,6 +3058,11 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
+    const std::shared_ptr< bool > DeleteBookmarkOnlineRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
     const std::shared_ptr< std::wstring > DeleteBookmarkOnlineRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -2906,6 +3089,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
@@ -2944,6 +3128,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
         const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport,
         const std::shared_ptr< std::wstring > destFileName,
         const std::shared_ptr< std::wstring > revisionAuthor,
         const std::shared_ptr< std::wstring > revisionDateTime
@@ -2954,6 +3139,7 @@ namespace aspose::words::cloud::requests {
         m_LoadEncoding(loadEncoding),
         m_Password(password),
         m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport),
         m_DestFileName(destFileName),
         m_RevisionAuthor(revisionAuthor),
         m_RevisionDateTime(revisionDateTime)
@@ -2990,6 +3176,11 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
+    const std::shared_ptr< bool > DeleteBookmarksRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
     const std::shared_ptr< std::wstring > DeleteBookmarksRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -3018,6 +3209,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
@@ -3049,6 +3241,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
         const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport,
         const std::shared_ptr< std::wstring > destFileName,
         const std::shared_ptr< std::wstring > revisionAuthor,
         const std::shared_ptr< std::wstring > revisionDateTime
@@ -3057,6 +3250,7 @@ namespace aspose::words::cloud::requests {
         m_LoadEncoding(loadEncoding),
         m_Password(password),
         m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport),
         m_DestFileName(destFileName),
         m_RevisionAuthor(revisionAuthor),
         m_RevisionDateTime(revisionDateTime)
@@ -3083,6 +3277,11 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
+    const std::shared_ptr< bool > DeleteBookmarksOnlineRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
     const std::shared_ptr< std::wstring > DeleteBookmarksOnlineRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -3107,6 +3306,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
@@ -3147,6 +3347,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
         const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport,
         const std::shared_ptr< std::wstring > destFileName,
         const std::shared_ptr< std::wstring > revisionAuthor,
         const std::shared_ptr< std::wstring > revisionDateTime
@@ -3159,6 +3360,7 @@ namespace aspose::words::cloud::requests {
         m_LoadEncoding(loadEncoding),
         m_Password(password),
         m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport),
         m_DestFileName(destFileName),
         m_RevisionAuthor(revisionAuthor),
         m_RevisionDateTime(revisionDateTime)
@@ -3205,6 +3407,11 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
+    const std::shared_ptr< bool > DeleteBorderRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
     const std::shared_ptr< std::wstring > DeleteBorderRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -3236,6 +3443,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
@@ -3269,6 +3477,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
         const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport,
         const std::shared_ptr< std::wstring > destFileName,
         const std::shared_ptr< std::wstring > revisionAuthor,
         const std::shared_ptr< std::wstring > revisionDateTime
@@ -3279,6 +3488,7 @@ namespace aspose::words::cloud::requests {
         m_LoadEncoding(loadEncoding),
         m_Password(password),
         m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport),
         m_DestFileName(destFileName),
         m_RevisionAuthor(revisionAuthor),
         m_RevisionDateTime(revisionDateTime)
@@ -3315,6 +3525,11 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
+    const std::shared_ptr< bool > DeleteBorderOnlineRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
     const std::shared_ptr< std::wstring > DeleteBorderOnlineRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -3342,6 +3557,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
@@ -3381,6 +3597,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
         const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport,
         const std::shared_ptr< std::wstring > destFileName,
         const std::shared_ptr< std::wstring > revisionAuthor,
         const std::shared_ptr< std::wstring > revisionDateTime
@@ -3392,6 +3609,7 @@ namespace aspose::words::cloud::requests {
         m_LoadEncoding(loadEncoding),
         m_Password(password),
         m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport),
         m_DestFileName(destFileName),
         m_RevisionAuthor(revisionAuthor),
         m_RevisionDateTime(revisionDateTime)
@@ -3433,6 +3651,11 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
+    const std::shared_ptr< bool > DeleteBordersRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
     const std::shared_ptr< std::wstring > DeleteBordersRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -3462,6 +3685,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
@@ -3494,6 +3718,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
         const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport,
         const std::shared_ptr< std::wstring > destFileName,
         const std::shared_ptr< std::wstring > revisionAuthor,
         const std::shared_ptr< std::wstring > revisionDateTime
@@ -3503,6 +3728,7 @@ namespace aspose::words::cloud::requests {
         m_LoadEncoding(loadEncoding),
         m_Password(password),
         m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport),
         m_DestFileName(destFileName),
         m_RevisionAuthor(revisionAuthor),
         m_RevisionDateTime(revisionDateTime)
@@ -3534,6 +3760,11 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
+    const std::shared_ptr< bool > DeleteBordersOnlineRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
     const std::shared_ptr< std::wstring > DeleteBordersOnlineRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -3559,6 +3790,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
@@ -3598,6 +3830,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
         const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport,
         const std::shared_ptr< std::wstring > destFileName,
         const std::shared_ptr< std::wstring > revisionAuthor,
         const std::shared_ptr< std::wstring > revisionDateTime
@@ -3609,6 +3842,7 @@ namespace aspose::words::cloud::requests {
         m_LoadEncoding(loadEncoding),
         m_Password(password),
         m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport),
         m_DestFileName(destFileName),
         m_RevisionAuthor(revisionAuthor),
         m_RevisionDateTime(revisionDateTime)
@@ -3650,6 +3884,11 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
+    const std::shared_ptr< bool > DeleteCommentRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
     const std::shared_ptr< std::wstring > DeleteCommentRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -3680,6 +3919,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
@@ -3712,6 +3952,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
         const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport,
         const std::shared_ptr< std::wstring > destFileName,
         const std::shared_ptr< std::wstring > revisionAuthor,
         const std::shared_ptr< std::wstring > revisionDateTime
@@ -3721,6 +3962,7 @@ namespace aspose::words::cloud::requests {
         m_LoadEncoding(loadEncoding),
         m_Password(password),
         m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport),
         m_DestFileName(destFileName),
         m_RevisionAuthor(revisionAuthor),
         m_RevisionDateTime(revisionDateTime)
@@ -3752,6 +3994,11 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
+    const std::shared_ptr< bool > DeleteCommentOnlineRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
     const std::shared_ptr< std::wstring > DeleteCommentOnlineRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -3778,6 +4025,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
@@ -3816,6 +4064,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
         const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport,
         const std::shared_ptr< std::wstring > destFileName,
         const std::shared_ptr< std::wstring > revisionAuthor,
         const std::shared_ptr< std::wstring > revisionDateTime
@@ -3826,6 +4075,7 @@ namespace aspose::words::cloud::requests {
         m_LoadEncoding(loadEncoding),
         m_Password(password),
         m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport),
         m_DestFileName(destFileName),
         m_RevisionAuthor(revisionAuthor),
         m_RevisionDateTime(revisionDateTime)
@@ -3862,6 +4112,11 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
+    const std::shared_ptr< bool > DeleteCommentsRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
     const std::shared_ptr< std::wstring > DeleteCommentsRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -3890,6 +4145,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
@@ -3921,6 +4177,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
         const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport,
         const std::shared_ptr< std::wstring > destFileName,
         const std::shared_ptr< std::wstring > revisionAuthor,
         const std::shared_ptr< std::wstring > revisionDateTime
@@ -3929,6 +4186,7 @@ namespace aspose::words::cloud::requests {
         m_LoadEncoding(loadEncoding),
         m_Password(password),
         m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport),
         m_DestFileName(destFileName),
         m_RevisionAuthor(revisionAuthor),
         m_RevisionDateTime(revisionDateTime)
@@ -3955,6 +4213,11 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
+    const std::shared_ptr< bool > DeleteCommentsOnlineRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
     const std::shared_ptr< std::wstring > DeleteCommentsOnlineRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -3979,6 +4242,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
@@ -4018,6 +4282,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
         const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport,
         const std::shared_ptr< std::wstring > destFileName,
         const std::shared_ptr< std::wstring > revisionAuthor,
         const std::shared_ptr< std::wstring > revisionDateTime
@@ -4029,6 +4294,7 @@ namespace aspose::words::cloud::requests {
         m_LoadEncoding(loadEncoding),
         m_Password(password),
         m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport),
         m_DestFileName(destFileName),
         m_RevisionAuthor(revisionAuthor),
         m_RevisionDateTime(revisionDateTime)
@@ -4070,6 +4336,11 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
+    const std::shared_ptr< bool > DeleteCustomXmlPartRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
     const std::shared_ptr< std::wstring > DeleteCustomXmlPartRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -4100,6 +4371,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
@@ -4132,6 +4404,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
         const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport,
         const std::shared_ptr< std::wstring > destFileName,
         const std::shared_ptr< std::wstring > revisionAuthor,
         const std::shared_ptr< std::wstring > revisionDateTime
@@ -4141,6 +4414,7 @@ namespace aspose::words::cloud::requests {
         m_LoadEncoding(loadEncoding),
         m_Password(password),
         m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport),
         m_DestFileName(destFileName),
         m_RevisionAuthor(revisionAuthor),
         m_RevisionDateTime(revisionDateTime)
@@ -4172,6 +4446,11 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
+    const std::shared_ptr< bool > DeleteCustomXmlPartOnlineRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
     const std::shared_ptr< std::wstring > DeleteCustomXmlPartOnlineRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -4198,6 +4477,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
@@ -4236,6 +4516,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
         const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport,
         const std::shared_ptr< std::wstring > destFileName,
         const std::shared_ptr< std::wstring > revisionAuthor,
         const std::shared_ptr< std::wstring > revisionDateTime
@@ -4246,6 +4527,7 @@ namespace aspose::words::cloud::requests {
         m_LoadEncoding(loadEncoding),
         m_Password(password),
         m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport),
         m_DestFileName(destFileName),
         m_RevisionAuthor(revisionAuthor),
         m_RevisionDateTime(revisionDateTime)
@@ -4282,6 +4564,11 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
+    const std::shared_ptr< bool > DeleteCustomXmlPartsRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
     const std::shared_ptr< std::wstring > DeleteCustomXmlPartsRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -4310,6 +4597,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
@@ -4341,6 +4629,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
         const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport,
         const std::shared_ptr< std::wstring > destFileName,
         const std::shared_ptr< std::wstring > revisionAuthor,
         const std::shared_ptr< std::wstring > revisionDateTime
@@ -4349,6 +4638,7 @@ namespace aspose::words::cloud::requests {
         m_LoadEncoding(loadEncoding),
         m_Password(password),
         m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport),
         m_DestFileName(destFileName),
         m_RevisionAuthor(revisionAuthor),
         m_RevisionDateTime(revisionDateTime)
@@ -4375,6 +4665,11 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
+    const std::shared_ptr< bool > DeleteCustomXmlPartsOnlineRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
     const std::shared_ptr< std::wstring > DeleteCustomXmlPartsOnlineRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -4399,6 +4694,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
@@ -4438,6 +4734,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
         const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport,
         const std::shared_ptr< std::wstring > destFileName,
         const std::shared_ptr< std::wstring > revisionAuthor,
         const std::shared_ptr< std::wstring > revisionDateTime
@@ -4449,6 +4746,7 @@ namespace aspose::words::cloud::requests {
         m_LoadEncoding(loadEncoding),
         m_Password(password),
         m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport),
         m_DestFileName(destFileName),
         m_RevisionAuthor(revisionAuthor),
         m_RevisionDateTime(revisionDateTime)
@@ -4490,6 +4788,11 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
+    const std::shared_ptr< bool > DeleteDocumentPropertyRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
     const std::shared_ptr< std::wstring > DeleteDocumentPropertyRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -4520,6 +4823,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
@@ -4552,6 +4856,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
         const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport,
         const std::shared_ptr< std::wstring > destFileName,
         const std::shared_ptr< std::wstring > revisionAuthor,
         const std::shared_ptr< std::wstring > revisionDateTime
@@ -4561,6 +4866,7 @@ namespace aspose::words::cloud::requests {
         m_LoadEncoding(loadEncoding),
         m_Password(password),
         m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport),
         m_DestFileName(destFileName),
         m_RevisionAuthor(revisionAuthor),
         m_RevisionDateTime(revisionDateTime)
@@ -4592,6 +4898,11 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
+    const std::shared_ptr< bool > DeleteDocumentPropertyOnlineRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
     const std::shared_ptr< std::wstring > DeleteDocumentPropertyOnlineRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -4618,6 +4929,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
@@ -4658,6 +4970,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
         const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport,
         const std::shared_ptr< std::wstring > destFileName,
         const std::shared_ptr< std::wstring > revisionAuthor,
         const std::shared_ptr< std::wstring > revisionDateTime
@@ -4670,6 +4983,7 @@ namespace aspose::words::cloud::requests {
         m_LoadEncoding(loadEncoding),
         m_Password(password),
         m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport),
         m_DestFileName(destFileName),
         m_RevisionAuthor(revisionAuthor),
         m_RevisionDateTime(revisionDateTime)
@@ -4716,6 +5030,11 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
+    const std::shared_ptr< bool > DeleteDrawingObjectRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
     const std::shared_ptr< std::wstring > DeleteDrawingObjectRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -4747,6 +5066,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
@@ -4780,6 +5100,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
         const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport,
         const std::shared_ptr< std::wstring > destFileName,
         const std::shared_ptr< std::wstring > revisionAuthor,
         const std::shared_ptr< std::wstring > revisionDateTime
@@ -4790,6 +5111,7 @@ namespace aspose::words::cloud::requests {
         m_LoadEncoding(loadEncoding),
         m_Password(password),
         m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport),
         m_DestFileName(destFileName),
         m_RevisionAuthor(revisionAuthor),
         m_RevisionDateTime(revisionDateTime)
@@ -4826,6 +5148,11 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
+    const std::shared_ptr< bool > DeleteDrawingObjectOnlineRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
     const std::shared_ptr< std::wstring > DeleteDrawingObjectOnlineRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -4853,6 +5180,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
@@ -4893,6 +5221,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
         const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport,
         const std::shared_ptr< std::wstring > destFileName,
         const std::shared_ptr< std::wstring > revisionAuthor,
         const std::shared_ptr< std::wstring > revisionDateTime
@@ -4905,6 +5234,7 @@ namespace aspose::words::cloud::requests {
         m_LoadEncoding(loadEncoding),
         m_Password(password),
         m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport),
         m_DestFileName(destFileName),
         m_RevisionAuthor(revisionAuthor),
         m_RevisionDateTime(revisionDateTime)
@@ -4951,6 +5281,11 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
+    const std::shared_ptr< bool > DeleteFieldRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
     const std::shared_ptr< std::wstring > DeleteFieldRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -4982,6 +5317,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
@@ -5015,6 +5351,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
         const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport,
         const std::shared_ptr< std::wstring > destFileName,
         const std::shared_ptr< std::wstring > revisionAuthor,
         const std::shared_ptr< std::wstring > revisionDateTime
@@ -5025,6 +5362,7 @@ namespace aspose::words::cloud::requests {
         m_LoadEncoding(loadEncoding),
         m_Password(password),
         m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport),
         m_DestFileName(destFileName),
         m_RevisionAuthor(revisionAuthor),
         m_RevisionDateTime(revisionDateTime)
@@ -5061,6 +5399,11 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
+    const std::shared_ptr< bool > DeleteFieldOnlineRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
     const std::shared_ptr< std::wstring > DeleteFieldOnlineRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -5088,6 +5431,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
@@ -5127,6 +5471,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
         const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport,
         const std::shared_ptr< std::wstring > destFileName,
         const std::shared_ptr< std::wstring > revisionAuthor,
         const std::shared_ptr< std::wstring > revisionDateTime
@@ -5138,6 +5483,7 @@ namespace aspose::words::cloud::requests {
         m_LoadEncoding(loadEncoding),
         m_Password(password),
         m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport),
         m_DestFileName(destFileName),
         m_RevisionAuthor(revisionAuthor),
         m_RevisionDateTime(revisionDateTime)
@@ -5179,6 +5525,11 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
+    const std::shared_ptr< bool > DeleteFieldsRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
     const std::shared_ptr< std::wstring > DeleteFieldsRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -5208,6 +5559,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
@@ -5240,6 +5592,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
         const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport,
         const std::shared_ptr< std::wstring > destFileName,
         const std::shared_ptr< std::wstring > revisionAuthor,
         const std::shared_ptr< std::wstring > revisionDateTime
@@ -5249,6 +5602,7 @@ namespace aspose::words::cloud::requests {
         m_LoadEncoding(loadEncoding),
         m_Password(password),
         m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport),
         m_DestFileName(destFileName),
         m_RevisionAuthor(revisionAuthor),
         m_RevisionDateTime(revisionDateTime)
@@ -5280,6 +5634,11 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
+    const std::shared_ptr< bool > DeleteFieldsOnlineRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
     const std::shared_ptr< std::wstring > DeleteFieldsOnlineRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -5305,6 +5664,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
@@ -5463,6 +5823,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
         const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport,
         const std::shared_ptr< std::wstring > destFileName,
         const std::shared_ptr< std::wstring > revisionAuthor,
         const std::shared_ptr< std::wstring > revisionDateTime
@@ -5475,6 +5836,7 @@ namespace aspose::words::cloud::requests {
         m_LoadEncoding(loadEncoding),
         m_Password(password),
         m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport),
         m_DestFileName(destFileName),
         m_RevisionAuthor(revisionAuthor),
         m_RevisionDateTime(revisionDateTime)
@@ -5521,6 +5883,11 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
+    const std::shared_ptr< bool > DeleteFootnoteRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
     const std::shared_ptr< std::wstring > DeleteFootnoteRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -5552,6 +5919,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
@@ -5585,6 +5953,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
         const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport,
         const std::shared_ptr< std::wstring > destFileName,
         const std::shared_ptr< std::wstring > revisionAuthor,
         const std::shared_ptr< std::wstring > revisionDateTime
@@ -5595,6 +5964,7 @@ namespace aspose::words::cloud::requests {
         m_LoadEncoding(loadEncoding),
         m_Password(password),
         m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport),
         m_DestFileName(destFileName),
         m_RevisionAuthor(revisionAuthor),
         m_RevisionDateTime(revisionDateTime)
@@ -5631,6 +6001,11 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
+    const std::shared_ptr< bool > DeleteFootnoteOnlineRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
     const std::shared_ptr< std::wstring > DeleteFootnoteOnlineRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -5658,6 +6033,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
@@ -5698,6 +6074,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
         const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport,
         const std::shared_ptr< std::wstring > destFileName,
         const std::shared_ptr< std::wstring > revisionAuthor,
         const std::shared_ptr< std::wstring > revisionDateTime
@@ -5710,6 +6087,7 @@ namespace aspose::words::cloud::requests {
         m_LoadEncoding(loadEncoding),
         m_Password(password),
         m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport),
         m_DestFileName(destFileName),
         m_RevisionAuthor(revisionAuthor),
         m_RevisionDateTime(revisionDateTime)
@@ -5756,6 +6134,11 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
+    const std::shared_ptr< bool > DeleteFormFieldRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
     const std::shared_ptr< std::wstring > DeleteFormFieldRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -5787,6 +6170,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
@@ -5820,6 +6204,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
         const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport,
         const std::shared_ptr< std::wstring > destFileName,
         const std::shared_ptr< std::wstring > revisionAuthor,
         const std::shared_ptr< std::wstring > revisionDateTime
@@ -5830,6 +6215,7 @@ namespace aspose::words::cloud::requests {
         m_LoadEncoding(loadEncoding),
         m_Password(password),
         m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport),
         m_DestFileName(destFileName),
         m_RevisionAuthor(revisionAuthor),
         m_RevisionDateTime(revisionDateTime)
@@ -5866,6 +6252,11 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
+    const std::shared_ptr< bool > DeleteFormFieldOnlineRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
     const std::shared_ptr< std::wstring > DeleteFormFieldOnlineRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -5893,6 +6284,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
@@ -5933,6 +6325,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
         const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport,
         const std::shared_ptr< std::wstring > destFileName,
         const std::shared_ptr< std::wstring > revisionAuthor,
         const std::shared_ptr< std::wstring > revisionDateTime
@@ -5945,6 +6338,7 @@ namespace aspose::words::cloud::requests {
         m_LoadEncoding(loadEncoding),
         m_Password(password),
         m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport),
         m_DestFileName(destFileName),
         m_RevisionAuthor(revisionAuthor),
         m_RevisionDateTime(revisionDateTime)
@@ -5991,6 +6385,11 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
+    const std::shared_ptr< bool > DeleteHeaderFooterRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
     const std::shared_ptr< std::wstring > DeleteHeaderFooterRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -6023,6 +6422,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
@@ -6056,6 +6456,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
         const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport,
         const std::shared_ptr< std::wstring > destFileName,
         const std::shared_ptr< std::wstring > revisionAuthor,
         const std::shared_ptr< std::wstring > revisionDateTime
@@ -6066,6 +6467,7 @@ namespace aspose::words::cloud::requests {
         m_LoadEncoding(loadEncoding),
         m_Password(password),
         m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport),
         m_DestFileName(destFileName),
         m_RevisionAuthor(revisionAuthor),
         m_RevisionDateTime(revisionDateTime)
@@ -6102,6 +6504,11 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
+    const std::shared_ptr< bool > DeleteHeaderFooterOnlineRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
     const std::shared_ptr< std::wstring > DeleteHeaderFooterOnlineRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -6130,6 +6537,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
@@ -6169,6 +6577,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
         const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport,
         const std::shared_ptr< std::wstring > destFileName,
         const std::shared_ptr< std::wstring > revisionAuthor,
         const std::shared_ptr< std::wstring > revisionDateTime,
@@ -6181,6 +6590,7 @@ namespace aspose::words::cloud::requests {
         m_LoadEncoding(loadEncoding),
         m_Password(password),
         m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport),
         m_DestFileName(destFileName),
         m_RevisionAuthor(revisionAuthor),
         m_RevisionDateTime(revisionDateTime),
@@ -6223,6 +6633,11 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
+    const std::shared_ptr< bool > DeleteHeadersFootersRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
     const std::shared_ptr< std::wstring > DeleteHeadersFootersRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -6258,6 +6673,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
@@ -6291,6 +6707,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
         const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport,
         const std::shared_ptr< std::wstring > destFileName,
         const std::shared_ptr< std::wstring > revisionAuthor,
         const std::shared_ptr< std::wstring > revisionDateTime,
@@ -6301,6 +6718,7 @@ namespace aspose::words::cloud::requests {
         m_LoadEncoding(loadEncoding),
         m_Password(password),
         m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport),
         m_DestFileName(destFileName),
         m_RevisionAuthor(revisionAuthor),
         m_RevisionDateTime(revisionDateTime),
@@ -6331,6 +6749,11 @@ namespace aspose::words::cloud::requests {
     const std::shared_ptr< std::wstring > DeleteHeadersFootersOnlineRequest::getEncryptedPassword() const
     {
         return m_EncryptedPassword;
+    }
+
+    const std::shared_ptr< bool > DeleteHeadersFootersOnlineRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
     }
 
     const std::shared_ptr< std::wstring > DeleteHeadersFootersOnlineRequest::getDestFileName() const
@@ -6364,6 +6787,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
@@ -6403,6 +6827,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
         const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport,
         const std::shared_ptr< std::wstring > destFileName,
         const std::shared_ptr< std::wstring > revisionAuthor,
         const std::shared_ptr< std::wstring > revisionDateTime
@@ -6413,6 +6838,7 @@ namespace aspose::words::cloud::requests {
         m_LoadEncoding(loadEncoding),
         m_Password(password),
         m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport),
         m_DestFileName(destFileName),
         m_RevisionAuthor(revisionAuthor),
         m_RevisionDateTime(revisionDateTime)
@@ -6449,6 +6875,11 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
+    const std::shared_ptr< bool > DeleteMacrosRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
     const std::shared_ptr< std::wstring > DeleteMacrosRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -6477,6 +6908,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
@@ -6508,6 +6940,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
         const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport,
         const std::shared_ptr< std::wstring > destFileName,
         const std::shared_ptr< std::wstring > revisionAuthor,
         const std::shared_ptr< std::wstring > revisionDateTime
@@ -6516,6 +6949,7 @@ namespace aspose::words::cloud::requests {
         m_LoadEncoding(loadEncoding),
         m_Password(password),
         m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport),
         m_DestFileName(destFileName),
         m_RevisionAuthor(revisionAuthor),
         m_RevisionDateTime(revisionDateTime)
@@ -6542,6 +6976,11 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
+    const std::shared_ptr< bool > DeleteMacrosOnlineRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
     const std::shared_ptr< std::wstring > DeleteMacrosOnlineRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -6566,6 +7005,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
@@ -6606,6 +7046,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
         const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport,
         const std::shared_ptr< std::wstring > destFileName,
         const std::shared_ptr< std::wstring > revisionAuthor,
         const std::shared_ptr< std::wstring > revisionDateTime
@@ -6618,6 +7059,7 @@ namespace aspose::words::cloud::requests {
         m_LoadEncoding(loadEncoding),
         m_Password(password),
         m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport),
         m_DestFileName(destFileName),
         m_RevisionAuthor(revisionAuthor),
         m_RevisionDateTime(revisionDateTime)
@@ -6664,6 +7106,11 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
+    const std::shared_ptr< bool > DeleteOfficeMathObjectRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
     const std::shared_ptr< std::wstring > DeleteOfficeMathObjectRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -6695,6 +7142,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
@@ -6728,6 +7176,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
         const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport,
         const std::shared_ptr< std::wstring > destFileName,
         const std::shared_ptr< std::wstring > revisionAuthor,
         const std::shared_ptr< std::wstring > revisionDateTime
@@ -6738,6 +7187,7 @@ namespace aspose::words::cloud::requests {
         m_LoadEncoding(loadEncoding),
         m_Password(password),
         m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport),
         m_DestFileName(destFileName),
         m_RevisionAuthor(revisionAuthor),
         m_RevisionDateTime(revisionDateTime)
@@ -6774,6 +7224,11 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
+    const std::shared_ptr< bool > DeleteOfficeMathObjectOnlineRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
     const std::shared_ptr< std::wstring > DeleteOfficeMathObjectOnlineRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -6801,6 +7256,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
@@ -6839,6 +7295,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
         const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport,
         const std::shared_ptr< std::wstring > destFileName,
         const std::shared_ptr< std::wstring > revisionAuthor,
         const std::shared_ptr< std::wstring > revisionDateTime
@@ -6849,6 +7306,7 @@ namespace aspose::words::cloud::requests {
         m_LoadEncoding(loadEncoding),
         m_Password(password),
         m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport),
         m_DestFileName(destFileName),
         m_RevisionAuthor(revisionAuthor),
         m_RevisionDateTime(revisionDateTime)
@@ -6885,6 +7343,11 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
+    const std::shared_ptr< bool > DeleteOfficeMathObjectsRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
     const std::shared_ptr< std::wstring > DeleteOfficeMathObjectsRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -6913,6 +7376,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
@@ -6944,6 +7408,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
         const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport,
         const std::shared_ptr< std::wstring > destFileName,
         const std::shared_ptr< std::wstring > revisionAuthor,
         const std::shared_ptr< std::wstring > revisionDateTime
@@ -6952,6 +7417,7 @@ namespace aspose::words::cloud::requests {
         m_LoadEncoding(loadEncoding),
         m_Password(password),
         m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport),
         m_DestFileName(destFileName),
         m_RevisionAuthor(revisionAuthor),
         m_RevisionDateTime(revisionDateTime)
@@ -6978,6 +7444,11 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
+    const std::shared_ptr< bool > DeleteOfficeMathObjectsOnlineRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
     const std::shared_ptr< std::wstring > DeleteOfficeMathObjectsOnlineRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -7002,6 +7473,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
@@ -7042,6 +7514,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
         const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport,
         const std::shared_ptr< std::wstring > destFileName,
         const std::shared_ptr< std::wstring > revisionAuthor,
         const std::shared_ptr< std::wstring > revisionDateTime
@@ -7054,6 +7527,7 @@ namespace aspose::words::cloud::requests {
         m_LoadEncoding(loadEncoding),
         m_Password(password),
         m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport),
         m_DestFileName(destFileName),
         m_RevisionAuthor(revisionAuthor),
         m_RevisionDateTime(revisionDateTime)
@@ -7100,6 +7574,11 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
+    const std::shared_ptr< bool > DeleteParagraphRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
     const std::shared_ptr< std::wstring > DeleteParagraphRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -7131,6 +7610,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
@@ -7166,6 +7646,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
         const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport,
         const std::shared_ptr< std::wstring > destFileName,
         const std::shared_ptr< std::wstring > revisionAuthor,
         const std::shared_ptr< std::wstring > revisionDateTime
@@ -7178,6 +7659,7 @@ namespace aspose::words::cloud::requests {
         m_LoadEncoding(loadEncoding),
         m_Password(password),
         m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport),
         m_DestFileName(destFileName),
         m_RevisionAuthor(revisionAuthor),
         m_RevisionDateTime(revisionDateTime)
@@ -7224,6 +7706,11 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
+    const std::shared_ptr< bool > DeleteParagraphListFormatRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
     const std::shared_ptr< std::wstring > DeleteParagraphListFormatRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -7255,6 +7742,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
@@ -7288,6 +7776,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
         const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport,
         const std::shared_ptr< std::wstring > destFileName,
         const std::shared_ptr< std::wstring > revisionAuthor,
         const std::shared_ptr< std::wstring > revisionDateTime
@@ -7298,6 +7787,7 @@ namespace aspose::words::cloud::requests {
         m_LoadEncoding(loadEncoding),
         m_Password(password),
         m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport),
         m_DestFileName(destFileName),
         m_RevisionAuthor(revisionAuthor),
         m_RevisionDateTime(revisionDateTime)
@@ -7334,6 +7824,11 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
+    const std::shared_ptr< bool > DeleteParagraphListFormatOnlineRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
     const std::shared_ptr< std::wstring > DeleteParagraphListFormatOnlineRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -7361,6 +7856,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
@@ -7399,6 +7895,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
         const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport,
         const std::shared_ptr< std::wstring > destFileName,
         const std::shared_ptr< std::wstring > revisionAuthor,
         const std::shared_ptr< std::wstring > revisionDateTime
@@ -7409,6 +7906,7 @@ namespace aspose::words::cloud::requests {
         m_LoadEncoding(loadEncoding),
         m_Password(password),
         m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport),
         m_DestFileName(destFileName),
         m_RevisionAuthor(revisionAuthor),
         m_RevisionDateTime(revisionDateTime)
@@ -7445,6 +7943,11 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
+    const std::shared_ptr< bool > DeleteParagraphOnlineRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
     const std::shared_ptr< std::wstring > DeleteParagraphOnlineRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -7472,6 +7975,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
@@ -7513,6 +8017,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
         const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport,
         const std::shared_ptr< std::wstring > destFileName
     ) : 
         m_Name(name),
@@ -7524,6 +8029,7 @@ namespace aspose::words::cloud::requests {
         m_LoadEncoding(loadEncoding),
         m_Password(password),
         m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport),
         m_DestFileName(destFileName)
     {
     }
@@ -7573,6 +8079,11 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
+    const std::shared_ptr< bool > DeleteParagraphTabStopRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
     const std::shared_ptr< std::wstring > DeleteParagraphTabStopRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -7596,6 +8107,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
 
         for (models::FileReference* additionalFileContent : additionalFilesContent)
@@ -7628,6 +8140,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
         const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport,
         const std::shared_ptr< std::wstring > destFileName
     ) : 
         m_Document(document),
@@ -7637,6 +8150,7 @@ namespace aspose::words::cloud::requests {
         m_LoadEncoding(loadEncoding),
         m_Password(password),
         m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport),
         m_DestFileName(destFileName)
     {
     }
@@ -7676,6 +8190,11 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
+    const std::shared_ptr< bool > DeleteParagraphTabStopOnlineRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
     const std::shared_ptr< std::wstring > DeleteParagraphTabStopOnlineRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -7695,6 +8214,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_Document)
         {
@@ -7733,6 +8253,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
         const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport,
         const std::shared_ptr< std::wstring > destFileName,
         const std::shared_ptr< std::wstring > revisionAuthor,
         const std::shared_ptr< std::wstring > revisionDateTime
@@ -7745,6 +8266,7 @@ namespace aspose::words::cloud::requests {
         m_LoadEncoding(loadEncoding),
         m_Password(password),
         m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport),
         m_DestFileName(destFileName),
         m_RevisionAuthor(revisionAuthor),
         m_RevisionDateTime(revisionDateTime)
@@ -7791,6 +8313,11 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
+    const std::shared_ptr< bool > DeleteRunRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
     const std::shared_ptr< std::wstring > DeleteRunRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -7823,6 +8350,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
@@ -7856,6 +8384,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
         const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport,
         const std::shared_ptr< std::wstring > destFileName,
         const std::shared_ptr< std::wstring > revisionAuthor,
         const std::shared_ptr< std::wstring > revisionDateTime
@@ -7866,6 +8395,7 @@ namespace aspose::words::cloud::requests {
         m_LoadEncoding(loadEncoding),
         m_Password(password),
         m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport),
         m_DestFileName(destFileName),
         m_RevisionAuthor(revisionAuthor),
         m_RevisionDateTime(revisionDateTime)
@@ -7902,6 +8432,11 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
+    const std::shared_ptr< bool > DeleteRunOnlineRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
     const std::shared_ptr< std::wstring > DeleteRunOnlineRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -7930,6 +8465,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
@@ -7969,6 +8505,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
         const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport,
         const std::shared_ptr< std::wstring > destFileName,
         const std::shared_ptr< std::wstring > revisionAuthor,
         const std::shared_ptr< std::wstring > revisionDateTime
@@ -7980,6 +8517,7 @@ namespace aspose::words::cloud::requests {
         m_LoadEncoding(loadEncoding),
         m_Password(password),
         m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport),
         m_DestFileName(destFileName),
         m_RevisionAuthor(revisionAuthor),
         m_RevisionDateTime(revisionDateTime)
@@ -8021,6 +8559,11 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
+    const std::shared_ptr< bool > DeleteSectionRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
     const std::shared_ptr< std::wstring > DeleteSectionRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -8051,6 +8594,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
@@ -8083,6 +8627,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
         const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport,
         const std::shared_ptr< std::wstring > destFileName,
         const std::shared_ptr< std::wstring > revisionAuthor,
         const std::shared_ptr< std::wstring > revisionDateTime
@@ -8092,6 +8637,7 @@ namespace aspose::words::cloud::requests {
         m_LoadEncoding(loadEncoding),
         m_Password(password),
         m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport),
         m_DestFileName(destFileName),
         m_RevisionAuthor(revisionAuthor),
         m_RevisionDateTime(revisionDateTime)
@@ -8123,6 +8669,11 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
+    const std::shared_ptr< bool > DeleteSectionOnlineRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
     const std::shared_ptr< std::wstring > DeleteSectionOnlineRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -8149,6 +8700,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
@@ -8189,6 +8741,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
         const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport,
         const std::shared_ptr< std::wstring > destFileName,
         const std::shared_ptr< std::wstring > revisionAuthor,
         const std::shared_ptr< std::wstring > revisionDateTime
@@ -8201,6 +8754,7 @@ namespace aspose::words::cloud::requests {
         m_LoadEncoding(loadEncoding),
         m_Password(password),
         m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport),
         m_DestFileName(destFileName),
         m_RevisionAuthor(revisionAuthor),
         m_RevisionDateTime(revisionDateTime)
@@ -8247,6 +8801,11 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
+    const std::shared_ptr< bool > DeleteStructuredDocumentTagRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
     const std::shared_ptr< std::wstring > DeleteStructuredDocumentTagRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -8278,6 +8837,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
@@ -8311,6 +8871,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
         const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport,
         const std::shared_ptr< std::wstring > destFileName,
         const std::shared_ptr< std::wstring > revisionAuthor,
         const std::shared_ptr< std::wstring > revisionDateTime
@@ -8321,6 +8882,7 @@ namespace aspose::words::cloud::requests {
         m_LoadEncoding(loadEncoding),
         m_Password(password),
         m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport),
         m_DestFileName(destFileName),
         m_RevisionAuthor(revisionAuthor),
         m_RevisionDateTime(revisionDateTime)
@@ -8357,6 +8919,11 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
+    const std::shared_ptr< bool > DeleteStructuredDocumentTagOnlineRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
     const std::shared_ptr< std::wstring > DeleteStructuredDocumentTagOnlineRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -8384,6 +8951,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
@@ -8424,6 +8992,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
         const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport,
         const std::shared_ptr< std::wstring > destFileName,
         const std::shared_ptr< std::wstring > revisionAuthor,
         const std::shared_ptr< std::wstring > revisionDateTime
@@ -8436,6 +9005,7 @@ namespace aspose::words::cloud::requests {
         m_LoadEncoding(loadEncoding),
         m_Password(password),
         m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport),
         m_DestFileName(destFileName),
         m_RevisionAuthor(revisionAuthor),
         m_RevisionDateTime(revisionDateTime)
@@ -8482,6 +9052,11 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
+    const std::shared_ptr< bool > DeleteTableRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
     const std::shared_ptr< std::wstring > DeleteTableRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -8513,6 +9088,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
@@ -8548,6 +9124,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
         const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport,
         const std::shared_ptr< std::wstring > destFileName,
         const std::shared_ptr< std::wstring > revisionAuthor,
         const std::shared_ptr< std::wstring > revisionDateTime
@@ -8560,6 +9137,7 @@ namespace aspose::words::cloud::requests {
         m_LoadEncoding(loadEncoding),
         m_Password(password),
         m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport),
         m_DestFileName(destFileName),
         m_RevisionAuthor(revisionAuthor),
         m_RevisionDateTime(revisionDateTime)
@@ -8606,6 +9184,11 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
+    const std::shared_ptr< bool > DeleteTableCellRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
     const std::shared_ptr< std::wstring > DeleteTableCellRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -8638,6 +9221,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
@@ -8671,6 +9255,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
         const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport,
         const std::shared_ptr< std::wstring > destFileName,
         const std::shared_ptr< std::wstring > revisionAuthor,
         const std::shared_ptr< std::wstring > revisionDateTime
@@ -8681,6 +9266,7 @@ namespace aspose::words::cloud::requests {
         m_LoadEncoding(loadEncoding),
         m_Password(password),
         m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport),
         m_DestFileName(destFileName),
         m_RevisionAuthor(revisionAuthor),
         m_RevisionDateTime(revisionDateTime)
@@ -8717,6 +9303,11 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
+    const std::shared_ptr< bool > DeleteTableCellOnlineRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
     const std::shared_ptr< std::wstring > DeleteTableCellOnlineRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -8745,6 +9336,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
@@ -8783,6 +9375,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
         const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport,
         const std::shared_ptr< std::wstring > destFileName,
         const std::shared_ptr< std::wstring > revisionAuthor,
         const std::shared_ptr< std::wstring > revisionDateTime
@@ -8793,6 +9386,7 @@ namespace aspose::words::cloud::requests {
         m_LoadEncoding(loadEncoding),
         m_Password(password),
         m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport),
         m_DestFileName(destFileName),
         m_RevisionAuthor(revisionAuthor),
         m_RevisionDateTime(revisionDateTime)
@@ -8829,6 +9423,11 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
+    const std::shared_ptr< bool > DeleteTableOnlineRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
     const std::shared_ptr< std::wstring > DeleteTableOnlineRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -8856,6 +9455,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
@@ -8896,6 +9496,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
         const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport,
         const std::shared_ptr< std::wstring > destFileName,
         const std::shared_ptr< std::wstring > revisionAuthor,
         const std::shared_ptr< std::wstring > revisionDateTime
@@ -8908,6 +9509,7 @@ namespace aspose::words::cloud::requests {
         m_LoadEncoding(loadEncoding),
         m_Password(password),
         m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport),
         m_DestFileName(destFileName),
         m_RevisionAuthor(revisionAuthor),
         m_RevisionDateTime(revisionDateTime)
@@ -8954,6 +9556,11 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
+    const std::shared_ptr< bool > DeleteTableRowRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
     const std::shared_ptr< std::wstring > DeleteTableRowRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -8986,6 +9593,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
@@ -9019,6 +9627,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
         const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport,
         const std::shared_ptr< std::wstring > destFileName,
         const std::shared_ptr< std::wstring > revisionAuthor,
         const std::shared_ptr< std::wstring > revisionDateTime
@@ -9029,6 +9638,7 @@ namespace aspose::words::cloud::requests {
         m_LoadEncoding(loadEncoding),
         m_Password(password),
         m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport),
         m_DestFileName(destFileName),
         m_RevisionAuthor(revisionAuthor),
         m_RevisionDateTime(revisionDateTime)
@@ -9065,6 +9675,11 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
+    const std::shared_ptr< bool > DeleteTableRowOnlineRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
     const std::shared_ptr< std::wstring > DeleteTableRowOnlineRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -9093,6 +9708,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
@@ -9131,6 +9747,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
         const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport,
         const std::shared_ptr< std::wstring > destFileName,
         const std::shared_ptr< std::wstring > revisionAuthor,
         const std::shared_ptr< std::wstring > revisionDateTime
@@ -9141,6 +9758,7 @@ namespace aspose::words::cloud::requests {
         m_LoadEncoding(loadEncoding),
         m_Password(password),
         m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport),
         m_DestFileName(destFileName),
         m_RevisionAuthor(revisionAuthor),
         m_RevisionDateTime(revisionDateTime)
@@ -9177,6 +9795,11 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
+    const std::shared_ptr< bool > DeleteWatermarkRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
     const std::shared_ptr< std::wstring > DeleteWatermarkRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -9205,6 +9828,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
@@ -9236,6 +9860,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
         const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport,
         const std::shared_ptr< std::wstring > destFileName,
         const std::shared_ptr< std::wstring > revisionAuthor,
         const std::shared_ptr< std::wstring > revisionDateTime
@@ -9244,6 +9869,7 @@ namespace aspose::words::cloud::requests {
         m_LoadEncoding(loadEncoding),
         m_Password(password),
         m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport),
         m_DestFileName(destFileName),
         m_RevisionAuthor(revisionAuthor),
         m_RevisionDateTime(revisionDateTime)
@@ -9270,6 +9896,11 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
+    const std::shared_ptr< bool > DeleteWatermarkOnlineRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
     const std::shared_ptr< std::wstring > DeleteWatermarkOnlineRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -9294,6 +9925,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
@@ -9393,6 +10025,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
         const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport,
         const std::shared_ptr< bool > withRegions,
         const std::shared_ptr< std::wstring > mailMergeDataFile,
         const std::shared_ptr< std::wstring > cleanup,
@@ -9407,6 +10040,7 @@ namespace aspose::words::cloud::requests {
         m_LoadEncoding(loadEncoding),
         m_Password(password),
         m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport),
         m_WithRegions(withRegions),
         m_MailMergeDataFile(mailMergeDataFile),
         m_Cleanup(cleanup),
@@ -9455,6 +10089,11 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
+    const std::shared_ptr< bool > ExecuteMailMergeRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
     const std::shared_ptr< bool > ExecuteMailMergeRequest::getWithRegions() const
     {
         return m_WithRegions;
@@ -9493,6 +10132,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
         if (m_WithRegions) result->addQueryParam(L"withRegions", *m_WithRegions);
         if (m_MailMergeDataFile) result->addQueryParam(L"mailMergeDataFile", *m_MailMergeDataFile);
         if (m_Cleanup) result->addQueryParam(L"cleanup", *m_Cleanup);
@@ -9674,7 +10314,8 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > storage,
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
-        const std::shared_ptr< std::wstring > encryptedPassword
+        const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport
     ) : 
         m_Name(name),
         m_BookmarkName(bookmarkName),
@@ -9682,7 +10323,8 @@ namespace aspose::words::cloud::requests {
         m_Storage(storage),
         m_LoadEncoding(loadEncoding),
         m_Password(password),
-        m_EncryptedPassword(encryptedPassword)
+        m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport)
     {
     }
 
@@ -9721,6 +10363,11 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
+    const std::shared_ptr< bool > GetBookmarkByNameRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
     std::shared_ptr< aspose::words::cloud::HttpRequestData > GetBookmarkByNameRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
@@ -9736,6 +10383,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
 
         for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
@@ -9764,13 +10412,15 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > bookmarkName,
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
-        const std::shared_ptr< std::wstring > encryptedPassword
+        const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport
     ) : 
         m_Document(document),
         m_BookmarkName(bookmarkName),
         m_LoadEncoding(loadEncoding),
         m_Password(password),
-        m_EncryptedPassword(encryptedPassword)
+        m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport)
     {
     }
 
@@ -9799,6 +10449,11 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
+    const std::shared_ptr< bool > GetBookmarkByNameOnlineRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
     std::shared_ptr< aspose::words::cloud::HttpRequestData > GetBookmarkByNameOnlineRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
@@ -9810,6 +10465,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
         if (m_Document)
         {
             result->addFormDataParam(L"document", *m_Document);
@@ -9844,14 +10500,16 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > storage,
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
-        const std::shared_ptr< std::wstring > encryptedPassword
+        const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport
     ) : 
         m_Name(name),
         m_Folder(folder),
         m_Storage(storage),
         m_LoadEncoding(loadEncoding),
         m_Password(password),
-        m_EncryptedPassword(encryptedPassword)
+        m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport)
     {
     }
 
@@ -9885,6 +10543,11 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
+    const std::shared_ptr< bool > GetBookmarksRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
     std::shared_ptr< aspose::words::cloud::HttpRequestData > GetBookmarksRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
@@ -9898,6 +10561,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
 
         for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
@@ -9925,12 +10589,14 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::istream > document,
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
-        const std::shared_ptr< std::wstring > encryptedPassword
+        const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport
     ) : 
         m_Document(document),
         m_LoadEncoding(loadEncoding),
         m_Password(password),
-        m_EncryptedPassword(encryptedPassword)
+        m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport)
     {
     }
 
@@ -9954,6 +10620,11 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
+    const std::shared_ptr< bool > GetBookmarksOnlineRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
     std::shared_ptr< aspose::words::cloud::HttpRequestData > GetBookmarksOnlineRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
@@ -9963,6 +10634,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
         if (m_Document)
         {
             result->addFormDataParam(L"document", *m_Document);
@@ -9999,7 +10671,8 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > storage,
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
-        const std::shared_ptr< std::wstring > encryptedPassword
+        const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport
     ) : 
         m_Name(name),
         m_BorderType(borderType),
@@ -10008,7 +10681,8 @@ namespace aspose::words::cloud::requests {
         m_Storage(storage),
         m_LoadEncoding(loadEncoding),
         m_Password(password),
-        m_EncryptedPassword(encryptedPassword)
+        m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport)
     {
     }
 
@@ -10052,6 +10726,11 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
+    const std::shared_ptr< bool > GetBorderRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
     std::shared_ptr< aspose::words::cloud::HttpRequestData > GetBorderRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
@@ -10068,6 +10747,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
 
         for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
@@ -10097,14 +10777,16 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > nodePath,
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
-        const std::shared_ptr< std::wstring > encryptedPassword
+        const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport
     ) : 
         m_Document(document),
         m_BorderType(borderType),
         m_NodePath(nodePath),
         m_LoadEncoding(loadEncoding),
         m_Password(password),
-        m_EncryptedPassword(encryptedPassword)
+        m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport)
     {
     }
 
@@ -10138,6 +10820,11 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
+    const std::shared_ptr< bool > GetBorderOnlineRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
     std::shared_ptr< aspose::words::cloud::HttpRequestData > GetBorderOnlineRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
@@ -10150,6 +10837,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
         if (m_Document)
         {
             result->addFormDataParam(L"document", *m_Document);
@@ -10185,7 +10873,8 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > storage,
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
-        const std::shared_ptr< std::wstring > encryptedPassword
+        const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport
     ) : 
         m_Name(name),
         m_NodePath(nodePath),
@@ -10193,7 +10882,8 @@ namespace aspose::words::cloud::requests {
         m_Storage(storage),
         m_LoadEncoding(loadEncoding),
         m_Password(password),
-        m_EncryptedPassword(encryptedPassword)
+        m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport)
     {
     }
 
@@ -10232,6 +10922,11 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
+    const std::shared_ptr< bool > GetBordersRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
     std::shared_ptr< aspose::words::cloud::HttpRequestData > GetBordersRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
@@ -10246,6 +10941,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
 
         for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
@@ -10274,13 +10970,15 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > nodePath,
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
-        const std::shared_ptr< std::wstring > encryptedPassword
+        const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport
     ) : 
         m_Document(document),
         m_NodePath(nodePath),
         m_LoadEncoding(loadEncoding),
         m_Password(password),
-        m_EncryptedPassword(encryptedPassword)
+        m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport)
     {
     }
 
@@ -10309,6 +11007,11 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
+    const std::shared_ptr< bool > GetBordersOnlineRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
     std::shared_ptr< aspose::words::cloud::HttpRequestData > GetBordersOnlineRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
@@ -10319,6 +11022,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
         if (m_Document)
         {
             result->addFormDataParam(L"document", *m_Document);
@@ -10354,7 +11058,8 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > storage,
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
-        const std::shared_ptr< std::wstring > encryptedPassword
+        const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport
     ) : 
         m_Name(name),
         m_CommentIndex(commentIndex),
@@ -10362,7 +11067,8 @@ namespace aspose::words::cloud::requests {
         m_Storage(storage),
         m_LoadEncoding(loadEncoding),
         m_Password(password),
-        m_EncryptedPassword(encryptedPassword)
+        m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport)
     {
     }
 
@@ -10401,6 +11107,11 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
+    const std::shared_ptr< bool > GetCommentRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
     std::shared_ptr< aspose::words::cloud::HttpRequestData > GetCommentRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
@@ -10416,6 +11127,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
 
         for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
@@ -10444,13 +11156,15 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< int32_t > commentIndex,
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
-        const std::shared_ptr< std::wstring > encryptedPassword
+        const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport
     ) : 
         m_Document(document),
         m_CommentIndex(commentIndex),
         m_LoadEncoding(loadEncoding),
         m_Password(password),
-        m_EncryptedPassword(encryptedPassword)
+        m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport)
     {
     }
 
@@ -10479,6 +11193,11 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
+    const std::shared_ptr< bool > GetCommentOnlineRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
     std::shared_ptr< aspose::words::cloud::HttpRequestData > GetCommentOnlineRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
@@ -10490,6 +11209,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
         if (m_Document)
         {
             result->addFormDataParam(L"document", *m_Document);
@@ -10524,14 +11244,16 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > storage,
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
-        const std::shared_ptr< std::wstring > encryptedPassword
+        const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport
     ) : 
         m_Name(name),
         m_Folder(folder),
         m_Storage(storage),
         m_LoadEncoding(loadEncoding),
         m_Password(password),
-        m_EncryptedPassword(encryptedPassword)
+        m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport)
     {
     }
 
@@ -10565,6 +11287,11 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
+    const std::shared_ptr< bool > GetCommentsRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
     std::shared_ptr< aspose::words::cloud::HttpRequestData > GetCommentsRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
@@ -10578,6 +11305,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
 
         for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
@@ -10605,12 +11333,14 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::istream > document,
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
-        const std::shared_ptr< std::wstring > encryptedPassword
+        const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport
     ) : 
         m_Document(document),
         m_LoadEncoding(loadEncoding),
         m_Password(password),
-        m_EncryptedPassword(encryptedPassword)
+        m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport)
     {
     }
 
@@ -10634,6 +11364,11 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
+    const std::shared_ptr< bool > GetCommentsOnlineRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
     std::shared_ptr< aspose::words::cloud::HttpRequestData > GetCommentsOnlineRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
@@ -10643,6 +11378,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
         if (m_Document)
         {
             result->addFormDataParam(L"document", *m_Document);
@@ -10678,7 +11414,8 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > storage,
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
-        const std::shared_ptr< std::wstring > encryptedPassword
+        const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport
     ) : 
         m_Name(name),
         m_CustomXmlPartIndex(customXmlPartIndex),
@@ -10686,7 +11423,8 @@ namespace aspose::words::cloud::requests {
         m_Storage(storage),
         m_LoadEncoding(loadEncoding),
         m_Password(password),
-        m_EncryptedPassword(encryptedPassword)
+        m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport)
     {
     }
 
@@ -10725,6 +11463,11 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
+    const std::shared_ptr< bool > GetCustomXmlPartRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
     std::shared_ptr< aspose::words::cloud::HttpRequestData > GetCustomXmlPartRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
@@ -10740,6 +11483,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
 
         for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
@@ -10768,13 +11512,15 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< int32_t > customXmlPartIndex,
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
-        const std::shared_ptr< std::wstring > encryptedPassword
+        const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport
     ) : 
         m_Document(document),
         m_CustomXmlPartIndex(customXmlPartIndex),
         m_LoadEncoding(loadEncoding),
         m_Password(password),
-        m_EncryptedPassword(encryptedPassword)
+        m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport)
     {
     }
 
@@ -10803,6 +11549,11 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
+    const std::shared_ptr< bool > GetCustomXmlPartOnlineRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
     std::shared_ptr< aspose::words::cloud::HttpRequestData > GetCustomXmlPartOnlineRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
@@ -10814,6 +11565,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
         if (m_Document)
         {
             result->addFormDataParam(L"document", *m_Document);
@@ -10848,14 +11600,16 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > storage,
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
-        const std::shared_ptr< std::wstring > encryptedPassword
+        const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport
     ) : 
         m_Name(name),
         m_Folder(folder),
         m_Storage(storage),
         m_LoadEncoding(loadEncoding),
         m_Password(password),
-        m_EncryptedPassword(encryptedPassword)
+        m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport)
     {
     }
 
@@ -10889,6 +11643,11 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
+    const std::shared_ptr< bool > GetCustomXmlPartsRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
     std::shared_ptr< aspose::words::cloud::HttpRequestData > GetCustomXmlPartsRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
@@ -10902,6 +11661,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
 
         for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
@@ -10929,12 +11689,14 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::istream > document,
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
-        const std::shared_ptr< std::wstring > encryptedPassword
+        const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport
     ) : 
         m_Document(document),
         m_LoadEncoding(loadEncoding),
         m_Password(password),
-        m_EncryptedPassword(encryptedPassword)
+        m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport)
     {
     }
 
@@ -10958,6 +11720,11 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
+    const std::shared_ptr< bool > GetCustomXmlPartsOnlineRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
     std::shared_ptr< aspose::words::cloud::HttpRequestData > GetCustomXmlPartsOnlineRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
@@ -10967,6 +11734,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
         if (m_Document)
         {
             result->addFormDataParam(L"document", *m_Document);
@@ -11001,14 +11769,16 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > storage,
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
-        const std::shared_ptr< std::wstring > encryptedPassword
+        const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport
     ) : 
         m_DocumentName(documentName),
         m_Folder(folder),
         m_Storage(storage),
         m_LoadEncoding(loadEncoding),
         m_Password(password),
-        m_EncryptedPassword(encryptedPassword)
+        m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport)
     {
     }
 
@@ -11042,6 +11812,11 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
+    const std::shared_ptr< bool > GetDocumentRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
     std::shared_ptr< aspose::words::cloud::HttpRequestData > GetDocumentRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
@@ -11055,6 +11830,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
 
         for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
@@ -11086,7 +11862,8 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > storage,
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
-        const std::shared_ptr< std::wstring > encryptedPassword
+        const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport
     ) : 
         m_Name(name),
         m_Index(index),
@@ -11095,7 +11872,8 @@ namespace aspose::words::cloud::requests {
         m_Storage(storage),
         m_LoadEncoding(loadEncoding),
         m_Password(password),
-        m_EncryptedPassword(encryptedPassword)
+        m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport)
     {
     }
 
@@ -11139,6 +11917,11 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
+    const std::shared_ptr< bool > GetDocumentDrawingObjectByIndexRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
     std::shared_ptr< aspose::words::cloud::HttpRequestData > GetDocumentDrawingObjectByIndexRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
@@ -11155,6 +11938,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
 
         for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
@@ -11184,14 +11968,16 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > nodePath,
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
-        const std::shared_ptr< std::wstring > encryptedPassword
+        const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport
     ) : 
         m_Document(document),
         m_Index(index),
         m_NodePath(nodePath),
         m_LoadEncoding(loadEncoding),
         m_Password(password),
-        m_EncryptedPassword(encryptedPassword)
+        m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport)
     {
     }
 
@@ -11225,6 +12011,11 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
+    const std::shared_ptr< bool > GetDocumentDrawingObjectByIndexOnlineRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
     std::shared_ptr< aspose::words::cloud::HttpRequestData > GetDocumentDrawingObjectByIndexOnlineRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
@@ -11237,6 +12028,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
         if (m_Document)
         {
             result->addFormDataParam(L"document", *m_Document);
@@ -11273,7 +12065,8 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > storage,
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
-        const std::shared_ptr< std::wstring > encryptedPassword
+        const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport
     ) : 
         m_Name(name),
         m_Index(index),
@@ -11282,7 +12075,8 @@ namespace aspose::words::cloud::requests {
         m_Storage(storage),
         m_LoadEncoding(loadEncoding),
         m_Password(password),
-        m_EncryptedPassword(encryptedPassword)
+        m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport)
     {
     }
 
@@ -11326,6 +12120,11 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
+    const std::shared_ptr< bool > GetDocumentDrawingObjectImageDataRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
     std::shared_ptr< aspose::words::cloud::HttpRequestData > GetDocumentDrawingObjectImageDataRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
@@ -11342,6 +12141,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
 
         for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
@@ -11371,14 +12171,16 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > nodePath,
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
-        const std::shared_ptr< std::wstring > encryptedPassword
+        const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport
     ) : 
         m_Document(document),
         m_Index(index),
         m_NodePath(nodePath),
         m_LoadEncoding(loadEncoding),
         m_Password(password),
-        m_EncryptedPassword(encryptedPassword)
+        m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport)
     {
     }
 
@@ -11412,6 +12214,11 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
+    const std::shared_ptr< bool > GetDocumentDrawingObjectImageDataOnlineRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
     std::shared_ptr< aspose::words::cloud::HttpRequestData > GetDocumentDrawingObjectImageDataOnlineRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
@@ -11424,6 +12231,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
         if (m_Document)
         {
             result->addFormDataParam(L"document", *m_Document);
@@ -11460,7 +12268,8 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > storage,
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
-        const std::shared_ptr< std::wstring > encryptedPassword
+        const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport
     ) : 
         m_Name(name),
         m_Index(index),
@@ -11469,7 +12278,8 @@ namespace aspose::words::cloud::requests {
         m_Storage(storage),
         m_LoadEncoding(loadEncoding),
         m_Password(password),
-        m_EncryptedPassword(encryptedPassword)
+        m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport)
     {
     }
 
@@ -11513,6 +12323,11 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
+    const std::shared_ptr< bool > GetDocumentDrawingObjectOleDataRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
     std::shared_ptr< aspose::words::cloud::HttpRequestData > GetDocumentDrawingObjectOleDataRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
@@ -11529,6 +12344,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
 
         for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
@@ -11558,14 +12374,16 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > nodePath,
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
-        const std::shared_ptr< std::wstring > encryptedPassword
+        const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport
     ) : 
         m_Document(document),
         m_Index(index),
         m_NodePath(nodePath),
         m_LoadEncoding(loadEncoding),
         m_Password(password),
-        m_EncryptedPassword(encryptedPassword)
+        m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport)
     {
     }
 
@@ -11599,6 +12417,11 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
+    const std::shared_ptr< bool > GetDocumentDrawingObjectOleDataOnlineRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
     std::shared_ptr< aspose::words::cloud::HttpRequestData > GetDocumentDrawingObjectOleDataOnlineRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
@@ -11611,6 +12434,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
         if (m_Document)
         {
             result->addFormDataParam(L"document", *m_Document);
@@ -11646,7 +12470,8 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > storage,
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
-        const std::shared_ptr< std::wstring > encryptedPassword
+        const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport
     ) : 
         m_Name(name),
         m_NodePath(nodePath),
@@ -11654,7 +12479,8 @@ namespace aspose::words::cloud::requests {
         m_Storage(storage),
         m_LoadEncoding(loadEncoding),
         m_Password(password),
-        m_EncryptedPassword(encryptedPassword)
+        m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport)
     {
     }
 
@@ -11693,6 +12519,11 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
+    const std::shared_ptr< bool > GetDocumentDrawingObjectsRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
     std::shared_ptr< aspose::words::cloud::HttpRequestData > GetDocumentDrawingObjectsRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
@@ -11707,6 +12538,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
 
         for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
@@ -11735,13 +12567,15 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > nodePath,
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
-        const std::shared_ptr< std::wstring > encryptedPassword
+        const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport
     ) : 
         m_Document(document),
         m_NodePath(nodePath),
         m_LoadEncoding(loadEncoding),
         m_Password(password),
-        m_EncryptedPassword(encryptedPassword)
+        m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport)
     {
     }
 
@@ -11770,6 +12604,11 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
+    const std::shared_ptr< bool > GetDocumentDrawingObjectsOnlineRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
     std::shared_ptr< aspose::words::cloud::HttpRequestData > GetDocumentDrawingObjectsOnlineRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
@@ -11780,6 +12619,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
         if (m_Document)
         {
             result->addFormDataParam(L"document", *m_Document);
@@ -11815,6 +12655,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
         const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport,
         const std::shared_ptr< bool > useNonMergeFields
     ) : 
         m_Name(name),
@@ -11823,6 +12664,7 @@ namespace aspose::words::cloud::requests {
         m_LoadEncoding(loadEncoding),
         m_Password(password),
         m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport),
         m_UseNonMergeFields(useNonMergeFields)
     {
     }
@@ -11857,6 +12699,11 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
+    const std::shared_ptr< bool > GetDocumentFieldNamesRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
     const std::shared_ptr< bool > GetDocumentFieldNamesRequest::getUseNonMergeFields() const
     {
         return m_UseNonMergeFields;
@@ -11875,6 +12722,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
         if (m_UseNonMergeFields) result->addQueryParam(L"useNonMergeFields", *m_UseNonMergeFields);
 
         for (models::FileReference* additionalFileContent : additionalFilesContent)
@@ -11904,12 +12752,14 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
         const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport,
         const std::shared_ptr< bool > useNonMergeFields
     ) : 
         m_Template(_template),
         m_LoadEncoding(loadEncoding),
         m_Password(password),
         m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport),
         m_UseNonMergeFields(useNonMergeFields)
     {
     }
@@ -11934,6 +12784,11 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
+    const std::shared_ptr< bool > GetDocumentFieldNamesOnlineRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
     const std::shared_ptr< bool > GetDocumentFieldNamesOnlineRequest::getUseNonMergeFields() const
     {
         return m_UseNonMergeFields;
@@ -11948,6 +12803,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
         if (m_UseNonMergeFields) result->addQueryParam(L"useNonMergeFields", *m_UseNonMergeFields);
         if (m_Template)
         {
@@ -11984,7 +12840,8 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > storage,
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
-        const std::shared_ptr< std::wstring > encryptedPassword
+        const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport
     ) : 
         m_Name(name),
         m_HyperlinkIndex(hyperlinkIndex),
@@ -11992,7 +12849,8 @@ namespace aspose::words::cloud::requests {
         m_Storage(storage),
         m_LoadEncoding(loadEncoding),
         m_Password(password),
-        m_EncryptedPassword(encryptedPassword)
+        m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport)
     {
     }
 
@@ -12031,6 +12889,11 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
+    const std::shared_ptr< bool > GetDocumentHyperlinkByIndexRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
     std::shared_ptr< aspose::words::cloud::HttpRequestData > GetDocumentHyperlinkByIndexRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
@@ -12046,6 +12909,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
 
         for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
@@ -12074,13 +12938,15 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< int32_t > hyperlinkIndex,
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
-        const std::shared_ptr< std::wstring > encryptedPassword
+        const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport
     ) : 
         m_Document(document),
         m_HyperlinkIndex(hyperlinkIndex),
         m_LoadEncoding(loadEncoding),
         m_Password(password),
-        m_EncryptedPassword(encryptedPassword)
+        m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport)
     {
     }
 
@@ -12109,6 +12975,11 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
+    const std::shared_ptr< bool > GetDocumentHyperlinkByIndexOnlineRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
     std::shared_ptr< aspose::words::cloud::HttpRequestData > GetDocumentHyperlinkByIndexOnlineRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
@@ -12120,6 +12991,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
         if (m_Document)
         {
             result->addFormDataParam(L"document", *m_Document);
@@ -12154,14 +13026,16 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > storage,
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
-        const std::shared_ptr< std::wstring > encryptedPassword
+        const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport
     ) : 
         m_Name(name),
         m_Folder(folder),
         m_Storage(storage),
         m_LoadEncoding(loadEncoding),
         m_Password(password),
-        m_EncryptedPassword(encryptedPassword)
+        m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport)
     {
     }
 
@@ -12195,6 +13069,11 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
+    const std::shared_ptr< bool > GetDocumentHyperlinksRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
     std::shared_ptr< aspose::words::cloud::HttpRequestData > GetDocumentHyperlinksRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
@@ -12208,6 +13087,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
 
         for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
@@ -12235,12 +13115,14 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::istream > document,
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
-        const std::shared_ptr< std::wstring > encryptedPassword
+        const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport
     ) : 
         m_Document(document),
         m_LoadEncoding(loadEncoding),
         m_Password(password),
-        m_EncryptedPassword(encryptedPassword)
+        m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport)
     {
     }
 
@@ -12264,6 +13146,11 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
+    const std::shared_ptr< bool > GetDocumentHyperlinksOnlineRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
     std::shared_ptr< aspose::words::cloud::HttpRequestData > GetDocumentHyperlinksOnlineRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
@@ -12273,6 +13160,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
         if (m_Document)
         {
             result->addFormDataParam(L"document", *m_Document);
@@ -12307,14 +13195,16 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > storage,
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
-        const std::shared_ptr< std::wstring > encryptedPassword
+        const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport
     ) : 
         m_Name(name),
         m_Folder(folder),
         m_Storage(storage),
         m_LoadEncoding(loadEncoding),
         m_Password(password),
-        m_EncryptedPassword(encryptedPassword)
+        m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport)
     {
     }
 
@@ -12348,6 +13238,11 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
+    const std::shared_ptr< bool > GetDocumentPropertiesRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
     std::shared_ptr< aspose::words::cloud::HttpRequestData > GetDocumentPropertiesRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
@@ -12361,6 +13256,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
 
         for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
@@ -12388,12 +13284,14 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::istream > document,
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
-        const std::shared_ptr< std::wstring > encryptedPassword
+        const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport
     ) : 
         m_Document(document),
         m_LoadEncoding(loadEncoding),
         m_Password(password),
-        m_EncryptedPassword(encryptedPassword)
+        m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport)
     {
     }
 
@@ -12417,6 +13315,11 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
+    const std::shared_ptr< bool > GetDocumentPropertiesOnlineRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
     std::shared_ptr< aspose::words::cloud::HttpRequestData > GetDocumentPropertiesOnlineRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
@@ -12426,6 +13329,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
         if (m_Document)
         {
             result->addFormDataParam(L"document", *m_Document);
@@ -12461,7 +13365,8 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > storage,
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
-        const std::shared_ptr< std::wstring > encryptedPassword
+        const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport
     ) : 
         m_Name(name),
         m_PropertyName(propertyName),
@@ -12469,7 +13374,8 @@ namespace aspose::words::cloud::requests {
         m_Storage(storage),
         m_LoadEncoding(loadEncoding),
         m_Password(password),
-        m_EncryptedPassword(encryptedPassword)
+        m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport)
     {
     }
 
@@ -12508,6 +13414,11 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
+    const std::shared_ptr< bool > GetDocumentPropertyRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
     std::shared_ptr< aspose::words::cloud::HttpRequestData > GetDocumentPropertyRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
@@ -12523,6 +13434,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
 
         for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
@@ -12551,13 +13463,15 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > propertyName,
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
-        const std::shared_ptr< std::wstring > encryptedPassword
+        const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport
     ) : 
         m_Document(document),
         m_PropertyName(propertyName),
         m_LoadEncoding(loadEncoding),
         m_Password(password),
-        m_EncryptedPassword(encryptedPassword)
+        m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport)
     {
     }
 
@@ -12586,6 +13500,11 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
+    const std::shared_ptr< bool > GetDocumentPropertyOnlineRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
     std::shared_ptr< aspose::words::cloud::HttpRequestData > GetDocumentPropertyOnlineRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
@@ -12597,6 +13516,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
         if (m_Document)
         {
             result->addFormDataParam(L"document", *m_Document);
@@ -12631,14 +13551,16 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > storage,
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
-        const std::shared_ptr< std::wstring > encryptedPassword
+        const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport
     ) : 
         m_Name(name),
         m_Folder(folder),
         m_Storage(storage),
         m_LoadEncoding(loadEncoding),
         m_Password(password),
-        m_EncryptedPassword(encryptedPassword)
+        m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport)
     {
     }
 
@@ -12672,6 +13594,11 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
+    const std::shared_ptr< bool > GetDocumentProtectionRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
     std::shared_ptr< aspose::words::cloud::HttpRequestData > GetDocumentProtectionRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
@@ -12685,6 +13612,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
 
         for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
@@ -12712,12 +13640,14 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::istream > document,
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
-        const std::shared_ptr< std::wstring > encryptedPassword
+        const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport
     ) : 
         m_Document(document),
         m_LoadEncoding(loadEncoding),
         m_Password(password),
-        m_EncryptedPassword(encryptedPassword)
+        m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport)
     {
     }
 
@@ -12741,6 +13671,11 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
+    const std::shared_ptr< bool > GetDocumentProtectionOnlineRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
     std::shared_ptr< aspose::words::cloud::HttpRequestData > GetDocumentProtectionOnlineRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
@@ -12750,6 +13685,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
         if (m_Document)
         {
             result->addFormDataParam(L"document", *m_Document);
@@ -12785,6 +13721,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
         const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport,
         const std::shared_ptr< bool > includeComments,
         const std::shared_ptr< bool > includeFootnotes,
         const std::shared_ptr< bool > includeTextInShapes
@@ -12795,6 +13732,7 @@ namespace aspose::words::cloud::requests {
         m_LoadEncoding(loadEncoding),
         m_Password(password),
         m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport),
         m_IncludeComments(includeComments),
         m_IncludeFootnotes(includeFootnotes),
         m_IncludeTextInShapes(includeTextInShapes)
@@ -12831,6 +13769,11 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
+    const std::shared_ptr< bool > GetDocumentStatisticsRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
     const std::shared_ptr< bool > GetDocumentStatisticsRequest::getIncludeComments() const
     {
         return m_IncludeComments;
@@ -12859,6 +13802,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
         if (m_IncludeComments) result->addQueryParam(L"includeComments", *m_IncludeComments);
         if (m_IncludeFootnotes) result->addQueryParam(L"includeFootnotes", *m_IncludeFootnotes);
         if (m_IncludeTextInShapes) result->addQueryParam(L"includeTextInShapes", *m_IncludeTextInShapes);
@@ -12890,6 +13834,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
         const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport,
         const std::shared_ptr< bool > includeComments,
         const std::shared_ptr< bool > includeFootnotes,
         const std::shared_ptr< bool > includeTextInShapes
@@ -12898,6 +13843,7 @@ namespace aspose::words::cloud::requests {
         m_LoadEncoding(loadEncoding),
         m_Password(password),
         m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport),
         m_IncludeComments(includeComments),
         m_IncludeFootnotes(includeFootnotes),
         m_IncludeTextInShapes(includeTextInShapes)
@@ -12924,6 +13870,11 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
+    const std::shared_ptr< bool > GetDocumentStatisticsOnlineRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
     const std::shared_ptr< bool > GetDocumentStatisticsOnlineRequest::getIncludeComments() const
     {
         return m_IncludeComments;
@@ -12948,6 +13899,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
         if (m_IncludeComments) result->addQueryParam(L"includeComments", *m_IncludeComments);
         if (m_IncludeFootnotes) result->addQueryParam(L"includeFootnotes", *m_IncludeFootnotes);
         if (m_IncludeTextInShapes) result->addQueryParam(L"includeTextInShapes", *m_IncludeTextInShapes);
@@ -12987,6 +13939,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
         const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport,
         const std::shared_ptr< std::wstring > outPath,
         const std::shared_ptr< std::wstring > fontsLocation
     ) : 
@@ -12997,6 +13950,7 @@ namespace aspose::words::cloud::requests {
         m_LoadEncoding(loadEncoding),
         m_Password(password),
         m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport),
         m_OutPath(outPath),
         m_FontsLocation(fontsLocation)
     {
@@ -13037,6 +13991,11 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
+    const std::shared_ptr< bool > GetDocumentWithFormatRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
     const std::shared_ptr< std::wstring > GetDocumentWithFormatRequest::getOutPath() const
     {
         return m_OutPath;
@@ -13062,6 +14021,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
         if (m_OutPath) result->addQueryParam(L"outPath", *m_OutPath);
         if (m_FontsLocation) result->addQueryParam(L"fontsLocation", *m_FontsLocation);
 
@@ -13095,7 +14055,8 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > storage,
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
-        const std::shared_ptr< std::wstring > encryptedPassword
+        const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport
     ) : 
         m_Name(name),
         m_Index(index),
@@ -13104,7 +14065,8 @@ namespace aspose::words::cloud::requests {
         m_Storage(storage),
         m_LoadEncoding(loadEncoding),
         m_Password(password),
-        m_EncryptedPassword(encryptedPassword)
+        m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport)
     {
     }
 
@@ -13148,6 +14110,11 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
+    const std::shared_ptr< bool > GetFieldRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
     std::shared_ptr< aspose::words::cloud::HttpRequestData > GetFieldRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
@@ -13164,6 +14131,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
 
         for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
@@ -13193,14 +14161,16 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > nodePath,
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
-        const std::shared_ptr< std::wstring > encryptedPassword
+        const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport
     ) : 
         m_Document(document),
         m_Index(index),
         m_NodePath(nodePath),
         m_LoadEncoding(loadEncoding),
         m_Password(password),
-        m_EncryptedPassword(encryptedPassword)
+        m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport)
     {
     }
 
@@ -13234,6 +14204,11 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
+    const std::shared_ptr< bool > GetFieldOnlineRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
     std::shared_ptr< aspose::words::cloud::HttpRequestData > GetFieldOnlineRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
@@ -13246,6 +14221,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
         if (m_Document)
         {
             result->addFormDataParam(L"document", *m_Document);
@@ -13281,7 +14257,8 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > storage,
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
-        const std::shared_ptr< std::wstring > encryptedPassword
+        const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport
     ) : 
         m_Name(name),
         m_NodePath(nodePath),
@@ -13289,7 +14266,8 @@ namespace aspose::words::cloud::requests {
         m_Storage(storage),
         m_LoadEncoding(loadEncoding),
         m_Password(password),
-        m_EncryptedPassword(encryptedPassword)
+        m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport)
     {
     }
 
@@ -13328,6 +14306,11 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
+    const std::shared_ptr< bool > GetFieldsRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
     std::shared_ptr< aspose::words::cloud::HttpRequestData > GetFieldsRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
@@ -13342,6 +14325,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
 
         for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
@@ -13370,13 +14354,15 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > nodePath,
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
-        const std::shared_ptr< std::wstring > encryptedPassword
+        const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport
     ) : 
         m_Document(document),
         m_NodePath(nodePath),
         m_LoadEncoding(loadEncoding),
         m_Password(password),
-        m_EncryptedPassword(encryptedPassword)
+        m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport)
     {
     }
 
@@ -13405,6 +14391,11 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
+    const std::shared_ptr< bool > GetFieldsOnlineRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
     std::shared_ptr< aspose::words::cloud::HttpRequestData > GetFieldsOnlineRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
@@ -13415,6 +14406,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
         if (m_Document)
         {
             result->addFormDataParam(L"document", *m_Document);
@@ -13502,7 +14494,8 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > storage,
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
-        const std::shared_ptr< std::wstring > encryptedPassword
+        const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport
     ) : 
         m_Name(name),
         m_Index(index),
@@ -13511,7 +14504,8 @@ namespace aspose::words::cloud::requests {
         m_Storage(storage),
         m_LoadEncoding(loadEncoding),
         m_Password(password),
-        m_EncryptedPassword(encryptedPassword)
+        m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport)
     {
     }
 
@@ -13555,6 +14549,11 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
+    const std::shared_ptr< bool > GetFootnoteRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
     std::shared_ptr< aspose::words::cloud::HttpRequestData > GetFootnoteRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
@@ -13571,6 +14570,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
 
         for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
@@ -13600,14 +14600,16 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > nodePath,
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
-        const std::shared_ptr< std::wstring > encryptedPassword
+        const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport
     ) : 
         m_Document(document),
         m_Index(index),
         m_NodePath(nodePath),
         m_LoadEncoding(loadEncoding),
         m_Password(password),
-        m_EncryptedPassword(encryptedPassword)
+        m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport)
     {
     }
 
@@ -13641,6 +14643,11 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
+    const std::shared_ptr< bool > GetFootnoteOnlineRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
     std::shared_ptr< aspose::words::cloud::HttpRequestData > GetFootnoteOnlineRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
@@ -13653,6 +14660,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
         if (m_Document)
         {
             result->addFormDataParam(L"document", *m_Document);
@@ -13688,7 +14696,8 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > storage,
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
-        const std::shared_ptr< std::wstring > encryptedPassword
+        const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport
     ) : 
         m_Name(name),
         m_NodePath(nodePath),
@@ -13696,7 +14705,8 @@ namespace aspose::words::cloud::requests {
         m_Storage(storage),
         m_LoadEncoding(loadEncoding),
         m_Password(password),
-        m_EncryptedPassword(encryptedPassword)
+        m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport)
     {
     }
 
@@ -13735,6 +14745,11 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
+    const std::shared_ptr< bool > GetFootnotesRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
     std::shared_ptr< aspose::words::cloud::HttpRequestData > GetFootnotesRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
@@ -13749,6 +14764,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
 
         for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
@@ -13777,13 +14793,15 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > nodePath,
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
-        const std::shared_ptr< std::wstring > encryptedPassword
+        const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport
     ) : 
         m_Document(document),
         m_NodePath(nodePath),
         m_LoadEncoding(loadEncoding),
         m_Password(password),
-        m_EncryptedPassword(encryptedPassword)
+        m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport)
     {
     }
 
@@ -13812,6 +14830,11 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
+    const std::shared_ptr< bool > GetFootnotesOnlineRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
     std::shared_ptr< aspose::words::cloud::HttpRequestData > GetFootnotesOnlineRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
@@ -13822,6 +14845,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
         if (m_Document)
         {
             result->addFormDataParam(L"document", *m_Document);
@@ -13858,7 +14882,8 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > storage,
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
-        const std::shared_ptr< std::wstring > encryptedPassword
+        const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport
     ) : 
         m_Name(name),
         m_Index(index),
@@ -13867,7 +14892,8 @@ namespace aspose::words::cloud::requests {
         m_Storage(storage),
         m_LoadEncoding(loadEncoding),
         m_Password(password),
-        m_EncryptedPassword(encryptedPassword)
+        m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport)
     {
     }
 
@@ -13911,6 +14937,11 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
+    const std::shared_ptr< bool > GetFormFieldRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
     std::shared_ptr< aspose::words::cloud::HttpRequestData > GetFormFieldRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
@@ -13927,6 +14958,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
 
         for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
@@ -13956,14 +14988,16 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > nodePath,
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
-        const std::shared_ptr< std::wstring > encryptedPassword
+        const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport
     ) : 
         m_Document(document),
         m_Index(index),
         m_NodePath(nodePath),
         m_LoadEncoding(loadEncoding),
         m_Password(password),
-        m_EncryptedPassword(encryptedPassword)
+        m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport)
     {
     }
 
@@ -13997,6 +15031,11 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
+    const std::shared_ptr< bool > GetFormFieldOnlineRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
     std::shared_ptr< aspose::words::cloud::HttpRequestData > GetFormFieldOnlineRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
@@ -14009,6 +15048,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
         if (m_Document)
         {
             result->addFormDataParam(L"document", *m_Document);
@@ -14044,7 +15084,8 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > storage,
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
-        const std::shared_ptr< std::wstring > encryptedPassword
+        const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport
     ) : 
         m_Name(name),
         m_NodePath(nodePath),
@@ -14052,7 +15093,8 @@ namespace aspose::words::cloud::requests {
         m_Storage(storage),
         m_LoadEncoding(loadEncoding),
         m_Password(password),
-        m_EncryptedPassword(encryptedPassword)
+        m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport)
     {
     }
 
@@ -14091,6 +15133,11 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
+    const std::shared_ptr< bool > GetFormFieldsRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
     std::shared_ptr< aspose::words::cloud::HttpRequestData > GetFormFieldsRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
@@ -14105,6 +15152,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
 
         for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
@@ -14133,13 +15181,15 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > nodePath,
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
-        const std::shared_ptr< std::wstring > encryptedPassword
+        const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport
     ) : 
         m_Document(document),
         m_NodePath(nodePath),
         m_LoadEncoding(loadEncoding),
         m_Password(password),
-        m_EncryptedPassword(encryptedPassword)
+        m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport)
     {
     }
 
@@ -14168,6 +15218,11 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
+    const std::shared_ptr< bool > GetFormFieldsOnlineRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
     std::shared_ptr< aspose::words::cloud::HttpRequestData > GetFormFieldsOnlineRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
@@ -14178,6 +15233,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
         if (m_Document)
         {
             result->addFormDataParam(L"document", *m_Document);
@@ -14214,6 +15270,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
         const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport,
         const std::shared_ptr< std::wstring > filterByType
     ) : 
         m_Name(name),
@@ -14223,6 +15280,7 @@ namespace aspose::words::cloud::requests {
         m_LoadEncoding(loadEncoding),
         m_Password(password),
         m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport),
         m_FilterByType(filterByType)
     {
     }
@@ -14262,6 +15320,11 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
+    const std::shared_ptr< bool > GetHeaderFooterRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
     const std::shared_ptr< std::wstring > GetHeaderFooterRequest::getFilterByType() const
     {
         return m_FilterByType;
@@ -14282,6 +15345,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
         if (m_FilterByType) result->addQueryParam(L"filterByType", *m_FilterByType);
 
         for (models::FileReference* additionalFileContent : additionalFilesContent)
@@ -14315,6 +15379,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
         const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport,
         const std::shared_ptr< std::wstring > filterByType
     ) : 
         m_Name(name),
@@ -14325,6 +15390,7 @@ namespace aspose::words::cloud::requests {
         m_LoadEncoding(loadEncoding),
         m_Password(password),
         m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport),
         m_FilterByType(filterByType)
     {
     }
@@ -14369,6 +15435,11 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
+    const std::shared_ptr< bool > GetHeaderFooterOfSectionRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
     const std::shared_ptr< std::wstring > GetHeaderFooterOfSectionRequest::getFilterByType() const
     {
         return m_FilterByType;
@@ -14391,6 +15462,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
         if (m_FilterByType) result->addQueryParam(L"filterByType", *m_FilterByType);
 
         for (models::FileReference* additionalFileContent : additionalFilesContent)
@@ -14422,6 +15494,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
         const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport,
         const std::shared_ptr< std::wstring > filterByType
     ) : 
         m_Document(document),
@@ -14430,6 +15503,7 @@ namespace aspose::words::cloud::requests {
         m_LoadEncoding(loadEncoding),
         m_Password(password),
         m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport),
         m_FilterByType(filterByType)
     {
     }
@@ -14464,6 +15538,11 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
+    const std::shared_ptr< bool > GetHeaderFooterOfSectionOnlineRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
     const std::shared_ptr< std::wstring > GetHeaderFooterOfSectionOnlineRequest::getFilterByType() const
     {
         return m_FilterByType;
@@ -14482,6 +15561,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
         if (m_FilterByType) result->addQueryParam(L"filterByType", *m_FilterByType);
         if (m_Document)
         {
@@ -14517,6 +15597,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
         const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport,
         const std::shared_ptr< std::wstring > filterByType
     ) : 
         m_Document(document),
@@ -14524,6 +15605,7 @@ namespace aspose::words::cloud::requests {
         m_LoadEncoding(loadEncoding),
         m_Password(password),
         m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport),
         m_FilterByType(filterByType)
     {
     }
@@ -14553,6 +15635,11 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
+    const std::shared_ptr< bool > GetHeaderFooterOnlineRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
     const std::shared_ptr< std::wstring > GetHeaderFooterOnlineRequest::getFilterByType() const
     {
         return m_FilterByType;
@@ -14569,6 +15656,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
         if (m_FilterByType) result->addQueryParam(L"filterByType", *m_FilterByType);
         if (m_Document)
         {
@@ -14606,6 +15694,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
         const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport,
         const std::shared_ptr< std::wstring > filterByType
     ) : 
         m_Name(name),
@@ -14615,6 +15704,7 @@ namespace aspose::words::cloud::requests {
         m_LoadEncoding(loadEncoding),
         m_Password(password),
         m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport),
         m_FilterByType(filterByType)
     {
     }
@@ -14654,6 +15744,11 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
+    const std::shared_ptr< bool > GetHeaderFootersRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
     const std::shared_ptr< std::wstring > GetHeaderFootersRequest::getFilterByType() const
     {
         return m_FilterByType;
@@ -14674,6 +15769,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
         if (m_FilterByType) result->addQueryParam(L"filterByType", *m_FilterByType);
 
         for (models::FileReference* additionalFileContent : additionalFilesContent)
@@ -14704,6 +15800,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
         const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport,
         const std::shared_ptr< std::wstring > filterByType
     ) : 
         m_Document(document),
@@ -14711,6 +15808,7 @@ namespace aspose::words::cloud::requests {
         m_LoadEncoding(loadEncoding),
         m_Password(password),
         m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport),
         m_FilterByType(filterByType)
     {
     }
@@ -14740,6 +15838,11 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
+    const std::shared_ptr< bool > GetHeaderFootersOnlineRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
     const std::shared_ptr< std::wstring > GetHeaderFootersOnlineRequest::getFilterByType() const
     {
         return m_FilterByType;
@@ -14756,6 +15859,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
         if (m_FilterByType) result->addQueryParam(L"filterByType", *m_FilterByType);
         if (m_Document)
         {
@@ -14827,7 +15931,8 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > storage,
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
-        const std::shared_ptr< std::wstring > encryptedPassword
+        const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport
     ) : 
         m_Name(name),
         m_ListId(listId),
@@ -14835,7 +15940,8 @@ namespace aspose::words::cloud::requests {
         m_Storage(storage),
         m_LoadEncoding(loadEncoding),
         m_Password(password),
-        m_EncryptedPassword(encryptedPassword)
+        m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport)
     {
     }
 
@@ -14874,6 +15980,11 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
+    const std::shared_ptr< bool > GetListRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
     std::shared_ptr< aspose::words::cloud::HttpRequestData > GetListRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
@@ -14889,6 +16000,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
 
         for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
@@ -14917,13 +16029,15 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< int32_t > listId,
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
-        const std::shared_ptr< std::wstring > encryptedPassword
+        const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport
     ) : 
         m_Document(document),
         m_ListId(listId),
         m_LoadEncoding(loadEncoding),
         m_Password(password),
-        m_EncryptedPassword(encryptedPassword)
+        m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport)
     {
     }
 
@@ -14952,6 +16066,11 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
+    const std::shared_ptr< bool > GetListOnlineRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
     std::shared_ptr< aspose::words::cloud::HttpRequestData > GetListOnlineRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
@@ -14963,6 +16082,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
         if (m_Document)
         {
             result->addFormDataParam(L"document", *m_Document);
@@ -14997,14 +16117,16 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > storage,
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
-        const std::shared_ptr< std::wstring > encryptedPassword
+        const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport
     ) : 
         m_Name(name),
         m_Folder(folder),
         m_Storage(storage),
         m_LoadEncoding(loadEncoding),
         m_Password(password),
-        m_EncryptedPassword(encryptedPassword)
+        m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport)
     {
     }
 
@@ -15038,6 +16160,11 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
+    const std::shared_ptr< bool > GetListsRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
     std::shared_ptr< aspose::words::cloud::HttpRequestData > GetListsRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
@@ -15051,6 +16178,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
 
         for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
@@ -15078,12 +16206,14 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::istream > document,
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
-        const std::shared_ptr< std::wstring > encryptedPassword
+        const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport
     ) : 
         m_Document(document),
         m_LoadEncoding(loadEncoding),
         m_Password(password),
-        m_EncryptedPassword(encryptedPassword)
+        m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport)
     {
     }
 
@@ -15107,6 +16237,11 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
+    const std::shared_ptr< bool > GetListsOnlineRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
     std::shared_ptr< aspose::words::cloud::HttpRequestData > GetListsOnlineRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
@@ -15116,6 +16251,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
         if (m_Document)
         {
             result->addFormDataParam(L"document", *m_Document);
@@ -15152,7 +16288,8 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > storage,
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
-        const std::shared_ptr< std::wstring > encryptedPassword
+        const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport
     ) : 
         m_Name(name),
         m_Index(index),
@@ -15161,7 +16298,8 @@ namespace aspose::words::cloud::requests {
         m_Storage(storage),
         m_LoadEncoding(loadEncoding),
         m_Password(password),
-        m_EncryptedPassword(encryptedPassword)
+        m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport)
     {
     }
 
@@ -15205,6 +16343,11 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
+    const std::shared_ptr< bool > GetOfficeMathObjectRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
     std::shared_ptr< aspose::words::cloud::HttpRequestData > GetOfficeMathObjectRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
@@ -15221,6 +16364,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
 
         for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
@@ -15250,14 +16394,16 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > nodePath,
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
-        const std::shared_ptr< std::wstring > encryptedPassword
+        const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport
     ) : 
         m_Document(document),
         m_Index(index),
         m_NodePath(nodePath),
         m_LoadEncoding(loadEncoding),
         m_Password(password),
-        m_EncryptedPassword(encryptedPassword)
+        m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport)
     {
     }
 
@@ -15291,6 +16437,11 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
+    const std::shared_ptr< bool > GetOfficeMathObjectOnlineRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
     std::shared_ptr< aspose::words::cloud::HttpRequestData > GetOfficeMathObjectOnlineRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
@@ -15303,6 +16454,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
         if (m_Document)
         {
             result->addFormDataParam(L"document", *m_Document);
@@ -15338,7 +16490,8 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > storage,
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
-        const std::shared_ptr< std::wstring > encryptedPassword
+        const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport
     ) : 
         m_Name(name),
         m_NodePath(nodePath),
@@ -15346,7 +16499,8 @@ namespace aspose::words::cloud::requests {
         m_Storage(storage),
         m_LoadEncoding(loadEncoding),
         m_Password(password),
-        m_EncryptedPassword(encryptedPassword)
+        m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport)
     {
     }
 
@@ -15385,6 +16539,11 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
+    const std::shared_ptr< bool > GetOfficeMathObjectsRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
     std::shared_ptr< aspose::words::cloud::HttpRequestData > GetOfficeMathObjectsRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
@@ -15399,6 +16558,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
 
         for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
@@ -15427,13 +16587,15 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > nodePath,
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
-        const std::shared_ptr< std::wstring > encryptedPassword
+        const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport
     ) : 
         m_Document(document),
         m_NodePath(nodePath),
         m_LoadEncoding(loadEncoding),
         m_Password(password),
-        m_EncryptedPassword(encryptedPassword)
+        m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport)
     {
     }
 
@@ -15462,6 +16624,11 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
+    const std::shared_ptr< bool > GetOfficeMathObjectsOnlineRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
     std::shared_ptr< aspose::words::cloud::HttpRequestData > GetOfficeMathObjectsOnlineRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
@@ -15472,6 +16639,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
         if (m_Document)
         {
             result->addFormDataParam(L"document", *m_Document);
@@ -15508,7 +16676,8 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > storage,
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
-        const std::shared_ptr< std::wstring > encryptedPassword
+        const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport
     ) : 
         m_Name(name),
         m_Index(index),
@@ -15517,7 +16686,8 @@ namespace aspose::words::cloud::requests {
         m_Storage(storage),
         m_LoadEncoding(loadEncoding),
         m_Password(password),
-        m_EncryptedPassword(encryptedPassword)
+        m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport)
     {
     }
 
@@ -15561,6 +16731,11 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
+    const std::shared_ptr< bool > GetParagraphRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
     std::shared_ptr< aspose::words::cloud::HttpRequestData > GetParagraphRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
@@ -15577,6 +16752,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
 
         for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
@@ -15608,7 +16784,8 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > storage,
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
-        const std::shared_ptr< std::wstring > encryptedPassword
+        const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport
     ) : 
         m_Name(name),
         m_Index(index),
@@ -15617,7 +16794,8 @@ namespace aspose::words::cloud::requests {
         m_Storage(storage),
         m_LoadEncoding(loadEncoding),
         m_Password(password),
-        m_EncryptedPassword(encryptedPassword)
+        m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport)
     {
     }
 
@@ -15661,6 +16839,11 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
+    const std::shared_ptr< bool > GetParagraphFormatRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
     std::shared_ptr< aspose::words::cloud::HttpRequestData > GetParagraphFormatRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
@@ -15677,6 +16860,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
 
         for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
@@ -15706,14 +16890,16 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > nodePath,
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
-        const std::shared_ptr< std::wstring > encryptedPassword
+        const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport
     ) : 
         m_Document(document),
         m_Index(index),
         m_NodePath(nodePath),
         m_LoadEncoding(loadEncoding),
         m_Password(password),
-        m_EncryptedPassword(encryptedPassword)
+        m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport)
     {
     }
 
@@ -15747,6 +16933,11 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
+    const std::shared_ptr< bool > GetParagraphFormatOnlineRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
     std::shared_ptr< aspose::words::cloud::HttpRequestData > GetParagraphFormatOnlineRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
@@ -15759,6 +16950,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
         if (m_Document)
         {
             result->addFormDataParam(L"document", *m_Document);
@@ -15795,7 +16987,8 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > storage,
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
-        const std::shared_ptr< std::wstring > encryptedPassword
+        const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport
     ) : 
         m_Name(name),
         m_Index(index),
@@ -15804,7 +16997,8 @@ namespace aspose::words::cloud::requests {
         m_Storage(storage),
         m_LoadEncoding(loadEncoding),
         m_Password(password),
-        m_EncryptedPassword(encryptedPassword)
+        m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport)
     {
     }
 
@@ -15848,6 +17042,11 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
+    const std::shared_ptr< bool > GetParagraphListFormatRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
     std::shared_ptr< aspose::words::cloud::HttpRequestData > GetParagraphListFormatRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
@@ -15864,6 +17063,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
 
         for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
@@ -15893,14 +17093,16 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > nodePath,
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
-        const std::shared_ptr< std::wstring > encryptedPassword
+        const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport
     ) : 
         m_Document(document),
         m_Index(index),
         m_NodePath(nodePath),
         m_LoadEncoding(loadEncoding),
         m_Password(password),
-        m_EncryptedPassword(encryptedPassword)
+        m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport)
     {
     }
 
@@ -15934,6 +17136,11 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
+    const std::shared_ptr< bool > GetParagraphListFormatOnlineRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
     std::shared_ptr< aspose::words::cloud::HttpRequestData > GetParagraphListFormatOnlineRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
@@ -15946,6 +17153,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
         if (m_Document)
         {
             result->addFormDataParam(L"document", *m_Document);
@@ -15980,14 +17188,16 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > nodePath,
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
-        const std::shared_ptr< std::wstring > encryptedPassword
+        const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport
     ) : 
         m_Document(document),
         m_Index(index),
         m_NodePath(nodePath),
         m_LoadEncoding(loadEncoding),
         m_Password(password),
-        m_EncryptedPassword(encryptedPassword)
+        m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport)
     {
     }
 
@@ -16021,6 +17231,11 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
+    const std::shared_ptr< bool > GetParagraphOnlineRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
     std::shared_ptr< aspose::words::cloud::HttpRequestData > GetParagraphOnlineRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
@@ -16033,6 +17248,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
         if (m_Document)
         {
             result->addFormDataParam(L"document", *m_Document);
@@ -16068,7 +17284,8 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > storage,
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
-        const std::shared_ptr< std::wstring > encryptedPassword
+        const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport
     ) : 
         m_Name(name),
         m_NodePath(nodePath),
@@ -16076,7 +17293,8 @@ namespace aspose::words::cloud::requests {
         m_Storage(storage),
         m_LoadEncoding(loadEncoding),
         m_Password(password),
-        m_EncryptedPassword(encryptedPassword)
+        m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport)
     {
     }
 
@@ -16115,6 +17333,11 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
+    const std::shared_ptr< bool > GetParagraphsRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
     std::shared_ptr< aspose::words::cloud::HttpRequestData > GetParagraphsRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
@@ -16129,6 +17352,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
 
         for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
@@ -16157,13 +17381,15 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > nodePath,
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
-        const std::shared_ptr< std::wstring > encryptedPassword
+        const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport
     ) : 
         m_Document(document),
         m_NodePath(nodePath),
         m_LoadEncoding(loadEncoding),
         m_Password(password),
-        m_EncryptedPassword(encryptedPassword)
+        m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport)
     {
     }
 
@@ -16192,6 +17418,11 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
+    const std::shared_ptr< bool > GetParagraphsOnlineRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
     std::shared_ptr< aspose::words::cloud::HttpRequestData > GetParagraphsOnlineRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
@@ -16202,6 +17433,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
         if (m_Document)
         {
             result->addFormDataParam(L"document", *m_Document);
@@ -16238,7 +17470,8 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > storage,
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
-        const std::shared_ptr< std::wstring > encryptedPassword
+        const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport
     ) : 
         m_Name(name),
         m_Index(index),
@@ -16247,7 +17480,8 @@ namespace aspose::words::cloud::requests {
         m_Storage(storage),
         m_LoadEncoding(loadEncoding),
         m_Password(password),
-        m_EncryptedPassword(encryptedPassword)
+        m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport)
     {
     }
 
@@ -16291,6 +17525,11 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
+    const std::shared_ptr< bool > GetParagraphTabStopsRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
     std::shared_ptr< aspose::words::cloud::HttpRequestData > GetParagraphTabStopsRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
@@ -16307,6 +17546,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
 
         for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
@@ -16336,14 +17576,16 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > nodePath,
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
-        const std::shared_ptr< std::wstring > encryptedPassword
+        const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport
     ) : 
         m_Document(document),
         m_Index(index),
         m_NodePath(nodePath),
         m_LoadEncoding(loadEncoding),
         m_Password(password),
-        m_EncryptedPassword(encryptedPassword)
+        m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport)
     {
     }
 
@@ -16377,6 +17619,11 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
+    const std::shared_ptr< bool > GetParagraphTabStopsOnlineRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
     std::shared_ptr< aspose::words::cloud::HttpRequestData > GetParagraphTabStopsOnlineRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
@@ -16389,6 +17636,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
         if (m_Document)
         {
             result->addFormDataParam(L"document", *m_Document);
@@ -16460,7 +17708,8 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > storage,
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
-        const std::shared_ptr< std::wstring > encryptedPassword
+        const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport
     ) : 
         m_Name(name),
         m_RangeStartIdentifier(rangeStartIdentifier),
@@ -16469,7 +17718,8 @@ namespace aspose::words::cloud::requests {
         m_Storage(storage),
         m_LoadEncoding(loadEncoding),
         m_Password(password),
-        m_EncryptedPassword(encryptedPassword)
+        m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport)
     {
     }
 
@@ -16513,6 +17763,11 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
+    const std::shared_ptr< bool > GetRangeTextRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
     std::shared_ptr< aspose::words::cloud::HttpRequestData > GetRangeTextRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
@@ -16529,6 +17784,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
 
         for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
@@ -16558,14 +17814,16 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > rangeEndIdentifier,
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
-        const std::shared_ptr< std::wstring > encryptedPassword
+        const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport
     ) : 
         m_Document(document),
         m_RangeStartIdentifier(rangeStartIdentifier),
         m_RangeEndIdentifier(rangeEndIdentifier),
         m_LoadEncoding(loadEncoding),
         m_Password(password),
-        m_EncryptedPassword(encryptedPassword)
+        m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport)
     {
     }
 
@@ -16599,6 +17857,11 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
+    const std::shared_ptr< bool > GetRangeTextOnlineRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
     std::shared_ptr< aspose::words::cloud::HttpRequestData > GetRangeTextOnlineRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
@@ -16611,6 +17874,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
         if (m_Document)
         {
             result->addFormDataParam(L"document", *m_Document);
@@ -16647,7 +17911,8 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > storage,
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
-        const std::shared_ptr< std::wstring > encryptedPassword
+        const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport
     ) : 
         m_Name(name),
         m_ParagraphPath(paragraphPath),
@@ -16656,7 +17921,8 @@ namespace aspose::words::cloud::requests {
         m_Storage(storage),
         m_LoadEncoding(loadEncoding),
         m_Password(password),
-        m_EncryptedPassword(encryptedPassword)
+        m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport)
     {
     }
 
@@ -16700,6 +17966,11 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
+    const std::shared_ptr< bool > GetRunRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
     std::shared_ptr< aspose::words::cloud::HttpRequestData > GetRunRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
@@ -16717,6 +17988,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
 
         for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
@@ -16748,7 +18020,8 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > storage,
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
-        const std::shared_ptr< std::wstring > encryptedPassword
+        const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport
     ) : 
         m_Name(name),
         m_ParagraphPath(paragraphPath),
@@ -16757,7 +18030,8 @@ namespace aspose::words::cloud::requests {
         m_Storage(storage),
         m_LoadEncoding(loadEncoding),
         m_Password(password),
-        m_EncryptedPassword(encryptedPassword)
+        m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport)
     {
     }
 
@@ -16801,6 +18075,11 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
+    const std::shared_ptr< bool > GetRunFontRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
     std::shared_ptr< aspose::words::cloud::HttpRequestData > GetRunFontRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
@@ -16818,6 +18097,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
 
         for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
@@ -16847,14 +18127,16 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< int32_t > index,
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
-        const std::shared_ptr< std::wstring > encryptedPassword
+        const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport
     ) : 
         m_Document(document),
         m_ParagraphPath(paragraphPath),
         m_Index(index),
         m_LoadEncoding(loadEncoding),
         m_Password(password),
-        m_EncryptedPassword(encryptedPassword)
+        m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport)
     {
     }
 
@@ -16888,6 +18170,11 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
+    const std::shared_ptr< bool > GetRunFontOnlineRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
     std::shared_ptr< aspose::words::cloud::HttpRequestData > GetRunFontOnlineRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
@@ -16901,6 +18188,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
         if (m_Document)
         {
             result->addFormDataParam(L"document", *m_Document);
@@ -16935,14 +18223,16 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< int32_t > index,
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
-        const std::shared_ptr< std::wstring > encryptedPassword
+        const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport
     ) : 
         m_Document(document),
         m_ParagraphPath(paragraphPath),
         m_Index(index),
         m_LoadEncoding(loadEncoding),
         m_Password(password),
-        m_EncryptedPassword(encryptedPassword)
+        m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport)
     {
     }
 
@@ -16976,6 +18266,11 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
+    const std::shared_ptr< bool > GetRunOnlineRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
     std::shared_ptr< aspose::words::cloud::HttpRequestData > GetRunOnlineRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
@@ -16989,6 +18284,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
         if (m_Document)
         {
             result->addFormDataParam(L"document", *m_Document);
@@ -17024,7 +18320,8 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > storage,
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
-        const std::shared_ptr< std::wstring > encryptedPassword
+        const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport
     ) : 
         m_Name(name),
         m_ParagraphPath(paragraphPath),
@@ -17032,7 +18329,8 @@ namespace aspose::words::cloud::requests {
         m_Storage(storage),
         m_LoadEncoding(loadEncoding),
         m_Password(password),
-        m_EncryptedPassword(encryptedPassword)
+        m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport)
     {
     }
 
@@ -17071,6 +18369,11 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
+    const std::shared_ptr< bool > GetRunsRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
     std::shared_ptr< aspose::words::cloud::HttpRequestData > GetRunsRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
@@ -17086,6 +18389,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
 
         for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
@@ -17114,13 +18418,15 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > paragraphPath,
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
-        const std::shared_ptr< std::wstring > encryptedPassword
+        const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport
     ) : 
         m_Document(document),
         m_ParagraphPath(paragraphPath),
         m_LoadEncoding(loadEncoding),
         m_Password(password),
-        m_EncryptedPassword(encryptedPassword)
+        m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport)
     {
     }
 
@@ -17149,6 +18455,11 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
+    const std::shared_ptr< bool > GetRunsOnlineRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
     std::shared_ptr< aspose::words::cloud::HttpRequestData > GetRunsOnlineRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
@@ -17160,6 +18471,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
         if (m_Document)
         {
             result->addFormDataParam(L"document", *m_Document);
@@ -17195,7 +18507,8 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > storage,
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
-        const std::shared_ptr< std::wstring > encryptedPassword
+        const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport
     ) : 
         m_Name(name),
         m_SectionIndex(sectionIndex),
@@ -17203,7 +18516,8 @@ namespace aspose::words::cloud::requests {
         m_Storage(storage),
         m_LoadEncoding(loadEncoding),
         m_Password(password),
-        m_EncryptedPassword(encryptedPassword)
+        m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport)
     {
     }
 
@@ -17242,6 +18556,11 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
+    const std::shared_ptr< bool > GetSectionRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
     std::shared_ptr< aspose::words::cloud::HttpRequestData > GetSectionRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
@@ -17257,6 +18576,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
 
         for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
@@ -17285,13 +18605,15 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< int32_t > sectionIndex,
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
-        const std::shared_ptr< std::wstring > encryptedPassword
+        const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport
     ) : 
         m_Document(document),
         m_SectionIndex(sectionIndex),
         m_LoadEncoding(loadEncoding),
         m_Password(password),
-        m_EncryptedPassword(encryptedPassword)
+        m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport)
     {
     }
 
@@ -17320,6 +18642,11 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
+    const std::shared_ptr< bool > GetSectionOnlineRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
     std::shared_ptr< aspose::words::cloud::HttpRequestData > GetSectionOnlineRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
@@ -17331,6 +18658,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
         if (m_Document)
         {
             result->addFormDataParam(L"document", *m_Document);
@@ -17366,7 +18694,8 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > storage,
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
-        const std::shared_ptr< std::wstring > encryptedPassword
+        const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport
     ) : 
         m_Name(name),
         m_SectionIndex(sectionIndex),
@@ -17374,7 +18703,8 @@ namespace aspose::words::cloud::requests {
         m_Storage(storage),
         m_LoadEncoding(loadEncoding),
         m_Password(password),
-        m_EncryptedPassword(encryptedPassword)
+        m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport)
     {
     }
 
@@ -17413,6 +18743,11 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
+    const std::shared_ptr< bool > GetSectionPageSetupRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
     std::shared_ptr< aspose::words::cloud::HttpRequestData > GetSectionPageSetupRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
@@ -17428,6 +18763,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
 
         for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
@@ -17456,13 +18792,15 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< int32_t > sectionIndex,
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
-        const std::shared_ptr< std::wstring > encryptedPassword
+        const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport
     ) : 
         m_Document(document),
         m_SectionIndex(sectionIndex),
         m_LoadEncoding(loadEncoding),
         m_Password(password),
-        m_EncryptedPassword(encryptedPassword)
+        m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport)
     {
     }
 
@@ -17491,6 +18829,11 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
+    const std::shared_ptr< bool > GetSectionPageSetupOnlineRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
     std::shared_ptr< aspose::words::cloud::HttpRequestData > GetSectionPageSetupOnlineRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
@@ -17502,6 +18845,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
         if (m_Document)
         {
             result->addFormDataParam(L"document", *m_Document);
@@ -17536,14 +18880,16 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > storage,
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
-        const std::shared_ptr< std::wstring > encryptedPassword
+        const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport
     ) : 
         m_Name(name),
         m_Folder(folder),
         m_Storage(storage),
         m_LoadEncoding(loadEncoding),
         m_Password(password),
-        m_EncryptedPassword(encryptedPassword)
+        m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport)
     {
     }
 
@@ -17577,6 +18923,11 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
+    const std::shared_ptr< bool > GetSectionsRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
     std::shared_ptr< aspose::words::cloud::HttpRequestData > GetSectionsRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
@@ -17590,6 +18941,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
 
         for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
@@ -17617,12 +18969,14 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::istream > document,
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
-        const std::shared_ptr< std::wstring > encryptedPassword
+        const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport
     ) : 
         m_Document(document),
         m_LoadEncoding(loadEncoding),
         m_Password(password),
-        m_EncryptedPassword(encryptedPassword)
+        m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport)
     {
     }
 
@@ -17646,6 +19000,11 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
+    const std::shared_ptr< bool > GetSectionsOnlineRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
     std::shared_ptr< aspose::words::cloud::HttpRequestData > GetSectionsOnlineRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
@@ -17655,6 +19014,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
         if (m_Document)
         {
             result->addFormDataParam(L"document", *m_Document);
@@ -17691,7 +19051,8 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > storage,
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
-        const std::shared_ptr< std::wstring > encryptedPassword
+        const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport
     ) : 
         m_Name(name),
         m_Index(index),
@@ -17700,7 +19061,8 @@ namespace aspose::words::cloud::requests {
         m_Storage(storage),
         m_LoadEncoding(loadEncoding),
         m_Password(password),
-        m_EncryptedPassword(encryptedPassword)
+        m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport)
     {
     }
 
@@ -17744,6 +19106,11 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
+    const std::shared_ptr< bool > GetStructuredDocumentTagRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
     std::shared_ptr< aspose::words::cloud::HttpRequestData > GetStructuredDocumentTagRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
@@ -17760,6 +19127,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
 
         for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
@@ -17789,14 +19157,16 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > nodePath,
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
-        const std::shared_ptr< std::wstring > encryptedPassword
+        const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport
     ) : 
         m_Document(document),
         m_Index(index),
         m_NodePath(nodePath),
         m_LoadEncoding(loadEncoding),
         m_Password(password),
-        m_EncryptedPassword(encryptedPassword)
+        m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport)
     {
     }
 
@@ -17830,6 +19200,11 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
+    const std::shared_ptr< bool > GetStructuredDocumentTagOnlineRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
     std::shared_ptr< aspose::words::cloud::HttpRequestData > GetStructuredDocumentTagOnlineRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
@@ -17842,6 +19217,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
         if (m_Document)
         {
             result->addFormDataParam(L"document", *m_Document);
@@ -17877,7 +19253,8 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > storage,
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
-        const std::shared_ptr< std::wstring > encryptedPassword
+        const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport
     ) : 
         m_Name(name),
         m_NodePath(nodePath),
@@ -17885,7 +19262,8 @@ namespace aspose::words::cloud::requests {
         m_Storage(storage),
         m_LoadEncoding(loadEncoding),
         m_Password(password),
-        m_EncryptedPassword(encryptedPassword)
+        m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport)
     {
     }
 
@@ -17924,6 +19302,11 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
+    const std::shared_ptr< bool > GetStructuredDocumentTagsRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
     std::shared_ptr< aspose::words::cloud::HttpRequestData > GetStructuredDocumentTagsRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
@@ -17938,6 +19321,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
 
         for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
@@ -17966,13 +19350,15 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > nodePath,
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
-        const std::shared_ptr< std::wstring > encryptedPassword
+        const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport
     ) : 
         m_Document(document),
         m_NodePath(nodePath),
         m_LoadEncoding(loadEncoding),
         m_Password(password),
-        m_EncryptedPassword(encryptedPassword)
+        m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport)
     {
     }
 
@@ -18001,6 +19387,11 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
+    const std::shared_ptr< bool > GetStructuredDocumentTagsOnlineRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
     std::shared_ptr< aspose::words::cloud::HttpRequestData > GetStructuredDocumentTagsOnlineRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
@@ -18011,6 +19402,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
         if (m_Document)
         {
             result->addFormDataParam(L"document", *m_Document);
@@ -18046,7 +19438,8 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > storage,
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
-        const std::shared_ptr< std::wstring > encryptedPassword
+        const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport
     ) : 
         m_Name(name),
         m_StyleName(styleName),
@@ -18054,7 +19447,8 @@ namespace aspose::words::cloud::requests {
         m_Storage(storage),
         m_LoadEncoding(loadEncoding),
         m_Password(password),
-        m_EncryptedPassword(encryptedPassword)
+        m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport)
     {
     }
 
@@ -18093,6 +19487,11 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
+    const std::shared_ptr< bool > GetStyleRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
     std::shared_ptr< aspose::words::cloud::HttpRequestData > GetStyleRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
@@ -18108,6 +19507,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
 
         for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
@@ -18138,7 +19538,8 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > storage,
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
-        const std::shared_ptr< std::wstring > encryptedPassword
+        const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport
     ) : 
         m_Name(name),
         m_StyledNodePath(styledNodePath),
@@ -18146,7 +19547,8 @@ namespace aspose::words::cloud::requests {
         m_Storage(storage),
         m_LoadEncoding(loadEncoding),
         m_Password(password),
-        m_EncryptedPassword(encryptedPassword)
+        m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport)
     {
     }
 
@@ -18185,6 +19587,11 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
+    const std::shared_ptr< bool > GetStyleFromDocumentElementRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
     std::shared_ptr< aspose::words::cloud::HttpRequestData > GetStyleFromDocumentElementRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
@@ -18200,6 +19607,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
 
         for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
@@ -18228,13 +19636,15 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > styledNodePath,
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
-        const std::shared_ptr< std::wstring > encryptedPassword
+        const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport
     ) : 
         m_Document(document),
         m_StyledNodePath(styledNodePath),
         m_LoadEncoding(loadEncoding),
         m_Password(password),
-        m_EncryptedPassword(encryptedPassword)
+        m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport)
     {
     }
 
@@ -18263,6 +19673,11 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
+    const std::shared_ptr< bool > GetStyleFromDocumentElementOnlineRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
     std::shared_ptr< aspose::words::cloud::HttpRequestData > GetStyleFromDocumentElementOnlineRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
@@ -18274,6 +19689,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
         if (m_Document)
         {
             result->addFormDataParam(L"document", *m_Document);
@@ -18307,13 +19723,15 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > styleName,
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
-        const std::shared_ptr< std::wstring > encryptedPassword
+        const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport
     ) : 
         m_Document(document),
         m_StyleName(styleName),
         m_LoadEncoding(loadEncoding),
         m_Password(password),
-        m_EncryptedPassword(encryptedPassword)
+        m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport)
     {
     }
 
@@ -18342,6 +19760,11 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
+    const std::shared_ptr< bool > GetStyleOnlineRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
     std::shared_ptr< aspose::words::cloud::HttpRequestData > GetStyleOnlineRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
@@ -18353,6 +19776,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
         if (m_Document)
         {
             result->addFormDataParam(L"document", *m_Document);
@@ -18387,14 +19811,16 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > storage,
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
-        const std::shared_ptr< std::wstring > encryptedPassword
+        const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport
     ) : 
         m_Name(name),
         m_Folder(folder),
         m_Storage(storage),
         m_LoadEncoding(loadEncoding),
         m_Password(password),
-        m_EncryptedPassword(encryptedPassword)
+        m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport)
     {
     }
 
@@ -18428,6 +19854,11 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
+    const std::shared_ptr< bool > GetStylesRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
     std::shared_ptr< aspose::words::cloud::HttpRequestData > GetStylesRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
@@ -18441,6 +19872,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
 
         for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
@@ -18468,12 +19900,14 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::istream > document,
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
-        const std::shared_ptr< std::wstring > encryptedPassword
+        const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport
     ) : 
         m_Document(document),
         m_LoadEncoding(loadEncoding),
         m_Password(password),
-        m_EncryptedPassword(encryptedPassword)
+        m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport)
     {
     }
 
@@ -18497,6 +19931,11 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
+    const std::shared_ptr< bool > GetStylesOnlineRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
     std::shared_ptr< aspose::words::cloud::HttpRequestData > GetStylesOnlineRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
@@ -18506,6 +19945,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
         if (m_Document)
         {
             result->addFormDataParam(L"document", *m_Document);
@@ -18542,7 +19982,8 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > storage,
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
-        const std::shared_ptr< std::wstring > encryptedPassword
+        const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport
     ) : 
         m_Name(name),
         m_Index(index),
@@ -18551,7 +19992,8 @@ namespace aspose::words::cloud::requests {
         m_Storage(storage),
         m_LoadEncoding(loadEncoding),
         m_Password(password),
-        m_EncryptedPassword(encryptedPassword)
+        m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport)
     {
     }
 
@@ -18595,6 +20037,11 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
+    const std::shared_ptr< bool > GetTableRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
     std::shared_ptr< aspose::words::cloud::HttpRequestData > GetTableRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
@@ -18611,6 +20058,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
 
         for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
@@ -18642,7 +20090,8 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > storage,
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
-        const std::shared_ptr< std::wstring > encryptedPassword
+        const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport
     ) : 
         m_Name(name),
         m_TableRowPath(tableRowPath),
@@ -18651,7 +20100,8 @@ namespace aspose::words::cloud::requests {
         m_Storage(storage),
         m_LoadEncoding(loadEncoding),
         m_Password(password),
-        m_EncryptedPassword(encryptedPassword)
+        m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport)
     {
     }
 
@@ -18695,6 +20145,11 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
+    const std::shared_ptr< bool > GetTableCellRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
     std::shared_ptr< aspose::words::cloud::HttpRequestData > GetTableCellRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
@@ -18712,6 +20167,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
 
         for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
@@ -18743,7 +20199,8 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > storage,
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
-        const std::shared_ptr< std::wstring > encryptedPassword
+        const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport
     ) : 
         m_Name(name),
         m_TableRowPath(tableRowPath),
@@ -18752,7 +20209,8 @@ namespace aspose::words::cloud::requests {
         m_Storage(storage),
         m_LoadEncoding(loadEncoding),
         m_Password(password),
-        m_EncryptedPassword(encryptedPassword)
+        m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport)
     {
     }
 
@@ -18796,6 +20254,11 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
+    const std::shared_ptr< bool > GetTableCellFormatRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
     std::shared_ptr< aspose::words::cloud::HttpRequestData > GetTableCellFormatRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
@@ -18813,6 +20276,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
 
         for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
@@ -18842,14 +20306,16 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< int32_t > index,
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
-        const std::shared_ptr< std::wstring > encryptedPassword
+        const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport
     ) : 
         m_Document(document),
         m_TableRowPath(tableRowPath),
         m_Index(index),
         m_LoadEncoding(loadEncoding),
         m_Password(password),
-        m_EncryptedPassword(encryptedPassword)
+        m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport)
     {
     }
 
@@ -18883,6 +20349,11 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
+    const std::shared_ptr< bool > GetTableCellFormatOnlineRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
     std::shared_ptr< aspose::words::cloud::HttpRequestData > GetTableCellFormatOnlineRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
@@ -18896,6 +20367,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
         if (m_Document)
         {
             result->addFormDataParam(L"document", *m_Document);
@@ -18930,14 +20402,16 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< int32_t > index,
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
-        const std::shared_ptr< std::wstring > encryptedPassword
+        const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport
     ) : 
         m_Document(document),
         m_TableRowPath(tableRowPath),
         m_Index(index),
         m_LoadEncoding(loadEncoding),
         m_Password(password),
-        m_EncryptedPassword(encryptedPassword)
+        m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport)
     {
     }
 
@@ -18971,6 +20445,11 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
+    const std::shared_ptr< bool > GetTableCellOnlineRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
     std::shared_ptr< aspose::words::cloud::HttpRequestData > GetTableCellOnlineRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
@@ -18984,6 +20463,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
         if (m_Document)
         {
             result->addFormDataParam(L"document", *m_Document);
@@ -19018,14 +20498,16 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > nodePath,
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
-        const std::shared_ptr< std::wstring > encryptedPassword
+        const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport
     ) : 
         m_Document(document),
         m_Index(index),
         m_NodePath(nodePath),
         m_LoadEncoding(loadEncoding),
         m_Password(password),
-        m_EncryptedPassword(encryptedPassword)
+        m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport)
     {
     }
 
@@ -19059,6 +20541,11 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
+    const std::shared_ptr< bool > GetTableOnlineRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
     std::shared_ptr< aspose::words::cloud::HttpRequestData > GetTableOnlineRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
@@ -19071,6 +20558,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
         if (m_Document)
         {
             result->addFormDataParam(L"document", *m_Document);
@@ -19107,7 +20595,8 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > storage,
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
-        const std::shared_ptr< std::wstring > encryptedPassword
+        const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport
     ) : 
         m_Name(name),
         m_Index(index),
@@ -19116,7 +20605,8 @@ namespace aspose::words::cloud::requests {
         m_Storage(storage),
         m_LoadEncoding(loadEncoding),
         m_Password(password),
-        m_EncryptedPassword(encryptedPassword)
+        m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport)
     {
     }
 
@@ -19160,6 +20650,11 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
+    const std::shared_ptr< bool > GetTablePropertiesRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
     std::shared_ptr< aspose::words::cloud::HttpRequestData > GetTablePropertiesRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
@@ -19176,6 +20671,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
 
         for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
@@ -19205,14 +20701,16 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > nodePath,
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
-        const std::shared_ptr< std::wstring > encryptedPassword
+        const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport
     ) : 
         m_Document(document),
         m_Index(index),
         m_NodePath(nodePath),
         m_LoadEncoding(loadEncoding),
         m_Password(password),
-        m_EncryptedPassword(encryptedPassword)
+        m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport)
     {
     }
 
@@ -19246,6 +20744,11 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
+    const std::shared_ptr< bool > GetTablePropertiesOnlineRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
     std::shared_ptr< aspose::words::cloud::HttpRequestData > GetTablePropertiesOnlineRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
@@ -19258,6 +20761,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
         if (m_Document)
         {
             result->addFormDataParam(L"document", *m_Document);
@@ -19294,7 +20798,8 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > storage,
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
-        const std::shared_ptr< std::wstring > encryptedPassword
+        const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport
     ) : 
         m_Name(name),
         m_TablePath(tablePath),
@@ -19303,7 +20808,8 @@ namespace aspose::words::cloud::requests {
         m_Storage(storage),
         m_LoadEncoding(loadEncoding),
         m_Password(password),
-        m_EncryptedPassword(encryptedPassword)
+        m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport)
     {
     }
 
@@ -19347,6 +20853,11 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
+    const std::shared_ptr< bool > GetTableRowRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
     std::shared_ptr< aspose::words::cloud::HttpRequestData > GetTableRowRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
@@ -19364,6 +20875,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
 
         for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
@@ -19395,7 +20907,8 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > storage,
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
-        const std::shared_ptr< std::wstring > encryptedPassword
+        const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport
     ) : 
         m_Name(name),
         m_TablePath(tablePath),
@@ -19404,7 +20917,8 @@ namespace aspose::words::cloud::requests {
         m_Storage(storage),
         m_LoadEncoding(loadEncoding),
         m_Password(password),
-        m_EncryptedPassword(encryptedPassword)
+        m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport)
     {
     }
 
@@ -19448,6 +20962,11 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
+    const std::shared_ptr< bool > GetTableRowFormatRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
     std::shared_ptr< aspose::words::cloud::HttpRequestData > GetTableRowFormatRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
@@ -19465,6 +20984,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
 
         for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
@@ -19494,14 +21014,16 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< int32_t > index,
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
-        const std::shared_ptr< std::wstring > encryptedPassword
+        const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport
     ) : 
         m_Document(document),
         m_TablePath(tablePath),
         m_Index(index),
         m_LoadEncoding(loadEncoding),
         m_Password(password),
-        m_EncryptedPassword(encryptedPassword)
+        m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport)
     {
     }
 
@@ -19535,6 +21057,11 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
+    const std::shared_ptr< bool > GetTableRowFormatOnlineRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
     std::shared_ptr< aspose::words::cloud::HttpRequestData > GetTableRowFormatOnlineRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
@@ -19548,6 +21075,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
         if (m_Document)
         {
             result->addFormDataParam(L"document", *m_Document);
@@ -19582,14 +21110,16 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< int32_t > index,
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
-        const std::shared_ptr< std::wstring > encryptedPassword
+        const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport
     ) : 
         m_Document(document),
         m_TablePath(tablePath),
         m_Index(index),
         m_LoadEncoding(loadEncoding),
         m_Password(password),
-        m_EncryptedPassword(encryptedPassword)
+        m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport)
     {
     }
 
@@ -19623,6 +21153,11 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
+    const std::shared_ptr< bool > GetTableRowOnlineRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
     std::shared_ptr< aspose::words::cloud::HttpRequestData > GetTableRowOnlineRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
@@ -19636,6 +21171,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
         if (m_Document)
         {
             result->addFormDataParam(L"document", *m_Document);
@@ -19671,7 +21207,8 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > storage,
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
-        const std::shared_ptr< std::wstring > encryptedPassword
+        const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport
     ) : 
         m_Name(name),
         m_NodePath(nodePath),
@@ -19679,7 +21216,8 @@ namespace aspose::words::cloud::requests {
         m_Storage(storage),
         m_LoadEncoding(loadEncoding),
         m_Password(password),
-        m_EncryptedPassword(encryptedPassword)
+        m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport)
     {
     }
 
@@ -19718,6 +21256,11 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
+    const std::shared_ptr< bool > GetTablesRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
     std::shared_ptr< aspose::words::cloud::HttpRequestData > GetTablesRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
@@ -19732,6 +21275,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
 
         for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
@@ -19760,13 +21304,15 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > nodePath,
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
-        const std::shared_ptr< std::wstring > encryptedPassword
+        const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport
     ) : 
         m_Document(document),
         m_NodePath(nodePath),
         m_LoadEncoding(loadEncoding),
         m_Password(password),
-        m_EncryptedPassword(encryptedPassword)
+        m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport)
     {
     }
 
@@ -19795,6 +21341,11 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
+    const std::shared_ptr< bool > GetTablesOnlineRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
     std::shared_ptr< aspose::words::cloud::HttpRequestData > GetTablesOnlineRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
@@ -19805,6 +21356,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
         if (m_Document)
         {
             result->addFormDataParam(L"document", *m_Document);
@@ -19841,6 +21393,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
         const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport,
         const std::shared_ptr< std::wstring > destFileName,
         const std::shared_ptr< std::wstring > revisionAuthor,
         const std::shared_ptr< std::wstring > revisionDateTime
@@ -19852,6 +21405,7 @@ namespace aspose::words::cloud::requests {
         m_LoadEncoding(loadEncoding),
         m_Password(password),
         m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport),
         m_DestFileName(destFileName),
         m_RevisionAuthor(revisionAuthor),
         m_RevisionDateTime(revisionDateTime)
@@ -19893,6 +21447,11 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
+    const std::shared_ptr< bool > InsertBookmarkRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
     const std::shared_ptr< std::wstring > InsertBookmarkRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -19921,6 +21480,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
@@ -19959,6 +21519,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
         const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport,
         const std::shared_ptr< std::wstring > destFileName,
         const std::shared_ptr< std::wstring > revisionAuthor,
         const std::shared_ptr< std::wstring > revisionDateTime
@@ -19968,6 +21529,7 @@ namespace aspose::words::cloud::requests {
         m_LoadEncoding(loadEncoding),
         m_Password(password),
         m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport),
         m_DestFileName(destFileName),
         m_RevisionAuthor(revisionAuthor),
         m_RevisionDateTime(revisionDateTime)
@@ -19999,6 +21561,11 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
+    const std::shared_ptr< bool > InsertBookmarkOnlineRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
     const std::shared_ptr< std::wstring > InsertBookmarkOnlineRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -20023,6 +21590,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
@@ -20068,6 +21636,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
         const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport,
         const std::shared_ptr< std::wstring > destFileName,
         const std::shared_ptr< std::wstring > revisionAuthor,
         const std::shared_ptr< std::wstring > revisionDateTime
@@ -20079,6 +21648,7 @@ namespace aspose::words::cloud::requests {
         m_LoadEncoding(loadEncoding),
         m_Password(password),
         m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport),
         m_DestFileName(destFileName),
         m_RevisionAuthor(revisionAuthor),
         m_RevisionDateTime(revisionDateTime)
@@ -20120,6 +21690,11 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
+    const std::shared_ptr< bool > InsertCommentRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
     const std::shared_ptr< std::wstring > InsertCommentRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -20148,6 +21723,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
@@ -20186,6 +21762,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
         const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport,
         const std::shared_ptr< std::wstring > destFileName,
         const std::shared_ptr< std::wstring > revisionAuthor,
         const std::shared_ptr< std::wstring > revisionDateTime
@@ -20195,6 +21772,7 @@ namespace aspose::words::cloud::requests {
         m_LoadEncoding(loadEncoding),
         m_Password(password),
         m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport),
         m_DestFileName(destFileName),
         m_RevisionAuthor(revisionAuthor),
         m_RevisionDateTime(revisionDateTime)
@@ -20226,6 +21804,11 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
+    const std::shared_ptr< bool > InsertCommentOnlineRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
     const std::shared_ptr< std::wstring > InsertCommentOnlineRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -20250,6 +21833,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
@@ -20295,6 +21879,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
         const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport,
         const std::shared_ptr< std::wstring > destFileName,
         const std::shared_ptr< std::wstring > revisionAuthor,
         const std::shared_ptr< std::wstring > revisionDateTime
@@ -20306,6 +21891,7 @@ namespace aspose::words::cloud::requests {
         m_LoadEncoding(loadEncoding),
         m_Password(password),
         m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport),
         m_DestFileName(destFileName),
         m_RevisionAuthor(revisionAuthor),
         m_RevisionDateTime(revisionDateTime)
@@ -20347,6 +21933,11 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
+    const std::shared_ptr< bool > InsertCustomXmlPartRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
     const std::shared_ptr< std::wstring > InsertCustomXmlPartRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -20375,6 +21966,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
@@ -20413,6 +22005,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
         const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport,
         const std::shared_ptr< std::wstring > destFileName,
         const std::shared_ptr< std::wstring > revisionAuthor,
         const std::shared_ptr< std::wstring > revisionDateTime
@@ -20422,6 +22015,7 @@ namespace aspose::words::cloud::requests {
         m_LoadEncoding(loadEncoding),
         m_Password(password),
         m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport),
         m_DestFileName(destFileName),
         m_RevisionAuthor(revisionAuthor),
         m_RevisionDateTime(revisionDateTime)
@@ -20453,6 +22047,11 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
+    const std::shared_ptr< bool > InsertCustomXmlPartOnlineRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
     const std::shared_ptr< std::wstring > InsertCustomXmlPartOnlineRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -20477,6 +22076,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
@@ -20524,6 +22124,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
         const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport,
         const std::shared_ptr< std::wstring > destFileName,
         const std::shared_ptr< std::wstring > revisionAuthor,
         const std::shared_ptr< std::wstring > revisionDateTime
@@ -20537,6 +22138,7 @@ namespace aspose::words::cloud::requests {
         m_LoadEncoding(loadEncoding),
         m_Password(password),
         m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport),
         m_DestFileName(destFileName),
         m_RevisionAuthor(revisionAuthor),
         m_RevisionDateTime(revisionDateTime)
@@ -20588,6 +22190,11 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
+    const std::shared_ptr< bool > InsertDrawingObjectRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
     const std::shared_ptr< std::wstring > InsertDrawingObjectRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -20617,6 +22224,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
@@ -20662,6 +22270,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
         const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport,
         const std::shared_ptr< std::wstring > destFileName,
         const std::shared_ptr< std::wstring > revisionAuthor,
         const std::shared_ptr< std::wstring > revisionDateTime
@@ -20673,6 +22282,7 @@ namespace aspose::words::cloud::requests {
         m_LoadEncoding(loadEncoding),
         m_Password(password),
         m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport),
         m_DestFileName(destFileName),
         m_RevisionAuthor(revisionAuthor),
         m_RevisionDateTime(revisionDateTime)
@@ -20714,6 +22324,11 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
+    const std::shared_ptr< bool > InsertDrawingObjectOnlineRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
     const std::shared_ptr< std::wstring > InsertDrawingObjectOnlineRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -20739,6 +22354,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
@@ -20791,6 +22407,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
         const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport,
         const std::shared_ptr< std::wstring > destFileName,
         const std::shared_ptr< std::wstring > revisionAuthor,
         const std::shared_ptr< std::wstring > revisionDateTime
@@ -20803,6 +22420,7 @@ namespace aspose::words::cloud::requests {
         m_LoadEncoding(loadEncoding),
         m_Password(password),
         m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport),
         m_DestFileName(destFileName),
         m_RevisionAuthor(revisionAuthor),
         m_RevisionDateTime(revisionDateTime)
@@ -20849,6 +22467,11 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
+    const std::shared_ptr< bool > InsertFieldRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
     const std::shared_ptr< std::wstring > InsertFieldRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -20878,6 +22501,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
@@ -20917,6 +22541,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
         const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport,
         const std::shared_ptr< std::wstring > destFileName,
         const std::shared_ptr< std::wstring > revisionAuthor,
         const std::shared_ptr< std::wstring > revisionDateTime
@@ -20927,6 +22552,7 @@ namespace aspose::words::cloud::requests {
         m_LoadEncoding(loadEncoding),
         m_Password(password),
         m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport),
         m_DestFileName(destFileName),
         m_RevisionAuthor(revisionAuthor),
         m_RevisionDateTime(revisionDateTime)
@@ -20963,6 +22589,11 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
+    const std::shared_ptr< bool > InsertFieldOnlineRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
     const std::shared_ptr< std::wstring > InsertFieldOnlineRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -20988,6 +22619,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
@@ -21034,6 +22666,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
         const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport,
         const std::shared_ptr< std::wstring > destFileName,
         const std::shared_ptr< std::wstring > revisionAuthor,
         const std::shared_ptr< std::wstring > revisionDateTime
@@ -21046,6 +22679,7 @@ namespace aspose::words::cloud::requests {
         m_LoadEncoding(loadEncoding),
         m_Password(password),
         m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport),
         m_DestFileName(destFileName),
         m_RevisionAuthor(revisionAuthor),
         m_RevisionDateTime(revisionDateTime)
@@ -21092,6 +22726,11 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
+    const std::shared_ptr< bool > InsertFootnoteRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
     const std::shared_ptr< std::wstring > InsertFootnoteRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -21121,6 +22760,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
@@ -21160,6 +22800,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
         const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport,
         const std::shared_ptr< std::wstring > destFileName,
         const std::shared_ptr< std::wstring > revisionAuthor,
         const std::shared_ptr< std::wstring > revisionDateTime
@@ -21170,6 +22811,7 @@ namespace aspose::words::cloud::requests {
         m_LoadEncoding(loadEncoding),
         m_Password(password),
         m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport),
         m_DestFileName(destFileName),
         m_RevisionAuthor(revisionAuthor),
         m_RevisionDateTime(revisionDateTime)
@@ -21206,6 +22848,11 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
+    const std::shared_ptr< bool > InsertFootnoteOnlineRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
     const std::shared_ptr< std::wstring > InsertFootnoteOnlineRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -21231,6 +22878,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
@@ -21277,6 +22925,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
         const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport,
         const std::shared_ptr< std::wstring > destFileName,
         const std::shared_ptr< std::wstring > revisionAuthor,
         const std::shared_ptr< std::wstring > revisionDateTime,
@@ -21290,6 +22939,7 @@ namespace aspose::words::cloud::requests {
         m_LoadEncoding(loadEncoding),
         m_Password(password),
         m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport),
         m_DestFileName(destFileName),
         m_RevisionAuthor(revisionAuthor),
         m_RevisionDateTime(revisionDateTime),
@@ -21337,6 +22987,11 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
+    const std::shared_ptr< bool > InsertFormFieldRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
     const std::shared_ptr< std::wstring > InsertFormFieldRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -21371,6 +23026,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
@@ -21411,6 +23067,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
         const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport,
         const std::shared_ptr< std::wstring > destFileName,
         const std::shared_ptr< std::wstring > revisionAuthor,
         const std::shared_ptr< std::wstring > revisionDateTime,
@@ -21422,6 +23079,7 @@ namespace aspose::words::cloud::requests {
         m_LoadEncoding(loadEncoding),
         m_Password(password),
         m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport),
         m_DestFileName(destFileName),
         m_RevisionAuthor(revisionAuthor),
         m_RevisionDateTime(revisionDateTime),
@@ -21459,6 +23117,11 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
+    const std::shared_ptr< bool > InsertFormFieldOnlineRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
     const std::shared_ptr< std::wstring > InsertFormFieldOnlineRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -21489,6 +23152,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
@@ -21536,6 +23200,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
         const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport,
         const std::shared_ptr< std::wstring > destFileName,
         const std::shared_ptr< std::wstring > revisionAuthor,
         const std::shared_ptr< std::wstring > revisionDateTime
@@ -21548,6 +23213,7 @@ namespace aspose::words::cloud::requests {
         m_LoadEncoding(loadEncoding),
         m_Password(password),
         m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport),
         m_DestFileName(destFileName),
         m_RevisionAuthor(revisionAuthor),
         m_RevisionDateTime(revisionDateTime)
@@ -21594,6 +23260,11 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
+    const std::shared_ptr< bool > InsertHeaderFooterRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
     const std::shared_ptr< std::wstring > InsertHeaderFooterRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -21624,6 +23295,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
@@ -21663,6 +23335,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
         const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport,
         const std::shared_ptr< std::wstring > destFileName,
         const std::shared_ptr< std::wstring > revisionAuthor,
         const std::shared_ptr< std::wstring > revisionDateTime
@@ -21673,6 +23346,7 @@ namespace aspose::words::cloud::requests {
         m_LoadEncoding(loadEncoding),
         m_Password(password),
         m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport),
         m_DestFileName(destFileName),
         m_RevisionAuthor(revisionAuthor),
         m_RevisionDateTime(revisionDateTime)
@@ -21709,6 +23383,11 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
+    const std::shared_ptr< bool > InsertHeaderFooterOnlineRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
     const std::shared_ptr< std::wstring > InsertHeaderFooterOnlineRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -21735,6 +23414,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
@@ -21780,6 +23460,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
         const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport,
         const std::shared_ptr< std::wstring > destFileName,
         const std::shared_ptr< std::wstring > revisionAuthor,
         const std::shared_ptr< std::wstring > revisionDateTime
@@ -21791,6 +23472,7 @@ namespace aspose::words::cloud::requests {
         m_LoadEncoding(loadEncoding),
         m_Password(password),
         m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport),
         m_DestFileName(destFileName),
         m_RevisionAuthor(revisionAuthor),
         m_RevisionDateTime(revisionDateTime)
@@ -21832,6 +23514,11 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
+    const std::shared_ptr< bool > InsertListRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
     const std::shared_ptr< std::wstring > InsertListRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -21860,6 +23547,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
@@ -21898,6 +23586,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
         const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport,
         const std::shared_ptr< std::wstring > destFileName,
         const std::shared_ptr< std::wstring > revisionAuthor,
         const std::shared_ptr< std::wstring > revisionDateTime
@@ -21907,6 +23596,7 @@ namespace aspose::words::cloud::requests {
         m_LoadEncoding(loadEncoding),
         m_Password(password),
         m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport),
         m_DestFileName(destFileName),
         m_RevisionAuthor(revisionAuthor),
         m_RevisionDateTime(revisionDateTime)
@@ -21938,6 +23628,11 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
+    const std::shared_ptr< bool > InsertListOnlineRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
     const std::shared_ptr< std::wstring > InsertListOnlineRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -21962,6 +23657,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
@@ -22009,6 +23705,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
         const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport,
         const std::shared_ptr< std::wstring > destFileName
     ) : 
         m_Name(name),
@@ -22020,6 +23717,7 @@ namespace aspose::words::cloud::requests {
         m_LoadEncoding(loadEncoding),
         m_Password(password),
         m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport),
         m_DestFileName(destFileName)
     {
     }
@@ -22069,6 +23767,11 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
+    const std::shared_ptr< bool > InsertOrUpdateParagraphTabStopRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
     const std::shared_ptr< std::wstring > InsertOrUpdateParagraphTabStopRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -22090,6 +23793,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_TabStopInsertDto)
         {
@@ -22128,6 +23832,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
         const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport,
         const std::shared_ptr< std::wstring > destFileName
     ) : 
         m_Document(document),
@@ -22137,6 +23842,7 @@ namespace aspose::words::cloud::requests {
         m_LoadEncoding(loadEncoding),
         m_Password(password),
         m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport),
         m_DestFileName(destFileName)
     {
     }
@@ -22176,6 +23882,11 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
+    const std::shared_ptr< bool > InsertOrUpdateParagraphTabStopOnlineRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
     const std::shared_ptr< std::wstring > InsertOrUpdateParagraphTabStopOnlineRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -22193,6 +23904,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_Document)
         {
@@ -22236,6 +23948,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
         const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport,
         const std::shared_ptr< std::wstring > destFileName,
         const std::shared_ptr< std::wstring > revisionAuthor,
         const std::shared_ptr< std::wstring > revisionDateTime
@@ -22247,6 +23960,7 @@ namespace aspose::words::cloud::requests {
         m_LoadEncoding(loadEncoding),
         m_Password(password),
         m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport),
         m_DestFileName(destFileName),
         m_RevisionAuthor(revisionAuthor),
         m_RevisionDateTime(revisionDateTime)
@@ -22288,6 +24002,11 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
+    const std::shared_ptr< bool > InsertPageNumbersRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
     const std::shared_ptr< std::wstring > InsertPageNumbersRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -22316,6 +24035,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
@@ -22354,6 +24074,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
         const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport,
         const std::shared_ptr< std::wstring > destFileName,
         const std::shared_ptr< std::wstring > revisionAuthor,
         const std::shared_ptr< std::wstring > revisionDateTime
@@ -22363,6 +24084,7 @@ namespace aspose::words::cloud::requests {
         m_LoadEncoding(loadEncoding),
         m_Password(password),
         m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport),
         m_DestFileName(destFileName),
         m_RevisionAuthor(revisionAuthor),
         m_RevisionDateTime(revisionDateTime)
@@ -22394,6 +24116,11 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
+    const std::shared_ptr< bool > InsertPageNumbersOnlineRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
     const std::shared_ptr< std::wstring > InsertPageNumbersOnlineRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -22418,6 +24145,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
@@ -22464,6 +24192,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
         const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport,
         const std::shared_ptr< std::wstring > destFileName,
         const std::shared_ptr< std::wstring > revisionAuthor,
         const std::shared_ptr< std::wstring > revisionDateTime
@@ -22476,6 +24205,7 @@ namespace aspose::words::cloud::requests {
         m_LoadEncoding(loadEncoding),
         m_Password(password),
         m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport),
         m_DestFileName(destFileName),
         m_RevisionAuthor(revisionAuthor),
         m_RevisionDateTime(revisionDateTime)
@@ -22522,6 +24252,11 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
+    const std::shared_ptr< bool > InsertParagraphRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
     const std::shared_ptr< std::wstring > InsertParagraphRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -22551,6 +24286,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
@@ -22590,6 +24326,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
         const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport,
         const std::shared_ptr< std::wstring > destFileName,
         const std::shared_ptr< std::wstring > revisionAuthor,
         const std::shared_ptr< std::wstring > revisionDateTime
@@ -22600,6 +24337,7 @@ namespace aspose::words::cloud::requests {
         m_LoadEncoding(loadEncoding),
         m_Password(password),
         m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport),
         m_DestFileName(destFileName),
         m_RevisionAuthor(revisionAuthor),
         m_RevisionDateTime(revisionDateTime)
@@ -22636,6 +24374,11 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
+    const std::shared_ptr< bool > InsertParagraphOnlineRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
     const std::shared_ptr< std::wstring > InsertParagraphOnlineRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -22661,6 +24404,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
@@ -22707,6 +24451,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
         const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport,
         const std::shared_ptr< std::wstring > destFileName,
         const std::shared_ptr< std::wstring > revisionAuthor,
         const std::shared_ptr< std::wstring > revisionDateTime
@@ -22719,6 +24464,7 @@ namespace aspose::words::cloud::requests {
         m_LoadEncoding(loadEncoding),
         m_Password(password),
         m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport),
         m_DestFileName(destFileName),
         m_RevisionAuthor(revisionAuthor),
         m_RevisionDateTime(revisionDateTime)
@@ -22765,6 +24511,11 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
+    const std::shared_ptr< bool > InsertRunRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
     const std::shared_ptr< std::wstring > InsertRunRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -22794,6 +24545,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
@@ -22833,6 +24585,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
         const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport,
         const std::shared_ptr< std::wstring > destFileName,
         const std::shared_ptr< std::wstring > revisionAuthor,
         const std::shared_ptr< std::wstring > revisionDateTime
@@ -22843,6 +24596,7 @@ namespace aspose::words::cloud::requests {
         m_LoadEncoding(loadEncoding),
         m_Password(password),
         m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport),
         m_DestFileName(destFileName),
         m_RevisionAuthor(revisionAuthor),
         m_RevisionDateTime(revisionDateTime)
@@ -22879,6 +24633,11 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
+    const std::shared_ptr< bool > InsertRunOnlineRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
     const std::shared_ptr< std::wstring > InsertRunOnlineRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -22904,6 +24663,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
@@ -22949,6 +24709,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
         const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport,
         const std::shared_ptr< std::wstring > destFileName,
         const std::shared_ptr< std::wstring > revisionAuthor,
         const std::shared_ptr< std::wstring > revisionDateTime
@@ -22960,6 +24721,7 @@ namespace aspose::words::cloud::requests {
         m_LoadEncoding(loadEncoding),
         m_Password(password),
         m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport),
         m_DestFileName(destFileName),
         m_RevisionAuthor(revisionAuthor),
         m_RevisionDateTime(revisionDateTime)
@@ -23001,6 +24763,11 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
+    const std::shared_ptr< bool > InsertSectionRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
     const std::shared_ptr< std::wstring > InsertSectionRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -23031,6 +24798,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
@@ -23063,6 +24831,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
         const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport,
         const std::shared_ptr< std::wstring > destFileName,
         const std::shared_ptr< std::wstring > revisionAuthor,
         const std::shared_ptr< std::wstring > revisionDateTime
@@ -23072,6 +24841,7 @@ namespace aspose::words::cloud::requests {
         m_LoadEncoding(loadEncoding),
         m_Password(password),
         m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport),
         m_DestFileName(destFileName),
         m_RevisionAuthor(revisionAuthor),
         m_RevisionDateTime(revisionDateTime)
@@ -23103,6 +24873,11 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
+    const std::shared_ptr< bool > InsertSectionOnlineRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
     const std::shared_ptr< std::wstring > InsertSectionOnlineRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -23129,6 +24904,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
@@ -23169,6 +24945,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
         const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport,
         const std::shared_ptr< std::wstring > destFileName,
         const std::shared_ptr< std::wstring > revisionAuthor,
         const std::shared_ptr< std::wstring > revisionDateTime
@@ -23181,6 +24958,7 @@ namespace aspose::words::cloud::requests {
         m_LoadEncoding(loadEncoding),
         m_Password(password),
         m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport),
         m_DestFileName(destFileName),
         m_RevisionAuthor(revisionAuthor),
         m_RevisionDateTime(revisionDateTime)
@@ -23227,6 +25005,11 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
+    const std::shared_ptr< bool > InsertStructuredDocumentTagRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
     const std::shared_ptr< std::wstring > InsertStructuredDocumentTagRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -23256,6 +25039,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
@@ -23295,6 +25079,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
         const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport,
         const std::shared_ptr< std::wstring > destFileName,
         const std::shared_ptr< std::wstring > revisionAuthor,
         const std::shared_ptr< std::wstring > revisionDateTime
@@ -23305,6 +25090,7 @@ namespace aspose::words::cloud::requests {
         m_LoadEncoding(loadEncoding),
         m_Password(password),
         m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport),
         m_DestFileName(destFileName),
         m_RevisionAuthor(revisionAuthor),
         m_RevisionDateTime(revisionDateTime)
@@ -23341,6 +25127,11 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
+    const std::shared_ptr< bool > InsertStructuredDocumentTagOnlineRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
     const std::shared_ptr< std::wstring > InsertStructuredDocumentTagOnlineRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -23366,6 +25157,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
@@ -23411,6 +25203,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
         const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport,
         const std::shared_ptr< std::wstring > destFileName,
         const std::shared_ptr< std::wstring > revisionAuthor,
         const std::shared_ptr< std::wstring > revisionDateTime
@@ -23422,6 +25215,7 @@ namespace aspose::words::cloud::requests {
         m_LoadEncoding(loadEncoding),
         m_Password(password),
         m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport),
         m_DestFileName(destFileName),
         m_RevisionAuthor(revisionAuthor),
         m_RevisionDateTime(revisionDateTime)
@@ -23463,6 +25257,11 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
+    const std::shared_ptr< bool > InsertStyleRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
     const std::shared_ptr< std::wstring > InsertStyleRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -23491,6 +25290,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
@@ -23529,6 +25329,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
         const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport,
         const std::shared_ptr< std::wstring > destFileName,
         const std::shared_ptr< std::wstring > revisionAuthor,
         const std::shared_ptr< std::wstring > revisionDateTime
@@ -23538,6 +25339,7 @@ namespace aspose::words::cloud::requests {
         m_LoadEncoding(loadEncoding),
         m_Password(password),
         m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport),
         m_DestFileName(destFileName),
         m_RevisionAuthor(revisionAuthor),
         m_RevisionDateTime(revisionDateTime)
@@ -23569,6 +25371,11 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
+    const std::shared_ptr< bool > InsertStyleOnlineRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
     const std::shared_ptr< std::wstring > InsertStyleOnlineRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -23593,6 +25400,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
@@ -23639,6 +25447,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
         const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport,
         const std::shared_ptr< std::wstring > destFileName,
         const std::shared_ptr< std::wstring > revisionAuthor,
         const std::shared_ptr< std::wstring > revisionDateTime
@@ -23651,6 +25460,7 @@ namespace aspose::words::cloud::requests {
         m_LoadEncoding(loadEncoding),
         m_Password(password),
         m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport),
         m_DestFileName(destFileName),
         m_RevisionAuthor(revisionAuthor),
         m_RevisionDateTime(revisionDateTime)
@@ -23697,6 +25507,11 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
+    const std::shared_ptr< bool > InsertTableRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
     const std::shared_ptr< std::wstring > InsertTableRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -23726,6 +25541,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
@@ -23767,6 +25583,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
         const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport,
         const std::shared_ptr< std::wstring > destFileName,
         const std::shared_ptr< std::wstring > revisionAuthor,
         const std::shared_ptr< std::wstring > revisionDateTime
@@ -23779,6 +25596,7 @@ namespace aspose::words::cloud::requests {
         m_LoadEncoding(loadEncoding),
         m_Password(password),
         m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport),
         m_DestFileName(destFileName),
         m_RevisionAuthor(revisionAuthor),
         m_RevisionDateTime(revisionDateTime)
@@ -23825,6 +25643,11 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
+    const std::shared_ptr< bool > InsertTableCellRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
     const std::shared_ptr< std::wstring > InsertTableCellRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -23854,6 +25677,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
@@ -23893,6 +25717,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
         const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport,
         const std::shared_ptr< std::wstring > destFileName,
         const std::shared_ptr< std::wstring > revisionAuthor,
         const std::shared_ptr< std::wstring > revisionDateTime
@@ -23903,6 +25728,7 @@ namespace aspose::words::cloud::requests {
         m_LoadEncoding(loadEncoding),
         m_Password(password),
         m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport),
         m_DestFileName(destFileName),
         m_RevisionAuthor(revisionAuthor),
         m_RevisionDateTime(revisionDateTime)
@@ -23939,6 +25765,11 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
+    const std::shared_ptr< bool > InsertTableCellOnlineRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
     const std::shared_ptr< std::wstring > InsertTableCellOnlineRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -23964,6 +25795,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
@@ -24008,6 +25840,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
         const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport,
         const std::shared_ptr< std::wstring > destFileName,
         const std::shared_ptr< std::wstring > revisionAuthor,
         const std::shared_ptr< std::wstring > revisionDateTime
@@ -24018,6 +25851,7 @@ namespace aspose::words::cloud::requests {
         m_LoadEncoding(loadEncoding),
         m_Password(password),
         m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport),
         m_DestFileName(destFileName),
         m_RevisionAuthor(revisionAuthor),
         m_RevisionDateTime(revisionDateTime)
@@ -24054,6 +25888,11 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
+    const std::shared_ptr< bool > InsertTableOnlineRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
     const std::shared_ptr< std::wstring > InsertTableOnlineRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -24079,6 +25918,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
@@ -24125,6 +25965,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
         const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport,
         const std::shared_ptr< std::wstring > destFileName,
         const std::shared_ptr< std::wstring > revisionAuthor,
         const std::shared_ptr< std::wstring > revisionDateTime
@@ -24137,6 +25978,7 @@ namespace aspose::words::cloud::requests {
         m_LoadEncoding(loadEncoding),
         m_Password(password),
         m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport),
         m_DestFileName(destFileName),
         m_RevisionAuthor(revisionAuthor),
         m_RevisionDateTime(revisionDateTime)
@@ -24183,6 +26025,11 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
+    const std::shared_ptr< bool > InsertTableRowRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
     const std::shared_ptr< std::wstring > InsertTableRowRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -24212,6 +26059,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
@@ -24251,6 +26099,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
         const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport,
         const std::shared_ptr< std::wstring > destFileName,
         const std::shared_ptr< std::wstring > revisionAuthor,
         const std::shared_ptr< std::wstring > revisionDateTime
@@ -24261,6 +26110,7 @@ namespace aspose::words::cloud::requests {
         m_LoadEncoding(loadEncoding),
         m_Password(password),
         m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport),
         m_DestFileName(destFileName),
         m_RevisionAuthor(revisionAuthor),
         m_RevisionDateTime(revisionDateTime)
@@ -24297,6 +26147,11 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
+    const std::shared_ptr< bool > InsertTableRowOnlineRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
     const std::shared_ptr< std::wstring > InsertTableRowOnlineRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -24322,6 +26177,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
@@ -24367,6 +26223,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
         const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport,
         const std::shared_ptr< std::wstring > destFileName,
         const std::shared_ptr< std::wstring > revisionAuthor,
         const std::shared_ptr< std::wstring > revisionDateTime
@@ -24378,6 +26235,7 @@ namespace aspose::words::cloud::requests {
         m_LoadEncoding(loadEncoding),
         m_Password(password),
         m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport),
         m_DestFileName(destFileName),
         m_RevisionAuthor(revisionAuthor),
         m_RevisionDateTime(revisionDateTime)
@@ -24419,6 +26277,11 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
+    const std::shared_ptr< bool > InsertWatermarkRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
     const std::shared_ptr< std::wstring > InsertWatermarkRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -24447,6 +26310,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
@@ -24488,6 +26352,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
         const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport,
         const std::shared_ptr< std::wstring > destFileName,
         const std::shared_ptr< std::wstring > revisionAuthor,
         const std::shared_ptr< std::wstring > revisionDateTime,
@@ -24501,6 +26366,7 @@ namespace aspose::words::cloud::requests {
         m_LoadEncoding(loadEncoding),
         m_Password(password),
         m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport),
         m_DestFileName(destFileName),
         m_RevisionAuthor(revisionAuthor),
         m_RevisionDateTime(revisionDateTime),
@@ -24544,6 +26410,11 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
+    const std::shared_ptr< bool > InsertWatermarkImageRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
     const std::shared_ptr< std::wstring > InsertWatermarkImageRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -24582,6 +26453,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
@@ -24620,6 +26492,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
         const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport,
         const std::shared_ptr< std::wstring > destFileName,
         const std::shared_ptr< std::wstring > revisionAuthor,
         const std::shared_ptr< std::wstring > revisionDateTime,
@@ -24631,6 +26504,7 @@ namespace aspose::words::cloud::requests {
         m_LoadEncoding(loadEncoding),
         m_Password(password),
         m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport),
         m_DestFileName(destFileName),
         m_RevisionAuthor(revisionAuthor),
         m_RevisionDateTime(revisionDateTime),
@@ -24662,6 +26536,11 @@ namespace aspose::words::cloud::requests {
     const std::shared_ptr< std::wstring > InsertWatermarkImageOnlineRequest::getEncryptedPassword() const
     {
         return m_EncryptedPassword;
+    }
+
+    const std::shared_ptr< bool > InsertWatermarkImageOnlineRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
     }
 
     const std::shared_ptr< std::wstring > InsertWatermarkImageOnlineRequest::getDestFileName() const
@@ -24698,6 +26577,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
@@ -24742,6 +26622,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
         const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport,
         const std::shared_ptr< std::wstring > destFileName,
         const std::shared_ptr< std::wstring > revisionAuthor,
         const std::shared_ptr< std::wstring > revisionDateTime
@@ -24751,6 +26632,7 @@ namespace aspose::words::cloud::requests {
         m_LoadEncoding(loadEncoding),
         m_Password(password),
         m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport),
         m_DestFileName(destFileName),
         m_RevisionAuthor(revisionAuthor),
         m_RevisionDateTime(revisionDateTime)
@@ -24782,6 +26664,11 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
+    const std::shared_ptr< bool > InsertWatermarkOnlineRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
     const std::shared_ptr< std::wstring > InsertWatermarkOnlineRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -24806,6 +26693,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
@@ -24852,6 +26740,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
         const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport,
         const std::shared_ptr< std::wstring > destFileName,
         const std::shared_ptr< std::wstring > revisionAuthor,
         const std::shared_ptr< std::wstring > revisionDateTime
@@ -24863,6 +26752,7 @@ namespace aspose::words::cloud::requests {
         m_LoadEncoding(loadEncoding),
         m_Password(password),
         m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport),
         m_DestFileName(destFileName),
         m_RevisionAuthor(revisionAuthor),
         m_RevisionDateTime(revisionDateTime)
@@ -24904,6 +26794,11 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
+    const std::shared_ptr< bool > InsertWatermarkTextRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
     const std::shared_ptr< std::wstring > InsertWatermarkTextRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -24932,6 +26827,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
@@ -24970,6 +26866,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
         const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport,
         const std::shared_ptr< std::wstring > destFileName,
         const std::shared_ptr< std::wstring > revisionAuthor,
         const std::shared_ptr< std::wstring > revisionDateTime
@@ -24979,6 +26876,7 @@ namespace aspose::words::cloud::requests {
         m_LoadEncoding(loadEncoding),
         m_Password(password),
         m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport),
         m_DestFileName(destFileName),
         m_RevisionAuthor(revisionAuthor),
         m_RevisionDateTime(revisionDateTime)
@@ -25010,6 +26908,11 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
+    const std::shared_ptr< bool > InsertWatermarkTextOnlineRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
     const std::shared_ptr< std::wstring > InsertWatermarkTextOnlineRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -25034,6 +26937,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
@@ -25079,6 +26983,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
         const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport,
         const std::shared_ptr< std::wstring > destFileName,
         const std::shared_ptr< std::wstring > revisionAuthor,
         const std::shared_ptr< std::wstring > revisionDateTime,
@@ -25091,6 +26996,7 @@ namespace aspose::words::cloud::requests {
         m_LoadEncoding(loadEncoding),
         m_Password(password),
         m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport),
         m_DestFileName(destFileName),
         m_RevisionAuthor(revisionAuthor),
         m_RevisionDateTime(revisionDateTime),
@@ -25133,6 +27039,11 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
+    const std::shared_ptr< bool > LinkHeaderFootersToPreviousRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
     const std::shared_ptr< std::wstring > LinkHeaderFootersToPreviousRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -25168,6 +27079,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
@@ -25258,6 +27170,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
         const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport,
         const std::shared_ptr< std::wstring > destFileName,
         const std::shared_ptr< std::wstring > revisionAuthor,
         const std::shared_ptr< std::wstring > revisionDateTime
@@ -25269,6 +27182,7 @@ namespace aspose::words::cloud::requests {
         m_LoadEncoding(loadEncoding),
         m_Password(password),
         m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport),
         m_DestFileName(destFileName),
         m_RevisionAuthor(revisionAuthor),
         m_RevisionDateTime(revisionDateTime)
@@ -25310,6 +27224,11 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
+    const std::shared_ptr< bool > MergeWithNextRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
     const std::shared_ptr< std::wstring > MergeWithNextRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -25340,6 +27259,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
@@ -25372,6 +27292,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
         const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport,
         const std::shared_ptr< std::wstring > destFileName,
         const std::shared_ptr< std::wstring > revisionAuthor,
         const std::shared_ptr< std::wstring > revisionDateTime
@@ -25381,6 +27302,7 @@ namespace aspose::words::cloud::requests {
         m_LoadEncoding(loadEncoding),
         m_Password(password),
         m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport),
         m_DestFileName(destFileName),
         m_RevisionAuthor(revisionAuthor),
         m_RevisionDateTime(revisionDateTime)
@@ -25412,6 +27334,11 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
+    const std::shared_ptr< bool > MergeWithNextOnlineRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
     const std::shared_ptr< std::wstring > MergeWithNextOnlineRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -25438,6 +27365,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
@@ -25621,6 +27549,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
         const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport,
         const std::shared_ptr< std::wstring > destFileName,
         const std::shared_ptr< std::wstring > revisionAuthor,
         const std::shared_ptr< std::wstring > revisionDateTime
@@ -25632,6 +27561,7 @@ namespace aspose::words::cloud::requests {
         m_LoadEncoding(loadEncoding),
         m_Password(password),
         m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport),
         m_DestFileName(destFileName),
         m_RevisionAuthor(revisionAuthor),
         m_RevisionDateTime(revisionDateTime)
@@ -25673,6 +27603,11 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
+    const std::shared_ptr< bool > OptimizeDocumentRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
     const std::shared_ptr< std::wstring > OptimizeDocumentRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -25701,6 +27636,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
@@ -25739,6 +27675,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
         const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport,
         const std::shared_ptr< std::wstring > destFileName,
         const std::shared_ptr< std::wstring > revisionAuthor,
         const std::shared_ptr< std::wstring > revisionDateTime
@@ -25748,6 +27685,7 @@ namespace aspose::words::cloud::requests {
         m_LoadEncoding(loadEncoding),
         m_Password(password),
         m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport),
         m_DestFileName(destFileName),
         m_RevisionAuthor(revisionAuthor),
         m_RevisionDateTime(revisionDateTime)
@@ -25779,6 +27717,11 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
+    const std::shared_ptr< bool > OptimizeDocumentOnlineRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
     const std::shared_ptr< std::wstring > OptimizeDocumentOnlineRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -25803,6 +27746,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
@@ -25848,6 +27792,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
         const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport,
         const std::shared_ptr< std::wstring > destFileName
     ) : 
         m_Name(name),
@@ -25857,6 +27802,7 @@ namespace aspose::words::cloud::requests {
         m_LoadEncoding(loadEncoding),
         m_Password(password),
         m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport),
         m_DestFileName(destFileName)
     {
     }
@@ -25896,6 +27842,11 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
+    const std::shared_ptr< bool > ProtectDocumentRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
     const std::shared_ptr< std::wstring > ProtectDocumentRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -25914,6 +27865,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_ProtectionRequest)
         {
@@ -25950,6 +27902,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
         const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport,
         const std::shared_ptr< std::wstring > destFileName
     ) : 
         m_Document(document),
@@ -25957,6 +27910,7 @@ namespace aspose::words::cloud::requests {
         m_LoadEncoding(loadEncoding),
         m_Password(password),
         m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport),
         m_DestFileName(destFileName)
     {
     }
@@ -25986,6 +27940,11 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
+    const std::shared_ptr< bool > ProtectDocumentOnlineRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
     const std::shared_ptr< std::wstring > ProtectDocumentOnlineRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -26000,6 +27959,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_Document)
         {
@@ -26042,6 +28002,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
         const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport,
         const std::shared_ptr< std::wstring > destFileName
     ) : 
         m_Name(name),
@@ -26050,6 +28011,7 @@ namespace aspose::words::cloud::requests {
         m_LoadEncoding(loadEncoding),
         m_Password(password),
         m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport),
         m_DestFileName(destFileName)
     {
     }
@@ -26084,6 +28046,11 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
+    const std::shared_ptr< bool > RejectAllRevisionsRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
     const std::shared_ptr< std::wstring > RejectAllRevisionsRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -26102,6 +28069,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
 
         for (models::FileReference* additionalFileContent : additionalFilesContent)
@@ -26131,12 +28099,14 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
         const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport,
         const std::shared_ptr< std::wstring > destFileName
     ) : 
         m_Document(document),
         m_LoadEncoding(loadEncoding),
         m_Password(password),
         m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport),
         m_DestFileName(destFileName)
     {
     }
@@ -26161,6 +28131,11 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
+    const std::shared_ptr< bool > RejectAllRevisionsOnlineRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
     const std::shared_ptr< std::wstring > RejectAllRevisionsOnlineRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -26175,6 +28150,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_Document)
         {
@@ -26213,6 +28189,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
         const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport,
         const std::shared_ptr< std::wstring > destFileName
     ) : 
         m_Name(name),
@@ -26223,6 +28200,7 @@ namespace aspose::words::cloud::requests {
         m_LoadEncoding(loadEncoding),
         m_Password(password),
         m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport),
         m_DestFileName(destFileName)
     {
     }
@@ -26267,6 +28245,11 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
+    const std::shared_ptr< bool > RemoveRangeRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
     const std::shared_ptr< std::wstring > RemoveRangeRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -26288,6 +28271,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
 
         for (models::FileReference* additionalFileContent : additionalFilesContent)
@@ -26319,6 +28303,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
         const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport,
         const std::shared_ptr< std::wstring > destFileName
     ) : 
         m_Document(document),
@@ -26327,6 +28312,7 @@ namespace aspose::words::cloud::requests {
         m_LoadEncoding(loadEncoding),
         m_Password(password),
         m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport),
         m_DestFileName(destFileName)
     {
     }
@@ -26361,6 +28347,11 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
+    const std::shared_ptr< bool > RemoveRangeOnlineRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
     const std::shared_ptr< std::wstring > RemoveRangeOnlineRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -26378,6 +28369,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_Document)
         {
@@ -26417,6 +28409,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
         const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport,
         const std::shared_ptr< std::wstring > destFileName,
         const std::shared_ptr< std::wstring > fontsLocation
     ) : 
@@ -26429,6 +28422,7 @@ namespace aspose::words::cloud::requests {
         m_LoadEncoding(loadEncoding),
         m_Password(password),
         m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport),
         m_DestFileName(destFileName),
         m_FontsLocation(fontsLocation)
     {
@@ -26479,6 +28473,11 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
+    const std::shared_ptr< bool > RenderDrawingObjectRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
     const std::shared_ptr< std::wstring > RenderDrawingObjectRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -26507,6 +28506,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_FontsLocation) result->addQueryParam(L"fontsLocation", *m_FontsLocation);
 
@@ -26540,6 +28540,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
         const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport,
         const std::shared_ptr< std::wstring > destFileName,
         const std::shared_ptr< std::wstring > fontsLocation
     ) : 
@@ -26550,6 +28551,7 @@ namespace aspose::words::cloud::requests {
         m_LoadEncoding(loadEncoding),
         m_Password(password),
         m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport),
         m_DestFileName(destFileName),
         m_FontsLocation(fontsLocation)
     {
@@ -26590,6 +28592,11 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
+    const std::shared_ptr< bool > RenderDrawingObjectOnlineRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
     const std::shared_ptr< std::wstring > RenderDrawingObjectOnlineRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -26614,6 +28621,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_FontsLocation) result->addQueryParam(L"fontsLocation", *m_FontsLocation);
         if (m_Document)
@@ -26654,6 +28662,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
         const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport,
         const std::shared_ptr< std::wstring > destFileName,
         const std::shared_ptr< std::wstring > fontsLocation
     ) : 
@@ -26666,6 +28675,7 @@ namespace aspose::words::cloud::requests {
         m_LoadEncoding(loadEncoding),
         m_Password(password),
         m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport),
         m_DestFileName(destFileName),
         m_FontsLocation(fontsLocation)
     {
@@ -26716,6 +28726,11 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
+    const std::shared_ptr< bool > RenderMathObjectRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
     const std::shared_ptr< std::wstring > RenderMathObjectRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -26744,6 +28759,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_FontsLocation) result->addQueryParam(L"fontsLocation", *m_FontsLocation);
 
@@ -26777,6 +28793,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
         const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport,
         const std::shared_ptr< std::wstring > destFileName,
         const std::shared_ptr< std::wstring > fontsLocation
     ) : 
@@ -26787,6 +28804,7 @@ namespace aspose::words::cloud::requests {
         m_LoadEncoding(loadEncoding),
         m_Password(password),
         m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport),
         m_DestFileName(destFileName),
         m_FontsLocation(fontsLocation)
     {
@@ -26827,6 +28845,11 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
+    const std::shared_ptr< bool > RenderMathObjectOnlineRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
     const std::shared_ptr< std::wstring > RenderMathObjectOnlineRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -26851,6 +28874,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_FontsLocation) result->addQueryParam(L"fontsLocation", *m_FontsLocation);
         if (m_Document)
@@ -26890,6 +28914,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
         const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport,
         const std::shared_ptr< std::wstring > fontsLocation
     ) : 
         m_Name(name),
@@ -26900,6 +28925,7 @@ namespace aspose::words::cloud::requests {
         m_LoadEncoding(loadEncoding),
         m_Password(password),
         m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport),
         m_FontsLocation(fontsLocation)
     {
     }
@@ -26944,6 +28970,11 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
+    const std::shared_ptr< bool > RenderPageRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
     const std::shared_ptr< std::wstring > RenderPageRequest::getFontsLocation() const
     {
         return m_FontsLocation;
@@ -26966,6 +28997,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
         if (m_FontsLocation) result->addQueryParam(L"fontsLocation", *m_FontsLocation);
 
         for (models::FileReference* additionalFileContent : additionalFilesContent)
@@ -26997,6 +29029,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
         const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport,
         const std::shared_ptr< std::wstring > fontsLocation
     ) : 
         m_Document(document),
@@ -27005,6 +29038,7 @@ namespace aspose::words::cloud::requests {
         m_LoadEncoding(loadEncoding),
         m_Password(password),
         m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport),
         m_FontsLocation(fontsLocation)
     {
     }
@@ -27039,6 +29073,11 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
+    const std::shared_ptr< bool > RenderPageOnlineRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
     const std::shared_ptr< std::wstring > RenderPageOnlineRequest::getFontsLocation() const
     {
         return m_FontsLocation;
@@ -27057,6 +29096,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
         if (m_FontsLocation) result->addQueryParam(L"fontsLocation", *m_FontsLocation);
         if (m_Document)
         {
@@ -27096,6 +29136,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
         const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport,
         const std::shared_ptr< std::wstring > destFileName,
         const std::shared_ptr< std::wstring > fontsLocation
     ) : 
@@ -27108,6 +29149,7 @@ namespace aspose::words::cloud::requests {
         m_LoadEncoding(loadEncoding),
         m_Password(password),
         m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport),
         m_DestFileName(destFileName),
         m_FontsLocation(fontsLocation)
     {
@@ -27158,6 +29200,11 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
+    const std::shared_ptr< bool > RenderParagraphRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
     const std::shared_ptr< std::wstring > RenderParagraphRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -27186,6 +29233,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_FontsLocation) result->addQueryParam(L"fontsLocation", *m_FontsLocation);
 
@@ -27219,6 +29267,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
         const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport,
         const std::shared_ptr< std::wstring > destFileName,
         const std::shared_ptr< std::wstring > fontsLocation
     ) : 
@@ -27229,6 +29278,7 @@ namespace aspose::words::cloud::requests {
         m_LoadEncoding(loadEncoding),
         m_Password(password),
         m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport),
         m_DestFileName(destFileName),
         m_FontsLocation(fontsLocation)
     {
@@ -27269,6 +29319,11 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
+    const std::shared_ptr< bool > RenderParagraphOnlineRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
     const std::shared_ptr< std::wstring > RenderParagraphOnlineRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -27293,6 +29348,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_FontsLocation) result->addQueryParam(L"fontsLocation", *m_FontsLocation);
         if (m_Document)
@@ -27333,6 +29389,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
         const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport,
         const std::shared_ptr< std::wstring > destFileName,
         const std::shared_ptr< std::wstring > fontsLocation
     ) : 
@@ -27345,6 +29402,7 @@ namespace aspose::words::cloud::requests {
         m_LoadEncoding(loadEncoding),
         m_Password(password),
         m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport),
         m_DestFileName(destFileName),
         m_FontsLocation(fontsLocation)
     {
@@ -27395,6 +29453,11 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
+    const std::shared_ptr< bool > RenderTableRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
     const std::shared_ptr< std::wstring > RenderTableRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -27423,6 +29486,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_FontsLocation) result->addQueryParam(L"fontsLocation", *m_FontsLocation);
 
@@ -27456,6 +29520,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
         const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport,
         const std::shared_ptr< std::wstring > destFileName,
         const std::shared_ptr< std::wstring > fontsLocation
     ) : 
@@ -27466,6 +29531,7 @@ namespace aspose::words::cloud::requests {
         m_LoadEncoding(loadEncoding),
         m_Password(password),
         m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport),
         m_DestFileName(destFileName),
         m_FontsLocation(fontsLocation)
     {
@@ -27506,6 +29572,11 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
+    const std::shared_ptr< bool > RenderTableOnlineRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
     const std::shared_ptr< std::wstring > RenderTableOnlineRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -27530,6 +29601,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_FontsLocation) result->addQueryParam(L"fontsLocation", *m_FontsLocation);
         if (m_Document)
@@ -27568,6 +29640,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
         const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport,
         const std::shared_ptr< std::wstring > destFileName,
         const std::shared_ptr< std::wstring > revisionAuthor,
         const std::shared_ptr< std::wstring > revisionDateTime
@@ -27579,6 +29652,7 @@ namespace aspose::words::cloud::requests {
         m_LoadEncoding(loadEncoding),
         m_Password(password),
         m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport),
         m_DestFileName(destFileName),
         m_RevisionAuthor(revisionAuthor),
         m_RevisionDateTime(revisionDateTime)
@@ -27620,6 +29694,11 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
+    const std::shared_ptr< bool > ReplaceTextRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
     const std::shared_ptr< std::wstring > ReplaceTextRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -27648,6 +29727,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
@@ -27686,6 +29766,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
         const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport,
         const std::shared_ptr< std::wstring > destFileName,
         const std::shared_ptr< std::wstring > revisionAuthor,
         const std::shared_ptr< std::wstring > revisionDateTime
@@ -27695,6 +29776,7 @@ namespace aspose::words::cloud::requests {
         m_LoadEncoding(loadEncoding),
         m_Password(password),
         m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport),
         m_DestFileName(destFileName),
         m_RevisionAuthor(revisionAuthor),
         m_RevisionDateTime(revisionDateTime)
@@ -27726,6 +29808,11 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
+    const std::shared_ptr< bool > ReplaceTextOnlineRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
     const std::shared_ptr< std::wstring > ReplaceTextOnlineRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -27750,6 +29837,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
@@ -27797,6 +29885,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
         const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport,
         const std::shared_ptr< std::wstring > destFileName
     ) : 
         m_Name(name),
@@ -27808,6 +29897,7 @@ namespace aspose::words::cloud::requests {
         m_LoadEncoding(loadEncoding),
         m_Password(password),
         m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport),
         m_DestFileName(destFileName)
     {
     }
@@ -27857,6 +29947,11 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
+    const std::shared_ptr< bool > ReplaceWithTextRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
     const std::shared_ptr< std::wstring > ReplaceWithTextRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -27878,6 +29973,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RangeText)
         {
@@ -27916,6 +30012,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
         const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport,
         const std::shared_ptr< std::wstring > destFileName
     ) : 
         m_Document(document),
@@ -27925,6 +30022,7 @@ namespace aspose::words::cloud::requests {
         m_LoadEncoding(loadEncoding),
         m_Password(password),
         m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport),
         m_DestFileName(destFileName)
     {
     }
@@ -27964,6 +30062,11 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
+    const std::shared_ptr< bool > ReplaceWithTextOnlineRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
     const std::shared_ptr< std::wstring > ReplaceWithTextOnlineRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -27981,6 +30084,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_Document)
         {
@@ -28059,6 +30163,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
         const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport,
         const std::shared_ptr< std::wstring > fontsLocation
     ) : 
         m_Name(name),
@@ -28068,6 +30173,7 @@ namespace aspose::words::cloud::requests {
         m_LoadEncoding(loadEncoding),
         m_Password(password),
         m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport),
         m_FontsLocation(fontsLocation)
     {
     }
@@ -28107,6 +30213,11 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
+    const std::shared_ptr< bool > SaveAsRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
     const std::shared_ptr< std::wstring > SaveAsRequest::getFontsLocation() const
     {
         return m_FontsLocation;
@@ -28125,6 +30236,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
         if (m_FontsLocation) result->addQueryParam(L"fontsLocation", *m_FontsLocation);
         if (m_SaveOptionsData)
         {
@@ -28161,6 +30273,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
         const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport,
         const std::shared_ptr< std::wstring > fontsLocation
     ) : 
         m_Document(document),
@@ -28168,6 +30281,7 @@ namespace aspose::words::cloud::requests {
         m_LoadEncoding(loadEncoding),
         m_Password(password),
         m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport),
         m_FontsLocation(fontsLocation)
     {
     }
@@ -28197,6 +30311,11 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
+    const std::shared_ptr< bool > SaveAsOnlineRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
     const std::shared_ptr< std::wstring > SaveAsOnlineRequest::getFontsLocation() const
     {
         return m_FontsLocation;
@@ -28211,6 +30330,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
         if (m_FontsLocation) result->addQueryParam(L"fontsLocation", *m_FontsLocation);
         if (m_Document)
         {
@@ -28255,7 +30375,8 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > storage,
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
-        const std::shared_ptr< std::wstring > encryptedPassword
+        const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport
     ) : 
         m_Name(name),
         m_RangeStartIdentifier(rangeStartIdentifier),
@@ -28265,7 +30386,8 @@ namespace aspose::words::cloud::requests {
         m_Storage(storage),
         m_LoadEncoding(loadEncoding),
         m_Password(password),
-        m_EncryptedPassword(encryptedPassword)
+        m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport)
     {
     }
 
@@ -28314,6 +30436,11 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
+    const std::shared_ptr< bool > SaveAsRangeRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
     std::shared_ptr< aspose::words::cloud::HttpRequestData > SaveAsRangeRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
@@ -28330,6 +30457,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
         if (m_DocumentParameters)
         {
             result->addFormDataParam(L"Body", *m_DocumentParameters);
@@ -28366,7 +30494,8 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > rangeEndIdentifier,
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
-        const std::shared_ptr< std::wstring > encryptedPassword
+        const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport
     ) : 
         m_Document(document),
         m_RangeStartIdentifier(rangeStartIdentifier),
@@ -28374,7 +30503,8 @@ namespace aspose::words::cloud::requests {
         m_RangeEndIdentifier(rangeEndIdentifier),
         m_LoadEncoding(loadEncoding),
         m_Password(password),
-        m_EncryptedPassword(encryptedPassword)
+        m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport)
     {
     }
 
@@ -28413,6 +30543,11 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
+    const std::shared_ptr< bool > SaveAsRangeOnlineRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
     std::shared_ptr< aspose::words::cloud::HttpRequestData > SaveAsRangeOnlineRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
@@ -28425,6 +30560,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
         if (m_Document)
         {
             result->addFormDataParam(L"document", *m_Document);
@@ -28467,6 +30603,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
         const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport,
         const std::shared_ptr< bool > useAntiAliasing,
         const std::shared_ptr< bool > useHighQualityRendering,
         const std::shared_ptr< double > imageBrightness,
@@ -28493,6 +30630,7 @@ namespace aspose::words::cloud::requests {
         m_LoadEncoding(loadEncoding),
         m_Password(password),
         m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport),
         m_UseAntiAliasing(useAntiAliasing),
         m_UseHighQualityRendering(useHighQualityRendering),
         m_ImageBrightness(imageBrightness),
@@ -28547,6 +30685,11 @@ namespace aspose::words::cloud::requests {
     const std::shared_ptr< std::wstring > SaveAsTiffRequest::getEncryptedPassword() const
     {
         return m_EncryptedPassword;
+    }
+
+    const std::shared_ptr< bool > SaveAsTiffRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
     }
 
     const std::shared_ptr< bool > SaveAsTiffRequest::getUseAntiAliasing() const
@@ -28652,6 +30795,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
         if (m_UseAntiAliasing) result->addQueryParam(L"useAntiAliasing", *m_UseAntiAliasing);
         if (m_UseHighQualityRendering) result->addQueryParam(L"useHighQualityRendering", *m_UseHighQualityRendering);
         if (m_ImageBrightness) result->addQueryParam(L"imageBrightness", *m_ImageBrightness);
@@ -28705,6 +30849,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
         const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport,
         const std::shared_ptr< bool > useAntiAliasing,
         const std::shared_ptr< bool > useHighQualityRendering,
         const std::shared_ptr< double > imageBrightness,
@@ -28729,6 +30874,7 @@ namespace aspose::words::cloud::requests {
         m_LoadEncoding(loadEncoding),
         m_Password(password),
         m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport),
         m_UseAntiAliasing(useAntiAliasing),
         m_UseHighQualityRendering(useHighQualityRendering),
         m_ImageBrightness(imageBrightness),
@@ -28773,6 +30919,11 @@ namespace aspose::words::cloud::requests {
     const std::shared_ptr< std::wstring > SaveAsTiffOnlineRequest::getEncryptedPassword() const
     {
         return m_EncryptedPassword;
+    }
+
+    const std::shared_ptr< bool > SaveAsTiffOnlineRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
     }
 
     const std::shared_ptr< bool > SaveAsTiffOnlineRequest::getUseAntiAliasing() const
@@ -28874,6 +31025,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
         if (m_UseAntiAliasing) result->addQueryParam(L"useAntiAliasing", *m_UseAntiAliasing);
         if (m_UseHighQualityRendering) result->addQueryParam(L"useHighQualityRendering", *m_UseHighQualityRendering);
         if (m_ImageBrightness) result->addQueryParam(L"imageBrightness", *m_ImageBrightness);
@@ -28933,7 +31085,8 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > storage,
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
-        const std::shared_ptr< std::wstring > encryptedPassword
+        const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport
     ) : 
         m_Name(name),
         m_Pattern(pattern),
@@ -28941,7 +31094,8 @@ namespace aspose::words::cloud::requests {
         m_Storage(storage),
         m_LoadEncoding(loadEncoding),
         m_Password(password),
-        m_EncryptedPassword(encryptedPassword)
+        m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport)
     {
     }
 
@@ -28980,6 +31134,11 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
+    const std::shared_ptr< bool > SearchRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
     std::shared_ptr< aspose::words::cloud::HttpRequestData > SearchRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
@@ -28995,6 +31154,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
 
         for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
@@ -29023,13 +31183,15 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > pattern,
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
-        const std::shared_ptr< std::wstring > encryptedPassword
+        const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport
     ) : 
         m_Document(document),
         m_Pattern(pattern),
         m_LoadEncoding(loadEncoding),
         m_Password(password),
-        m_EncryptedPassword(encryptedPassword)
+        m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport)
     {
     }
 
@@ -29058,6 +31220,11 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
+    const std::shared_ptr< bool > SearchOnlineRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
     std::shared_ptr< aspose::words::cloud::HttpRequestData > SearchOnlineRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
@@ -29069,6 +31236,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
         if (m_Document)
         {
             result->addFormDataParam(L"document", *m_Document);
@@ -29105,6 +31273,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
         const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport,
         const std::shared_ptr< std::wstring > destFileName,
         const std::shared_ptr< int32_t > from,
         const std::shared_ptr< int32_t > to,
@@ -29118,6 +31287,7 @@ namespace aspose::words::cloud::requests {
         m_LoadEncoding(loadEncoding),
         m_Password(password),
         m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport),
         m_DestFileName(destFileName),
         m_From(from),
         m_To(to),
@@ -29161,6 +31331,11 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
+    const std::shared_ptr< bool > SplitDocumentRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
     const std::shared_ptr< std::wstring > SplitDocumentRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -29201,6 +31376,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_From) result->addQueryParam(L"from", *m_From);
         if (m_To) result->addQueryParam(L"to", *m_To);
@@ -29235,6 +31411,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
         const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport,
         const std::shared_ptr< std::wstring > destFileName,
         const std::shared_ptr< int32_t > from,
         const std::shared_ptr< int32_t > to,
@@ -29246,6 +31423,7 @@ namespace aspose::words::cloud::requests {
         m_LoadEncoding(loadEncoding),
         m_Password(password),
         m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport),
         m_DestFileName(destFileName),
         m_From(from),
         m_To(to),
@@ -29277,6 +31455,11 @@ namespace aspose::words::cloud::requests {
     const std::shared_ptr< std::wstring > SplitDocumentOnlineRequest::getEncryptedPassword() const
     {
         return m_EncryptedPassword;
+    }
+
+    const std::shared_ptr< bool > SplitDocumentOnlineRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
     }
 
     const std::shared_ptr< std::wstring > SplitDocumentOnlineRequest::getDestFileName() const
@@ -29315,6 +31498,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_From) result->addQueryParam(L"from", *m_From);
         if (m_To) result->addQueryParam(L"to", *m_To);
@@ -29355,7 +31539,8 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > storage,
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
-        const std::shared_ptr< std::wstring > encryptedPassword
+        const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport
     ) : 
         m_Name(name),
         m_NodeId(nodeId),
@@ -29363,7 +31548,8 @@ namespace aspose::words::cloud::requests {
         m_Storage(storage),
         m_LoadEncoding(loadEncoding),
         m_Password(password),
-        m_EncryptedPassword(encryptedPassword)
+        m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport)
     {
     }
 
@@ -29402,6 +31588,11 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
+    const std::shared_ptr< bool > TranslateNodeIdRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
     std::shared_ptr< aspose::words::cloud::HttpRequestData > TranslateNodeIdRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
@@ -29417,6 +31608,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
 
         for (models::FileReference* additionalFileContent : additionalFilesContent)
         {
@@ -29445,13 +31637,15 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > nodeId,
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
-        const std::shared_ptr< std::wstring > encryptedPassword
+        const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport
     ) : 
         m_Document(document),
         m_NodeId(nodeId),
         m_LoadEncoding(loadEncoding),
         m_Password(password),
-        m_EncryptedPassword(encryptedPassword)
+        m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport)
     {
     }
 
@@ -29480,6 +31674,11 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
+    const std::shared_ptr< bool > TranslateNodeIdOnlineRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
     std::shared_ptr< aspose::words::cloud::HttpRequestData > TranslateNodeIdOnlineRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
@@ -29491,6 +31690,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
         if (m_Document)
         {
             result->addFormDataParam(L"document", *m_Document);
@@ -29526,6 +31726,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
         const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport,
         const std::shared_ptr< std::wstring > destFileName
     ) : 
         m_Name(name),
@@ -29534,6 +31735,7 @@ namespace aspose::words::cloud::requests {
         m_LoadEncoding(loadEncoding),
         m_Password(password),
         m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport),
         m_DestFileName(destFileName)
     {
     }
@@ -29568,6 +31770,11 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
+    const std::shared_ptr< bool > UnprotectDocumentRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
     const std::shared_ptr< std::wstring > UnprotectDocumentRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -29586,6 +31793,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
 
         for (models::FileReference* additionalFileContent : additionalFilesContent)
@@ -29615,12 +31823,14 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
         const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport,
         const std::shared_ptr< std::wstring > destFileName
     ) : 
         m_Document(document),
         m_LoadEncoding(loadEncoding),
         m_Password(password),
         m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport),
         m_DestFileName(destFileName)
     {
     }
@@ -29645,6 +31855,11 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
+    const std::shared_ptr< bool > UnprotectDocumentOnlineRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
     const std::shared_ptr< std::wstring > UnprotectDocumentOnlineRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -29659,6 +31874,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_Document)
         {
@@ -29697,6 +31913,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
         const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport,
         const std::shared_ptr< std::wstring > destFileName,
         const std::shared_ptr< std::wstring > revisionAuthor,
         const std::shared_ptr< std::wstring > revisionDateTime
@@ -29709,6 +31926,7 @@ namespace aspose::words::cloud::requests {
         m_LoadEncoding(loadEncoding),
         m_Password(password),
         m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport),
         m_DestFileName(destFileName),
         m_RevisionAuthor(revisionAuthor),
         m_RevisionDateTime(revisionDateTime)
@@ -29755,6 +31973,11 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
+    const std::shared_ptr< bool > UpdateBookmarkRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
     const std::shared_ptr< std::wstring > UpdateBookmarkRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -29785,6 +32008,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
@@ -29824,6 +32048,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
         const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport,
         const std::shared_ptr< std::wstring > destFileName,
         const std::shared_ptr< std::wstring > revisionAuthor,
         const std::shared_ptr< std::wstring > revisionDateTime
@@ -29834,6 +32059,7 @@ namespace aspose::words::cloud::requests {
         m_LoadEncoding(loadEncoding),
         m_Password(password),
         m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport),
         m_DestFileName(destFileName),
         m_RevisionAuthor(revisionAuthor),
         m_RevisionDateTime(revisionDateTime)
@@ -29870,6 +32096,11 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
+    const std::shared_ptr< bool > UpdateBookmarkOnlineRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
     const std::shared_ptr< std::wstring > UpdateBookmarkOnlineRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -29896,6 +32127,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
@@ -29943,6 +32175,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
         const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport,
         const std::shared_ptr< std::wstring > destFileName,
         const std::shared_ptr< std::wstring > revisionAuthor,
         const std::shared_ptr< std::wstring > revisionDateTime
@@ -29956,6 +32189,7 @@ namespace aspose::words::cloud::requests {
         m_LoadEncoding(loadEncoding),
         m_Password(password),
         m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport),
         m_DestFileName(destFileName),
         m_RevisionAuthor(revisionAuthor),
         m_RevisionDateTime(revisionDateTime)
@@ -30007,6 +32241,11 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
+    const std::shared_ptr< bool > UpdateBorderRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
     const std::shared_ptr< std::wstring > UpdateBorderRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -30038,6 +32277,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
@@ -30078,6 +32318,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
         const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport,
         const std::shared_ptr< std::wstring > destFileName,
         const std::shared_ptr< std::wstring > revisionAuthor,
         const std::shared_ptr< std::wstring > revisionDateTime
@@ -30089,6 +32330,7 @@ namespace aspose::words::cloud::requests {
         m_LoadEncoding(loadEncoding),
         m_Password(password),
         m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport),
         m_DestFileName(destFileName),
         m_RevisionAuthor(revisionAuthor),
         m_RevisionDateTime(revisionDateTime)
@@ -30130,6 +32372,11 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
+    const std::shared_ptr< bool > UpdateBorderOnlineRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
     const std::shared_ptr< std::wstring > UpdateBorderOnlineRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -30157,6 +32404,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
@@ -30203,6 +32451,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
         const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport,
         const std::shared_ptr< std::wstring > destFileName,
         const std::shared_ptr< std::wstring > revisionAuthor,
         const std::shared_ptr< std::wstring > revisionDateTime
@@ -30215,6 +32464,7 @@ namespace aspose::words::cloud::requests {
         m_LoadEncoding(loadEncoding),
         m_Password(password),
         m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport),
         m_DestFileName(destFileName),
         m_RevisionAuthor(revisionAuthor),
         m_RevisionDateTime(revisionDateTime)
@@ -30261,6 +32511,11 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
+    const std::shared_ptr< bool > UpdateCommentRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
     const std::shared_ptr< std::wstring > UpdateCommentRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -30291,6 +32546,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
@@ -30330,6 +32586,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
         const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport,
         const std::shared_ptr< std::wstring > destFileName,
         const std::shared_ptr< std::wstring > revisionAuthor,
         const std::shared_ptr< std::wstring > revisionDateTime
@@ -30340,6 +32597,7 @@ namespace aspose::words::cloud::requests {
         m_LoadEncoding(loadEncoding),
         m_Password(password),
         m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport),
         m_DestFileName(destFileName),
         m_RevisionAuthor(revisionAuthor),
         m_RevisionDateTime(revisionDateTime)
@@ -30376,6 +32634,11 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
+    const std::shared_ptr< bool > UpdateCommentOnlineRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
     const std::shared_ptr< std::wstring > UpdateCommentOnlineRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -30402,6 +32665,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
@@ -30448,6 +32712,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
         const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport,
         const std::shared_ptr< std::wstring > destFileName,
         const std::shared_ptr< std::wstring > revisionAuthor,
         const std::shared_ptr< std::wstring > revisionDateTime
@@ -30460,6 +32725,7 @@ namespace aspose::words::cloud::requests {
         m_LoadEncoding(loadEncoding),
         m_Password(password),
         m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport),
         m_DestFileName(destFileName),
         m_RevisionAuthor(revisionAuthor),
         m_RevisionDateTime(revisionDateTime)
@@ -30506,6 +32772,11 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
+    const std::shared_ptr< bool > UpdateCustomXmlPartRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
     const std::shared_ptr< std::wstring > UpdateCustomXmlPartRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -30536,6 +32807,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
@@ -30575,6 +32847,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
         const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport,
         const std::shared_ptr< std::wstring > destFileName,
         const std::shared_ptr< std::wstring > revisionAuthor,
         const std::shared_ptr< std::wstring > revisionDateTime
@@ -30585,6 +32858,7 @@ namespace aspose::words::cloud::requests {
         m_LoadEncoding(loadEncoding),
         m_Password(password),
         m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport),
         m_DestFileName(destFileName),
         m_RevisionAuthor(revisionAuthor),
         m_RevisionDateTime(revisionDateTime)
@@ -30621,6 +32895,11 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
+    const std::shared_ptr< bool > UpdateCustomXmlPartOnlineRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
     const std::shared_ptr< std::wstring > UpdateCustomXmlPartOnlineRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -30647,6 +32926,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
@@ -30695,6 +32975,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
         const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport,
         const std::shared_ptr< std::wstring > destFileName,
         const std::shared_ptr< std::wstring > revisionAuthor,
         const std::shared_ptr< std::wstring > revisionDateTime
@@ -30709,6 +32990,7 @@ namespace aspose::words::cloud::requests {
         m_LoadEncoding(loadEncoding),
         m_Password(password),
         m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport),
         m_DestFileName(destFileName),
         m_RevisionAuthor(revisionAuthor),
         m_RevisionDateTime(revisionDateTime)
@@ -30765,6 +33047,11 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
+    const std::shared_ptr< bool > UpdateDrawingObjectRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
     const std::shared_ptr< std::wstring > UpdateDrawingObjectRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -30796,6 +33083,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
@@ -30842,6 +33130,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
         const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport,
         const std::shared_ptr< std::wstring > destFileName,
         const std::shared_ptr< std::wstring > revisionAuthor,
         const std::shared_ptr< std::wstring > revisionDateTime
@@ -30854,6 +33143,7 @@ namespace aspose::words::cloud::requests {
         m_LoadEncoding(loadEncoding),
         m_Password(password),
         m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport),
         m_DestFileName(destFileName),
         m_RevisionAuthor(revisionAuthor),
         m_RevisionDateTime(revisionDateTime)
@@ -30900,6 +33190,11 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
+    const std::shared_ptr< bool > UpdateDrawingObjectOnlineRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
     const std::shared_ptr< std::wstring > UpdateDrawingObjectOnlineRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -30927,6 +33222,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
@@ -30980,6 +33276,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
         const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport,
         const std::shared_ptr< std::wstring > destFileName,
         const std::shared_ptr< std::wstring > revisionAuthor,
         const std::shared_ptr< std::wstring > revisionDateTime
@@ -30993,6 +33290,7 @@ namespace aspose::words::cloud::requests {
         m_LoadEncoding(loadEncoding),
         m_Password(password),
         m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport),
         m_DestFileName(destFileName),
         m_RevisionAuthor(revisionAuthor),
         m_RevisionDateTime(revisionDateTime)
@@ -31044,6 +33342,11 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
+    const std::shared_ptr< bool > UpdateFieldRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
     const std::shared_ptr< std::wstring > UpdateFieldRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -31075,6 +33378,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
@@ -31115,6 +33419,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
         const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport,
         const std::shared_ptr< std::wstring > destFileName,
         const std::shared_ptr< std::wstring > revisionAuthor,
         const std::shared_ptr< std::wstring > revisionDateTime
@@ -31126,6 +33431,7 @@ namespace aspose::words::cloud::requests {
         m_LoadEncoding(loadEncoding),
         m_Password(password),
         m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport),
         m_DestFileName(destFileName),
         m_RevisionAuthor(revisionAuthor),
         m_RevisionDateTime(revisionDateTime)
@@ -31167,6 +33473,11 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
+    const std::shared_ptr< bool > UpdateFieldOnlineRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
     const std::shared_ptr< std::wstring > UpdateFieldOnlineRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -31194,6 +33505,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
@@ -31238,6 +33550,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
         const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport,
         const std::shared_ptr< std::wstring > destFileName
     ) : 
         m_Name(name),
@@ -31246,6 +33559,7 @@ namespace aspose::words::cloud::requests {
         m_LoadEncoding(loadEncoding),
         m_Password(password),
         m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport),
         m_DestFileName(destFileName)
     {
     }
@@ -31280,6 +33594,11 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
+    const std::shared_ptr< bool > UpdateFieldsRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
     const std::shared_ptr< std::wstring > UpdateFieldsRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -31298,6 +33617,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
 
         for (models::FileReference* additionalFileContent : additionalFilesContent)
@@ -31327,12 +33647,14 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
         const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport,
         const std::shared_ptr< std::wstring > destFileName
     ) : 
         m_Document(document),
         m_LoadEncoding(loadEncoding),
         m_Password(password),
         m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport),
         m_DestFileName(destFileName)
     {
     }
@@ -31357,6 +33679,11 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
+    const std::shared_ptr< bool > UpdateFieldsOnlineRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
     const std::shared_ptr< std::wstring > UpdateFieldsOnlineRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -31371,6 +33698,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_Document)
         {
@@ -31410,6 +33738,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
         const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport,
         const std::shared_ptr< std::wstring > destFileName,
         const std::shared_ptr< std::wstring > revisionAuthor,
         const std::shared_ptr< std::wstring > revisionDateTime
@@ -31423,6 +33752,7 @@ namespace aspose::words::cloud::requests {
         m_LoadEncoding(loadEncoding),
         m_Password(password),
         m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport),
         m_DestFileName(destFileName),
         m_RevisionAuthor(revisionAuthor),
         m_RevisionDateTime(revisionDateTime)
@@ -31474,6 +33804,11 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
+    const std::shared_ptr< bool > UpdateFootnoteRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
     const std::shared_ptr< std::wstring > UpdateFootnoteRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -31505,6 +33840,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
@@ -31545,6 +33881,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
         const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport,
         const std::shared_ptr< std::wstring > destFileName,
         const std::shared_ptr< std::wstring > revisionAuthor,
         const std::shared_ptr< std::wstring > revisionDateTime
@@ -31556,6 +33893,7 @@ namespace aspose::words::cloud::requests {
         m_LoadEncoding(loadEncoding),
         m_Password(password),
         m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport),
         m_DestFileName(destFileName),
         m_RevisionAuthor(revisionAuthor),
         m_RevisionDateTime(revisionDateTime)
@@ -31597,6 +33935,11 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
+    const std::shared_ptr< bool > UpdateFootnoteOnlineRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
     const std::shared_ptr< std::wstring > UpdateFootnoteOnlineRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -31624,6 +33967,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
@@ -31671,6 +34015,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
         const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport,
         const std::shared_ptr< std::wstring > destFileName,
         const std::shared_ptr< std::wstring > revisionAuthor,
         const std::shared_ptr< std::wstring > revisionDateTime
@@ -31684,6 +34029,7 @@ namespace aspose::words::cloud::requests {
         m_LoadEncoding(loadEncoding),
         m_Password(password),
         m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport),
         m_DestFileName(destFileName),
         m_RevisionAuthor(revisionAuthor),
         m_RevisionDateTime(revisionDateTime)
@@ -31735,6 +34081,11 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
+    const std::shared_ptr< bool > UpdateFormFieldRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
     const std::shared_ptr< std::wstring > UpdateFormFieldRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -31766,6 +34117,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
@@ -31806,6 +34158,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
         const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport,
         const std::shared_ptr< std::wstring > destFileName,
         const std::shared_ptr< std::wstring > revisionAuthor,
         const std::shared_ptr< std::wstring > revisionDateTime
@@ -31817,6 +34170,7 @@ namespace aspose::words::cloud::requests {
         m_LoadEncoding(loadEncoding),
         m_Password(password),
         m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport),
         m_DestFileName(destFileName),
         m_RevisionAuthor(revisionAuthor),
         m_RevisionDateTime(revisionDateTime)
@@ -31858,6 +34212,11 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
+    const std::shared_ptr< bool > UpdateFormFieldOnlineRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
     const std::shared_ptr< std::wstring > UpdateFormFieldOnlineRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -31885,6 +34244,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
@@ -31931,6 +34291,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
         const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport,
         const std::shared_ptr< std::wstring > destFileName,
         const std::shared_ptr< std::wstring > revisionAuthor,
         const std::shared_ptr< std::wstring > revisionDateTime
@@ -31943,6 +34304,7 @@ namespace aspose::words::cloud::requests {
         m_LoadEncoding(loadEncoding),
         m_Password(password),
         m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport),
         m_DestFileName(destFileName),
         m_RevisionAuthor(revisionAuthor),
         m_RevisionDateTime(revisionDateTime)
@@ -31989,6 +34351,11 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
+    const std::shared_ptr< bool > UpdateListRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
     const std::shared_ptr< std::wstring > UpdateListRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -32019,6 +34386,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
@@ -32061,6 +34429,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
         const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport,
         const std::shared_ptr< std::wstring > destFileName,
         const std::shared_ptr< std::wstring > revisionAuthor,
         const std::shared_ptr< std::wstring > revisionDateTime
@@ -32074,6 +34443,7 @@ namespace aspose::words::cloud::requests {
         m_LoadEncoding(loadEncoding),
         m_Password(password),
         m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport),
         m_DestFileName(destFileName),
         m_RevisionAuthor(revisionAuthor),
         m_RevisionDateTime(revisionDateTime)
@@ -32125,6 +34495,11 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
+    const std::shared_ptr< bool > UpdateListLevelRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
     const std::shared_ptr< std::wstring > UpdateListLevelRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -32157,6 +34532,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
@@ -32197,6 +34573,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
         const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport,
         const std::shared_ptr< std::wstring > destFileName,
         const std::shared_ptr< std::wstring > revisionAuthor,
         const std::shared_ptr< std::wstring > revisionDateTime
@@ -32208,6 +34585,7 @@ namespace aspose::words::cloud::requests {
         m_LoadEncoding(loadEncoding),
         m_Password(password),
         m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport),
         m_DestFileName(destFileName),
         m_RevisionAuthor(revisionAuthor),
         m_RevisionDateTime(revisionDateTime)
@@ -32249,6 +34627,11 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
+    const std::shared_ptr< bool > UpdateListLevelOnlineRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
     const std::shared_ptr< std::wstring > UpdateListLevelOnlineRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -32277,6 +34660,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
@@ -32321,6 +34705,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
         const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport,
         const std::shared_ptr< std::wstring > destFileName,
         const std::shared_ptr< std::wstring > revisionAuthor,
         const std::shared_ptr< std::wstring > revisionDateTime
@@ -32331,6 +34716,7 @@ namespace aspose::words::cloud::requests {
         m_LoadEncoding(loadEncoding),
         m_Password(password),
         m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport),
         m_DestFileName(destFileName),
         m_RevisionAuthor(revisionAuthor),
         m_RevisionDateTime(revisionDateTime)
@@ -32367,6 +34753,11 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
+    const std::shared_ptr< bool > UpdateListOnlineRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
     const std::shared_ptr< std::wstring > UpdateListOnlineRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -32393,6 +34784,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
@@ -32440,6 +34832,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
         const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport,
         const std::shared_ptr< std::wstring > destFileName,
         const std::shared_ptr< std::wstring > revisionAuthor,
         const std::shared_ptr< std::wstring > revisionDateTime
@@ -32453,6 +34846,7 @@ namespace aspose::words::cloud::requests {
         m_LoadEncoding(loadEncoding),
         m_Password(password),
         m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport),
         m_DestFileName(destFileName),
         m_RevisionAuthor(revisionAuthor),
         m_RevisionDateTime(revisionDateTime)
@@ -32504,6 +34898,11 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
+    const std::shared_ptr< bool > UpdateParagraphFormatRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
     const std::shared_ptr< std::wstring > UpdateParagraphFormatRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -32535,6 +34934,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
@@ -32575,6 +34975,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
         const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport,
         const std::shared_ptr< std::wstring > destFileName,
         const std::shared_ptr< std::wstring > revisionAuthor,
         const std::shared_ptr< std::wstring > revisionDateTime
@@ -32586,6 +34987,7 @@ namespace aspose::words::cloud::requests {
         m_LoadEncoding(loadEncoding),
         m_Password(password),
         m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport),
         m_DestFileName(destFileName),
         m_RevisionAuthor(revisionAuthor),
         m_RevisionDateTime(revisionDateTime)
@@ -32627,6 +35029,11 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
+    const std::shared_ptr< bool > UpdateParagraphFormatOnlineRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
     const std::shared_ptr< std::wstring > UpdateParagraphFormatOnlineRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -32654,6 +35061,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
@@ -32701,6 +35109,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
         const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport,
         const std::shared_ptr< std::wstring > destFileName,
         const std::shared_ptr< std::wstring > revisionAuthor,
         const std::shared_ptr< std::wstring > revisionDateTime
@@ -32714,6 +35123,7 @@ namespace aspose::words::cloud::requests {
         m_LoadEncoding(loadEncoding),
         m_Password(password),
         m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport),
         m_DestFileName(destFileName),
         m_RevisionAuthor(revisionAuthor),
         m_RevisionDateTime(revisionDateTime)
@@ -32765,6 +35175,11 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
+    const std::shared_ptr< bool > UpdateParagraphListFormatRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
     const std::shared_ptr< std::wstring > UpdateParagraphListFormatRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -32796,6 +35211,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
@@ -32836,6 +35252,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
         const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport,
         const std::shared_ptr< std::wstring > destFileName,
         const std::shared_ptr< std::wstring > revisionAuthor,
         const std::shared_ptr< std::wstring > revisionDateTime
@@ -32847,6 +35264,7 @@ namespace aspose::words::cloud::requests {
         m_LoadEncoding(loadEncoding),
         m_Password(password),
         m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport),
         m_DestFileName(destFileName),
         m_RevisionAuthor(revisionAuthor),
         m_RevisionDateTime(revisionDateTime)
@@ -32888,6 +35306,11 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
+    const std::shared_ptr< bool > UpdateParagraphListFormatOnlineRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
     const std::shared_ptr< std::wstring > UpdateParagraphListFormatOnlineRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -32915,6 +35338,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
@@ -32962,6 +35386,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
         const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport,
         const std::shared_ptr< std::wstring > destFileName,
         const std::shared_ptr< std::wstring > revisionAuthor,
         const std::shared_ptr< std::wstring > revisionDateTime
@@ -32975,6 +35400,7 @@ namespace aspose::words::cloud::requests {
         m_LoadEncoding(loadEncoding),
         m_Password(password),
         m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport),
         m_DestFileName(destFileName),
         m_RevisionAuthor(revisionAuthor),
         m_RevisionDateTime(revisionDateTime)
@@ -33026,6 +35452,11 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
+    const std::shared_ptr< bool > UpdateRunRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
     const std::shared_ptr< std::wstring > UpdateRunRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -33058,6 +35489,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
@@ -33100,6 +35532,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
         const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport,
         const std::shared_ptr< std::wstring > destFileName,
         const std::shared_ptr< std::wstring > revisionAuthor,
         const std::shared_ptr< std::wstring > revisionDateTime
@@ -33113,6 +35546,7 @@ namespace aspose::words::cloud::requests {
         m_LoadEncoding(loadEncoding),
         m_Password(password),
         m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport),
         m_DestFileName(destFileName),
         m_RevisionAuthor(revisionAuthor),
         m_RevisionDateTime(revisionDateTime)
@@ -33164,6 +35598,11 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
+    const std::shared_ptr< bool > UpdateRunFontRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
     const std::shared_ptr< std::wstring > UpdateRunFontRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -33196,6 +35635,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
@@ -33236,6 +35676,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
         const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport,
         const std::shared_ptr< std::wstring > destFileName,
         const std::shared_ptr< std::wstring > revisionAuthor,
         const std::shared_ptr< std::wstring > revisionDateTime
@@ -33247,6 +35688,7 @@ namespace aspose::words::cloud::requests {
         m_LoadEncoding(loadEncoding),
         m_Password(password),
         m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport),
         m_DestFileName(destFileName),
         m_RevisionAuthor(revisionAuthor),
         m_RevisionDateTime(revisionDateTime)
@@ -33288,6 +35730,11 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
+    const std::shared_ptr< bool > UpdateRunFontOnlineRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
     const std::shared_ptr< std::wstring > UpdateRunFontOnlineRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -33316,6 +35763,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
@@ -33361,6 +35809,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
         const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport,
         const std::shared_ptr< std::wstring > destFileName,
         const std::shared_ptr< std::wstring > revisionAuthor,
         const std::shared_ptr< std::wstring > revisionDateTime
@@ -33372,6 +35821,7 @@ namespace aspose::words::cloud::requests {
         m_LoadEncoding(loadEncoding),
         m_Password(password),
         m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport),
         m_DestFileName(destFileName),
         m_RevisionAuthor(revisionAuthor),
         m_RevisionDateTime(revisionDateTime)
@@ -33413,6 +35863,11 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
+    const std::shared_ptr< bool > UpdateRunOnlineRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
     const std::shared_ptr< std::wstring > UpdateRunOnlineRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -33441,6 +35896,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
@@ -33487,6 +35943,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
         const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport,
         const std::shared_ptr< std::wstring > destFileName,
         const std::shared_ptr< std::wstring > revisionAuthor,
         const std::shared_ptr< std::wstring > revisionDateTime
@@ -33499,6 +35956,7 @@ namespace aspose::words::cloud::requests {
         m_LoadEncoding(loadEncoding),
         m_Password(password),
         m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport),
         m_DestFileName(destFileName),
         m_RevisionAuthor(revisionAuthor),
         m_RevisionDateTime(revisionDateTime)
@@ -33545,6 +36003,11 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
+    const std::shared_ptr< bool > UpdateSectionPageSetupRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
     const std::shared_ptr< std::wstring > UpdateSectionPageSetupRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -33575,6 +36038,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
@@ -33614,6 +36078,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
         const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport,
         const std::shared_ptr< std::wstring > destFileName,
         const std::shared_ptr< std::wstring > revisionAuthor,
         const std::shared_ptr< std::wstring > revisionDateTime
@@ -33624,6 +36089,7 @@ namespace aspose::words::cloud::requests {
         m_LoadEncoding(loadEncoding),
         m_Password(password),
         m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport),
         m_DestFileName(destFileName),
         m_RevisionAuthor(revisionAuthor),
         m_RevisionDateTime(revisionDateTime)
@@ -33660,6 +36126,11 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
+    const std::shared_ptr< bool > UpdateSectionPageSetupOnlineRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
     const std::shared_ptr< std::wstring > UpdateSectionPageSetupOnlineRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -33686,6 +36157,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
@@ -33733,6 +36205,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
         const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport,
         const std::shared_ptr< std::wstring > destFileName,
         const std::shared_ptr< std::wstring > revisionAuthor,
         const std::shared_ptr< std::wstring > revisionDateTime
@@ -33746,6 +36219,7 @@ namespace aspose::words::cloud::requests {
         m_LoadEncoding(loadEncoding),
         m_Password(password),
         m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport),
         m_DestFileName(destFileName),
         m_RevisionAuthor(revisionAuthor),
         m_RevisionDateTime(revisionDateTime)
@@ -33797,6 +36271,11 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
+    const std::shared_ptr< bool > UpdateStructuredDocumentTagRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
     const std::shared_ptr< std::wstring > UpdateStructuredDocumentTagRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -33828,6 +36307,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
@@ -33868,6 +36348,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
         const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport,
         const std::shared_ptr< std::wstring > destFileName,
         const std::shared_ptr< std::wstring > revisionAuthor,
         const std::shared_ptr< std::wstring > revisionDateTime
@@ -33879,6 +36360,7 @@ namespace aspose::words::cloud::requests {
         m_LoadEncoding(loadEncoding),
         m_Password(password),
         m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport),
         m_DestFileName(destFileName),
         m_RevisionAuthor(revisionAuthor),
         m_RevisionDateTime(revisionDateTime)
@@ -33920,6 +36402,11 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
+    const std::shared_ptr< bool > UpdateStructuredDocumentTagOnlineRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
     const std::shared_ptr< std::wstring > UpdateStructuredDocumentTagOnlineRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -33947,6 +36434,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
@@ -33993,6 +36481,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
         const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport,
         const std::shared_ptr< std::wstring > destFileName,
         const std::shared_ptr< std::wstring > revisionAuthor,
         const std::shared_ptr< std::wstring > revisionDateTime
@@ -34005,6 +36494,7 @@ namespace aspose::words::cloud::requests {
         m_LoadEncoding(loadEncoding),
         m_Password(password),
         m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport),
         m_DestFileName(destFileName),
         m_RevisionAuthor(revisionAuthor),
         m_RevisionDateTime(revisionDateTime)
@@ -34051,6 +36541,11 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
+    const std::shared_ptr< bool > UpdateStyleRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
     const std::shared_ptr< std::wstring > UpdateStyleRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -34081,6 +36576,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
@@ -34120,6 +36616,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
         const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport,
         const std::shared_ptr< std::wstring > destFileName,
         const std::shared_ptr< std::wstring > revisionAuthor,
         const std::shared_ptr< std::wstring > revisionDateTime
@@ -34130,6 +36627,7 @@ namespace aspose::words::cloud::requests {
         m_LoadEncoding(loadEncoding),
         m_Password(password),
         m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport),
         m_DestFileName(destFileName),
         m_RevisionAuthor(revisionAuthor),
         m_RevisionDateTime(revisionDateTime)
@@ -34166,6 +36664,11 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
+    const std::shared_ptr< bool > UpdateStyleOnlineRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
     const std::shared_ptr< std::wstring > UpdateStyleOnlineRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -34192,6 +36695,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
@@ -34239,6 +36743,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
         const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport,
         const std::shared_ptr< std::wstring > destFileName,
         const std::shared_ptr< std::wstring > revisionAuthor,
         const std::shared_ptr< std::wstring > revisionDateTime
@@ -34252,6 +36757,7 @@ namespace aspose::words::cloud::requests {
         m_LoadEncoding(loadEncoding),
         m_Password(password),
         m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport),
         m_DestFileName(destFileName),
         m_RevisionAuthor(revisionAuthor),
         m_RevisionDateTime(revisionDateTime)
@@ -34303,6 +36809,11 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
+    const std::shared_ptr< bool > UpdateTableCellFormatRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
     const std::shared_ptr< std::wstring > UpdateTableCellFormatRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -34335,6 +36846,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
@@ -34375,6 +36887,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
         const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport,
         const std::shared_ptr< std::wstring > destFileName,
         const std::shared_ptr< std::wstring > revisionAuthor,
         const std::shared_ptr< std::wstring > revisionDateTime
@@ -34386,6 +36899,7 @@ namespace aspose::words::cloud::requests {
         m_LoadEncoding(loadEncoding),
         m_Password(password),
         m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport),
         m_DestFileName(destFileName),
         m_RevisionAuthor(revisionAuthor),
         m_RevisionDateTime(revisionDateTime)
@@ -34427,6 +36941,11 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
+    const std::shared_ptr< bool > UpdateTableCellFormatOnlineRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
     const std::shared_ptr< std::wstring > UpdateTableCellFormatOnlineRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -34455,6 +36974,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
@@ -34502,6 +37022,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
         const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport,
         const std::shared_ptr< std::wstring > destFileName,
         const std::shared_ptr< std::wstring > revisionAuthor,
         const std::shared_ptr< std::wstring > revisionDateTime
@@ -34515,6 +37036,7 @@ namespace aspose::words::cloud::requests {
         m_LoadEncoding(loadEncoding),
         m_Password(password),
         m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport),
         m_DestFileName(destFileName),
         m_RevisionAuthor(revisionAuthor),
         m_RevisionDateTime(revisionDateTime)
@@ -34566,6 +37088,11 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
+    const std::shared_ptr< bool > UpdateTablePropertiesRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
     const std::shared_ptr< std::wstring > UpdateTablePropertiesRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -34597,6 +37124,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
@@ -34637,6 +37165,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
         const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport,
         const std::shared_ptr< std::wstring > destFileName,
         const std::shared_ptr< std::wstring > revisionAuthor,
         const std::shared_ptr< std::wstring > revisionDateTime
@@ -34648,6 +37177,7 @@ namespace aspose::words::cloud::requests {
         m_LoadEncoding(loadEncoding),
         m_Password(password),
         m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport),
         m_DestFileName(destFileName),
         m_RevisionAuthor(revisionAuthor),
         m_RevisionDateTime(revisionDateTime)
@@ -34689,6 +37219,11 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
+    const std::shared_ptr< bool > UpdateTablePropertiesOnlineRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
     const std::shared_ptr< std::wstring > UpdateTablePropertiesOnlineRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -34716,6 +37251,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
@@ -34763,6 +37299,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
         const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport,
         const std::shared_ptr< std::wstring > destFileName,
         const std::shared_ptr< std::wstring > revisionAuthor,
         const std::shared_ptr< std::wstring > revisionDateTime
@@ -34776,6 +37313,7 @@ namespace aspose::words::cloud::requests {
         m_LoadEncoding(loadEncoding),
         m_Password(password),
         m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport),
         m_DestFileName(destFileName),
         m_RevisionAuthor(revisionAuthor),
         m_RevisionDateTime(revisionDateTime)
@@ -34827,6 +37365,11 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
+    const std::shared_ptr< bool > UpdateTableRowFormatRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
     const std::shared_ptr< std::wstring > UpdateTableRowFormatRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -34859,6 +37402,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
@@ -34899,6 +37443,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > loadEncoding,
         const std::shared_ptr< std::wstring > password,
         const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport,
         const std::shared_ptr< std::wstring > destFileName,
         const std::shared_ptr< std::wstring > revisionAuthor,
         const std::shared_ptr< std::wstring > revisionDateTime
@@ -34910,6 +37455,7 @@ namespace aspose::words::cloud::requests {
         m_LoadEncoding(loadEncoding),
         m_Password(password),
         m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport),
         m_DestFileName(destFileName),
         m_RevisionAuthor(revisionAuthor),
         m_RevisionDateTime(revisionDateTime)
@@ -34951,6 +37497,11 @@ namespace aspose::words::cloud::requests {
         return m_EncryptedPassword;
     }
 
+    const std::shared_ptr< bool > UpdateTableRowFormatOnlineRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
     const std::shared_ptr< std::wstring > UpdateTableRowFormatOnlineRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -34979,6 +37530,7 @@ namespace aspose::words::cloud::requests {
         if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
         if (m_Password) result->addQueryParam(L"password", *m_Password);
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
         if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);

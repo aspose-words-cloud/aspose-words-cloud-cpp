@@ -54,6 +54,7 @@ TEST_F(HyperlinkTests, TestGetDocumentHyperlinkByIndex) {
         nullptr,
         nullptr,
         nullptr,
+        nullptr,
         nullptr
     ));
 
@@ -70,6 +71,7 @@ TEST_F(HyperlinkTests, TestGetDocumentHyperlinkByIndexOnline) {
     std::shared_ptr<requests::GetDocumentHyperlinkByIndexOnlineRequest> request(new requests::GetDocumentHyperlinkByIndexOnlineRequest(
         requestDocument,
         std::make_shared< int32_t >(0),
+        nullptr,
         nullptr,
         nullptr,
         nullptr
@@ -95,6 +97,7 @@ TEST_F(HyperlinkTests, TestGetDocumentHyperlinks) {
         nullptr,
         nullptr,
         nullptr,
+        nullptr,
         nullptr
     ));
 
@@ -112,6 +115,7 @@ TEST_F(HyperlinkTests, TestGetDocumentHyperlinksOnline) {
     auto requestDocument = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(localFile)), std::istream::binary));
     std::shared_ptr<requests::GetDocumentHyperlinksOnlineRequest> request(new requests::GetDocumentHyperlinksOnlineRequest(
         requestDocument,
+        nullptr,
         nullptr,
         nullptr,
         nullptr

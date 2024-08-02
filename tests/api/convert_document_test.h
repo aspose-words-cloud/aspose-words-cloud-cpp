@@ -58,6 +58,7 @@ TEST_F(ConvertDocumentTests, TestSaveAs) {
         nullptr,
         nullptr,
         nullptr,
+        nullptr,
         nullptr
     ));
 
@@ -81,6 +82,7 @@ TEST_F(ConvertDocumentTests, TestSaveAsOnline) {
         nullptr,
         nullptr,
         nullptr,
+        nullptr,
         nullptr
     ));
 
@@ -101,6 +103,7 @@ TEST_F(ConvertDocumentTests, TestSaveAsOnlineHtmlMultifile) {
     std::shared_ptr<requests::SaveAsOnlineRequest> request(new requests::SaveAsOnlineRequest(
         requestDocument,
         requestSaveOptionsData,
+        nullptr,
         nullptr,
         nullptr,
         nullptr,
@@ -132,6 +135,7 @@ TEST_F(ConvertDocumentTests, TestSaveAsDocx) {
         nullptr,
         nullptr,
         nullptr,
+        nullptr,
         nullptr
     ));
 
@@ -158,6 +162,7 @@ TEST_F(ConvertDocumentTests, TestSaveAsTiff) {
         std::make_shared< std::wstring >(remoteName),
         requestSaveOptions,
         std::make_shared< std::wstring >(remoteFolder),
+        nullptr,
         nullptr,
         nullptr,
         nullptr,
@@ -219,6 +224,7 @@ TEST_F(ConvertDocumentTests, TestSaveAsTiffOnline) {
         nullptr,
         nullptr,
         nullptr,
+        nullptr,
         nullptr
     ));
 
@@ -233,6 +239,7 @@ TEST_F(ConvertDocumentTests, TestConvertDocument) {
     std::shared_ptr<requests::ConvertDocumentRequest> request(new requests::ConvertDocumentRequest(
         requestDocument,
         std::make_shared< std::wstring >(L"pdf"),
+        nullptr,
         nullptr,
         nullptr,
         nullptr,

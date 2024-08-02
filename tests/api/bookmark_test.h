@@ -54,6 +54,7 @@ TEST_F(BookmarkTests, TestGetBookmarks) {
         nullptr,
         nullptr,
         nullptr,
+        nullptr,
         nullptr
     ));
 
@@ -67,6 +68,7 @@ TEST_F(BookmarkTests, TestGetBookmarksOnline) {
     auto requestDocument = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(localFile)), std::istream::binary));
     std::shared_ptr<requests::GetBookmarksOnlineRequest> request(new requests::GetBookmarksOnlineRequest(
         requestDocument,
+        nullptr,
         nullptr,
         nullptr,
         nullptr
@@ -93,6 +95,7 @@ TEST_F(BookmarkTests, TestGetBookmarkByName) {
         nullptr,
         nullptr,
         nullptr,
+        nullptr,
         nullptr
     ));
 
@@ -107,6 +110,7 @@ TEST_F(BookmarkTests, TestGetBookmarkByNameOnline) {
     std::shared_ptr<requests::GetBookmarkByNameOnlineRequest> request(new requests::GetBookmarkByNameOnlineRequest(
         requestDocument,
         std::make_shared< std::wstring >(bookmarkName),
+        nullptr,
         nullptr,
         nullptr,
         nullptr
@@ -139,6 +143,7 @@ TEST_F(BookmarkTests, TestUpdateBookmark) {
         nullptr,
         nullptr,
         nullptr,
+        nullptr,
         std::make_shared< std::wstring >(baseTestOutPath + L"/" + remoteFileName),
         nullptr,
         nullptr
@@ -161,6 +166,7 @@ TEST_F(BookmarkTests, TestUpdateBookmarkOnline) {
         requestDocument,
         std::make_shared< std::wstring >(bookmarkName),
         requestBookmarkData,
+        nullptr,
         nullptr,
         nullptr,
         nullptr,
@@ -193,6 +199,7 @@ TEST_F(BookmarkTests, TestDeleteBookmark) {
         nullptr,
         nullptr,
         nullptr,
+        nullptr,
         nullptr
     ));
 
@@ -207,6 +214,7 @@ TEST_F(BookmarkTests, TestDeleteBookmarkOnline) {
     std::shared_ptr<requests::DeleteBookmarkOnlineRequest> request(new requests::DeleteBookmarkOnlineRequest(
         requestDocument,
         std::make_shared< std::wstring >(bookmarkName),
+        nullptr,
         nullptr,
         nullptr,
         nullptr,
@@ -238,6 +246,7 @@ TEST_F(BookmarkTests, TestDeleteBookmarks) {
         nullptr,
         nullptr,
         nullptr,
+        nullptr,
         nullptr
     ));
 
@@ -251,6 +260,7 @@ TEST_F(BookmarkTests, TestDeleteBookmarksOnline) {
     auto requestDocument = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(localFile)), std::istream::binary));
     std::shared_ptr<requests::DeleteBookmarksOnlineRequest> request(new requests::DeleteBookmarksOnlineRequest(
         requestDocument,
+        nullptr,
         nullptr,
         nullptr,
         nullptr,
@@ -294,6 +304,7 @@ TEST_F(BookmarkTests, TestInsertBookmark) {
         nullptr,
         nullptr,
         nullptr,
+        nullptr,
         nullptr
     ));
 
@@ -319,6 +330,7 @@ TEST_F(BookmarkTests, TestInsertBookmarkOnline) {
     std::shared_ptr<requests::InsertBookmarkOnlineRequest> request(new requests::InsertBookmarkOnlineRequest(
         requestDocument,
         requestBookmark,
+        nullptr,
         nullptr,
         nullptr,
         nullptr,

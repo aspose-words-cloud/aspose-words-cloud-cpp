@@ -67,6 +67,7 @@ TEST_F(CompareDocumentTests, TestCompareDocument) {
         nullptr,
         nullptr,
         nullptr,
+        nullptr,
         std::make_shared< std::wstring >(baseTestOutPath + L"/TestCompareDocumentOut.doc")
     ));
 
@@ -100,6 +101,7 @@ TEST_F(CompareDocumentTests, TestCompareDocumentOnline) {
         nullptr,
         nullptr,
         nullptr,
+        nullptr,
         std::make_shared< std::wstring >(baseTestOutPath + L"/TestCompareDocumentOut.doc")
     ));
 
@@ -129,6 +131,7 @@ TEST_F(CompareDocumentTests, TestCompareTwoDocumentOnline) {
     std::shared_ptr<requests::CompareDocumentOnlineRequest> request(new requests::CompareDocumentOnlineRequest(
         requestDocument,
         requestCompareData,
+        nullptr,
         nullptr,
         nullptr,
         nullptr,
@@ -167,6 +170,7 @@ TEST_F(CompareDocumentTests, TestCompareDocumentWithPassword) {
         nullptr,
         nullptr,
         std::make_shared< std::wstring >(L"12345"),
+        nullptr,
         nullptr,
         std::make_shared< std::wstring >(baseTestOutPath + L"/TestCompareDocumentOut.docx")
     ));
