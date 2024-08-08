@@ -77,6 +77,21 @@ namespace aspose::words::cloud::models {
 
 
         /// <summary>
+        /// Gets or sets a value in pixels per inch that limits resolution of exported raster images.
+        /// If the value of this property is non-zero, it limits resolution of exported raster images.
+        /// That is, higher-resolution images are resampled down to the limit and lower-resolution images are exported as is.
+        /// </summary>
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< int32_t > getMaxImageResolution() const;
+
+        /// <summary>
+        /// Gets or sets a value in pixels per inch that limits resolution of exported raster images.
+        /// If the value of this property is non-zero, it limits resolution of exported raster images.
+        /// That is, higher-resolution images are resampled down to the limit and lower-resolution images are exported as is.
+        /// </summary>
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setMaxImageResolution(std::shared_ptr< int32_t > value);
+
+
+        /// <summary>
         /// Gets or sets the physical folder where resources (images) are saved when exporting.
         /// </summary>
         ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< std::wstring > getResourcesFolder() const;
@@ -130,6 +145,7 @@ namespace aspose::words::cloud::models {
     protected:
         std::shared_ptr< bool > m_ExportEmbeddedImages;
         std::shared_ptr< bool > m_FitToViewPort;
+        std::shared_ptr< int32_t > m_MaxImageResolution;
         std::shared_ptr< std::wstring > m_ResourcesFolder;
         std::shared_ptr< std::wstring > m_ResourcesFolderAlias;
         std::shared_ptr< bool > m_ShowPageBorder;
