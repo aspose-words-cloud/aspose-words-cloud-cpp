@@ -61,6 +61,7 @@ TEST_F(TextTests, TestReplaceText) {
         nullptr,
         nullptr,
         nullptr,
+        nullptr,
         std::make_shared< std::wstring >(baseTestOutPath + L"/" + remoteFileName),
         nullptr,
         nullptr
@@ -91,6 +92,7 @@ TEST_F(TextTests, TestReplaceTextOnline) {
         nullptr,
         nullptr,
         nullptr,
+        nullptr,
         nullptr
     ));
 
@@ -116,6 +118,7 @@ TEST_F(TextTests, TestSearch) {
         nullptr,
         nullptr,
         nullptr,
+        nullptr,
         nullptr
     ));
 
@@ -137,6 +140,7 @@ TEST_F(TextTests, TestSearchOnline) {
     std::shared_ptr<requests::SearchOnlineRequest> request(new requests::SearchOnlineRequest(
         requestDocument,
         std::make_shared< std::wstring >(L"aspose"),
+        nullptr,
         nullptr,
         nullptr,
         nullptr

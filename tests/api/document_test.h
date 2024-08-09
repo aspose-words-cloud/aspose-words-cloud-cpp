@@ -53,6 +53,7 @@ TEST_F(DocumentTests, TestGetDocument) {
         nullptr,
         nullptr,
         nullptr,
+        nullptr,
         nullptr
     ));
 

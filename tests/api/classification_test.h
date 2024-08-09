@@ -69,6 +69,7 @@ TEST_F(ClassificationTests, TestClassifyDocument) {
         nullptr,
         nullptr,
         nullptr,
+        nullptr,
         std::make_shared< std::wstring >(L"3"),
         nullptr
     ));
@@ -86,6 +87,7 @@ TEST_F(ClassificationTests, TestClassifyDocumentOnline) {
     auto requestDocument = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(localFile)), std::istream::binary));
     std::shared_ptr<requests::ClassifyDocumentOnlineRequest> request(new requests::ClassifyDocumentOnlineRequest(
         requestDocument,
+        nullptr,
         nullptr,
         nullptr,
         nullptr,

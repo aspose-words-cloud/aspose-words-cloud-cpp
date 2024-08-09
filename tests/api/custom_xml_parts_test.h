@@ -54,6 +54,7 @@ TEST_F(CustomXmlPartsTests, TestGetCustomXmlPart) {
         nullptr,
         nullptr,
         nullptr,
+        nullptr,
         nullptr
     ));
 
@@ -71,6 +72,7 @@ TEST_F(CustomXmlPartsTests, TestGetCustomXmlPartOnline) {
     std::shared_ptr<requests::GetCustomXmlPartOnlineRequest> request(new requests::GetCustomXmlPartOnlineRequest(
         requestDocument,
         std::make_shared< int32_t >(0),
+        nullptr,
         nullptr,
         nullptr,
         nullptr
@@ -99,6 +101,7 @@ TEST_F(CustomXmlPartsTests, TestGetCustomXmlParts) {
         nullptr,
         nullptr,
         nullptr,
+        nullptr,
         nullptr
     ));
 
@@ -117,6 +120,7 @@ TEST_F(CustomXmlPartsTests, TestGetCustomXmlPartsOnline) {
     auto requestDocument = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(localFile)), std::istream::binary));
     std::shared_ptr<requests::GetCustomXmlPartsOnlineRequest> request(new requests::GetCustomXmlPartsOnlineRequest(
         requestDocument,
+        nullptr,
         nullptr,
         nullptr,
         nullptr
@@ -154,6 +158,7 @@ TEST_F(CustomXmlPartsTests, TestInsertCustomXmlPart) {
         nullptr,
         nullptr,
         nullptr,
+        nullptr,
         nullptr
     ));
 
@@ -174,6 +179,7 @@ TEST_F(CustomXmlPartsTests, TestInsertCustomXmlPartOnline) {
     std::shared_ptr<requests::InsertCustomXmlPartOnlineRequest> request(new requests::InsertCustomXmlPartOnlineRequest(
         requestDocument,
         requestCustomXmlPart,
+        nullptr,
         nullptr,
         nullptr,
         nullptr,
@@ -212,6 +218,7 @@ TEST_F(CustomXmlPartsTests, TestUpdateCustomXmlPart) {
         nullptr,
         nullptr,
         nullptr,
+        nullptr,
         nullptr
     ));
 
@@ -232,6 +239,7 @@ TEST_F(CustomXmlPartsTests, TestUpdateCustomXmlPartOnline) {
         requestDocument,
         std::make_shared< int32_t >(0),
         requestCustomXmlPart,
+        nullptr,
         nullptr,
         nullptr,
         nullptr,
@@ -265,6 +273,7 @@ TEST_F(CustomXmlPartsTests, TestDeleteCustomXmlPart) {
         nullptr,
         nullptr,
         nullptr,
+        nullptr,
         std::make_shared< std::wstring >(baseTestOutPath + L"/" + remoteFileName),
         nullptr,
         nullptr
@@ -281,6 +290,7 @@ TEST_F(CustomXmlPartsTests, TestDeleteCustomXmlPartOnline) {
     std::shared_ptr<requests::DeleteCustomXmlPartOnlineRequest> request(new requests::DeleteCustomXmlPartOnlineRequest(
         requestDocument,
         std::make_shared< int32_t >(0),
+        nullptr,
         nullptr,
         nullptr,
         nullptr,
@@ -310,6 +320,7 @@ TEST_F(CustomXmlPartsTests, TestDeleteCustomXmlParts) {
         nullptr,
         nullptr,
         nullptr,
+        nullptr,
         std::make_shared< std::wstring >(baseTestOutPath + L"/" + remoteFileName),
         nullptr,
         nullptr
@@ -325,6 +336,7 @@ TEST_F(CustomXmlPartsTests, TestDeleteCustomXmlPartsOnline) {
     auto requestDocument = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(localFile)), std::istream::binary));
     std::shared_ptr<requests::DeleteCustomXmlPartsOnlineRequest> request(new requests::DeleteCustomXmlPartsOnlineRequest(
         requestDocument,
+        nullptr,
         nullptr,
         nullptr,
         nullptr,

@@ -59,6 +59,7 @@ TEST_F(CompatibilityTests, TestOptimizeDocument) {
         nullptr,
         nullptr,
         nullptr,
+        nullptr,
         nullptr
     ));
 
@@ -75,6 +76,7 @@ TEST_F(CompatibilityTests, TestOptimizeDocumentOnline) {
     std::shared_ptr<requests::OptimizeDocumentOnlineRequest> request(new requests::OptimizeDocumentOnlineRequest(
         requestDocument,
         requestOptions,
+        nullptr,
         nullptr,
         nullptr,
         nullptr,

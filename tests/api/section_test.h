@@ -54,6 +54,7 @@ TEST_F(SectionTests, TestGetSection) {
         nullptr,
         nullptr,
         nullptr,
+        nullptr,
         nullptr
     ));
 
@@ -72,6 +73,7 @@ TEST_F(SectionTests, TestGetSectionOnline) {
     std::shared_ptr<requests::GetSectionOnlineRequest> request(new requests::GetSectionOnlineRequest(
         requestDocument,
         std::make_shared< int32_t >(0),
+        nullptr,
         nullptr,
         nullptr,
         nullptr
@@ -97,6 +99,7 @@ TEST_F(SectionTests, TestGetSections) {
         nullptr,
         nullptr,
         nullptr,
+        nullptr,
         nullptr
     ));
 
@@ -114,6 +117,7 @@ TEST_F(SectionTests, TestGetSectionsOnline) {
     auto requestDocument = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(localFile)), std::istream::binary));
     std::shared_ptr<requests::GetSectionsOnlineRequest> request(new requests::GetSectionsOnlineRequest(
         requestDocument,
+        nullptr,
         nullptr,
         nullptr,
         nullptr
@@ -143,6 +147,7 @@ TEST_F(SectionTests, TestDeleteSection) {
         nullptr,
         nullptr,
         nullptr,
+        nullptr,
         nullptr
     ));
 
@@ -157,6 +162,7 @@ TEST_F(SectionTests, TestDeleteSectionOnline) {
     std::shared_ptr<requests::DeleteSectionOnlineRequest> request(new requests::DeleteSectionOnlineRequest(
         requestDocument,
         std::make_shared< int32_t >(0),
+        nullptr,
         nullptr,
         nullptr,
         nullptr,
@@ -189,6 +195,7 @@ TEST_F(SectionTests, TestMergeWithNext) {
         nullptr,
         nullptr,
         nullptr,
+        nullptr,
         nullptr
     ));
 
@@ -203,6 +210,7 @@ TEST_F(SectionTests, TestMergeWithNextOnline) {
     std::shared_ptr<requests::MergeWithNextOnlineRequest> request(new requests::MergeWithNextOnlineRequest(
         requestDocument,
         std::make_shared< int32_t >(0),
+        nullptr,
         nullptr,
         nullptr,
         nullptr,
@@ -235,6 +243,7 @@ TEST_F(SectionTests, TestInsertSection) {
         nullptr,
         nullptr,
         nullptr,
+        nullptr,
         nullptr
     ));
 
@@ -249,6 +258,7 @@ TEST_F(SectionTests, TestInsertSectionOnline) {
     std::shared_ptr<requests::InsertSectionOnlineRequest> request(new requests::InsertSectionOnlineRequest(
         requestDocument,
         std::make_shared< int32_t >(0),
+        nullptr,
         nullptr,
         nullptr,
         nullptr,
@@ -275,6 +285,7 @@ TEST_F(SectionTests, TestLinkHeaderFootersToPrevious) {
         std::make_shared< std::wstring >(remoteFileName),
         std::make_shared< int32_t >(1),
         std::make_shared< std::wstring >(remoteDataFolder),
+        nullptr,
         nullptr,
         nullptr,
         nullptr,

@@ -54,6 +54,7 @@ TEST_F(StructuredDocumentTagTests, TestGetStructuredDocumentTags) {
         nullptr,
         nullptr,
         nullptr,
+        nullptr,
         nullptr
     ));
 
@@ -68,6 +69,7 @@ TEST_F(StructuredDocumentTagTests, TestGetStructuredDocumentTagsOnline) {
     std::shared_ptr<requests::GetStructuredDocumentTagsOnlineRequest> request(new requests::GetStructuredDocumentTagsOnlineRequest(
         requestDocument,
         std::make_shared< std::wstring >(L"sections/0/body/paragraphs/0"),
+        nullptr,
         nullptr,
         nullptr,
         nullptr
@@ -95,6 +97,7 @@ TEST_F(StructuredDocumentTagTests, TestGetStructuredDocumentTag) {
         nullptr,
         nullptr,
         nullptr,
+        nullptr,
         nullptr
     ));
 
@@ -110,6 +113,7 @@ TEST_F(StructuredDocumentTagTests, TestGetStructuredDocumentTagOnline) {
         requestDocument,
         std::make_shared< int32_t >(0),
         std::make_shared< std::wstring >(L"sections/0/body/paragraphs/0"),
+        nullptr,
         nullptr,
         nullptr,
         nullptr
@@ -143,6 +147,7 @@ TEST_F(StructuredDocumentTagTests, TestInsertStructuredDocumentTag) {
         nullptr,
         nullptr,
         nullptr,
+        nullptr,
         nullptr
     ));
 
@@ -161,6 +166,7 @@ TEST_F(StructuredDocumentTagTests, TestInsertStructuredDocumentTagOnline) {
         requestDocument,
         requestStructuredDocumentTag,
         std::make_shared< std::wstring >(L"sections/0/body/paragraphs/0"),
+        nullptr,
         nullptr,
         nullptr,
         nullptr,
@@ -194,6 +200,7 @@ TEST_F(StructuredDocumentTagTests, TestDeleteStructuredDocumentTag) {
         nullptr,
         nullptr,
         nullptr,
+        nullptr,
         nullptr
     ));
 
@@ -209,6 +216,7 @@ TEST_F(StructuredDocumentTagTests, TestDeleteStructuredDocumentTagOnline) {
         requestDocument,
         std::make_shared< int32_t >(0),
         std::make_shared< std::wstring >(L"sections/0/body/paragraphs/0"),
+        nullptr,
         nullptr,
         nullptr,
         nullptr,
@@ -254,6 +262,7 @@ TEST_F(StructuredDocumentTagTests, TestUpdateStructuredDocumentTag) {
         nullptr,
         nullptr,
         nullptr,
+        nullptr,
         nullptr
     ));
 
@@ -281,6 +290,7 @@ TEST_F(StructuredDocumentTagTests, TestUpdateStructuredDocumentTagOnline) {
         requestStructuredDocumentTag,
         std::make_shared< int32_t >(0),
         std::make_shared< std::wstring >(L"sections/0/body/paragraphs/0"),
+        nullptr,
         nullptr,
         nullptr,
         nullptr,

@@ -26477,6 +26477,9 @@ namespace aspose::words::cloud::models {
         if (this->m_FitToViewPort) {
             json["FitToViewPort"] = *(this->m_FitToViewPort);
         }
+        if (this->m_MaxImageResolution) {
+            json["MaxImageResolution"] = *(this->m_MaxImageResolution);
+        }
         if (this->m_ResourcesFolder) {
             json["ResourcesFolder"] = convertUtf16(*(this->m_ResourcesFolder));
         }
@@ -26506,6 +26509,11 @@ namespace aspose::words::cloud::models {
         if (json.contains("FitToViewPort") && !json["FitToViewPort"].is_null()) {
             this->m_FitToViewPort = std::make_shared< bool >(
                 json["FitToViewPort"].get< bool >()
+            );
+        }
+        if (json.contains("MaxImageResolution") && !json["MaxImageResolution"].is_null()) {
+            this->m_MaxImageResolution = std::make_shared< int32_t >(
+                json["MaxImageResolution"].get< int32_t >()
             );
         }
         if (json.contains("ResourcesFolder") && !json["ResourcesFolder"].is_null()) {
@@ -26563,6 +26571,17 @@ namespace aspose::words::cloud::models {
     void SvgSaveOptionsData::setFitToViewPort(std::shared_ptr< bool > value)
     {
         this->m_FitToViewPort = value;
+    }
+
+
+    std::shared_ptr< int32_t > SvgSaveOptionsData::getMaxImageResolution() const
+    {
+        return this->m_MaxImageResolution;
+    }
+
+    void SvgSaveOptionsData::setMaxImageResolution(std::shared_ptr< int32_t > value)
+    {
+        this->m_MaxImageResolution = value;
     }
 
 

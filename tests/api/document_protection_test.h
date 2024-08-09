@@ -58,6 +58,7 @@ TEST_F(DocumentProtectionTests, TestProtectDocument) {
         nullptr,
         nullptr,
         nullptr,
+        nullptr,
         std::make_shared< std::wstring >(baseTestOutPath + L"/" + remoteFileName)
     ));
 
@@ -77,6 +78,7 @@ TEST_F(DocumentProtectionTests, TestProtectDocumentOnline) {
     std::shared_ptr<requests::ProtectDocumentOnlineRequest> request(new requests::ProtectDocumentOnlineRequest(
         requestDocument,
         requestProtectionRequest,
+        nullptr,
         nullptr,
         nullptr,
         nullptr,
@@ -104,6 +106,7 @@ TEST_F(DocumentProtectionTests, TestGetDocumentProtection) {
         nullptr,
         nullptr,
         nullptr,
+        nullptr,
         nullptr
     ));
 
@@ -117,6 +120,7 @@ TEST_F(DocumentProtectionTests, TestGetDocumentProtectionOnline) {
     auto requestDocument = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(localFile)), std::istream::binary));
     std::shared_ptr<requests::GetDocumentProtectionOnlineRequest> request(new requests::GetDocumentProtectionOnlineRequest(
         requestDocument,
+        nullptr,
         nullptr,
         nullptr,
         nullptr
@@ -144,6 +148,7 @@ TEST_F(DocumentProtectionTests, TestDeleteUnprotectDocument) {
         nullptr,
         nullptr,
         nullptr,
+        nullptr,
         nullptr
     ));
 
@@ -161,6 +166,7 @@ TEST_F(DocumentProtectionTests, TestDeleteUnprotectDocumentOnline) {
     auto requestDocument = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(localFilePath)), std::istream::binary));
     std::shared_ptr<requests::UnprotectDocumentOnlineRequest> request(new requests::UnprotectDocumentOnlineRequest(
         requestDocument,
+        nullptr,
         nullptr,
         nullptr,
         nullptr,

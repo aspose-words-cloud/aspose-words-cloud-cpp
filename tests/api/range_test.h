@@ -55,6 +55,7 @@ TEST_F(RangeTests, TestGetRangeText) {
         nullptr,
         nullptr,
         nullptr,
+        nullptr,
         nullptr
     ));
 
@@ -71,6 +72,7 @@ TEST_F(RangeTests, TestGetRangeTextOnline) {
         requestDocument,
         std::make_shared< std::wstring >(L"id0.0.0"),
         std::make_shared< std::wstring >(L"id0.0.1"),
+        nullptr,
         nullptr,
         nullptr,
         nullptr
@@ -99,6 +101,7 @@ TEST_F(RangeTests, TestRemoveRange) {
         nullptr,
         nullptr,
         nullptr,
+        nullptr,
         nullptr
     ));
 
@@ -114,6 +117,7 @@ TEST_F(RangeTests, TestRemoveRangeOnline) {
         requestDocument,
         std::make_shared< std::wstring >(L"id0.0.0"),
         std::make_shared< std::wstring >(L"id0.0.1"),
+        nullptr,
         nullptr,
         nullptr,
         nullptr,
@@ -145,6 +149,7 @@ TEST_F(RangeTests, TestSaveAsRange) {
         nullptr,
         nullptr,
         nullptr,
+        nullptr,
         nullptr
     ));
 
@@ -165,6 +170,7 @@ TEST_F(RangeTests, TestSaveAsRangeOnline) {
         std::make_shared< std::wstring >(L"id0.0.0"),
         requestDocumentParameters,
         std::make_shared< std::wstring >(L"id0.0.1"),
+        nullptr,
         nullptr,
         nullptr,
         nullptr
@@ -196,6 +202,7 @@ TEST_F(RangeTests, TestReplaceWithText) {
         nullptr,
         nullptr,
         nullptr,
+        nullptr,
         nullptr
     ));
 
@@ -216,6 +223,7 @@ TEST_F(RangeTests, TestReplaceWithTextOnline) {
         std::make_shared< std::wstring >(L"id0.0.0"),
         requestRangeText,
         std::make_shared< std::wstring >(L"id0.0.1"),
+        nullptr,
         nullptr,
         nullptr,
         nullptr,
@@ -243,6 +251,7 @@ TEST_F(RangeTests, TestTranslateNodeId) {
         nullptr,
         nullptr,
         nullptr,
+        nullptr,
         nullptr
     ));
 
@@ -258,6 +267,7 @@ TEST_F(RangeTests, TestTranslateNodeIdOnline) {
     std::shared_ptr<requests::TranslateNodeIdOnlineRequest> request(new requests::TranslateNodeIdOnlineRequest(
         requestDocument,
         std::make_shared< std::wstring >(L"id0.0.0"),
+        nullptr,
         nullptr,
         nullptr,
         nullptr

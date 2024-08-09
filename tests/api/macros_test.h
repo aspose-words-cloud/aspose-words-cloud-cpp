@@ -56,6 +56,7 @@ TEST_F(MacrosTests, TestDeleteMacros) {
         nullptr,
         nullptr,
         nullptr,
+        nullptr,
         nullptr
     ));
 
@@ -69,6 +70,7 @@ TEST_F(MacrosTests, TestDeleteMacrosOnline) {
     auto requestDocument = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(localFile)), std::istream::binary));
     std::shared_ptr<requests::DeleteMacrosOnlineRequest> request(new requests::DeleteMacrosOnlineRequest(
         requestDocument,
+        nullptr,
         nullptr,
         nullptr,
         nullptr,
