@@ -66,6 +66,7 @@ namespace aspose::words::cloud::models {
         { L"CustomXmlPartsCollection, _", [] () { return dynamic_cast< ModelBase* >(new CustomXmlPartsCollection()); }},
         { L"CustomXmlPartsResponse, _", [] () { return dynamic_cast< ModelBase* >(new CustomXmlPartsResponse()); }},
         { L"CustomXmlPartUpdate, _", [] () { return dynamic_cast< ModelBase* >(new CustomXmlPartUpdate()); }},
+        { L"DigitalSignatureDetails, _", [] () { return dynamic_cast< ModelBase* >(new DigitalSignatureDetails()); }},
         { L"DocmSaveOptionsData, _", [] () { return dynamic_cast< ModelBase* >(new DocmSaveOptionsData()); }},
         { L"DocSaveOptionsData, _", [] () { return dynamic_cast< ModelBase* >(new DocSaveOptionsData()); }},
         { L"Document, _", [] () { return dynamic_cast< ModelBase* >(new Document()); }},
@@ -234,6 +235,7 @@ namespace aspose::words::cloud::models {
         { L"SectionPageSetupResponse, _", [] () { return dynamic_cast< ModelBase* >(new SectionPageSetupResponse()); }},
         { L"SectionResponse, _", [] () { return dynamic_cast< ModelBase* >(new SectionResponse()); }},
         { L"Shading, _", [] () { return dynamic_cast< ModelBase* >(new Shading()); }},
+        { L"SignOptions, _", [] () { return dynamic_cast< ModelBase* >(new SignOptions()); }},
         { L"SplitDocumentResponse, _", [] () { return dynamic_cast< ModelBase* >(new SplitDocumentResponse()); }},
         { L"SplitDocumentResult, _", [] () { return dynamic_cast< ModelBase* >(new SplitDocumentResult()); }},
         { L"StatDataResponse, _", [] () { return dynamic_cast< ModelBase* >(new StatDataResponse()); }},
@@ -3439,6 +3441,70 @@ namespace aspose::words::cloud::models {
         CustomXmlPart::validate();
     }
 
+
+
+
+    /*
+     * DigitalSignatureDetails implementation
+     */
+    void DigitalSignatureDetails::toJson(void* jsonIfc) const
+    {
+        ::nlohmann::json& json = *((::nlohmann::json*)jsonIfc);
+        if (this->m_CertificateFilename) {
+            json["CertificateFilename"] = convertUtf16(*(this->m_CertificateFilename));
+        }
+        if (this->m_SignOptions) {
+            this->m_SignOptions->toJson(&json["SignOptions"]);
+        }
+    }
+
+    void DigitalSignatureDetails::fromJson(const void* jsonIfc)
+    {
+        ::nlohmann::json& json = *((::nlohmann::json*)jsonIfc);
+        if (json.contains("CertificateFilename") && !json["CertificateFilename"].is_null()) {
+            this->m_CertificateFilename = std::make_shared< std::wstring >(
+                convertUtf8( json["CertificateFilename"].get< std::string >() )
+            );
+        }
+        if (json.contains("SignOptions") && !json["SignOptions"].is_null()) {
+            this->m_SignOptions = createModelInstance< aspose::words::cloud::models::SignOptions >(L"SignOptions, _", json["SignOptions"]);
+        }
+    }
+
+    void DigitalSignatureDetails::getFileReferences(std::vector< FileReference* >& result)
+    {
+    }
+
+    void DigitalSignatureDetails::validate()
+    {
+
+        if (this->m_SignOptions != nullptr)
+        {
+            this->m_SignOptions->validate();
+        }
+
+    }
+
+    std::shared_ptr< std::wstring > DigitalSignatureDetails::getCertificateFilename() const
+    {
+        return this->m_CertificateFilename;
+    }
+
+    void DigitalSignatureDetails::setCertificateFilename(std::shared_ptr< std::wstring > value)
+    {
+        this->m_CertificateFilename = value;
+    }
+
+
+    std::shared_ptr< aspose::words::cloud::models::SignOptions > DigitalSignatureDetails::getSignOptions() const
+    {
+        return this->m_SignOptions;
+    }
+
+    void DigitalSignatureDetails::setSignOptions(std::shared_ptr< aspose::words::cloud::models::SignOptions > value)
+    {
+        this->m_SignOptions = value;
+    }
 
 
 
@@ -11516,6 +11582,9 @@ namespace aspose::words::cloud::models {
         if (this->m_PrettyFormat) {
             json["PrettyFormat"] = *(this->m_PrettyFormat);
         }
+        if (this->m_ReplaceBackslashWithYenSign) {
+            json["ReplaceBackslashWithYenSign"] = *(this->m_ReplaceBackslashWithYenSign);
+        }
         if (this->m_ResolveFontNames) {
             json["ResolveFontNames"] = *(this->m_ResolveFontNames);
         }
@@ -11703,6 +11772,11 @@ namespace aspose::words::cloud::models {
         if (json.contains("PrettyFormat") && !json["PrettyFormat"].is_null()) {
             this->m_PrettyFormat = std::make_shared< bool >(
                 json["PrettyFormat"].get< bool >()
+            );
+        }
+        if (json.contains("ReplaceBackslashWithYenSign") && !json["ReplaceBackslashWithYenSign"].is_null()) {
+            this->m_ReplaceBackslashWithYenSign = std::make_shared< bool >(
+                json["ReplaceBackslashWithYenSign"].get< bool >()
             );
         }
         if (json.contains("ResolveFontNames") && !json["ResolveFontNames"].is_null()) {
@@ -12106,6 +12180,17 @@ namespace aspose::words::cloud::models {
     void HtmlSaveOptionsData::setPrettyFormat(std::shared_ptr< bool > value)
     {
         this->m_PrettyFormat = value;
+    }
+
+
+    std::shared_ptr< bool > HtmlSaveOptionsData::getReplaceBackslashWithYenSign() const
+    {
+        return this->m_ReplaceBackslashWithYenSign;
+    }
+
+    void HtmlSaveOptionsData::setReplaceBackslashWithYenSign(std::shared_ptr< bool > value)
+    {
+        this->m_ReplaceBackslashWithYenSign = value;
     }
 
 
@@ -19850,6 +19935,9 @@ namespace aspose::words::cloud::models {
         if (this->m_UseCoreFonts) {
             json["UseCoreFonts"] = *(this->m_UseCoreFonts);
         }
+        if (this->m_UseSdtTagAsFormFieldName) {
+            json["UseSdtTagAsFormFieldName"] = *(this->m_UseSdtTagAsFormFieldName);
+        }
         if (this->m_ZoomBehavior) {
             json["ZoomBehavior"] = pdfSaveOptionsDataZoomBehaviorToString(*(this->m_ZoomBehavior));
         }
@@ -19982,6 +20070,11 @@ namespace aspose::words::cloud::models {
                 json["UseCoreFonts"].get< bool >()
             );
         }
+        if (json.contains("UseSdtTagAsFormFieldName") && !json["UseSdtTagAsFormFieldName"].is_null()) {
+            this->m_UseSdtTagAsFormFieldName = std::make_shared< bool >(
+                json["UseSdtTagAsFormFieldName"].get< bool >()
+            );
+        }
         if (json.contains("ZoomBehavior") && !json["ZoomBehavior"].is_null()) {
             this->m_ZoomBehavior = std::make_shared< aspose::words::cloud::models::PdfSaveOptionsData::ZoomBehavior >(
                 pdfSaveOptionsDataZoomBehaviorFromString(json["ZoomBehavior"].get< std::string >())
@@ -20043,6 +20136,7 @@ namespace aspose::words::cloud::models {
         {
             this->m_OutlineOptions->validate();
         }
+
 
 
 
@@ -20327,6 +20421,17 @@ namespace aspose::words::cloud::models {
     void PdfSaveOptionsData::setUseCoreFonts(std::shared_ptr< bool > value)
     {
         this->m_UseCoreFonts = value;
+    }
+
+
+    std::shared_ptr< bool > PdfSaveOptionsData::getUseSdtTagAsFormFieldName() const
+    {
+        return this->m_UseSdtTagAsFormFieldName;
+    }
+
+    void PdfSaveOptionsData::setUseSdtTagAsFormFieldName(std::shared_ptr< bool > value)
+    {
+        this->m_UseSdtTagAsFormFieldName = value;
     }
 
 
@@ -23510,6 +23615,142 @@ namespace aspose::words::cloud::models {
     void Shading::setTexture(std::shared_ptr< aspose::words::cloud::models::Shading::Texture > value)
     {
         this->m_Texture = value;
+    }
+
+
+
+    /*
+     * SignOptions implementation
+     */
+    void SignOptions::toJson(void* jsonIfc) const
+    {
+        ::nlohmann::json& json = *((::nlohmann::json*)jsonIfc);
+        if (this->m_Comments) {
+            json["Comments"] = convertUtf16(*(this->m_Comments));
+        }
+        if (this->m_DecryptionPassword) {
+            json["DecryptionPassword"] = convertUtf16(*(this->m_DecryptionPassword));
+        }
+        if (this->m_ProviderId) {
+            json["ProviderId"] = convertUtf16(*(this->m_ProviderId));
+        }
+        if (this->m_SignatureLineId) {
+            json["SignatureLineId"] = convertUtf16(*(this->m_SignatureLineId));
+        }
+        if (this->m_SignatureLineImageFilename) {
+            json["SignatureLineImageFilename"] = convertUtf16(*(this->m_SignatureLineImageFilename));
+        }
+        if (this->m_SignTime) {
+            json["SignTime"] = convertUtf16(*(this->m_SignTime));
+        }
+    }
+
+    void SignOptions::fromJson(const void* jsonIfc)
+    {
+        ::nlohmann::json& json = *((::nlohmann::json*)jsonIfc);
+        if (json.contains("Comments") && !json["Comments"].is_null()) {
+            this->m_Comments = std::make_shared< std::wstring >(
+                convertUtf8( json["Comments"].get< std::string >() )
+            );
+        }
+        if (json.contains("DecryptionPassword") && !json["DecryptionPassword"].is_null()) {
+            this->m_DecryptionPassword = std::make_shared< std::wstring >(
+                convertUtf8( json["DecryptionPassword"].get< std::string >() )
+            );
+        }
+        if (json.contains("ProviderId") && !json["ProviderId"].is_null()) {
+            this->m_ProviderId = std::make_shared< std::wstring >(
+                convertUtf8( json["ProviderId"].get< std::string >() )
+            );
+        }
+        if (json.contains("SignatureLineId") && !json["SignatureLineId"].is_null()) {
+            this->m_SignatureLineId = std::make_shared< std::wstring >(
+                convertUtf8( json["SignatureLineId"].get< std::string >() )
+            );
+        }
+        if (json.contains("SignatureLineImageFilename") && !json["SignatureLineImageFilename"].is_null()) {
+            this->m_SignatureLineImageFilename = std::make_shared< std::wstring >(
+                convertUtf8( json["SignatureLineImageFilename"].get< std::string >() )
+            );
+        }
+        if (json.contains("SignTime") && !json["SignTime"].is_null()) {
+            this->m_SignTime = std::make_shared< std::wstring >(
+                convertUtf8( json["SignTime"].get< std::string >() )
+            );
+        }
+    }
+
+    void SignOptions::getFileReferences(std::vector< FileReference* >& result)
+    {
+    }
+
+    void SignOptions::validate()
+    {
+    }
+
+    std::shared_ptr< std::wstring > SignOptions::getComments() const
+    {
+        return this->m_Comments;
+    }
+
+    void SignOptions::setComments(std::shared_ptr< std::wstring > value)
+    {
+        this->m_Comments = value;
+    }
+
+
+    std::shared_ptr< std::wstring > SignOptions::getDecryptionPassword() const
+    {
+        return this->m_DecryptionPassword;
+    }
+
+    void SignOptions::setDecryptionPassword(std::shared_ptr< std::wstring > value)
+    {
+        this->m_DecryptionPassword = value;
+    }
+
+
+    std::shared_ptr< std::wstring > SignOptions::getProviderId() const
+    {
+        return this->m_ProviderId;
+    }
+
+    void SignOptions::setProviderId(std::shared_ptr< std::wstring > value)
+    {
+        this->m_ProviderId = value;
+    }
+
+
+    std::shared_ptr< std::wstring > SignOptions::getSignatureLineId() const
+    {
+        return this->m_SignatureLineId;
+    }
+
+    void SignOptions::setSignatureLineId(std::shared_ptr< std::wstring > value)
+    {
+        this->m_SignatureLineId = value;
+    }
+
+
+    std::shared_ptr< std::wstring > SignOptions::getSignatureLineImageFilename() const
+    {
+        return this->m_SignatureLineImageFilename;
+    }
+
+    void SignOptions::setSignatureLineImageFilename(std::shared_ptr< std::wstring > value)
+    {
+        this->m_SignatureLineImageFilename = value;
+    }
+
+
+    std::shared_ptr< std::wstring > SignOptions::getSignTime() const
+    {
+        return this->m_SignTime;
+    }
+
+    void SignOptions::setSignTime(std::shared_ptr< std::wstring > value)
+    {
+        this->m_SignTime = value;
     }
 
 
@@ -30634,6 +30875,9 @@ namespace aspose::words::cloud::models {
         if (this->m_ImagesFolderAlias) {
             json["ImagesFolderAlias"] = convertUtf16(*(this->m_ImagesFolderAlias));
         }
+        if (this->m_ReplaceBackslashWithYenSign) {
+            json["ReplaceBackslashWithYenSign"] = *(this->m_ReplaceBackslashWithYenSign);
+        }
         if (this->m_SaveFormat) {
             json["SaveFormat"] = convertUtf16(*(this->m_SaveFormat));
         }
@@ -30651,6 +30895,11 @@ namespace aspose::words::cloud::models {
         if (json.contains("ImagesFolderAlias") && !json["ImagesFolderAlias"].is_null()) {
             this->m_ImagesFolderAlias = std::make_shared< std::wstring >(
                 convertUtf8( json["ImagesFolderAlias"].get< std::string >() )
+            );
+        }
+        if (json.contains("ReplaceBackslashWithYenSign") && !json["ReplaceBackslashWithYenSign"].is_null()) {
+            this->m_ReplaceBackslashWithYenSign = std::make_shared< bool >(
+                json["ReplaceBackslashWithYenSign"].get< bool >()
             );
         }
         if (json.contains("SaveFormat") && !json["SaveFormat"].is_null()) {
@@ -30688,6 +30937,17 @@ namespace aspose::words::cloud::models {
     void XamlFlowSaveOptionsData::setImagesFolderAlias(std::shared_ptr< std::wstring > value)
     {
         this->m_ImagesFolderAlias = value;
+    }
+
+
+    std::shared_ptr< bool > XamlFlowSaveOptionsData::getReplaceBackslashWithYenSign() const
+    {
+        return this->m_ReplaceBackslashWithYenSign;
+    }
+
+    void XamlFlowSaveOptionsData::setReplaceBackslashWithYenSign(std::shared_ptr< bool > value)
+    {
+        this->m_ReplaceBackslashWithYenSign = value;
     }
 
 
@@ -30815,6 +31075,9 @@ namespace aspose::words::cloud::models {
         if (this->m_BookmarksOutlineLevel) {
             json["BookmarksOutlineLevel"] = *(this->m_BookmarksOutlineLevel);
         }
+        if (this->m_DigitalSignatureDetails) {
+            this->m_DigitalSignatureDetails->toJson(&json["DigitalSignatureDetails"]);
+        }
         if (this->m_HeadingsOutlineLevels) {
             json["HeadingsOutlineLevels"] = *(this->m_HeadingsOutlineLevels);
         }
@@ -30837,6 +31100,9 @@ namespace aspose::words::cloud::models {
             this->m_BookmarksOutlineLevel = std::make_shared< int32_t >(
                 json["BookmarksOutlineLevel"].get< int32_t >()
             );
+        }
+        if (json.contains("DigitalSignatureDetails") && !json["DigitalSignatureDetails"].is_null()) {
+            this->m_DigitalSignatureDetails = createModelInstance< aspose::words::cloud::models::DigitalSignatureDetails >(L"DigitalSignatureDetails, _", json["DigitalSignatureDetails"]);
         }
         if (json.contains("HeadingsOutlineLevels") && !json["HeadingsOutlineLevels"].is_null()) {
             this->m_HeadingsOutlineLevels = std::make_shared< int32_t >(
@@ -30866,6 +31132,14 @@ namespace aspose::words::cloud::models {
     {
         FixedPageSaveOptionsData::validate();
 
+        if (this->m_DigitalSignatureDetails != nullptr)
+        {
+            this->m_DigitalSignatureDetails->validate();
+        }
+
+
+
+
         if (this->m_OutlineOptions != nullptr)
         {
             this->m_OutlineOptions->validate();
@@ -30883,6 +31157,17 @@ namespace aspose::words::cloud::models {
     void XpsSaveOptionsData::setBookmarksOutlineLevel(std::shared_ptr< int32_t > value)
     {
         this->m_BookmarksOutlineLevel = value;
+    }
+
+
+    std::shared_ptr< aspose::words::cloud::models::DigitalSignatureDetails > XpsSaveOptionsData::getDigitalSignatureDetails() const
+    {
+        return this->m_DigitalSignatureDetails;
+    }
+
+    void XpsSaveOptionsData::setDigitalSignatureDetails(std::shared_ptr< aspose::words::cloud::models::DigitalSignatureDetails > value)
+    {
+        this->m_DigitalSignatureDetails = value;
     }
 
 

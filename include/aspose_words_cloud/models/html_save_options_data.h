@@ -521,6 +521,25 @@ namespace aspose::words::cloud::models {
 
 
         /// <summary>
+        /// Gets or sets the flag that indicates whether backslash characters should be replaced with yen signs.
+        /// Default value is false.
+        /// By default, Aspose.Words mimics MS Word's behavior and doesn't replace backslash characters with yen signs in
+        /// generated HTML documents. However, previous versions of Aspose.Words performed such replacements in certain
+        /// scenarios. This flag enables backward compatibility with previous versions of Aspose.Words.
+        /// </summary>
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< bool > getReplaceBackslashWithYenSign() const;
+
+        /// <summary>
+        /// Gets or sets the flag that indicates whether backslash characters should be replaced with yen signs.
+        /// Default value is false.
+        /// By default, Aspose.Words mimics MS Word's behavior and doesn't replace backslash characters with yen signs in
+        /// generated HTML documents. However, previous versions of Aspose.Words performed such replacements in certain
+        /// scenarios. This flag enables backward compatibility with previous versions of Aspose.Words.
+        /// </summary>
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setReplaceBackslashWithYenSign(std::shared_ptr< bool > value);
+
+
+        /// <summary>
         /// Gets or sets a value indicating whether font family names used in the document are resolved and substituted according to FontSettings when being written into HTML-based formats.
         /// The default value is false.
         /// </summary>
@@ -618,6 +637,7 @@ namespace aspose::words::cloud::models {
         std::shared_ptr< aspose::words::cloud::models::HtmlSaveOptionsData::MetafileFormat > m_MetafileFormat;
         std::shared_ptr< aspose::words::cloud::models::HtmlSaveOptionsData::OfficeMathOutputMode > m_OfficeMathOutputMode;
         std::shared_ptr< bool > m_PrettyFormat;
+        std::shared_ptr< bool > m_ReplaceBackslashWithYenSign;
         std::shared_ptr< bool > m_ResolveFontNames;
         std::shared_ptr< std::wstring > m_ResourceFolder;
         std::shared_ptr< std::wstring > m_ResourceFolderAlias;

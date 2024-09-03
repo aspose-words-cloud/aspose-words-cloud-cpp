@@ -458,6 +458,21 @@ namespace aspose::words::cloud::models {
 
 
         /// <summary>
+        /// Gets or sets a value indicating whether to use SDT control Tag or Id property as a name of form field in PDF.
+        /// The default value is false.When set to false, SDT control Id property is used as a name of form field in PDF.When set to true, SDT control Tag property is used as a name of form field in PDF.If set to true and Tag is empty, Id property will be used as a form field name.If set to true and Tag values are not unique, duplicate Tag values will be altered to build
+        /// unique PDF form field names.
+        /// </summary>
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< bool > getUseSdtTagAsFormFieldName() const;
+
+        /// <summary>
+        /// Gets or sets a value indicating whether to use SDT control Tag or Id property as a name of form field in PDF.
+        /// The default value is false.When set to false, SDT control Id property is used as a name of form field in PDF.When set to true, SDT control Tag property is used as a name of form field in PDF.If set to true and Tag is empty, Id property will be used as a form field name.If set to true and Tag values are not unique, duplicate Tag values will be altered to build
+        /// unique PDF form field names.
+        /// </summary>
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setUseSdtTagAsFormFieldName(std::shared_ptr< bool > value);
+
+
+        /// <summary>
         /// Gets or sets the option that controls what type of zoom should be applied when a document is opened with a PDF viewer.
         /// </summary>
         ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< aspose::words::cloud::models::PdfSaveOptionsData::ZoomBehavior > getZoomBehavior() const;
@@ -512,6 +527,7 @@ namespace aspose::words::cloud::models {
         std::shared_ptr< aspose::words::cloud::models::PdfSaveOptionsData::TextCompression > m_TextCompression;
         std::shared_ptr< bool > m_UseBookFoldPrintingSettings;
         std::shared_ptr< bool > m_UseCoreFonts;
+        std::shared_ptr< bool > m_UseSdtTagAsFormFieldName;
         std::shared_ptr< aspose::words::cloud::models::PdfSaveOptionsData::ZoomBehavior > m_ZoomBehavior;
         std::shared_ptr< int32_t > m_ZoomFactor;
         std::shared_ptr< std::wstring > m_SaveFormat = std::make_shared<std::wstring>(L"pdf");

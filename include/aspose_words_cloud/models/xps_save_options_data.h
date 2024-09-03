@@ -25,6 +25,7 @@
 
 #pragma once
 #include "model_base.h"
+#include "digital_signature_details.h"
 #include "fixed_page_save_options_data.h"
 #include "outline_options_data.h"
 
@@ -54,6 +55,17 @@ namespace aspose::words::cloud::models {
         /// Gets or sets the level in the XPS document outline at which to display Word bookmarks.
         /// </summary>
         ASPOSE_WORDS_CLOUD_EXPORT virtual void setBookmarksOutlineLevel(std::shared_ptr< int32_t > value);
+
+
+        /// <summary>
+        /// Gets or sets the details for signing the output document.
+        /// </summary>
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< aspose::words::cloud::models::DigitalSignatureDetails > getDigitalSignatureDetails() const;
+
+        /// <summary>
+        /// Gets or sets the details for signing the output document.
+        /// </summary>
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setDigitalSignatureDetails(std::shared_ptr< aspose::words::cloud::models::DigitalSignatureDetails > value);
 
 
         /// <summary>
@@ -98,6 +110,7 @@ namespace aspose::words::cloud::models {
 
     protected:
         std::shared_ptr< int32_t > m_BookmarksOutlineLevel;
+        std::shared_ptr< aspose::words::cloud::models::DigitalSignatureDetails > m_DigitalSignatureDetails;
         std::shared_ptr< int32_t > m_HeadingsOutlineLevels;
         std::shared_ptr< aspose::words::cloud::models::OutlineOptionsData > m_OutlineOptions;
         std::shared_ptr< bool > m_UseBookFoldPrintingSettings;
