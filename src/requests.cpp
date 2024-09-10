@@ -10030,6 +10030,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > mailMergeDataFile,
         const std::shared_ptr< std::wstring > cleanup,
         const std::shared_ptr< bool > useWholeParagraphAsRegion,
+        const std::shared_ptr< bool > mergeWholeDocument,
         const std::shared_ptr< std::wstring > destFileName
     ) : 
         m_Name(name),
@@ -10045,6 +10046,7 @@ namespace aspose::words::cloud::requests {
         m_MailMergeDataFile(mailMergeDataFile),
         m_Cleanup(cleanup),
         m_UseWholeParagraphAsRegion(useWholeParagraphAsRegion),
+        m_MergeWholeDocument(mergeWholeDocument),
         m_DestFileName(destFileName)
     {
     }
@@ -10114,6 +10116,11 @@ namespace aspose::words::cloud::requests {
         return m_UseWholeParagraphAsRegion;
     }
 
+    const std::shared_ptr< bool > ExecuteMailMergeRequest::getMergeWholeDocument() const
+    {
+        return m_MergeWholeDocument;
+    }
+
     const std::shared_ptr< std::wstring > ExecuteMailMergeRequest::getDestFileName() const
     {
         return m_DestFileName;
@@ -10137,6 +10144,7 @@ namespace aspose::words::cloud::requests {
         if (m_MailMergeDataFile) result->addQueryParam(L"mailMergeDataFile", *m_MailMergeDataFile);
         if (m_Cleanup) result->addQueryParam(L"cleanup", *m_Cleanup);
         if (m_UseWholeParagraphAsRegion) result->addQueryParam(L"useWholeParagraphAsRegion", *m_UseWholeParagraphAsRegion);
+        if (m_MergeWholeDocument) result->addQueryParam(L"mergeWholeDocument", *m_MergeWholeDocument);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
         if (m_Data)
         {
@@ -10175,6 +10183,7 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::istream > data,
         const std::shared_ptr< aspose::words::cloud::models::FieldOptions > options,
         const std::shared_ptr< bool > withRegions,
+        const std::shared_ptr< bool > mergeWholeDocument,
         const std::shared_ptr< std::wstring > cleanup,
         const std::shared_ptr< std::wstring > documentFileName
     ) : 
@@ -10182,6 +10191,7 @@ namespace aspose::words::cloud::requests {
         m_Data(data),
         m_Options(options),
         m_WithRegions(withRegions),
+        m_MergeWholeDocument(mergeWholeDocument),
         m_Cleanup(cleanup),
         m_DocumentFileName(documentFileName)
     {
@@ -10207,6 +10217,11 @@ namespace aspose::words::cloud::requests {
         return m_WithRegions;
     }
 
+    const std::shared_ptr< bool > ExecuteMailMergeOnlineRequest::getMergeWholeDocument() const
+    {
+        return m_MergeWholeDocument;
+    }
+
     const std::shared_ptr< std::wstring > ExecuteMailMergeOnlineRequest::getCleanup() const
     {
         return m_Cleanup;
@@ -10224,6 +10239,7 @@ namespace aspose::words::cloud::requests {
         result->setMethod(HttpRequestMethod::HttpPUT);
         result->setPath(L"/words/MailMerge");
         if (m_WithRegions) result->addQueryParam(L"withRegions", *m_WithRegions);
+        if (m_MergeWholeDocument) result->addQueryParam(L"mergeWholeDocument", *m_MergeWholeDocument);
         if (m_Cleanup) result->addQueryParam(L"cleanup", *m_Cleanup);
         if (m_DocumentFileName) result->addQueryParam(L"documentFileName", *m_DocumentFileName);
         if (m_Template)
@@ -19037,6 +19053,175 @@ namespace aspose::words::cloud::requests {
     {
         return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
             new aspose::words::cloud::responses::GetSectionsOnlineResponse()
+        );
+    }
+
+    /*
+     * GetSignatures request implementation
+     */
+    GetSignaturesRequest::GetSignaturesRequest(
+        const std::shared_ptr< std::wstring > name,
+        const std::shared_ptr< std::wstring > folder,
+        const std::shared_ptr< std::wstring > storage,
+        const std::shared_ptr< std::wstring > loadEncoding,
+        const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport
+    ) : 
+        m_Name(name),
+        m_Folder(folder),
+        m_Storage(storage),
+        m_LoadEncoding(loadEncoding),
+        m_Password(password),
+        m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport)
+    {
+    }
+
+    const std::shared_ptr< std::wstring > GetSignaturesRequest::getName() const
+    {
+        return m_Name;
+    }
+
+    const std::shared_ptr< std::wstring > GetSignaturesRequest::getFolder() const
+    {
+        return m_Folder;
+    }
+
+    const std::shared_ptr< std::wstring > GetSignaturesRequest::getStorage() const
+    {
+        return m_Storage;
+    }
+
+    const std::shared_ptr< std::wstring > GetSignaturesRequest::getLoadEncoding() const
+    {
+        return m_LoadEncoding;
+    }
+
+    const std::shared_ptr< std::wstring > GetSignaturesRequest::getPassword() const
+    {
+        return m_Password;
+    }
+
+    const std::shared_ptr< std::wstring > GetSignaturesRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
+    }
+
+    const std::shared_ptr< bool > GetSignaturesRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetSignaturesRequest::createHttpRequest(ApiClient* apiClient) const
+    {
+        std::vector<models::FileReference*> additionalFilesContent;
+        auto result = std::make_shared<HttpRequestData>();
+        result->setMethod(HttpRequestMethod::HttpGET);
+        result->setPath(L"/words/{name}/signatures");
+        if (!m_Name) throw aspose::words::cloud::ApiException(400, L"Parameter 'Name' is required.");
+        result->setPathParam(L"{name}", *m_Name);
+        if (m_Folder) result->addQueryParam(L"folder", *m_Folder);
+        if (m_Storage) result->addQueryParam(L"storage", *m_Storage);
+        if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
+        if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
+
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
+        {
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
+        }
+
+        return result;
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > GetSignaturesRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::GetSignaturesResponse()
+        );
+    }
+
+    /*
+     * GetSignaturesOnline request implementation
+     */
+    GetSignaturesOnlineRequest::GetSignaturesOnlineRequest(
+        const std::shared_ptr< std::istream > document,
+        const std::shared_ptr< std::wstring > loadEncoding,
+        const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport
+    ) : 
+        m_Document(document),
+        m_LoadEncoding(loadEncoding),
+        m_Password(password),
+        m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport)
+    {
+    }
+
+    const std::shared_ptr< std::istream > GetSignaturesOnlineRequest::getDocument() const
+    {
+        return m_Document;
+    }
+
+    const std::shared_ptr< std::wstring > GetSignaturesOnlineRequest::getLoadEncoding() const
+    {
+        return m_LoadEncoding;
+    }
+
+    const std::shared_ptr< std::wstring > GetSignaturesOnlineRequest::getPassword() const
+    {
+        return m_Password;
+    }
+
+    const std::shared_ptr< std::wstring > GetSignaturesOnlineRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
+    }
+
+    const std::shared_ptr< bool > GetSignaturesOnlineRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetSignaturesOnlineRequest::createHttpRequest(ApiClient* apiClient) const
+    {
+        std::vector<models::FileReference*> additionalFilesContent;
+        auto result = std::make_shared<HttpRequestData>();
+        result->setMethod(HttpRequestMethod::HttpPUT);
+        result->setPath(L"/words/online/get/signatures");
+        if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
+        if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
+        if (m_Document)
+        {
+            result->addFormDataParam(L"document", *m_Document);
+        }
+        else throw aspose::words::cloud::ApiException(400, L"Parameter 'Document' is required.");
+
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
+        {
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
+        }
+
+        return result;
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > GetSignaturesOnlineRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::GetSignaturesOnlineResponse()
         );
     }
 
@@ -28178,6 +28363,191 @@ namespace aspose::words::cloud::requests {
     }
 
     /*
+     * RemoveAllSignatures request implementation
+     */
+    RemoveAllSignaturesRequest::RemoveAllSignaturesRequest(
+        const std::shared_ptr< std::wstring > name,
+        const std::shared_ptr< std::wstring > folder,
+        const std::shared_ptr< std::wstring > storage,
+        const std::shared_ptr< std::wstring > loadEncoding,
+        const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport,
+        const std::shared_ptr< std::wstring > destFileName
+    ) : 
+        m_Name(name),
+        m_Folder(folder),
+        m_Storage(storage),
+        m_LoadEncoding(loadEncoding),
+        m_Password(password),
+        m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport),
+        m_DestFileName(destFileName)
+    {
+    }
+
+    const std::shared_ptr< std::wstring > RemoveAllSignaturesRequest::getName() const
+    {
+        return m_Name;
+    }
+
+    const std::shared_ptr< std::wstring > RemoveAllSignaturesRequest::getFolder() const
+    {
+        return m_Folder;
+    }
+
+    const std::shared_ptr< std::wstring > RemoveAllSignaturesRequest::getStorage() const
+    {
+        return m_Storage;
+    }
+
+    const std::shared_ptr< std::wstring > RemoveAllSignaturesRequest::getLoadEncoding() const
+    {
+        return m_LoadEncoding;
+    }
+
+    const std::shared_ptr< std::wstring > RemoveAllSignaturesRequest::getPassword() const
+    {
+        return m_Password;
+    }
+
+    const std::shared_ptr< std::wstring > RemoveAllSignaturesRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
+    }
+
+    const std::shared_ptr< bool > RemoveAllSignaturesRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
+    const std::shared_ptr< std::wstring > RemoveAllSignaturesRequest::getDestFileName() const
+    {
+        return m_DestFileName;
+    }
+
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > RemoveAllSignaturesRequest::createHttpRequest(ApiClient* apiClient) const
+    {
+        std::vector<models::FileReference*> additionalFilesContent;
+        auto result = std::make_shared<HttpRequestData>();
+        result->setMethod(HttpRequestMethod::HttpDELETE);
+        result->setPath(L"/words/{name}/signatures");
+        if (!m_Name) throw aspose::words::cloud::ApiException(400, L"Parameter 'Name' is required.");
+        result->setPathParam(L"{name}", *m_Name);
+        if (m_Folder) result->addQueryParam(L"folder", *m_Folder);
+        if (m_Storage) result->addQueryParam(L"storage", *m_Storage);
+        if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
+        if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
+        if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
+
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
+        {
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
+        }
+
+        return result;
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > RemoveAllSignaturesRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::RemoveAllSignaturesResponse()
+        );
+    }
+
+    /*
+     * RemoveAllSignaturesOnline request implementation
+     */
+    RemoveAllSignaturesOnlineRequest::RemoveAllSignaturesOnlineRequest(
+        const std::shared_ptr< std::istream > document,
+        const std::shared_ptr< std::wstring > loadEncoding,
+        const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport,
+        const std::shared_ptr< std::wstring > destFileName
+    ) : 
+        m_Document(document),
+        m_LoadEncoding(loadEncoding),
+        m_Password(password),
+        m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport),
+        m_DestFileName(destFileName)
+    {
+    }
+
+    const std::shared_ptr< std::istream > RemoveAllSignaturesOnlineRequest::getDocument() const
+    {
+        return m_Document;
+    }
+
+    const std::shared_ptr< std::wstring > RemoveAllSignaturesOnlineRequest::getLoadEncoding() const
+    {
+        return m_LoadEncoding;
+    }
+
+    const std::shared_ptr< std::wstring > RemoveAllSignaturesOnlineRequest::getPassword() const
+    {
+        return m_Password;
+    }
+
+    const std::shared_ptr< std::wstring > RemoveAllSignaturesOnlineRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
+    }
+
+    const std::shared_ptr< bool > RemoveAllSignaturesOnlineRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
+    const std::shared_ptr< std::wstring > RemoveAllSignaturesOnlineRequest::getDestFileName() const
+    {
+        return m_DestFileName;
+    }
+
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > RemoveAllSignaturesOnlineRequest::createHttpRequest(ApiClient* apiClient) const
+    {
+        std::vector<models::FileReference*> additionalFilesContent;
+        auto result = std::make_shared<HttpRequestData>();
+        result->setMethod(HttpRequestMethod::HttpPUT);
+        result->setPath(L"/words/online/delete/signatures");
+        if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
+        if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
+        if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
+        if (m_Document)
+        {
+            result->addFormDataParam(L"document", *m_Document);
+        }
+        else throw aspose::words::cloud::ApiException(400, L"Parameter 'Document' is required.");
+
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
+        {
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
+        }
+
+        return result;
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > RemoveAllSignaturesOnlineRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::RemoveAllSignaturesOnlineResponse()
+        );
+    }
+
+    /*
      * RemoveRange request implementation
      */
     RemoveRangeRequest::RemoveRangeRequest(
@@ -31259,6 +31629,227 @@ namespace aspose::words::cloud::requests {
     {
         return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
             new aspose::words::cloud::responses::SearchOnlineResponse()
+        );
+    }
+
+    /*
+     * SignDocument request implementation
+     */
+    SignDocumentRequest::SignDocumentRequest(
+        const std::shared_ptr< std::wstring > name,
+        const std::shared_ptr< std::wstring > certificatePath,
+        const std::shared_ptr< std::wstring > certificatePassword,
+        const std::shared_ptr< std::wstring > folder,
+        const std::shared_ptr< std::wstring > storage,
+        const std::shared_ptr< std::wstring > loadEncoding,
+        const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport,
+        const std::shared_ptr< std::wstring > destFileName
+    ) : 
+        m_Name(name),
+        m_CertificatePath(certificatePath),
+        m_CertificatePassword(certificatePassword),
+        m_Folder(folder),
+        m_Storage(storage),
+        m_LoadEncoding(loadEncoding),
+        m_Password(password),
+        m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport),
+        m_DestFileName(destFileName)
+    {
+    }
+
+    const std::shared_ptr< std::wstring > SignDocumentRequest::getName() const
+    {
+        return m_Name;
+    }
+
+    const std::shared_ptr< std::wstring > SignDocumentRequest::getCertificatePath() const
+    {
+        return m_CertificatePath;
+    }
+
+    const std::shared_ptr< std::wstring > SignDocumentRequest::getCertificatePassword() const
+    {
+        return m_CertificatePassword;
+    }
+
+    const std::shared_ptr< std::wstring > SignDocumentRequest::getFolder() const
+    {
+        return m_Folder;
+    }
+
+    const std::shared_ptr< std::wstring > SignDocumentRequest::getStorage() const
+    {
+        return m_Storage;
+    }
+
+    const std::shared_ptr< std::wstring > SignDocumentRequest::getLoadEncoding() const
+    {
+        return m_LoadEncoding;
+    }
+
+    const std::shared_ptr< std::wstring > SignDocumentRequest::getPassword() const
+    {
+        return m_Password;
+    }
+
+    const std::shared_ptr< std::wstring > SignDocumentRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
+    }
+
+    const std::shared_ptr< bool > SignDocumentRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
+    const std::shared_ptr< std::wstring > SignDocumentRequest::getDestFileName() const
+    {
+        return m_DestFileName;
+    }
+
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > SignDocumentRequest::createHttpRequest(ApiClient* apiClient) const
+    {
+        std::vector<models::FileReference*> additionalFilesContent;
+        auto result = std::make_shared<HttpRequestData>();
+        result->setMethod(HttpRequestMethod::HttpPOST);
+        result->setPath(L"/words/{name}/signatures");
+        if (!m_Name) throw aspose::words::cloud::ApiException(400, L"Parameter 'Name' is required.");
+        result->setPathParam(L"{name}", *m_Name);
+        if (m_CertificatePath) result->addQueryParam(L"certificatePath", *m_CertificatePath);
+        else throw aspose::words::cloud::ApiException(400, L"Parameter 'CertificatePath' is required.");
+        if (m_CertificatePassword) result->addQueryParam(L"certificatePassword", *m_CertificatePassword);
+        else throw aspose::words::cloud::ApiException(400, L"Parameter 'CertificatePassword' is required.");
+        if (m_Folder) result->addQueryParam(L"folder", *m_Folder);
+        if (m_Storage) result->addQueryParam(L"storage", *m_Storage);
+        if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
+        if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
+        if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
+
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
+        {
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
+        }
+
+        return result;
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > SignDocumentRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::SignDocumentResponse()
+        );
+    }
+
+    /*
+     * SignDocumentOnline request implementation
+     */
+    SignDocumentOnlineRequest::SignDocumentOnlineRequest(
+        const std::shared_ptr< std::istream > document,
+        const std::shared_ptr< std::wstring > certificatePath,
+        const std::shared_ptr< std::wstring > certificatePassword,
+        const std::shared_ptr< std::wstring > loadEncoding,
+        const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport,
+        const std::shared_ptr< std::wstring > destFileName
+    ) : 
+        m_Document(document),
+        m_CertificatePath(certificatePath),
+        m_CertificatePassword(certificatePassword),
+        m_LoadEncoding(loadEncoding),
+        m_Password(password),
+        m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport),
+        m_DestFileName(destFileName)
+    {
+    }
+
+    const std::shared_ptr< std::istream > SignDocumentOnlineRequest::getDocument() const
+    {
+        return m_Document;
+    }
+
+    const std::shared_ptr< std::wstring > SignDocumentOnlineRequest::getCertificatePath() const
+    {
+        return m_CertificatePath;
+    }
+
+    const std::shared_ptr< std::wstring > SignDocumentOnlineRequest::getCertificatePassword() const
+    {
+        return m_CertificatePassword;
+    }
+
+    const std::shared_ptr< std::wstring > SignDocumentOnlineRequest::getLoadEncoding() const
+    {
+        return m_LoadEncoding;
+    }
+
+    const std::shared_ptr< std::wstring > SignDocumentOnlineRequest::getPassword() const
+    {
+        return m_Password;
+    }
+
+    const std::shared_ptr< std::wstring > SignDocumentOnlineRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
+    }
+
+    const std::shared_ptr< bool > SignDocumentOnlineRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
+    const std::shared_ptr< std::wstring > SignDocumentOnlineRequest::getDestFileName() const
+    {
+        return m_DestFileName;
+    }
+
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > SignDocumentOnlineRequest::createHttpRequest(ApiClient* apiClient) const
+    {
+        std::vector<models::FileReference*> additionalFilesContent;
+        auto result = std::make_shared<HttpRequestData>();
+        result->setMethod(HttpRequestMethod::HttpPUT);
+        result->setPath(L"/words/online/post/signatures");
+        if (m_CertificatePath) result->addQueryParam(L"certificatePath", *m_CertificatePath);
+        else throw aspose::words::cloud::ApiException(400, L"Parameter 'CertificatePath' is required.");
+        if (m_CertificatePassword) result->addQueryParam(L"certificatePassword", *m_CertificatePassword);
+        else throw aspose::words::cloud::ApiException(400, L"Parameter 'CertificatePassword' is required.");
+        if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
+        if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
+        if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
+        if (m_Document)
+        {
+            result->addFormDataParam(L"document", *m_Document);
+        }
+        else throw aspose::words::cloud::ApiException(400, L"Parameter 'Document' is required.");
+
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
+        {
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
+        }
+
+        return result;
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > SignDocumentOnlineRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::SignDocumentOnlineResponse()
         );
     }
 

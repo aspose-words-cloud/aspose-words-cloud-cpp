@@ -235,6 +235,8 @@ namespace aspose::words::cloud::models {
         { L"SectionPageSetupResponse, _", [] () { return dynamic_cast< ModelBase* >(new SectionPageSetupResponse()); }},
         { L"SectionResponse, _", [] () { return dynamic_cast< ModelBase* >(new SectionResponse()); }},
         { L"Shading, _", [] () { return dynamic_cast< ModelBase* >(new Shading()); }},
+        { L"Signature, _", [] () { return dynamic_cast< ModelBase* >(new Signature()); }},
+        { L"SignatureCollectionResponse, _", [] () { return dynamic_cast< ModelBase* >(new SignatureCollectionResponse()); }},
         { L"SignOptions, _", [] () { return dynamic_cast< ModelBase* >(new SignOptions()); }},
         { L"SplitDocumentResponse, _", [] () { return dynamic_cast< ModelBase* >(new SplitDocumentResponse()); }},
         { L"SplitDocumentResult, _", [] () { return dynamic_cast< ModelBase* >(new SplitDocumentResult()); }},
@@ -23615,6 +23617,275 @@ namespace aspose::words::cloud::models {
     void Shading::setTexture(std::shared_ptr< aspose::words::cloud::models::Shading::Texture > value)
     {
         this->m_Texture = value;
+    }
+
+
+
+    /*
+     * Signature implementation
+     */
+    inline std::string signatureSignatureTypeToString(aspose::words::cloud::models::Signature::SignatureType value)
+    {
+        if (value == aspose::words::cloud::models::Signature::SignatureType::UNKNOWN) return "Unknown";
+        if (value == aspose::words::cloud::models::Signature::SignatureType::CRYPTO_API) return "CryptoApi";
+        if (value == aspose::words::cloud::models::Signature::SignatureType::XML_DSIG) return "XmlDsig";
+        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
+    }
+
+    inline aspose::words::cloud::models::Signature::SignatureType signatureSignatureTypeFromString(const std::string& value)
+    {
+        if (value == "Unknown") return aspose::words::cloud::models::Signature::SignatureType::UNKNOWN;
+        if (value == "CryptoApi") return aspose::words::cloud::models::Signature::SignatureType::CRYPTO_API;
+        if (value == "XmlDsig") return aspose::words::cloud::models::Signature::SignatureType::XML_DSIG;
+        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
+    }
+    void Signature::toJson(void* jsonIfc) const
+    {
+        ::nlohmann::json& json = *((::nlohmann::json*)jsonIfc);
+        if (this->m_Comments) {
+            json["Comments"] = convertUtf16(*(this->m_Comments));
+        }
+        if (this->m_IssuerName) {
+            json["IssuerName"] = convertUtf16(*(this->m_IssuerName));
+        }
+        if (this->m_IsValid) {
+            json["IsValid"] = *(this->m_IsValid);
+        }
+        if (this->m_SignatureType) {
+            json["SignatureType"] = signatureSignatureTypeToString(*(this->m_SignatureType));
+        }
+        if (this->m_SignatureValue) {
+            json["SignatureValue"] = *(this->m_SignatureValue);
+        }
+        if (this->m_SignTime) {
+            json["SignTime"] = convertUtf16(*(this->m_SignTime));
+        }
+        if (this->m_SubjectName) {
+            json["SubjectName"] = convertUtf16(*(this->m_SubjectName));
+        }
+    }
+
+    void Signature::fromJson(const void* jsonIfc)
+    {
+        ::nlohmann::json& json = *((::nlohmann::json*)jsonIfc);
+        if (json.contains("Comments") && !json["Comments"].is_null()) {
+            this->m_Comments = std::make_shared< std::wstring >(
+                convertUtf8( json["Comments"].get< std::string >() )
+            );
+        }
+        if (json.contains("IssuerName") && !json["IssuerName"].is_null()) {
+            this->m_IssuerName = std::make_shared< std::wstring >(
+                convertUtf8( json["IssuerName"].get< std::string >() )
+            );
+        }
+        if (json.contains("IsValid") && !json["IsValid"].is_null()) {
+            this->m_IsValid = std::make_shared< bool >(
+                json["IsValid"].get< bool >()
+            );
+        }
+        if (json.contains("SignatureType") && !json["SignatureType"].is_null()) {
+            this->m_SignatureType = std::make_shared< aspose::words::cloud::models::Signature::SignatureType >(
+                signatureSignatureTypeFromString(json["SignatureType"].get< std::string >())
+            );
+        }
+        if (json.contains("SignatureValue") && !json["SignatureValue"].is_null()) {
+            this->m_SignatureValue = std::make_shared< std::istream >(
+                json["SignatureValue"].get< std::istream >()
+            );
+        }
+        if (json.contains("SignTime") && !json["SignTime"].is_null()) {
+            this->m_SignTime = std::make_shared< std::wstring >(
+                convertUtf8( json["SignTime"].get< std::string >() )
+            );
+        }
+        if (json.contains("SubjectName") && !json["SubjectName"].is_null()) {
+            this->m_SubjectName = std::make_shared< std::wstring >(
+                convertUtf8( json["SubjectName"].get< std::string >() )
+            );
+        }
+    }
+
+    void Signature::getFileReferences(std::vector< FileReference* >& result)
+    {
+    }
+
+    void Signature::validate()
+    {
+        if (this->m_IsValid == nullptr)
+        {
+            throw aspose::words::cloud::ApiException(400, L"Property IsValid in Signature is required.");
+        }
+
+        if (this->m_SignatureType == nullptr)
+        {
+            throw aspose::words::cloud::ApiException(400, L"Property SignatureType in Signature is required.");
+        }
+
+        if (this->m_SignTime == nullptr)
+        {
+            throw aspose::words::cloud::ApiException(400, L"Property SignTime in Signature is required.");
+        }
+
+    }
+
+    std::shared_ptr< std::wstring > Signature::getComments() const
+    {
+        return this->m_Comments;
+    }
+
+    void Signature::setComments(std::shared_ptr< std::wstring > value)
+    {
+        this->m_Comments = value;
+    }
+
+
+    std::shared_ptr< std::wstring > Signature::getIssuerName() const
+    {
+        return this->m_IssuerName;
+    }
+
+    void Signature::setIssuerName(std::shared_ptr< std::wstring > value)
+    {
+        this->m_IssuerName = value;
+    }
+
+
+    std::shared_ptr< bool > Signature::getIsValid() const
+    {
+        return this->m_IsValid;
+    }
+
+    void Signature::setIsValid(std::shared_ptr< bool > value)
+    {
+        this->m_IsValid = value;
+    }
+
+
+    std::shared_ptr< aspose::words::cloud::models::Signature::SignatureType > Signature::getSignatureType() const
+    {
+        return this->m_SignatureType;
+    }
+
+    void Signature::setSignatureType(std::shared_ptr< aspose::words::cloud::models::Signature::SignatureType > value)
+    {
+        this->m_SignatureType = value;
+    }
+
+
+    std::shared_ptr< std::istream > Signature::getSignatureValue() const
+    {
+        return this->m_SignatureValue;
+    }
+
+    void Signature::setSignatureValue(std::shared_ptr< std::istream > value)
+    {
+        this->m_SignatureValue = value;
+    }
+
+
+    std::shared_ptr< std::wstring > Signature::getSignTime() const
+    {
+        return this->m_SignTime;
+    }
+
+    void Signature::setSignTime(std::shared_ptr< std::wstring > value)
+    {
+        this->m_SignTime = value;
+    }
+
+
+    std::shared_ptr< std::wstring > Signature::getSubjectName() const
+    {
+        return this->m_SubjectName;
+    }
+
+    void Signature::setSubjectName(std::shared_ptr< std::wstring > value)
+    {
+        this->m_SubjectName = value;
+    }
+
+
+
+    /*
+     * SignatureCollectionResponse implementation
+     */
+    void SignatureCollectionResponse::toJson(void* jsonIfc) const
+    {
+        WordsResponse::toJson(jsonIfc);
+        ::nlohmann::json& json = *((::nlohmann::json*)jsonIfc);
+        if (this->m_IsValid) {
+            json["IsValid"] = *(this->m_IsValid);
+        }
+        if (this->m_Signatures) {
+            json["Signatures"] = ::nlohmann::json::array();
+            for (auto& element : *(this->m_Signatures)) {
+                element->toJson(&json["Signatures"].emplace_back());
+            }
+        }
+    }
+
+    void SignatureCollectionResponse::fromJson(const void* jsonIfc)
+    {
+        WordsResponse::fromJson(jsonIfc);
+        ::nlohmann::json& json = *((::nlohmann::json*)jsonIfc);
+        if (json.contains("IsValid") && !json["IsValid"].is_null()) {
+            this->m_IsValid = std::make_shared< bool >(
+                json["IsValid"].get< bool >()
+            );
+        }
+        if (json.contains("Signatures") && !json["Signatures"].is_null()) {
+            this->m_Signatures = std::make_shared< std::vector<std::shared_ptr<aspose::words::cloud::models::Signature>> >();
+            for (auto& element : json["Signatures"]) {
+                this->m_Signatures->emplace_back(createModelInstance< aspose::words::cloud::models::Signature >(L"Signature, _", element));
+            }
+        }
+    }
+
+    void SignatureCollectionResponse::getFileReferences(std::vector< FileReference* >& result)
+    {
+    }
+
+    void SignatureCollectionResponse::validate()
+    {
+        WordsResponse::validate();
+        if (this->m_IsValid == nullptr)
+        {
+            throw aspose::words::cloud::ApiException(400, L"Property IsValid in SignatureCollectionResponse is required.");
+        }
+
+
+        if (this->m_Signatures != nullptr)
+        {
+            for (auto& elementSignatures : *(this->m_Signatures))
+            {
+                if (elementSignatures != nullptr)
+                {
+                    elementSignatures->validate();
+                }
+            }
+        }
+
+    }
+
+    std::shared_ptr< bool > SignatureCollectionResponse::getIsValid() const
+    {
+        return this->m_IsValid;
+    }
+
+    void SignatureCollectionResponse::setIsValid(std::shared_ptr< bool > value)
+    {
+        this->m_IsValid = value;
+    }
+
+
+    std::shared_ptr< std::vector<std::shared_ptr<aspose::words::cloud::models::Signature>> > SignatureCollectionResponse::getSignatures() const
+    {
+        return this->m_Signatures;
+    }
+
+    void SignatureCollectionResponse::setSignatures(std::shared_ptr< std::vector<std::shared_ptr<aspose::words::cloud::models::Signature>> > value)
+    {
+        this->m_Signatures = value;
     }
 
 

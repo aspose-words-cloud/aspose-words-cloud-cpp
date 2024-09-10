@@ -67,6 +67,7 @@ TEST_F(ExecuteTemplateWithFieldOptionsTests, TestExecuteTemplateWithFieldOptions
         nullptr,
         nullptr,
         nullptr,
+        nullptr,
         std::make_shared< std::wstring >(baseTestOutPath + L"/" + remoteFileName)
     ));
 
@@ -92,6 +93,7 @@ TEST_F(ExecuteTemplateWithFieldOptionsTests, TestExecuteTemplateOnlineWithFieldO
         requestTemplate,
         requestData,
         requestOptions,
+        nullptr,
         nullptr,
         nullptr,
         nullptr
