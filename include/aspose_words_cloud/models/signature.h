@@ -97,14 +97,14 @@ namespace aspose::words::cloud::models {
 
 
         /// <summary>
-        /// Gets or sets an array of bytes representing a signature value.
+        /// Gets or sets an array of bytes representing a signature value as base64 string.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< std::istream > getSignatureValue() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< std::wstring > getSignatureValue() const;
 
         /// <summary>
-        /// Gets or sets an array of bytes representing a signature value.
+        /// Gets or sets an array of bytes representing a signature value as base64 string.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT virtual void setSignatureValue(std::shared_ptr< std::istream > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setSignatureValue(std::shared_ptr< std::wstring > value);
 
 
         /// <summary>
@@ -134,7 +134,7 @@ namespace aspose::words::cloud::models {
         std::shared_ptr< std::wstring > m_IssuerName;
         std::shared_ptr< bool > m_IsValid;
         std::shared_ptr< aspose::words::cloud::models::Signature::SignatureType > m_SignatureType;
-        std::shared_ptr< std::istream > m_SignatureValue;
+        std::shared_ptr< std::wstring > m_SignatureValue;
         std::shared_ptr< std::wstring > m_SignTime;
         std::shared_ptr< std::wstring > m_SubjectName;
     };

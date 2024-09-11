@@ -23655,7 +23655,7 @@ namespace aspose::words::cloud::models {
             json["SignatureType"] = signatureSignatureTypeToString(*(this->m_SignatureType));
         }
         if (this->m_SignatureValue) {
-            json["SignatureValue"] = *(this->m_SignatureValue);
+            json["SignatureValue"] = convertUtf16(*(this->m_SignatureValue));
         }
         if (this->m_SignTime) {
             json["SignTime"] = convertUtf16(*(this->m_SignTime));
@@ -23689,8 +23689,8 @@ namespace aspose::words::cloud::models {
             );
         }
         if (json.contains("SignatureValue") && !json["SignatureValue"].is_null()) {
-            this->m_SignatureValue = std::make_shared< std::istream >(
-                json["SignatureValue"].get< std::istream >()
+            this->m_SignatureValue = std::make_shared< std::wstring >(
+                convertUtf8( json["SignatureValue"].get< std::string >() )
             );
         }
         if (json.contains("SignTime") && !json["SignTime"].is_null()) {
@@ -23772,12 +23772,12 @@ namespace aspose::words::cloud::models {
     }
 
 
-    std::shared_ptr< std::istream > Signature::getSignatureValue() const
+    std::shared_ptr< std::wstring > Signature::getSignatureValue() const
     {
         return this->m_SignatureValue;
     }
 
-    void Signature::setSignatureValue(std::shared_ptr< std::istream > value)
+    void Signature::setSignatureValue(std::shared_ptr< std::wstring > value)
     {
         this->m_SignatureValue = value;
     }
