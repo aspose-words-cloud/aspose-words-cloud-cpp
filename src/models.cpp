@@ -23624,21 +23624,6 @@ namespace aspose::words::cloud::models {
     /*
      * Signature implementation
      */
-    inline std::string signatureSignatureTypeToString(aspose::words::cloud::models::Signature::SignatureType value)
-    {
-        if (value == aspose::words::cloud::models::Signature::SignatureType::UNKNOWN) return "Unknown";
-        if (value == aspose::words::cloud::models::Signature::SignatureType::CRYPTO_API) return "CryptoApi";
-        if (value == aspose::words::cloud::models::Signature::SignatureType::XML_DSIG) return "XmlDsig";
-        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
-    }
-
-    inline aspose::words::cloud::models::Signature::SignatureType signatureSignatureTypeFromString(const std::string& value)
-    {
-        if (value == "Unknown") return aspose::words::cloud::models::Signature::SignatureType::UNKNOWN;
-        if (value == "CryptoApi") return aspose::words::cloud::models::Signature::SignatureType::CRYPTO_API;
-        if (value == "XmlDsig") return aspose::words::cloud::models::Signature::SignatureType::XML_DSIG;
-        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
-    }
     void Signature::toJson(void* jsonIfc) const
     {
         ::nlohmann::json& json = *((::nlohmann::json*)jsonIfc);
@@ -23652,7 +23637,7 @@ namespace aspose::words::cloud::models {
             json["IsValid"] = *(this->m_IsValid);
         }
         if (this->m_SignatureType) {
-            json["SignatureType"] = signatureSignatureTypeToString(*(this->m_SignatureType));
+            json["SignatureType"] = convertUtf16(*(this->m_SignatureType));
         }
         if (this->m_SignatureValue) {
             json["SignatureValue"] = convertUtf16(*(this->m_SignatureValue));
@@ -23684,8 +23669,8 @@ namespace aspose::words::cloud::models {
             );
         }
         if (json.contains("SignatureType") && !json["SignatureType"].is_null()) {
-            this->m_SignatureType = std::make_shared< aspose::words::cloud::models::Signature::SignatureType >(
-                signatureSignatureTypeFromString(json["SignatureType"].get< std::string >())
+            this->m_SignatureType = std::make_shared< std::wstring >(
+                convertUtf8( json["SignatureType"].get< std::string >() )
             );
         }
         if (json.contains("SignatureValue") && !json["SignatureValue"].is_null()) {
@@ -23714,11 +23699,6 @@ namespace aspose::words::cloud::models {
         if (this->m_IsValid == nullptr)
         {
             throw aspose::words::cloud::ApiException(400, L"Property IsValid in Signature is required.");
-        }
-
-        if (this->m_SignatureType == nullptr)
-        {
-            throw aspose::words::cloud::ApiException(400, L"Property SignatureType in Signature is required.");
         }
 
         if (this->m_SignTime == nullptr)
@@ -23761,12 +23741,12 @@ namespace aspose::words::cloud::models {
     }
 
 
-    std::shared_ptr< aspose::words::cloud::models::Signature::SignatureType > Signature::getSignatureType() const
+    std::shared_ptr< std::wstring > Signature::getSignatureType() const
     {
         return this->m_SignatureType;
     }
 
-    void Signature::setSignatureType(std::shared_ptr< aspose::words::cloud::models::Signature::SignatureType > value)
+    void Signature::setSignatureType(std::shared_ptr< std::wstring > value)
     {
         this->m_SignatureType = value;
     }

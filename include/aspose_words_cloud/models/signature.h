@@ -34,16 +34,6 @@ namespace aspose::words::cloud::models {
     class Signature : public ModelBase
     {
     public:
-        /// <summary>
-        /// Gets or sets the type of the digital signature.
-        /// </summary>
-        enum class SignatureType
-        { 
-            UNKNOWN,
-            CRYPTO_API,
-            XML_DSIG
-        };
-
 
         ASPOSE_WORDS_CLOUD_EXPORT virtual ~Signature() = default;
         ASPOSE_WORDS_CLOUD_EXPORT virtual void toJson(void* jsonIfc) const override;
@@ -88,12 +78,12 @@ namespace aspose::words::cloud::models {
         /// <summary>
         /// Gets or sets the type of the digital signature.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< aspose::words::cloud::models::Signature::SignatureType > getSignatureType() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< std::wstring > getSignatureType() const;
 
         /// <summary>
         /// Gets or sets the type of the digital signature.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT virtual void setSignatureType(std::shared_ptr< aspose::words::cloud::models::Signature::SignatureType > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setSignatureType(std::shared_ptr< std::wstring > value);
 
 
         /// <summary>
@@ -133,7 +123,7 @@ namespace aspose::words::cloud::models {
         std::shared_ptr< std::wstring > m_Comments;
         std::shared_ptr< std::wstring > m_IssuerName;
         std::shared_ptr< bool > m_IsValid;
-        std::shared_ptr< aspose::words::cloud::models::Signature::SignatureType > m_SignatureType;
+        std::shared_ptr< std::wstring > m_SignatureType;
         std::shared_ptr< std::wstring > m_SignatureValue;
         std::shared_ptr< std::wstring > m_SignTime;
         std::shared_ptr< std::wstring > m_SubjectName;
