@@ -1995,6 +1995,28 @@ namespace aspose::words::cloud::api {
         return response->getModel();
     }
 
+    std::shared_ptr< aspose::words::cloud::models::SignatureCollectionResponse > WordsApi::getSignatures(std::shared_ptr<aspose::words::cloud::requests::GetSignaturesRequest> request)
+    {
+        auto response = std::make_shared< aspose::words::cloud::responses::GetSignaturesResponse >();
+        m_ApiClient->call( request->createHttpRequest(m_ApiClient.get()), *response);
+        if (response->getStatusCode() != 200) {
+            throw aspose::words::cloud::ApiException(response->getStatusCode(), response->getErrorMessage());
+        }
+
+        return response->getModel();
+    }
+
+    std::shared_ptr< aspose::words::cloud::models::SignatureCollectionResponse > WordsApi::getSignaturesOnline(std::shared_ptr<aspose::words::cloud::requests::GetSignaturesOnlineRequest> request)
+    {
+        auto response = std::make_shared< aspose::words::cloud::responses::GetSignaturesOnlineResponse >();
+        m_ApiClient->call( request->createHttpRequest(m_ApiClient.get()), *response);
+        if (response->getStatusCode() != 200) {
+            throw aspose::words::cloud::ApiException(response->getStatusCode(), response->getErrorMessage());
+        }
+
+        return response->getModel();
+    }
+
     std::shared_ptr< aspose::words::cloud::models::StructuredDocumentTagResponse > WordsApi::getStructuredDocumentTag(std::shared_ptr<aspose::words::cloud::requests::GetStructuredDocumentTagRequest> request)
     {
         auto response = std::make_shared< aspose::words::cloud::responses::GetStructuredDocumentTagResponse >();
@@ -2863,6 +2885,28 @@ namespace aspose::words::cloud::api {
         return response;
     }
 
+    std::shared_ptr< aspose::words::cloud::models::SignatureCollectionResponse > WordsApi::removeAllSignatures(std::shared_ptr<aspose::words::cloud::requests::RemoveAllSignaturesRequest> request)
+    {
+        auto response = std::make_shared< aspose::words::cloud::responses::RemoveAllSignaturesResponse >();
+        m_ApiClient->call( request->createHttpRequest(m_ApiClient.get()), *response);
+        if (response->getStatusCode() != 200) {
+            throw aspose::words::cloud::ApiException(response->getStatusCode(), response->getErrorMessage());
+        }
+
+        return response->getModel();
+    }
+
+    std::shared_ptr<aspose::words::cloud::responses::RemoveAllSignaturesOnlineResponse> WordsApi::removeAllSignaturesOnline(std::shared_ptr<aspose::words::cloud::requests::RemoveAllSignaturesOnlineRequest> request)
+    {
+        auto response = std::make_shared< aspose::words::cloud::responses::RemoveAllSignaturesOnlineResponse >();
+        m_ApiClient->call( request->createHttpRequest(m_ApiClient.get()), *response);
+        if (response->getStatusCode() != 200) {
+            throw aspose::words::cloud::ApiException(response->getStatusCode(), response->getErrorMessage());
+        }
+
+        return response;
+    }
+
     std::shared_ptr< aspose::words::cloud::models::DocumentResponse > WordsApi::removeRange(std::shared_ptr<aspose::words::cloud::requests::RemoveRangeRequest> request)
     {
         auto response = std::make_shared< aspose::words::cloud::responses::RemoveRangeResponse >();
@@ -3134,6 +3178,28 @@ namespace aspose::words::cloud::api {
         }
 
         return response->getModel();
+    }
+
+    std::shared_ptr< aspose::words::cloud::models::SignatureCollectionResponse > WordsApi::signDocument(std::shared_ptr<aspose::words::cloud::requests::SignDocumentRequest> request)
+    {
+        auto response = std::make_shared< aspose::words::cloud::responses::SignDocumentResponse >();
+        m_ApiClient->call( request->createHttpRequest(m_ApiClient.get()), *response);
+        if (response->getStatusCode() != 200) {
+            throw aspose::words::cloud::ApiException(response->getStatusCode(), response->getErrorMessage());
+        }
+
+        return response->getModel();
+    }
+
+    std::shared_ptr<aspose::words::cloud::responses::SignDocumentOnlineResponse> WordsApi::signDocumentOnline(std::shared_ptr<aspose::words::cloud::requests::SignDocumentOnlineRequest> request)
+    {
+        auto response = std::make_shared< aspose::words::cloud::responses::SignDocumentOnlineResponse >();
+        m_ApiClient->call( request->createHttpRequest(m_ApiClient.get()), *response);
+        if (response->getStatusCode() != 200) {
+            throw aspose::words::cloud::ApiException(response->getStatusCode(), response->getErrorMessage());
+        }
+
+        return response;
     }
 
     std::shared_ptr< aspose::words::cloud::models::SplitDocumentResponse > WordsApi::splitDocument(std::shared_ptr<aspose::words::cloud::requests::SplitDocumentRequest> request)

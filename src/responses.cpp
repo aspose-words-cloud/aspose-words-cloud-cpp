@@ -2751,6 +2751,32 @@ namespace aspose::words::cloud::responses {
     }
 
     /*
+     * GetSignatures request implementation
+     */
+    std::shared_ptr< aspose::words::cloud::models::SignatureCollectionResponse > GetSignaturesResponse::getModel() const
+    {
+        return m_Model;
+    }
+
+    void GetSignaturesResponse::deserialize(const std::string& contentType, const std::string_view& response)
+    {
+        m_Model = createModelInstance< aspose::words::cloud::models::SignatureCollectionResponse >(L"SignatureCollectionResponse, _", response);
+    }
+
+    /*
+     * GetSignaturesOnline request implementation
+     */
+    std::shared_ptr< aspose::words::cloud::models::SignatureCollectionResponse > GetSignaturesOnlineResponse::getModel() const
+    {
+        return m_Model;
+    }
+
+    void GetSignaturesOnlineResponse::deserialize(const std::string& contentType, const std::string_view& response)
+    {
+        m_Model = createModelInstance< aspose::words::cloud::models::SignatureCollectionResponse >(L"SignatureCollectionResponse, _", response);
+    }
+
+    /*
      * GetStructuredDocumentTag request implementation
      */
     std::shared_ptr< aspose::words::cloud::models::StructuredDocumentTagResponse > GetStructuredDocumentTagResponse::getModel() const
@@ -4106,6 +4132,47 @@ namespace aspose::words::cloud::responses {
     }
 
     /*
+     * RemoveAllSignatures request implementation
+     */
+    std::shared_ptr< aspose::words::cloud::models::SignatureCollectionResponse > RemoveAllSignaturesResponse::getModel() const
+    {
+        return m_Model;
+    }
+
+    void RemoveAllSignaturesResponse::deserialize(const std::string& contentType, const std::string_view& response)
+    {
+        m_Model = createModelInstance< aspose::words::cloud::models::SignatureCollectionResponse >(L"SignatureCollectionResponse, _", response);
+    }
+
+    /*
+     * RemoveAllSignaturesOnline request implementation
+     */
+    std::shared_ptr< aspose::words::cloud::models::SignatureCollectionResponse > RemoveAllSignaturesOnlineResponse::getModel() const
+    {
+        return m_Model;
+    }
+
+    std::shared_ptr< std::map<std::wstring, std::shared_ptr<std::istream>> > RemoveAllSignaturesOnlineResponse::getDocument() const
+    {
+        return m_Document;
+    }
+
+    void RemoveAllSignaturesOnlineResponse::deserialize(const std::string& contentType, const std::string_view& response)
+    {
+        std::unordered_map<std::string, std::tuple<std::string, std::string, std::string_view> > parts;
+        parseMultipart(response, parts);
+        if (parts.find("Model") != parts.end()) {
+            const auto& part = parts.at("Model");
+            auto json = ::nlohmann::json::parse(std::get<2>(part));
+            m_Model = createModelInstance< aspose::words::cloud::models::SignatureCollectionResponse >(L"SignatureCollectionResponse, _", std::get<2>(part));
+        }
+        if (parts.find("Document") != parts.end()) {
+            const auto& part = parts.at("Document");
+            m_Document = parseFilesCollection(part);
+        }
+    }
+
+    /*
      * RemoveRange request implementation
      */
     std::shared_ptr< aspose::words::cloud::models::DocumentResponse > RemoveRangeResponse::getModel() const
@@ -4513,6 +4580,47 @@ namespace aspose::words::cloud::responses {
     void SearchOnlineResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
         m_Model = createModelInstance< aspose::words::cloud::models::SearchResponse >(L"SearchResponse, _", response);
+    }
+
+    /*
+     * SignDocument request implementation
+     */
+    std::shared_ptr< aspose::words::cloud::models::SignatureCollectionResponse > SignDocumentResponse::getModel() const
+    {
+        return m_Model;
+    }
+
+    void SignDocumentResponse::deserialize(const std::string& contentType, const std::string_view& response)
+    {
+        m_Model = createModelInstance< aspose::words::cloud::models::SignatureCollectionResponse >(L"SignatureCollectionResponse, _", response);
+    }
+
+    /*
+     * SignDocumentOnline request implementation
+     */
+    std::shared_ptr< aspose::words::cloud::models::SignatureCollectionResponse > SignDocumentOnlineResponse::getModel() const
+    {
+        return m_Model;
+    }
+
+    std::shared_ptr< std::map<std::wstring, std::shared_ptr<std::istream>> > SignDocumentOnlineResponse::getDocument() const
+    {
+        return m_Document;
+    }
+
+    void SignDocumentOnlineResponse::deserialize(const std::string& contentType, const std::string_view& response)
+    {
+        std::unordered_map<std::string, std::tuple<std::string, std::string, std::string_view> > parts;
+        parseMultipart(response, parts);
+        if (parts.find("Model") != parts.end()) {
+            const auto& part = parts.at("Model");
+            auto json = ::nlohmann::json::parse(std::get<2>(part));
+            m_Model = createModelInstance< aspose::words::cloud::models::SignatureCollectionResponse >(L"SignatureCollectionResponse, _", std::get<2>(part));
+        }
+        if (parts.find("Document") != parts.end()) {
+            const auto& part = parts.at("Document");
+            m_Document = parseFilesCollection(part);
+        }
     }
 
     /*

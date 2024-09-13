@@ -63,6 +63,7 @@ TEST_F(ExecuteTemplateTests, TestExecuteTemplate) {
         nullptr,
         nullptr,
         nullptr,
+        nullptr,
         std::make_shared< std::wstring >(baseTestOutPath + L"/" + remoteFileName)
     ));
 
@@ -83,6 +84,7 @@ TEST_F(ExecuteTemplateTests, TestExecuteTemplateOnline) {
     std::shared_ptr<requests::ExecuteMailMergeOnlineRequest> request(new requests::ExecuteMailMergeOnlineRequest(
         requestTemplate,
         requestData,
+        nullptr,
         nullptr,
         nullptr,
         nullptr,

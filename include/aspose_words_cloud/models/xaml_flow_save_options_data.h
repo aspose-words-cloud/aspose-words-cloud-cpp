@@ -66,6 +66,25 @@ namespace aspose::words::cloud::models {
 
 
         /// <summary>
+        /// Gets or sets the flag that indicates whether backslash characters should be replaced with yen signs.
+        /// Default value is false.
+        /// By default, Aspose.Words mimics MS Word's behavior and doesn't replace backslash characters with yen signs in
+        /// generated HTML documents. However, previous versions of Aspose.Words performed such replacements in certain
+        /// scenarios. This flag enables backward compatibility with previous versions of Aspose.Words.
+        /// </summary>
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< bool > getReplaceBackslashWithYenSign() const;
+
+        /// <summary>
+        /// Gets or sets the flag that indicates whether backslash characters should be replaced with yen signs.
+        /// Default value is false.
+        /// By default, Aspose.Words mimics MS Word's behavior and doesn't replace backslash characters with yen signs in
+        /// generated HTML documents. However, previous versions of Aspose.Words performed such replacements in certain
+        /// scenarios. This flag enables backward compatibility with previous versions of Aspose.Words.
+        /// </summary>
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setReplaceBackslashWithYenSign(std::shared_ptr< bool > value);
+
+
+        /// <summary>
         /// Gets the format of save.
         /// </summary>
         ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< std::wstring > getSaveFormat() const override;
@@ -75,6 +94,7 @@ namespace aspose::words::cloud::models {
     protected:
         std::shared_ptr< std::wstring > m_ImagesFolder;
         std::shared_ptr< std::wstring > m_ImagesFolderAlias;
+        std::shared_ptr< bool > m_ReplaceBackslashWithYenSign;
         std::shared_ptr< std::wstring > m_SaveFormat = std::make_shared<std::wstring>(L"xamlflow");
     };
 }
