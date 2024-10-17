@@ -155,7 +155,7 @@ TEST_F(RevisionsTests, TestGetAllRevisions) {
 
     auto actual = getApi()->getAllRevisions(request);
     ASSERT_TRUE(actual->getRevisions() != nullptr);
-    ASSERT_EQ(6, actual->getRevisions()->size());
+    ASSERT_EQ(6, actual->getRevisions()->getRevisions()->size());
 }
 
 /// <summary>
@@ -172,7 +172,6 @@ TEST_F(RevisionsTests, TestGetAllRevisionsOnline) {
     ));
 
     auto actual = getApi()->getAllRevisionsOnline(request);
-    ASSERT_TRUE(actual->getDocument() != nullptr);
-    ASSERT_TRUE(actual->getModel() != nullptr);
-    ASSERT_TRUE(actual->getModel()->getRevisions() != nullptr);
+    ASSERT_TRUE(actual->getRevisions() != nullptr);
+    ASSERT_EQ(6, actual->getRevisions()->getRevisions()->size());
 }
