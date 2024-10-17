@@ -32,7 +32,7 @@
 class RevisionsTests : public InfrastructureTest {
 protected:
     std::wstring remoteDataFolder = remoteBaseTestDataFolder + L"/DocumentActions/Revisions";
-    std::wstring localFile = L"Common/test_multi_pages.docx";
+    std::wstring localFile = L"DocumentElements/Revisions/TestRevisions.doc";
 
 };
 
