@@ -10279,6 +10279,175 @@ namespace aspose::words::cloud::requests {
     }
 
     /*
+     * GetAllRevisions request implementation
+     */
+    GetAllRevisionsRequest::GetAllRevisionsRequest(
+        const std::shared_ptr< std::wstring > name,
+        const std::shared_ptr< std::wstring > folder,
+        const std::shared_ptr< std::wstring > storage,
+        const std::shared_ptr< std::wstring > loadEncoding,
+        const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport
+    ) : 
+        m_Name(name),
+        m_Folder(folder),
+        m_Storage(storage),
+        m_LoadEncoding(loadEncoding),
+        m_Password(password),
+        m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport)
+    {
+    }
+
+    const std::shared_ptr< std::wstring > GetAllRevisionsRequest::getName() const
+    {
+        return m_Name;
+    }
+
+    const std::shared_ptr< std::wstring > GetAllRevisionsRequest::getFolder() const
+    {
+        return m_Folder;
+    }
+
+    const std::shared_ptr< std::wstring > GetAllRevisionsRequest::getStorage() const
+    {
+        return m_Storage;
+    }
+
+    const std::shared_ptr< std::wstring > GetAllRevisionsRequest::getLoadEncoding() const
+    {
+        return m_LoadEncoding;
+    }
+
+    const std::shared_ptr< std::wstring > GetAllRevisionsRequest::getPassword() const
+    {
+        return m_Password;
+    }
+
+    const std::shared_ptr< std::wstring > GetAllRevisionsRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
+    }
+
+    const std::shared_ptr< bool > GetAllRevisionsRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetAllRevisionsRequest::createHttpRequest(ApiClient* apiClient) const
+    {
+        std::vector<models::FileReference*> additionalFilesContent;
+        auto result = std::make_shared<HttpRequestData>();
+        result->setMethod(HttpRequestMethod::HttpGET);
+        result->setPath(L"/words/{name}/revisions/getAll");
+        if (!m_Name) throw aspose::words::cloud::ApiException(400, L"Parameter 'Name' is required.");
+        result->setPathParam(L"{name}", *m_Name);
+        if (m_Folder) result->addQueryParam(L"folder", *m_Folder);
+        if (m_Storage) result->addQueryParam(L"storage", *m_Storage);
+        if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
+        if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
+
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
+        {
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
+        }
+
+        return result;
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > GetAllRevisionsRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::GetAllRevisionsResponse()
+        );
+    }
+
+    /*
+     * GetAllRevisionsOnline request implementation
+     */
+    GetAllRevisionsOnlineRequest::GetAllRevisionsOnlineRequest(
+        const std::shared_ptr< std::istream > document,
+        const std::shared_ptr< std::wstring > loadEncoding,
+        const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport
+    ) : 
+        m_Document(document),
+        m_LoadEncoding(loadEncoding),
+        m_Password(password),
+        m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport)
+    {
+    }
+
+    const std::shared_ptr< std::istream > GetAllRevisionsOnlineRequest::getDocument() const
+    {
+        return m_Document;
+    }
+
+    const std::shared_ptr< std::wstring > GetAllRevisionsOnlineRequest::getLoadEncoding() const
+    {
+        return m_LoadEncoding;
+    }
+
+    const std::shared_ptr< std::wstring > GetAllRevisionsOnlineRequest::getPassword() const
+    {
+        return m_Password;
+    }
+
+    const std::shared_ptr< std::wstring > GetAllRevisionsOnlineRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
+    }
+
+    const std::shared_ptr< bool > GetAllRevisionsOnlineRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > GetAllRevisionsOnlineRequest::createHttpRequest(ApiClient* apiClient) const
+    {
+        std::vector<models::FileReference*> additionalFilesContent;
+        auto result = std::make_shared<HttpRequestData>();
+        result->setMethod(HttpRequestMethod::HttpPUT);
+        result->setPath(L"/words/online/get/revisions/getAll");
+        if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
+        if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
+        if (m_Document)
+        {
+            result->addFormDataParam(L"document", *m_Document);
+        }
+        else throw aspose::words::cloud::ApiException(400, L"Parameter 'Document' is required.");
+
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
+        {
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
+        }
+
+        return result;
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > GetAllRevisionsOnlineRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::GetAllRevisionsOnlineResponse()
+        );
+    }
+
+    /*
      * GetAvailableFonts request implementation
      */
     GetAvailableFontsRequest::GetAvailableFontsRequest(

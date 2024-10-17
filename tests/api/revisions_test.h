@@ -32,7 +32,7 @@
 class RevisionsTests : public InfrastructureTest {
 protected:
     std::wstring remoteDataFolder = remoteBaseTestDataFolder + L"/DocumentActions/Revisions";
-    std::wstring localFile = L"Common/test_multi_pages.docx";
+    std::wstring localFile = L"DocumentElements/Revisions/TestRevisions.doc";
 
 };
 
@@ -130,4 +130,48 @@ TEST_F(RevisionsTests, TestRejectAllRevisionsOnline) {
     ASSERT_TRUE(actual->getModel() != nullptr);
     ASSERT_TRUE(actual->getModel()->getResult() != nullptr);
     ASSERT_TRUE(actual->getModel()->getResult()->getDest() != nullptr);
+}
+
+/// <summary>
+/// Test for getting revisions from document.
+/// </summary>
+TEST_F(RevisionsTests, TestGetAllRevisions) {
+    std::wstring remoteFileName = L"TestAcceptAllRevisions.docx";
+
+    uploadFileToStorage(
+        localTestDataFolder + L"/" + localFile,
+        remoteDataFolder + L"/" + remoteFileName
+    );
+
+    std::shared_ptr<requests::GetAllRevisionsRequest> request(new requests::GetAllRevisionsRequest(
+        std::make_shared< std::wstring >(remoteFileName),
+        std::make_shared< std::wstring >(remoteDataFolder),
+        nullptr,
+        nullptr,
+        nullptr,
+        nullptr,
+        nullptr
+    ));
+
+    auto actual = getApi()->getAllRevisions(request);
+    ASSERT_TRUE(actual->getRevisions() != nullptr);
+    ASSERT_EQ(6, actual->getRevisions()->getRevisions()->size());
+}
+
+/// <summary>
+/// Test for getting revisions online from document.
+/// </summary>
+TEST_F(RevisionsTests, TestGetAllRevisionsOnline) {
+    auto requestDocument = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(localFile)), std::istream::binary));
+    std::shared_ptr<requests::GetAllRevisionsOnlineRequest> request(new requests::GetAllRevisionsOnlineRequest(
+        requestDocument,
+        nullptr,
+        nullptr,
+        nullptr,
+        nullptr
+    ));
+
+    auto actual = getApi()->getAllRevisionsOnline(request);
+    ASSERT_TRUE(actual->getRevisions() != nullptr);
+    ASSERT_EQ(6, actual->getRevisions()->getRevisions()->size());
 }
