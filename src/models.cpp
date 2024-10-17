@@ -214,7 +214,10 @@ namespace aspose::words::cloud::models {
         { L"ReplaceTextResponse, _", [] () { return dynamic_cast< ModelBase* >(new ReplaceTextResponse()); }},
         { L"ReportBuildOptions, _", [] () { return nullptr; }},
         { L"ReportEngineSettings, _", [] () { return dynamic_cast< ModelBase* >(new ReportEngineSettings()); }},
+        { L"Revision, _", [] () { return dynamic_cast< ModelBase* >(new Revision()); }},
+        { L"RevisionCollection, _", [] () { return dynamic_cast< ModelBase* >(new RevisionCollection()); }},
         { L"RevisionsModificationResponse, _", [] () { return dynamic_cast< ModelBase* >(new RevisionsModificationResponse()); }},
+        { L"RevisionsResponse, _", [] () { return dynamic_cast< ModelBase* >(new RevisionsResponse()); }},
         { L"RtfSaveOptionsData, _", [] () { return dynamic_cast< ModelBase* >(new RtfSaveOptionsData()); }},
         { L"Run, _", [] () { return dynamic_cast< ModelBase* >(new Run()); }},
         { L"RunInsert, _", [] () { return dynamic_cast< ModelBase* >(new RunInsert()); }},
@@ -21832,6 +21835,166 @@ namespace aspose::words::cloud::models {
 
 
     /*
+     * Revision implementation
+     */
+    void Revision::toJson(void* jsonIfc) const
+    {
+        ::nlohmann::json& json = *((::nlohmann::json*)jsonIfc);
+        if (this->m_RevisionAuthor) {
+            json["RevisionAuthor"] = convertUtf16(*(this->m_RevisionAuthor));
+        }
+        if (this->m_RevisionDateTime) {
+            json["RevisionDateTime"] = convertUtf16(*(this->m_RevisionDateTime));
+        }
+        if (this->m_RevisionText) {
+            json["RevisionText"] = convertUtf16(*(this->m_RevisionText));
+        }
+        if (this->m_RevisionType) {
+            json["RevisionType"] = convertUtf16(*(this->m_RevisionType));
+        }
+    }
+
+    void Revision::fromJson(const void* jsonIfc)
+    {
+        ::nlohmann::json& json = *((::nlohmann::json*)jsonIfc);
+        if (json.contains("RevisionAuthor") && !json["RevisionAuthor"].is_null()) {
+            this->m_RevisionAuthor = std::make_shared< std::wstring >(
+                convertUtf8( json["RevisionAuthor"].get< std::string >() )
+            );
+        }
+        if (json.contains("RevisionDateTime") && !json["RevisionDateTime"].is_null()) {
+            this->m_RevisionDateTime = std::make_shared< std::wstring >(
+                convertUtf8( json["RevisionDateTime"].get< std::string >() )
+            );
+        }
+        if (json.contains("RevisionText") && !json["RevisionText"].is_null()) {
+            this->m_RevisionText = std::make_shared< std::wstring >(
+                convertUtf8( json["RevisionText"].get< std::string >() )
+            );
+        }
+        if (json.contains("RevisionType") && !json["RevisionType"].is_null()) {
+            this->m_RevisionType = std::make_shared< std::wstring >(
+                convertUtf8( json["RevisionType"].get< std::string >() )
+            );
+        }
+    }
+
+    void Revision::getFileReferences(std::vector< FileReference* >& result)
+    {
+    }
+
+    void Revision::validate()
+    {
+        if (this->m_RevisionDateTime == nullptr)
+        {
+            throw aspose::words::cloud::ApiException(400, L"Property RevisionDateTime in Revision is required.");
+        }
+
+    }
+
+    std::shared_ptr< std::wstring > Revision::getRevisionAuthor() const
+    {
+        return this->m_RevisionAuthor;
+    }
+
+    void Revision::setRevisionAuthor(std::shared_ptr< std::wstring > value)
+    {
+        this->m_RevisionAuthor = value;
+    }
+
+
+    std::shared_ptr< std::wstring > Revision::getRevisionDateTime() const
+    {
+        return this->m_RevisionDateTime;
+    }
+
+    void Revision::setRevisionDateTime(std::shared_ptr< std::wstring > value)
+    {
+        this->m_RevisionDateTime = value;
+    }
+
+
+    std::shared_ptr< std::wstring > Revision::getRevisionText() const
+    {
+        return this->m_RevisionText;
+    }
+
+    void Revision::setRevisionText(std::shared_ptr< std::wstring > value)
+    {
+        this->m_RevisionText = value;
+    }
+
+
+    std::shared_ptr< std::wstring > Revision::getRevisionType() const
+    {
+        return this->m_RevisionType;
+    }
+
+    void Revision::setRevisionType(std::shared_ptr< std::wstring > value)
+    {
+        this->m_RevisionType = value;
+    }
+
+
+
+    /*
+     * RevisionCollection implementation
+     */
+    void RevisionCollection::toJson(void* jsonIfc) const
+    {
+        ::nlohmann::json& json = *((::nlohmann::json*)jsonIfc);
+        if (this->m_Revisions) {
+            json["Revisions"] = ::nlohmann::json::array();
+            for (auto& element : *(this->m_Revisions)) {
+                element->toJson(&json["Revisions"].emplace_back());
+            }
+        }
+    }
+
+    void RevisionCollection::fromJson(const void* jsonIfc)
+    {
+        ::nlohmann::json& json = *((::nlohmann::json*)jsonIfc);
+        if (json.contains("Revisions") && !json["Revisions"].is_null()) {
+            this->m_Revisions = std::make_shared< std::vector<std::shared_ptr<aspose::words::cloud::models::Revision>> >();
+            for (auto& element : json["Revisions"]) {
+                this->m_Revisions->emplace_back(createModelInstance< aspose::words::cloud::models::Revision >(L"Revision, _", element));
+            }
+        }
+    }
+
+    void RevisionCollection::getFileReferences(std::vector< FileReference* >& result)
+    {
+    }
+
+    void RevisionCollection::validate()
+    {
+
+        if (this->m_Revisions != nullptr)
+        {
+            for (auto& elementRevisions : *(this->m_Revisions))
+            {
+                if (elementRevisions != nullptr)
+                {
+                    elementRevisions->validate();
+                }
+            }
+        }
+
+    }
+
+    std::shared_ptr< std::vector<std::shared_ptr<aspose::words::cloud::models::Revision>> > RevisionCollection::getRevisions() const
+    {
+        return this->m_Revisions;
+    }
+
+    void RevisionCollection::setRevisions(std::shared_ptr< std::vector<std::shared_ptr<aspose::words::cloud::models::Revision>> > value)
+    {
+        this->m_Revisions = value;
+    }
+
+
+
+    /*
      * RevisionsModificationResponse implementation
      */
     void RevisionsModificationResponse::toJson(void* jsonIfc) const
@@ -21875,6 +22038,54 @@ namespace aspose::words::cloud::models {
     void RevisionsModificationResponse::setResult(std::shared_ptr< aspose::words::cloud::models::ModificationOperationResult > value)
     {
         this->m_Result = value;
+    }
+
+
+
+    /*
+     * RevisionsResponse implementation
+     */
+    void RevisionsResponse::toJson(void* jsonIfc) const
+    {
+        WordsResponse::toJson(jsonIfc);
+        ::nlohmann::json& json = *((::nlohmann::json*)jsonIfc);
+        if (this->m_Revisions) {
+            this->m_Revisions->toJson(&json["Revisions"]);
+        }
+    }
+
+    void RevisionsResponse::fromJson(const void* jsonIfc)
+    {
+        WordsResponse::fromJson(jsonIfc);
+        ::nlohmann::json& json = *((::nlohmann::json*)jsonIfc);
+        if (json.contains("Revisions") && !json["Revisions"].is_null()) {
+            this->m_Revisions = createModelInstance< aspose::words::cloud::models::RevisionCollection >(L"RevisionCollection, _", json["Revisions"]);
+        }
+    }
+
+    void RevisionsResponse::getFileReferences(std::vector< FileReference* >& result)
+    {
+    }
+
+    void RevisionsResponse::validate()
+    {
+        WordsResponse::validate();
+
+        if (this->m_Revisions != nullptr)
+        {
+            this->m_Revisions->validate();
+        }
+
+    }
+
+    std::shared_ptr< aspose::words::cloud::models::RevisionCollection > RevisionsResponse::getRevisions() const
+    {
+        return this->m_Revisions;
+    }
+
+    void RevisionsResponse::setRevisions(std::shared_ptr< aspose::words::cloud::models::RevisionCollection > value)
+    {
+        this->m_Revisions = value;
     }
 
 
