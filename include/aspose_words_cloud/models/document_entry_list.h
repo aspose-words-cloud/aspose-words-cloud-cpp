@@ -45,6 +45,17 @@ namespace aspose::words::cloud::models {
         void abstractBaseEntryList() override {}
 
         /// <summary>
+        /// Gets or sets a value indicating whether to append all documents to the same section.
+        /// </summary>
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< bool > getAppendAllEntriesToOneSection() const;
+
+        /// <summary>
+        /// Gets or sets a value indicating whether to append all documents to the same section.
+        /// </summary>
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setAppendAllEntriesToOneSection(std::shared_ptr< bool > value);
+
+
+        /// <summary>
         /// Gets or sets a value indicating whether to apply headers and footers from base document to appending documents. The default value is true.
         /// </summary>
         ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< bool > getApplyBaseDocumentHeadersAndFootersToAppendingDocuments() const;
@@ -67,6 +78,7 @@ namespace aspose::words::cloud::models {
 
 
     protected:
+        std::shared_ptr< bool > m_AppendAllEntriesToOneSection;
         std::shared_ptr< bool > m_ApplyBaseDocumentHeadersAndFootersToAppendingDocuments;
         std::shared_ptr< std::vector<std::shared_ptr<aspose::words::cloud::models::DocumentEntry>> > m_DocumentEntries;
     };

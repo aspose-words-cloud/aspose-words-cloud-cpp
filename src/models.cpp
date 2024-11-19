@@ -3989,6 +3989,9 @@ namespace aspose::words::cloud::models {
     {
         BaseEntryList::toJson(jsonIfc);
         ::nlohmann::json& json = *((::nlohmann::json*)jsonIfc);
+        if (this->m_AppendAllEntriesToOneSection) {
+            json["AppendAllEntriesToOneSection"] = *(this->m_AppendAllEntriesToOneSection);
+        }
         if (this->m_ApplyBaseDocumentHeadersAndFootersToAppendingDocuments) {
             json["ApplyBaseDocumentHeadersAndFootersToAppendingDocuments"] = *(this->m_ApplyBaseDocumentHeadersAndFootersToAppendingDocuments);
         }
@@ -4004,6 +4007,11 @@ namespace aspose::words::cloud::models {
     {
         BaseEntryList::fromJson(jsonIfc);
         ::nlohmann::json& json = *((::nlohmann::json*)jsonIfc);
+        if (json.contains("AppendAllEntriesToOneSection") && !json["AppendAllEntriesToOneSection"].is_null()) {
+            this->m_AppendAllEntriesToOneSection = std::make_shared< bool >(
+                json["AppendAllEntriesToOneSection"].get< bool >()
+            );
+        }
         if (json.contains("ApplyBaseDocumentHeadersAndFootersToAppendingDocuments") && !json["ApplyBaseDocumentHeadersAndFootersToAppendingDocuments"].is_null()) {
             this->m_ApplyBaseDocumentHeadersAndFootersToAppendingDocuments = std::make_shared< bool >(
                 json["ApplyBaseDocumentHeadersAndFootersToAppendingDocuments"].get< bool >()
@@ -4059,6 +4067,17 @@ namespace aspose::words::cloud::models {
         }
 
     }
+
+    std::shared_ptr< bool > DocumentEntryList::getAppendAllEntriesToOneSection() const
+    {
+        return this->m_AppendAllEntriesToOneSection;
+    }
+
+    void DocumentEntryList::setAppendAllEntriesToOneSection(std::shared_ptr< bool > value)
+    {
+        this->m_AppendAllEntriesToOneSection = value;
+    }
+
 
     std::shared_ptr< bool > DocumentEntryList::getApplyBaseDocumentHeadersAndFootersToAppendingDocuments() const
     {
