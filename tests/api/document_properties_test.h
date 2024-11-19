@@ -60,7 +60,7 @@ TEST_F(DocumentPropertiesTests, TestGetDocumentProperties) {
     auto actual = getApi()->getDocumentProperties(request);
     ASSERT_TRUE(actual->getDocumentProperties() != nullptr);
     ASSERT_TRUE(actual->getDocumentProperties()->getList() != nullptr);
-    ASSERT_EQ(24, actual->getDocumentProperties()->getList()->size());
+    ASSERT_EQ(27, actual->getDocumentProperties()->getList()->size());
     ASSERT_TRUE(actual->getDocumentProperties()->getList()->at(0) != nullptr);
     ASSERT_TRUE(actual->getDocumentProperties()->getList()->at(0)->getName()->compare(L"Author") == 0);
     ASSERT_TRUE(actual->getDocumentProperties()->getList()->at(0)->getValue()->compare(L"") == 0);
