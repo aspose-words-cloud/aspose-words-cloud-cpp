@@ -209,6 +209,10 @@
 #include "aspose_words_cloud/responses/execute_mail_merge_response.h"
 #include "aspose_words_cloud/requests/execute_mail_merge_online_request.h"
 #include "aspose_words_cloud/responses/execute_mail_merge_online_response.h"
+#include "aspose_words_cloud/requests/get_all_revisions_request.h"
+#include "aspose_words_cloud/responses/get_all_revisions_response.h"
+#include "aspose_words_cloud/requests/get_all_revisions_online_request.h"
+#include "aspose_words_cloud/responses/get_all_revisions_online_response.h"
 #include "aspose_words_cloud/requests/get_available_fonts_request.h"
 #include "aspose_words_cloud/responses/get_available_fonts_response.h"
 #include "aspose_words_cloud/requests/get_bookmark_by_name_request.h"
@@ -2022,6 +2026,28 @@ namespace aspose::words::cloud::api {
         /// <param name="cleanup">The cleanup options.</param>
         /// <param name="documentFileName">The filename of the output document, that will be used when the resulting document has a dynamic field {filename}. If it is not set, the "template" will be used instead.</param>
         ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::istream > executeMailMergeOnline(std::shared_ptr<aspose::words::cloud::requests::ExecuteMailMergeOnlineRequest> request);
+
+        /// <summary>
+        /// Get all information about revisions.
+        /// </summary>
+        /// <param name="name">The filename of the input document.</param>
+        /// <param name="folder">Original document folder.</param>
+        /// <param name="storage">Original document storage.</param>
+        /// <param name="loadEncoding">Encoding that will be used to load an HTML (or TXT) document if the encoding is not specified in HTML.</param>
+        /// <param name="password">Password of protected Word document. Use the parameter to pass a password via SDK. SDK encrypts it automatically. We don't recommend to use the parameter to pass a plain password for direct call of API.</param>
+        /// <param name="encryptedPassword">Password of protected Word document. Use the parameter to pass an encrypted password for direct calls of API. See SDK code for encyption details.</param>
+        /// <param name="openTypeSupport">The value indicates whether OpenType support is on.</param>
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::RevisionsResponse > getAllRevisions(std::shared_ptr<aspose::words::cloud::requests::GetAllRevisionsRequest> request);
+
+        /// <summary>
+        /// Get all information about revisions.
+        /// </summary>
+        /// <param name="document">The document.</param>
+        /// <param name="loadEncoding">Encoding that will be used to load an HTML (or TXT) document if the encoding is not specified in HTML.</param>
+        /// <param name="password">Password of protected Word document. Use the parameter to pass a password via SDK. SDK encrypts it automatically. We don't recommend to use the parameter to pass a plain password for direct call of API.</param>
+        /// <param name="encryptedPassword">Password of protected Word document. Use the parameter to pass an encrypted password for direct calls of API. See SDK code for encyption details.</param>
+        /// <param name="openTypeSupport">The value indicates whether OpenType support is on.</param>
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::RevisionsResponse > getAllRevisionsOnline(std::shared_ptr<aspose::words::cloud::requests::GetAllRevisionsOnlineRequest> request);
 
         /// <summary>
         /// Reads available fonts from the document.

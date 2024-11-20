@@ -961,6 +961,28 @@ namespace aspose::words::cloud::api {
         return response->getModel();
     }
 
+    std::shared_ptr< aspose::words::cloud::models::RevisionsResponse > WordsApi::getAllRevisions(std::shared_ptr<aspose::words::cloud::requests::GetAllRevisionsRequest> request)
+    {
+        auto response = std::make_shared< aspose::words::cloud::responses::GetAllRevisionsResponse >();
+        m_ApiClient->call( request->createHttpRequest(m_ApiClient.get()), *response);
+        if (response->getStatusCode() != 200) {
+            throw aspose::words::cloud::ApiException(response->getStatusCode(), response->getErrorMessage());
+        }
+
+        return response->getModel();
+    }
+
+    std::shared_ptr< aspose::words::cloud::models::RevisionsResponse > WordsApi::getAllRevisionsOnline(std::shared_ptr<aspose::words::cloud::requests::GetAllRevisionsOnlineRequest> request)
+    {
+        auto response = std::make_shared< aspose::words::cloud::responses::GetAllRevisionsOnlineResponse >();
+        m_ApiClient->call( request->createHttpRequest(m_ApiClient.get()), *response);
+        if (response->getStatusCode() != 200) {
+            throw aspose::words::cloud::ApiException(response->getStatusCode(), response->getErrorMessage());
+        }
+
+        return response->getModel();
+    }
+
     std::shared_ptr< aspose::words::cloud::models::AvailableFontsResponse > WordsApi::getAvailableFonts(std::shared_ptr<aspose::words::cloud::requests::GetAvailableFontsRequest> request)
     {
         auto response = std::make_shared< aspose::words::cloud::responses::GetAvailableFontsResponse >();

@@ -1529,6 +1529,32 @@ namespace aspose::words::cloud::responses {
     }
 
     /*
+     * GetAllRevisions request implementation
+     */
+    std::shared_ptr< aspose::words::cloud::models::RevisionsResponse > GetAllRevisionsResponse::getModel() const
+    {
+        return m_Model;
+    }
+
+    void GetAllRevisionsResponse::deserialize(const std::string& contentType, const std::string_view& response)
+    {
+        m_Model = createModelInstance< aspose::words::cloud::models::RevisionsResponse >(L"RevisionsResponse, _", response);
+    }
+
+    /*
+     * GetAllRevisionsOnline request implementation
+     */
+    std::shared_ptr< aspose::words::cloud::models::RevisionsResponse > GetAllRevisionsOnlineResponse::getModel() const
+    {
+        return m_Model;
+    }
+
+    void GetAllRevisionsOnlineResponse::deserialize(const std::string& contentType, const std::string_view& response)
+    {
+        m_Model = createModelInstance< aspose::words::cloud::models::RevisionsResponse >(L"RevisionsResponse, _", response);
+    }
+
+    /*
      * GetAvailableFonts request implementation
      */
     std::shared_ptr< aspose::words::cloud::models::AvailableFontsResponse > GetAvailableFontsResponse::getModel() const

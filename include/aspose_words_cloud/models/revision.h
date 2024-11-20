@@ -1,5 +1,5 @@
 ﻿/** --------------------------------------------------------------------------------------------------------------------
-* <copyright company="Aspose" file="document_entry_list.h">
+* <copyright company="Aspose" file="revision.h">
 *   Copyright (c) 2024 Aspose.Words for Cloud
 * </copyright>
 * <summary>
@@ -25,62 +25,71 @@
 
 #pragma once
 #include "model_base.h"
-#include "base_entry_list.h"
-#include "document_entry.h"
 
 namespace aspose::words::cloud::models {
     /// <summary>
-    /// Represents a list of documents which will be appended to the original resource document.
+    /// Revision Dto.
     /// </summary>
-    class DocumentEntryList : public BaseEntryList
+    class Revision : public ModelBase
     {
     public:
 
-        ASPOSE_WORDS_CLOUD_EXPORT virtual ~DocumentEntryList() = default;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual ~Revision() = default;
         ASPOSE_WORDS_CLOUD_EXPORT virtual void toJson(void* jsonIfc) const override;
         ASPOSE_WORDS_CLOUD_EXPORT virtual void fromJson(const void* jsonIfc) override;
         ASPOSE_WORDS_CLOUD_EXPORT virtual void getFileReferences(std::vector< FileReference* >& result) override;
         ASPOSE_WORDS_CLOUD_EXPORT virtual void validate() override;
 
-        void abstractBaseEntryList() override {}
 
         /// <summary>
-        /// Gets or sets a value indicating whether to append all documents to the same section.
+        /// Gets or sets the revision author.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< bool > getAppendAllEntriesToOneSection() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< std::wstring > getRevisionAuthor() const;
 
         /// <summary>
-        /// Gets or sets a value indicating whether to append all documents to the same section.
+        /// Gets or sets the revision author.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT virtual void setAppendAllEntriesToOneSection(std::shared_ptr< bool > value);
-
-
-        /// <summary>
-        /// Gets or sets a value indicating whether to apply headers and footers from base document to appending documents. The default value is true.
-        /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< bool > getApplyBaseDocumentHeadersAndFootersToAppendingDocuments() const;
-
-        /// <summary>
-        /// Gets or sets a value indicating whether to apply headers and footers from base document to appending documents. The default value is true.
-        /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT virtual void setApplyBaseDocumentHeadersAndFootersToAppendingDocuments(std::shared_ptr< bool > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setRevisionAuthor(std::shared_ptr< std::wstring > value);
 
 
         /// <summary>
-        /// Gets or sets the list of documents.
+        /// Gets or sets the revision date time.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< std::vector<std::shared_ptr<aspose::words::cloud::models::DocumentEntry>> > getDocumentEntries() const;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< std::wstring > getRevisionDateTime() const;
 
         /// <summary>
-        /// Gets or sets the list of documents.
+        /// Gets or sets the revision date time.
         /// </summary>
-        ASPOSE_WORDS_CLOUD_EXPORT virtual void setDocumentEntries(std::shared_ptr< std::vector<std::shared_ptr<aspose::words::cloud::models::DocumentEntry>> > value);
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setRevisionDateTime(std::shared_ptr< std::wstring > value);
+
+
+        /// <summary>
+        /// Gets or sets the revision text.
+        /// </summary>
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< std::wstring > getRevisionText() const;
+
+        /// <summary>
+        /// Gets or sets the revision text.
+        /// </summary>
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setRevisionText(std::shared_ptr< std::wstring > value);
+
+
+        /// <summary>
+        /// Gets or sets the revision type.
+        /// </summary>
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< std::wstring > getRevisionType() const;
+
+        /// <summary>
+        /// Gets or sets the revision type.
+        /// </summary>
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setRevisionType(std::shared_ptr< std::wstring > value);
 
 
     protected:
-        std::shared_ptr< bool > m_AppendAllEntriesToOneSection;
-        std::shared_ptr< bool > m_ApplyBaseDocumentHeadersAndFootersToAppendingDocuments;
-        std::shared_ptr< std::vector<std::shared_ptr<aspose::words::cloud::models::DocumentEntry>> > m_DocumentEntries;
+        std::shared_ptr< std::wstring > m_RevisionAuthor;
+        std::shared_ptr< std::wstring > m_RevisionDateTime;
+        std::shared_ptr< std::wstring > m_RevisionText;
+        std::shared_ptr< std::wstring > m_RevisionType;
     };
 }
 
