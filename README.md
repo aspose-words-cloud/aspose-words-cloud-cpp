@@ -17,6 +17,12 @@ Feel free to explore the [Developer's Guide](https://docs.aspose.cloud/display/w
 - Read & write access to Document Object Model.
 - Thread safe
 
+## Enhancements in Version 24.12
+
+- Added 'RenderChoiceFormFieldBorder' property for PdfSaveOptionsData class.
+- Added 'ApplySuperscript' property for ReplaceTextParameters class.
+
+
 ## Enhancements in Version 24.11
 
 - Added GetAllRevisions method to obtain all available revisions in document.

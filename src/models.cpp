@@ -19950,6 +19950,9 @@ namespace aspose::words::cloud::models {
         if (this->m_PreserveFormFields) {
             json["PreserveFormFields"] = *(this->m_PreserveFormFields);
         }
+        if (this->m_RenderChoiceFormFieldBorder) {
+            json["RenderChoiceFormFieldBorder"] = *(this->m_RenderChoiceFormFieldBorder);
+        }
         if (this->m_TextCompression) {
             json["TextCompression"] = pdfSaveOptionsDataTextCompressionToString(*(this->m_TextCompression));
         }
@@ -20079,6 +20082,11 @@ namespace aspose::words::cloud::models {
                 json["PreserveFormFields"].get< bool >()
             );
         }
+        if (json.contains("RenderChoiceFormFieldBorder") && !json["RenderChoiceFormFieldBorder"].is_null()) {
+            this->m_RenderChoiceFormFieldBorder = std::make_shared< bool >(
+                json["RenderChoiceFormFieldBorder"].get< bool >()
+            );
+        }
         if (json.contains("TextCompression") && !json["TextCompression"].is_null()) {
             this->m_TextCompression = std::make_shared< aspose::words::cloud::models::PdfSaveOptionsData::TextCompression >(
                 pdfSaveOptionsDataTextCompressionFromString(json["TextCompression"].get< std::string >())
@@ -20160,6 +20168,7 @@ namespace aspose::words::cloud::models {
         {
             this->m_OutlineOptions->validate();
         }
+
 
 
 
@@ -20412,6 +20421,17 @@ namespace aspose::words::cloud::models {
     void PdfSaveOptionsData::setPreserveFormFields(std::shared_ptr< bool > value)
     {
         this->m_PreserveFormFields = value;
+    }
+
+
+    std::shared_ptr< bool > PdfSaveOptionsData::getRenderChoiceFormFieldBorder() const
+    {
+        return this->m_RenderChoiceFormFieldBorder;
+    }
+
+    void PdfSaveOptionsData::setRenderChoiceFormFieldBorder(std::shared_ptr< bool > value)
+    {
+        this->m_RenderChoiceFormFieldBorder = value;
     }
 
 
@@ -21443,6 +21463,9 @@ namespace aspose::words::cloud::models {
     void ReplaceTextParameters::toJson(void* jsonIfc) const
     {
         ::nlohmann::json& json = *((::nlohmann::json*)jsonIfc);
+        if (this->m_ApplySuperscript) {
+            json["ApplySuperscript"] = *(this->m_ApplySuperscript);
+        }
         if (this->m_IsMatchCase) {
             json["IsMatchCase"] = *(this->m_IsMatchCase);
         }
@@ -21463,6 +21486,11 @@ namespace aspose::words::cloud::models {
     void ReplaceTextParameters::fromJson(const void* jsonIfc)
     {
         ::nlohmann::json& json = *((::nlohmann::json*)jsonIfc);
+        if (json.contains("ApplySuperscript") && !json["ApplySuperscript"].is_null()) {
+            this->m_ApplySuperscript = std::make_shared< bool >(
+                json["ApplySuperscript"].get< bool >()
+            );
+        }
         if (json.contains("IsMatchCase") && !json["IsMatchCase"].is_null()) {
             this->m_IsMatchCase = std::make_shared< bool >(
                 json["IsMatchCase"].get< bool >()
@@ -21522,6 +21550,17 @@ namespace aspose::words::cloud::models {
         }
 
     }
+
+    std::shared_ptr< bool > ReplaceTextParameters::getApplySuperscript() const
+    {
+        return this->m_ApplySuperscript;
+    }
+
+    void ReplaceTextParameters::setApplySuperscript(std::shared_ptr< bool > value)
+    {
+        this->m_ApplySuperscript = value;
+    }
+
 
     std::shared_ptr< bool > ReplaceTextParameters::getIsMatchCase() const
     {

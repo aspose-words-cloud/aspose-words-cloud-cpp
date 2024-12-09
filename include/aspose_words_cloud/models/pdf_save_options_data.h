@@ -425,6 +425,21 @@ namespace aspose::words::cloud::models {
 
 
         /// <summary>
+        /// Gets or sets a value indicating whether to render PDF choice form field border.
+        /// PDF choice form fields are used for export of SDT Combo Box Content Control, SDT Drop-Down List Content
+        /// Control and legacy Drop-Down Form Field when PreserveFormFields option is enabled.The default value is true.
+        /// </summary>
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< bool > getRenderChoiceFormFieldBorder() const;
+
+        /// <summary>
+        /// Gets or sets a value indicating whether to render PDF choice form field border.
+        /// PDF choice form fields are used for export of SDT Combo Box Content Control, SDT Drop-Down List Content
+        /// Control and legacy Drop-Down Form Field when PreserveFormFields option is enabled.The default value is true.
+        /// </summary>
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setRenderChoiceFormFieldBorder(std::shared_ptr< bool > value);
+
+
+        /// <summary>
         /// Gets or sets the compression type to be used for all textual content in the document.
         /// </summary>
         ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< aspose::words::cloud::models::PdfSaveOptionsData::TextCompression > getTextCompression() const;
@@ -524,6 +539,7 @@ namespace aspose::words::cloud::models {
         std::shared_ptr< aspose::words::cloud::models::PdfSaveOptionsData::PageMode > m_PageMode;
         std::shared_ptr< bool > m_PreblendImages;
         std::shared_ptr< bool > m_PreserveFormFields;
+        std::shared_ptr< bool > m_RenderChoiceFormFieldBorder;
         std::shared_ptr< aspose::words::cloud::models::PdfSaveOptionsData::TextCompression > m_TextCompression;
         std::shared_ptr< bool > m_UseBookFoldPrintingSettings;
         std::shared_ptr< bool > m_UseCoreFonts;
