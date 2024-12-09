@@ -42,6 +42,17 @@ namespace aspose::words::cloud::models {
 
 
         /// <summary>
+        /// Gets or sets a value indicating whether apply superscript to font or not.
+        /// </summary>
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< bool > getApplySuperscript() const;
+
+        /// <summary>
+        /// Gets or sets a value indicating whether apply superscript to font or not.
+        /// </summary>
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setApplySuperscript(std::shared_ptr< bool > value);
+
+
+        /// <summary>
         /// Gets or sets a value indicating whether flag, true means the search is case-sensitive; false means the search is not case-sensitive.
         /// </summary>
         ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< bool > getIsMatchCase() const;
@@ -97,6 +108,7 @@ namespace aspose::words::cloud::models {
 
 
     protected:
+        std::shared_ptr< bool > m_ApplySuperscript;
         std::shared_ptr< bool > m_IsMatchCase;
         std::shared_ptr< bool > m_IsMatchWholeWord;
         std::shared_ptr< bool > m_IsOldValueRegex;
