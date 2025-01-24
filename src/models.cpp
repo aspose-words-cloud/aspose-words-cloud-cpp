@@ -11091,6 +11091,9 @@ namespace aspose::words::cloud::models {
         if (this->m_FontFormat) {
             json["FontFormat"] = htmlFixedSaveOptionsDataFontFormatToString(*(this->m_FontFormat));
         }
+        if (this->m_IdPrefix) {
+            json["IdPrefix"] = convertUtf16(*(this->m_IdPrefix));
+        }
         if (this->m_PageHorizontalAlignment) {
             json["PageHorizontalAlignment"] = htmlFixedSaveOptionsDataPageHorizontalAlignmentToString(*(this->m_PageHorizontalAlignment));
         }
@@ -11154,6 +11157,11 @@ namespace aspose::words::cloud::models {
         if (json.contains("FontFormat") && !json["FontFormat"].is_null()) {
             this->m_FontFormat = std::make_shared< aspose::words::cloud::models::HtmlFixedSaveOptionsData::FontFormat >(
                 htmlFixedSaveOptionsDataFontFormatFromString(json["FontFormat"].get< std::string >())
+            );
+        }
+        if (json.contains("IdPrefix") && !json["IdPrefix"].is_null()) {
+            this->m_IdPrefix = std::make_shared< std::wstring >(
+                convertUtf8( json["IdPrefix"].get< std::string >() )
             );
         }
         if (json.contains("PageHorizontalAlignment") && !json["PageHorizontalAlignment"].is_null()) {
@@ -11281,6 +11289,17 @@ namespace aspose::words::cloud::models {
     void HtmlFixedSaveOptionsData::setFontFormat(std::shared_ptr< aspose::words::cloud::models::HtmlFixedSaveOptionsData::FontFormat > value)
     {
         this->m_FontFormat = value;
+    }
+
+
+    std::shared_ptr< std::wstring > HtmlFixedSaveOptionsData::getIdPrefix() const
+    {
+        return this->m_IdPrefix;
+    }
+
+    void HtmlFixedSaveOptionsData::setIdPrefix(std::shared_ptr< std::wstring > value)
+    {
+        this->m_IdPrefix = value;
     }
 
 
@@ -27238,6 +27257,9 @@ namespace aspose::words::cloud::models {
         if (this->m_FitToViewPort) {
             json["FitToViewPort"] = *(this->m_FitToViewPort);
         }
+        if (this->m_IdPrefix) {
+            json["IdPrefix"] = convertUtf16(*(this->m_IdPrefix));
+        }
         if (this->m_MaxImageResolution) {
             json["MaxImageResolution"] = *(this->m_MaxImageResolution);
         }
@@ -27270,6 +27292,11 @@ namespace aspose::words::cloud::models {
         if (json.contains("FitToViewPort") && !json["FitToViewPort"].is_null()) {
             this->m_FitToViewPort = std::make_shared< bool >(
                 json["FitToViewPort"].get< bool >()
+            );
+        }
+        if (json.contains("IdPrefix") && !json["IdPrefix"].is_null()) {
+            this->m_IdPrefix = std::make_shared< std::wstring >(
+                convertUtf8( json["IdPrefix"].get< std::string >() )
             );
         }
         if (json.contains("MaxImageResolution") && !json["MaxImageResolution"].is_null()) {
@@ -27332,6 +27359,17 @@ namespace aspose::words::cloud::models {
     void SvgSaveOptionsData::setFitToViewPort(std::shared_ptr< bool > value)
     {
         this->m_FitToViewPort = value;
+    }
+
+
+    std::shared_ptr< std::wstring > SvgSaveOptionsData::getIdPrefix() const
+    {
+        return this->m_IdPrefix;
+    }
+
+    void SvgSaveOptionsData::setIdPrefix(std::shared_ptr< std::wstring > value)
+    {
+        this->m_IdPrefix = value;
     }
 
 
