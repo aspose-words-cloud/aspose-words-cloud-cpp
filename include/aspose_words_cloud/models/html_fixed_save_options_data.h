@@ -144,6 +144,23 @@ namespace aspose::words::cloud::models {
 
 
         /// <summary>
+        /// Gets or sets a prefix that is prepended to all generated element IDs in the output document.
+        /// Default value is null and no prefix is prepended.
+        /// If the prefix is specified, it can contain only letters, digits, underscores, and hyphens,
+        /// and must start with a letter.
+        /// </summary>
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< std::wstring > getIdPrefix() const;
+
+        /// <summary>
+        /// Gets or sets a prefix that is prepended to all generated element IDs in the output document.
+        /// Default value is null and no prefix is prepended.
+        /// If the prefix is specified, it can contain only letters, digits, underscores, and hyphens,
+        /// and must start with a letter.
+        /// </summary>
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setIdPrefix(std::shared_ptr< std::wstring > value);
+
+
+        /// <summary>
         /// Gets or sets the horizontal alignment of pages in the HTML document.
         /// The default value is HtmlFixedHorizontalPageAlignment.Center.
         /// </summary>
@@ -251,6 +268,7 @@ namespace aspose::words::cloud::models {
         std::shared_ptr< bool > m_ExportEmbeddedImages;
         std::shared_ptr< bool > m_ExportFormFields;
         std::shared_ptr< aspose::words::cloud::models::HtmlFixedSaveOptionsData::FontFormat > m_FontFormat;
+        std::shared_ptr< std::wstring > m_IdPrefix;
         std::shared_ptr< aspose::words::cloud::models::HtmlFixedSaveOptionsData::PageHorizontalAlignment > m_PageHorizontalAlignment;
         std::shared_ptr< double > m_PageMargins;
         std::shared_ptr< std::wstring > m_ResourcesFolder;

@@ -17,6 +17,11 @@ Feel free to explore the [Developer's Guide](https://docs.aspose.cloud/display/w
 - Read & write access to Document Object Model.
 - Thread safe
 
+## Enhancements in Version 25.2
+
+- Added 'IdPrefix' property for HtmlFixedSaveOptionsData and SvgSaveOptionsData class.
+
+
 ## Enhancements in Version 24.12
 
 - Added 'RenderChoiceFormFieldBorder' property for PdfSaveOptionsData class.
