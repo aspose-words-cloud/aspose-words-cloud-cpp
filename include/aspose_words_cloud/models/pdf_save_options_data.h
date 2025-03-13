@@ -49,7 +49,10 @@ namespace aspose::words::cloud::models {
             PDF_A1B,
             PDF_A2A,
             PDF_A2U,
+            PDF_A3A,
+            PDF_A3U,
             PDF_A4,
+            PDF_A4F,
             PDF_A4_UA2,
             PDF_UA1,
             PDF_UA2
@@ -241,6 +244,7 @@ namespace aspose::words::cloud::models {
         /// false value will be used automatically.
         /// Embedding attachments is not supported when encryption is enabled. false value will be used automatically.
         /// </summary>
+        [[deprecated("This property will be removed in the future.")]]
         ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< bool > getEmbedAttachments() const;
 
         /// <summary>
@@ -251,6 +255,7 @@ namespace aspose::words::cloud::models {
         /// false value will be used automatically.
         /// Embedding attachments is not supported when encryption is enabled. false value will be used automatically.
         /// </summary>
+        [[deprecated("This property will be removed in the future.")]]
         ASPOSE_WORDS_CLOUD_EXPORT virtual void setEmbedAttachments(std::shared_ptr< bool > value);
 
 
