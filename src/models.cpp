@@ -19750,6 +19750,22 @@ namespace aspose::words::cloud::models {
     /*
      * PdfSaveOptionsData implementation
      */
+    inline std::string pdfSaveOptionsDataAttachmentsEmbeddingModeToString(aspose::words::cloud::models::PdfSaveOptionsData::AttachmentsEmbeddingMode value)
+    {
+        if (value == aspose::words::cloud::models::PdfSaveOptionsData::AttachmentsEmbeddingMode::NONE) return "None";
+        if (value == aspose::words::cloud::models::PdfSaveOptionsData::AttachmentsEmbeddingMode::ANNOTATIONS) return "Annotations";
+        if (value == aspose::words::cloud::models::PdfSaveOptionsData::AttachmentsEmbeddingMode::DOCUMENT_EMBEDDED_FILES) return "DocumentEmbeddedFiles";
+        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
+    }
+
+    inline aspose::words::cloud::models::PdfSaveOptionsData::AttachmentsEmbeddingMode pdfSaveOptionsDataAttachmentsEmbeddingModeFromString(const std::string& value)
+    {
+        if (value == "None") return aspose::words::cloud::models::PdfSaveOptionsData::AttachmentsEmbeddingMode::NONE;
+        if (value == "Annotations") return aspose::words::cloud::models::PdfSaveOptionsData::AttachmentsEmbeddingMode::ANNOTATIONS;
+        if (value == "DocumentEmbeddedFiles") return aspose::words::cloud::models::PdfSaveOptionsData::AttachmentsEmbeddingMode::DOCUMENT_EMBEDDED_FILES;
+        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
+    }
+
     inline std::string pdfSaveOptionsDataComplianceToString(aspose::words::cloud::models::PdfSaveOptionsData::Compliance value)
     {
         if (value == aspose::words::cloud::models::PdfSaveOptionsData::Compliance::PDF17) return "Pdf17";
@@ -19909,6 +19925,9 @@ namespace aspose::words::cloud::models {
     {
         FixedPageSaveOptionsData::toJson(jsonIfc);
         ::nlohmann::json& json = *((::nlohmann::json*)jsonIfc);
+        if (this->m_AttachmentsEmbeddingMode) {
+            json["AttachmentsEmbeddingMode"] = pdfSaveOptionsDataAttachmentsEmbeddingModeToString(*(this->m_AttachmentsEmbeddingMode));
+        }
         if (this->m_CacheBackgroundGraphics) {
             json["CacheBackgroundGraphics"] = *(this->m_CacheBackgroundGraphics);
         }
@@ -20005,6 +20024,11 @@ namespace aspose::words::cloud::models {
     {
         FixedPageSaveOptionsData::fromJson(jsonIfc);
         ::nlohmann::json& json = *((::nlohmann::json*)jsonIfc);
+        if (json.contains("AttachmentsEmbeddingMode") && !json["AttachmentsEmbeddingMode"].is_null()) {
+            this->m_AttachmentsEmbeddingMode = std::make_shared< aspose::words::cloud::models::PdfSaveOptionsData::AttachmentsEmbeddingMode >(
+                pdfSaveOptionsDataAttachmentsEmbeddingModeFromString(json["AttachmentsEmbeddingMode"].get< std::string >())
+            );
+        }
         if (json.contains("CacheBackgroundGraphics") && !json["CacheBackgroundGraphics"].is_null()) {
             this->m_CacheBackgroundGraphics = std::make_shared< bool >(
                 json["CacheBackgroundGraphics"].get< bool >()
@@ -20206,6 +20230,17 @@ namespace aspose::words::cloud::models {
 
 
     }
+
+    std::shared_ptr< aspose::words::cloud::models::PdfSaveOptionsData::AttachmentsEmbeddingMode > PdfSaveOptionsData::getAttachmentsEmbeddingMode() const
+    {
+        return this->m_AttachmentsEmbeddingMode;
+    }
+
+    void PdfSaveOptionsData::setAttachmentsEmbeddingMode(std::shared_ptr< aspose::words::cloud::models::PdfSaveOptionsData::AttachmentsEmbeddingMode > value)
+    {
+        this->m_AttachmentsEmbeddingMode = value;
+    }
+
 
     std::shared_ptr< bool > PdfSaveOptionsData::getCacheBackgroundGraphics() const
     {
@@ -22717,6 +22752,9 @@ namespace aspose::words::cloud::models {
         if (this->m_ImlRenderingMode) {
             json["ImlRenderingMode"] = saveOptionsDataImlRenderingModeToString(*(this->m_ImlRenderingMode));
         }
+        if (this->m_UpdateAmbiguousTextFont) {
+            json["UpdateAmbiguousTextFont"] = *(this->m_UpdateAmbiguousTextFont);
+        }
         if (this->m_UpdateCreatedTimeProperty) {
             json["UpdateCreatedTimeProperty"] = *(this->m_UpdateCreatedTimeProperty);
         }
@@ -22773,6 +22811,11 @@ namespace aspose::words::cloud::models {
                 saveOptionsDataImlRenderingModeFromString(json["ImlRenderingMode"].get< std::string >())
             );
         }
+        if (json.contains("UpdateAmbiguousTextFont") && !json["UpdateAmbiguousTextFont"].is_null()) {
+            this->m_UpdateAmbiguousTextFont = std::make_shared< bool >(
+                json["UpdateAmbiguousTextFont"].get< bool >()
+            );
+        }
         if (json.contains("UpdateCreatedTimeProperty") && !json["UpdateCreatedTimeProperty"].is_null()) {
             this->m_UpdateCreatedTimeProperty = std::make_shared< bool >(
                 json["UpdateCreatedTimeProperty"].get< bool >()
@@ -22821,6 +22864,7 @@ namespace aspose::words::cloud::models {
         {
             this->m_CustomTimeZoneInfoData->validate();
         }
+
 
 
 
@@ -22909,6 +22953,17 @@ namespace aspose::words::cloud::models {
     void SaveOptionsData::setImlRenderingMode(std::shared_ptr< aspose::words::cloud::models::SaveOptionsData::ImlRenderingMode > value)
     {
         this->m_ImlRenderingMode = value;
+    }
+
+
+    std::shared_ptr< bool > SaveOptionsData::getUpdateAmbiguousTextFont() const
+    {
+        return this->m_UpdateAmbiguousTextFont;
+    }
+
+    void SaveOptionsData::setUpdateAmbiguousTextFont(std::shared_ptr< bool > value)
+    {
+        this->m_UpdateAmbiguousTextFont = value;
     }
 
 
