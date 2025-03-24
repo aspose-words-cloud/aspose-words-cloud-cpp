@@ -2702,6 +2702,20 @@ namespace aspose::words::cloud::models {
     /*
      * CompareOptions implementation
      */
+    inline std::string compareOptionsGranularityToString(aspose::words::cloud::models::CompareOptions::Granularity value)
+    {
+        if (value == aspose::words::cloud::models::CompareOptions::Granularity::CHAR_LEVEL) return "CharLevel";
+        if (value == aspose::words::cloud::models::CompareOptions::Granularity::WORD_LEVEL) return "WordLevel";
+        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
+    }
+
+    inline aspose::words::cloud::models::CompareOptions::Granularity compareOptionsGranularityFromString(const std::string& value)
+    {
+        if (value == "CharLevel") return aspose::words::cloud::models::CompareOptions::Granularity::CHAR_LEVEL;
+        if (value == "WordLevel") return aspose::words::cloud::models::CompareOptions::Granularity::WORD_LEVEL;
+        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
+    }
+
     inline std::string compareOptionsTargetToString(aspose::words::cloud::models::CompareOptions::Target value)
     {
         if (value == aspose::words::cloud::models::CompareOptions::Target::CURRENT) return "Current";
@@ -2720,6 +2734,9 @@ namespace aspose::words::cloud::models {
         ::nlohmann::json& json = *((::nlohmann::json*)jsonIfc);
         if (this->m_AcceptAllRevisionsBeforeComparison) {
             json["AcceptAllRevisionsBeforeComparison"] = *(this->m_AcceptAllRevisionsBeforeComparison);
+        }
+        if (this->m_Granularity) {
+            json["Granularity"] = compareOptionsGranularityToString(*(this->m_Granularity));
         }
         if (this->m_IgnoreCaseChanges) {
             json["IgnoreCaseChanges"] = *(this->m_IgnoreCaseChanges);
@@ -2756,6 +2773,11 @@ namespace aspose::words::cloud::models {
         if (json.contains("AcceptAllRevisionsBeforeComparison") && !json["AcceptAllRevisionsBeforeComparison"].is_null()) {
             this->m_AcceptAllRevisionsBeforeComparison = std::make_shared< bool >(
                 json["AcceptAllRevisionsBeforeComparison"].get< bool >()
+            );
+        }
+        if (json.contains("Granularity") && !json["Granularity"].is_null()) {
+            this->m_Granularity = std::make_shared< aspose::words::cloud::models::CompareOptions::Granularity >(
+                compareOptionsGranularityFromString(json["Granularity"].get< std::string >())
             );
         }
         if (json.contains("IgnoreCaseChanges") && !json["IgnoreCaseChanges"].is_null()) {
@@ -2821,6 +2843,17 @@ namespace aspose::words::cloud::models {
     void CompareOptions::setAcceptAllRevisionsBeforeComparison(std::shared_ptr< bool > value)
     {
         this->m_AcceptAllRevisionsBeforeComparison = value;
+    }
+
+
+    std::shared_ptr< aspose::words::cloud::models::CompareOptions::Granularity > CompareOptions::getGranularity() const
+    {
+        return this->m_Granularity;
+    }
+
+    void CompareOptions::setGranularity(std::shared_ptr< aspose::words::cloud::models::CompareOptions::Granularity > value)
+    {
+        this->m_Granularity = value;
     }
 
 
