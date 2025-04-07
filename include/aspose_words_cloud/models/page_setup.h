@@ -166,6 +166,8 @@ namespace aspose::words::cloud::models {
             PAPER10X14,
             PAPER11X17,
             NUMBER10_ENVELOPE,
+            JIS_B4,
+            JIS_B5,
             CUSTOM
         };
 

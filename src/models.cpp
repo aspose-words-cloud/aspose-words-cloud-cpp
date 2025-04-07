@@ -16806,6 +16806,8 @@ namespace aspose::words::cloud::models {
         if (value == aspose::words::cloud::models::PageSetup::PaperSize::PAPER10X14) return "Paper10x14";
         if (value == aspose::words::cloud::models::PageSetup::PaperSize::PAPER11X17) return "Paper11x17";
         if (value == aspose::words::cloud::models::PageSetup::PaperSize::NUMBER10_ENVELOPE) return "Number10Envelope";
+        if (value == aspose::words::cloud::models::PageSetup::PaperSize::JIS_B4) return "JisB4";
+        if (value == aspose::words::cloud::models::PageSetup::PaperSize::JIS_B5) return "JisB5";
         if (value == aspose::words::cloud::models::PageSetup::PaperSize::CUSTOM) return "Custom";
         throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
     }
@@ -16829,6 +16831,8 @@ namespace aspose::words::cloud::models {
         if (value == "Paper10x14") return aspose::words::cloud::models::PageSetup::PaperSize::PAPER10X14;
         if (value == "Paper11x17") return aspose::words::cloud::models::PageSetup::PaperSize::PAPER11X17;
         if (value == "Number10Envelope") return aspose::words::cloud::models::PageSetup::PaperSize::NUMBER10_ENVELOPE;
+        if (value == "JisB4") return aspose::words::cloud::models::PageSetup::PaperSize::JIS_B4;
+        if (value == "JisB5") return aspose::words::cloud::models::PageSetup::PaperSize::JIS_B5;
         if (value == "Custom") return aspose::words::cloud::models::PageSetup::PaperSize::CUSTOM;
         throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
     }
