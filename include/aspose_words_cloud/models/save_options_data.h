@@ -185,6 +185,17 @@ namespace aspose::words::cloud::models {
 
 
         /// <summary>
+        /// Gets or sets a value indicating whether the font attributes will be changed according to the character code being used.
+        /// </summary>
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< bool > getUpdateAmbiguousTextFont() const;
+
+        /// <summary>
+        /// Gets or sets a value indicating whether the font attributes will be changed according to the character code being used.
+        /// </summary>
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setUpdateAmbiguousTextFont(std::shared_ptr< bool > value);
+
+
+        /// <summary>
         /// Gets or sets a value determining whether the Aspose.Words.Properties.BuiltInDocumentProperties.CreatedTime property is updated before saving.
         /// Default value is false.
         /// </summary>
@@ -262,6 +273,7 @@ namespace aspose::words::cloud::models {
         std::shared_ptr< aspose::words::cloud::models::SaveOptionsData::DmlRenderingMode > m_DmlRenderingMode;
         std::shared_ptr< std::wstring > m_FileName;
         std::shared_ptr< aspose::words::cloud::models::SaveOptionsData::ImlRenderingMode > m_ImlRenderingMode;
+        std::shared_ptr< bool > m_UpdateAmbiguousTextFont;
         std::shared_ptr< bool > m_UpdateCreatedTimeProperty;
         std::shared_ptr< bool > m_UpdateFields;
         std::shared_ptr< bool > m_UpdateLastPrintedProperty;

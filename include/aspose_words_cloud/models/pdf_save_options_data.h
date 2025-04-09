@@ -39,6 +39,19 @@ namespace aspose::words::cloud::models {
     {
     public:
         /// <summary>
+        /// Gets or sets a value determining how attachments are embedded to the PDF document.
+        /// Default value is None and attachments are not embedded.
+        /// PDF/A-1, PDF/A-2 and regular PDF/A-4 (not PDF/A-4f) standards do not allow embedded files.
+        /// None value will be used automatically.
+        /// </summary>
+        enum class AttachmentsEmbeddingMode
+        { 
+            NONE,
+            ANNOTATIONS,
+            DOCUMENT_EMBEDDED_FILES
+        };
+
+        /// <summary>
         /// Gets or sets the PDF standards compliance level for output documents.
         /// </summary>
         enum class Compliance
@@ -146,6 +159,23 @@ namespace aspose::words::cloud::models {
         void abstractSaveOptionsData() override {}
 
         /// <summary>
+        /// Gets or sets a value determining how attachments are embedded to the PDF document.
+        /// Default value is None and attachments are not embedded.
+        /// PDF/A-1, PDF/A-2 and regular PDF/A-4 (not PDF/A-4f) standards do not allow embedded files.
+        /// None value will be used automatically.
+        /// </summary>
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< aspose::words::cloud::models::PdfSaveOptionsData::AttachmentsEmbeddingMode > getAttachmentsEmbeddingMode() const;
+
+        /// <summary>
+        /// Gets or sets a value determining how attachments are embedded to the PDF document.
+        /// Default value is None and attachments are not embedded.
+        /// PDF/A-1, PDF/A-2 and regular PDF/A-4 (not PDF/A-4f) standards do not allow embedded files.
+        /// None value will be used automatically.
+        /// </summary>
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setAttachmentsEmbeddingMode(std::shared_ptr< aspose::words::cloud::models::PdfSaveOptionsData::AttachmentsEmbeddingMode > value);
+
+
+        /// <summary>
         /// Gets or sets a value determining whether or not to cache graphics placed in document's background.
         /// Default value is true and background graphics are written to the PDF document as an xObject. When the value is false background graphics are not cached. Some shapes are not supported for caching(shapes with fields, bookmarks, HRefs). Document background graphic is various shapes, charts, images placed in the footer or header,
         /// well as background and border of a page.
@@ -244,7 +274,7 @@ namespace aspose::words::cloud::models {
         /// false value will be used automatically.
         /// Embedding attachments is not supported when encryption is enabled. false value will be used automatically.
         /// </summary>
-        [[deprecated("This property will be removed in the future.")]]
+        [[deprecated("Obsolete, please use AttachmentsEmbeddingMode instead.")]]
         ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< bool > getEmbedAttachments() const;
 
         /// <summary>
@@ -255,7 +285,7 @@ namespace aspose::words::cloud::models {
         /// false value will be used automatically.
         /// Embedding attachments is not supported when encryption is enabled. false value will be used automatically.
         /// </summary>
-        [[deprecated("This property will be removed in the future.")]]
+        [[deprecated("Obsolete, please use AttachmentsEmbeddingMode instead.")]]
         ASPOSE_WORDS_CLOUD_EXPORT virtual void setEmbedAttachments(std::shared_ptr< bool > value);
 
 
@@ -522,6 +552,7 @@ namespace aspose::words::cloud::models {
 
 
     protected:
+        std::shared_ptr< aspose::words::cloud::models::PdfSaveOptionsData::AttachmentsEmbeddingMode > m_AttachmentsEmbeddingMode;
         std::shared_ptr< bool > m_CacheBackgroundGraphics;
         std::shared_ptr< aspose::words::cloud::models::PdfSaveOptionsData::Compliance > m_Compliance;
         std::shared_ptr< bool > m_CreateNoteHyperlinks;

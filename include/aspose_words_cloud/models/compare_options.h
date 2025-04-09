@@ -34,6 +34,15 @@ namespace aspose::words::cloud::models {
     {
     public:
         /// <summary>
+        /// Gets or sets the option indicating whether changes are tracked by character or by word.
+        /// </summary>
+        enum class Granularity
+        { 
+            CHAR_LEVEL,
+            WORD_LEVEL
+        };
+
+        /// <summary>
         /// Gets or sets the option that controls which document shall be used as a target during comparison.
         /// </summary>
         enum class Target
@@ -59,6 +68,17 @@ namespace aspose::words::cloud::models {
         /// Gets or sets whether accept revisions before comparison or not.
         /// </summary>
         ASPOSE_WORDS_CLOUD_EXPORT virtual void setAcceptAllRevisionsBeforeComparison(std::shared_ptr< bool > value);
+
+
+        /// <summary>
+        /// Gets or sets the option indicating whether changes are tracked by character or by word.
+        /// </summary>
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< aspose::words::cloud::models::CompareOptions::Granularity > getGranularity() const;
+
+        /// <summary>
+        /// Gets or sets the option indicating whether changes are tracked by character or by word.
+        /// </summary>
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setGranularity(std::shared_ptr< aspose::words::cloud::models::CompareOptions::Granularity > value);
 
 
         /// <summary>
@@ -162,6 +182,7 @@ namespace aspose::words::cloud::models {
 
     protected:
         std::shared_ptr< bool > m_AcceptAllRevisionsBeforeComparison;
+        std::shared_ptr< aspose::words::cloud::models::CompareOptions::Granularity > m_Granularity;
         std::shared_ptr< bool > m_IgnoreCaseChanges;
         std::shared_ptr< bool > m_IgnoreComments;
         std::shared_ptr< bool > m_IgnoreFields;

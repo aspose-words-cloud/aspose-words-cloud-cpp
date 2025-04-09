@@ -2702,6 +2702,20 @@ namespace aspose::words::cloud::models {
     /*
      * CompareOptions implementation
      */
+    inline std::string compareOptionsGranularityToString(aspose::words::cloud::models::CompareOptions::Granularity value)
+    {
+        if (value == aspose::words::cloud::models::CompareOptions::Granularity::CHAR_LEVEL) return "CharLevel";
+        if (value == aspose::words::cloud::models::CompareOptions::Granularity::WORD_LEVEL) return "WordLevel";
+        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
+    }
+
+    inline aspose::words::cloud::models::CompareOptions::Granularity compareOptionsGranularityFromString(const std::string& value)
+    {
+        if (value == "CharLevel") return aspose::words::cloud::models::CompareOptions::Granularity::CHAR_LEVEL;
+        if (value == "WordLevel") return aspose::words::cloud::models::CompareOptions::Granularity::WORD_LEVEL;
+        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
+    }
+
     inline std::string compareOptionsTargetToString(aspose::words::cloud::models::CompareOptions::Target value)
     {
         if (value == aspose::words::cloud::models::CompareOptions::Target::CURRENT) return "Current";
@@ -2720,6 +2734,9 @@ namespace aspose::words::cloud::models {
         ::nlohmann::json& json = *((::nlohmann::json*)jsonIfc);
         if (this->m_AcceptAllRevisionsBeforeComparison) {
             json["AcceptAllRevisionsBeforeComparison"] = *(this->m_AcceptAllRevisionsBeforeComparison);
+        }
+        if (this->m_Granularity) {
+            json["Granularity"] = compareOptionsGranularityToString(*(this->m_Granularity));
         }
         if (this->m_IgnoreCaseChanges) {
             json["IgnoreCaseChanges"] = *(this->m_IgnoreCaseChanges);
@@ -2756,6 +2773,11 @@ namespace aspose::words::cloud::models {
         if (json.contains("AcceptAllRevisionsBeforeComparison") && !json["AcceptAllRevisionsBeforeComparison"].is_null()) {
             this->m_AcceptAllRevisionsBeforeComparison = std::make_shared< bool >(
                 json["AcceptAllRevisionsBeforeComparison"].get< bool >()
+            );
+        }
+        if (json.contains("Granularity") && !json["Granularity"].is_null()) {
+            this->m_Granularity = std::make_shared< aspose::words::cloud::models::CompareOptions::Granularity >(
+                compareOptionsGranularityFromString(json["Granularity"].get< std::string >())
             );
         }
         if (json.contains("IgnoreCaseChanges") && !json["IgnoreCaseChanges"].is_null()) {
@@ -2821,6 +2843,17 @@ namespace aspose::words::cloud::models {
     void CompareOptions::setAcceptAllRevisionsBeforeComparison(std::shared_ptr< bool > value)
     {
         this->m_AcceptAllRevisionsBeforeComparison = value;
+    }
+
+
+    std::shared_ptr< aspose::words::cloud::models::CompareOptions::Granularity > CompareOptions::getGranularity() const
+    {
+        return this->m_Granularity;
+    }
+
+    void CompareOptions::setGranularity(std::shared_ptr< aspose::words::cloud::models::CompareOptions::Granularity > value)
+    {
+        this->m_Granularity = value;
     }
 
 
@@ -16773,6 +16806,8 @@ namespace aspose::words::cloud::models {
         if (value == aspose::words::cloud::models::PageSetup::PaperSize::PAPER10X14) return "Paper10x14";
         if (value == aspose::words::cloud::models::PageSetup::PaperSize::PAPER11X17) return "Paper11x17";
         if (value == aspose::words::cloud::models::PageSetup::PaperSize::NUMBER10_ENVELOPE) return "Number10Envelope";
+        if (value == aspose::words::cloud::models::PageSetup::PaperSize::JIS_B4) return "JisB4";
+        if (value == aspose::words::cloud::models::PageSetup::PaperSize::JIS_B5) return "JisB5";
         if (value == aspose::words::cloud::models::PageSetup::PaperSize::CUSTOM) return "Custom";
         throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
     }
@@ -16796,6 +16831,8 @@ namespace aspose::words::cloud::models {
         if (value == "Paper10x14") return aspose::words::cloud::models::PageSetup::PaperSize::PAPER10X14;
         if (value == "Paper11x17") return aspose::words::cloud::models::PageSetup::PaperSize::PAPER11X17;
         if (value == "Number10Envelope") return aspose::words::cloud::models::PageSetup::PaperSize::NUMBER10_ENVELOPE;
+        if (value == "JisB4") return aspose::words::cloud::models::PageSetup::PaperSize::JIS_B4;
+        if (value == "JisB5") return aspose::words::cloud::models::PageSetup::PaperSize::JIS_B5;
         if (value == "Custom") return aspose::words::cloud::models::PageSetup::PaperSize::CUSTOM;
         throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
     }
@@ -19750,6 +19787,22 @@ namespace aspose::words::cloud::models {
     /*
      * PdfSaveOptionsData implementation
      */
+    inline std::string pdfSaveOptionsDataAttachmentsEmbeddingModeToString(aspose::words::cloud::models::PdfSaveOptionsData::AttachmentsEmbeddingMode value)
+    {
+        if (value == aspose::words::cloud::models::PdfSaveOptionsData::AttachmentsEmbeddingMode::NONE) return "None";
+        if (value == aspose::words::cloud::models::PdfSaveOptionsData::AttachmentsEmbeddingMode::ANNOTATIONS) return "Annotations";
+        if (value == aspose::words::cloud::models::PdfSaveOptionsData::AttachmentsEmbeddingMode::DOCUMENT_EMBEDDED_FILES) return "DocumentEmbeddedFiles";
+        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
+    }
+
+    inline aspose::words::cloud::models::PdfSaveOptionsData::AttachmentsEmbeddingMode pdfSaveOptionsDataAttachmentsEmbeddingModeFromString(const std::string& value)
+    {
+        if (value == "None") return aspose::words::cloud::models::PdfSaveOptionsData::AttachmentsEmbeddingMode::NONE;
+        if (value == "Annotations") return aspose::words::cloud::models::PdfSaveOptionsData::AttachmentsEmbeddingMode::ANNOTATIONS;
+        if (value == "DocumentEmbeddedFiles") return aspose::words::cloud::models::PdfSaveOptionsData::AttachmentsEmbeddingMode::DOCUMENT_EMBEDDED_FILES;
+        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
+    }
+
     inline std::string pdfSaveOptionsDataComplianceToString(aspose::words::cloud::models::PdfSaveOptionsData::Compliance value)
     {
         if (value == aspose::words::cloud::models::PdfSaveOptionsData::Compliance::PDF17) return "Pdf17";
@@ -19909,6 +19962,9 @@ namespace aspose::words::cloud::models {
     {
         FixedPageSaveOptionsData::toJson(jsonIfc);
         ::nlohmann::json& json = *((::nlohmann::json*)jsonIfc);
+        if (this->m_AttachmentsEmbeddingMode) {
+            json["AttachmentsEmbeddingMode"] = pdfSaveOptionsDataAttachmentsEmbeddingModeToString(*(this->m_AttachmentsEmbeddingMode));
+        }
         if (this->m_CacheBackgroundGraphics) {
             json["CacheBackgroundGraphics"] = *(this->m_CacheBackgroundGraphics);
         }
@@ -20005,6 +20061,11 @@ namespace aspose::words::cloud::models {
     {
         FixedPageSaveOptionsData::fromJson(jsonIfc);
         ::nlohmann::json& json = *((::nlohmann::json*)jsonIfc);
+        if (json.contains("AttachmentsEmbeddingMode") && !json["AttachmentsEmbeddingMode"].is_null()) {
+            this->m_AttachmentsEmbeddingMode = std::make_shared< aspose::words::cloud::models::PdfSaveOptionsData::AttachmentsEmbeddingMode >(
+                pdfSaveOptionsDataAttachmentsEmbeddingModeFromString(json["AttachmentsEmbeddingMode"].get< std::string >())
+            );
+        }
         if (json.contains("CacheBackgroundGraphics") && !json["CacheBackgroundGraphics"].is_null()) {
             this->m_CacheBackgroundGraphics = std::make_shared< bool >(
                 json["CacheBackgroundGraphics"].get< bool >()
@@ -20206,6 +20267,17 @@ namespace aspose::words::cloud::models {
 
 
     }
+
+    std::shared_ptr< aspose::words::cloud::models::PdfSaveOptionsData::AttachmentsEmbeddingMode > PdfSaveOptionsData::getAttachmentsEmbeddingMode() const
+    {
+        return this->m_AttachmentsEmbeddingMode;
+    }
+
+    void PdfSaveOptionsData::setAttachmentsEmbeddingMode(std::shared_ptr< aspose::words::cloud::models::PdfSaveOptionsData::AttachmentsEmbeddingMode > value)
+    {
+        this->m_AttachmentsEmbeddingMode = value;
+    }
+
 
     std::shared_ptr< bool > PdfSaveOptionsData::getCacheBackgroundGraphics() const
     {
@@ -22717,6 +22789,9 @@ namespace aspose::words::cloud::models {
         if (this->m_ImlRenderingMode) {
             json["ImlRenderingMode"] = saveOptionsDataImlRenderingModeToString(*(this->m_ImlRenderingMode));
         }
+        if (this->m_UpdateAmbiguousTextFont) {
+            json["UpdateAmbiguousTextFont"] = *(this->m_UpdateAmbiguousTextFont);
+        }
         if (this->m_UpdateCreatedTimeProperty) {
             json["UpdateCreatedTimeProperty"] = *(this->m_UpdateCreatedTimeProperty);
         }
@@ -22773,6 +22848,11 @@ namespace aspose::words::cloud::models {
                 saveOptionsDataImlRenderingModeFromString(json["ImlRenderingMode"].get< std::string >())
             );
         }
+        if (json.contains("UpdateAmbiguousTextFont") && !json["UpdateAmbiguousTextFont"].is_null()) {
+            this->m_UpdateAmbiguousTextFont = std::make_shared< bool >(
+                json["UpdateAmbiguousTextFont"].get< bool >()
+            );
+        }
         if (json.contains("UpdateCreatedTimeProperty") && !json["UpdateCreatedTimeProperty"].is_null()) {
             this->m_UpdateCreatedTimeProperty = std::make_shared< bool >(
                 json["UpdateCreatedTimeProperty"].get< bool >()
@@ -22821,6 +22901,7 @@ namespace aspose::words::cloud::models {
         {
             this->m_CustomTimeZoneInfoData->validate();
         }
+
 
 
 
@@ -22909,6 +22990,17 @@ namespace aspose::words::cloud::models {
     void SaveOptionsData::setImlRenderingMode(std::shared_ptr< aspose::words::cloud::models::SaveOptionsData::ImlRenderingMode > value)
     {
         this->m_ImlRenderingMode = value;
+    }
+
+
+    std::shared_ptr< bool > SaveOptionsData::getUpdateAmbiguousTextFont() const
+    {
+        return this->m_UpdateAmbiguousTextFont;
+    }
+
+    void SaveOptionsData::setUpdateAmbiguousTextFont(std::shared_ptr< bool > value)
+    {
+        this->m_UpdateAmbiguousTextFont = value;
     }
 
 
