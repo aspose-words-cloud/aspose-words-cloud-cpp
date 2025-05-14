@@ -17,6 +17,12 @@ Feel free to explore the [Developer's Guide](https://docs.aspose.cloud/display/w
 - Read & write access to Document Object Model.
 - Thread safe
 
+## Enhancements in Version 25.5
+
+- Added data models support for classes 'CommentRangeStart', 'CommentRangeEnd'.
+- Added data models support for classes 'FormFieldCheckboxLink', 'FormFieldDropDownLink', 'FormFieldTextInputLink'.
+
+
 ## Enhancements in Version 25.4
 
 - Added 'AttachmentsEmbeddingMode' property for PdfSaveOptionsData class.

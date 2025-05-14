@@ -50,6 +50,8 @@ namespace aspose::words::cloud::models {
         { L"Comment, _", [] () { return dynamic_cast< ModelBase* >(new Comment()); }},
         { L"CommentInsert, _", [] () { return dynamic_cast< ModelBase* >(new CommentInsert()); }},
         { L"CommentLink, _", [] () { return dynamic_cast< ModelBase* >(new CommentLink()); }},
+        { L"CommentRangeEnd, _", [] () { return dynamic_cast< ModelBase* >(new CommentRangeEnd()); }},
+        { L"CommentRangeStart, _", [] () { return dynamic_cast< ModelBase* >(new CommentRangeStart()); }},
         { L"CommentResponse, _", [] () { return dynamic_cast< ModelBase* >(new CommentResponse()); }},
         { L"CommentsCollection, _", [] () { return dynamic_cast< ModelBase* >(new CommentsCollection()); }},
         { L"CommentsResponse, _", [] () { return dynamic_cast< ModelBase* >(new CommentsResponse()); }},
@@ -126,11 +128,14 @@ namespace aspose::words::cloud::models {
         { L"FootnotesStatData, _", [] () { return dynamic_cast< ModelBase* >(new FootnotesStatData()); }},
         { L"FootnoteUpdate, _", [] () { return dynamic_cast< ModelBase* >(new FootnoteUpdate()); }},
         { L"FormFieldCheckbox, _", [] () { return dynamic_cast< ModelBase* >(new FormFieldCheckbox()); }},
+        { L"FormFieldCheckboxLink, _", [] () { return dynamic_cast< ModelBase* >(new FormFieldCheckboxLink()); }},
         { L"FormFieldCollection, _", [] () { return dynamic_cast< ModelBase* >(new FormFieldCollection()); }},
         { L"FormFieldDropDown, _", [] () { return dynamic_cast< ModelBase* >(new FormFieldDropDown()); }},
+        { L"FormFieldDropDownLink, _", [] () { return dynamic_cast< ModelBase* >(new FormFieldDropDownLink()); }},
         { L"FormFieldResponse, _", [] () { return dynamic_cast< ModelBase* >(new FormFieldResponse()); }},
         { L"FormFieldsResponse, _", [] () { return dynamic_cast< ModelBase* >(new FormFieldsResponse()); }},
         { L"FormFieldTextInput, _", [] () { return dynamic_cast< ModelBase* >(new FormFieldTextInput()); }},
+        { L"FormFieldTextInputLink, _", [] () { return dynamic_cast< ModelBase* >(new FormFieldTextInputLink()); }},
         { L"GifSaveOptionsData, _", [] () { return dynamic_cast< ModelBase* >(new GifSaveOptionsData()); }},
         { L"HeaderFooter, _", [] () { return dynamic_cast< ModelBase* >(new HeaderFooter()); }},
         { L"HeaderFooterLink, _", [] () { return dynamic_cast< ModelBase* >(new HeaderFooterLink()); }},
@@ -2349,6 +2354,102 @@ namespace aspose::words::cloud::models {
         LinkElement::validate();
     }
 
+
+
+
+    /*
+     * CommentRangeEnd implementation
+     */
+    void CommentRangeEnd::toJson(void* jsonIfc) const
+    {
+        NodeLink::toJson(jsonIfc);
+        ::nlohmann::json& json = *((::nlohmann::json*)jsonIfc);
+        if (this->m_CommentLink) {
+            this->m_CommentLink->toJson(&json["CommentLink"]);
+        }
+    }
+
+    void CommentRangeEnd::fromJson(const void* jsonIfc)
+    {
+        NodeLink::fromJson(jsonIfc);
+        ::nlohmann::json& json = *((::nlohmann::json*)jsonIfc);
+        if (json.contains("CommentLink") && !json["CommentLink"].is_null()) {
+            this->m_CommentLink = createModelInstance< aspose::words::cloud::models::CommentLink >(L"CommentLink, _", json["CommentLink"]);
+        }
+    }
+
+    void CommentRangeEnd::getFileReferences(std::vector< FileReference* >& result)
+    {
+    }
+
+    void CommentRangeEnd::validate()
+    {
+        NodeLink::validate();
+
+        if (this->m_CommentLink != nullptr)
+        {
+            this->m_CommentLink->validate();
+        }
+
+    }
+
+    std::shared_ptr< aspose::words::cloud::models::CommentLink > CommentRangeEnd::getCommentLink() const
+    {
+        return this->m_CommentLink;
+    }
+
+    void CommentRangeEnd::setCommentLink(std::shared_ptr< aspose::words::cloud::models::CommentLink > value)
+    {
+        this->m_CommentLink = value;
+    }
+
+
+
+    /*
+     * CommentRangeStart implementation
+     */
+    void CommentRangeStart::toJson(void* jsonIfc) const
+    {
+        NodeLink::toJson(jsonIfc);
+        ::nlohmann::json& json = *((::nlohmann::json*)jsonIfc);
+        if (this->m_CommentLink) {
+            this->m_CommentLink->toJson(&json["CommentLink"]);
+        }
+    }
+
+    void CommentRangeStart::fromJson(const void* jsonIfc)
+    {
+        NodeLink::fromJson(jsonIfc);
+        ::nlohmann::json& json = *((::nlohmann::json*)jsonIfc);
+        if (json.contains("CommentLink") && !json["CommentLink"].is_null()) {
+            this->m_CommentLink = createModelInstance< aspose::words::cloud::models::CommentLink >(L"CommentLink, _", json["CommentLink"]);
+        }
+    }
+
+    void CommentRangeStart::getFileReferences(std::vector< FileReference* >& result)
+    {
+    }
+
+    void CommentRangeStart::validate()
+    {
+        NodeLink::validate();
+
+        if (this->m_CommentLink != nullptr)
+        {
+            this->m_CommentLink->validate();
+        }
+
+    }
+
+    std::shared_ptr< aspose::words::cloud::models::CommentLink > CommentRangeStart::getCommentLink() const
+    {
+        return this->m_CommentLink;
+    }
+
+    void CommentRangeStart::setCommentLink(std::shared_ptr< aspose::words::cloud::models::CommentLink > value)
+    {
+        this->m_CommentLink = value;
+    }
 
 
 
@@ -10334,6 +10435,31 @@ namespace aspose::words::cloud::models {
 
 
     /*
+     * FormFieldCheckboxLink implementation
+     */
+    void FormFieldCheckboxLink::toJson(void* jsonIfc) const
+    {
+        NodeLink::toJson(jsonIfc);
+    }
+
+    void FormFieldCheckboxLink::fromJson(const void* jsonIfc)
+    {
+        NodeLink::fromJson(jsonIfc);
+    }
+
+    void FormFieldCheckboxLink::getFileReferences(std::vector< FileReference* >& result)
+    {
+    }
+
+    void FormFieldCheckboxLink::validate()
+    {
+        NodeLink::validate();
+    }
+
+
+
+
+    /*
      * FormFieldCollection implementation
      */
     void FormFieldCollection::toJson(void* jsonIfc) const
@@ -10462,6 +10588,31 @@ namespace aspose::words::cloud::models {
     {
         this->m_DropDownSelectedIndex = value;
     }
+
+
+
+    /*
+     * FormFieldDropDownLink implementation
+     */
+    void FormFieldDropDownLink::toJson(void* jsonIfc) const
+    {
+        NodeLink::toJson(jsonIfc);
+    }
+
+    void FormFieldDropDownLink::fromJson(const void* jsonIfc)
+    {
+        NodeLink::fromJson(jsonIfc);
+    }
+
+    void FormFieldDropDownLink::getFileReferences(std::vector< FileReference* >& result)
+    {
+    }
+
+    void FormFieldDropDownLink::validate()
+    {
+        NodeLink::validate();
+    }
+
 
 
 
@@ -10690,6 +10841,31 @@ namespace aspose::words::cloud::models {
     {
         this->m_MaxLength = value;
     }
+
+
+
+    /*
+     * FormFieldTextInputLink implementation
+     */
+    void FormFieldTextInputLink::toJson(void* jsonIfc) const
+    {
+        NodeLink::toJson(jsonIfc);
+    }
+
+    void FormFieldTextInputLink::fromJson(const void* jsonIfc)
+    {
+        NodeLink::fromJson(jsonIfc);
+    }
+
+    void FormFieldTextInputLink::getFileReferences(std::vector< FileReference* >& result)
+    {
+    }
+
+    void FormFieldTextInputLink::validate()
+    {
+        NodeLink::validate();
+    }
+
 
 
 
