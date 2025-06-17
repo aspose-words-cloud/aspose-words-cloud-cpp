@@ -521,6 +521,23 @@ namespace aspose::words::cloud::models {
 
 
         /// <summary>
+        /// Gets or sets the flag that indicates whether JavaScript will be removed from links.
+        /// Default is false.
+        /// If this option is enabled, all links containing JavaScript (e.g., links with "javascript:" in the href attribute)
+        /// will be replaced with "javascript:void(0)". This can help prevent potential security risks, such as XSS attacks.
+        /// </summary>
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< bool > getRemoveJavaScriptFromLinks() const;
+
+        /// <summary>
+        /// Gets or sets the flag that indicates whether JavaScript will be removed from links.
+        /// Default is false.
+        /// If this option is enabled, all links containing JavaScript (e.g., links with "javascript:" in the href attribute)
+        /// will be replaced with "javascript:void(0)". This can help prevent potential security risks, such as XSS attacks.
+        /// </summary>
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setRemoveJavaScriptFromLinks(std::shared_ptr< bool > value);
+
+
+        /// <summary>
         /// Gets or sets the flag that indicates whether backslash characters should be replaced with yen signs.
         /// Default value is false.
         /// By default, Aspose.Words mimics MS Word's behavior and doesn't replace backslash characters with yen signs in
@@ -637,6 +654,7 @@ namespace aspose::words::cloud::models {
         std::shared_ptr< aspose::words::cloud::models::HtmlSaveOptionsData::MetafileFormat > m_MetafileFormat;
         std::shared_ptr< aspose::words::cloud::models::HtmlSaveOptionsData::OfficeMathOutputMode > m_OfficeMathOutputMode;
         std::shared_ptr< bool > m_PrettyFormat;
+        std::shared_ptr< bool > m_RemoveJavaScriptFromLinks;
         std::shared_ptr< bool > m_ReplaceBackslashWithYenSign;
         std::shared_ptr< bool > m_ResolveFontNames;
         std::shared_ptr< std::wstring > m_ResourceFolder;

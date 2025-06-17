@@ -11834,6 +11834,9 @@ namespace aspose::words::cloud::models {
         if (this->m_PrettyFormat) {
             json["PrettyFormat"] = *(this->m_PrettyFormat);
         }
+        if (this->m_RemoveJavaScriptFromLinks) {
+            json["RemoveJavaScriptFromLinks"] = *(this->m_RemoveJavaScriptFromLinks);
+        }
         if (this->m_ReplaceBackslashWithYenSign) {
             json["ReplaceBackslashWithYenSign"] = *(this->m_ReplaceBackslashWithYenSign);
         }
@@ -12024,6 +12027,11 @@ namespace aspose::words::cloud::models {
         if (json.contains("PrettyFormat") && !json["PrettyFormat"].is_null()) {
             this->m_PrettyFormat = std::make_shared< bool >(
                 json["PrettyFormat"].get< bool >()
+            );
+        }
+        if (json.contains("RemoveJavaScriptFromLinks") && !json["RemoveJavaScriptFromLinks"].is_null()) {
+            this->m_RemoveJavaScriptFromLinks = std::make_shared< bool >(
+                json["RemoveJavaScriptFromLinks"].get< bool >()
             );
         }
         if (json.contains("ReplaceBackslashWithYenSign") && !json["ReplaceBackslashWithYenSign"].is_null()) {
@@ -12432,6 +12440,17 @@ namespace aspose::words::cloud::models {
     void HtmlSaveOptionsData::setPrettyFormat(std::shared_ptr< bool > value)
     {
         this->m_PrettyFormat = value;
+    }
+
+
+    std::shared_ptr< bool > HtmlSaveOptionsData::getRemoveJavaScriptFromLinks() const
+    {
+        return this->m_RemoveJavaScriptFromLinks;
+    }
+
+    void HtmlSaveOptionsData::setRemoveJavaScriptFromLinks(std::shared_ptr< bool > value)
+    {
+        this->m_RemoveJavaScriptFromLinks = value;
     }
 
 
