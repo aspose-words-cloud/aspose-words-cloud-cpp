@@ -17,6 +17,12 @@ Feel free to explore the [Developer's Guide](https://docs.aspose.cloud/display/w
 - Read & write access to Document Object Model.
 - Thread safe
 
+## Enhancements in Version 25.6
+
+- Added support for SVG images format in Watermark API.
+- Added 'RemoveJavaScriptFromLinks' property for HtmlSaveOptionsData class.
+
+
 ## Enhancements in Version 25.5
 
 - Added data models support for classes 'CommentRangeStart', 'CommentRangeEnd'.
