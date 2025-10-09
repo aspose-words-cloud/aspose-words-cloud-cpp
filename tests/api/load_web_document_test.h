@@ -55,3 +55,22 @@ TEST_F(LoadWebDocumentTests, TestLoadWebDocument) {
     ASSERT_TRUE(actual->getSaveResult()->getDestDocument() != nullptr);
     ASSERT_TRUE(actual->getSaveResult()->getDestDocument()->getHref()->compare(L"google.doc") == 0);
 }
+
+/// <summary>
+/// Test for loading web document online.
+/// </summary>
+TEST_F(LoadWebDocumentTests, TestLoadWebDocumentOnline) {
+    auto requestDataSaveOptions = std::make_shared< aspose::words::cloud::models::DocSaveOptionsData >();
+    requestDataSaveOptions->setFileName(std::make_shared< std::wstring >(L"google.doc"));
+    requestDataSaveOptions->setDmlEffectsRenderingMode(std::make_shared< aspose::words::cloud::models::SaveOptionsData::DmlEffectsRenderingMode >(aspose::words::cloud::models::SaveOptionsData::DmlEffectsRenderingMode::NONE));
+    requestDataSaveOptions->setDmlRenderingMode(std::make_shared< aspose::words::cloud::models::SaveOptionsData::DmlRenderingMode >(aspose::words::cloud::models::SaveOptionsData::DmlRenderingMode::DRAWING_ML));
+    requestDataSaveOptions->setZipOutput(std::make_shared< bool >(false));
+    auto requestData = std::make_shared< aspose::words::cloud::models::LoadWebDocumentData >();
+    requestData->setLoadingDocumentUrl(std::make_shared< std::wstring >(L"http://google.com"));
+    requestData->setSaveOptions(requestDataSaveOptions);
+    std::shared_ptr<requests::LoadWebDocumentOnlineRequest> request(new requests::LoadWebDocumentOnlineRequest(
+        requestData
+    ));
+
+    auto actual = getApi()->loadWebDocumentOnline(request);
+}

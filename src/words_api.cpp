@@ -2805,6 +2805,17 @@ namespace aspose::words::cloud::api {
         return response->getModel();
     }
 
+    std::shared_ptr<aspose::words::cloud::responses::LoadWebDocumentOnlineResponse> WordsApi::loadWebDocumentOnline(std::shared_ptr<aspose::words::cloud::requests::LoadWebDocumentOnlineRequest> request)
+    {
+        auto response = std::make_shared< aspose::words::cloud::responses::LoadWebDocumentOnlineResponse >();
+        m_ApiClient->call( request->createHttpRequest(m_ApiClient.get()), *response);
+        if (response->getStatusCode() != 200) {
+            throw aspose::words::cloud::ApiException(response->getStatusCode(), response->getErrorMessage());
+        }
+
+        return response;
+    }
+
     void WordsApi::mergeWithNext(std::shared_ptr<aspose::words::cloud::requests::MergeWithNextRequest> request)
     {
         auto response = std::make_shared< aspose::words::cloud::responses::MergeWithNextResponse >();
