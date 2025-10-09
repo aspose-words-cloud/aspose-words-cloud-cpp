@@ -545,6 +545,8 @@
 #include "aspose_words_cloud/responses/link_header_footers_to_previous_response.h"
 #include "aspose_words_cloud/requests/load_web_document_request.h"
 #include "aspose_words_cloud/responses/load_web_document_response.h"
+#include "aspose_words_cloud/requests/load_web_document_online_request.h"
+#include "aspose_words_cloud/responses/load_web_document_online_response.h"
 #include "aspose_words_cloud/requests/merge_with_next_request.h"
 #include "aspose_words_cloud/responses/merge_with_next_response.h"
 #include "aspose_words_cloud/requests/merge_with_next_online_request.h"
@@ -4222,6 +4224,12 @@ namespace aspose::words::cloud::api {
         /// <param name="data">The properties of data downloading.</param>
         /// <param name="storage">Original document storage.</param>
         ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::SaveResponse > loadWebDocument(std::shared_ptr<aspose::words::cloud::requests::LoadWebDocumentRequest> request);
+
+        /// <summary>
+        /// Downloads a document from the Web using URL and saves it to cloud storage in the specified format.
+        /// </summary>
+        /// <param name="data">The properties of data downloading.</param>
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr<aspose::words::cloud::responses::LoadWebDocumentOnlineResponse> loadWebDocumentOnline(std::shared_ptr<aspose::words::cloud::requests::LoadWebDocumentOnlineRequest> request);
 
         /// <summary>
         /// Merge the section with the next one.

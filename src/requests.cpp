@@ -27514,6 +27514,52 @@ namespace aspose::words::cloud::requests {
     }
 
     /*
+     * LoadWebDocumentOnline request implementation
+     */
+    LoadWebDocumentOnlineRequest::LoadWebDocumentOnlineRequest(
+        const std::shared_ptr< aspose::words::cloud::models::LoadWebDocumentData > data
+    ) : 
+        m_Data(data)
+    {
+    }
+
+    const std::shared_ptr< aspose::words::cloud::models::LoadWebDocumentData > LoadWebDocumentOnlineRequest::getData() const
+    {
+        return m_Data;
+    }
+
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > LoadWebDocumentOnlineRequest::createHttpRequest(ApiClient* apiClient) const
+    {
+        std::vector<models::FileReference*> additionalFilesContent;
+        auto result = std::make_shared<HttpRequestData>();
+        result->setMethod(HttpRequestMethod::HttpPUT);
+        result->setPath(L"/words/online/put/loadWebDocument");
+        if (m_Data)
+        {
+            result->addFormDataParam(L"data", *m_Data);
+            m_Data->validate();}
+        else throw aspose::words::cloud::ApiException(400, L"Parameter 'Data' is required.");
+
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
+        {
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
+        }
+
+        return result;
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > LoadWebDocumentOnlineRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::LoadWebDocumentOnlineResponse()
+        );
+    }
+
+    /*
      * MergeWithNext request implementation
      */
     MergeWithNextRequest::MergeWithNextRequest(
