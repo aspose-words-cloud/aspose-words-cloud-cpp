@@ -34,6 +34,16 @@ namespace aspose::words::cloud::models {
     class TextSaveOptionsData : public TxtSaveOptionsBaseData
     {
     public:
+        /// <summary>
+        /// Gets or sets a value that specifies how OfficeMath will be written to the output file.
+        /// Default value is Text.
+        /// </summary>
+        enum class OfficeMathExportMode
+        { 
+            TEXT,
+            LATEX
+        };
+
 
         ASPOSE_WORDS_CLOUD_EXPORT virtual ~TextSaveOptionsData() = default;
         ASPOSE_WORDS_CLOUD_EXPORT virtual void toJson(void* jsonIfc) const override;
@@ -71,6 +81,19 @@ namespace aspose::words::cloud::models {
 
 
         /// <summary>
+        /// Gets or sets a value that specifies how OfficeMath will be written to the output file.
+        /// Default value is Text.
+        /// </summary>
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< aspose::words::cloud::models::TextSaveOptionsData::OfficeMathExportMode > getOfficeMathExportMode() const;
+
+        /// <summary>
+        /// Gets or sets a value that specifies how OfficeMath will be written to the output file.
+        /// Default value is Text.
+        /// </summary>
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setOfficeMathExportMode(std::shared_ptr< aspose::words::cloud::models::TextSaveOptionsData::OfficeMathExportMode > value);
+
+
+        /// <summary>
         /// Gets or sets a value indicating whether the program should attempt to preserve layout of tables when saving in the plain text format.
         /// </summary>
         ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< bool > getPreserveTableLayout() const;
@@ -102,6 +125,7 @@ namespace aspose::words::cloud::models {
     protected:
         std::shared_ptr< bool > m_AddBidiMarks;
         std::shared_ptr< int32_t > m_MaxCharactersPerLine;
+        std::shared_ptr< aspose::words::cloud::models::TextSaveOptionsData::OfficeMathExportMode > m_OfficeMathExportMode;
         std::shared_ptr< bool > m_PreserveTableLayout;
         std::shared_ptr< bool > m_SimplifyListLabels;
         std::shared_ptr< std::wstring > m_SaveFormat = std::make_shared<std::wstring>(L"txt");
