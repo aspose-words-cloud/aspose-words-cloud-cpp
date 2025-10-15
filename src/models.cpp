@@ -20247,6 +20247,9 @@ namespace aspose::words::cloud::models {
         if (this->m_ZoomFactor) {
             json["ZoomFactor"] = *(this->m_ZoomFactor);
         }
+        if (this->m_ExportFloatingShapesAsInlineTag) {
+            json["ExportFloatingShapesAsInlineTag"] = *(this->m_ExportFloatingShapesAsInlineTag);
+        }
         if (this->m_SaveFormat) {
             json["SaveFormat"] = convertUtf16(*(this->m_SaveFormat));
         }
@@ -20398,6 +20401,11 @@ namespace aspose::words::cloud::models {
                 json["ZoomFactor"].get< int32_t >()
             );
         }
+        if (json.contains("ExportFloatingShapesAsInlineTag") && !json["ExportFloatingShapesAsInlineTag"].is_null()) {
+            this->m_ExportFloatingShapesAsInlineTag = std::make_shared< bool >(
+                json["ExportFloatingShapesAsInlineTag"].get< bool >()
+            );
+        }
         if (json.contains("SaveFormat") && !json["SaveFormat"].is_null()) {
             this->m_SaveFormat = std::make_shared< std::wstring >(
                 convertUtf8( json["SaveFormat"].get< std::string >() )
@@ -20449,6 +20457,7 @@ namespace aspose::words::cloud::models {
         {
             this->m_OutlineOptions->validate();
         }
+
 
 
 
@@ -20790,6 +20799,17 @@ namespace aspose::words::cloud::models {
     void PdfSaveOptionsData::setZoomFactor(std::shared_ptr< int32_t > value)
     {
         this->m_ZoomFactor = value;
+    }
+
+
+    std::shared_ptr< bool > PdfSaveOptionsData::getExportFloatingShapesAsInlineTag() const
+    {
+        return this->m_ExportFloatingShapesAsInlineTag;
+    }
+
+    void PdfSaveOptionsData::setExportFloatingShapesAsInlineTag(std::shared_ptr< bool > value)
+    {
+        this->m_ExportFloatingShapesAsInlineTag = value;
     }
 
 

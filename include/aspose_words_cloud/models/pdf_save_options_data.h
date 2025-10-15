@@ -545,6 +545,23 @@ namespace aspose::words::cloud::models {
 
 
         /// <summary>
+        /// Gets or sets a value determining whether floating shapes are exported as inline tags in the document structure.
+        /// Default value is false and floating shapes will be exported as block-level tags,
+        /// placed after the paragraph in which they are anchored. When the value is true floating shapes will be exported as inline tags,
+        /// placed within the paragraph where they are anchored. This value is ignored when ExportDocumentStructure is false.
+        /// </summary>
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< bool > getExportFloatingShapesAsInlineTag() const;
+
+        /// <summary>
+        /// Gets or sets a value determining whether floating shapes are exported as inline tags in the document structure.
+        /// Default value is false and floating shapes will be exported as block-level tags,
+        /// placed after the paragraph in which they are anchored. When the value is true floating shapes will be exported as inline tags,
+        /// placed within the paragraph where they are anchored. This value is ignored when ExportDocumentStructure is false.
+        /// </summary>
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setExportFloatingShapesAsInlineTag(std::shared_ptr< bool > value);
+
+
+        /// <summary>
         /// Gets the format of save.
         /// </summary>
         ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< std::wstring > getSaveFormat() const override;
@@ -582,6 +599,7 @@ namespace aspose::words::cloud::models {
         std::shared_ptr< bool > m_UseSdtTagAsFormFieldName;
         std::shared_ptr< aspose::words::cloud::models::PdfSaveOptionsData::ZoomBehavior > m_ZoomBehavior;
         std::shared_ptr< int32_t > m_ZoomFactor;
+        std::shared_ptr< bool > m_ExportFloatingShapesAsInlineTag;
         std::shared_ptr< std::wstring > m_SaveFormat = std::make_shared<std::wstring>(L"pdf");
     };
 }
