@@ -36,7 +36,7 @@ namespace aspose::words::cloud::models {
     public:
         /// <summary>
         /// Gets or sets the option that controls whether to output headers and footers when exporting in plain text format.
-        /// default value is TxtExportHeadersFootersMode.PrimaryOnly.
+        /// The default value is TxtExportHeadersFootersMode.PrimaryOnly.
         /// </summary>
         enum class ExportHeadersFootersMode
         { 
@@ -68,13 +68,13 @@ namespace aspose::words::cloud::models {
 
         /// <summary>
         /// Gets or sets the option that controls whether to output headers and footers when exporting in plain text format.
-        /// default value is TxtExportHeadersFootersMode.PrimaryOnly.
+        /// The default value is TxtExportHeadersFootersMode.PrimaryOnly.
         /// </summary>
         ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< aspose::words::cloud::models::TxtSaveOptionsBaseData::ExportHeadersFootersMode > getExportHeadersFootersMode() const;
 
         /// <summary>
         /// Gets or sets the option that controls whether to output headers and footers when exporting in plain text format.
-        /// default value is TxtExportHeadersFootersMode.PrimaryOnly.
+        /// The default value is TxtExportHeadersFootersMode.PrimaryOnly.
         /// </summary>
         ASPOSE_WORDS_CLOUD_EXPORT virtual void setExportHeadersFootersMode(std::shared_ptr< aspose::words::cloud::models::TxtSaveOptionsBaseData::ExportHeadersFootersMode > value);
 

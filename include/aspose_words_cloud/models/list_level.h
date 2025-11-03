@@ -136,13 +136,13 @@ namespace aspose::words::cloud::models {
 
         /// <summary>
         /// Gets or sets the starting number for this list level.
-        /// Default value is 1.
+        /// The default value is 1.
         /// </summary>
         ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< int32_t > getStartAt() const;
 
         /// <summary>
         /// Gets or sets the starting number for this list level.
-        /// Default value is 1.
+        /// The default value is 1.
         /// </summary>
         ASPOSE_WORDS_CLOUD_EXPORT virtual void setStartAt(std::shared_ptr< int32_t > value);
 

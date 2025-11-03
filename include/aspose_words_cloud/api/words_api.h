@@ -729,7 +729,7 @@ namespace aspose::words::cloud::api {
     {
     public:
         /// <summary>
-        /// Accepts all revisions in the document.
+        /// Accepts all the revisions in the document.
         /// </summary>
         /// <param name="name">The filename of the input document.</param>
         /// <param name="folder">Original document folder.</param>
@@ -742,7 +742,7 @@ namespace aspose::words::cloud::api {
         ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::RevisionsModificationResponse > acceptAllRevisions(std::shared_ptr<aspose::words::cloud::requests::AcceptAllRevisionsRequest> request);
 
         /// <summary>
-        /// Accepts all revisions in the document.
+        /// Accepts all the revisions in the document.
         /// </summary>
         /// <param name="document">The document.</param>
         /// <param name="loadEncoding">Encoding that will be used to load an HTML (or TXT) document if the encoding is not specified in HTML.</param>
@@ -818,8 +818,8 @@ namespace aspose::words::cloud::api {
         /// Executes the report generation process using the specified document template and the external data source in XML, JSON or CSV format.
         /// </summary>
         /// <param name="name">The filename of the input document.</param>
-        /// <param name="data">A string providing a data to populate the specified template. The string must be of one of the following types: xml, json, csv.</param>
-        /// <param name="reportEngineSettings">An object providing a settings of report engine.</param>
+        /// <param name="data">A string providing data to populate the specified template. The string must be of one of the following types: xml, json, csv.</param>
+        /// <param name="reportEngineSettings">An object providing settings of a report engine.</param>
         /// <param name="folder">Original document folder.</param>
         /// <param name="storage">Original document storage.</param>
         /// <param name="loadEncoding">Encoding that will be used to load an HTML (or TXT) document if the encoding is not specified in HTML.</param>
@@ -833,8 +833,8 @@ namespace aspose::words::cloud::api {
         /// Executes the report generation process online using the specified document template and the external data source in XML, JSON or CSV format.
         /// </summary>
         /// <param name="_template">File with template.</param>
-        /// <param name="data">A string providing a data to populate the specified template. The string must be of one of the following types: xml, json, csv.</param>
-        /// <param name="reportEngineSettings">An object providing a settings of report engine.</param>
+        /// <param name="data">A string providing data to populate the specified template. The string must be of one of the following types: xml, json, csv.</param>
+        /// <param name="reportEngineSettings">An object providing settings of a report engine.</param>
         /// <param name="documentFileName">The filename of the output document, that will be used when the resulting document has a dynamic field {filename}. If it is not set, the "template" will be used instead.</param>
         ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::istream > buildReportOnline(std::shared_ptr<aspose::words::cloud::requests::BuildReportOnlineRequest> request);
 
@@ -3009,7 +3009,7 @@ namespace aspose::words::cloud::api {
         ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::TabStopsResponse > getParagraphTabStopsOnline(std::shared_ptr<aspose::words::cloud::requests::GetParagraphTabStopsOnlineRequest> request);
 
         /// <summary>
-        /// Get assymetric public key.
+        /// Get asymmetric public key.
         /// </summary>
         ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::PublicKeyResponse > getPublicKey(std::shared_ptr<aspose::words::cloud::requests::GetPublicKeyRequest> request);
 
@@ -4777,7 +4777,7 @@ namespace aspose::words::cloud::api {
         /// Signs the document with given certificate.
         /// </summary>
         /// <param name="name">Name of the document to sign.</param>
-        /// <param name="certificatePath">certifate file path.</param>
+        /// <param name="certificatePath">certificate file path.</param>
         /// <param name="certificatePassword">certificate password.</param>
         /// <param name="folder">Original document folder.</param>
         /// <param name="storage">Original document storage.</param>
@@ -4792,7 +4792,7 @@ namespace aspose::words::cloud::api {
         /// Signs the document with given certificate.
         /// </summary>
         /// <param name="document">The document.</param>
-        /// <param name="certificatePath">certifate file path.</param>
+        /// <param name="certificatePath">certificate file path.</param>
         /// <param name="certificatePassword">certificate password.</param>
         /// <param name="loadEncoding">Encoding that will be used to load an HTML (or TXT) document if the encoding is not specified in HTML.</param>
         /// <param name="password">Password of protected Word document. Use the parameter to pass a password via SDK. SDK encrypts it automatically. We don't recommend to use the parameter to pass a plain password for direct call of API.</param>

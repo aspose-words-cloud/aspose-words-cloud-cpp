@@ -36,7 +36,7 @@ namespace aspose::words::cloud::models {
     public:
         /// <summary>
         /// Gets or sets a value that specifies how OfficeMath will be written to the output file.
-        /// Default value is Text.
+        /// The default value is Text.
         /// </summary>
         enum class OfficeMathExportMode
         { 
@@ -82,13 +82,13 @@ namespace aspose::words::cloud::models {
 
         /// <summary>
         /// Gets or sets a value that specifies how OfficeMath will be written to the output file.
-        /// Default value is Text.
+        /// The default value is Text.
         /// </summary>
         ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< aspose::words::cloud::models::TextSaveOptionsData::OfficeMathExportMode > getOfficeMathExportMode() const;
 
         /// <summary>
         /// Gets or sets a value that specifies how OfficeMath will be written to the output file.
-        /// Default value is Text.
+        /// The default value is Text.
         /// </summary>
         ASPOSE_WORDS_CLOUD_EXPORT virtual void setOfficeMathExportMode(std::shared_ptr< aspose::words::cloud::models::TextSaveOptionsData::OfficeMathExportMode > value);
 

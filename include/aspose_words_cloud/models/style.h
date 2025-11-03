@@ -563,13 +563,13 @@ namespace aspose::words::cloud::models {
 
         /// <summary>
         /// Gets or sets the name of the style.
-        /// Can not be empty string. If there already is a style with such name in the collection, then this style will override it. All affected nodes will reference new style.
+        /// Cannot be an empty string. If there already is a style with such name in the collection, then this style will override it. All affected nodes will reference new style.
         /// </summary>
         ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< std::wstring > getName() const;
 
         /// <summary>
         /// Gets or sets the name of the style.
-        /// Can not be empty string. If there already is a style with such name in the collection, then this style will override it. All affected nodes will reference new style.
+        /// Cannot be an empty string. If there already is a style with such name in the collection, then this style will override it. All affected nodes will reference new style.
         /// </summary>
         ASPOSE_WORDS_CLOUD_EXPORT virtual void setName(std::shared_ptr< std::wstring > value);
 

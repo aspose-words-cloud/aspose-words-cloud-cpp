@@ -57,13 +57,13 @@ namespace aspose::words::cloud::models {
 
         /// <summary>
         /// Gets or sets the custom xml part data.
-        /// Cannot be null.Default is empty string.
+        /// Cannot be null.Default is an empty string.
         /// </summary>
         ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< std::wstring > getData() const;
 
         /// <summary>
         /// Gets or sets the custom xml part data.
-        /// Cannot be null.Default is empty string.
+        /// Cannot be null.Default is an empty string.
         /// </summary>
         ASPOSE_WORDS_CLOUD_EXPORT virtual void setData(std::shared_ptr< std::wstring > value);
 

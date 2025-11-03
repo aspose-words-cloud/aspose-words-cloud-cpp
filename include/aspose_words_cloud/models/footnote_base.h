@@ -76,14 +76,14 @@ namespace aspose::words::cloud::models {
 
         /// <summary>
         /// Gets or sets the custom reference mark to be used for this footnote.
-        /// Default value is Empty, meaning auto-numbered footnotes are used.
+        /// The default value is Empty, meaning auto-numbered footnotes are used.
         /// RTF-format can only store 1 symbol as custom reference mark, so upon export only the first symbol will be written others will be discard.
         /// </summary>
         ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< std::wstring > getReferenceMark() const;
 
         /// <summary>
         /// Gets or sets the custom reference mark to be used for this footnote.
-        /// Default value is Empty, meaning auto-numbered footnotes are used.
+        /// The default value is Empty, meaning auto-numbered footnotes are used.
         /// RTF-format can only store 1 symbol as custom reference mark, so upon export only the first symbol will be written others will be discard.
         /// </summary>
         ASPOSE_WORDS_CLOUD_EXPORT virtual void setReferenceMark(std::shared_ptr< std::wstring > value);

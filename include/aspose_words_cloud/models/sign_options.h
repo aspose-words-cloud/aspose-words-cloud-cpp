@@ -42,67 +42,67 @@ namespace aspose::words::cloud::models {
 
 
         /// <summary>
-        /// Gets or sets comments on the digital signature. Default value is empty string.
+        /// Gets or sets comments on the digital signature. The default value is an empty string.
         /// </summary>
         ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< std::wstring > getComments() const;
 
         /// <summary>
-        /// Gets or sets comments on the digital signature. Default value is empty string.
+        /// Gets or sets comments on the digital signature. The default value is an empty string.
         /// </summary>
         ASPOSE_WORDS_CLOUD_EXPORT virtual void setComments(std::shared_ptr< std::wstring > value);
 
 
         /// <summary>
-        /// Gets or sets the password to decrypt source document. Default value is empty string.
+        /// Gets or sets the password to decrypt source document. The default value is an empty string.
         /// </summary>
         ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< std::wstring > getDecryptionPassword() const;
 
         /// <summary>
-        /// Gets or sets the password to decrypt source document. Default value is empty string.
+        /// Gets or sets the password to decrypt source document. The default value is an empty string.
         /// </summary>
         ASPOSE_WORDS_CLOUD_EXPORT virtual void setDecryptionPassword(std::shared_ptr< std::wstring > value);
 
 
         /// <summary>
-        /// Gets or sets the class Guid of the signature cryptography provider. Default value is Empty (all zeroes) Guid.
+        /// Gets or sets the class Guid of the signature cryptography provider. The default value is Empty (all zeroes) Guid.
         /// </summary>
         ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< std::wstring > getProviderId() const;
 
         /// <summary>
-        /// Gets or sets the class Guid of the signature cryptography provider. Default value is Empty (all zeroes) Guid.
+        /// Gets or sets the class Guid of the signature cryptography provider. The default value is Empty (all zeroes) Guid.
         /// </summary>
         ASPOSE_WORDS_CLOUD_EXPORT virtual void setProviderId(std::shared_ptr< std::wstring > value);
 
 
         /// <summary>
-        /// Gets or sets user defined signature line Guid. Default value is Empty (all zeroes) Guid.
+        /// Gets or sets user defined signature line Guid. The default value is Empty (all zeroes) Guid.
         /// </summary>
         ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< std::wstring > getSignatureLineId() const;
 
         /// <summary>
-        /// Gets or sets user defined signature line Guid. Default value is Empty (all zeroes) Guid.
+        /// Gets or sets user defined signature line Guid. The default value is Empty (all zeroes) Guid.
         /// </summary>
         ASPOSE_WORDS_CLOUD_EXPORT virtual void setSignatureLineId(std::shared_ptr< std::wstring > value);
 
 
         /// <summary>
-        /// Gets or sets the image that will be shown in associated SignatureLine. Default value is empty string.
+        /// Gets or sets the image that will be shown in associated SignatureLine. The default value is an empty string.
         /// </summary>
         ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< std::wstring > getSignatureLineImageFilename() const;
 
         /// <summary>
-        /// Gets or sets the image that will be shown in associated SignatureLine. Default value is empty string.
+        /// Gets or sets the image that will be shown in associated SignatureLine. The default value is an empty string.
         /// </summary>
         ASPOSE_WORDS_CLOUD_EXPORT virtual void setSignatureLineImageFilename(std::shared_ptr< std::wstring > value);
 
 
         /// <summary>
-        /// Gets or sets the date of signing. Default value is current time (Now).
+        /// Gets or sets the date of signing. The default value is current time (Now).
         /// </summary>
         ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< std::wstring > getSignTime() const;
 
         /// <summary>
-        /// Gets or sets the date of signing. Default value is current time (Now).
+        /// Gets or sets the date of signing. The default value is current time (Now).
         /// </summary>
         ASPOSE_WORDS_CLOUD_EXPORT virtual void setSignTime(std::shared_ptr< std::wstring > value);
 
