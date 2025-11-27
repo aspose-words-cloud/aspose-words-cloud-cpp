@@ -62,7 +62,7 @@ TEST_F(FolderTests, TestDeleteFolder) {
     std::shared_ptr<requests::DeleteFolderRequest> request(new requests::DeleteFolderRequest(
         std::make_shared< std::wstring >(testDeleteFolder),
         nullptr,
-        nullptr
+        std::make_shared< bool >(true)
     ));
 
 getApi()->deleteFolder(request);
