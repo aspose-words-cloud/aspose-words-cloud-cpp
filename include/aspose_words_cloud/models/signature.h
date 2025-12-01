@@ -54,12 +54,12 @@ namespace aspose::words::cloud::models {
 
 
         /// <summary>
-        /// Gets or sets the subject distinguished name of the certificate isuuer.
+        /// Gets or sets the subject distinguished name of the certificate issuer.
         /// </summary>
         ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< std::wstring > getIssuerName() const;
 
         /// <summary>
-        /// Gets or sets the subject distinguished name of the certificate isuuer.
+        /// Gets or sets the subject distinguished name of the certificate issuer.
         /// </summary>
         ASPOSE_WORDS_CLOUD_EXPORT virtual void setIssuerName(std::shared_ptr< std::wstring > value);
 

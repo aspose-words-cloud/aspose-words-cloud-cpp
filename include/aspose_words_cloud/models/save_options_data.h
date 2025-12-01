@@ -197,13 +197,13 @@ namespace aspose::words::cloud::models {
 
         /// <summary>
         /// Gets or sets a value determining whether the Aspose.Words.Properties.BuiltInDocumentProperties.CreatedTime property is updated before saving.
-        /// Default value is false.
+        /// The default value is false.
         /// </summary>
         ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< bool > getUpdateCreatedTimeProperty() const;
 
         /// <summary>
         /// Gets or sets a value determining whether the Aspose.Words.Properties.BuiltInDocumentProperties.CreatedTime property is updated before saving.
-        /// Default value is false.
+        /// The default value is false.
         /// </summary>
         ASPOSE_WORDS_CLOUD_EXPORT virtual void setUpdateCreatedTimeProperty(std::shared_ptr< bool > value);
 

@@ -20247,6 +20247,9 @@ namespace aspose::words::cloud::models {
         if (this->m_ZoomFactor) {
             json["ZoomFactor"] = *(this->m_ZoomFactor);
         }
+        if (this->m_ExportFloatingShapesAsInlineTag) {
+            json["ExportFloatingShapesAsInlineTag"] = *(this->m_ExportFloatingShapesAsInlineTag);
+        }
         if (this->m_SaveFormat) {
             json["SaveFormat"] = convertUtf16(*(this->m_SaveFormat));
         }
@@ -20398,6 +20401,11 @@ namespace aspose::words::cloud::models {
                 json["ZoomFactor"].get< int32_t >()
             );
         }
+        if (json.contains("ExportFloatingShapesAsInlineTag") && !json["ExportFloatingShapesAsInlineTag"].is_null()) {
+            this->m_ExportFloatingShapesAsInlineTag = std::make_shared< bool >(
+                json["ExportFloatingShapesAsInlineTag"].get< bool >()
+            );
+        }
         if (json.contains("SaveFormat") && !json["SaveFormat"].is_null()) {
             this->m_SaveFormat = std::make_shared< std::wstring >(
                 convertUtf8( json["SaveFormat"].get< std::string >() )
@@ -20449,6 +20457,7 @@ namespace aspose::words::cloud::models {
         {
             this->m_OutlineOptions->validate();
         }
+
 
 
 
@@ -20790,6 +20799,17 @@ namespace aspose::words::cloud::models {
     void PdfSaveOptionsData::setZoomFactor(std::shared_ptr< int32_t > value)
     {
         this->m_ZoomFactor = value;
+    }
+
+
+    std::shared_ptr< bool > PdfSaveOptionsData::getExportFloatingShapesAsInlineTag() const
+    {
+        return this->m_ExportFloatingShapesAsInlineTag;
+    }
+
+    void PdfSaveOptionsData::setExportFloatingShapesAsInlineTag(std::shared_ptr< bool > value)
+    {
+        this->m_ExportFloatingShapesAsInlineTag = value;
     }
 
 
@@ -30476,6 +30496,19 @@ namespace aspose::words::cloud::models {
     /*
      * TextSaveOptionsData implementation
      */
+    inline std::string textSaveOptionsDataOfficeMathExportModeToString(aspose::words::cloud::models::TextSaveOptionsData::OfficeMathExportMode value)
+    {
+        if (value == aspose::words::cloud::models::TextSaveOptionsData::OfficeMathExportMode::TEXT) return "Text";
+        if (value == aspose::words::cloud::models::TextSaveOptionsData::OfficeMathExportMode::LATEX) return "Latex";
+        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
+    }
+
+    inline aspose::words::cloud::models::TextSaveOptionsData::OfficeMathExportMode textSaveOptionsDataOfficeMathExportModeFromString(const std::string& value)
+    {
+        if (value == "Text") return aspose::words::cloud::models::TextSaveOptionsData::OfficeMathExportMode::TEXT;
+        if (value == "Latex") return aspose::words::cloud::models::TextSaveOptionsData::OfficeMathExportMode::LATEX;
+        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
+    }
     void TextSaveOptionsData::toJson(void* jsonIfc) const
     {
         TxtSaveOptionsBaseData::toJson(jsonIfc);
@@ -30485,6 +30518,9 @@ namespace aspose::words::cloud::models {
         }
         if (this->m_MaxCharactersPerLine) {
             json["MaxCharactersPerLine"] = *(this->m_MaxCharactersPerLine);
+        }
+        if (this->m_OfficeMathExportMode) {
+            json["OfficeMathExportMode"] = textSaveOptionsDataOfficeMathExportModeToString(*(this->m_OfficeMathExportMode));
         }
         if (this->m_PreserveTableLayout) {
             json["PreserveTableLayout"] = *(this->m_PreserveTableLayout);
@@ -30509,6 +30545,11 @@ namespace aspose::words::cloud::models {
         if (json.contains("MaxCharactersPerLine") && !json["MaxCharactersPerLine"].is_null()) {
             this->m_MaxCharactersPerLine = std::make_shared< int32_t >(
                 json["MaxCharactersPerLine"].get< int32_t >()
+            );
+        }
+        if (json.contains("OfficeMathExportMode") && !json["OfficeMathExportMode"].is_null()) {
+            this->m_OfficeMathExportMode = std::make_shared< aspose::words::cloud::models::TextSaveOptionsData::OfficeMathExportMode >(
+                textSaveOptionsDataOfficeMathExportModeFromString(json["OfficeMathExportMode"].get< std::string >())
             );
         }
         if (json.contains("PreserveTableLayout") && !json["PreserveTableLayout"].is_null()) {
@@ -30561,6 +30602,17 @@ namespace aspose::words::cloud::models {
     void TextSaveOptionsData::setMaxCharactersPerLine(std::shared_ptr< int32_t > value)
     {
         this->m_MaxCharactersPerLine = value;
+    }
+
+
+    std::shared_ptr< aspose::words::cloud::models::TextSaveOptionsData::OfficeMathExportMode > TextSaveOptionsData::getOfficeMathExportMode() const
+    {
+        return this->m_OfficeMathExportMode;
+    }
+
+    void TextSaveOptionsData::setOfficeMathExportMode(std::shared_ptr< aspose::words::cloud::models::TextSaveOptionsData::OfficeMathExportMode > value)
+    {
+        this->m_OfficeMathExportMode = value;
     }
 
 

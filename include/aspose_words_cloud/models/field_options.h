@@ -66,12 +66,12 @@ namespace aspose::words::cloud::models {
 
 
         /// <summary>
-        /// Gets or sets Curren tUser.
+        /// Gets or sets Current User.
         /// </summary>
         ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< aspose::words::cloud::models::UserInformation > getCurrentUser() const;
 
         /// <summary>
-        /// Gets or sets Curren tUser.
+        /// Gets or sets Current User.
         /// </summary>
         ASPOSE_WORDS_CLOUD_EXPORT virtual void setCurrentUser(std::shared_ptr< aspose::words::cloud::models::UserInformation > value);
 
