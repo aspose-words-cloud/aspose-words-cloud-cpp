@@ -458,45 +458,6 @@ namespace aspose::words::cloud::responses {
     }
 
     /*
-     * Classify request implementation
-     */
-    std::shared_ptr< aspose::words::cloud::models::ClassificationResponse > ClassifyResponse::getModel() const
-    {
-        return m_Model;
-    }
-
-    void ClassifyResponse::deserialize(const std::string& contentType, const std::string_view& response)
-    {
-        m_Model = createModelInstance< aspose::words::cloud::models::ClassificationResponse >(L"ClassificationResponse, _", response);
-    }
-
-    /*
-     * ClassifyDocument request implementation
-     */
-    std::shared_ptr< aspose::words::cloud::models::ClassificationResponse > ClassifyDocumentResponse::getModel() const
-    {
-        return m_Model;
-    }
-
-    void ClassifyDocumentResponse::deserialize(const std::string& contentType, const std::string_view& response)
-    {
-        m_Model = createModelInstance< aspose::words::cloud::models::ClassificationResponse >(L"ClassificationResponse, _", response);
-    }
-
-    /*
-     * ClassifyDocumentOnline request implementation
-     */
-    std::shared_ptr< aspose::words::cloud::models::ClassificationResponse > ClassifyDocumentOnlineResponse::getModel() const
-    {
-        return m_Model;
-    }
-
-    void ClassifyDocumentOnlineResponse::deserialize(const std::string& contentType, const std::string_view& response)
-    {
-        m_Model = createModelInstance< aspose::words::cloud::models::ClassificationResponse >(L"ClassificationResponse, _", response);
-    }
-
-    /*
      * CompareDocument request implementation
      */
     std::shared_ptr< aspose::words::cloud::models::DocumentResponse > CompareDocumentResponse::getModel() const
