@@ -27,7 +27,6 @@
 #include "./api/bookmark_test.h"
 #include "./api/compatibility_test.h"
 #include "./api/append_document_test.h"
-#include "./api/classification_test.h"
 #include "./api/comment_test.h"
 #include "./api/compare_document_test.h"
 #include "./api/compress_document_test.h"

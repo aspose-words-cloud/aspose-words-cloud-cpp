@@ -117,39 +117,6 @@ namespace aspose::words::cloud::api {
         return response->getModel();
     }
 
-    std::shared_ptr< aspose::words::cloud::models::ClassificationResponse > WordsApi::classify(std::shared_ptr<aspose::words::cloud::requests::ClassifyRequest> request)
-    {
-        auto response = std::make_shared< aspose::words::cloud::responses::ClassifyResponse >();
-        m_ApiClient->call( request->createHttpRequest(m_ApiClient.get()), *response);
-        if (response->getStatusCode() != 200) {
-            throw aspose::words::cloud::ApiException(response->getStatusCode(), response->getErrorMessage());
-        }
-
-        return response->getModel();
-    }
-
-    std::shared_ptr< aspose::words::cloud::models::ClassificationResponse > WordsApi::classifyDocument(std::shared_ptr<aspose::words::cloud::requests::ClassifyDocumentRequest> request)
-    {
-        auto response = std::make_shared< aspose::words::cloud::responses::ClassifyDocumentResponse >();
-        m_ApiClient->call( request->createHttpRequest(m_ApiClient.get()), *response);
-        if (response->getStatusCode() != 200) {
-            throw aspose::words::cloud::ApiException(response->getStatusCode(), response->getErrorMessage());
-        }
-
-        return response->getModel();
-    }
-
-    std::shared_ptr< aspose::words::cloud::models::ClassificationResponse > WordsApi::classifyDocumentOnline(std::shared_ptr<aspose::words::cloud::requests::ClassifyDocumentOnlineRequest> request)
-    {
-        auto response = std::make_shared< aspose::words::cloud::responses::ClassifyDocumentOnlineResponse >();
-        m_ApiClient->call( request->createHttpRequest(m_ApiClient.get()), *response);
-        if (response->getStatusCode() != 200) {
-            throw aspose::words::cloud::ApiException(response->getStatusCode(), response->getErrorMessage());
-        }
-
-        return response->getModel();
-    }
-
     std::shared_ptr< aspose::words::cloud::models::DocumentResponse > WordsApi::compareDocument(std::shared_ptr<aspose::words::cloud::requests::CompareDocumentRequest> request)
     {
         auto response = std::make_shared< aspose::words::cloud::responses::CompareDocumentResponse >();

@@ -45,12 +45,6 @@
 #include "aspose_words_cloud/responses/build_report_response.h"
 #include "aspose_words_cloud/requests/build_report_online_request.h"
 #include "aspose_words_cloud/responses/build_report_online_response.h"
-#include "aspose_words_cloud/requests/classify_request.h"
-#include "aspose_words_cloud/responses/classify_response.h"
-#include "aspose_words_cloud/requests/classify_document_request.h"
-#include "aspose_words_cloud/responses/classify_document_response.h"
-#include "aspose_words_cloud/requests/classify_document_online_request.h"
-#include "aspose_words_cloud/responses/classify_document_online_response.h"
 #include "aspose_words_cloud/requests/compare_document_request.h"
 #include "aspose_words_cloud/responses/compare_document_response.h"
 #include "aspose_words_cloud/requests/compare_document_online_request.h"
@@ -837,39 +831,6 @@ namespace aspose::words::cloud::api {
         /// <param name="reportEngineSettings">An object providing settings of a report engine.</param>
         /// <param name="documentFileName">The filename of the output document, that will be used when the resulting document has a dynamic field {filename}. If it is not set, the "template" will be used instead.</param>
         ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::istream > buildReportOnline(std::shared_ptr<aspose::words::cloud::requests::BuildReportOnlineRequest> request);
-
-        /// <summary>
-        /// Runs a multi-class text classification for the specified raw text.
-        /// </summary>
-        /// <param name="text">The text to classify.</param>
-        /// <param name="bestClassesCount">The number of the best classes to return.</param>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::ClassificationResponse > classify(std::shared_ptr<aspose::words::cloud::requests::ClassifyRequest> request);
-
-        /// <summary>
-        /// Runs a multi-class text classification for the document.
-        /// </summary>
-        /// <param name="name">The document name.</param>
-        /// <param name="folder">Original document folder.</param>
-        /// <param name="storage">Original document storage.</param>
-        /// <param name="loadEncoding">Encoding that will be used to load an HTML (or TXT) document if the encoding is not specified in HTML.</param>
-        /// <param name="password">Password of protected Word document. Use the parameter to pass a password via SDK. SDK encrypts it automatically. We don't recommend to use the parameter to pass a plain password for direct call of API.</param>
-        /// <param name="encryptedPassword">Password of protected Word document. Use the parameter to pass an encrypted password for direct calls of API. See SDK code for encyption details.</param>
-        /// <param name="openTypeSupport">The value indicates whether OpenType support is on.</param>
-        /// <param name="bestClassesCount">The number of the best classes to return.</param>
-        /// <param name="taxonomy">The taxonomy to use.</param>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::ClassificationResponse > classifyDocument(std::shared_ptr<aspose::words::cloud::requests::ClassifyDocumentRequest> request);
-
-        /// <summary>
-        /// Runs a multi-class text classification for the document.
-        /// </summary>
-        /// <param name="document">The document.</param>
-        /// <param name="loadEncoding">Encoding that will be used to load an HTML (or TXT) document if the encoding is not specified in HTML.</param>
-        /// <param name="password">Password of protected Word document. Use the parameter to pass a password via SDK. SDK encrypts it automatically. We don't recommend to use the parameter to pass a plain password for direct call of API.</param>
-        /// <param name="encryptedPassword">Password of protected Word document. Use the parameter to pass an encrypted password for direct calls of API. See SDK code for encyption details.</param>
-        /// <param name="openTypeSupport">The value indicates whether OpenType support is on.</param>
-        /// <param name="bestClassesCount">The number of the best classes to return.</param>
-        /// <param name="taxonomy">The taxonomy to use.</param>
-        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::ClassificationResponse > classifyDocumentOnline(std::shared_ptr<aspose::words::cloud::requests::ClassifyDocumentOnlineRequest> request);
 
         /// <summary>
         /// Compares two documents.

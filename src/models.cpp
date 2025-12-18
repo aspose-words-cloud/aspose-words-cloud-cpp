@@ -45,8 +45,6 @@ namespace aspose::words::cloud::models {
         { L"BorderResponse, _", [] () { return dynamic_cast< ModelBase* >(new BorderResponse()); }},
         { L"BordersCollection, _", [] () { return dynamic_cast< ModelBase* >(new BordersCollection()); }},
         { L"BordersResponse, _", [] () { return dynamic_cast< ModelBase* >(new BordersResponse()); }},
-        { L"ClassificationResponse, _", [] () { return dynamic_cast< ModelBase* >(new ClassificationResponse()); }},
-        { L"ClassificationResult, _", [] () { return dynamic_cast< ModelBase* >(new ClassificationResult()); }},
         { L"Comment, _", [] () { return dynamic_cast< ModelBase* >(new Comment()); }},
         { L"CommentInsert, _", [] () { return dynamic_cast< ModelBase* >(new CommentInsert()); }},
         { L"CommentLink, _", [] () { return dynamic_cast< ModelBase* >(new CommentLink()); }},
@@ -1781,174 +1779,6 @@ namespace aspose::words::cloud::models {
     void BordersResponse::setBorders(std::shared_ptr< aspose::words::cloud::models::BordersCollection > value)
     {
         this->m_Borders = value;
-    }
-
-
-
-    /*
-     * ClassificationResponse implementation
-     */
-    void ClassificationResponse::toJson(void* jsonIfc) const
-    {
-        WordsResponse::toJson(jsonIfc);
-        ::nlohmann::json& json = *((::nlohmann::json*)jsonIfc);
-        if (this->m_BestClassName) {
-            json["BestClassName"] = convertUtf16(*(this->m_BestClassName));
-        }
-        if (this->m_BestClassProbability) {
-            json["BestClassProbability"] = *(this->m_BestClassProbability);
-        }
-        if (this->m_BestResults) {
-            json["BestResults"] = ::nlohmann::json::array();
-            for (auto& element : *(this->m_BestResults)) {
-                element->toJson(&json["BestResults"].emplace_back());
-            }
-        }
-    }
-
-    void ClassificationResponse::fromJson(const void* jsonIfc)
-    {
-        WordsResponse::fromJson(jsonIfc);
-        ::nlohmann::json& json = *((::nlohmann::json*)jsonIfc);
-        if (json.contains("BestClassName") && !json["BestClassName"].is_null()) {
-            this->m_BestClassName = std::make_shared< std::wstring >(
-                convertUtf8( json["BestClassName"].get< std::string >() )
-            );
-        }
-        if (json.contains("BestClassProbability") && !json["BestClassProbability"].is_null()) {
-            this->m_BestClassProbability = std::make_shared< double >(
-                json["BestClassProbability"].get< double >()
-            );
-        }
-        if (json.contains("BestResults") && !json["BestResults"].is_null()) {
-            this->m_BestResults = std::make_shared< std::vector<std::shared_ptr<aspose::words::cloud::models::ClassificationResult>> >();
-            for (auto& element : json["BestResults"]) {
-                this->m_BestResults->emplace_back(createModelInstance< aspose::words::cloud::models::ClassificationResult >(L"ClassificationResult, _", element));
-            }
-        }
-    }
-
-    void ClassificationResponse::getFileReferences(std::vector< FileReference* >& result)
-    {
-    }
-
-    void ClassificationResponse::validate()
-    {
-        WordsResponse::validate();
-        if (this->m_BestClassProbability == nullptr)
-        {
-            throw aspose::words::cloud::ApiException(400, L"Property BestClassProbability in ClassificationResponse is required.");
-        }
-
-
-        if (this->m_BestResults != nullptr)
-        {
-            for (auto& elementBestResults : *(this->m_BestResults))
-            {
-                if (elementBestResults != nullptr)
-                {
-                    elementBestResults->validate();
-                }
-            }
-        }
-
-    }
-
-    std::shared_ptr< std::wstring > ClassificationResponse::getBestClassName() const
-    {
-        return this->m_BestClassName;
-    }
-
-    void ClassificationResponse::setBestClassName(std::shared_ptr< std::wstring > value)
-    {
-        this->m_BestClassName = value;
-    }
-
-
-    std::shared_ptr< double > ClassificationResponse::getBestClassProbability() const
-    {
-        return this->m_BestClassProbability;
-    }
-
-    void ClassificationResponse::setBestClassProbability(std::shared_ptr< double > value)
-    {
-        this->m_BestClassProbability = value;
-    }
-
-
-    std::shared_ptr< std::vector<std::shared_ptr<aspose::words::cloud::models::ClassificationResult>> > ClassificationResponse::getBestResults() const
-    {
-        return this->m_BestResults;
-    }
-
-    void ClassificationResponse::setBestResults(std::shared_ptr< std::vector<std::shared_ptr<aspose::words::cloud::models::ClassificationResult>> > value)
-    {
-        this->m_BestResults = value;
-    }
-
-
-
-    /*
-     * ClassificationResult implementation
-     */
-    void ClassificationResult::toJson(void* jsonIfc) const
-    {
-        ::nlohmann::json& json = *((::nlohmann::json*)jsonIfc);
-        if (this->m_ClassName) {
-            json["ClassName"] = convertUtf16(*(this->m_ClassName));
-        }
-        if (this->m_ClassProbability) {
-            json["ClassProbability"] = *(this->m_ClassProbability);
-        }
-    }
-
-    void ClassificationResult::fromJson(const void* jsonIfc)
-    {
-        ::nlohmann::json& json = *((::nlohmann::json*)jsonIfc);
-        if (json.contains("ClassName") && !json["ClassName"].is_null()) {
-            this->m_ClassName = std::make_shared< std::wstring >(
-                convertUtf8( json["ClassName"].get< std::string >() )
-            );
-        }
-        if (json.contains("ClassProbability") && !json["ClassProbability"].is_null()) {
-            this->m_ClassProbability = std::make_shared< double >(
-                json["ClassProbability"].get< double >()
-            );
-        }
-    }
-
-    void ClassificationResult::getFileReferences(std::vector< FileReference* >& result)
-    {
-    }
-
-    void ClassificationResult::validate()
-    {
-        if (this->m_ClassProbability == nullptr)
-        {
-            throw aspose::words::cloud::ApiException(400, L"Property ClassProbability in ClassificationResult is required.");
-        }
-
-    }
-
-    std::shared_ptr< std::wstring > ClassificationResult::getClassName() const
-    {
-        return this->m_ClassName;
-    }
-
-    void ClassificationResult::setClassName(std::shared_ptr< std::wstring > value)
-    {
-        this->m_ClassName = value;
-    }
-
-
-    std::shared_ptr< double > ClassificationResult::getClassProbability() const
-    {
-        return this->m_ClassProbability;
-    }
-
-    void ClassificationResult::setClassProbability(std::shared_ptr< double > value)
-    {
-        this->m_ClassProbability = value;
     }
 
 
@@ -3874,6 +3704,9 @@ namespace aspose::words::cloud::models {
         if (this->m_FileName) {
             json["FileName"] = convertUtf16(*(this->m_FileName));
         }
+        if (this->m_FileSize) {
+            json["FileSize"] = *(this->m_FileSize);
+        }
         if (this->m_IsEncrypted) {
             json["IsEncrypted"] = *(this->m_IsEncrypted);
         }
@@ -3900,6 +3733,11 @@ namespace aspose::words::cloud::models {
         if (json.contains("FileName") && !json["FileName"].is_null()) {
             this->m_FileName = std::make_shared< std::wstring >(
                 convertUtf8( json["FileName"].get< std::string >() )
+            );
+        }
+        if (json.contains("FileSize") && !json["FileSize"].is_null()) {
+            this->m_FileSize = std::make_shared< int32_t >(
+                json["FileSize"].get< int32_t >()
             );
         }
         if (json.contains("IsEncrypted") && !json["IsEncrypted"].is_null()) {
@@ -3963,6 +3801,7 @@ namespace aspose::words::cloud::models {
 
 
 
+
     }
 
     std::shared_ptr< std::vector<std::shared_ptr<aspose::words::cloud::models::Link>> > Document::getLinks() const
@@ -3995,6 +3834,17 @@ namespace aspose::words::cloud::models {
     void Document::setFileName(std::shared_ptr< std::wstring > value)
     {
         this->m_FileName = value;
+    }
+
+
+    std::shared_ptr< int32_t > Document::getFileSize() const
+    {
+        return this->m_FileSize;
+    }
+
+    void Document::setFileSize(std::shared_ptr< int32_t > value)
+    {
+        this->m_FileSize = value;
     }
 
 

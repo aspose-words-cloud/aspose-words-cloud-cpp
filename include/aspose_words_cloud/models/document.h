@@ -106,6 +106,17 @@ namespace aspose::words::cloud::models {
 
 
         /// <summary>
+        /// Gets or sets the file size.
+        /// </summary>
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< int32_t > getFileSize() const;
+
+        /// <summary>
+        /// Gets or sets the file size.
+        /// </summary>
+        ASPOSE_WORDS_CLOUD_EXPORT virtual void setFileSize(std::shared_ptr< int32_t > value);
+
+
+        /// <summary>
         /// Gets or sets a value indicating whether the document is encrypted and requires a password to open.
         /// </summary>
         ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< bool > getIsEncrypted() const;
@@ -142,6 +153,7 @@ namespace aspose::words::cloud::models {
         std::shared_ptr< std::vector<std::shared_ptr<aspose::words::cloud::models::Link>> > m_Links;
         std::shared_ptr< aspose::words::cloud::models::DocumentProperties > m_DocumentProperties;
         std::shared_ptr< std::wstring > m_FileName;
+        std::shared_ptr< int32_t > m_FileSize;
         std::shared_ptr< bool > m_IsEncrypted;
         std::shared_ptr< bool > m_IsSigned;
         std::shared_ptr< aspose::words::cloud::models::Document::SourceFormat > m_SourceFormat;
