@@ -68,7 +68,8 @@ TEST_F(CompareDocumentTests, TestCompareDocument) {
         nullptr,
         nullptr,
         nullptr,
-        std::make_shared< std::wstring >(baseTestOutPath + L"/TestCompareDocumentOut.doc")
+        std::make_shared< std::wstring >(baseTestOutPath + L"/TestCompareDocumentOut.doc"),
+        nullptr
     ));
 
     auto actual = getApi()->compareDocument(request);
@@ -102,7 +103,8 @@ TEST_F(CompareDocumentTests, TestCompareDocumentOnline) {
         nullptr,
         nullptr,
         nullptr,
-        std::make_shared< std::wstring >(baseTestOutPath + L"/TestCompareDocumentOut.doc")
+        std::make_shared< std::wstring >(baseTestOutPath + L"/TestCompareDocumentOut.doc"),
+        nullptr
     ));
 
     auto actual = getApi()->compareDocumentOnline(request);
@@ -135,7 +137,8 @@ TEST_F(CompareDocumentTests, TestCompareTwoDocumentOnline) {
         nullptr,
         nullptr,
         nullptr,
-        std::make_shared< std::wstring >(baseTestOutPath + L"/TestCompareDocumentOut.doc")
+        std::make_shared< std::wstring >(baseTestOutPath + L"/TestCompareDocumentOut.doc"),
+        nullptr
     ));
 
     auto actual = getApi()->compareDocumentOnline(request);
@@ -172,7 +175,8 @@ TEST_F(CompareDocumentTests, TestCompareDocumentWithPassword) {
         std::make_shared< std::wstring >(L"12345"),
         nullptr,
         nullptr,
-        std::make_shared< std::wstring >(baseTestOutPath + L"/TestCompareDocumentOut.docx")
+        std::make_shared< std::wstring >(baseTestOutPath + L"/TestCompareDocumentOut.docx"),
+        nullptr
     ));
 
     auto actual = getApi()->compareDocument(request);

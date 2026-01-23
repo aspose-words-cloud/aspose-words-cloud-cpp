@@ -17,6 +17,11 @@ Feel free to explore the [Developer's Guide](https://docs.aspose.cloud/display/w
 - Read & write access to Document Object Model.
 - Thread safe
 
+## Enhancements in Version 26.1
+
+- Add fontsLocation parameter for Compare API.
+
+
 ## Enhancements in Version 25.12
 
 - Classification API has been removed.

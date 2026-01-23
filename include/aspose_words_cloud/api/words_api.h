@@ -844,6 +844,7 @@ namespace aspose::words::cloud::api {
         /// <param name="encryptedPassword">Password of protected Word document. Use the parameter to pass an encrypted password for direct calls of API. See SDK code for encyption details.</param>
         /// <param name="openTypeSupport">The value indicates whether OpenType support is on.</param>
         /// <param name="destFileName">Result path of the document after the operation. If this parameter is omitted then result of the operation will be saved as the source document.</param>
+        /// <param name="fontsLocation">Folder in filestorage with custom fonts.</param>
         ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::DocumentResponse > compareDocument(std::shared_ptr<aspose::words::cloud::requests::CompareDocumentRequest> request);
 
         /// <summary>
@@ -856,6 +857,7 @@ namespace aspose::words::cloud::api {
         /// <param name="encryptedPassword">Password of protected Word document. Use the parameter to pass an encrypted password for direct calls of API. See SDK code for encyption details.</param>
         /// <param name="openTypeSupport">The value indicates whether OpenType support is on.</param>
         /// <param name="destFileName">Result path of the document after the operation. If this parameter is omitted then result of the operation will be saved as the source document.</param>
+        /// <param name="fontsLocation">Folder in filestorage with custom fonts.</param>
         ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr<aspose::words::cloud::responses::CompareDocumentOnlineResponse> compareDocumentOnline(std::shared_ptr<aspose::words::cloud::requests::CompareDocumentOnlineRequest> request);
 
         /// <summary>
