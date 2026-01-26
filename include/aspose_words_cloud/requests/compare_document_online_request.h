@@ -1,6 +1,6 @@
 ﻿/** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="compare_document_online_request.h">
-*   Copyright (c) 2025 Aspose.Words for Cloud
+*   Copyright (c) 2026 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -37,7 +37,8 @@ namespace aspose::words::cloud::requests {
             const std::shared_ptr< std::wstring > password = nullptr,
             const std::shared_ptr< std::wstring > encryptedPassword = nullptr,
             const std::shared_ptr< bool > openTypeSupport = nullptr,
-            const std::shared_ptr< std::wstring > destFileName = nullptr
+            const std::shared_ptr< std::wstring > destFileName = nullptr,
+            const std::shared_ptr< std::wstring > fontsLocation = nullptr
         );
 
         ASPOSE_WORDS_CLOUD_EXPORT const std::shared_ptr< std::istream > getDocument() const;
@@ -47,6 +48,7 @@ namespace aspose::words::cloud::requests {
         ASPOSE_WORDS_CLOUD_EXPORT const std::shared_ptr< std::wstring > getEncryptedPassword() const;
         ASPOSE_WORDS_CLOUD_EXPORT const std::shared_ptr< bool > getOpenTypeSupport() const;
         ASPOSE_WORDS_CLOUD_EXPORT const std::shared_ptr< std::wstring > getDestFileName() const;
+        ASPOSE_WORDS_CLOUD_EXPORT const std::shared_ptr< std::wstring > getFontsLocation() const;
 
         ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< aspose::words::cloud::HttpRequestData > createHttpRequest(ApiClient* apiClient) const override;
         ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > createResponse() const override;
@@ -59,5 +61,6 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > m_EncryptedPassword;
         const std::shared_ptr< bool > m_OpenTypeSupport;
         const std::shared_ptr< std::wstring > m_DestFileName;
+        const std::shared_ptr< std::wstring > m_FontsLocation;
     };
 }

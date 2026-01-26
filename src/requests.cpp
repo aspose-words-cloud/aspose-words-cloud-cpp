@@ -1,6 +1,6 @@
 ﻿/** --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="requests.cpp">
-*   Copyright (c) 2025 Aspose.Words for Cloud
+*   Copyright (c) 2026 Aspose.Words for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -996,7 +996,8 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > password,
         const std::shared_ptr< std::wstring > encryptedPassword,
         const std::shared_ptr< bool > openTypeSupport,
-        const std::shared_ptr< std::wstring > destFileName
+        const std::shared_ptr< std::wstring > destFileName,
+        const std::shared_ptr< std::wstring > fontsLocation
     ) : 
         m_Name(name),
         m_CompareData(compareData),
@@ -1006,7 +1007,8 @@ namespace aspose::words::cloud::requests {
         m_Password(password),
         m_EncryptedPassword(encryptedPassword),
         m_OpenTypeSupport(openTypeSupport),
-        m_DestFileName(destFileName)
+        m_DestFileName(destFileName),
+        m_FontsLocation(fontsLocation)
     {
     }
 
@@ -1055,6 +1057,11 @@ namespace aspose::words::cloud::requests {
         return m_DestFileName;
     }
 
+    const std::shared_ptr< std::wstring > CompareDocumentRequest::getFontsLocation() const
+    {
+        return m_FontsLocation;
+    }
+
     std::shared_ptr< aspose::words::cloud::HttpRequestData > CompareDocumentRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
@@ -1070,6 +1077,7 @@ namespace aspose::words::cloud::requests {
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
         if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
+        if (m_FontsLocation) result->addQueryParam(L"fontsLocation", *m_FontsLocation);
         if (m_CompareData)
         {
             result->addFormDataParam(L"Body", *m_CompareData);
@@ -1107,7 +1115,8 @@ namespace aspose::words::cloud::requests {
         const std::shared_ptr< std::wstring > password,
         const std::shared_ptr< std::wstring > encryptedPassword,
         const std::shared_ptr< bool > openTypeSupport,
-        const std::shared_ptr< std::wstring > destFileName
+        const std::shared_ptr< std::wstring > destFileName,
+        const std::shared_ptr< std::wstring > fontsLocation
     ) : 
         m_Document(document),
         m_CompareData(compareData),
@@ -1115,7 +1124,8 @@ namespace aspose::words::cloud::requests {
         m_Password(password),
         m_EncryptedPassword(encryptedPassword),
         m_OpenTypeSupport(openTypeSupport),
-        m_DestFileName(destFileName)
+        m_DestFileName(destFileName),
+        m_FontsLocation(fontsLocation)
     {
     }
 
@@ -1154,6 +1164,11 @@ namespace aspose::words::cloud::requests {
         return m_DestFileName;
     }
 
+    const std::shared_ptr< std::wstring > CompareDocumentOnlineRequest::getFontsLocation() const
+    {
+        return m_FontsLocation;
+    }
+
     std::shared_ptr< aspose::words::cloud::HttpRequestData > CompareDocumentOnlineRequest::createHttpRequest(ApiClient* apiClient) const
     {
         std::vector<models::FileReference*> additionalFilesContent;
@@ -1165,6 +1180,7 @@ namespace aspose::words::cloud::requests {
         if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
         if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
         if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
+        if (m_FontsLocation) result->addQueryParam(L"fontsLocation", *m_FontsLocation);
         if (m_Document)
         {
             result->addFormDataParam(L"document", *m_Document);
