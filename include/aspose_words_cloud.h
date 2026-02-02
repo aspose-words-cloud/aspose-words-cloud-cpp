@@ -68,6 +68,7 @@
 #include "./aspose_words_cloud/models/custom_xml_parts_response.h"
 #include "./aspose_words_cloud/models/custom_xml_part_update.h"
 #include "./aspose_words_cloud/models/digital_signature_details.h"
+#include "./aspose_words_cloud/models/docling_save_options_data.h"
 #include "./aspose_words_cloud/models/docm_save_options_data.h"
 #include "./aspose_words_cloud/models/doc_save_options_data.h"
 #include "./aspose_words_cloud/models/document.h"
