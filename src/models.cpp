@@ -67,6 +67,7 @@ namespace aspose::words::cloud::models {
         { L"CustomXmlPartsResponse, _", [] () { return dynamic_cast< ModelBase* >(new CustomXmlPartsResponse()); }},
         { L"CustomXmlPartUpdate, _", [] () { return dynamic_cast< ModelBase* >(new CustomXmlPartUpdate()); }},
         { L"DigitalSignatureDetails, _", [] () { return dynamic_cast< ModelBase* >(new DigitalSignatureDetails()); }},
+        { L"DoclingSaveOptionsData, _", [] () { return dynamic_cast< ModelBase* >(new DoclingSaveOptionsData()); }},
         { L"DocmSaveOptionsData, _", [] () { return dynamic_cast< ModelBase* >(new DocmSaveOptionsData()); }},
         { L"DocSaveOptionsData, _", [] () { return dynamic_cast< ModelBase* >(new DocSaveOptionsData()); }},
         { L"Document, _", [] () { return dynamic_cast< ModelBase* >(new Document()); }},
@@ -3474,6 +3475,65 @@ namespace aspose::words::cloud::models {
     {
         this->m_SignOptions = value;
     }
+
+
+
+    /*
+     * DoclingSaveOptionsData implementation
+     */
+    void DoclingSaveOptionsData::toJson(void* jsonIfc) const
+    {
+        SaveOptionsData::toJson(jsonIfc);
+        ::nlohmann::json& json = *((::nlohmann::json*)jsonIfc);
+        if (this->m_RenderNonImageShapes) {
+            json["RenderNonImageShapes"] = *(this->m_RenderNonImageShapes);
+        }
+        if (this->m_SaveFormat) {
+            json["SaveFormat"] = convertUtf16(*(this->m_SaveFormat));
+        }
+    }
+
+    void DoclingSaveOptionsData::fromJson(const void* jsonIfc)
+    {
+        SaveOptionsData::fromJson(jsonIfc);
+        ::nlohmann::json& json = *((::nlohmann::json*)jsonIfc);
+        if (json.contains("RenderNonImageShapes") && !json["RenderNonImageShapes"].is_null()) {
+            this->m_RenderNonImageShapes = std::make_shared< bool >(
+                json["RenderNonImageShapes"].get< bool >()
+            );
+        }
+        if (json.contains("SaveFormat") && !json["SaveFormat"].is_null()) {
+            this->m_SaveFormat = std::make_shared< std::wstring >(
+                convertUtf8( json["SaveFormat"].get< std::string >() )
+            );
+        }
+    }
+
+    void DoclingSaveOptionsData::getFileReferences(std::vector< FileReference* >& result)
+    {
+    }
+
+    void DoclingSaveOptionsData::validate()
+    {
+        SaveOptionsData::validate();
+    }
+
+    std::shared_ptr< bool > DoclingSaveOptionsData::getRenderNonImageShapes() const
+    {
+        return this->m_RenderNonImageShapes;
+    }
+
+    void DoclingSaveOptionsData::setRenderNonImageShapes(std::shared_ptr< bool > value)
+    {
+        this->m_RenderNonImageShapes = value;
+    }
+
+
+    std::shared_ptr< std::wstring > DoclingSaveOptionsData::getSaveFormat() const
+    {
+        return this->m_SaveFormat;
+    }
+
 
 
 
