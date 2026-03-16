@@ -93,7 +93,8 @@ namespace aspose::words::cloud::models {
             PRE_SUB_SUPERSCRIPT,
             SUBSCRIPT,
             SUB_SUPERSCRIPT,
-            SUPERCRIPT
+            SUPERSCRIPT,
+            NONE
         };
 
 

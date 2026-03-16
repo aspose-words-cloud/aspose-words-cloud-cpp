@@ -15832,7 +15832,8 @@ namespace aspose::words::cloud::models {
         if (value == aspose::words::cloud::models::OfficeMathObject::MathObjectType::PRE_SUB_SUPERSCRIPT) return "PreSubSuperscript";
         if (value == aspose::words::cloud::models::OfficeMathObject::MathObjectType::SUBSCRIPT) return "Subscript";
         if (value == aspose::words::cloud::models::OfficeMathObject::MathObjectType::SUB_SUPERSCRIPT) return "SubSuperscript";
-        if (value == aspose::words::cloud::models::OfficeMathObject::MathObjectType::SUPERCRIPT) return "Supercript";
+        if (value == aspose::words::cloud::models::OfficeMathObject::MathObjectType::SUPERSCRIPT) return "Superscript";
+        if (value == aspose::words::cloud::models::OfficeMathObject::MathObjectType::NONE) return "None";
         throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
     }
 
@@ -15867,7 +15868,8 @@ namespace aspose::words::cloud::models {
         if (value == "PreSubSuperscript") return aspose::words::cloud::models::OfficeMathObject::MathObjectType::PRE_SUB_SUPERSCRIPT;
         if (value == "Subscript") return aspose::words::cloud::models::OfficeMathObject::MathObjectType::SUBSCRIPT;
         if (value == "SubSuperscript") return aspose::words::cloud::models::OfficeMathObject::MathObjectType::SUB_SUPERSCRIPT;
-        if (value == "Supercript") return aspose::words::cloud::models::OfficeMathObject::MathObjectType::SUPERCRIPT;
+        if (value == "Superscript") return aspose::words::cloud::models::OfficeMathObject::MathObjectType::SUPERSCRIPT;
+        if (value == "None") return aspose::words::cloud::models::OfficeMathObject::MathObjectType::NONE;
         throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
     }
     void OfficeMathObject::toJson(void* jsonIfc) const
