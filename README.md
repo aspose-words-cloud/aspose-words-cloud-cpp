@@ -445,7 +445,7 @@ Build Aspose.Words.Cloud SDK
 
 ```cmd
 vcpkg install openssl:x64-windows
-git clone https://github.com/aspose-words-cloud/aspose-words-cloud-cpp
+git clone https://github.com/aspose-words-cloud/Aspose.Words-Cloud-SDK-for-Cpp
 cd aspose-words-cloud-cpp
 mkdir .\build
 cmake -G "Visual Studio 16 2019" -Thost=x64 -Ax64 -S . -B ./build
@@ -476,7 +476,7 @@ Required packages:
 Build Aspose.Words.Cloud SDK
 ```cmd
 sudo apt-get install gcc cmake openssl-dev
-git clone https://github.com/aspose-words-cloud/aspose-words-cloud-cpp
+git clone https://github.com/aspose-words-cloud/Aspose.Words-Cloud-SDK-for-Cpp
 cd aspose-words-cloud-cpp
 mkdir -p ./build
 
@@ -498,7 +498,7 @@ cmake --build ./build --config Release --target aspose_words_cloud_test
 cmake -E chdir ./build ctest -V -C Debug
 ```
 
-The complete source code is available at [GitHub Repository](https://github.com/aspose-words-cloud/aspose-words-cloud-cpp).
+The complete source code is available at [GitHub Repository](https://github.com/aspose-words-cloud/Aspose.Words-Cloud-SDK-for-Cpp).
 
 ## Getting started with the SDK
 
@@ -536,4 +536,4 @@ Typical usage of the SDK in code follows this template:
     // End README example
 ```
 
-[Product Page](https://products.aspose.cloud/words/cpp) | [Documentation](https://docs.aspose.cloud/display/wordscloud/Home) | [API Reference](https://apireference.aspose.cloud/words/) | [Code Samples](https://github.com/aspose-words-cloud/aspose-words-cloud-cpp) | [Blog](https://blog.aspose.cloud/category/words/) | [Free Support](https://forum.aspose.cloud/c/words) | [Free Trial](https://dashboard.aspose.cloud/#/apps)
+[Product Page](https://products.aspose.cloud/words/cpp) | [Documentation](https://docs.aspose.cloud/display/wordscloud/Home) | [API Reference](https://apireference.aspose.cloud/words/) | [Code Samples](https://github.com/aspose-words-cloud/Aspose.Words-Cloud-SDK-for-Cpp) | [Blog](https://blog.aspose.cloud/category/words/) | [Free Support](https://forum.aspose.cloud/c/words) | [Free Trial](https://dashboard.aspose.cloud/#/apps)
