@@ -17,6 +17,11 @@ Feel free to explore the [Developer's Guide](https://docs.aspose.cloud/display/w
 - Read & write access to Document Object Model.
 - Thread safe
 
+## Enhancements in Version 26.3
+
+- Various stability and performance improvements.
+
+
 ## Enhancements in Version 26.2
 
 - Implemented ability to save documents as Docling JSON format.
