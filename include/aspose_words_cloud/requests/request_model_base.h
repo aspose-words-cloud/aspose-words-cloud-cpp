@@ -24,6 +24,7 @@
 -------------------------------------------------------------------------------------------------------------------- **/
 
 #pragma once
+#include <any>
 #include <iostream>
 #include <memory>
 #include <string>
@@ -32,11 +33,13 @@
 #include "aspose_words_cloud/responses/response_model_base.h"
 
 namespace aspose::words::cloud::requests {
-    class RequestModelBase
+    class RequestModelBase : public std::enable_shared_from_this<RequestModelBase>
     {
     public:
         ASPOSE_WORDS_CLOUD_EXPORT virtual ~RequestModelBase() = default;
         ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< aspose::words::cloud::HttpRequestData > createHttpRequest(ApiClient* apiClient) const = 0;
         ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > createResponse() const = 0;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::shared_ptr<RequestModelBase> getOriginalRequest() const = 0;
+        ASPOSE_WORDS_CLOUD_EXPORT virtual std::any getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const = 0;
     };
 }

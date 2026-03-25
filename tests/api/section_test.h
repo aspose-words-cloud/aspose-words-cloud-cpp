@@ -24,6 +24,7 @@
 -------------------------------------------------------------------------------------------------------------------- **/
 
 #pragma once
+#include <chrono>
 #include "../test_base.h"
 
 /// <summary>
@@ -151,7 +152,7 @@ TEST_F(SectionTests, TestDeleteSection) {
         nullptr
     ));
 
-getApi()->deleteSection(request);
+    getApi()->deleteSection(request);
 }
 
 /// <summary>
@@ -199,7 +200,7 @@ TEST_F(SectionTests, TestMergeWithNext) {
         nullptr
     ));
 
-getApi()->mergeWithNext(request);
+    getApi()->mergeWithNext(request);
 }
 
 /// <summary>
@@ -247,7 +248,7 @@ TEST_F(SectionTests, TestInsertSection) {
         nullptr
     ));
 
-getApi()->insertSection(request);
+    getApi()->insertSection(request);
 }
 
 /// <summary>
@@ -296,5 +297,5 @@ TEST_F(SectionTests, TestLinkHeaderFootersToPrevious) {
         nullptr
     ));
 
-getApi()->linkHeaderFootersToPrevious(request);
+    getApi()->linkHeaderFootersToPrevious(request);
 }

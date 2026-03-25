@@ -24,6 +24,7 @@
 -------------------------------------------------------------------------------------------------------------------- **/
 
 #pragma once
+#include <chrono>
 #include "../test_base.h"
 
 /// <summary>
@@ -40,7 +41,7 @@ TEST_F(FontTests, TestResetCache) {
     std::shared_ptr<requests::ResetCacheRequest> request(new requests::ResetCacheRequest(
     ));
 
-getApi()->resetCache(request);
+    getApi()->resetCache(request);
 }
 
 /// <summary>

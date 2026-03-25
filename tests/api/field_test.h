@@ -24,6 +24,7 @@
 -------------------------------------------------------------------------------------------------------------------- **/
 
 #pragma once
+#include <chrono>
 #include "../test_base.h"
 
 /// <summary>
@@ -433,7 +434,7 @@ TEST_F(FieldTests, TestDeleteField) {
         nullptr
     ));
 
-getApi()->deleteField(request);
+    getApi()->deleteField(request);
 }
 
 /// <summary>
@@ -484,7 +485,7 @@ TEST_F(FieldTests, TestDeleteFieldWithoutNodePath) {
         nullptr
     ));
 
-getApi()->deleteField(request);
+    getApi()->deleteField(request);
 }
 
 /// <summary>
@@ -513,7 +514,7 @@ TEST_F(FieldTests, TestDeleteParagraphFields) {
         nullptr
     ));
 
-getApi()->deleteFields(request);
+    getApi()->deleteFields(request);
 }
 
 /// <summary>
@@ -542,7 +543,7 @@ TEST_F(FieldTests, TestDeleteParagraphFieldsWithoutNodePath) {
         nullptr
     ));
 
-getApi()->deleteFields(request);
+    getApi()->deleteFields(request);
 }
 
 /// <summary>
@@ -571,7 +572,7 @@ TEST_F(FieldTests, TestDeleteSectionFields) {
         nullptr
     ));
 
-getApi()->deleteFields(request);
+    getApi()->deleteFields(request);
 }
 
 /// <summary>
@@ -600,7 +601,7 @@ TEST_F(FieldTests, TestDeleteSectionFieldsWithoutNodePath) {
         nullptr
     ));
 
-getApi()->deleteFields(request);
+    getApi()->deleteFields(request);
 }
 
 /// <summary>
@@ -629,7 +630,7 @@ TEST_F(FieldTests, TestDeleteSectionParagraphFields) {
         nullptr
     ));
 
-getApi()->deleteFields(request);
+    getApi()->deleteFields(request);
 }
 
 /// <summary>
@@ -658,7 +659,7 @@ TEST_F(FieldTests, TestDeleteDocumentFields) {
         nullptr
     ));
 
-getApi()->deleteFields(request);
+    getApi()->deleteFields(request);
 }
 
 /// <summary>

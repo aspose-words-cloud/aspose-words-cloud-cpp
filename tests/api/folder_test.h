@@ -24,6 +24,7 @@
 -------------------------------------------------------------------------------------------------------------------- **/
 
 #pragma once
+#include <chrono>
 #include "../test_base.h"
 
 /// <summary>
@@ -45,7 +46,7 @@ TEST_F(FolderTests, TestCreateFolder) {
         nullptr
     ));
 
-getApi()->createFolder(request);
+    getApi()->createFolder(request);
 }
 
 /// <summary>
@@ -65,7 +66,7 @@ TEST_F(FolderTests, TestDeleteFolder) {
         std::make_shared< bool >(true)
     ));
 
-getApi()->deleteFolder(request);
+    getApi()->deleteFolder(request);
 }
 
 /// <summary>
@@ -99,7 +100,7 @@ TEST_F(FolderTests, TestCopyFolder) {
         nullptr
     ));
 
-getApi()->copyFolder(request);
+    getApi()->copyFolder(request);
 }
 
 /// <summary>
@@ -118,5 +119,5 @@ TEST_F(FolderTests, TestMoveFolder) {
         nullptr
     ));
 
-getApi()->moveFolder(request);
+    getApi()->moveFolder(request);
 }

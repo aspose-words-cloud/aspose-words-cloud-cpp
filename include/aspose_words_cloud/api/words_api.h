@@ -27,6 +27,7 @@
 #include <vector>
 #include "aspose_words_cloud/common.h"
 #include "aspose_words_cloud/api_client.h"
+#include "aspose_words_cloud/job_handler.h"
 #include "aspose_words_cloud/requests/batch_request.h"
 #include "aspose_words_cloud/responses/batch_response.h"
 #include "aspose_words_cloud/requests/accept_all_revisions_request.h"
@@ -55,6 +56,8 @@
 #include "aspose_words_cloud/responses/compress_document_online_response.h"
 #include "aspose_words_cloud/requests/convert_document_request.h"
 #include "aspose_words_cloud/responses/convert_document_response.h"
+#include "aspose_words_cloud/requests/convert_document_job_request.h"
+#include "aspose_words_cloud/responses/convert_document_job_response.h"
 #include "aspose_words_cloud/requests/copy_file_request.h"
 #include "aspose_words_cloud/responses/copy_file_response.h"
 #include "aspose_words_cloud/requests/copy_folder_request.h"
@@ -902,6 +905,21 @@ namespace aspose::words::cloud::api {
         /// <param name="openTypeSupport">The value indicates whether OpenType support is on.</param>
         /// <param name="fontsLocation">Folder in filestorage with custom fonts.</param>
         ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::istream > convertDocument(std::shared_ptr<aspose::words::cloud::requests::ConvertDocumentRequest> request);
+
+        /// <summary>
+        /// Converts a document on a local drive to the specified format.
+        /// </summary>
+        /// <param name="document">Converting document.</param>
+        /// <param name="format">The format to convert.</param>
+        /// <param name="outPath">The path to the output document on a local storage.</param>
+        /// <param name="fileNameFieldValue">The filename of the output document, that will be used when the resulting document has a dynamic field {filename}. If it is not set, the "sourceFilename" will be used instead.</param>
+        /// <param name="storage">Original document storage.</param>
+        /// <param name="loadEncoding">Encoding that will be used to load an HTML (or TXT) document if the encoding is not specified in HTML.</param>
+        /// <param name="password">Password of protected Word document. Use the parameter to pass a password via SDK. SDK encrypts it automatically. We don't recommend to use the parameter to pass a plain password for direct call of API.</param>
+        /// <param name="encryptedPassword">Password of protected Word document. Use the parameter to pass an encrypted password for direct calls of API. See SDK code for encyption details.</param>
+        /// <param name="openTypeSupport">The value indicates whether OpenType support is on.</param>
+        /// <param name="fontsLocation">Folder in filestorage with custom fonts.</param>
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr<aspose::words::cloud::JobHandler< std::shared_ptr< std::istream > > > convertDocumentJob(std::shared_ptr<aspose::words::cloud::requests::ConvertDocumentJobRequest> request);
 
         /// <summary>
         /// Copy file.

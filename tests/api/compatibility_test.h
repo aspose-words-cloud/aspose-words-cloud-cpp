@@ -24,6 +24,7 @@
 -------------------------------------------------------------------------------------------------------------------- **/
 
 #pragma once
+#include <chrono>
 #include "../test_base.h"
 
 /// <summary>
@@ -63,7 +64,7 @@ TEST_F(CompatibilityTests, TestOptimizeDocument) {
         nullptr
     ));
 
-getApi()->optimizeDocument(request);
+    getApi()->optimizeDocument(request);
 }
 
 /// <summary>

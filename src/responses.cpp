@@ -553,6 +553,19 @@ namespace aspose::words::cloud::responses {
     }
 
     /*
+     * ConvertDocumentJob request implementation
+     */
+    std::shared_ptr< aspose::words::cloud::models::JobInfo > ConvertDocumentJobResponse::getModel() const
+    {
+        return m_Model;
+    }
+
+    void ConvertDocumentJobResponse::deserialize(const std::string& contentType, const std::string_view& response)
+    {
+        m_Model = createModelInstance< aspose::words::cloud::models::JobInfo >(L"JobInfo, _", response);
+    }
+
+    /*
      * CopyFile request implementation
      */
 

@@ -24,6 +24,7 @@
 -------------------------------------------------------------------------------------------------------------------- **/
 
 #pragma once
+#include <chrono>
 #include "../test_base.h"
 
 /// <summary>
@@ -152,7 +153,7 @@ TEST_F(DocumentPropertiesTests, TestDeleteDocumentProperty) {
         nullptr
     ));
 
-getApi()->deleteDocumentProperty(request);
+    getApi()->deleteDocumentProperty(request);
 }
 
 /// <summary>
