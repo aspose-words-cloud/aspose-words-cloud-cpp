@@ -188,6 +188,17 @@ namespace aspose::words::cloud::requests {
         );
     }
 
+    std::shared_ptr<RequestModelBase> AcceptAllRevisionsRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any AcceptAllRevisionsRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        auto typedResponse = std::static_pointer_cast< aspose::words::cloud::responses::AcceptAllRevisionsResponse >(response);
+        return std::any(typedResponse->getModel());
+    }
+
     /*
      * AcceptAllRevisionsOnline request implementation
      */
@@ -272,6 +283,17 @@ namespace aspose::words::cloud::requests {
         return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
             new aspose::words::cloud::responses::AcceptAllRevisionsOnlineResponse()
         );
+    }
+
+    std::shared_ptr<RequestModelBase> AcceptAllRevisionsOnlineRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any AcceptAllRevisionsOnlineRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        auto typedResponse = std::static_pointer_cast< aspose::words::cloud::responses::AcceptAllRevisionsOnlineResponse >(response);
+        return std::any(typedResponse);
     }
 
     /*
@@ -403,6 +425,167 @@ namespace aspose::words::cloud::requests {
         );
     }
 
+    std::shared_ptr<RequestModelBase> AppendDocumentRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any AppendDocumentRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        auto typedResponse = std::static_pointer_cast< aspose::words::cloud::responses::AppendDocumentResponse >(response);
+        return std::any(typedResponse->getModel());
+    }
+
+    /*
+     * AppendDocumentJob request implementation
+     */
+    AppendDocumentJobRequest::AppendDocumentJobRequest(
+        const std::shared_ptr< std::wstring > name,
+        const std::shared_ptr< aspose::words::cloud::models::BaseEntryList > documentList,
+        const std::shared_ptr< std::wstring > folder,
+        const std::shared_ptr< std::wstring > storage,
+        const std::shared_ptr< std::wstring > loadEncoding,
+        const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport,
+        const std::shared_ptr< std::wstring > destFileName,
+        const std::shared_ptr< std::wstring > revisionAuthor,
+        const std::shared_ptr< std::wstring > revisionDateTime
+    ) : 
+        m_Name(name),
+        m_DocumentList(documentList),
+        m_Folder(folder),
+        m_Storage(storage),
+        m_LoadEncoding(loadEncoding),
+        m_Password(password),
+        m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport),
+        m_DestFileName(destFileName),
+        m_RevisionAuthor(revisionAuthor),
+        m_RevisionDateTime(revisionDateTime)
+    {
+    }
+
+    const std::shared_ptr< std::wstring > AppendDocumentJobRequest::getName() const
+    {
+        return m_Name;
+    }
+
+    const std::shared_ptr< aspose::words::cloud::models::BaseEntryList > AppendDocumentJobRequest::getDocumentList() const
+    {
+        return m_DocumentList;
+    }
+
+    const std::shared_ptr< std::wstring > AppendDocumentJobRequest::getFolder() const
+    {
+        return m_Folder;
+    }
+
+    const std::shared_ptr< std::wstring > AppendDocumentJobRequest::getStorage() const
+    {
+        return m_Storage;
+    }
+
+    const std::shared_ptr< std::wstring > AppendDocumentJobRequest::getLoadEncoding() const
+    {
+        return m_LoadEncoding;
+    }
+
+    const std::shared_ptr< std::wstring > AppendDocumentJobRequest::getPassword() const
+    {
+        return m_Password;
+    }
+
+    const std::shared_ptr< std::wstring > AppendDocumentJobRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
+    }
+
+    const std::shared_ptr< bool > AppendDocumentJobRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
+    const std::shared_ptr< std::wstring > AppendDocumentJobRequest::getDestFileName() const
+    {
+        return m_DestFileName;
+    }
+
+    const std::shared_ptr< std::wstring > AppendDocumentJobRequest::getRevisionAuthor() const
+    {
+        return m_RevisionAuthor;
+    }
+
+    const std::shared_ptr< std::wstring > AppendDocumentJobRequest::getRevisionDateTime() const
+    {
+        return m_RevisionDateTime;
+    }
+
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > AppendDocumentJobRequest::createHttpRequest(ApiClient* apiClient) const
+    {
+        std::vector<models::FileReference*> additionalFilesContent;
+        auto result = std::make_shared<HttpRequestData>();
+        result->setMethod(HttpRequestMethod::HttpPUT);
+        result->setPath(L"/words/job/put/{name}/appendDocument");
+        if (!m_Name) throw aspose::words::cloud::ApiException(400, L"Parameter 'Name' is required.");
+        result->setPathParam(L"{name}", *m_Name);
+        if (m_Folder) result->addQueryParam(L"folder", *m_Folder);
+        if (m_Storage) result->addQueryParam(L"storage", *m_Storage);
+        if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
+        if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
+        if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
+        if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
+        if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
+        if (m_DocumentList)
+        {
+            result->addFormDataParam(L"Body", *m_DocumentList);
+            m_DocumentList->validate();    m_DocumentList->getFileReferences(additionalFilesContent);
+        }
+        else throw aspose::words::cloud::ApiException(400, L"Parameter 'DocumentList' is required.");
+
+
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
+        {
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
+        }
+
+        return result;
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > AppendDocumentJobRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::AppendDocumentJobResponse()
+        );
+    }
+
+    std::shared_ptr<RequestModelBase> AppendDocumentJobRequest::getOriginalRequest() const
+    {
+        return std::shared_ptr<RequestModelBase>(new AppendDocumentRequest(m_Name,
+                    m_DocumentList,
+                    m_Folder,
+                    m_Storage,
+                    m_LoadEncoding,
+                    m_Password,
+                    m_EncryptedPassword,
+                    m_OpenTypeSupport,
+                    m_DestFileName,
+                    m_RevisionAuthor,
+                    m_RevisionDateTime));
+    }
+
+    std::any AppendDocumentJobRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        auto typedResponse = std::static_pointer_cast< aspose::words::cloud::responses::AppendDocumentJobResponse >(response);
+        return std::any(typedResponse->getModel());
+    }
+
     /*
      * AppendDocumentOnline request implementation
      */
@@ -517,6 +700,152 @@ namespace aspose::words::cloud::requests {
         return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
             new aspose::words::cloud::responses::AppendDocumentOnlineResponse()
         );
+    }
+
+    std::shared_ptr<RequestModelBase> AppendDocumentOnlineRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any AppendDocumentOnlineRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        auto typedResponse = std::static_pointer_cast< aspose::words::cloud::responses::AppendDocumentOnlineResponse >(response);
+        return std::any(typedResponse);
+    }
+
+    /*
+     * AppendDocumentOnlineJob request implementation
+     */
+    AppendDocumentOnlineJobRequest::AppendDocumentOnlineJobRequest(
+        const std::shared_ptr< std::istream > document,
+        const std::shared_ptr< aspose::words::cloud::models::BaseEntryList > documentList,
+        const std::shared_ptr< std::wstring > loadEncoding,
+        const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport,
+        const std::shared_ptr< std::wstring > destFileName,
+        const std::shared_ptr< std::wstring > revisionAuthor,
+        const std::shared_ptr< std::wstring > revisionDateTime
+    ) : 
+        m_Document(document),
+        m_DocumentList(documentList),
+        m_LoadEncoding(loadEncoding),
+        m_Password(password),
+        m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport),
+        m_DestFileName(destFileName),
+        m_RevisionAuthor(revisionAuthor),
+        m_RevisionDateTime(revisionDateTime)
+    {
+    }
+
+    const std::shared_ptr< std::istream > AppendDocumentOnlineJobRequest::getDocument() const
+    {
+        return m_Document;
+    }
+
+    const std::shared_ptr< aspose::words::cloud::models::BaseEntryList > AppendDocumentOnlineJobRequest::getDocumentList() const
+    {
+        return m_DocumentList;
+    }
+
+    const std::shared_ptr< std::wstring > AppendDocumentOnlineJobRequest::getLoadEncoding() const
+    {
+        return m_LoadEncoding;
+    }
+
+    const std::shared_ptr< std::wstring > AppendDocumentOnlineJobRequest::getPassword() const
+    {
+        return m_Password;
+    }
+
+    const std::shared_ptr< std::wstring > AppendDocumentOnlineJobRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
+    }
+
+    const std::shared_ptr< bool > AppendDocumentOnlineJobRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
+    const std::shared_ptr< std::wstring > AppendDocumentOnlineJobRequest::getDestFileName() const
+    {
+        return m_DestFileName;
+    }
+
+    const std::shared_ptr< std::wstring > AppendDocumentOnlineJobRequest::getRevisionAuthor() const
+    {
+        return m_RevisionAuthor;
+    }
+
+    const std::shared_ptr< std::wstring > AppendDocumentOnlineJobRequest::getRevisionDateTime() const
+    {
+        return m_RevisionDateTime;
+    }
+
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > AppendDocumentOnlineJobRequest::createHttpRequest(ApiClient* apiClient) const
+    {
+        std::vector<models::FileReference*> additionalFilesContent;
+        auto result = std::make_shared<HttpRequestData>();
+        result->setMethod(HttpRequestMethod::HttpPUT);
+        result->setPath(L"/words/job/put/online/put/appendDocument");
+        if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
+        if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
+        if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
+        if (m_RevisionAuthor) result->addQueryParam(L"revisionAuthor", *m_RevisionAuthor);
+        if (m_RevisionDateTime) result->addQueryParam(L"revisionDateTime", *m_RevisionDateTime);
+        if (m_Document)
+        {
+            result->addFormDataParam(L"document", *m_Document);
+        }
+        else throw aspose::words::cloud::ApiException(400, L"Parameter 'Document' is required.");
+
+        if (m_DocumentList)
+        {
+            result->addFormDataParam(L"documentList", *m_DocumentList);
+            m_DocumentList->validate();    m_DocumentList->getFileReferences(additionalFilesContent);
+        }
+        else throw aspose::words::cloud::ApiException(400, L"Parameter 'DocumentList' is required.");
+
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
+        {
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
+        }
+
+        return result;
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > AppendDocumentOnlineJobRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::AppendDocumentOnlineJobResponse()
+        );
+    }
+
+    std::shared_ptr<RequestModelBase> AppendDocumentOnlineJobRequest::getOriginalRequest() const
+    {
+        return std::shared_ptr<RequestModelBase>(new AppendDocumentOnlineRequest(m_Document,
+                    m_DocumentList,
+                    m_LoadEncoding,
+                    m_Password,
+                    m_EncryptedPassword,
+                    m_OpenTypeSupport,
+                    m_DestFileName,
+                    m_RevisionAuthor,
+                    m_RevisionDateTime));
+    }
+
+    std::any AppendDocumentOnlineJobRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        auto typedResponse = std::static_pointer_cast< aspose::words::cloud::responses::AppendDocumentOnlineJobResponse >(response);
+        return std::any(typedResponse->getModel());
     }
 
     /*
@@ -656,6 +985,17 @@ namespace aspose::words::cloud::requests {
         );
     }
 
+    std::shared_ptr<RequestModelBase> ApplyStyleToDocumentElementRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any ApplyStyleToDocumentElementRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        auto typedResponse = std::static_pointer_cast< aspose::words::cloud::responses::ApplyStyleToDocumentElementResponse >(response);
+        return std::any(typedResponse->getModel());
+    }
+
     /*
      * ApplyStyleToDocumentElementOnline request implementation
      */
@@ -778,6 +1118,17 @@ namespace aspose::words::cloud::requests {
         return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
             new aspose::words::cloud::responses::ApplyStyleToDocumentElementOnlineResponse()
         );
+    }
+
+    std::shared_ptr<RequestModelBase> ApplyStyleToDocumentElementOnlineRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any ApplyStyleToDocumentElementOnlineRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        auto typedResponse = std::static_pointer_cast< aspose::words::cloud::responses::ApplyStyleToDocumentElementOnlineResponse >(response);
+        return std::any(typedResponse);
     }
 
     /*
@@ -904,6 +1255,17 @@ namespace aspose::words::cloud::requests {
         );
     }
 
+    std::shared_ptr<RequestModelBase> BuildReportRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any BuildReportRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        auto typedResponse = std::static_pointer_cast< aspose::words::cloud::responses::BuildReportResponse >(response);
+        return std::any(typedResponse->getModel());
+    }
+
     /*
      * BuildReportOnline request implementation
      */
@@ -982,6 +1344,17 @@ namespace aspose::words::cloud::requests {
         return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
             new aspose::words::cloud::responses::BuildReportOnlineResponse()
         );
+    }
+
+    std::shared_ptr<RequestModelBase> BuildReportOnlineRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any BuildReportOnlineRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        auto typedResponse = std::static_pointer_cast< aspose::words::cloud::responses::BuildReportOnlineResponse >(response);
+        return std::any(typedResponse->getModel());
     }
 
     /*
@@ -1105,6 +1478,17 @@ namespace aspose::words::cloud::requests {
         );
     }
 
+    std::shared_ptr<RequestModelBase> CompareDocumentRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any CompareDocumentRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        auto typedResponse = std::static_pointer_cast< aspose::words::cloud::responses::CompareDocumentResponse >(response);
+        return std::any(typedResponse->getModel());
+    }
+
     /*
      * CompareDocumentOnline request implementation
      */
@@ -1211,6 +1595,17 @@ namespace aspose::words::cloud::requests {
         return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
             new aspose::words::cloud::responses::CompareDocumentOnlineResponse()
         );
+    }
+
+    std::shared_ptr<RequestModelBase> CompareDocumentOnlineRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any CompareDocumentOnlineRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        auto typedResponse = std::static_pointer_cast< aspose::words::cloud::responses::CompareDocumentOnlineResponse >(response);
+        return std::any(typedResponse);
     }
 
     /*
@@ -1325,6 +1720,17 @@ namespace aspose::words::cloud::requests {
         );
     }
 
+    std::shared_ptr<RequestModelBase> CompressDocumentRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any CompressDocumentRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        auto typedResponse = std::static_pointer_cast< aspose::words::cloud::responses::CompressDocumentResponse >(response);
+        return std::any(typedResponse->getModel());
+    }
+
     /*
      * CompressDocumentOnline request implementation
      */
@@ -1422,6 +1828,17 @@ namespace aspose::words::cloud::requests {
         return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
             new aspose::words::cloud::responses::CompressDocumentOnlineResponse()
         );
+    }
+
+    std::shared_ptr<RequestModelBase> CompressDocumentOnlineRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any CompressDocumentOnlineRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        auto typedResponse = std::static_pointer_cast< aspose::words::cloud::responses::CompressDocumentOnlineResponse >(response);
+        return std::any(typedResponse);
     }
 
     /*
@@ -1543,6 +1960,156 @@ namespace aspose::words::cloud::requests {
         );
     }
 
+    std::shared_ptr<RequestModelBase> ConvertDocumentRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any ConvertDocumentRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        auto typedResponse = std::static_pointer_cast< aspose::words::cloud::responses::ConvertDocumentResponse >(response);
+        return std::any(typedResponse->getModel());
+    }
+
+    /*
+     * ConvertDocumentJob request implementation
+     */
+    ConvertDocumentJobRequest::ConvertDocumentJobRequest(
+        const std::shared_ptr< std::istream > document,
+        const std::shared_ptr< std::wstring > format,
+        const std::shared_ptr< std::wstring > outPath,
+        const std::shared_ptr< std::wstring > fileNameFieldValue,
+        const std::shared_ptr< std::wstring > storage,
+        const std::shared_ptr< std::wstring > loadEncoding,
+        const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport,
+        const std::shared_ptr< std::wstring > fontsLocation
+    ) : 
+        m_Document(document),
+        m_Format(format),
+        m_OutPath(outPath),
+        m_FileNameFieldValue(fileNameFieldValue),
+        m_Storage(storage),
+        m_LoadEncoding(loadEncoding),
+        m_Password(password),
+        m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport),
+        m_FontsLocation(fontsLocation)
+    {
+    }
+
+    const std::shared_ptr< std::istream > ConvertDocumentJobRequest::getDocument() const
+    {
+        return m_Document;
+    }
+
+    const std::shared_ptr< std::wstring > ConvertDocumentJobRequest::getFormat() const
+    {
+        return m_Format;
+    }
+
+    const std::shared_ptr< std::wstring > ConvertDocumentJobRequest::getOutPath() const
+    {
+        return m_OutPath;
+    }
+
+    const std::shared_ptr< std::wstring > ConvertDocumentJobRequest::getFileNameFieldValue() const
+    {
+        return m_FileNameFieldValue;
+    }
+
+    const std::shared_ptr< std::wstring > ConvertDocumentJobRequest::getStorage() const
+    {
+        return m_Storage;
+    }
+
+    const std::shared_ptr< std::wstring > ConvertDocumentJobRequest::getLoadEncoding() const
+    {
+        return m_LoadEncoding;
+    }
+
+    const std::shared_ptr< std::wstring > ConvertDocumentJobRequest::getPassword() const
+    {
+        return m_Password;
+    }
+
+    const std::shared_ptr< std::wstring > ConvertDocumentJobRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
+    }
+
+    const std::shared_ptr< bool > ConvertDocumentJobRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
+    const std::shared_ptr< std::wstring > ConvertDocumentJobRequest::getFontsLocation() const
+    {
+        return m_FontsLocation;
+    }
+
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > ConvertDocumentJobRequest::createHttpRequest(ApiClient* apiClient) const
+    {
+        std::vector<models::FileReference*> additionalFilesContent;
+        auto result = std::make_shared<HttpRequestData>();
+        result->setMethod(HttpRequestMethod::HttpPUT);
+        result->setPath(L"/words/job/put/convert");
+        if (m_Format) result->addQueryParam(L"format", *m_Format);
+        else throw aspose::words::cloud::ApiException(400, L"Parameter 'Format' is required.");
+        if (m_OutPath) result->addQueryParam(L"outPath", *m_OutPath);
+        if (m_FileNameFieldValue) result->addQueryParam(L"fileNameFieldValue", *m_FileNameFieldValue);
+        if (m_Storage) result->addQueryParam(L"storage", *m_Storage);
+        if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
+        if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
+        if (m_FontsLocation) result->addQueryParam(L"fontsLocation", *m_FontsLocation);
+        if (m_Document)
+        {
+            result->addFormDataParam(L"document", *m_Document);
+        }
+        else throw aspose::words::cloud::ApiException(400, L"Parameter 'Document' is required.");
+
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
+        {
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
+        }
+
+        return result;
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > ConvertDocumentJobRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::ConvertDocumentJobResponse()
+        );
+    }
+
+    std::shared_ptr<RequestModelBase> ConvertDocumentJobRequest::getOriginalRequest() const
+    {
+        return std::shared_ptr<RequestModelBase>(new ConvertDocumentRequest(m_Document,
+                    m_Format,
+                    m_OutPath,
+                    m_FileNameFieldValue,
+                    m_Storage,
+                    m_LoadEncoding,
+                    m_Password,
+                    m_EncryptedPassword,
+                    m_OpenTypeSupport,
+                    m_FontsLocation));
+    }
+
+    std::any ConvertDocumentJobRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        auto typedResponse = std::static_pointer_cast< aspose::words::cloud::responses::ConvertDocumentJobResponse >(response);
+        return std::any(typedResponse->getModel());
+    }
+
     /*
      * CopyFile request implementation
      */
@@ -1619,6 +2186,16 @@ namespace aspose::words::cloud::requests {
         );
     }
 
+    std::shared_ptr<RequestModelBase> CopyFileRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any CopyFileRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        return std::any();
+    }
+
     /*
      * CopyFolder request implementation
      */
@@ -1685,6 +2262,16 @@ namespace aspose::words::cloud::requests {
         return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
             new aspose::words::cloud::responses::CopyFolderResponse()
         );
+    }
+
+    std::shared_ptr<RequestModelBase> CopyFolderRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any CopyFolderRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        return std::any();
     }
 
     /*
@@ -1815,6 +2402,17 @@ namespace aspose::words::cloud::requests {
         );
     }
 
+    std::shared_ptr<RequestModelBase> CopyStyleRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any CopyStyleRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        auto typedResponse = std::static_pointer_cast< aspose::words::cloud::responses::CopyStyleResponse >(response);
+        return std::any(typedResponse->getModel());
+    }
+
     /*
      * CopyStyleOnline request implementation
      */
@@ -1928,6 +2526,17 @@ namespace aspose::words::cloud::requests {
         return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
             new aspose::words::cloud::responses::CopyStyleOnlineResponse()
         );
+    }
+
+    std::shared_ptr<RequestModelBase> CopyStyleOnlineRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any CopyStyleOnlineRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        auto typedResponse = std::static_pointer_cast< aspose::words::cloud::responses::CopyStyleOnlineResponse >(response);
+        return std::any(typedResponse);
     }
 
     /*
@@ -2054,6 +2663,17 @@ namespace aspose::words::cloud::requests {
         );
     }
 
+    std::shared_ptr<RequestModelBase> CopyStylesFromTemplateRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any CopyStylesFromTemplateRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        auto typedResponse = std::static_pointer_cast< aspose::words::cloud::responses::CopyStylesFromTemplateResponse >(response);
+        return std::any(typedResponse->getModel());
+    }
+
     /*
      * CreateDocument request implementation
      */
@@ -2113,6 +2733,17 @@ namespace aspose::words::cloud::requests {
         );
     }
 
+    std::shared_ptr<RequestModelBase> CreateDocumentRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any CreateDocumentRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        auto typedResponse = std::static_pointer_cast< aspose::words::cloud::responses::CreateDocumentResponse >(response);
+        return std::any(typedResponse->getModel());
+    }
+
     /*
      * CreateFolder request implementation
      */
@@ -2162,6 +2793,16 @@ namespace aspose::words::cloud::requests {
         return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
             new aspose::words::cloud::responses::CreateFolderResponse()
         );
+    }
+
+    std::shared_ptr<RequestModelBase> CreateFolderRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any CreateFolderRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        return std::any();
     }
 
     /*
@@ -2301,6 +2942,17 @@ namespace aspose::words::cloud::requests {
         );
     }
 
+    std::shared_ptr<RequestModelBase> CreateOrUpdateDocumentPropertyRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any CreateOrUpdateDocumentPropertyRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        auto typedResponse = std::static_pointer_cast< aspose::words::cloud::responses::CreateOrUpdateDocumentPropertyResponse >(response);
+        return std::any(typedResponse->getModel());
+    }
+
     /*
      * CreateOrUpdateDocumentPropertyOnline request implementation
      */
@@ -2425,6 +3077,17 @@ namespace aspose::words::cloud::requests {
         );
     }
 
+    std::shared_ptr<RequestModelBase> CreateOrUpdateDocumentPropertyOnlineRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any CreateOrUpdateDocumentPropertyOnlineRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        auto typedResponse = std::static_pointer_cast< aspose::words::cloud::responses::CreateOrUpdateDocumentPropertyOnlineResponse >(response);
+        return std::any(typedResponse);
+    }
+
     /*
      * DeleteAllParagraphTabStops request implementation
      */
@@ -2541,6 +3204,17 @@ namespace aspose::words::cloud::requests {
         );
     }
 
+    std::shared_ptr<RequestModelBase> DeleteAllParagraphTabStopsRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any DeleteAllParagraphTabStopsRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        auto typedResponse = std::static_pointer_cast< aspose::words::cloud::responses::DeleteAllParagraphTabStopsResponse >(response);
+        return std::any(typedResponse->getModel());
+    }
+
     /*
      * DeleteAllParagraphTabStopsOnline request implementation
      */
@@ -2642,6 +3316,17 @@ namespace aspose::words::cloud::requests {
         return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
             new aspose::words::cloud::responses::DeleteAllParagraphTabStopsOnlineResponse()
         );
+    }
+
+    std::shared_ptr<RequestModelBase> DeleteAllParagraphTabStopsOnlineRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any DeleteAllParagraphTabStopsOnlineRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        auto typedResponse = std::static_pointer_cast< aspose::words::cloud::responses::DeleteAllParagraphTabStopsOnlineResponse >(response);
+        return std::any(typedResponse);
     }
 
     /*
@@ -2768,6 +3453,16 @@ namespace aspose::words::cloud::requests {
         );
     }
 
+    std::shared_ptr<RequestModelBase> DeleteBookmarkRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any DeleteBookmarkRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        return std::any();
+    }
+
     /*
      * DeleteBookmarkOnline request implementation
      */
@@ -2877,6 +3572,17 @@ namespace aspose::words::cloud::requests {
         return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
             new aspose::words::cloud::responses::DeleteBookmarkOnlineResponse()
         );
+    }
+
+    std::shared_ptr<RequestModelBase> DeleteBookmarkOnlineRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any DeleteBookmarkOnlineRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        auto typedResponse = std::static_pointer_cast< aspose::words::cloud::responses::DeleteBookmarkOnlineResponse >(response);
+        return std::any(typedResponse->getDocument());
     }
 
     /*
@@ -2994,6 +3700,16 @@ namespace aspose::words::cloud::requests {
         );
     }
 
+    std::shared_ptr<RequestModelBase> DeleteBookmarksRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any DeleteBookmarksRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        return std::any();
+    }
+
     /*
      * DeleteBookmarksOnline request implementation
      */
@@ -3094,6 +3810,17 @@ namespace aspose::words::cloud::requests {
         return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
             new aspose::words::cloud::responses::DeleteBookmarksOnlineResponse()
         );
+    }
+
+    std::shared_ptr<RequestModelBase> DeleteBookmarksOnlineRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any DeleteBookmarksOnlineRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        auto typedResponse = std::static_pointer_cast< aspose::words::cloud::responses::DeleteBookmarksOnlineResponse >(response);
+        return std::any(typedResponse->getDocument());
     }
 
     /*
@@ -3228,6 +3955,17 @@ namespace aspose::words::cloud::requests {
         );
     }
 
+    std::shared_ptr<RequestModelBase> DeleteBorderRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any DeleteBorderRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        auto typedResponse = std::static_pointer_cast< aspose::words::cloud::responses::DeleteBorderResponse >(response);
+        return std::any(typedResponse->getModel());
+    }
+
     /*
      * DeleteBorderOnline request implementation
      */
@@ -3345,6 +4083,17 @@ namespace aspose::words::cloud::requests {
         return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
             new aspose::words::cloud::responses::DeleteBorderOnlineResponse()
         );
+    }
+
+    std::shared_ptr<RequestModelBase> DeleteBorderOnlineRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any DeleteBorderOnlineRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        auto typedResponse = std::static_pointer_cast< aspose::words::cloud::responses::DeleteBorderOnlineResponse >(response);
+        return std::any(typedResponse);
     }
 
     /*
@@ -3470,6 +4219,17 @@ namespace aspose::words::cloud::requests {
         );
     }
 
+    std::shared_ptr<RequestModelBase> DeleteBordersRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any DeleteBordersRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        auto typedResponse = std::static_pointer_cast< aspose::words::cloud::responses::DeleteBordersResponse >(response);
+        return std::any(typedResponse->getModel());
+    }
+
     /*
      * DeleteBordersOnline request implementation
      */
@@ -3578,6 +4338,17 @@ namespace aspose::words::cloud::requests {
         return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
             new aspose::words::cloud::responses::DeleteBordersOnlineResponse()
         );
+    }
+
+    std::shared_ptr<RequestModelBase> DeleteBordersOnlineRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any DeleteBordersOnlineRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        auto typedResponse = std::static_pointer_cast< aspose::words::cloud::responses::DeleteBordersOnlineResponse >(response);
+        return std::any(typedResponse);
     }
 
     /*
@@ -3704,6 +4475,16 @@ namespace aspose::words::cloud::requests {
         );
     }
 
+    std::shared_ptr<RequestModelBase> DeleteCommentRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any DeleteCommentRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        return std::any();
+    }
+
     /*
      * DeleteCommentOnline request implementation
      */
@@ -3813,6 +4594,17 @@ namespace aspose::words::cloud::requests {
         return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
             new aspose::words::cloud::responses::DeleteCommentOnlineResponse()
         );
+    }
+
+    std::shared_ptr<RequestModelBase> DeleteCommentOnlineRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any DeleteCommentOnlineRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        auto typedResponse = std::static_pointer_cast< aspose::words::cloud::responses::DeleteCommentOnlineResponse >(response);
+        return std::any(typedResponse->getDocument());
     }
 
     /*
@@ -3930,6 +4722,16 @@ namespace aspose::words::cloud::requests {
         );
     }
 
+    std::shared_ptr<RequestModelBase> DeleteCommentsRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any DeleteCommentsRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        return std::any();
+    }
+
     /*
      * DeleteCommentsOnline request implementation
      */
@@ -4030,6 +4832,17 @@ namespace aspose::words::cloud::requests {
         return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
             new aspose::words::cloud::responses::DeleteCommentsOnlineResponse()
         );
+    }
+
+    std::shared_ptr<RequestModelBase> DeleteCommentsOnlineRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any DeleteCommentsOnlineRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        auto typedResponse = std::static_pointer_cast< aspose::words::cloud::responses::DeleteCommentsOnlineResponse >(response);
+        return std::any(typedResponse->getDocument());
     }
 
     /*
@@ -4156,6 +4969,16 @@ namespace aspose::words::cloud::requests {
         );
     }
 
+    std::shared_ptr<RequestModelBase> DeleteCustomXmlPartRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any DeleteCustomXmlPartRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        return std::any();
+    }
+
     /*
      * DeleteCustomXmlPartOnline request implementation
      */
@@ -4265,6 +5088,17 @@ namespace aspose::words::cloud::requests {
         return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
             new aspose::words::cloud::responses::DeleteCustomXmlPartOnlineResponse()
         );
+    }
+
+    std::shared_ptr<RequestModelBase> DeleteCustomXmlPartOnlineRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any DeleteCustomXmlPartOnlineRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        auto typedResponse = std::static_pointer_cast< aspose::words::cloud::responses::DeleteCustomXmlPartOnlineResponse >(response);
+        return std::any(typedResponse->getDocument());
     }
 
     /*
@@ -4382,6 +5216,16 @@ namespace aspose::words::cloud::requests {
         );
     }
 
+    std::shared_ptr<RequestModelBase> DeleteCustomXmlPartsRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any DeleteCustomXmlPartsRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        return std::any();
+    }
+
     /*
      * DeleteCustomXmlPartsOnline request implementation
      */
@@ -4482,6 +5326,17 @@ namespace aspose::words::cloud::requests {
         return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
             new aspose::words::cloud::responses::DeleteCustomXmlPartsOnlineResponse()
         );
+    }
+
+    std::shared_ptr<RequestModelBase> DeleteCustomXmlPartsOnlineRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any DeleteCustomXmlPartsOnlineRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        auto typedResponse = std::static_pointer_cast< aspose::words::cloud::responses::DeleteCustomXmlPartsOnlineResponse >(response);
+        return std::any(typedResponse->getDocument());
     }
 
     /*
@@ -4608,6 +5463,16 @@ namespace aspose::words::cloud::requests {
         );
     }
 
+    std::shared_ptr<RequestModelBase> DeleteDocumentPropertyRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any DeleteDocumentPropertyRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        return std::any();
+    }
+
     /*
      * DeleteDocumentPropertyOnline request implementation
      */
@@ -4717,6 +5582,17 @@ namespace aspose::words::cloud::requests {
         return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
             new aspose::words::cloud::responses::DeleteDocumentPropertyOnlineResponse()
         );
+    }
+
+    std::shared_ptr<RequestModelBase> DeleteDocumentPropertyOnlineRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any DeleteDocumentPropertyOnlineRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        auto typedResponse = std::static_pointer_cast< aspose::words::cloud::responses::DeleteDocumentPropertyOnlineResponse >(response);
+        return std::any(typedResponse->getDocument());
     }
 
     /*
@@ -4851,6 +5727,16 @@ namespace aspose::words::cloud::requests {
         );
     }
 
+    std::shared_ptr<RequestModelBase> DeleteDrawingObjectRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any DeleteDrawingObjectRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        return std::any();
+    }
+
     /*
      * DeleteDrawingObjectOnline request implementation
      */
@@ -4968,6 +5854,17 @@ namespace aspose::words::cloud::requests {
         return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
             new aspose::words::cloud::responses::DeleteDrawingObjectOnlineResponse()
         );
+    }
+
+    std::shared_ptr<RequestModelBase> DeleteDrawingObjectOnlineRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any DeleteDrawingObjectOnlineRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        auto typedResponse = std::static_pointer_cast< aspose::words::cloud::responses::DeleteDrawingObjectOnlineResponse >(response);
+        return std::any(typedResponse->getDocument());
     }
 
     /*
@@ -5102,6 +5999,16 @@ namespace aspose::words::cloud::requests {
         );
     }
 
+    std::shared_ptr<RequestModelBase> DeleteFieldRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any DeleteFieldRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        return std::any();
+    }
+
     /*
      * DeleteFieldOnline request implementation
      */
@@ -5219,6 +6126,17 @@ namespace aspose::words::cloud::requests {
         return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
             new aspose::words::cloud::responses::DeleteFieldOnlineResponse()
         );
+    }
+
+    std::shared_ptr<RequestModelBase> DeleteFieldOnlineRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any DeleteFieldOnlineRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        auto typedResponse = std::static_pointer_cast< aspose::words::cloud::responses::DeleteFieldOnlineResponse >(response);
+        return std::any(typedResponse->getDocument());
     }
 
     /*
@@ -5344,6 +6262,16 @@ namespace aspose::words::cloud::requests {
         );
     }
 
+    std::shared_ptr<RequestModelBase> DeleteFieldsRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any DeleteFieldsRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        return std::any();
+    }
+
     /*
      * DeleteFieldsOnline request implementation
      */
@@ -5454,6 +6382,17 @@ namespace aspose::words::cloud::requests {
         );
     }
 
+    std::shared_ptr<RequestModelBase> DeleteFieldsOnlineRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any DeleteFieldsOnlineRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        auto typedResponse = std::static_pointer_cast< aspose::words::cloud::responses::DeleteFieldsOnlineResponse >(response);
+        return std::any(typedResponse->getDocument());
+    }
+
     /*
      * DeleteFile request implementation
      */
@@ -5513,6 +6452,16 @@ namespace aspose::words::cloud::requests {
         );
     }
 
+    std::shared_ptr<RequestModelBase> DeleteFileRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any DeleteFileRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        return std::any();
+    }
+
     /*
      * DeleteFolder request implementation
      */
@@ -5570,6 +6519,16 @@ namespace aspose::words::cloud::requests {
         return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
             new aspose::words::cloud::responses::DeleteFolderResponse()
         );
+    }
+
+    std::shared_ptr<RequestModelBase> DeleteFolderRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any DeleteFolderRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        return std::any();
     }
 
     /*
@@ -5704,6 +6663,16 @@ namespace aspose::words::cloud::requests {
         );
     }
 
+    std::shared_ptr<RequestModelBase> DeleteFootnoteRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any DeleteFootnoteRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        return std::any();
+    }
+
     /*
      * DeleteFootnoteOnline request implementation
      */
@@ -5821,6 +6790,17 @@ namespace aspose::words::cloud::requests {
         return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
             new aspose::words::cloud::responses::DeleteFootnoteOnlineResponse()
         );
+    }
+
+    std::shared_ptr<RequestModelBase> DeleteFootnoteOnlineRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any DeleteFootnoteOnlineRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        auto typedResponse = std::static_pointer_cast< aspose::words::cloud::responses::DeleteFootnoteOnlineResponse >(response);
+        return std::any(typedResponse->getDocument());
     }
 
     /*
@@ -5955,6 +6935,16 @@ namespace aspose::words::cloud::requests {
         );
     }
 
+    std::shared_ptr<RequestModelBase> DeleteFormFieldRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any DeleteFormFieldRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        return std::any();
+    }
+
     /*
      * DeleteFormFieldOnline request implementation
      */
@@ -6072,6 +7062,17 @@ namespace aspose::words::cloud::requests {
         return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
             new aspose::words::cloud::responses::DeleteFormFieldOnlineResponse()
         );
+    }
+
+    std::shared_ptr<RequestModelBase> DeleteFormFieldOnlineRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any DeleteFormFieldOnlineRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        auto typedResponse = std::static_pointer_cast< aspose::words::cloud::responses::DeleteFormFieldOnlineResponse >(response);
+        return std::any(typedResponse->getDocument());
     }
 
     /*
@@ -6207,6 +7208,16 @@ namespace aspose::words::cloud::requests {
         );
     }
 
+    std::shared_ptr<RequestModelBase> DeleteHeaderFooterRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any DeleteHeaderFooterRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        return std::any();
+    }
+
     /*
      * DeleteHeaderFooterOnline request implementation
      */
@@ -6325,6 +7336,17 @@ namespace aspose::words::cloud::requests {
         return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
             new aspose::words::cloud::responses::DeleteHeaderFooterOnlineResponse()
         );
+    }
+
+    std::shared_ptr<RequestModelBase> DeleteHeaderFooterOnlineRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any DeleteHeaderFooterOnlineRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        auto typedResponse = std::static_pointer_cast< aspose::words::cloud::responses::DeleteHeaderFooterOnlineResponse >(response);
+        return std::any(typedResponse->getDocument());
     }
 
     /*
@@ -6459,6 +7481,16 @@ namespace aspose::words::cloud::requests {
         );
     }
 
+    std::shared_ptr<RequestModelBase> DeleteHeadersFootersRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any DeleteHeadersFootersRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        return std::any();
+    }
+
     /*
      * DeleteHeadersFootersOnline request implementation
      */
@@ -6578,6 +7610,17 @@ namespace aspose::words::cloud::requests {
         );
     }
 
+    std::shared_ptr<RequestModelBase> DeleteHeadersFootersOnlineRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any DeleteHeadersFootersOnlineRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        auto typedResponse = std::static_pointer_cast< aspose::words::cloud::responses::DeleteHeadersFootersOnlineResponse >(response);
+        return std::any(typedResponse->getDocument());
+    }
+
     /*
      * DeleteMacros request implementation
      */
@@ -6693,6 +7736,16 @@ namespace aspose::words::cloud::requests {
         );
     }
 
+    std::shared_ptr<RequestModelBase> DeleteMacrosRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any DeleteMacrosRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        return std::any();
+    }
+
     /*
      * DeleteMacrosOnline request implementation
      */
@@ -6793,6 +7846,17 @@ namespace aspose::words::cloud::requests {
         return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
             new aspose::words::cloud::responses::DeleteMacrosOnlineResponse()
         );
+    }
+
+    std::shared_ptr<RequestModelBase> DeleteMacrosOnlineRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any DeleteMacrosOnlineRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        auto typedResponse = std::static_pointer_cast< aspose::words::cloud::responses::DeleteMacrosOnlineResponse >(response);
+        return std::any(typedResponse->getDocument());
     }
 
     /*
@@ -6927,6 +7991,16 @@ namespace aspose::words::cloud::requests {
         );
     }
 
+    std::shared_ptr<RequestModelBase> DeleteOfficeMathObjectRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any DeleteOfficeMathObjectRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        return std::any();
+    }
+
     /*
      * DeleteOfficeMathObjectOnline request implementation
      */
@@ -7046,6 +8120,17 @@ namespace aspose::words::cloud::requests {
         );
     }
 
+    std::shared_ptr<RequestModelBase> DeleteOfficeMathObjectOnlineRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any DeleteOfficeMathObjectOnlineRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        auto typedResponse = std::static_pointer_cast< aspose::words::cloud::responses::DeleteOfficeMathObjectOnlineResponse >(response);
+        return std::any(typedResponse->getDocument());
+    }
+
     /*
      * DeleteOfficeMathObjects request implementation
      */
@@ -7161,6 +8246,16 @@ namespace aspose::words::cloud::requests {
         );
     }
 
+    std::shared_ptr<RequestModelBase> DeleteOfficeMathObjectsRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any DeleteOfficeMathObjectsRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        return std::any();
+    }
+
     /*
      * DeleteOfficeMathObjectsOnline request implementation
      */
@@ -7261,6 +8356,17 @@ namespace aspose::words::cloud::requests {
         return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
             new aspose::words::cloud::responses::DeleteOfficeMathObjectsOnlineResponse()
         );
+    }
+
+    std::shared_ptr<RequestModelBase> DeleteOfficeMathObjectsOnlineRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any DeleteOfficeMathObjectsOnlineRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        auto typedResponse = std::static_pointer_cast< aspose::words::cloud::responses::DeleteOfficeMathObjectsOnlineResponse >(response);
+        return std::any(typedResponse->getDocument());
     }
 
     /*
@@ -7395,6 +8501,16 @@ namespace aspose::words::cloud::requests {
         );
     }
 
+    std::shared_ptr<RequestModelBase> DeleteParagraphRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any DeleteParagraphRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        return std::any();
+    }
+
     /*
      * DeleteParagraphListFormat request implementation
      */
@@ -7527,6 +8643,17 @@ namespace aspose::words::cloud::requests {
         );
     }
 
+    std::shared_ptr<RequestModelBase> DeleteParagraphListFormatRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any DeleteParagraphListFormatRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        auto typedResponse = std::static_pointer_cast< aspose::words::cloud::responses::DeleteParagraphListFormatResponse >(response);
+        return std::any(typedResponse->getModel());
+    }
+
     /*
      * DeleteParagraphListFormatOnline request implementation
      */
@@ -7646,6 +8773,17 @@ namespace aspose::words::cloud::requests {
         );
     }
 
+    std::shared_ptr<RequestModelBase> DeleteParagraphListFormatOnlineRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any DeleteParagraphListFormatOnlineRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        auto typedResponse = std::static_pointer_cast< aspose::words::cloud::responses::DeleteParagraphListFormatOnlineResponse >(response);
+        return std::any(typedResponse);
+    }
+
     /*
      * DeleteParagraphOnline request implementation
      */
@@ -7763,6 +8901,17 @@ namespace aspose::words::cloud::requests {
         return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
             new aspose::words::cloud::responses::DeleteParagraphOnlineResponse()
         );
+    }
+
+    std::shared_ptr<RequestModelBase> DeleteParagraphOnlineRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any DeleteParagraphOnlineRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        auto typedResponse = std::static_pointer_cast< aspose::words::cloud::responses::DeleteParagraphOnlineResponse >(response);
+        return std::any(typedResponse->getDocument());
     }
 
     /*
@@ -7890,6 +9039,17 @@ namespace aspose::words::cloud::requests {
         );
     }
 
+    std::shared_ptr<RequestModelBase> DeleteParagraphTabStopRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any DeleteParagraphTabStopRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        auto typedResponse = std::static_pointer_cast< aspose::words::cloud::responses::DeleteParagraphTabStopResponse >(response);
+        return std::any(typedResponse->getModel());
+    }
+
     /*
      * DeleteParagraphTabStopOnline request implementation
      */
@@ -8000,6 +9160,17 @@ namespace aspose::words::cloud::requests {
         return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
             new aspose::words::cloud::responses::DeleteParagraphTabStopOnlineResponse()
         );
+    }
+
+    std::shared_ptr<RequestModelBase> DeleteParagraphTabStopOnlineRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any DeleteParagraphTabStopOnlineRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        auto typedResponse = std::static_pointer_cast< aspose::words::cloud::responses::DeleteParagraphTabStopOnlineResponse >(response);
+        return std::any(typedResponse);
     }
 
     /*
@@ -8135,6 +9306,16 @@ namespace aspose::words::cloud::requests {
         );
     }
 
+    std::shared_ptr<RequestModelBase> DeleteRunRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any DeleteRunRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        return std::any();
+    }
+
     /*
      * DeleteRunOnline request implementation
      */
@@ -8253,6 +9434,17 @@ namespace aspose::words::cloud::requests {
         return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
             new aspose::words::cloud::responses::DeleteRunOnlineResponse()
         );
+    }
+
+    std::shared_ptr<RequestModelBase> DeleteRunOnlineRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any DeleteRunOnlineRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        auto typedResponse = std::static_pointer_cast< aspose::words::cloud::responses::DeleteRunOnlineResponse >(response);
+        return std::any(typedResponse->getDocument());
     }
 
     /*
@@ -8379,6 +9571,16 @@ namespace aspose::words::cloud::requests {
         );
     }
 
+    std::shared_ptr<RequestModelBase> DeleteSectionRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any DeleteSectionRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        return std::any();
+    }
+
     /*
      * DeleteSectionOnline request implementation
      */
@@ -8488,6 +9690,17 @@ namespace aspose::words::cloud::requests {
         return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
             new aspose::words::cloud::responses::DeleteSectionOnlineResponse()
         );
+    }
+
+    std::shared_ptr<RequestModelBase> DeleteSectionOnlineRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any DeleteSectionOnlineRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        auto typedResponse = std::static_pointer_cast< aspose::words::cloud::responses::DeleteSectionOnlineResponse >(response);
+        return std::any(typedResponse->getDocument());
     }
 
     /*
@@ -8622,6 +9835,16 @@ namespace aspose::words::cloud::requests {
         );
     }
 
+    std::shared_ptr<RequestModelBase> DeleteStructuredDocumentTagRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any DeleteStructuredDocumentTagRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        return std::any();
+    }
+
     /*
      * DeleteStructuredDocumentTagOnline request implementation
      */
@@ -8739,6 +9962,17 @@ namespace aspose::words::cloud::requests {
         return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
             new aspose::words::cloud::responses::DeleteStructuredDocumentTagOnlineResponse()
         );
+    }
+
+    std::shared_ptr<RequestModelBase> DeleteStructuredDocumentTagOnlineRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any DeleteStructuredDocumentTagOnlineRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        auto typedResponse = std::static_pointer_cast< aspose::words::cloud::responses::DeleteStructuredDocumentTagOnlineResponse >(response);
+        return std::any(typedResponse->getDocument());
     }
 
     /*
@@ -8871,6 +10105,16 @@ namespace aspose::words::cloud::requests {
         return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
             new aspose::words::cloud::responses::DeleteTableResponse()
         );
+    }
+
+    std::shared_ptr<RequestModelBase> DeleteTableRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any DeleteTableRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        return std::any();
     }
 
     /*
@@ -9006,6 +10250,16 @@ namespace aspose::words::cloud::requests {
         );
     }
 
+    std::shared_ptr<RequestModelBase> DeleteTableCellRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any DeleteTableCellRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        return std::any();
+    }
+
     /*
      * DeleteTableCellOnline request implementation
      */
@@ -9126,6 +10380,17 @@ namespace aspose::words::cloud::requests {
         );
     }
 
+    std::shared_ptr<RequestModelBase> DeleteTableCellOnlineRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any DeleteTableCellOnlineRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        auto typedResponse = std::static_pointer_cast< aspose::words::cloud::responses::DeleteTableCellOnlineResponse >(response);
+        return std::any(typedResponse->getDocument());
+    }
+
     /*
      * DeleteTableOnline request implementation
      */
@@ -9243,6 +10508,17 @@ namespace aspose::words::cloud::requests {
         return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
             new aspose::words::cloud::responses::DeleteTableOnlineResponse()
         );
+    }
+
+    std::shared_ptr<RequestModelBase> DeleteTableOnlineRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any DeleteTableOnlineRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        auto typedResponse = std::static_pointer_cast< aspose::words::cloud::responses::DeleteTableOnlineResponse >(response);
+        return std::any(typedResponse->getDocument());
     }
 
     /*
@@ -9378,6 +10654,16 @@ namespace aspose::words::cloud::requests {
         );
     }
 
+    std::shared_ptr<RequestModelBase> DeleteTableRowRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any DeleteTableRowRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        return std::any();
+    }
+
     /*
      * DeleteTableRowOnline request implementation
      */
@@ -9498,6 +10784,17 @@ namespace aspose::words::cloud::requests {
         );
     }
 
+    std::shared_ptr<RequestModelBase> DeleteTableRowOnlineRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any DeleteTableRowOnlineRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        auto typedResponse = std::static_pointer_cast< aspose::words::cloud::responses::DeleteTableRowOnlineResponse >(response);
+        return std::any(typedResponse->getDocument());
+    }
+
     /*
      * DeleteWatermark request implementation
      */
@@ -9613,6 +10910,17 @@ namespace aspose::words::cloud::requests {
         );
     }
 
+    std::shared_ptr<RequestModelBase> DeleteWatermarkRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any DeleteWatermarkRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        auto typedResponse = std::static_pointer_cast< aspose::words::cloud::responses::DeleteWatermarkResponse >(response);
+        return std::any(typedResponse->getModel());
+    }
+
     /*
      * DeleteWatermarkOnline request implementation
      */
@@ -9715,6 +11023,17 @@ namespace aspose::words::cloud::requests {
         );
     }
 
+    std::shared_ptr<RequestModelBase> DeleteWatermarkOnlineRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any DeleteWatermarkOnlineRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        auto typedResponse = std::static_pointer_cast< aspose::words::cloud::responses::DeleteWatermarkOnlineResponse >(response);
+        return std::any(typedResponse);
+    }
+
     /*
      * DownloadFile request implementation
      */
@@ -9772,6 +11091,17 @@ namespace aspose::words::cloud::requests {
         return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
             new aspose::words::cloud::responses::DownloadFileResponse()
         );
+    }
+
+    std::shared_ptr<RequestModelBase> DownloadFileRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any DownloadFileRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        auto typedResponse = std::static_pointer_cast< aspose::words::cloud::responses::DownloadFileResponse >(response);
+        return std::any(typedResponse->getModel());
     }
 
     /*
@@ -9936,6 +11266,204 @@ namespace aspose::words::cloud::requests {
         );
     }
 
+    std::shared_ptr<RequestModelBase> ExecuteMailMergeRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any ExecuteMailMergeRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        auto typedResponse = std::static_pointer_cast< aspose::words::cloud::responses::ExecuteMailMergeResponse >(response);
+        return std::any(typedResponse->getModel());
+    }
+
+    /*
+     * ExecuteMailMergeJob request implementation
+     */
+    ExecuteMailMergeJobRequest::ExecuteMailMergeJobRequest(
+        const std::shared_ptr< std::wstring > name,
+        const std::shared_ptr< std::wstring > data,
+        const std::shared_ptr< aspose::words::cloud::models::FieldOptions > options,
+        const std::shared_ptr< std::wstring > folder,
+        const std::shared_ptr< std::wstring > storage,
+        const std::shared_ptr< std::wstring > loadEncoding,
+        const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport,
+        const std::shared_ptr< bool > withRegions,
+        const std::shared_ptr< std::wstring > mailMergeDataFile,
+        const std::shared_ptr< std::wstring > cleanup,
+        const std::shared_ptr< bool > useWholeParagraphAsRegion,
+        const std::shared_ptr< bool > mergeWholeDocument,
+        const std::shared_ptr< std::wstring > destFileName
+    ) : 
+        m_Name(name),
+        m_Data(data),
+        m_Options(options),
+        m_Folder(folder),
+        m_Storage(storage),
+        m_LoadEncoding(loadEncoding),
+        m_Password(password),
+        m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport),
+        m_WithRegions(withRegions),
+        m_MailMergeDataFile(mailMergeDataFile),
+        m_Cleanup(cleanup),
+        m_UseWholeParagraphAsRegion(useWholeParagraphAsRegion),
+        m_MergeWholeDocument(mergeWholeDocument),
+        m_DestFileName(destFileName)
+    {
+    }
+
+    const std::shared_ptr< std::wstring > ExecuteMailMergeJobRequest::getName() const
+    {
+        return m_Name;
+    }
+
+    const std::shared_ptr< std::wstring > ExecuteMailMergeJobRequest::getData() const
+    {
+        return m_Data;
+    }
+
+    const std::shared_ptr< aspose::words::cloud::models::FieldOptions > ExecuteMailMergeJobRequest::getOptions() const
+    {
+        return m_Options;
+    }
+
+    const std::shared_ptr< std::wstring > ExecuteMailMergeJobRequest::getFolder() const
+    {
+        return m_Folder;
+    }
+
+    const std::shared_ptr< std::wstring > ExecuteMailMergeJobRequest::getStorage() const
+    {
+        return m_Storage;
+    }
+
+    const std::shared_ptr< std::wstring > ExecuteMailMergeJobRequest::getLoadEncoding() const
+    {
+        return m_LoadEncoding;
+    }
+
+    const std::shared_ptr< std::wstring > ExecuteMailMergeJobRequest::getPassword() const
+    {
+        return m_Password;
+    }
+
+    const std::shared_ptr< std::wstring > ExecuteMailMergeJobRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
+    }
+
+    const std::shared_ptr< bool > ExecuteMailMergeJobRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
+    const std::shared_ptr< bool > ExecuteMailMergeJobRequest::getWithRegions() const
+    {
+        return m_WithRegions;
+    }
+
+    const std::shared_ptr< std::wstring > ExecuteMailMergeJobRequest::getMailMergeDataFile() const
+    {
+        return m_MailMergeDataFile;
+    }
+
+    const std::shared_ptr< std::wstring > ExecuteMailMergeJobRequest::getCleanup() const
+    {
+        return m_Cleanup;
+    }
+
+    const std::shared_ptr< bool > ExecuteMailMergeJobRequest::getUseWholeParagraphAsRegion() const
+    {
+        return m_UseWholeParagraphAsRegion;
+    }
+
+    const std::shared_ptr< bool > ExecuteMailMergeJobRequest::getMergeWholeDocument() const
+    {
+        return m_MergeWholeDocument;
+    }
+
+    const std::shared_ptr< std::wstring > ExecuteMailMergeJobRequest::getDestFileName() const
+    {
+        return m_DestFileName;
+    }
+
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > ExecuteMailMergeJobRequest::createHttpRequest(ApiClient* apiClient) const
+    {
+        std::vector<models::FileReference*> additionalFilesContent;
+        auto result = std::make_shared<HttpRequestData>();
+        result->setMethod(HttpRequestMethod::HttpPUT);
+        result->setPath(L"/words/job/put/{name}/MailMerge");
+        if (!m_Name) throw aspose::words::cloud::ApiException(400, L"Parameter 'Name' is required.");
+        result->setPathParam(L"{name}", *m_Name);
+        if (m_Folder) result->addQueryParam(L"folder", *m_Folder);
+        if (m_Storage) result->addQueryParam(L"storage", *m_Storage);
+        if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
+        if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
+        if (m_WithRegions) result->addQueryParam(L"withRegions", *m_WithRegions);
+        if (m_MailMergeDataFile) result->addQueryParam(L"mailMergeDataFile", *m_MailMergeDataFile);
+        if (m_Cleanup) result->addQueryParam(L"cleanup", *m_Cleanup);
+        if (m_UseWholeParagraphAsRegion) result->addQueryParam(L"useWholeParagraphAsRegion", *m_UseWholeParagraphAsRegion);
+        if (m_MergeWholeDocument) result->addQueryParam(L"mergeWholeDocument", *m_MergeWholeDocument);
+        if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
+        if (m_Data)
+        {
+            result->addFormDataParam(L"data", *m_Data);
+        }
+
+        if (m_Options)
+        {
+            result->addFormDataParam(L"options", *m_Options);
+            m_Options->validate();}
+
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
+        {
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
+        }
+
+        return result;
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > ExecuteMailMergeJobRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::ExecuteMailMergeJobResponse()
+        );
+    }
+
+    std::shared_ptr<RequestModelBase> ExecuteMailMergeJobRequest::getOriginalRequest() const
+    {
+        return std::shared_ptr<RequestModelBase>(new ExecuteMailMergeRequest(m_Name,
+                    m_Data,
+                    m_Options,
+                    m_Folder,
+                    m_Storage,
+                    m_LoadEncoding,
+                    m_Password,
+                    m_EncryptedPassword,
+                    m_OpenTypeSupport,
+                    m_WithRegions,
+                    m_MailMergeDataFile,
+                    m_Cleanup,
+                    m_UseWholeParagraphAsRegion,
+                    m_MergeWholeDocument,
+                    m_DestFileName));
+    }
+
+    std::any ExecuteMailMergeJobRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        auto typedResponse = std::static_pointer_cast< aspose::words::cloud::responses::ExecuteMailMergeJobResponse >(response);
+        return std::any(typedResponse->getModel());
+    }
+
     /*
      * ExecuteMailMergeOnline request implementation
      */
@@ -10039,6 +11567,137 @@ namespace aspose::words::cloud::requests {
         );
     }
 
+    std::shared_ptr<RequestModelBase> ExecuteMailMergeOnlineRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any ExecuteMailMergeOnlineRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        auto typedResponse = std::static_pointer_cast< aspose::words::cloud::responses::ExecuteMailMergeOnlineResponse >(response);
+        return std::any(typedResponse->getModel());
+    }
+
+    /*
+     * ExecuteMailMergeOnlineJob request implementation
+     */
+    ExecuteMailMergeOnlineJobRequest::ExecuteMailMergeOnlineJobRequest(
+        const std::shared_ptr< std::istream > _template,
+        const std::shared_ptr< std::istream > data,
+        const std::shared_ptr< aspose::words::cloud::models::FieldOptions > options,
+        const std::shared_ptr< bool > withRegions,
+        const std::shared_ptr< bool > mergeWholeDocument,
+        const std::shared_ptr< std::wstring > cleanup,
+        const std::shared_ptr< std::wstring > documentFileName
+    ) : 
+        m_Template(_template),
+        m_Data(data),
+        m_Options(options),
+        m_WithRegions(withRegions),
+        m_MergeWholeDocument(mergeWholeDocument),
+        m_Cleanup(cleanup),
+        m_DocumentFileName(documentFileName)
+    {
+    }
+
+    const std::shared_ptr< std::istream > ExecuteMailMergeOnlineJobRequest::getTemplate() const
+    {
+        return m_Template;
+    }
+
+    const std::shared_ptr< std::istream > ExecuteMailMergeOnlineJobRequest::getData() const
+    {
+        return m_Data;
+    }
+
+    const std::shared_ptr< aspose::words::cloud::models::FieldOptions > ExecuteMailMergeOnlineJobRequest::getOptions() const
+    {
+        return m_Options;
+    }
+
+    const std::shared_ptr< bool > ExecuteMailMergeOnlineJobRequest::getWithRegions() const
+    {
+        return m_WithRegions;
+    }
+
+    const std::shared_ptr< bool > ExecuteMailMergeOnlineJobRequest::getMergeWholeDocument() const
+    {
+        return m_MergeWholeDocument;
+    }
+
+    const std::shared_ptr< std::wstring > ExecuteMailMergeOnlineJobRequest::getCleanup() const
+    {
+        return m_Cleanup;
+    }
+
+    const std::shared_ptr< std::wstring > ExecuteMailMergeOnlineJobRequest::getDocumentFileName() const
+    {
+        return m_DocumentFileName;
+    }
+
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > ExecuteMailMergeOnlineJobRequest::createHttpRequest(ApiClient* apiClient) const
+    {
+        std::vector<models::FileReference*> additionalFilesContent;
+        auto result = std::make_shared<HttpRequestData>();
+        result->setMethod(HttpRequestMethod::HttpPUT);
+        result->setPath(L"/words/job/put/MailMerge");
+        if (m_WithRegions) result->addQueryParam(L"withRegions", *m_WithRegions);
+        if (m_MergeWholeDocument) result->addQueryParam(L"mergeWholeDocument", *m_MergeWholeDocument);
+        if (m_Cleanup) result->addQueryParam(L"cleanup", *m_Cleanup);
+        if (m_DocumentFileName) result->addQueryParam(L"documentFileName", *m_DocumentFileName);
+        if (m_Template)
+        {
+            result->addFormDataParam(L"template", *m_Template);
+        }
+        else throw aspose::words::cloud::ApiException(400, L"Parameter 'Template' is required.");
+
+        if (m_Data)
+        {
+            result->addFormDataParam(L"data", *m_Data);
+        }
+        else throw aspose::words::cloud::ApiException(400, L"Parameter 'Data' is required.");
+
+        if (m_Options)
+        {
+            result->addFormDataParam(L"options", *m_Options);
+            m_Options->validate();}
+
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
+        {
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
+        }
+
+        return result;
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > ExecuteMailMergeOnlineJobRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::ExecuteMailMergeOnlineJobResponse()
+        );
+    }
+
+    std::shared_ptr<RequestModelBase> ExecuteMailMergeOnlineJobRequest::getOriginalRequest() const
+    {
+        return std::shared_ptr<RequestModelBase>(new ExecuteMailMergeOnlineRequest(m_Template,
+                    m_Data,
+                    m_Options,
+                    m_WithRegions,
+                    m_MergeWholeDocument,
+                    m_Cleanup,
+                    m_DocumentFileName));
+    }
+
+    std::any ExecuteMailMergeOnlineJobRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        auto typedResponse = std::static_pointer_cast< aspose::words::cloud::responses::ExecuteMailMergeOnlineJobResponse >(response);
+        return std::any(typedResponse->getModel());
+    }
+
     /*
      * GetAllRevisions request implementation
      */
@@ -10130,6 +11789,17 @@ namespace aspose::words::cloud::requests {
         );
     }
 
+    std::shared_ptr<RequestModelBase> GetAllRevisionsRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any GetAllRevisionsRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        auto typedResponse = std::static_pointer_cast< aspose::words::cloud::responses::GetAllRevisionsResponse >(response);
+        return std::any(typedResponse->getModel());
+    }
+
     /*
      * GetAllRevisionsOnline request implementation
      */
@@ -10208,6 +11878,17 @@ namespace aspose::words::cloud::requests {
         );
     }
 
+    std::shared_ptr<RequestModelBase> GetAllRevisionsOnlineRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any GetAllRevisionsOnlineRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        auto typedResponse = std::static_pointer_cast< aspose::words::cloud::responses::GetAllRevisionsOnlineResponse >(response);
+        return std::any(typedResponse->getModel());
+    }
+
     /*
      * GetAvailableFonts request implementation
      */
@@ -10248,6 +11929,17 @@ namespace aspose::words::cloud::requests {
         return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
             new aspose::words::cloud::responses::GetAvailableFontsResponse()
         );
+    }
+
+    std::shared_ptr<RequestModelBase> GetAvailableFontsRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any GetAvailableFontsRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        auto typedResponse = std::static_pointer_cast< aspose::words::cloud::responses::GetAvailableFontsResponse >(response);
+        return std::any(typedResponse->getModel());
     }
 
     /*
@@ -10350,6 +12042,17 @@ namespace aspose::words::cloud::requests {
         );
     }
 
+    std::shared_ptr<RequestModelBase> GetBookmarkByNameRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any GetBookmarkByNameRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        auto typedResponse = std::static_pointer_cast< aspose::words::cloud::responses::GetBookmarkByNameResponse >(response);
+        return std::any(typedResponse->getModel());
+    }
+
     /*
      * GetBookmarkByNameOnline request implementation
      */
@@ -10435,6 +12138,17 @@ namespace aspose::words::cloud::requests {
         return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
             new aspose::words::cloud::responses::GetBookmarkByNameOnlineResponse()
         );
+    }
+
+    std::shared_ptr<RequestModelBase> GetBookmarkByNameOnlineRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any GetBookmarkByNameOnlineRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        auto typedResponse = std::static_pointer_cast< aspose::words::cloud::responses::GetBookmarkByNameOnlineResponse >(response);
+        return std::any(typedResponse->getModel());
     }
 
     /*
@@ -10528,6 +12242,17 @@ namespace aspose::words::cloud::requests {
         );
     }
 
+    std::shared_ptr<RequestModelBase> GetBookmarksRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any GetBookmarksRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        auto typedResponse = std::static_pointer_cast< aspose::words::cloud::responses::GetBookmarksResponse >(response);
+        return std::any(typedResponse->getModel());
+    }
+
     /*
      * GetBookmarksOnline request implementation
      */
@@ -10604,6 +12329,17 @@ namespace aspose::words::cloud::requests {
         return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
             new aspose::words::cloud::responses::GetBookmarksOnlineResponse()
         );
+    }
+
+    std::shared_ptr<RequestModelBase> GetBookmarksOnlineRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any GetBookmarksOnlineRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        auto typedResponse = std::static_pointer_cast< aspose::words::cloud::responses::GetBookmarksOnlineResponse >(response);
+        return std::any(typedResponse->getModel());
     }
 
     /*
@@ -10714,6 +12450,17 @@ namespace aspose::words::cloud::requests {
         );
     }
 
+    std::shared_ptr<RequestModelBase> GetBorderRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any GetBorderRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        auto typedResponse = std::static_pointer_cast< aspose::words::cloud::responses::GetBorderResponse >(response);
+        return std::any(typedResponse->getModel());
+    }
+
     /*
      * GetBorderOnline request implementation
      */
@@ -10807,6 +12554,17 @@ namespace aspose::words::cloud::requests {
         return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
             new aspose::words::cloud::responses::GetBorderOnlineResponse()
         );
+    }
+
+    std::shared_ptr<RequestModelBase> GetBorderOnlineRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any GetBorderOnlineRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        auto typedResponse = std::static_pointer_cast< aspose::words::cloud::responses::GetBorderOnlineResponse >(response);
+        return std::any(typedResponse->getModel());
     }
 
     /*
@@ -10908,6 +12666,17 @@ namespace aspose::words::cloud::requests {
         );
     }
 
+    std::shared_ptr<RequestModelBase> GetBordersRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any GetBordersRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        auto typedResponse = std::static_pointer_cast< aspose::words::cloud::responses::GetBordersResponse >(response);
+        return std::any(typedResponse->getModel());
+    }
+
     /*
      * GetBordersOnline request implementation
      */
@@ -10992,6 +12761,17 @@ namespace aspose::words::cloud::requests {
         return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
             new aspose::words::cloud::responses::GetBordersOnlineResponse()
         );
+    }
+
+    std::shared_ptr<RequestModelBase> GetBordersOnlineRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any GetBordersOnlineRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        auto typedResponse = std::static_pointer_cast< aspose::words::cloud::responses::GetBordersOnlineResponse >(response);
+        return std::any(typedResponse->getModel());
     }
 
     /*
@@ -11094,6 +12874,17 @@ namespace aspose::words::cloud::requests {
         );
     }
 
+    std::shared_ptr<RequestModelBase> GetCommentRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any GetCommentRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        auto typedResponse = std::static_pointer_cast< aspose::words::cloud::responses::GetCommentResponse >(response);
+        return std::any(typedResponse->getModel());
+    }
+
     /*
      * GetCommentOnline request implementation
      */
@@ -11179,6 +12970,17 @@ namespace aspose::words::cloud::requests {
         return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
             new aspose::words::cloud::responses::GetCommentOnlineResponse()
         );
+    }
+
+    std::shared_ptr<RequestModelBase> GetCommentOnlineRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any GetCommentOnlineRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        auto typedResponse = std::static_pointer_cast< aspose::words::cloud::responses::GetCommentOnlineResponse >(response);
+        return std::any(typedResponse->getModel());
     }
 
     /*
@@ -11272,6 +13074,17 @@ namespace aspose::words::cloud::requests {
         );
     }
 
+    std::shared_ptr<RequestModelBase> GetCommentsRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any GetCommentsRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        auto typedResponse = std::static_pointer_cast< aspose::words::cloud::responses::GetCommentsResponse >(response);
+        return std::any(typedResponse->getModel());
+    }
+
     /*
      * GetCommentsOnline request implementation
      */
@@ -11348,6 +13161,17 @@ namespace aspose::words::cloud::requests {
         return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
             new aspose::words::cloud::responses::GetCommentsOnlineResponse()
         );
+    }
+
+    std::shared_ptr<RequestModelBase> GetCommentsOnlineRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any GetCommentsOnlineRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        auto typedResponse = std::static_pointer_cast< aspose::words::cloud::responses::GetCommentsOnlineResponse >(response);
+        return std::any(typedResponse->getModel());
     }
 
     /*
@@ -11450,6 +13274,17 @@ namespace aspose::words::cloud::requests {
         );
     }
 
+    std::shared_ptr<RequestModelBase> GetCustomXmlPartRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any GetCustomXmlPartRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        auto typedResponse = std::static_pointer_cast< aspose::words::cloud::responses::GetCustomXmlPartResponse >(response);
+        return std::any(typedResponse->getModel());
+    }
+
     /*
      * GetCustomXmlPartOnline request implementation
      */
@@ -11535,6 +13370,17 @@ namespace aspose::words::cloud::requests {
         return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
             new aspose::words::cloud::responses::GetCustomXmlPartOnlineResponse()
         );
+    }
+
+    std::shared_ptr<RequestModelBase> GetCustomXmlPartOnlineRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any GetCustomXmlPartOnlineRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        auto typedResponse = std::static_pointer_cast< aspose::words::cloud::responses::GetCustomXmlPartOnlineResponse >(response);
+        return std::any(typedResponse->getModel());
     }
 
     /*
@@ -11628,6 +13474,17 @@ namespace aspose::words::cloud::requests {
         );
     }
 
+    std::shared_ptr<RequestModelBase> GetCustomXmlPartsRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any GetCustomXmlPartsRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        auto typedResponse = std::static_pointer_cast< aspose::words::cloud::responses::GetCustomXmlPartsResponse >(response);
+        return std::any(typedResponse->getModel());
+    }
+
     /*
      * GetCustomXmlPartsOnline request implementation
      */
@@ -11704,6 +13561,17 @@ namespace aspose::words::cloud::requests {
         return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
             new aspose::words::cloud::responses::GetCustomXmlPartsOnlineResponse()
         );
+    }
+
+    std::shared_ptr<RequestModelBase> GetCustomXmlPartsOnlineRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any GetCustomXmlPartsOnlineRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        auto typedResponse = std::static_pointer_cast< aspose::words::cloud::responses::GetCustomXmlPartsOnlineResponse >(response);
+        return std::any(typedResponse->getModel());
     }
 
     /*
@@ -11795,6 +13663,17 @@ namespace aspose::words::cloud::requests {
         return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
             new aspose::words::cloud::responses::GetDocumentResponse()
         );
+    }
+
+    std::shared_ptr<RequestModelBase> GetDocumentRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any GetDocumentRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        auto typedResponse = std::static_pointer_cast< aspose::words::cloud::responses::GetDocumentResponse >(response);
+        return std::any(typedResponse->getModel());
     }
 
     /*
@@ -11905,6 +13784,17 @@ namespace aspose::words::cloud::requests {
         );
     }
 
+    std::shared_ptr<RequestModelBase> GetDocumentDrawingObjectByIndexRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any GetDocumentDrawingObjectByIndexRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        auto typedResponse = std::static_pointer_cast< aspose::words::cloud::responses::GetDocumentDrawingObjectByIndexResponse >(response);
+        return std::any(typedResponse->getModel());
+    }
+
     /*
      * GetDocumentDrawingObjectByIndexOnline request implementation
      */
@@ -11998,6 +13888,17 @@ namespace aspose::words::cloud::requests {
         return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
             new aspose::words::cloud::responses::GetDocumentDrawingObjectByIndexOnlineResponse()
         );
+    }
+
+    std::shared_ptr<RequestModelBase> GetDocumentDrawingObjectByIndexOnlineRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any GetDocumentDrawingObjectByIndexOnlineRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        auto typedResponse = std::static_pointer_cast< aspose::words::cloud::responses::GetDocumentDrawingObjectByIndexOnlineResponse >(response);
+        return std::any(typedResponse->getModel());
     }
 
     /*
@@ -12108,6 +14009,17 @@ namespace aspose::words::cloud::requests {
         );
     }
 
+    std::shared_ptr<RequestModelBase> GetDocumentDrawingObjectImageDataRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any GetDocumentDrawingObjectImageDataRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        auto typedResponse = std::static_pointer_cast< aspose::words::cloud::responses::GetDocumentDrawingObjectImageDataResponse >(response);
+        return std::any(typedResponse->getModel());
+    }
+
     /*
      * GetDocumentDrawingObjectImageDataOnline request implementation
      */
@@ -12201,6 +14113,17 @@ namespace aspose::words::cloud::requests {
         return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
             new aspose::words::cloud::responses::GetDocumentDrawingObjectImageDataOnlineResponse()
         );
+    }
+
+    std::shared_ptr<RequestModelBase> GetDocumentDrawingObjectImageDataOnlineRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any GetDocumentDrawingObjectImageDataOnlineRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        auto typedResponse = std::static_pointer_cast< aspose::words::cloud::responses::GetDocumentDrawingObjectImageDataOnlineResponse >(response);
+        return std::any(typedResponse->getModel());
     }
 
     /*
@@ -12311,6 +14234,17 @@ namespace aspose::words::cloud::requests {
         );
     }
 
+    std::shared_ptr<RequestModelBase> GetDocumentDrawingObjectOleDataRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any GetDocumentDrawingObjectOleDataRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        auto typedResponse = std::static_pointer_cast< aspose::words::cloud::responses::GetDocumentDrawingObjectOleDataResponse >(response);
+        return std::any(typedResponse->getModel());
+    }
+
     /*
      * GetDocumentDrawingObjectOleDataOnline request implementation
      */
@@ -12404,6 +14338,17 @@ namespace aspose::words::cloud::requests {
         return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
             new aspose::words::cloud::responses::GetDocumentDrawingObjectOleDataOnlineResponse()
         );
+    }
+
+    std::shared_ptr<RequestModelBase> GetDocumentDrawingObjectOleDataOnlineRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any GetDocumentDrawingObjectOleDataOnlineRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        auto typedResponse = std::static_pointer_cast< aspose::words::cloud::responses::GetDocumentDrawingObjectOleDataOnlineResponse >(response);
+        return std::any(typedResponse->getModel());
     }
 
     /*
@@ -12505,6 +14450,17 @@ namespace aspose::words::cloud::requests {
         );
     }
 
+    std::shared_ptr<RequestModelBase> GetDocumentDrawingObjectsRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any GetDocumentDrawingObjectsRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        auto typedResponse = std::static_pointer_cast< aspose::words::cloud::responses::GetDocumentDrawingObjectsResponse >(response);
+        return std::any(typedResponse->getModel());
+    }
+
     /*
      * GetDocumentDrawingObjectsOnline request implementation
      */
@@ -12589,6 +14545,17 @@ namespace aspose::words::cloud::requests {
         return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
             new aspose::words::cloud::responses::GetDocumentDrawingObjectsOnlineResponse()
         );
+    }
+
+    std::shared_ptr<RequestModelBase> GetDocumentDrawingObjectsOnlineRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any GetDocumentDrawingObjectsOnlineRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        auto typedResponse = std::static_pointer_cast< aspose::words::cloud::responses::GetDocumentDrawingObjectsOnlineResponse >(response);
+        return std::any(typedResponse->getModel());
     }
 
     /*
@@ -12690,6 +14657,17 @@ namespace aspose::words::cloud::requests {
         );
     }
 
+    std::shared_ptr<RequestModelBase> GetDocumentFieldNamesRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any GetDocumentFieldNamesRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        auto typedResponse = std::static_pointer_cast< aspose::words::cloud::responses::GetDocumentFieldNamesResponse >(response);
+        return std::any(typedResponse->getModel());
+    }
+
     /*
      * GetDocumentFieldNamesOnline request implementation
      */
@@ -12774,6 +14752,17 @@ namespace aspose::words::cloud::requests {
         return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
             new aspose::words::cloud::responses::GetDocumentFieldNamesOnlineResponse()
         );
+    }
+
+    std::shared_ptr<RequestModelBase> GetDocumentFieldNamesOnlineRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any GetDocumentFieldNamesOnlineRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        auto typedResponse = std::static_pointer_cast< aspose::words::cloud::responses::GetDocumentFieldNamesOnlineResponse >(response);
+        return std::any(typedResponse->getModel());
     }
 
     /*
@@ -12876,6 +14865,17 @@ namespace aspose::words::cloud::requests {
         );
     }
 
+    std::shared_ptr<RequestModelBase> GetDocumentHyperlinkByIndexRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any GetDocumentHyperlinkByIndexRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        auto typedResponse = std::static_pointer_cast< aspose::words::cloud::responses::GetDocumentHyperlinkByIndexResponse >(response);
+        return std::any(typedResponse->getModel());
+    }
+
     /*
      * GetDocumentHyperlinkByIndexOnline request implementation
      */
@@ -12961,6 +14961,17 @@ namespace aspose::words::cloud::requests {
         return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
             new aspose::words::cloud::responses::GetDocumentHyperlinkByIndexOnlineResponse()
         );
+    }
+
+    std::shared_ptr<RequestModelBase> GetDocumentHyperlinkByIndexOnlineRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any GetDocumentHyperlinkByIndexOnlineRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        auto typedResponse = std::static_pointer_cast< aspose::words::cloud::responses::GetDocumentHyperlinkByIndexOnlineResponse >(response);
+        return std::any(typedResponse->getModel());
     }
 
     /*
@@ -13054,6 +15065,17 @@ namespace aspose::words::cloud::requests {
         );
     }
 
+    std::shared_ptr<RequestModelBase> GetDocumentHyperlinksRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any GetDocumentHyperlinksRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        auto typedResponse = std::static_pointer_cast< aspose::words::cloud::responses::GetDocumentHyperlinksResponse >(response);
+        return std::any(typedResponse->getModel());
+    }
+
     /*
      * GetDocumentHyperlinksOnline request implementation
      */
@@ -13130,6 +15152,17 @@ namespace aspose::words::cloud::requests {
         return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
             new aspose::words::cloud::responses::GetDocumentHyperlinksOnlineResponse()
         );
+    }
+
+    std::shared_ptr<RequestModelBase> GetDocumentHyperlinksOnlineRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any GetDocumentHyperlinksOnlineRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        auto typedResponse = std::static_pointer_cast< aspose::words::cloud::responses::GetDocumentHyperlinksOnlineResponse >(response);
+        return std::any(typedResponse->getModel());
     }
 
     /*
@@ -13223,6 +15256,17 @@ namespace aspose::words::cloud::requests {
         );
     }
 
+    std::shared_ptr<RequestModelBase> GetDocumentPropertiesRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any GetDocumentPropertiesRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        auto typedResponse = std::static_pointer_cast< aspose::words::cloud::responses::GetDocumentPropertiesResponse >(response);
+        return std::any(typedResponse->getModel());
+    }
+
     /*
      * GetDocumentPropertiesOnline request implementation
      */
@@ -13299,6 +15343,17 @@ namespace aspose::words::cloud::requests {
         return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
             new aspose::words::cloud::responses::GetDocumentPropertiesOnlineResponse()
         );
+    }
+
+    std::shared_ptr<RequestModelBase> GetDocumentPropertiesOnlineRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any GetDocumentPropertiesOnlineRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        auto typedResponse = std::static_pointer_cast< aspose::words::cloud::responses::GetDocumentPropertiesOnlineResponse >(response);
+        return std::any(typedResponse->getModel());
     }
 
     /*
@@ -13401,6 +15456,17 @@ namespace aspose::words::cloud::requests {
         );
     }
 
+    std::shared_ptr<RequestModelBase> GetDocumentPropertyRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any GetDocumentPropertyRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        auto typedResponse = std::static_pointer_cast< aspose::words::cloud::responses::GetDocumentPropertyResponse >(response);
+        return std::any(typedResponse->getModel());
+    }
+
     /*
      * GetDocumentPropertyOnline request implementation
      */
@@ -13486,6 +15552,17 @@ namespace aspose::words::cloud::requests {
         return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
             new aspose::words::cloud::responses::GetDocumentPropertyOnlineResponse()
         );
+    }
+
+    std::shared_ptr<RequestModelBase> GetDocumentPropertyOnlineRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any GetDocumentPropertyOnlineRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        auto typedResponse = std::static_pointer_cast< aspose::words::cloud::responses::GetDocumentPropertyOnlineResponse >(response);
+        return std::any(typedResponse->getModel());
     }
 
     /*
@@ -13579,6 +15656,17 @@ namespace aspose::words::cloud::requests {
         );
     }
 
+    std::shared_ptr<RequestModelBase> GetDocumentProtectionRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any GetDocumentProtectionRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        auto typedResponse = std::static_pointer_cast< aspose::words::cloud::responses::GetDocumentProtectionResponse >(response);
+        return std::any(typedResponse->getModel());
+    }
+
     /*
      * GetDocumentProtectionOnline request implementation
      */
@@ -13655,6 +15743,17 @@ namespace aspose::words::cloud::requests {
         return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
             new aspose::words::cloud::responses::GetDocumentProtectionOnlineResponse()
         );
+    }
+
+    std::shared_ptr<RequestModelBase> GetDocumentProtectionOnlineRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any GetDocumentProtectionOnlineRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        auto typedResponse = std::static_pointer_cast< aspose::words::cloud::responses::GetDocumentProtectionOnlineResponse >(response);
+        return std::any(typedResponse->getModel());
     }
 
     /*
@@ -13772,6 +15871,17 @@ namespace aspose::words::cloud::requests {
         );
     }
 
+    std::shared_ptr<RequestModelBase> GetDocumentStatisticsRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any GetDocumentStatisticsRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        auto typedResponse = std::static_pointer_cast< aspose::words::cloud::responses::GetDocumentStatisticsResponse >(response);
+        return std::any(typedResponse->getModel());
+    }
+
     /*
      * GetDocumentStatisticsOnline request implementation
      */
@@ -13872,6 +15982,17 @@ namespace aspose::words::cloud::requests {
         return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
             new aspose::words::cloud::responses::GetDocumentStatisticsOnlineResponse()
         );
+    }
+
+    std::shared_ptr<RequestModelBase> GetDocumentStatisticsOnlineRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any GetDocumentStatisticsOnlineRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        auto typedResponse = std::static_pointer_cast< aspose::words::cloud::responses::GetDocumentStatisticsOnlineResponse >(response);
+        return std::any(typedResponse->getModel());
     }
 
     /*
@@ -13990,6 +16111,17 @@ namespace aspose::words::cloud::requests {
         );
     }
 
+    std::shared_ptr<RequestModelBase> GetDocumentWithFormatRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any GetDocumentWithFormatRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        auto typedResponse = std::static_pointer_cast< aspose::words::cloud::responses::GetDocumentWithFormatResponse >(response);
+        return std::any(typedResponse->getModel());
+    }
+
     /*
      * GetField request implementation
      */
@@ -14098,6 +16230,17 @@ namespace aspose::words::cloud::requests {
         );
     }
 
+    std::shared_ptr<RequestModelBase> GetFieldRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any GetFieldRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        auto typedResponse = std::static_pointer_cast< aspose::words::cloud::responses::GetFieldResponse >(response);
+        return std::any(typedResponse->getModel());
+    }
+
     /*
      * GetFieldOnline request implementation
      */
@@ -14191,6 +16334,17 @@ namespace aspose::words::cloud::requests {
         return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
             new aspose::words::cloud::responses::GetFieldOnlineResponse()
         );
+    }
+
+    std::shared_ptr<RequestModelBase> GetFieldOnlineRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any GetFieldOnlineRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        auto typedResponse = std::static_pointer_cast< aspose::words::cloud::responses::GetFieldOnlineResponse >(response);
+        return std::any(typedResponse->getModel());
     }
 
     /*
@@ -14292,6 +16446,17 @@ namespace aspose::words::cloud::requests {
         );
     }
 
+    std::shared_ptr<RequestModelBase> GetFieldsRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any GetFieldsRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        auto typedResponse = std::static_pointer_cast< aspose::words::cloud::responses::GetFieldsResponse >(response);
+        return std::any(typedResponse->getModel());
+    }
+
     /*
      * GetFieldsOnline request implementation
      */
@@ -14378,6 +16543,17 @@ namespace aspose::words::cloud::requests {
         );
     }
 
+    std::shared_ptr<RequestModelBase> GetFieldsOnlineRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any GetFieldsOnlineRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        auto typedResponse = std::static_pointer_cast< aspose::words::cloud::responses::GetFieldsOnlineResponse >(response);
+        return std::any(typedResponse->getModel());
+    }
+
     /*
      * GetFilesList request implementation
      */
@@ -14427,6 +16603,17 @@ namespace aspose::words::cloud::requests {
         return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
             new aspose::words::cloud::responses::GetFilesListResponse()
         );
+    }
+
+    std::shared_ptr<RequestModelBase> GetFilesListRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any GetFilesListRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        auto typedResponse = std::static_pointer_cast< aspose::words::cloud::responses::GetFilesListResponse >(response);
+        return std::any(typedResponse->getModel());
     }
 
     /*
@@ -14537,6 +16724,17 @@ namespace aspose::words::cloud::requests {
         );
     }
 
+    std::shared_ptr<RequestModelBase> GetFootnoteRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any GetFootnoteRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        auto typedResponse = std::static_pointer_cast< aspose::words::cloud::responses::GetFootnoteResponse >(response);
+        return std::any(typedResponse->getModel());
+    }
+
     /*
      * GetFootnoteOnline request implementation
      */
@@ -14630,6 +16828,17 @@ namespace aspose::words::cloud::requests {
         return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
             new aspose::words::cloud::responses::GetFootnoteOnlineResponse()
         );
+    }
+
+    std::shared_ptr<RequestModelBase> GetFootnoteOnlineRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any GetFootnoteOnlineRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        auto typedResponse = std::static_pointer_cast< aspose::words::cloud::responses::GetFootnoteOnlineResponse >(response);
+        return std::any(typedResponse->getModel());
     }
 
     /*
@@ -14731,6 +16940,17 @@ namespace aspose::words::cloud::requests {
         );
     }
 
+    std::shared_ptr<RequestModelBase> GetFootnotesRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any GetFootnotesRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        auto typedResponse = std::static_pointer_cast< aspose::words::cloud::responses::GetFootnotesResponse >(response);
+        return std::any(typedResponse->getModel());
+    }
+
     /*
      * GetFootnotesOnline request implementation
      */
@@ -14815,6 +17035,17 @@ namespace aspose::words::cloud::requests {
         return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
             new aspose::words::cloud::responses::GetFootnotesOnlineResponse()
         );
+    }
+
+    std::shared_ptr<RequestModelBase> GetFootnotesOnlineRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any GetFootnotesOnlineRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        auto typedResponse = std::static_pointer_cast< aspose::words::cloud::responses::GetFootnotesOnlineResponse >(response);
+        return std::any(typedResponse->getModel());
     }
 
     /*
@@ -14925,6 +17156,17 @@ namespace aspose::words::cloud::requests {
         );
     }
 
+    std::shared_ptr<RequestModelBase> GetFormFieldRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any GetFormFieldRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        auto typedResponse = std::static_pointer_cast< aspose::words::cloud::responses::GetFormFieldResponse >(response);
+        return std::any(typedResponse->getModel());
+    }
+
     /*
      * GetFormFieldOnline request implementation
      */
@@ -15018,6 +17260,17 @@ namespace aspose::words::cloud::requests {
         return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
             new aspose::words::cloud::responses::GetFormFieldOnlineResponse()
         );
+    }
+
+    std::shared_ptr<RequestModelBase> GetFormFieldOnlineRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any GetFormFieldOnlineRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        auto typedResponse = std::static_pointer_cast< aspose::words::cloud::responses::GetFormFieldOnlineResponse >(response);
+        return std::any(typedResponse->getModel());
     }
 
     /*
@@ -15119,6 +17372,17 @@ namespace aspose::words::cloud::requests {
         );
     }
 
+    std::shared_ptr<RequestModelBase> GetFormFieldsRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any GetFormFieldsRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        auto typedResponse = std::static_pointer_cast< aspose::words::cloud::responses::GetFormFieldsResponse >(response);
+        return std::any(typedResponse->getModel());
+    }
+
     /*
      * GetFormFieldsOnline request implementation
      */
@@ -15203,6 +17467,17 @@ namespace aspose::words::cloud::requests {
         return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
             new aspose::words::cloud::responses::GetFormFieldsOnlineResponse()
         );
+    }
+
+    std::shared_ptr<RequestModelBase> GetFormFieldsOnlineRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any GetFormFieldsOnlineRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        auto typedResponse = std::static_pointer_cast< aspose::words::cloud::responses::GetFormFieldsOnlineResponse >(response);
+        return std::any(typedResponse->getModel());
     }
 
     /*
@@ -15311,6 +17586,17 @@ namespace aspose::words::cloud::requests {
         return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
             new aspose::words::cloud::responses::GetHeaderFooterResponse()
         );
+    }
+
+    std::shared_ptr<RequestModelBase> GetHeaderFooterRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any GetHeaderFooterRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        auto typedResponse = std::static_pointer_cast< aspose::words::cloud::responses::GetHeaderFooterResponse >(response);
+        return std::any(typedResponse->getModel());
     }
 
     /*
@@ -15430,6 +17716,17 @@ namespace aspose::words::cloud::requests {
         );
     }
 
+    std::shared_ptr<RequestModelBase> GetHeaderFooterOfSectionRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any GetHeaderFooterOfSectionRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        auto typedResponse = std::static_pointer_cast< aspose::words::cloud::responses::GetHeaderFooterOfSectionResponse >(response);
+        return std::any(typedResponse->getModel());
+    }
+
     /*
      * GetHeaderFooterOfSectionOnline request implementation
      */
@@ -15534,6 +17831,17 @@ namespace aspose::words::cloud::requests {
         );
     }
 
+    std::shared_ptr<RequestModelBase> GetHeaderFooterOfSectionOnlineRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any GetHeaderFooterOfSectionOnlineRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        auto typedResponse = std::static_pointer_cast< aspose::words::cloud::responses::GetHeaderFooterOfSectionOnlineResponse >(response);
+        return std::any(typedResponse->getModel());
+    }
+
     /*
      * GetHeaderFooterOnline request implementation
      */
@@ -15627,6 +17935,17 @@ namespace aspose::words::cloud::requests {
         return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
             new aspose::words::cloud::responses::GetHeaderFooterOnlineResponse()
         );
+    }
+
+    std::shared_ptr<RequestModelBase> GetHeaderFooterOnlineRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any GetHeaderFooterOnlineRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        auto typedResponse = std::static_pointer_cast< aspose::words::cloud::responses::GetHeaderFooterOnlineResponse >(response);
+        return std::any(typedResponse->getModel());
     }
 
     /*
@@ -15737,6 +18056,17 @@ namespace aspose::words::cloud::requests {
         );
     }
 
+    std::shared_ptr<RequestModelBase> GetHeaderFootersRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any GetHeaderFootersRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        auto typedResponse = std::static_pointer_cast< aspose::words::cloud::responses::GetHeaderFootersResponse >(response);
+        return std::any(typedResponse->getModel());
+    }
+
     /*
      * GetHeaderFootersOnline request implementation
      */
@@ -15832,6 +18162,17 @@ namespace aspose::words::cloud::requests {
         );
     }
 
+    std::shared_ptr<RequestModelBase> GetHeaderFootersOnlineRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any GetHeaderFootersOnlineRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        auto typedResponse = std::static_pointer_cast< aspose::words::cloud::responses::GetHeaderFootersOnlineResponse >(response);
+        return std::any(typedResponse->getModel());
+    }
+
     /*
      * GetInfo request implementation
      */
@@ -15865,6 +18206,17 @@ namespace aspose::words::cloud::requests {
         return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
             new aspose::words::cloud::responses::GetInfoResponse()
         );
+    }
+
+    std::shared_ptr<RequestModelBase> GetInfoRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any GetInfoRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        auto typedResponse = std::static_pointer_cast< aspose::words::cloud::responses::GetInfoResponse >(response);
+        return std::any(typedResponse->getModel());
     }
 
     /*
@@ -15967,6 +18319,17 @@ namespace aspose::words::cloud::requests {
         );
     }
 
+    std::shared_ptr<RequestModelBase> GetListRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any GetListRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        auto typedResponse = std::static_pointer_cast< aspose::words::cloud::responses::GetListResponse >(response);
+        return std::any(typedResponse->getModel());
+    }
+
     /*
      * GetListOnline request implementation
      */
@@ -16052,6 +18415,17 @@ namespace aspose::words::cloud::requests {
         return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
             new aspose::words::cloud::responses::GetListOnlineResponse()
         );
+    }
+
+    std::shared_ptr<RequestModelBase> GetListOnlineRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any GetListOnlineRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        auto typedResponse = std::static_pointer_cast< aspose::words::cloud::responses::GetListOnlineResponse >(response);
+        return std::any(typedResponse->getModel());
     }
 
     /*
@@ -16145,6 +18519,17 @@ namespace aspose::words::cloud::requests {
         );
     }
 
+    std::shared_ptr<RequestModelBase> GetListsRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any GetListsRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        auto typedResponse = std::static_pointer_cast< aspose::words::cloud::responses::GetListsResponse >(response);
+        return std::any(typedResponse->getModel());
+    }
+
     /*
      * GetListsOnline request implementation
      */
@@ -16221,6 +18606,17 @@ namespace aspose::words::cloud::requests {
         return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
             new aspose::words::cloud::responses::GetListsOnlineResponse()
         );
+    }
+
+    std::shared_ptr<RequestModelBase> GetListsOnlineRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any GetListsOnlineRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        auto typedResponse = std::static_pointer_cast< aspose::words::cloud::responses::GetListsOnlineResponse >(response);
+        return std::any(typedResponse->getModel());
     }
 
     /*
@@ -16331,6 +18727,17 @@ namespace aspose::words::cloud::requests {
         );
     }
 
+    std::shared_ptr<RequestModelBase> GetOfficeMathObjectRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any GetOfficeMathObjectRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        auto typedResponse = std::static_pointer_cast< aspose::words::cloud::responses::GetOfficeMathObjectResponse >(response);
+        return std::any(typedResponse->getModel());
+    }
+
     /*
      * GetOfficeMathObjectOnline request implementation
      */
@@ -16424,6 +18831,17 @@ namespace aspose::words::cloud::requests {
         return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
             new aspose::words::cloud::responses::GetOfficeMathObjectOnlineResponse()
         );
+    }
+
+    std::shared_ptr<RequestModelBase> GetOfficeMathObjectOnlineRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any GetOfficeMathObjectOnlineRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        auto typedResponse = std::static_pointer_cast< aspose::words::cloud::responses::GetOfficeMathObjectOnlineResponse >(response);
+        return std::any(typedResponse->getModel());
     }
 
     /*
@@ -16525,6 +18943,17 @@ namespace aspose::words::cloud::requests {
         );
     }
 
+    std::shared_ptr<RequestModelBase> GetOfficeMathObjectsRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any GetOfficeMathObjectsRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        auto typedResponse = std::static_pointer_cast< aspose::words::cloud::responses::GetOfficeMathObjectsResponse >(response);
+        return std::any(typedResponse->getModel());
+    }
+
     /*
      * GetOfficeMathObjectsOnline request implementation
      */
@@ -16609,6 +19038,17 @@ namespace aspose::words::cloud::requests {
         return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
             new aspose::words::cloud::responses::GetOfficeMathObjectsOnlineResponse()
         );
+    }
+
+    std::shared_ptr<RequestModelBase> GetOfficeMathObjectsOnlineRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any GetOfficeMathObjectsOnlineRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        auto typedResponse = std::static_pointer_cast< aspose::words::cloud::responses::GetOfficeMathObjectsOnlineResponse >(response);
+        return std::any(typedResponse->getModel());
     }
 
     /*
@@ -16719,6 +19159,17 @@ namespace aspose::words::cloud::requests {
         );
     }
 
+    std::shared_ptr<RequestModelBase> GetParagraphRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any GetParagraphRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        auto typedResponse = std::static_pointer_cast< aspose::words::cloud::responses::GetParagraphResponse >(response);
+        return std::any(typedResponse->getModel());
+    }
+
     /*
      * GetParagraphFormat request implementation
      */
@@ -16827,6 +19278,17 @@ namespace aspose::words::cloud::requests {
         );
     }
 
+    std::shared_ptr<RequestModelBase> GetParagraphFormatRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any GetParagraphFormatRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        auto typedResponse = std::static_pointer_cast< aspose::words::cloud::responses::GetParagraphFormatResponse >(response);
+        return std::any(typedResponse->getModel());
+    }
+
     /*
      * GetParagraphFormatOnline request implementation
      */
@@ -16920,6 +19382,17 @@ namespace aspose::words::cloud::requests {
         return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
             new aspose::words::cloud::responses::GetParagraphFormatOnlineResponse()
         );
+    }
+
+    std::shared_ptr<RequestModelBase> GetParagraphFormatOnlineRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any GetParagraphFormatOnlineRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        auto typedResponse = std::static_pointer_cast< aspose::words::cloud::responses::GetParagraphFormatOnlineResponse >(response);
+        return std::any(typedResponse->getModel());
     }
 
     /*
@@ -17030,6 +19503,17 @@ namespace aspose::words::cloud::requests {
         );
     }
 
+    std::shared_ptr<RequestModelBase> GetParagraphListFormatRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any GetParagraphListFormatRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        auto typedResponse = std::static_pointer_cast< aspose::words::cloud::responses::GetParagraphListFormatResponse >(response);
+        return std::any(typedResponse->getModel());
+    }
+
     /*
      * GetParagraphListFormatOnline request implementation
      */
@@ -17125,6 +19609,17 @@ namespace aspose::words::cloud::requests {
         );
     }
 
+    std::shared_ptr<RequestModelBase> GetParagraphListFormatOnlineRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any GetParagraphListFormatOnlineRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        auto typedResponse = std::static_pointer_cast< aspose::words::cloud::responses::GetParagraphListFormatOnlineResponse >(response);
+        return std::any(typedResponse->getModel());
+    }
+
     /*
      * GetParagraphOnline request implementation
      */
@@ -17218,6 +19713,17 @@ namespace aspose::words::cloud::requests {
         return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
             new aspose::words::cloud::responses::GetParagraphOnlineResponse()
         );
+    }
+
+    std::shared_ptr<RequestModelBase> GetParagraphOnlineRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any GetParagraphOnlineRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        auto typedResponse = std::static_pointer_cast< aspose::words::cloud::responses::GetParagraphOnlineResponse >(response);
+        return std::any(typedResponse->getModel());
     }
 
     /*
@@ -17319,6 +19825,17 @@ namespace aspose::words::cloud::requests {
         );
     }
 
+    std::shared_ptr<RequestModelBase> GetParagraphsRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any GetParagraphsRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        auto typedResponse = std::static_pointer_cast< aspose::words::cloud::responses::GetParagraphsResponse >(response);
+        return std::any(typedResponse->getModel());
+    }
+
     /*
      * GetParagraphsOnline request implementation
      */
@@ -17403,6 +19920,17 @@ namespace aspose::words::cloud::requests {
         return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
             new aspose::words::cloud::responses::GetParagraphsOnlineResponse()
         );
+    }
+
+    std::shared_ptr<RequestModelBase> GetParagraphsOnlineRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any GetParagraphsOnlineRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        auto typedResponse = std::static_pointer_cast< aspose::words::cloud::responses::GetParagraphsOnlineResponse >(response);
+        return std::any(typedResponse->getModel());
     }
 
     /*
@@ -17513,6 +20041,17 @@ namespace aspose::words::cloud::requests {
         );
     }
 
+    std::shared_ptr<RequestModelBase> GetParagraphTabStopsRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any GetParagraphTabStopsRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        auto typedResponse = std::static_pointer_cast< aspose::words::cloud::responses::GetParagraphTabStopsResponse >(response);
+        return std::any(typedResponse->getModel());
+    }
+
     /*
      * GetParagraphTabStopsOnline request implementation
      */
@@ -17608,6 +20147,17 @@ namespace aspose::words::cloud::requests {
         );
     }
 
+    std::shared_ptr<RequestModelBase> GetParagraphTabStopsOnlineRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any GetParagraphTabStopsOnlineRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        auto typedResponse = std::static_pointer_cast< aspose::words::cloud::responses::GetParagraphTabStopsOnlineResponse >(response);
+        return std::any(typedResponse->getModel());
+    }
+
     /*
      * GetPublicKey request implementation
      */
@@ -17641,6 +20191,17 @@ namespace aspose::words::cloud::requests {
         return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
             new aspose::words::cloud::responses::GetPublicKeyResponse()
         );
+    }
+
+    std::shared_ptr<RequestModelBase> GetPublicKeyRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any GetPublicKeyRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        auto typedResponse = std::static_pointer_cast< aspose::words::cloud::responses::GetPublicKeyResponse >(response);
+        return std::any(typedResponse->getModel());
     }
 
     /*
@@ -17751,6 +20312,17 @@ namespace aspose::words::cloud::requests {
         );
     }
 
+    std::shared_ptr<RequestModelBase> GetRangeTextRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any GetRangeTextRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        auto typedResponse = std::static_pointer_cast< aspose::words::cloud::responses::GetRangeTextResponse >(response);
+        return std::any(typedResponse->getModel());
+    }
+
     /*
      * GetRangeTextOnline request implementation
      */
@@ -17844,6 +20416,17 @@ namespace aspose::words::cloud::requests {
         return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
             new aspose::words::cloud::responses::GetRangeTextOnlineResponse()
         );
+    }
+
+    std::shared_ptr<RequestModelBase> GetRangeTextOnlineRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any GetRangeTextOnlineRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        auto typedResponse = std::static_pointer_cast< aspose::words::cloud::responses::GetRangeTextOnlineResponse >(response);
+        return std::any(typedResponse->getModel());
     }
 
     /*
@@ -17955,6 +20538,17 @@ namespace aspose::words::cloud::requests {
         );
     }
 
+    std::shared_ptr<RequestModelBase> GetRunRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any GetRunRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        auto typedResponse = std::static_pointer_cast< aspose::words::cloud::responses::GetRunResponse >(response);
+        return std::any(typedResponse->getModel());
+    }
+
     /*
      * GetRunFont request implementation
      */
@@ -18064,6 +20658,17 @@ namespace aspose::words::cloud::requests {
         );
     }
 
+    std::shared_ptr<RequestModelBase> GetRunFontRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any GetRunFontRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        auto typedResponse = std::static_pointer_cast< aspose::words::cloud::responses::GetRunFontResponse >(response);
+        return std::any(typedResponse->getModel());
+    }
+
     /*
      * GetRunFontOnline request implementation
      */
@@ -18160,6 +20765,17 @@ namespace aspose::words::cloud::requests {
         );
     }
 
+    std::shared_ptr<RequestModelBase> GetRunFontOnlineRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any GetRunFontOnlineRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        auto typedResponse = std::static_pointer_cast< aspose::words::cloud::responses::GetRunFontOnlineResponse >(response);
+        return std::any(typedResponse->getModel());
+    }
+
     /*
      * GetRunOnline request implementation
      */
@@ -18254,6 +20870,17 @@ namespace aspose::words::cloud::requests {
         return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
             new aspose::words::cloud::responses::GetRunOnlineResponse()
         );
+    }
+
+    std::shared_ptr<RequestModelBase> GetRunOnlineRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any GetRunOnlineRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        auto typedResponse = std::static_pointer_cast< aspose::words::cloud::responses::GetRunOnlineResponse >(response);
+        return std::any(typedResponse->getModel());
     }
 
     /*
@@ -18356,6 +20983,17 @@ namespace aspose::words::cloud::requests {
         );
     }
 
+    std::shared_ptr<RequestModelBase> GetRunsRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any GetRunsRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        auto typedResponse = std::static_pointer_cast< aspose::words::cloud::responses::GetRunsResponse >(response);
+        return std::any(typedResponse->getModel());
+    }
+
     /*
      * GetRunsOnline request implementation
      */
@@ -18441,6 +21079,17 @@ namespace aspose::words::cloud::requests {
         return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
             new aspose::words::cloud::responses::GetRunsOnlineResponse()
         );
+    }
+
+    std::shared_ptr<RequestModelBase> GetRunsOnlineRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any GetRunsOnlineRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        auto typedResponse = std::static_pointer_cast< aspose::words::cloud::responses::GetRunsOnlineResponse >(response);
+        return std::any(typedResponse->getModel());
     }
 
     /*
@@ -18543,6 +21192,17 @@ namespace aspose::words::cloud::requests {
         );
     }
 
+    std::shared_ptr<RequestModelBase> GetSectionRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any GetSectionRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        auto typedResponse = std::static_pointer_cast< aspose::words::cloud::responses::GetSectionResponse >(response);
+        return std::any(typedResponse->getModel());
+    }
+
     /*
      * GetSectionOnline request implementation
      */
@@ -18628,6 +21288,17 @@ namespace aspose::words::cloud::requests {
         return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
             new aspose::words::cloud::responses::GetSectionOnlineResponse()
         );
+    }
+
+    std::shared_ptr<RequestModelBase> GetSectionOnlineRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any GetSectionOnlineRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        auto typedResponse = std::static_pointer_cast< aspose::words::cloud::responses::GetSectionOnlineResponse >(response);
+        return std::any(typedResponse->getModel());
     }
 
     /*
@@ -18730,6 +21401,17 @@ namespace aspose::words::cloud::requests {
         );
     }
 
+    std::shared_ptr<RequestModelBase> GetSectionPageSetupRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any GetSectionPageSetupRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        auto typedResponse = std::static_pointer_cast< aspose::words::cloud::responses::GetSectionPageSetupResponse >(response);
+        return std::any(typedResponse->getModel());
+    }
+
     /*
      * GetSectionPageSetupOnline request implementation
      */
@@ -18815,6 +21497,17 @@ namespace aspose::words::cloud::requests {
         return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
             new aspose::words::cloud::responses::GetSectionPageSetupOnlineResponse()
         );
+    }
+
+    std::shared_ptr<RequestModelBase> GetSectionPageSetupOnlineRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any GetSectionPageSetupOnlineRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        auto typedResponse = std::static_pointer_cast< aspose::words::cloud::responses::GetSectionPageSetupOnlineResponse >(response);
+        return std::any(typedResponse->getModel());
     }
 
     /*
@@ -18908,6 +21601,17 @@ namespace aspose::words::cloud::requests {
         );
     }
 
+    std::shared_ptr<RequestModelBase> GetSectionsRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any GetSectionsRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        auto typedResponse = std::static_pointer_cast< aspose::words::cloud::responses::GetSectionsResponse >(response);
+        return std::any(typedResponse->getModel());
+    }
+
     /*
      * GetSectionsOnline request implementation
      */
@@ -18984,6 +21688,17 @@ namespace aspose::words::cloud::requests {
         return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
             new aspose::words::cloud::responses::GetSectionsOnlineResponse()
         );
+    }
+
+    std::shared_ptr<RequestModelBase> GetSectionsOnlineRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any GetSectionsOnlineRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        auto typedResponse = std::static_pointer_cast< aspose::words::cloud::responses::GetSectionsOnlineResponse >(response);
+        return std::any(typedResponse->getModel());
     }
 
     /*
@@ -19077,6 +21792,17 @@ namespace aspose::words::cloud::requests {
         );
     }
 
+    std::shared_ptr<RequestModelBase> GetSignaturesRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any GetSignaturesRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        auto typedResponse = std::static_pointer_cast< aspose::words::cloud::responses::GetSignaturesResponse >(response);
+        return std::any(typedResponse->getModel());
+    }
+
     /*
      * GetSignaturesOnline request implementation
      */
@@ -19153,6 +21879,17 @@ namespace aspose::words::cloud::requests {
         return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
             new aspose::words::cloud::responses::GetSignaturesOnlineResponse()
         );
+    }
+
+    std::shared_ptr<RequestModelBase> GetSignaturesOnlineRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any GetSignaturesOnlineRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        auto typedResponse = std::static_pointer_cast< aspose::words::cloud::responses::GetSignaturesOnlineResponse >(response);
+        return std::any(typedResponse->getModel());
     }
 
     /*
@@ -19263,6 +22000,17 @@ namespace aspose::words::cloud::requests {
         );
     }
 
+    std::shared_ptr<RequestModelBase> GetStructuredDocumentTagRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any GetStructuredDocumentTagRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        auto typedResponse = std::static_pointer_cast< aspose::words::cloud::responses::GetStructuredDocumentTagResponse >(response);
+        return std::any(typedResponse->getModel());
+    }
+
     /*
      * GetStructuredDocumentTagOnline request implementation
      */
@@ -19356,6 +22104,17 @@ namespace aspose::words::cloud::requests {
         return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
             new aspose::words::cloud::responses::GetStructuredDocumentTagOnlineResponse()
         );
+    }
+
+    std::shared_ptr<RequestModelBase> GetStructuredDocumentTagOnlineRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any GetStructuredDocumentTagOnlineRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        auto typedResponse = std::static_pointer_cast< aspose::words::cloud::responses::GetStructuredDocumentTagOnlineResponse >(response);
+        return std::any(typedResponse->getModel());
     }
 
     /*
@@ -19457,6 +22216,17 @@ namespace aspose::words::cloud::requests {
         );
     }
 
+    std::shared_ptr<RequestModelBase> GetStructuredDocumentTagsRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any GetStructuredDocumentTagsRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        auto typedResponse = std::static_pointer_cast< aspose::words::cloud::responses::GetStructuredDocumentTagsResponse >(response);
+        return std::any(typedResponse->getModel());
+    }
+
     /*
      * GetStructuredDocumentTagsOnline request implementation
      */
@@ -19541,6 +22311,17 @@ namespace aspose::words::cloud::requests {
         return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
             new aspose::words::cloud::responses::GetStructuredDocumentTagsOnlineResponse()
         );
+    }
+
+    std::shared_ptr<RequestModelBase> GetStructuredDocumentTagsOnlineRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any GetStructuredDocumentTagsOnlineRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        auto typedResponse = std::static_pointer_cast< aspose::words::cloud::responses::GetStructuredDocumentTagsOnlineResponse >(response);
+        return std::any(typedResponse->getModel());
     }
 
     /*
@@ -19643,6 +22424,17 @@ namespace aspose::words::cloud::requests {
         );
     }
 
+    std::shared_ptr<RequestModelBase> GetStyleRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any GetStyleRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        auto typedResponse = std::static_pointer_cast< aspose::words::cloud::responses::GetStyleResponse >(response);
+        return std::any(typedResponse->getModel());
+    }
+
     /*
      * GetStyleFromDocumentElement request implementation
      */
@@ -19743,6 +22535,17 @@ namespace aspose::words::cloud::requests {
         );
     }
 
+    std::shared_ptr<RequestModelBase> GetStyleFromDocumentElementRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any GetStyleFromDocumentElementRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        auto typedResponse = std::static_pointer_cast< aspose::words::cloud::responses::GetStyleFromDocumentElementResponse >(response);
+        return std::any(typedResponse->getModel());
+    }
+
     /*
      * GetStyleFromDocumentElementOnline request implementation
      */
@@ -19830,6 +22633,17 @@ namespace aspose::words::cloud::requests {
         );
     }
 
+    std::shared_ptr<RequestModelBase> GetStyleFromDocumentElementOnlineRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any GetStyleFromDocumentElementOnlineRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        auto typedResponse = std::static_pointer_cast< aspose::words::cloud::responses::GetStyleFromDocumentElementOnlineResponse >(response);
+        return std::any(typedResponse->getModel());
+    }
+
     /*
      * GetStyleOnline request implementation
      */
@@ -19915,6 +22729,17 @@ namespace aspose::words::cloud::requests {
         return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
             new aspose::words::cloud::responses::GetStyleOnlineResponse()
         );
+    }
+
+    std::shared_ptr<RequestModelBase> GetStyleOnlineRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any GetStyleOnlineRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        auto typedResponse = std::static_pointer_cast< aspose::words::cloud::responses::GetStyleOnlineResponse >(response);
+        return std::any(typedResponse->getModel());
     }
 
     /*
@@ -20008,6 +22833,17 @@ namespace aspose::words::cloud::requests {
         );
     }
 
+    std::shared_ptr<RequestModelBase> GetStylesRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any GetStylesRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        auto typedResponse = std::static_pointer_cast< aspose::words::cloud::responses::GetStylesResponse >(response);
+        return std::any(typedResponse->getModel());
+    }
+
     /*
      * GetStylesOnline request implementation
      */
@@ -20084,6 +22920,17 @@ namespace aspose::words::cloud::requests {
         return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
             new aspose::words::cloud::responses::GetStylesOnlineResponse()
         );
+    }
+
+    std::shared_ptr<RequestModelBase> GetStylesOnlineRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any GetStylesOnlineRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        auto typedResponse = std::static_pointer_cast< aspose::words::cloud::responses::GetStylesOnlineResponse >(response);
+        return std::any(typedResponse->getModel());
     }
 
     /*
@@ -20192,6 +23039,17 @@ namespace aspose::words::cloud::requests {
         return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
             new aspose::words::cloud::responses::GetTableResponse()
         );
+    }
+
+    std::shared_ptr<RequestModelBase> GetTableRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any GetTableRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        auto typedResponse = std::static_pointer_cast< aspose::words::cloud::responses::GetTableResponse >(response);
+        return std::any(typedResponse->getModel());
     }
 
     /*
@@ -20303,6 +23161,17 @@ namespace aspose::words::cloud::requests {
         );
     }
 
+    std::shared_ptr<RequestModelBase> GetTableCellRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any GetTableCellRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        auto typedResponse = std::static_pointer_cast< aspose::words::cloud::responses::GetTableCellResponse >(response);
+        return std::any(typedResponse->getModel());
+    }
+
     /*
      * GetTableCellFormat request implementation
      */
@@ -20412,6 +23281,17 @@ namespace aspose::words::cloud::requests {
         );
     }
 
+    std::shared_ptr<RequestModelBase> GetTableCellFormatRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any GetTableCellFormatRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        auto typedResponse = std::static_pointer_cast< aspose::words::cloud::responses::GetTableCellFormatResponse >(response);
+        return std::any(typedResponse->getModel());
+    }
+
     /*
      * GetTableCellFormatOnline request implementation
      */
@@ -20506,6 +23386,17 @@ namespace aspose::words::cloud::requests {
         return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
             new aspose::words::cloud::responses::GetTableCellFormatOnlineResponse()
         );
+    }
+
+    std::shared_ptr<RequestModelBase> GetTableCellFormatOnlineRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any GetTableCellFormatOnlineRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        auto typedResponse = std::static_pointer_cast< aspose::words::cloud::responses::GetTableCellFormatOnlineResponse >(response);
+        return std::any(typedResponse->getModel());
     }
 
     /*
@@ -20604,6 +23495,17 @@ namespace aspose::words::cloud::requests {
         );
     }
 
+    std::shared_ptr<RequestModelBase> GetTableCellOnlineRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any GetTableCellOnlineRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        auto typedResponse = std::static_pointer_cast< aspose::words::cloud::responses::GetTableCellOnlineResponse >(response);
+        return std::any(typedResponse->getModel());
+    }
+
     /*
      * GetTableOnline request implementation
      */
@@ -20697,6 +23599,17 @@ namespace aspose::words::cloud::requests {
         return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
             new aspose::words::cloud::responses::GetTableOnlineResponse()
         );
+    }
+
+    std::shared_ptr<RequestModelBase> GetTableOnlineRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any GetTableOnlineRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        auto typedResponse = std::static_pointer_cast< aspose::words::cloud::responses::GetTableOnlineResponse >(response);
+        return std::any(typedResponse->getModel());
     }
 
     /*
@@ -20807,6 +23720,17 @@ namespace aspose::words::cloud::requests {
         );
     }
 
+    std::shared_ptr<RequestModelBase> GetTablePropertiesRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any GetTablePropertiesRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        auto typedResponse = std::static_pointer_cast< aspose::words::cloud::responses::GetTablePropertiesResponse >(response);
+        return std::any(typedResponse->getModel());
+    }
+
     /*
      * GetTablePropertiesOnline request implementation
      */
@@ -20900,6 +23824,17 @@ namespace aspose::words::cloud::requests {
         return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
             new aspose::words::cloud::responses::GetTablePropertiesOnlineResponse()
         );
+    }
+
+    std::shared_ptr<RequestModelBase> GetTablePropertiesOnlineRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any GetTablePropertiesOnlineRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        auto typedResponse = std::static_pointer_cast< aspose::words::cloud::responses::GetTablePropertiesOnlineResponse >(response);
+        return std::any(typedResponse->getModel());
     }
 
     /*
@@ -21011,6 +23946,17 @@ namespace aspose::words::cloud::requests {
         );
     }
 
+    std::shared_ptr<RequestModelBase> GetTableRowRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any GetTableRowRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        auto typedResponse = std::static_pointer_cast< aspose::words::cloud::responses::GetTableRowResponse >(response);
+        return std::any(typedResponse->getModel());
+    }
+
     /*
      * GetTableRowFormat request implementation
      */
@@ -21120,6 +24066,17 @@ namespace aspose::words::cloud::requests {
         );
     }
 
+    std::shared_ptr<RequestModelBase> GetTableRowFormatRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any GetTableRowFormatRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        auto typedResponse = std::static_pointer_cast< aspose::words::cloud::responses::GetTableRowFormatResponse >(response);
+        return std::any(typedResponse->getModel());
+    }
+
     /*
      * GetTableRowFormatOnline request implementation
      */
@@ -21216,6 +24173,17 @@ namespace aspose::words::cloud::requests {
         );
     }
 
+    std::shared_ptr<RequestModelBase> GetTableRowFormatOnlineRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any GetTableRowFormatOnlineRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        auto typedResponse = std::static_pointer_cast< aspose::words::cloud::responses::GetTableRowFormatOnlineResponse >(response);
+        return std::any(typedResponse->getModel());
+    }
+
     /*
      * GetTableRowOnline request implementation
      */
@@ -21310,6 +24278,17 @@ namespace aspose::words::cloud::requests {
         return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
             new aspose::words::cloud::responses::GetTableRowOnlineResponse()
         );
+    }
+
+    std::shared_ptr<RequestModelBase> GetTableRowOnlineRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any GetTableRowOnlineRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        auto typedResponse = std::static_pointer_cast< aspose::words::cloud::responses::GetTableRowOnlineResponse >(response);
+        return std::any(typedResponse->getModel());
     }
 
     /*
@@ -21411,6 +24390,17 @@ namespace aspose::words::cloud::requests {
         );
     }
 
+    std::shared_ptr<RequestModelBase> GetTablesRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any GetTablesRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        auto typedResponse = std::static_pointer_cast< aspose::words::cloud::responses::GetTablesResponse >(response);
+        return std::any(typedResponse->getModel());
+    }
+
     /*
      * GetTablesOnline request implementation
      */
@@ -21495,6 +24485,17 @@ namespace aspose::words::cloud::requests {
         return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
             new aspose::words::cloud::responses::GetTablesOnlineResponse()
         );
+    }
+
+    std::shared_ptr<RequestModelBase> GetTablesOnlineRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any GetTablesOnlineRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        auto typedResponse = std::static_pointer_cast< aspose::words::cloud::responses::GetTablesOnlineResponse >(response);
+        return std::any(typedResponse->getModel());
     }
 
     /*
@@ -21625,6 +24626,17 @@ namespace aspose::words::cloud::requests {
         );
     }
 
+    std::shared_ptr<RequestModelBase> InsertBookmarkRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any InsertBookmarkRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        auto typedResponse = std::static_pointer_cast< aspose::words::cloud::responses::InsertBookmarkResponse >(response);
+        return std::any(typedResponse->getModel());
+    }
+
     /*
      * InsertBookmarkOnline request implementation
      */
@@ -21738,6 +24750,17 @@ namespace aspose::words::cloud::requests {
         return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
             new aspose::words::cloud::responses::InsertBookmarkOnlineResponse()
         );
+    }
+
+    std::shared_ptr<RequestModelBase> InsertBookmarkOnlineRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any InsertBookmarkOnlineRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        auto typedResponse = std::static_pointer_cast< aspose::words::cloud::responses::InsertBookmarkOnlineResponse >(response);
+        return std::any(typedResponse);
     }
 
     /*
@@ -21868,6 +24891,17 @@ namespace aspose::words::cloud::requests {
         );
     }
 
+    std::shared_ptr<RequestModelBase> InsertCommentRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any InsertCommentRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        auto typedResponse = std::static_pointer_cast< aspose::words::cloud::responses::InsertCommentResponse >(response);
+        return std::any(typedResponse->getModel());
+    }
+
     /*
      * InsertCommentOnline request implementation
      */
@@ -21981,6 +25015,17 @@ namespace aspose::words::cloud::requests {
         return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
             new aspose::words::cloud::responses::InsertCommentOnlineResponse()
         );
+    }
+
+    std::shared_ptr<RequestModelBase> InsertCommentOnlineRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any InsertCommentOnlineRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        auto typedResponse = std::static_pointer_cast< aspose::words::cloud::responses::InsertCommentOnlineResponse >(response);
+        return std::any(typedResponse);
     }
 
     /*
@@ -22111,6 +25156,17 @@ namespace aspose::words::cloud::requests {
         );
     }
 
+    std::shared_ptr<RequestModelBase> InsertCustomXmlPartRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any InsertCustomXmlPartRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        auto typedResponse = std::static_pointer_cast< aspose::words::cloud::responses::InsertCustomXmlPartResponse >(response);
+        return std::any(typedResponse->getModel());
+    }
+
     /*
      * InsertCustomXmlPartOnline request implementation
      */
@@ -22224,6 +25280,17 @@ namespace aspose::words::cloud::requests {
         return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
             new aspose::words::cloud::responses::InsertCustomXmlPartOnlineResponse()
         );
+    }
+
+    std::shared_ptr<RequestModelBase> InsertCustomXmlPartOnlineRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any InsertCustomXmlPartOnlineRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        auto typedResponse = std::static_pointer_cast< aspose::words::cloud::responses::InsertCustomXmlPartOnlineResponse >(response);
+        return std::any(typedResponse);
     }
 
     /*
@@ -22374,6 +25441,17 @@ namespace aspose::words::cloud::requests {
         );
     }
 
+    std::shared_ptr<RequestModelBase> InsertDrawingObjectRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any InsertDrawingObjectRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        auto typedResponse = std::static_pointer_cast< aspose::words::cloud::responses::InsertDrawingObjectResponse >(response);
+        return std::any(typedResponse->getModel());
+    }
+
     /*
      * InsertDrawingObjectOnline request implementation
      */
@@ -22508,6 +25586,17 @@ namespace aspose::words::cloud::requests {
         return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
             new aspose::words::cloud::responses::InsertDrawingObjectOnlineResponse()
         );
+    }
+
+    std::shared_ptr<RequestModelBase> InsertDrawingObjectOnlineRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any InsertDrawingObjectOnlineRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        auto typedResponse = std::static_pointer_cast< aspose::words::cloud::responses::InsertDrawingObjectOnlineResponse >(response);
+        return std::any(typedResponse);
     }
 
     /*
@@ -22646,6 +25735,17 @@ namespace aspose::words::cloud::requests {
         );
     }
 
+    std::shared_ptr<RequestModelBase> InsertFieldRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any InsertFieldRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        auto typedResponse = std::static_pointer_cast< aspose::words::cloud::responses::InsertFieldResponse >(response);
+        return std::any(typedResponse->getModel());
+    }
+
     /*
      * InsertFieldOnline request implementation
      */
@@ -22767,6 +25867,17 @@ namespace aspose::words::cloud::requests {
         return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
             new aspose::words::cloud::responses::InsertFieldOnlineResponse()
         );
+    }
+
+    std::shared_ptr<RequestModelBase> InsertFieldOnlineRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any InsertFieldOnlineRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        auto typedResponse = std::static_pointer_cast< aspose::words::cloud::responses::InsertFieldOnlineResponse >(response);
+        return std::any(typedResponse);
     }
 
     /*
@@ -22905,6 +26016,17 @@ namespace aspose::words::cloud::requests {
         );
     }
 
+    std::shared_ptr<RequestModelBase> InsertFootnoteRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any InsertFootnoteRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        auto typedResponse = std::static_pointer_cast< aspose::words::cloud::responses::InsertFootnoteResponse >(response);
+        return std::any(typedResponse->getModel());
+    }
+
     /*
      * InsertFootnoteOnline request implementation
      */
@@ -23026,6 +26148,17 @@ namespace aspose::words::cloud::requests {
         return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
             new aspose::words::cloud::responses::InsertFootnoteOnlineResponse()
         );
+    }
+
+    std::shared_ptr<RequestModelBase> InsertFootnoteOnlineRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any InsertFootnoteOnlineRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        auto typedResponse = std::static_pointer_cast< aspose::words::cloud::responses::InsertFootnoteOnlineResponse >(response);
+        return std::any(typedResponse);
     }
 
     /*
@@ -23172,6 +26305,17 @@ namespace aspose::words::cloud::requests {
         );
     }
 
+    std::shared_ptr<RequestModelBase> InsertFormFieldRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any InsertFormFieldRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        auto typedResponse = std::static_pointer_cast< aspose::words::cloud::responses::InsertFormFieldResponse >(response);
+        return std::any(typedResponse->getModel());
+    }
+
     /*
      * InsertFormFieldOnline request implementation
      */
@@ -23301,6 +26445,17 @@ namespace aspose::words::cloud::requests {
         return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
             new aspose::words::cloud::responses::InsertFormFieldOnlineResponse()
         );
+    }
+
+    std::shared_ptr<RequestModelBase> InsertFormFieldOnlineRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any InsertFormFieldOnlineRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        auto typedResponse = std::static_pointer_cast< aspose::words::cloud::responses::InsertFormFieldOnlineResponse >(response);
+        return std::any(typedResponse);
     }
 
     /*
@@ -23440,6 +26595,17 @@ namespace aspose::words::cloud::requests {
         );
     }
 
+    std::shared_ptr<RequestModelBase> InsertHeaderFooterRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any InsertHeaderFooterRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        auto typedResponse = std::static_pointer_cast< aspose::words::cloud::responses::InsertHeaderFooterResponse >(response);
+        return std::any(typedResponse->getModel());
+    }
+
     /*
      * InsertHeaderFooterOnline request implementation
      */
@@ -23562,6 +26728,17 @@ namespace aspose::words::cloud::requests {
         return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
             new aspose::words::cloud::responses::InsertHeaderFooterOnlineResponse()
         );
+    }
+
+    std::shared_ptr<RequestModelBase> InsertHeaderFooterOnlineRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any InsertHeaderFooterOnlineRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        auto typedResponse = std::static_pointer_cast< aspose::words::cloud::responses::InsertHeaderFooterOnlineResponse >(response);
+        return std::any(typedResponse);
     }
 
     /*
@@ -23692,6 +26869,17 @@ namespace aspose::words::cloud::requests {
         );
     }
 
+    std::shared_ptr<RequestModelBase> InsertListRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any InsertListRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        auto typedResponse = std::static_pointer_cast< aspose::words::cloud::responses::InsertListResponse >(response);
+        return std::any(typedResponse->getModel());
+    }
+
     /*
      * InsertListOnline request implementation
      */
@@ -23805,6 +26993,17 @@ namespace aspose::words::cloud::requests {
         return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
             new aspose::words::cloud::responses::InsertListOnlineResponse()
         );
+    }
+
+    std::shared_ptr<RequestModelBase> InsertListOnlineRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any InsertListOnlineRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        auto typedResponse = std::static_pointer_cast< aspose::words::cloud::responses::InsertListOnlineResponse >(response);
+        return std::any(typedResponse);
     }
 
     /*
@@ -23936,6 +27135,17 @@ namespace aspose::words::cloud::requests {
         );
     }
 
+    std::shared_ptr<RequestModelBase> InsertOrUpdateParagraphTabStopRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any InsertOrUpdateParagraphTabStopRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        auto typedResponse = std::static_pointer_cast< aspose::words::cloud::responses::InsertOrUpdateParagraphTabStopResponse >(response);
+        return std::any(typedResponse->getModel());
+    }
+
     /*
      * InsertOrUpdateParagraphTabStopOnline request implementation
      */
@@ -24050,6 +27260,17 @@ namespace aspose::words::cloud::requests {
         return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
             new aspose::words::cloud::responses::InsertOrUpdateParagraphTabStopOnlineResponse()
         );
+    }
+
+    std::shared_ptr<RequestModelBase> InsertOrUpdateParagraphTabStopOnlineRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any InsertOrUpdateParagraphTabStopOnlineRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        auto typedResponse = std::static_pointer_cast< aspose::words::cloud::responses::InsertOrUpdateParagraphTabStopOnlineResponse >(response);
+        return std::any(typedResponse);
     }
 
     /*
@@ -24180,6 +27401,17 @@ namespace aspose::words::cloud::requests {
         );
     }
 
+    std::shared_ptr<RequestModelBase> InsertPageNumbersRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any InsertPageNumbersRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        auto typedResponse = std::static_pointer_cast< aspose::words::cloud::responses::InsertPageNumbersResponse >(response);
+        return std::any(typedResponse->getModel());
+    }
+
     /*
      * InsertPageNumbersOnline request implementation
      */
@@ -24293,6 +27525,17 @@ namespace aspose::words::cloud::requests {
         return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
             new aspose::words::cloud::responses::InsertPageNumbersOnlineResponse()
         );
+    }
+
+    std::shared_ptr<RequestModelBase> InsertPageNumbersOnlineRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any InsertPageNumbersOnlineRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        auto typedResponse = std::static_pointer_cast< aspose::words::cloud::responses::InsertPageNumbersOnlineResponse >(response);
+        return std::any(typedResponse);
     }
 
     /*
@@ -24431,6 +27674,17 @@ namespace aspose::words::cloud::requests {
         );
     }
 
+    std::shared_ptr<RequestModelBase> InsertParagraphRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any InsertParagraphRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        auto typedResponse = std::static_pointer_cast< aspose::words::cloud::responses::InsertParagraphResponse >(response);
+        return std::any(typedResponse->getModel());
+    }
+
     /*
      * InsertParagraphOnline request implementation
      */
@@ -24552,6 +27806,17 @@ namespace aspose::words::cloud::requests {
         return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
             new aspose::words::cloud::responses::InsertParagraphOnlineResponse()
         );
+    }
+
+    std::shared_ptr<RequestModelBase> InsertParagraphOnlineRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any InsertParagraphOnlineRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        auto typedResponse = std::static_pointer_cast< aspose::words::cloud::responses::InsertParagraphOnlineResponse >(response);
+        return std::any(typedResponse);
     }
 
     /*
@@ -24690,6 +27955,17 @@ namespace aspose::words::cloud::requests {
         );
     }
 
+    std::shared_ptr<RequestModelBase> InsertRunRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any InsertRunRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        auto typedResponse = std::static_pointer_cast< aspose::words::cloud::responses::InsertRunResponse >(response);
+        return std::any(typedResponse->getModel());
+    }
+
     /*
      * InsertRunOnline request implementation
      */
@@ -24811,6 +28087,17 @@ namespace aspose::words::cloud::requests {
         return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
             new aspose::words::cloud::responses::InsertRunOnlineResponse()
         );
+    }
+
+    std::shared_ptr<RequestModelBase> InsertRunOnlineRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any InsertRunOnlineRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        auto typedResponse = std::static_pointer_cast< aspose::words::cloud::responses::InsertRunOnlineResponse >(response);
+        return std::any(typedResponse);
     }
 
     /*
@@ -24937,6 +28224,16 @@ namespace aspose::words::cloud::requests {
         );
     }
 
+    std::shared_ptr<RequestModelBase> InsertSectionRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any InsertSectionRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        return std::any();
+    }
+
     /*
      * InsertSectionOnline request implementation
      */
@@ -25046,6 +28343,17 @@ namespace aspose::words::cloud::requests {
         return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
             new aspose::words::cloud::responses::InsertSectionOnlineResponse()
         );
+    }
+
+    std::shared_ptr<RequestModelBase> InsertSectionOnlineRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any InsertSectionOnlineRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        auto typedResponse = std::static_pointer_cast< aspose::words::cloud::responses::InsertSectionOnlineResponse >(response);
+        return std::any(typedResponse->getDocument());
     }
 
     /*
@@ -25184,6 +28492,17 @@ namespace aspose::words::cloud::requests {
         );
     }
 
+    std::shared_ptr<RequestModelBase> InsertStructuredDocumentTagRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any InsertStructuredDocumentTagRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        auto typedResponse = std::static_pointer_cast< aspose::words::cloud::responses::InsertStructuredDocumentTagResponse >(response);
+        return std::any(typedResponse->getModel());
+    }
+
     /*
      * InsertStructuredDocumentTagOnline request implementation
      */
@@ -25305,6 +28624,17 @@ namespace aspose::words::cloud::requests {
         return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
             new aspose::words::cloud::responses::InsertStructuredDocumentTagOnlineResponse()
         );
+    }
+
+    std::shared_ptr<RequestModelBase> InsertStructuredDocumentTagOnlineRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any InsertStructuredDocumentTagOnlineRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        auto typedResponse = std::static_pointer_cast< aspose::words::cloud::responses::InsertStructuredDocumentTagOnlineResponse >(response);
+        return std::any(typedResponse);
     }
 
     /*
@@ -25435,6 +28765,17 @@ namespace aspose::words::cloud::requests {
         );
     }
 
+    std::shared_ptr<RequestModelBase> InsertStyleRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any InsertStyleRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        auto typedResponse = std::static_pointer_cast< aspose::words::cloud::responses::InsertStyleResponse >(response);
+        return std::any(typedResponse->getModel());
+    }
+
     /*
      * InsertStyleOnline request implementation
      */
@@ -25548,6 +28889,17 @@ namespace aspose::words::cloud::requests {
         return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
             new aspose::words::cloud::responses::InsertStyleOnlineResponse()
         );
+    }
+
+    std::shared_ptr<RequestModelBase> InsertStyleOnlineRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any InsertStyleOnlineRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        auto typedResponse = std::static_pointer_cast< aspose::words::cloud::responses::InsertStyleOnlineResponse >(response);
+        return std::any(typedResponse);
     }
 
     /*
@@ -25686,6 +29038,17 @@ namespace aspose::words::cloud::requests {
         );
     }
 
+    std::shared_ptr<RequestModelBase> InsertTableRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any InsertTableRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        auto typedResponse = std::static_pointer_cast< aspose::words::cloud::responses::InsertTableResponse >(response);
+        return std::any(typedResponse->getModel());
+    }
+
     /*
      * InsertTableCell request implementation
      */
@@ -25822,6 +29185,17 @@ namespace aspose::words::cloud::requests {
         );
     }
 
+    std::shared_ptr<RequestModelBase> InsertTableCellRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any InsertTableCellRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        auto typedResponse = std::static_pointer_cast< aspose::words::cloud::responses::InsertTableCellResponse >(response);
+        return std::any(typedResponse->getModel());
+    }
+
     /*
      * InsertTableCellOnline request implementation
      */
@@ -25945,6 +29319,17 @@ namespace aspose::words::cloud::requests {
         );
     }
 
+    std::shared_ptr<RequestModelBase> InsertTableCellOnlineRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any InsertTableCellOnlineRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        auto typedResponse = std::static_pointer_cast< aspose::words::cloud::responses::InsertTableCellOnlineResponse >(response);
+        return std::any(typedResponse);
+    }
+
     /*
      * InsertTableOnline request implementation
      */
@@ -26066,6 +29451,17 @@ namespace aspose::words::cloud::requests {
         return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
             new aspose::words::cloud::responses::InsertTableOnlineResponse()
         );
+    }
+
+    std::shared_ptr<RequestModelBase> InsertTableOnlineRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any InsertTableOnlineRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        auto typedResponse = std::static_pointer_cast< aspose::words::cloud::responses::InsertTableOnlineResponse >(response);
+        return std::any(typedResponse);
     }
 
     /*
@@ -26204,6 +29600,17 @@ namespace aspose::words::cloud::requests {
         );
     }
 
+    std::shared_ptr<RequestModelBase> InsertTableRowRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any InsertTableRowRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        auto typedResponse = std::static_pointer_cast< aspose::words::cloud::responses::InsertTableRowResponse >(response);
+        return std::any(typedResponse->getModel());
+    }
+
     /*
      * InsertTableRowOnline request implementation
      */
@@ -26325,6 +29732,17 @@ namespace aspose::words::cloud::requests {
         return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
             new aspose::words::cloud::responses::InsertTableRowOnlineResponse()
         );
+    }
+
+    std::shared_ptr<RequestModelBase> InsertTableRowOnlineRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any InsertTableRowOnlineRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        auto typedResponse = std::static_pointer_cast< aspose::words::cloud::responses::InsertTableRowOnlineResponse >(response);
+        return std::any(typedResponse);
     }
 
     /*
@@ -26454,6 +29872,17 @@ namespace aspose::words::cloud::requests {
         return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
             new aspose::words::cloud::responses::InsertWatermarkResponse()
         );
+    }
+
+    std::shared_ptr<RequestModelBase> InsertWatermarkRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any InsertWatermarkRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        auto typedResponse = std::static_pointer_cast< aspose::words::cloud::responses::InsertWatermarkResponse >(response);
+        return std::any(typedResponse->getModel());
     }
 
     /*
@@ -26598,6 +30027,17 @@ namespace aspose::words::cloud::requests {
         );
     }
 
+    std::shared_ptr<RequestModelBase> InsertWatermarkImageRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any InsertWatermarkImageRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        auto typedResponse = std::static_pointer_cast< aspose::words::cloud::responses::InsertWatermarkImageResponse >(response);
+        return std::any(typedResponse->getModel());
+    }
+
     /*
      * InsertWatermarkImageOnline request implementation
      */
@@ -26728,6 +30168,17 @@ namespace aspose::words::cloud::requests {
         );
     }
 
+    std::shared_ptr<RequestModelBase> InsertWatermarkImageOnlineRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any InsertWatermarkImageOnlineRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        auto typedResponse = std::static_pointer_cast< aspose::words::cloud::responses::InsertWatermarkImageOnlineResponse >(response);
+        return std::any(typedResponse);
+    }
+
     /*
      * InsertWatermarkOnline request implementation
      */
@@ -26842,6 +30293,17 @@ namespace aspose::words::cloud::requests {
         return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
             new aspose::words::cloud::responses::InsertWatermarkOnlineResponse()
         );
+    }
+
+    std::shared_ptr<RequestModelBase> InsertWatermarkOnlineRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any InsertWatermarkOnlineRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        auto typedResponse = std::static_pointer_cast< aspose::words::cloud::responses::InsertWatermarkOnlineResponse >(response);
+        return std::any(typedResponse);
     }
 
     /*
@@ -26972,6 +30434,17 @@ namespace aspose::words::cloud::requests {
         );
     }
 
+    std::shared_ptr<RequestModelBase> InsertWatermarkTextRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any InsertWatermarkTextRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        auto typedResponse = std::static_pointer_cast< aspose::words::cloud::responses::InsertWatermarkTextResponse >(response);
+        return std::any(typedResponse->getModel());
+    }
+
     /*
      * InsertWatermarkTextOnline request implementation
      */
@@ -27085,6 +30558,17 @@ namespace aspose::words::cloud::requests {
         return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
             new aspose::words::cloud::responses::InsertWatermarkTextOnlineResponse()
         );
+    }
+
+    std::shared_ptr<RequestModelBase> InsertWatermarkTextOnlineRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any InsertWatermarkTextOnlineRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        auto typedResponse = std::static_pointer_cast< aspose::words::cloud::responses::InsertWatermarkTextOnlineResponse >(response);
+        return std::any(typedResponse);
     }
 
     /*
@@ -27219,6 +30703,16 @@ namespace aspose::words::cloud::requests {
         );
     }
 
+    std::shared_ptr<RequestModelBase> LinkHeaderFootersToPreviousRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any LinkHeaderFootersToPreviousRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        return std::any();
+    }
+
     /*
      * LoadWebDocument request implementation
      */
@@ -27274,6 +30768,17 @@ namespace aspose::words::cloud::requests {
         );
     }
 
+    std::shared_ptr<RequestModelBase> LoadWebDocumentRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any LoadWebDocumentRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        auto typedResponse = std::static_pointer_cast< aspose::words::cloud::responses::LoadWebDocumentResponse >(response);
+        return std::any(typedResponse->getModel());
+    }
+
     /*
      * LoadWebDocumentOnline request implementation
      */
@@ -27318,6 +30823,17 @@ namespace aspose::words::cloud::requests {
         return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
             new aspose::words::cloud::responses::LoadWebDocumentOnlineResponse()
         );
+    }
+
+    std::shared_ptr<RequestModelBase> LoadWebDocumentOnlineRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any LoadWebDocumentOnlineRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        auto typedResponse = std::static_pointer_cast< aspose::words::cloud::responses::LoadWebDocumentOnlineResponse >(response);
+        return std::any(typedResponse);
     }
 
     /*
@@ -27444,6 +30960,16 @@ namespace aspose::words::cloud::requests {
         );
     }
 
+    std::shared_ptr<RequestModelBase> MergeWithNextRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any MergeWithNextRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        return std::any();
+    }
+
     /*
      * MergeWithNextOnline request implementation
      */
@@ -27555,6 +31081,17 @@ namespace aspose::words::cloud::requests {
         );
     }
 
+    std::shared_ptr<RequestModelBase> MergeWithNextOnlineRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any MergeWithNextOnlineRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        auto typedResponse = std::static_pointer_cast< aspose::words::cloud::responses::MergeWithNextOnlineResponse >(response);
+        return std::any(typedResponse->getDocument());
+    }
+
     /*
      * MoveFile request implementation
      */
@@ -27631,6 +31168,16 @@ namespace aspose::words::cloud::requests {
         );
     }
 
+    std::shared_ptr<RequestModelBase> MoveFileRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any MoveFileRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        return std::any();
+    }
+
     /*
      * MoveFolder request implementation
      */
@@ -27697,6 +31244,16 @@ namespace aspose::words::cloud::requests {
         return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
             new aspose::words::cloud::responses::MoveFolderResponse()
         );
+    }
+
+    std::shared_ptr<RequestModelBase> MoveFolderRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any MoveFolderRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        return std::any();
     }
 
     /*
@@ -27827,6 +31384,16 @@ namespace aspose::words::cloud::requests {
         );
     }
 
+    std::shared_ptr<RequestModelBase> OptimizeDocumentRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any OptimizeDocumentRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        return std::any();
+    }
+
     /*
      * OptimizeDocumentOnline request implementation
      */
@@ -27942,6 +31509,17 @@ namespace aspose::words::cloud::requests {
         );
     }
 
+    std::shared_ptr<RequestModelBase> OptimizeDocumentOnlineRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any OptimizeDocumentOnlineRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        auto typedResponse = std::static_pointer_cast< aspose::words::cloud::responses::OptimizeDocumentOnlineResponse >(response);
+        return std::any(typedResponse->getDocument());
+    }
+
     /*
      * ProtectDocument request implementation
      */
@@ -28054,6 +31632,17 @@ namespace aspose::words::cloud::requests {
         );
     }
 
+    std::shared_ptr<RequestModelBase> ProtectDocumentRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any ProtectDocumentRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        auto typedResponse = std::static_pointer_cast< aspose::words::cloud::responses::ProtectDocumentResponse >(response);
+        return std::any(typedResponse->getModel());
+    }
+
     /*
      * ProtectDocumentOnline request implementation
      */
@@ -28151,6 +31740,17 @@ namespace aspose::words::cloud::requests {
         return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
             new aspose::words::cloud::responses::ProtectDocumentOnlineResponse()
         );
+    }
+
+    std::shared_ptr<RequestModelBase> ProtectDocumentOnlineRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any ProtectDocumentOnlineRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        auto typedResponse = std::static_pointer_cast< aspose::words::cloud::responses::ProtectDocumentOnlineResponse >(response);
+        return std::any(typedResponse);
     }
 
     /*
@@ -28252,6 +31852,17 @@ namespace aspose::words::cloud::requests {
         );
     }
 
+    std::shared_ptr<RequestModelBase> RejectAllRevisionsRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any RejectAllRevisionsRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        auto typedResponse = std::static_pointer_cast< aspose::words::cloud::responses::RejectAllRevisionsResponse >(response);
+        return std::any(typedResponse->getModel());
+    }
+
     /*
      * RejectAllRevisionsOnline request implementation
      */
@@ -28336,6 +31947,17 @@ namespace aspose::words::cloud::requests {
         return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
             new aspose::words::cloud::responses::RejectAllRevisionsOnlineResponse()
         );
+    }
+
+    std::shared_ptr<RequestModelBase> RejectAllRevisionsOnlineRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any RejectAllRevisionsOnlineRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        auto typedResponse = std::static_pointer_cast< aspose::words::cloud::responses::RejectAllRevisionsOnlineResponse >(response);
+        return std::any(typedResponse);
     }
 
     /*
@@ -28437,6 +32059,17 @@ namespace aspose::words::cloud::requests {
         );
     }
 
+    std::shared_ptr<RequestModelBase> RemoveAllSignaturesRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any RemoveAllSignaturesRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        auto typedResponse = std::static_pointer_cast< aspose::words::cloud::responses::RemoveAllSignaturesResponse >(response);
+        return std::any(typedResponse->getModel());
+    }
+
     /*
      * RemoveAllSignaturesOnline request implementation
      */
@@ -28521,6 +32154,17 @@ namespace aspose::words::cloud::requests {
         return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
             new aspose::words::cloud::responses::RemoveAllSignaturesOnlineResponse()
         );
+    }
+
+    std::shared_ptr<RequestModelBase> RemoveAllSignaturesOnlineRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any RemoveAllSignaturesOnlineRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        auto typedResponse = std::static_pointer_cast< aspose::words::cloud::responses::RemoveAllSignaturesOnlineResponse >(response);
+        return std::any(typedResponse);
     }
 
     /*
@@ -28639,6 +32283,17 @@ namespace aspose::words::cloud::requests {
         );
     }
 
+    std::shared_ptr<RequestModelBase> RemoveRangeRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any RemoveRangeRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        auto typedResponse = std::static_pointer_cast< aspose::words::cloud::responses::RemoveRangeResponse >(response);
+        return std::any(typedResponse->getModel());
+    }
+
     /*
      * RemoveRangeOnline request implementation
      */
@@ -28740,6 +32395,17 @@ namespace aspose::words::cloud::requests {
         return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
             new aspose::words::cloud::responses::RemoveRangeOnlineResponse()
         );
+    }
+
+    std::shared_ptr<RequestModelBase> RemoveRangeOnlineRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any RemoveRangeOnlineRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        auto typedResponse = std::static_pointer_cast< aspose::words::cloud::responses::RemoveRangeOnlineResponse >(response);
+        return std::any(typedResponse);
     }
 
     /*
@@ -28875,6 +32541,17 @@ namespace aspose::words::cloud::requests {
         );
     }
 
+    std::shared_ptr<RequestModelBase> RenderDrawingObjectRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any RenderDrawingObjectRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        auto typedResponse = std::static_pointer_cast< aspose::words::cloud::responses::RenderDrawingObjectResponse >(response);
+        return std::any(typedResponse->getModel());
+    }
+
     /*
      * RenderDrawingObjectOnline request implementation
      */
@@ -28993,6 +32670,17 @@ namespace aspose::words::cloud::requests {
         return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
             new aspose::words::cloud::responses::RenderDrawingObjectOnlineResponse()
         );
+    }
+
+    std::shared_ptr<RequestModelBase> RenderDrawingObjectOnlineRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any RenderDrawingObjectOnlineRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        auto typedResponse = std::static_pointer_cast< aspose::words::cloud::responses::RenderDrawingObjectOnlineResponse >(response);
+        return std::any(typedResponse->getModel());
     }
 
     /*
@@ -29128,6 +32816,17 @@ namespace aspose::words::cloud::requests {
         );
     }
 
+    std::shared_ptr<RequestModelBase> RenderMathObjectRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any RenderMathObjectRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        auto typedResponse = std::static_pointer_cast< aspose::words::cloud::responses::RenderMathObjectResponse >(response);
+        return std::any(typedResponse->getModel());
+    }
+
     /*
      * RenderMathObjectOnline request implementation
      */
@@ -29248,6 +32947,17 @@ namespace aspose::words::cloud::requests {
         );
     }
 
+    std::shared_ptr<RequestModelBase> RenderMathObjectOnlineRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any RenderMathObjectOnlineRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        auto typedResponse = std::static_pointer_cast< aspose::words::cloud::responses::RenderMathObjectOnlineResponse >(response);
+        return std::any(typedResponse->getModel());
+    }
+
     /*
      * RenderPage request implementation
      */
@@ -29365,6 +33075,17 @@ namespace aspose::words::cloud::requests {
         );
     }
 
+    std::shared_ptr<RequestModelBase> RenderPageRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any RenderPageRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        auto typedResponse = std::static_pointer_cast< aspose::words::cloud::responses::RenderPageResponse >(response);
+        return std::any(typedResponse->getModel());
+    }
+
     /*
      * RenderPageOnline request implementation
      */
@@ -29467,6 +33188,17 @@ namespace aspose::words::cloud::requests {
         return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
             new aspose::words::cloud::responses::RenderPageOnlineResponse()
         );
+    }
+
+    std::shared_ptr<RequestModelBase> RenderPageOnlineRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any RenderPageOnlineRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        auto typedResponse = std::static_pointer_cast< aspose::words::cloud::responses::RenderPageOnlineResponse >(response);
+        return std::any(typedResponse->getModel());
     }
 
     /*
@@ -29602,6 +33334,17 @@ namespace aspose::words::cloud::requests {
         );
     }
 
+    std::shared_ptr<RequestModelBase> RenderParagraphRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any RenderParagraphRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        auto typedResponse = std::static_pointer_cast< aspose::words::cloud::responses::RenderParagraphResponse >(response);
+        return std::any(typedResponse->getModel());
+    }
+
     /*
      * RenderParagraphOnline request implementation
      */
@@ -29720,6 +33463,17 @@ namespace aspose::words::cloud::requests {
         return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
             new aspose::words::cloud::responses::RenderParagraphOnlineResponse()
         );
+    }
+
+    std::shared_ptr<RequestModelBase> RenderParagraphOnlineRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any RenderParagraphOnlineRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        auto typedResponse = std::static_pointer_cast< aspose::words::cloud::responses::RenderParagraphOnlineResponse >(response);
+        return std::any(typedResponse->getModel());
     }
 
     /*
@@ -29855,6 +33609,17 @@ namespace aspose::words::cloud::requests {
         );
     }
 
+    std::shared_ptr<RequestModelBase> RenderTableRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any RenderTableRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        auto typedResponse = std::static_pointer_cast< aspose::words::cloud::responses::RenderTableResponse >(response);
+        return std::any(typedResponse->getModel());
+    }
+
     /*
      * RenderTableOnline request implementation
      */
@@ -29973,6 +33738,17 @@ namespace aspose::words::cloud::requests {
         return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
             new aspose::words::cloud::responses::RenderTableOnlineResponse()
         );
+    }
+
+    std::shared_ptr<RequestModelBase> RenderTableOnlineRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any RenderTableOnlineRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        auto typedResponse = std::static_pointer_cast< aspose::words::cloud::responses::RenderTableOnlineResponse >(response);
+        return std::any(typedResponse->getModel());
     }
 
     /*
@@ -30103,6 +33879,17 @@ namespace aspose::words::cloud::requests {
         );
     }
 
+    std::shared_ptr<RequestModelBase> ReplaceTextRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any ReplaceTextRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        auto typedResponse = std::static_pointer_cast< aspose::words::cloud::responses::ReplaceTextResponse >(response);
+        return std::any(typedResponse->getModel());
+    }
+
     /*
      * ReplaceTextOnline request implementation
      */
@@ -30216,6 +34003,17 @@ namespace aspose::words::cloud::requests {
         return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
             new aspose::words::cloud::responses::ReplaceTextOnlineResponse()
         );
+    }
+
+    std::shared_ptr<RequestModelBase> ReplaceTextOnlineRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any ReplaceTextOnlineRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        auto typedResponse = std::static_pointer_cast< aspose::words::cloud::responses::ReplaceTextOnlineResponse >(response);
+        return std::any(typedResponse);
     }
 
     /*
@@ -30347,6 +34145,17 @@ namespace aspose::words::cloud::requests {
         );
     }
 
+    std::shared_ptr<RequestModelBase> ReplaceWithTextRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any ReplaceWithTextRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        auto typedResponse = std::static_pointer_cast< aspose::words::cloud::responses::ReplaceWithTextResponse >(response);
+        return std::any(typedResponse->getModel());
+    }
+
     /*
      * ReplaceWithTextOnline request implementation
      */
@@ -30463,6 +34272,17 @@ namespace aspose::words::cloud::requests {
         );
     }
 
+    std::shared_ptr<RequestModelBase> ReplaceWithTextOnlineRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any ReplaceWithTextOnlineRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        auto typedResponse = std::static_pointer_cast< aspose::words::cloud::responses::ReplaceWithTextOnlineResponse >(response);
+        return std::any(typedResponse);
+    }
+
     /*
      * ResetCache request implementation
      */
@@ -30496,6 +34316,16 @@ namespace aspose::words::cloud::requests {
         return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
             new aspose::words::cloud::responses::ResetCacheResponse()
         );
+    }
+
+    std::shared_ptr<RequestModelBase> ResetCacheRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any ResetCacheRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        return std::any();
     }
 
     /*
@@ -30610,6 +34440,17 @@ namespace aspose::words::cloud::requests {
         );
     }
 
+    std::shared_ptr<RequestModelBase> SaveAsRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any SaveAsRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        auto typedResponse = std::static_pointer_cast< aspose::words::cloud::responses::SaveAsResponse >(response);
+        return std::any(typedResponse->getModel());
+    }
+
     /*
      * SaveAsOnline request implementation
      */
@@ -30707,6 +34548,17 @@ namespace aspose::words::cloud::requests {
         return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
             new aspose::words::cloud::responses::SaveAsOnlineResponse()
         );
+    }
+
+    std::shared_ptr<RequestModelBase> SaveAsOnlineRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any SaveAsOnlineRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        auto typedResponse = std::static_pointer_cast< aspose::words::cloud::responses::SaveAsOnlineResponse >(response);
+        return std::any(typedResponse);
     }
 
     /*
@@ -30830,6 +34682,17 @@ namespace aspose::words::cloud::requests {
         );
     }
 
+    std::shared_ptr<RequestModelBase> SaveAsRangeRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any SaveAsRangeRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        auto typedResponse = std::static_pointer_cast< aspose::words::cloud::responses::SaveAsRangeResponse >(response);
+        return std::any(typedResponse->getModel());
+    }
+
     /*
      * SaveAsRangeOnline request implementation
      */
@@ -30936,6 +34799,17 @@ namespace aspose::words::cloud::requests {
         return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
             new aspose::words::cloud::responses::SaveAsRangeOnlineResponse()
         );
+    }
+
+    std::shared_ptr<RequestModelBase> SaveAsRangeOnlineRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any SaveAsRangeOnlineRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        auto typedResponse = std::static_pointer_cast< aspose::words::cloud::responses::SaveAsRangeOnlineResponse >(response);
+        return std::any(typedResponse);
     }
 
     /*
@@ -31186,6 +35060,17 @@ namespace aspose::words::cloud::requests {
         );
     }
 
+    std::shared_ptr<RequestModelBase> SaveAsTiffRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any SaveAsTiffRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        auto typedResponse = std::static_pointer_cast< aspose::words::cloud::responses::SaveAsTiffResponse >(response);
+        return std::any(typedResponse->getModel());
+    }
+
     /*
      * SaveAsTiffOnline request implementation
      */
@@ -31421,6 +35306,17 @@ namespace aspose::words::cloud::requests {
         );
     }
 
+    std::shared_ptr<RequestModelBase> SaveAsTiffOnlineRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any SaveAsTiffOnlineRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        auto typedResponse = std::static_pointer_cast< aspose::words::cloud::responses::SaveAsTiffOnlineResponse >(response);
+        return std::any(typedResponse);
+    }
+
     /*
      * Search request implementation
      */
@@ -31521,6 +35417,17 @@ namespace aspose::words::cloud::requests {
         );
     }
 
+    std::shared_ptr<RequestModelBase> SearchRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any SearchRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        auto typedResponse = std::static_pointer_cast< aspose::words::cloud::responses::SearchResponse >(response);
+        return std::any(typedResponse->getModel());
+    }
+
     /*
      * SearchOnline request implementation
      */
@@ -31606,6 +35513,17 @@ namespace aspose::words::cloud::requests {
         return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
             new aspose::words::cloud::responses::SearchOnlineResponse()
         );
+    }
+
+    std::shared_ptr<RequestModelBase> SearchOnlineRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any SearchOnlineRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        auto typedResponse = std::static_pointer_cast< aspose::words::cloud::responses::SearchOnlineResponse >(response);
+        return std::any(typedResponse->getModel());
     }
 
     /*
@@ -31725,6 +35643,17 @@ namespace aspose::words::cloud::requests {
         );
     }
 
+    std::shared_ptr<RequestModelBase> SignDocumentRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any SignDocumentRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        auto typedResponse = std::static_pointer_cast< aspose::words::cloud::responses::SignDocumentResponse >(response);
+        return std::any(typedResponse->getModel());
+    }
+
     /*
      * SignDocumentOnline request implementation
      */
@@ -31827,6 +35756,17 @@ namespace aspose::words::cloud::requests {
         return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
             new aspose::words::cloud::responses::SignDocumentOnlineResponse()
         );
+    }
+
+    std::shared_ptr<RequestModelBase> SignDocumentOnlineRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any SignDocumentOnlineRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        auto typedResponse = std::static_pointer_cast< aspose::words::cloud::responses::SignDocumentOnlineResponse >(response);
+        return std::any(typedResponse);
     }
 
     /*
@@ -31969,6 +35909,180 @@ namespace aspose::words::cloud::requests {
         );
     }
 
+    std::shared_ptr<RequestModelBase> SplitDocumentRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any SplitDocumentRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        auto typedResponse = std::static_pointer_cast< aspose::words::cloud::responses::SplitDocumentResponse >(response);
+        return std::any(typedResponse->getModel());
+    }
+
+    /*
+     * SplitDocumentJob request implementation
+     */
+    SplitDocumentJobRequest::SplitDocumentJobRequest(
+        const std::shared_ptr< std::wstring > name,
+        const std::shared_ptr< std::wstring > format,
+        const std::shared_ptr< std::wstring > folder,
+        const std::shared_ptr< std::wstring > storage,
+        const std::shared_ptr< std::wstring > loadEncoding,
+        const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport,
+        const std::shared_ptr< std::wstring > destFileName,
+        const std::shared_ptr< int32_t > from,
+        const std::shared_ptr< int32_t > to,
+        const std::shared_ptr< bool > zipOutput,
+        const std::shared_ptr< std::wstring > fontsLocation
+    ) : 
+        m_Name(name),
+        m_Format(format),
+        m_Folder(folder),
+        m_Storage(storage),
+        m_LoadEncoding(loadEncoding),
+        m_Password(password),
+        m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport),
+        m_DestFileName(destFileName),
+        m_From(from),
+        m_To(to),
+        m_ZipOutput(zipOutput),
+        m_FontsLocation(fontsLocation)
+    {
+    }
+
+    const std::shared_ptr< std::wstring > SplitDocumentJobRequest::getName() const
+    {
+        return m_Name;
+    }
+
+    const std::shared_ptr< std::wstring > SplitDocumentJobRequest::getFormat() const
+    {
+        return m_Format;
+    }
+
+    const std::shared_ptr< std::wstring > SplitDocumentJobRequest::getFolder() const
+    {
+        return m_Folder;
+    }
+
+    const std::shared_ptr< std::wstring > SplitDocumentJobRequest::getStorage() const
+    {
+        return m_Storage;
+    }
+
+    const std::shared_ptr< std::wstring > SplitDocumentJobRequest::getLoadEncoding() const
+    {
+        return m_LoadEncoding;
+    }
+
+    const std::shared_ptr< std::wstring > SplitDocumentJobRequest::getPassword() const
+    {
+        return m_Password;
+    }
+
+    const std::shared_ptr< std::wstring > SplitDocumentJobRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
+    }
+
+    const std::shared_ptr< bool > SplitDocumentJobRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
+    const std::shared_ptr< std::wstring > SplitDocumentJobRequest::getDestFileName() const
+    {
+        return m_DestFileName;
+    }
+
+    const std::shared_ptr< int32_t > SplitDocumentJobRequest::getFrom() const
+    {
+        return m_From;
+    }
+
+    const std::shared_ptr< int32_t > SplitDocumentJobRequest::getTo() const
+    {
+        return m_To;
+    }
+
+    const std::shared_ptr< bool > SplitDocumentJobRequest::getZipOutput() const
+    {
+        return m_ZipOutput;
+    }
+
+    const std::shared_ptr< std::wstring > SplitDocumentJobRequest::getFontsLocation() const
+    {
+        return m_FontsLocation;
+    }
+
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > SplitDocumentJobRequest::createHttpRequest(ApiClient* apiClient) const
+    {
+        std::vector<models::FileReference*> additionalFilesContent;
+        auto result = std::make_shared<HttpRequestData>();
+        result->setMethod(HttpRequestMethod::HttpPUT);
+        result->setPath(L"/words/job/put/{name}/split");
+        if (!m_Name) throw aspose::words::cloud::ApiException(400, L"Parameter 'Name' is required.");
+        result->setPathParam(L"{name}", *m_Name);
+        if (m_Format) result->addQueryParam(L"format", *m_Format);
+        else throw aspose::words::cloud::ApiException(400, L"Parameter 'Format' is required.");
+        if (m_Folder) result->addQueryParam(L"folder", *m_Folder);
+        if (m_Storage) result->addQueryParam(L"storage", *m_Storage);
+        if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
+        if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
+        if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
+        if (m_From) result->addQueryParam(L"from", *m_From);
+        if (m_To) result->addQueryParam(L"to", *m_To);
+        if (m_ZipOutput) result->addQueryParam(L"zipOutput", *m_ZipOutput);
+        if (m_FontsLocation) result->addQueryParam(L"fontsLocation", *m_FontsLocation);
+
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
+        {
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
+        }
+
+        return result;
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > SplitDocumentJobRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::SplitDocumentJobResponse()
+        );
+    }
+
+    std::shared_ptr<RequestModelBase> SplitDocumentJobRequest::getOriginalRequest() const
+    {
+        return std::shared_ptr<RequestModelBase>(new SplitDocumentRequest(m_Name,
+                    m_Format,
+                    m_Folder,
+                    m_Storage,
+                    m_LoadEncoding,
+                    m_Password,
+                    m_EncryptedPassword,
+                    m_OpenTypeSupport,
+                    m_DestFileName,
+                    m_From,
+                    m_To,
+                    m_ZipOutput,
+                    m_FontsLocation));
+    }
+
+    std::any SplitDocumentJobRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        auto typedResponse = std::static_pointer_cast< aspose::words::cloud::responses::SplitDocumentJobResponse >(response);
+        return std::any(typedResponse->getModel());
+    }
+
     /*
      * SplitDocumentOnline request implementation
      */
@@ -32096,6 +36210,165 @@ namespace aspose::words::cloud::requests {
         );
     }
 
+    std::shared_ptr<RequestModelBase> SplitDocumentOnlineRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any SplitDocumentOnlineRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        auto typedResponse = std::static_pointer_cast< aspose::words::cloud::responses::SplitDocumentOnlineResponse >(response);
+        return std::any(typedResponse);
+    }
+
+    /*
+     * SplitDocumentOnlineJob request implementation
+     */
+    SplitDocumentOnlineJobRequest::SplitDocumentOnlineJobRequest(
+        const std::shared_ptr< std::istream > document,
+        const std::shared_ptr< std::wstring > format,
+        const std::shared_ptr< std::wstring > loadEncoding,
+        const std::shared_ptr< std::wstring > password,
+        const std::shared_ptr< std::wstring > encryptedPassword,
+        const std::shared_ptr< bool > openTypeSupport,
+        const std::shared_ptr< std::wstring > destFileName,
+        const std::shared_ptr< int32_t > from,
+        const std::shared_ptr< int32_t > to,
+        const std::shared_ptr< bool > zipOutput,
+        const std::shared_ptr< std::wstring > fontsLocation
+    ) : 
+        m_Document(document),
+        m_Format(format),
+        m_LoadEncoding(loadEncoding),
+        m_Password(password),
+        m_EncryptedPassword(encryptedPassword),
+        m_OpenTypeSupport(openTypeSupport),
+        m_DestFileName(destFileName),
+        m_From(from),
+        m_To(to),
+        m_ZipOutput(zipOutput),
+        m_FontsLocation(fontsLocation)
+    {
+    }
+
+    const std::shared_ptr< std::istream > SplitDocumentOnlineJobRequest::getDocument() const
+    {
+        return m_Document;
+    }
+
+    const std::shared_ptr< std::wstring > SplitDocumentOnlineJobRequest::getFormat() const
+    {
+        return m_Format;
+    }
+
+    const std::shared_ptr< std::wstring > SplitDocumentOnlineJobRequest::getLoadEncoding() const
+    {
+        return m_LoadEncoding;
+    }
+
+    const std::shared_ptr< std::wstring > SplitDocumentOnlineJobRequest::getPassword() const
+    {
+        return m_Password;
+    }
+
+    const std::shared_ptr< std::wstring > SplitDocumentOnlineJobRequest::getEncryptedPassword() const
+    {
+        return m_EncryptedPassword;
+    }
+
+    const std::shared_ptr< bool > SplitDocumentOnlineJobRequest::getOpenTypeSupport() const
+    {
+        return m_OpenTypeSupport;
+    }
+
+    const std::shared_ptr< std::wstring > SplitDocumentOnlineJobRequest::getDestFileName() const
+    {
+        return m_DestFileName;
+    }
+
+    const std::shared_ptr< int32_t > SplitDocumentOnlineJobRequest::getFrom() const
+    {
+        return m_From;
+    }
+
+    const std::shared_ptr< int32_t > SplitDocumentOnlineJobRequest::getTo() const
+    {
+        return m_To;
+    }
+
+    const std::shared_ptr< bool > SplitDocumentOnlineJobRequest::getZipOutput() const
+    {
+        return m_ZipOutput;
+    }
+
+    const std::shared_ptr< std::wstring > SplitDocumentOnlineJobRequest::getFontsLocation() const
+    {
+        return m_FontsLocation;
+    }
+
+    std::shared_ptr< aspose::words::cloud::HttpRequestData > SplitDocumentOnlineJobRequest::createHttpRequest(ApiClient* apiClient) const
+    {
+        std::vector<models::FileReference*> additionalFilesContent;
+        auto result = std::make_shared<HttpRequestData>();
+        result->setMethod(HttpRequestMethod::HttpPUT);
+        result->setPath(L"/words/job/put/online/put/split");
+        if (m_Format) result->addQueryParam(L"format", *m_Format);
+        else throw aspose::words::cloud::ApiException(400, L"Parameter 'Format' is required.");
+        if (m_LoadEncoding) result->addQueryParam(L"loadEncoding", *m_LoadEncoding);
+        if (m_Password) result->addQueryParam(L"password", *m_Password);
+        if (m_EncryptedPassword) result->addQueryParam(L"encryptedPassword", *m_EncryptedPassword);
+        if (m_OpenTypeSupport) result->addQueryParam(L"openTypeSupport", *m_OpenTypeSupport);
+        if (m_DestFileName) result->addQueryParam(L"destFileName", *m_DestFileName);
+        if (m_From) result->addQueryParam(L"from", *m_From);
+        if (m_To) result->addQueryParam(L"to", *m_To);
+        if (m_ZipOutput) result->addQueryParam(L"zipOutput", *m_ZipOutput);
+        if (m_FontsLocation) result->addQueryParam(L"fontsLocation", *m_FontsLocation);
+        if (m_Document)
+        {
+            result->addFormDataParam(L"document", *m_Document);
+        }
+        else throw aspose::words::cloud::ApiException(400, L"Parameter 'Document' is required.");
+
+        for (models::FileReference* additionalFileContent : additionalFilesContent)
+        {
+            if (additionalFileContent != nullptr)
+            {
+                additionalFileContent->encryptPassword(apiClient);
+                result->addFormDataParam(additionalFileContent);
+            }
+        }
+
+        return result;
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > SplitDocumentOnlineJobRequest::createResponse() const
+    {
+        return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
+            new aspose::words::cloud::responses::SplitDocumentOnlineJobResponse()
+        );
+    }
+
+    std::shared_ptr<RequestModelBase> SplitDocumentOnlineJobRequest::getOriginalRequest() const
+    {
+        return std::shared_ptr<RequestModelBase>(new SplitDocumentOnlineRequest(m_Document,
+                    m_Format,
+                    m_LoadEncoding,
+                    m_Password,
+                    m_EncryptedPassword,
+                    m_OpenTypeSupport,
+                    m_DestFileName,
+                    m_From,
+                    m_To,
+                    m_ZipOutput,
+                    m_FontsLocation));
+    }
+
+    std::any SplitDocumentOnlineJobRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        auto typedResponse = std::static_pointer_cast< aspose::words::cloud::responses::SplitDocumentOnlineJobResponse >(response);
+        return std::any(typedResponse->getModel());
+    }
+
     /*
      * TranslateNodeId request implementation
      */
@@ -32196,6 +36469,17 @@ namespace aspose::words::cloud::requests {
         );
     }
 
+    std::shared_ptr<RequestModelBase> TranslateNodeIdRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any TranslateNodeIdRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        auto typedResponse = std::static_pointer_cast< aspose::words::cloud::responses::TranslateNodeIdResponse >(response);
+        return std::any(typedResponse->getModel());
+    }
+
     /*
      * TranslateNodeIdOnline request implementation
      */
@@ -32281,6 +36565,17 @@ namespace aspose::words::cloud::requests {
         return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
             new aspose::words::cloud::responses::TranslateNodeIdOnlineResponse()
         );
+    }
+
+    std::shared_ptr<RequestModelBase> TranslateNodeIdOnlineRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any TranslateNodeIdOnlineRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        auto typedResponse = std::static_pointer_cast< aspose::words::cloud::responses::TranslateNodeIdOnlineResponse >(response);
+        return std::any(typedResponse->getModel());
     }
 
     /*
@@ -32382,6 +36677,17 @@ namespace aspose::words::cloud::requests {
         );
     }
 
+    std::shared_ptr<RequestModelBase> UnprotectDocumentRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any UnprotectDocumentRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        auto typedResponse = std::static_pointer_cast< aspose::words::cloud::responses::UnprotectDocumentResponse >(response);
+        return std::any(typedResponse->getModel());
+    }
+
     /*
      * UnprotectDocumentOnline request implementation
      */
@@ -32466,6 +36772,17 @@ namespace aspose::words::cloud::requests {
         return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
             new aspose::words::cloud::responses::UnprotectDocumentOnlineResponse()
         );
+    }
+
+    std::shared_ptr<RequestModelBase> UnprotectDocumentOnlineRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any UnprotectDocumentOnlineRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        auto typedResponse = std::static_pointer_cast< aspose::words::cloud::responses::UnprotectDocumentOnlineResponse >(response);
+        return std::any(typedResponse);
     }
 
     /*
@@ -32605,6 +36922,17 @@ namespace aspose::words::cloud::requests {
         );
     }
 
+    std::shared_ptr<RequestModelBase> UpdateBookmarkRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any UpdateBookmarkRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        auto typedResponse = std::static_pointer_cast< aspose::words::cloud::responses::UpdateBookmarkResponse >(response);
+        return std::any(typedResponse->getModel());
+    }
+
     /*
      * UpdateBookmarkOnline request implementation
      */
@@ -32727,6 +37055,17 @@ namespace aspose::words::cloud::requests {
         return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
             new aspose::words::cloud::responses::UpdateBookmarkOnlineResponse()
         );
+    }
+
+    std::shared_ptr<RequestModelBase> UpdateBookmarkOnlineRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any UpdateBookmarkOnlineRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        auto typedResponse = std::static_pointer_cast< aspose::words::cloud::responses::UpdateBookmarkOnlineResponse >(response);
+        return std::any(typedResponse);
     }
 
     /*
@@ -32874,6 +37213,17 @@ namespace aspose::words::cloud::requests {
         );
     }
 
+    std::shared_ptr<RequestModelBase> UpdateBorderRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any UpdateBorderRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        auto typedResponse = std::static_pointer_cast< aspose::words::cloud::responses::UpdateBorderResponse >(response);
+        return std::any(typedResponse->getModel());
+    }
+
     /*
      * UpdateBorderOnline request implementation
      */
@@ -33004,6 +37354,17 @@ namespace aspose::words::cloud::requests {
         return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
             new aspose::words::cloud::responses::UpdateBorderOnlineResponse()
         );
+    }
+
+    std::shared_ptr<RequestModelBase> UpdateBorderOnlineRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any UpdateBorderOnlineRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        auto typedResponse = std::static_pointer_cast< aspose::words::cloud::responses::UpdateBorderOnlineResponse >(response);
+        return std::any(typedResponse);
     }
 
     /*
@@ -33143,6 +37504,17 @@ namespace aspose::words::cloud::requests {
         );
     }
 
+    std::shared_ptr<RequestModelBase> UpdateCommentRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any UpdateCommentRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        auto typedResponse = std::static_pointer_cast< aspose::words::cloud::responses::UpdateCommentResponse >(response);
+        return std::any(typedResponse->getModel());
+    }
+
     /*
      * UpdateCommentOnline request implementation
      */
@@ -33265,6 +37637,17 @@ namespace aspose::words::cloud::requests {
         return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
             new aspose::words::cloud::responses::UpdateCommentOnlineResponse()
         );
+    }
+
+    std::shared_ptr<RequestModelBase> UpdateCommentOnlineRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any UpdateCommentOnlineRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        auto typedResponse = std::static_pointer_cast< aspose::words::cloud::responses::UpdateCommentOnlineResponse >(response);
+        return std::any(typedResponse);
     }
 
     /*
@@ -33404,6 +37787,17 @@ namespace aspose::words::cloud::requests {
         );
     }
 
+    std::shared_ptr<RequestModelBase> UpdateCustomXmlPartRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any UpdateCustomXmlPartRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        auto typedResponse = std::static_pointer_cast< aspose::words::cloud::responses::UpdateCustomXmlPartResponse >(response);
+        return std::any(typedResponse->getModel());
+    }
+
     /*
      * UpdateCustomXmlPartOnline request implementation
      */
@@ -33526,6 +37920,17 @@ namespace aspose::words::cloud::requests {
         return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
             new aspose::words::cloud::responses::UpdateCustomXmlPartOnlineResponse()
         );
+    }
+
+    std::shared_ptr<RequestModelBase> UpdateCustomXmlPartOnlineRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any UpdateCustomXmlPartOnlineRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        auto typedResponse = std::static_pointer_cast< aspose::words::cloud::responses::UpdateCustomXmlPartOnlineResponse >(response);
+        return std::any(typedResponse);
     }
 
     /*
@@ -33685,6 +38090,17 @@ namespace aspose::words::cloud::requests {
         );
     }
 
+    std::shared_ptr<RequestModelBase> UpdateDrawingObjectRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any UpdateDrawingObjectRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        auto typedResponse = std::static_pointer_cast< aspose::words::cloud::responses::UpdateDrawingObjectResponse >(response);
+        return std::any(typedResponse->getModel());
+    }
+
     /*
      * UpdateDrawingObjectOnline request implementation
      */
@@ -33828,6 +38244,17 @@ namespace aspose::words::cloud::requests {
         return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
             new aspose::words::cloud::responses::UpdateDrawingObjectOnlineResponse()
         );
+    }
+
+    std::shared_ptr<RequestModelBase> UpdateDrawingObjectOnlineRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any UpdateDrawingObjectOnlineRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        auto typedResponse = std::static_pointer_cast< aspose::words::cloud::responses::UpdateDrawingObjectOnlineResponse >(response);
+        return std::any(typedResponse);
     }
 
     /*
@@ -33975,6 +38402,17 @@ namespace aspose::words::cloud::requests {
         );
     }
 
+    std::shared_ptr<RequestModelBase> UpdateFieldRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any UpdateFieldRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        auto typedResponse = std::static_pointer_cast< aspose::words::cloud::responses::UpdateFieldResponse >(response);
+        return std::any(typedResponse->getModel());
+    }
+
     /*
      * UpdateFieldOnline request implementation
      */
@@ -34107,6 +38545,17 @@ namespace aspose::words::cloud::requests {
         );
     }
 
+    std::shared_ptr<RequestModelBase> UpdateFieldOnlineRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any UpdateFieldOnlineRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        auto typedResponse = std::static_pointer_cast< aspose::words::cloud::responses::UpdateFieldOnlineResponse >(response);
+        return std::any(typedResponse);
+    }
+
     /*
      * UpdateFields request implementation
      */
@@ -34206,6 +38655,17 @@ namespace aspose::words::cloud::requests {
         );
     }
 
+    std::shared_ptr<RequestModelBase> UpdateFieldsRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any UpdateFieldsRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        auto typedResponse = std::static_pointer_cast< aspose::words::cloud::responses::UpdateFieldsResponse >(response);
+        return std::any(typedResponse->getModel());
+    }
+
     /*
      * UpdateFieldsOnline request implementation
      */
@@ -34290,6 +38750,17 @@ namespace aspose::words::cloud::requests {
         return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
             new aspose::words::cloud::responses::UpdateFieldsOnlineResponse()
         );
+    }
+
+    std::shared_ptr<RequestModelBase> UpdateFieldsOnlineRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any UpdateFieldsOnlineRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        auto typedResponse = std::static_pointer_cast< aspose::words::cloud::responses::UpdateFieldsOnlineResponse >(response);
+        return std::any(typedResponse);
     }
 
     /*
@@ -34437,6 +38908,17 @@ namespace aspose::words::cloud::requests {
         );
     }
 
+    std::shared_ptr<RequestModelBase> UpdateFootnoteRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any UpdateFootnoteRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        auto typedResponse = std::static_pointer_cast< aspose::words::cloud::responses::UpdateFootnoteResponse >(response);
+        return std::any(typedResponse->getModel());
+    }
+
     /*
      * UpdateFootnoteOnline request implementation
      */
@@ -34567,6 +39049,17 @@ namespace aspose::words::cloud::requests {
         return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
             new aspose::words::cloud::responses::UpdateFootnoteOnlineResponse()
         );
+    }
+
+    std::shared_ptr<RequestModelBase> UpdateFootnoteOnlineRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any UpdateFootnoteOnlineRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        auto typedResponse = std::static_pointer_cast< aspose::words::cloud::responses::UpdateFootnoteOnlineResponse >(response);
+        return std::any(typedResponse);
     }
 
     /*
@@ -34714,6 +39207,17 @@ namespace aspose::words::cloud::requests {
         );
     }
 
+    std::shared_ptr<RequestModelBase> UpdateFormFieldRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any UpdateFormFieldRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        auto typedResponse = std::static_pointer_cast< aspose::words::cloud::responses::UpdateFormFieldResponse >(response);
+        return std::any(typedResponse->getModel());
+    }
+
     /*
      * UpdateFormFieldOnline request implementation
      */
@@ -34844,6 +39348,17 @@ namespace aspose::words::cloud::requests {
         return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
             new aspose::words::cloud::responses::UpdateFormFieldOnlineResponse()
         );
+    }
+
+    std::shared_ptr<RequestModelBase> UpdateFormFieldOnlineRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any UpdateFormFieldOnlineRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        auto typedResponse = std::static_pointer_cast< aspose::words::cloud::responses::UpdateFormFieldOnlineResponse >(response);
+        return std::any(typedResponse);
     }
 
     /*
@@ -34981,6 +39496,17 @@ namespace aspose::words::cloud::requests {
         return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
             new aspose::words::cloud::responses::UpdateListResponse()
         );
+    }
+
+    std::shared_ptr<RequestModelBase> UpdateListRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any UpdateListRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        auto typedResponse = std::static_pointer_cast< aspose::words::cloud::responses::UpdateListResponse >(response);
+        return std::any(typedResponse->getModel());
     }
 
     /*
@@ -35129,6 +39655,17 @@ namespace aspose::words::cloud::requests {
         );
     }
 
+    std::shared_ptr<RequestModelBase> UpdateListLevelRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any UpdateListLevelRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        auto typedResponse = std::static_pointer_cast< aspose::words::cloud::responses::UpdateListLevelResponse >(response);
+        return std::any(typedResponse->getModel());
+    }
+
     /*
      * UpdateListLevelOnline request implementation
      */
@@ -35262,6 +39799,17 @@ namespace aspose::words::cloud::requests {
         );
     }
 
+    std::shared_ptr<RequestModelBase> UpdateListLevelOnlineRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any UpdateListLevelOnlineRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        auto typedResponse = std::static_pointer_cast< aspose::words::cloud::responses::UpdateListLevelOnlineResponse >(response);
+        return std::any(typedResponse);
+    }
+
     /*
      * UpdateListOnline request implementation
      */
@@ -35384,6 +39932,17 @@ namespace aspose::words::cloud::requests {
         return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
             new aspose::words::cloud::responses::UpdateListOnlineResponse()
         );
+    }
+
+    std::shared_ptr<RequestModelBase> UpdateListOnlineRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any UpdateListOnlineRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        auto typedResponse = std::static_pointer_cast< aspose::words::cloud::responses::UpdateListOnlineResponse >(response);
+        return std::any(typedResponse);
     }
 
     /*
@@ -35531,6 +40090,17 @@ namespace aspose::words::cloud::requests {
         );
     }
 
+    std::shared_ptr<RequestModelBase> UpdateParagraphFormatRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any UpdateParagraphFormatRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        auto typedResponse = std::static_pointer_cast< aspose::words::cloud::responses::UpdateParagraphFormatResponse >(response);
+        return std::any(typedResponse->getModel());
+    }
+
     /*
      * UpdateParagraphFormatOnline request implementation
      */
@@ -35661,6 +40231,17 @@ namespace aspose::words::cloud::requests {
         return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
             new aspose::words::cloud::responses::UpdateParagraphFormatOnlineResponse()
         );
+    }
+
+    std::shared_ptr<RequestModelBase> UpdateParagraphFormatOnlineRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any UpdateParagraphFormatOnlineRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        auto typedResponse = std::static_pointer_cast< aspose::words::cloud::responses::UpdateParagraphFormatOnlineResponse >(response);
+        return std::any(typedResponse);
     }
 
     /*
@@ -35808,6 +40389,17 @@ namespace aspose::words::cloud::requests {
         );
     }
 
+    std::shared_ptr<RequestModelBase> UpdateParagraphListFormatRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any UpdateParagraphListFormatRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        auto typedResponse = std::static_pointer_cast< aspose::words::cloud::responses::UpdateParagraphListFormatResponse >(response);
+        return std::any(typedResponse->getModel());
+    }
+
     /*
      * UpdateParagraphListFormatOnline request implementation
      */
@@ -35938,6 +40530,17 @@ namespace aspose::words::cloud::requests {
         return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
             new aspose::words::cloud::responses::UpdateParagraphListFormatOnlineResponse()
         );
+    }
+
+    std::shared_ptr<RequestModelBase> UpdateParagraphListFormatOnlineRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any UpdateParagraphListFormatOnlineRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        auto typedResponse = std::static_pointer_cast< aspose::words::cloud::responses::UpdateParagraphListFormatOnlineResponse >(response);
+        return std::any(typedResponse);
     }
 
     /*
@@ -36086,6 +40689,17 @@ namespace aspose::words::cloud::requests {
         );
     }
 
+    std::shared_ptr<RequestModelBase> UpdateRunRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any UpdateRunRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        auto typedResponse = std::static_pointer_cast< aspose::words::cloud::responses::UpdateRunResponse >(response);
+        return std::any(typedResponse->getModel());
+    }
+
     /*
      * UpdateRunFont request implementation
      */
@@ -36232,6 +40846,17 @@ namespace aspose::words::cloud::requests {
         );
     }
 
+    std::shared_ptr<RequestModelBase> UpdateRunFontRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any UpdateRunFontRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        auto typedResponse = std::static_pointer_cast< aspose::words::cloud::responses::UpdateRunFontResponse >(response);
+        return std::any(typedResponse->getModel());
+    }
+
     /*
      * UpdateRunFontOnline request implementation
      */
@@ -36365,6 +40990,17 @@ namespace aspose::words::cloud::requests {
         );
     }
 
+    std::shared_ptr<RequestModelBase> UpdateRunFontOnlineRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any UpdateRunFontOnlineRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        auto typedResponse = std::static_pointer_cast< aspose::words::cloud::responses::UpdateRunFontOnlineResponse >(response);
+        return std::any(typedResponse);
+    }
+
     /*
      * UpdateRunOnline request implementation
      */
@@ -36496,6 +41132,17 @@ namespace aspose::words::cloud::requests {
         return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
             new aspose::words::cloud::responses::UpdateRunOnlineResponse()
         );
+    }
+
+    std::shared_ptr<RequestModelBase> UpdateRunOnlineRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any UpdateRunOnlineRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        auto typedResponse = std::static_pointer_cast< aspose::words::cloud::responses::UpdateRunOnlineResponse >(response);
+        return std::any(typedResponse);
     }
 
     /*
@@ -36635,6 +41282,17 @@ namespace aspose::words::cloud::requests {
         );
     }
 
+    std::shared_ptr<RequestModelBase> UpdateSectionPageSetupRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any UpdateSectionPageSetupRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        auto typedResponse = std::static_pointer_cast< aspose::words::cloud::responses::UpdateSectionPageSetupResponse >(response);
+        return std::any(typedResponse->getModel());
+    }
+
     /*
      * UpdateSectionPageSetupOnline request implementation
      */
@@ -36757,6 +41415,17 @@ namespace aspose::words::cloud::requests {
         return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
             new aspose::words::cloud::responses::UpdateSectionPageSetupOnlineResponse()
         );
+    }
+
+    std::shared_ptr<RequestModelBase> UpdateSectionPageSetupOnlineRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any UpdateSectionPageSetupOnlineRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        auto typedResponse = std::static_pointer_cast< aspose::words::cloud::responses::UpdateSectionPageSetupOnlineResponse >(response);
+        return std::any(typedResponse);
     }
 
     /*
@@ -36904,6 +41573,17 @@ namespace aspose::words::cloud::requests {
         );
     }
 
+    std::shared_ptr<RequestModelBase> UpdateStructuredDocumentTagRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any UpdateStructuredDocumentTagRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        auto typedResponse = std::static_pointer_cast< aspose::words::cloud::responses::UpdateStructuredDocumentTagResponse >(response);
+        return std::any(typedResponse->getModel());
+    }
+
     /*
      * UpdateStructuredDocumentTagOnline request implementation
      */
@@ -37034,6 +41714,17 @@ namespace aspose::words::cloud::requests {
         return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
             new aspose::words::cloud::responses::UpdateStructuredDocumentTagOnlineResponse()
         );
+    }
+
+    std::shared_ptr<RequestModelBase> UpdateStructuredDocumentTagOnlineRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any UpdateStructuredDocumentTagOnlineRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        auto typedResponse = std::static_pointer_cast< aspose::words::cloud::responses::UpdateStructuredDocumentTagOnlineResponse >(response);
+        return std::any(typedResponse);
     }
 
     /*
@@ -37173,6 +41864,17 @@ namespace aspose::words::cloud::requests {
         );
     }
 
+    std::shared_ptr<RequestModelBase> UpdateStyleRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any UpdateStyleRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        auto typedResponse = std::static_pointer_cast< aspose::words::cloud::responses::UpdateStyleResponse >(response);
+        return std::any(typedResponse->getModel());
+    }
+
     /*
      * UpdateStyleOnline request implementation
      */
@@ -37295,6 +41997,17 @@ namespace aspose::words::cloud::requests {
         return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
             new aspose::words::cloud::responses::UpdateStyleOnlineResponse()
         );
+    }
+
+    std::shared_ptr<RequestModelBase> UpdateStyleOnlineRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any UpdateStyleOnlineRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        auto typedResponse = std::static_pointer_cast< aspose::words::cloud::responses::UpdateStyleOnlineResponse >(response);
+        return std::any(typedResponse);
     }
 
     /*
@@ -37443,6 +42156,17 @@ namespace aspose::words::cloud::requests {
         );
     }
 
+    std::shared_ptr<RequestModelBase> UpdateTableCellFormatRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any UpdateTableCellFormatRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        auto typedResponse = std::static_pointer_cast< aspose::words::cloud::responses::UpdateTableCellFormatResponse >(response);
+        return std::any(typedResponse->getModel());
+    }
+
     /*
      * UpdateTableCellFormatOnline request implementation
      */
@@ -37574,6 +42298,17 @@ namespace aspose::words::cloud::requests {
         return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
             new aspose::words::cloud::responses::UpdateTableCellFormatOnlineResponse()
         );
+    }
+
+    std::shared_ptr<RequestModelBase> UpdateTableCellFormatOnlineRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any UpdateTableCellFormatOnlineRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        auto typedResponse = std::static_pointer_cast< aspose::words::cloud::responses::UpdateTableCellFormatOnlineResponse >(response);
+        return std::any(typedResponse);
     }
 
     /*
@@ -37721,6 +42456,17 @@ namespace aspose::words::cloud::requests {
         );
     }
 
+    std::shared_ptr<RequestModelBase> UpdateTablePropertiesRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any UpdateTablePropertiesRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        auto typedResponse = std::static_pointer_cast< aspose::words::cloud::responses::UpdateTablePropertiesResponse >(response);
+        return std::any(typedResponse->getModel());
+    }
+
     /*
      * UpdateTablePropertiesOnline request implementation
      */
@@ -37851,6 +42597,17 @@ namespace aspose::words::cloud::requests {
         return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
             new aspose::words::cloud::responses::UpdateTablePropertiesOnlineResponse()
         );
+    }
+
+    std::shared_ptr<RequestModelBase> UpdateTablePropertiesOnlineRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any UpdateTablePropertiesOnlineRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        auto typedResponse = std::static_pointer_cast< aspose::words::cloud::responses::UpdateTablePropertiesOnlineResponse >(response);
+        return std::any(typedResponse);
     }
 
     /*
@@ -37999,6 +42756,17 @@ namespace aspose::words::cloud::requests {
         );
     }
 
+    std::shared_ptr<RequestModelBase> UpdateTableRowFormatRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any UpdateTableRowFormatRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        auto typedResponse = std::static_pointer_cast< aspose::words::cloud::responses::UpdateTableRowFormatResponse >(response);
+        return std::any(typedResponse->getModel());
+    }
+
     /*
      * UpdateTableRowFormatOnline request implementation
      */
@@ -38132,6 +42900,17 @@ namespace aspose::words::cloud::requests {
         );
     }
 
+    std::shared_ptr<RequestModelBase> UpdateTableRowFormatOnlineRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any UpdateTableRowFormatOnlineRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        auto typedResponse = std::static_pointer_cast< aspose::words::cloud::responses::UpdateTableRowFormatOnlineResponse >(response);
+        return std::any(typedResponse);
+    }
+
     /*
      * UploadFile request implementation
      */
@@ -38193,5 +42972,16 @@ namespace aspose::words::cloud::requests {
         return std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >(
             new aspose::words::cloud::responses::UploadFileResponse()
         );
+    }
+
+    std::shared_ptr<RequestModelBase> UploadFileRequest::getOriginalRequest() const
+    {
+        return std::const_pointer_cast<RequestModelBase>(shared_from_this());
+    }
+
+    std::any UploadFileRequest::getResponseResult(const std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase >& response) const
+    {
+        auto typedResponse = std::static_pointer_cast< aspose::words::cloud::responses::UploadFileResponse >(response);
+        return std::any(typedResponse->getModel());
     }
 }

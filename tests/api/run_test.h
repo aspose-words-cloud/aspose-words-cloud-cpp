@@ -24,6 +24,7 @@
 -------------------------------------------------------------------------------------------------------------------- **/
 
 #pragma once
+#include <chrono>
 #include "../test_base.h"
 
 /// <summary>
@@ -177,7 +178,7 @@ TEST_F(RunTests, TestDeleteRun) {
         nullptr
     ));
 
-getApi()->deleteRun(request);
+    getApi()->deleteRun(request);
 }
 
 /// <summary>

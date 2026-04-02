@@ -24,11 +24,16 @@
 -------------------------------------------------------------------------------------------------------------------- **/
 
 #pragma once
+#include <any>
 #include <mutex>
 #include <memory>
+#include <string_view>
+#include <vector>
 #include "./api_configuration.h"
 #include "./api_exception.h"
 #include "./http_request_data.h"
+#include "./models/job_info.h"
+#include "./requests/request_model_base.h"
 #include "./responses/response_model_base.h"
 #include "./common.h"
 
@@ -47,6 +52,12 @@ namespace aspose::words::cloud {
         ASPOSE_WORDS_CLOUD_EXPORT void call(
             std::shared_ptr< HttpRequestData > httpRequest,
             aspose::words::cloud::responses::ResponseModelBase& response);
+
+        ASPOSE_WORDS_CLOUD_EXPORT std::vector<std::string> callJobResult(const std::wstring& jobId);
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::JobInfo > deserializeJobInfoPart(const std::string_view& partData);
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > deserializeHttpResponsePart(
+            std::shared_ptr< aspose::words::cloud::requests::RequestModelBase > request,
+            const std::string_view& partData);
 
         ASPOSE_WORDS_CLOUD_EXPORT ::std::wstring encryptString(const ::std::wstring& text);
 

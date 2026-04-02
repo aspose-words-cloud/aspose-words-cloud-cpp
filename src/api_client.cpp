@@ -24,6 +24,9 @@
 -------------------------------------------------------------------------------------------------------------------- **/
 
 #include <random>
+#include <charconv>
+#include <string_view>
+#include <vector>
 #include "aspose_words_cloud/api_client.h"
 #include "aspose_words_cloud/requests/get_public_key_request.h"
 #include "aspose_words_cloud/responses/get_public_key_response.h"
@@ -133,6 +136,42 @@ namespace aspose::words::cloud {
         std::cout << printBuffer;
     }
 
+    inline std::wstring convertUtf8ToWide(const std::string_view& value)
+    {
+        std::wstring result;
+        ::utf8::utf8to16(value.begin(), value.end(), back_inserter(result));
+        return result;
+    }
+
+    inline std::string convertWideToUtf8(const std::wstring& value)
+    {
+        std::string result;
+        ::utf8::utf16to8(value.begin(), value.end(), back_inserter(result));
+        return result;
+    }
+
+    inline std::vector<std::string_view> parseMultipartParts(const std::string_view& data)
+    {
+        std::vector<std::string_view> result;
+        auto boundaryIndex = data.find("\r\n");
+        if (boundaryIndex == std::string_view::npos)
+            throw ApiException(400, L"Failed to parse multipart data.");
+
+        auto boundary = data.substr(0, boundaryIndex);
+        while (true) {
+            auto lastBoundaryIndex = boundaryIndex;
+            boundaryIndex = data.find(boundary, boundaryIndex + 2);
+            if (boundaryIndex == std::string_view::npos)
+                break;
+
+            auto part = data.substr(lastBoundaryIndex + 2, boundaryIndex - lastBoundaryIndex - 4);
+            result.push_back(part);
+            boundaryIndex = boundaryIndex + boundary.size();
+        }
+
+        return result;
+    }
+
     ApiClient::ApiClient(std::shared_ptr<ApiConfiguration> configuration )
         : m_Configuration(configuration),
         m_encryptionKey(nullptr)
@@ -240,6 +279,149 @@ namespace aspose::words::cloud {
         {
             response.setErrorData(httpResponse->body);
         }
+    }
+
+    std::vector<std::string> ApiClient::callJobResult(const std::wstring& jobId)
+    {
+        std::lock_guard<std::mutex> lock(m_Mutex);
+        if (m_AccessToken.empty()) requestToken();
+
+        auto httpRequest = std::make_shared<HttpRequestData>();
+        httpRequest->setMethod(HttpRequestMethod::HttpGET);
+        httpRequest->setPath(L"/words/job");
+        httpRequest->addQueryParam(L"id", jobId);
+
+        std::string path("/v4.0");
+        path.append(httpRequest->getFullPath());
+
+        ::httplib::Headers headers;
+        headers.emplace("Authorization", m_AccessToken);
+        headers.emplace("x-aspose-client-version", "26.3");
+        headers.emplace("x-aspose-client", "C++ SDK");
+
+        ::httplib::Result httpResponse = callInternal(
+            m_HttpClient,
+            httpRequest->getMethod(),
+            path.c_str(),
+            headers,
+            httpRequest->getBody(),
+            httpRequest->getContentType());
+        HandleHttpError(httpResponse);
+
+        if (httpResponse->status == 401)
+        {
+            requestToken();
+            httpResponse = callInternal(
+                m_HttpClient,
+                httpRequest->getMethod(),
+                path.c_str(),
+                headers,
+                httpRequest->getBody(),
+                httpRequest->getContentType());
+            HandleHttpError(httpResponse);
+        }
+
+        if (httpResponse->status < 200 || httpResponse->status >= 300)
+        {
+            throw ApiException(httpResponse->status, convertUtf8ToWide(httpResponse->body));
+        }
+
+        std::vector<std::string> result;
+        for (const auto& part : parseMultipartParts(httpResponse->body)) {
+            result.emplace_back(part);
+        }
+
+        return result;
+    }
+
+    std::shared_ptr< aspose::words::cloud::models::JobInfo > ApiClient::deserializeJobInfoPart(const std::string_view& partData)
+    {
+        auto headersEndIndex = partData.find("\r\n\r\n");
+        auto bodyData = headersEndIndex == std::string_view::npos ? partData : partData.substr(headersEndIndex + 4);
+        auto json = ::nlohmann::json::parse(bodyData);
+        auto result = std::make_shared< aspose::words::cloud::models::JobInfo >();
+        result->fromJson(&json);
+        return result;
+    }
+
+    std::shared_ptr< aspose::words::cloud::responses::ResponseModelBase > ApiClient::deserializeHttpResponsePart(
+        std::shared_ptr< aspose::words::cloud::requests::RequestModelBase > request,
+        const std::string_view& partData)
+    {
+        auto statusLineEndIndex = partData.find("\r\n");
+        if (statusLineEndIndex == std::string_view::npos) {
+            throw ApiException(400, L"Failed to parse HTTP response part.");
+        }
+
+        auto statusLine = partData.substr(0, statusLineEndIndex);
+        auto headersEndIndex = partData.find("\r\n\r\n");
+        if (headersEndIndex == std::string_view::npos) {
+            throw ApiException(400, L"Failed to parse HTTP response part.");
+        }
+
+        int statusCode = 0;
+        std::string contentType;
+        std::string_view headersData;
+        if (statusLine.find("HTTP/") == 0 || (!statusLine.empty() && statusLine[0] >= '0' && statusLine[0] <= '9')) {
+            auto firstSpaceIndex = statusLine.find(' ');
+            if (statusLine.find("HTTP/") == 0) {
+                if (firstSpaceIndex == std::string_view::npos) {
+                    throw ApiException(400, L"Failed to parse HTTP response part.");
+                }
+
+                auto secondSpaceIndex = statusLine.find(' ', firstSpaceIndex + 1);
+                auto statusCodeStr = statusLine.substr(firstSpaceIndex + 1, secondSpaceIndex - firstSpaceIndex - 1);
+                if (std::from_chars(statusCodeStr.data(), statusCodeStr.data() + statusCodeStr.size(), statusCode).ec != std::errc()) {
+                    throw ApiException(400, L"Failed to parse HTTP response part.");
+                }
+            }
+            else {
+                auto statusCodeStr = statusLine.substr(0, firstSpaceIndex);
+                if (std::from_chars(statusCodeStr.data(), statusCodeStr.data() + statusCodeStr.size(), statusCode).ec != std::errc()) {
+                    throw ApiException(400, L"Failed to parse HTTP response part.");
+                }
+            }
+
+            headersData = partData.substr(statusLineEndIndex + 2, headersEndIndex - statusLineEndIndex - 2);
+        }
+        else {
+            statusCode = 200;
+            headersData = partData.substr(0, headersEndIndex);
+        }
+
+        size_t lastHeaderIndex = 0;
+        while (lastHeaderIndex < headersData.size()) {
+            auto headerIndex = headersData.find("\r\n", lastHeaderIndex);
+            auto headerLine = headersData.substr(lastHeaderIndex, headerIndex == std::string_view::npos ? headersData.size() - lastHeaderIndex : headerIndex - lastHeaderIndex);
+            auto headerDelimiterIndex = headerLine.find(':');
+            if (headerDelimiterIndex != std::string_view::npos) {
+                auto headerName = headerLine.substr(0, headerDelimiterIndex);
+                if (headerName == "Content-Type") {
+                    contentType = std::string(headerLine.substr(headerDelimiterIndex + 1));
+                    if (!contentType.empty() && contentType[0] == ' ') {
+                        contentType.erase(0, 1);
+                    }
+                }
+            }
+
+            if (headerIndex == std::string_view::npos) {
+                break;
+            }
+
+            lastHeaderIndex = headerIndex + 2;
+        }
+
+        auto response = request->createResponse();
+        auto bodyData = partData.substr(headersEndIndex + 4);
+        response->setStatusCode(statusCode);
+        if (statusCode >= 200 && statusCode < 300) {
+            response->deserialize(contentType, bodyData);
+        }
+        else {
+            response->setErrorData(bodyData);
+        }
+
+        return response;
     }
 
     void ApiClient::requestToken()

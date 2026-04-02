@@ -24,6 +24,7 @@
 -------------------------------------------------------------------------------------------------------------------- **/
 
 #pragma once
+#include <chrono>
 #include "../test_base.h"
 
 /// <summary>
@@ -217,7 +218,7 @@ TEST_F(TableTests, TestDeleteTable) {
         nullptr
     ));
 
-getApi()->deleteTable(request);
+    getApi()->deleteTable(request);
 }
 
 /// <summary>
@@ -267,7 +268,7 @@ TEST_F(TableTests, TestDeleteTableWithoutNodePath) {
         nullptr
     ));
 
-getApi()->deleteTable(request);
+    getApi()->deleteTable(request);
 }
 
 /// <summary>
@@ -628,7 +629,7 @@ TEST_F(TableTests, TestDeleteTableRow) {
         nullptr
     ));
 
-getApi()->deleteTableRow(request);
+    getApi()->deleteTableRow(request);
 }
 
 /// <summary>
@@ -893,7 +894,7 @@ TEST_F(TableTests, TestDeleteTableCell) {
         nullptr
     ));
 
-getApi()->deleteTableCell(request);
+    getApi()->deleteTableCell(request);
 }
 
 /// <summary>

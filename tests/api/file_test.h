@@ -24,6 +24,7 @@
 -------------------------------------------------------------------------------------------------------------------- **/
 
 #pragma once
+#include <chrono>
 #include "../test_base.h"
 
 /// <summary>
@@ -74,7 +75,7 @@ TEST_F(FileTests, TestCopyFile) {
         nullptr
     ));
 
-getApi()->copyFile(request);
+    getApi()->copyFile(request);
 }
 
 /// <summary>
@@ -96,7 +97,7 @@ TEST_F(FileTests, TestMoveFile) {
         nullptr
     ));
 
-getApi()->moveFile(request);
+    getApi()->moveFile(request);
 }
 
 /// <summary>
@@ -116,7 +117,7 @@ TEST_F(FileTests, TestDeleteFile) {
         nullptr
     ));
 
-getApi()->deleteFile(request);
+    getApi()->deleteFile(request);
 }
 
 /// <summary>

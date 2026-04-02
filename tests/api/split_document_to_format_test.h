@@ -24,6 +24,7 @@
 -------------------------------------------------------------------------------------------------------------------- **/
 
 #pragma once
+#include <chrono>
 #include "../test_base.h"
 
 /// <summary>
@@ -70,6 +71,40 @@ TEST_F(SplitDocumentToFormatTests, TestSplitDocument) {
 }
 
 /// <summary>
+/// Test for document splitting job.
+/// </summary>
+TEST_F(SplitDocumentToFormatTests, TestSplitDocumentJob) {
+    std::wstring remoteFileName = L"TestSplitDocument.docx";
+
+    uploadFileToStorage(
+        localTestDataFolder + L"/" + localFile,
+        remoteDataFolder + L"/" + remoteFileName
+    );
+
+    std::shared_ptr<requests::SplitDocumentJobRequest> request(new requests::SplitDocumentJobRequest(
+        std::make_shared< std::wstring >(remoteFileName),
+        std::make_shared< std::wstring >(L"text"),
+        std::make_shared< std::wstring >(remoteDataFolder),
+        nullptr,
+        nullptr,
+        nullptr,
+        nullptr,
+        nullptr,
+        std::make_shared< std::wstring >(baseTestOutPath + L"/TestSplitDocument.text"),
+        std::make_shared< int32_t >(1),
+        std::make_shared< int32_t >(2),
+        nullptr,
+        nullptr
+    ));
+
+    auto jobHandler = getApi()->splitDocumentJob(request);
+    auto actual = jobHandler->waitResult(std::chrono::milliseconds(3000));
+    ASSERT_TRUE(actual->getSplitResult() != nullptr);
+    ASSERT_TRUE(actual->getSplitResult()->getPages() != nullptr);
+    ASSERT_EQ(2, actual->getSplitResult()->getPages()->size());
+}
+
+/// <summary>
 /// Test for document splitting online.
 /// </summary>
 TEST_F(SplitDocumentToFormatTests, TestSplitDocumentOnline) {
@@ -89,4 +124,27 @@ TEST_F(SplitDocumentToFormatTests, TestSplitDocumentOnline) {
     ));
 
     auto actual = getApi()->splitDocumentOnline(request);
+}
+
+/// <summary>
+/// Test for document splitting online job.
+/// </summary>
+TEST_F(SplitDocumentToFormatTests, TestSplitDocumentOnlineJob) {
+    auto requestDocument = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(localFile)), std::istream::binary));
+    std::shared_ptr<requests::SplitDocumentOnlineJobRequest> request(new requests::SplitDocumentOnlineJobRequest(
+        requestDocument,
+        std::make_shared< std::wstring >(L"text"),
+        nullptr,
+        nullptr,
+        nullptr,
+        nullptr,
+        std::make_shared< std::wstring >(baseTestOutPath + L"/TestSplitDocument.text"),
+        std::make_shared< int32_t >(1),
+        std::make_shared< int32_t >(2),
+        nullptr,
+        nullptr
+    ));
+
+    auto jobHandler = getApi()->splitDocumentOnlineJob(request);
+    jobHandler->waitResult(std::chrono::milliseconds(3000));
 }

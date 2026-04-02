@@ -24,6 +24,7 @@
 -------------------------------------------------------------------------------------------------------------------- **/
 
 #pragma once
+#include <chrono>
 #include "../test_base.h"
 
 /// <summary>
@@ -156,7 +157,7 @@ TEST_F(FootnoteTests, TestDeleteFootnote) {
         nullptr
     ));
 
-getApi()->deleteFootnote(request);
+    getApi()->deleteFootnote(request);
 }
 
 /// <summary>
@@ -206,7 +207,7 @@ TEST_F(FootnoteTests, TestDeleteFootnoteWithoutNodePath) {
         nullptr
     ));
 
-getApi()->deleteFootnote(request);
+    getApi()->deleteFootnote(request);
 }
 
 /// <summary>

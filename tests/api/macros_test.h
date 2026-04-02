@@ -24,6 +24,7 @@
 -------------------------------------------------------------------------------------------------------------------- **/
 
 #pragma once
+#include <chrono>
 #include "../test_base.h"
 
 /// <summary>
@@ -60,7 +61,7 @@ TEST_F(MacrosTests, TestDeleteMacros) {
         nullptr
     ));
 
-getApi()->deleteMacros(request);
+    getApi()->deleteMacros(request);
 }
 
 /// <summary>

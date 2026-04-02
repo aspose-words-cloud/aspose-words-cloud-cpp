@@ -24,6 +24,7 @@
 -------------------------------------------------------------------------------------------------------------------- **/
 
 #pragma once
+#include <chrono>
 #include "../test_base.h"
 
 /// <summary>
@@ -59,6 +60,29 @@ TEST_F(ExecuteMailMergeTests, TestExecuteMailMergeOnline) {
 }
 
 /// <summary>
+/// Test for executing mail merge online job.
+/// </summary>
+TEST_F(ExecuteMailMergeTests, TestExecuteMailMergeOnlineJob) {
+    std::wstring localDocumentFile = L"SampleExecuteTemplate.docx";
+    std::wstring localDataFile = L"SampleExecuteTemplateData.txt";
+
+    auto requestTemplate = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(mailMergeFolder + L"/" + localDocumentFile)), std::istream::binary));
+    auto requestData = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(mailMergeFolder + L"/" + localDataFile)), std::istream::binary));
+    std::shared_ptr<requests::ExecuteMailMergeOnlineJobRequest> request(new requests::ExecuteMailMergeOnlineJobRequest(
+        requestTemplate,
+        requestData,
+        nullptr,
+        std::make_shared< bool >(true),
+        nullptr,
+        nullptr,
+        nullptr
+    ));
+
+    auto jobHandler = getApi()->executeMailMergeOnlineJob(request);
+    jobHandler->waitResult(std::chrono::milliseconds(3000));
+}
+
+/// <summary>
 /// Test for executing mail merge.
 /// </summary>
 TEST_F(ExecuteMailMergeTests, TestExecuteMailMerge) {
@@ -90,6 +114,43 @@ TEST_F(ExecuteMailMergeTests, TestExecuteMailMerge) {
     ));
 
     auto actual = getApi()->executeMailMerge(request);
+    ASSERT_TRUE(actual->getDocument() != nullptr);
+    ASSERT_TRUE(actual->getDocument()->getFileName()->compare(L"TestExecuteMailMerge.docx") == 0);
+}
+
+/// <summary>
+/// Test for executing mail merge job.
+/// </summary>
+TEST_F(ExecuteMailMergeTests, TestExecuteMailMergeJob) {
+    std::wstring localDocumentFile = L"SampleExecuteTemplate.docx";
+    std::wstring remoteFileName = L"TestExecuteMailMerge.docx";
+    std::wstring localDataFile = getFileTextUtf16(localTestDataFolder + L"/" + mailMergeFolder + L"/SampleMailMergeTemplateData.txt");
+
+    uploadFileToStorage(
+        localTestDataFolder + L"/" + mailMergeFolder + L"/" + localDocumentFile,
+        remoteDataFolder + L"/" + remoteFileName
+    );
+
+    std::shared_ptr<requests::ExecuteMailMergeJobRequest> request(new requests::ExecuteMailMergeJobRequest(
+        std::make_shared< std::wstring >(remoteFileName),
+        std::make_shared< std::wstring >(localDataFile),
+        nullptr,
+        std::make_shared< std::wstring >(remoteDataFolder),
+        nullptr,
+        nullptr,
+        nullptr,
+        nullptr,
+        nullptr,
+        std::make_shared< bool >(true),
+        nullptr,
+        nullptr,
+        nullptr,
+        nullptr,
+        std::make_shared< std::wstring >(baseTestOutPath + L"/" + remoteFileName)
+    ));
+
+    auto jobHandler = getApi()->executeMailMergeJob(request);
+    auto actual = jobHandler->waitResult(std::chrono::milliseconds(3000));
     ASSERT_TRUE(actual->getDocument() != nullptr);
     ASSERT_TRUE(actual->getDocument()->getFileName()->compare(L"TestExecuteMailMerge.docx") == 0);
 }

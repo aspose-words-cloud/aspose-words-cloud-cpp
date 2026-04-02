@@ -27,6 +27,7 @@
 #include <vector>
 #include "aspose_words_cloud/common.h"
 #include "aspose_words_cloud/api_client.h"
+#include "aspose_words_cloud/job_handler.h"
 #include "aspose_words_cloud/requests/batch_request.h"
 #include "aspose_words_cloud/responses/batch_response.h"
 #include "aspose_words_cloud/requests/accept_all_revisions_request.h"
@@ -35,8 +36,12 @@
 #include "aspose_words_cloud/responses/accept_all_revisions_online_response.h"
 #include "aspose_words_cloud/requests/append_document_request.h"
 #include "aspose_words_cloud/responses/append_document_response.h"
+#include "aspose_words_cloud/requests/append_document_job_request.h"
+#include "aspose_words_cloud/responses/append_document_job_response.h"
 #include "aspose_words_cloud/requests/append_document_online_request.h"
 #include "aspose_words_cloud/responses/append_document_online_response.h"
+#include "aspose_words_cloud/requests/append_document_online_job_request.h"
+#include "aspose_words_cloud/responses/append_document_online_job_response.h"
 #include "aspose_words_cloud/requests/apply_style_to_document_element_request.h"
 #include "aspose_words_cloud/responses/apply_style_to_document_element_response.h"
 #include "aspose_words_cloud/requests/apply_style_to_document_element_online_request.h"
@@ -55,6 +60,8 @@
 #include "aspose_words_cloud/responses/compress_document_online_response.h"
 #include "aspose_words_cloud/requests/convert_document_request.h"
 #include "aspose_words_cloud/responses/convert_document_response.h"
+#include "aspose_words_cloud/requests/convert_document_job_request.h"
+#include "aspose_words_cloud/responses/convert_document_job_response.h"
 #include "aspose_words_cloud/requests/copy_file_request.h"
 #include "aspose_words_cloud/responses/copy_file_response.h"
 #include "aspose_words_cloud/requests/copy_folder_request.h"
@@ -201,8 +208,12 @@
 #include "aspose_words_cloud/responses/download_file_response.h"
 #include "aspose_words_cloud/requests/execute_mail_merge_request.h"
 #include "aspose_words_cloud/responses/execute_mail_merge_response.h"
+#include "aspose_words_cloud/requests/execute_mail_merge_job_request.h"
+#include "aspose_words_cloud/responses/execute_mail_merge_job_response.h"
 #include "aspose_words_cloud/requests/execute_mail_merge_online_request.h"
 #include "aspose_words_cloud/responses/execute_mail_merge_online_response.h"
+#include "aspose_words_cloud/requests/execute_mail_merge_online_job_request.h"
+#include "aspose_words_cloud/responses/execute_mail_merge_online_job_response.h"
 #include "aspose_words_cloud/requests/get_all_revisions_request.h"
 #include "aspose_words_cloud/responses/get_all_revisions_response.h"
 #include "aspose_words_cloud/requests/get_all_revisions_online_request.h"
@@ -621,8 +632,12 @@
 #include "aspose_words_cloud/responses/sign_document_online_response.h"
 #include "aspose_words_cloud/requests/split_document_request.h"
 #include "aspose_words_cloud/responses/split_document_response.h"
+#include "aspose_words_cloud/requests/split_document_job_request.h"
+#include "aspose_words_cloud/responses/split_document_job_response.h"
 #include "aspose_words_cloud/requests/split_document_online_request.h"
 #include "aspose_words_cloud/responses/split_document_online_response.h"
+#include "aspose_words_cloud/requests/split_document_online_job_request.h"
+#include "aspose_words_cloud/responses/split_document_online_job_response.h"
 #include "aspose_words_cloud/requests/translate_node_id_request.h"
 #include "aspose_words_cloud/responses/translate_node_id_response.h"
 #include "aspose_words_cloud/requests/translate_node_id_online_request.h"
@@ -765,6 +780,22 @@ namespace aspose::words::cloud::api {
         /// <summary>
         /// Appends documents to the original document.
         /// </summary>
+        /// <param name="name">The filename of the input document.</param>
+        /// <param name="documentList"><see cref="BaseEntryList"/> with a list of entries to append.</param>
+        /// <param name="folder">Original document folder.</param>
+        /// <param name="storage">Original document storage.</param>
+        /// <param name="loadEncoding">Encoding that will be used to load an HTML (or TXT) document if the encoding is not specified in HTML.</param>
+        /// <param name="password">Password of protected Word document. Use the parameter to pass a password via SDK. SDK encrypts it automatically. We don't recommend to use the parameter to pass a plain password for direct call of API.</param>
+        /// <param name="encryptedPassword">Password of protected Word document. Use the parameter to pass an encrypted password for direct calls of API. See SDK code for encyption details.</param>
+        /// <param name="openTypeSupport">The value indicates whether OpenType support is on.</param>
+        /// <param name="destFileName">Result path of the document after the operation. If this parameter is omitted then result of the operation will be saved as the source document.</param>
+        /// <param name="revisionAuthor">Initials of the author to use for revisions.If you set this parameter and then make some changes to the document programmatically, save the document and later open the document in MS Word you will see these changes as revisions.</param>
+        /// <param name="revisionDateTime">The date and time to use for revisions.</param>
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr<aspose::words::cloud::JobHandler< std::shared_ptr< aspose::words::cloud::models::DocumentResponse > > > appendDocumentJob(std::shared_ptr<aspose::words::cloud::requests::AppendDocumentJobRequest> request);
+
+        /// <summary>
+        /// Appends documents to the original document.
+        /// </summary>
         /// <param name="document">Original document.</param>
         /// <param name="documentList"><see cref="BaseEntryList"/> with a list of entries to append.</param>
         /// <param name="loadEncoding">Encoding that will be used to load an HTML (or TXT) document if the encoding is not specified in HTML.</param>
@@ -775,6 +806,20 @@ namespace aspose::words::cloud::api {
         /// <param name="revisionAuthor">Initials of the author to use for revisions.If you set this parameter and then make some changes to the document programmatically, save the document and later open the document in MS Word you will see these changes as revisions.</param>
         /// <param name="revisionDateTime">The date and time to use for revisions.</param>
         ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr<aspose::words::cloud::responses::AppendDocumentOnlineResponse> appendDocumentOnline(std::shared_ptr<aspose::words::cloud::requests::AppendDocumentOnlineRequest> request);
+
+        /// <summary>
+        /// Appends documents to the original document.
+        /// </summary>
+        /// <param name="document">Original document.</param>
+        /// <param name="documentList"><see cref="BaseEntryList"/> with a list of entries to append.</param>
+        /// <param name="loadEncoding">Encoding that will be used to load an HTML (or TXT) document if the encoding is not specified in HTML.</param>
+        /// <param name="password">Password of protected Word document. Use the parameter to pass a password via SDK. SDK encrypts it automatically. We don't recommend to use the parameter to pass a plain password for direct call of API.</param>
+        /// <param name="encryptedPassword">Password of protected Word document. Use the parameter to pass an encrypted password for direct calls of API. See SDK code for encyption details.</param>
+        /// <param name="openTypeSupport">The value indicates whether OpenType support is on.</param>
+        /// <param name="destFileName">Result path of the document after the operation. If this parameter is omitted then result of the operation will be saved as the source document.</param>
+        /// <param name="revisionAuthor">Initials of the author to use for revisions.If you set this parameter and then make some changes to the document programmatically, save the document and later open the document in MS Word you will see these changes as revisions.</param>
+        /// <param name="revisionDateTime">The date and time to use for revisions.</param>
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr<aspose::words::cloud::JobHandler< std::shared_ptr<aspose::words::cloud::responses::AppendDocumentOnlineResponse> > > appendDocumentOnlineJob(std::shared_ptr<aspose::words::cloud::requests::AppendDocumentOnlineJobRequest> request);
 
         /// <summary>
         /// Applies a style to the document node.
@@ -902,6 +947,21 @@ namespace aspose::words::cloud::api {
         /// <param name="openTypeSupport">The value indicates whether OpenType support is on.</param>
         /// <param name="fontsLocation">Folder in filestorage with custom fonts.</param>
         ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::istream > convertDocument(std::shared_ptr<aspose::words::cloud::requests::ConvertDocumentRequest> request);
+
+        /// <summary>
+        /// Converts a document on a local drive to the specified format.
+        /// </summary>
+        /// <param name="document">Converting document.</param>
+        /// <param name="format">The format to convert.</param>
+        /// <param name="outPath">The path to the output document on a local storage.</param>
+        /// <param name="fileNameFieldValue">The filename of the output document, that will be used when the resulting document has a dynamic field {filename}. If it is not set, the "sourceFilename" will be used instead.</param>
+        /// <param name="storage">Original document storage.</param>
+        /// <param name="loadEncoding">Encoding that will be used to load an HTML (or TXT) document if the encoding is not specified in HTML.</param>
+        /// <param name="password">Password of protected Word document. Use the parameter to pass a password via SDK. SDK encrypts it automatically. We don't recommend to use the parameter to pass a plain password for direct call of API.</param>
+        /// <param name="encryptedPassword">Password of protected Word document. Use the parameter to pass an encrypted password for direct calls of API. See SDK code for encyption details.</param>
+        /// <param name="openTypeSupport">The value indicates whether OpenType support is on.</param>
+        /// <param name="fontsLocation">Folder in filestorage with custom fonts.</param>
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr<aspose::words::cloud::JobHandler< std::shared_ptr< std::istream > > > convertDocumentJob(std::shared_ptr<aspose::words::cloud::requests::ConvertDocumentJobRequest> request);
 
         /// <summary>
         /// Copy file.
@@ -1981,6 +2041,26 @@ namespace aspose::words::cloud::api {
         ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< aspose::words::cloud::models::DocumentResponse > executeMailMerge(std::shared_ptr<aspose::words::cloud::requests::ExecuteMailMergeRequest> request);
 
         /// <summary>
+        /// Executes a Mail Merge operation.
+        /// </summary>
+        /// <param name="name">The filename of the input document.</param>
+        /// <param name="data">Mail merge data.</param>
+        /// <param name="options">Field options.</param>
+        /// <param name="folder">Original document folder.</param>
+        /// <param name="storage">Original document storage.</param>
+        /// <param name="loadEncoding">Encoding that will be used to load an HTML (or TXT) document if the encoding is not specified in HTML.</param>
+        /// <param name="password">Password of protected Word document. Use the parameter to pass a password via SDK. SDK encrypts it automatically. We don't recommend to use the parameter to pass a plain password for direct call of API.</param>
+        /// <param name="encryptedPassword">Password of protected Word document. Use the parameter to pass an encrypted password for direct calls of API. See SDK code for encyption details.</param>
+        /// <param name="openTypeSupport">The value indicates whether OpenType support is on.</param>
+        /// <param name="withRegions">The flag indicating whether to execute Mail Merge operation with regions.</param>
+        /// <param name="mailMergeDataFile">The data file.</param>
+        /// <param name="cleanup">The cleanup options.</param>
+        /// <param name="useWholeParagraphAsRegion">The flag indicating whether paragraph with TableStart or TableEnd field should be fully included into mail merge region or particular range between TableStart and TableEnd fields. The default value is true.</param>
+        /// <param name="mergeWholeDocument">The flag indicating whether fields in whole document are updated while executing of a mail merge with regions.</param>
+        /// <param name="destFileName">The filename of the output document. If this parameter is omitted, the result will be saved with autogenerated name.</param>
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr<aspose::words::cloud::JobHandler< std::shared_ptr< aspose::words::cloud::models::DocumentResponse > > > executeMailMergeJob(std::shared_ptr<aspose::words::cloud::requests::ExecuteMailMergeJobRequest> request);
+
+        /// <summary>
         /// Executes a Mail Merge operation online.
         /// </summary>
         /// <param name="_template">File with template.</param>
@@ -1991,6 +2071,18 @@ namespace aspose::words::cloud::api {
         /// <param name="cleanup">The cleanup options.</param>
         /// <param name="documentFileName">The filename of the output document, that will be used when the resulting document has a dynamic field {filename}. If it is not set, the "template" will be used instead.</param>
         ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr< std::istream > executeMailMergeOnline(std::shared_ptr<aspose::words::cloud::requests::ExecuteMailMergeOnlineRequest> request);
+
+        /// <summary>
+        /// Executes a Mail Merge operation online.
+        /// </summary>
+        /// <param name="_template">File with template.</param>
+        /// <param name="data">File with mailmerge data.</param>
+        /// <param name="options">Field options.</param>
+        /// <param name="withRegions">The flag indicating whether to execute Mail Merge operation with regions.</param>
+        /// <param name="mergeWholeDocument">The flag indicating whether fields in whole document are updated while executing of a mail merge with regions.</param>
+        /// <param name="cleanup">The cleanup options.</param>
+        /// <param name="documentFileName">The filename of the output document, that will be used when the resulting document has a dynamic field {filename}. If it is not set, the "template" will be used instead.</param>
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr<aspose::words::cloud::JobHandler< std::shared_ptr< std::istream > > > executeMailMergeOnlineJob(std::shared_ptr<aspose::words::cloud::requests::ExecuteMailMergeOnlineJobRequest> request);
 
         /// <summary>
         /// Get all information about revisions.
@@ -4785,6 +4877,24 @@ namespace aspose::words::cloud::api {
         /// <summary>
         /// Splits a document into parts and saves them in the specified format.
         /// </summary>
+        /// <param name="name">The filename of the input document.</param>
+        /// <param name="format">The format to split.</param>
+        /// <param name="folder">Original document folder.</param>
+        /// <param name="storage">Original document storage.</param>
+        /// <param name="loadEncoding">Encoding that will be used to load an HTML (or TXT) document if the encoding is not specified in HTML.</param>
+        /// <param name="password">Password of protected Word document. Use the parameter to pass a password via SDK. SDK encrypts it automatically. We don't recommend to use the parameter to pass a plain password for direct call of API.</param>
+        /// <param name="encryptedPassword">Password of protected Word document. Use the parameter to pass an encrypted password for direct calls of API. See SDK code for encyption details.</param>
+        /// <param name="openTypeSupport">The value indicates whether OpenType support is on.</param>
+        /// <param name="destFileName">Result path of the document after the operation. If this parameter is omitted then result of the operation will be saved as the source document.</param>
+        /// <param name="from">The start page.</param>
+        /// <param name="to">The end page.</param>
+        /// <param name="zipOutput">The flag indicating whether to ZIP the output.</param>
+        /// <param name="fontsLocation">Folder in filestorage with custom fonts.</param>
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr<aspose::words::cloud::JobHandler< std::shared_ptr< aspose::words::cloud::models::SplitDocumentResponse > > > splitDocumentJob(std::shared_ptr<aspose::words::cloud::requests::SplitDocumentJobRequest> request);
+
+        /// <summary>
+        /// Splits a document into parts and saves them in the specified format.
+        /// </summary>
         /// <param name="document">The document.</param>
         /// <param name="format">The format to split.</param>
         /// <param name="loadEncoding">Encoding that will be used to load an HTML (or TXT) document if the encoding is not specified in HTML.</param>
@@ -4797,6 +4907,22 @@ namespace aspose::words::cloud::api {
         /// <param name="zipOutput">The flag indicating whether to ZIP the output.</param>
         /// <param name="fontsLocation">Folder in filestorage with custom fonts.</param>
         ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr<aspose::words::cloud::responses::SplitDocumentOnlineResponse> splitDocumentOnline(std::shared_ptr<aspose::words::cloud::requests::SplitDocumentOnlineRequest> request);
+
+        /// <summary>
+        /// Splits a document into parts and saves them in the specified format.
+        /// </summary>
+        /// <param name="document">The document.</param>
+        /// <param name="format">The format to split.</param>
+        /// <param name="loadEncoding">Encoding that will be used to load an HTML (or TXT) document if the encoding is not specified in HTML.</param>
+        /// <param name="password">Password of protected Word document. Use the parameter to pass a password via SDK. SDK encrypts it automatically. We don't recommend to use the parameter to pass a plain password for direct call of API.</param>
+        /// <param name="encryptedPassword">Password of protected Word document. Use the parameter to pass an encrypted password for direct calls of API. See SDK code for encyption details.</param>
+        /// <param name="openTypeSupport">The value indicates whether OpenType support is on.</param>
+        /// <param name="destFileName">Result path of the document after the operation. If this parameter is omitted then result of the operation will be saved as the source document.</param>
+        /// <param name="from">The start page.</param>
+        /// <param name="to">The end page.</param>
+        /// <param name="zipOutput">The flag indicating whether to ZIP the output.</param>
+        /// <param name="fontsLocation">Folder in filestorage with custom fonts.</param>
+        ASPOSE_WORDS_CLOUD_EXPORT std::shared_ptr<aspose::words::cloud::JobHandler< std::shared_ptr<aspose::words::cloud::responses::SplitDocumentOnlineResponse> > > splitDocumentOnlineJob(std::shared_ptr<aspose::words::cloud::requests::SplitDocumentOnlineJobRequest> request);
 
         /// <summary>
         /// Translate a node id to a node path.

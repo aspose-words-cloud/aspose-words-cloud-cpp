@@ -24,6 +24,7 @@
 -------------------------------------------------------------------------------------------------------------------- **/
 
 #pragma once
+#include <chrono>
 #include "../test_base.h"
 
 /// <summary>
@@ -204,7 +205,7 @@ TEST_F(StructuredDocumentTagTests, TestDeleteStructuredDocumentTag) {
         nullptr
     ));
 
-getApi()->deleteStructuredDocumentTag(request);
+    getApi()->deleteStructuredDocumentTag(request);
 }
 
 /// <summary>

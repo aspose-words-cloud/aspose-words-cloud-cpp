@@ -363,6 +363,19 @@ namespace aspose::words::cloud::responses {
     }
 
     /*
+     * AppendDocumentJob request implementation
+     */
+    std::shared_ptr< aspose::words::cloud::models::JobInfo > AppendDocumentJobResponse::getModel() const
+    {
+        return m_Model;
+    }
+
+    void AppendDocumentJobResponse::deserialize(const std::string& contentType, const std::string_view& response)
+    {
+        m_Model = createModelInstance< aspose::words::cloud::models::JobInfo >(L"JobInfo, _", response);
+    }
+
+    /*
      * AppendDocumentOnline request implementation
      */
     std::shared_ptr< aspose::words::cloud::models::DocumentResponse > AppendDocumentOnlineResponse::getModel() const
@@ -388,6 +401,19 @@ namespace aspose::words::cloud::responses {
             const auto& part = parts.at("Document");
             m_Document = parseFilesCollection(part);
         }
+    }
+
+    /*
+     * AppendDocumentOnlineJob request implementation
+     */
+    std::shared_ptr< aspose::words::cloud::models::JobInfo > AppendDocumentOnlineJobResponse::getModel() const
+    {
+        return m_Model;
+    }
+
+    void AppendDocumentOnlineJobResponse::deserialize(const std::string& contentType, const std::string_view& response)
+    {
+        m_Model = createModelInstance< aspose::words::cloud::models::JobInfo >(L"JobInfo, _", response);
     }
 
     /*
@@ -550,6 +576,19 @@ namespace aspose::words::cloud::responses {
     void ConvertDocumentResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
         m_Model = std::shared_ptr< std::istream >(new std::istringstream(std::string(response), std::ios_base::in));
+    }
+
+    /*
+     * ConvertDocumentJob request implementation
+     */
+    std::shared_ptr< aspose::words::cloud::models::JobInfo > ConvertDocumentJobResponse::getModel() const
+    {
+        return m_Model;
+    }
+
+    void ConvertDocumentJobResponse::deserialize(const std::string& contentType, const std::string_view& response)
+    {
+        m_Model = createModelInstance< aspose::words::cloud::models::JobInfo >(L"JobInfo, _", response);
     }
 
     /*
@@ -1477,6 +1516,19 @@ namespace aspose::words::cloud::responses {
     }
 
     /*
+     * ExecuteMailMergeJob request implementation
+     */
+    std::shared_ptr< aspose::words::cloud::models::JobInfo > ExecuteMailMergeJobResponse::getModel() const
+    {
+        return m_Model;
+    }
+
+    void ExecuteMailMergeJobResponse::deserialize(const std::string& contentType, const std::string_view& response)
+    {
+        m_Model = createModelInstance< aspose::words::cloud::models::JobInfo >(L"JobInfo, _", response);
+    }
+
+    /*
      * ExecuteMailMergeOnline request implementation
      */
     std::shared_ptr< std::istream > ExecuteMailMergeOnlineResponse::getModel() const
@@ -1487,6 +1539,19 @@ namespace aspose::words::cloud::responses {
     void ExecuteMailMergeOnlineResponse::deserialize(const std::string& contentType, const std::string_view& response)
     {
         m_Model = std::shared_ptr< std::istream >(new std::istringstream(std::string(response), std::ios_base::in));
+    }
+
+    /*
+     * ExecuteMailMergeOnlineJob request implementation
+     */
+    std::shared_ptr< aspose::words::cloud::models::JobInfo > ExecuteMailMergeOnlineJobResponse::getModel() const
+    {
+        return m_Model;
+    }
+
+    void ExecuteMailMergeOnlineJobResponse::deserialize(const std::string& contentType, const std::string_view& response)
+    {
+        m_Model = createModelInstance< aspose::words::cloud::models::JobInfo >(L"JobInfo, _", response);
     }
 
     /*
@@ -4652,6 +4717,19 @@ namespace aspose::words::cloud::responses {
     }
 
     /*
+     * SplitDocumentJob request implementation
+     */
+    std::shared_ptr< aspose::words::cloud::models::JobInfo > SplitDocumentJobResponse::getModel() const
+    {
+        return m_Model;
+    }
+
+    void SplitDocumentJobResponse::deserialize(const std::string& contentType, const std::string_view& response)
+    {
+        m_Model = createModelInstance< aspose::words::cloud::models::JobInfo >(L"JobInfo, _", response);
+    }
+
+    /*
      * SplitDocumentOnline request implementation
      */
     std::shared_ptr< aspose::words::cloud::models::SplitDocumentResponse > SplitDocumentOnlineResponse::getModel() const
@@ -4677,6 +4755,19 @@ namespace aspose::words::cloud::responses {
             const auto& part = parts.at("Document");
             m_Document = parseFilesCollection(part);
         }
+    }
+
+    /*
+     * SplitDocumentOnlineJob request implementation
+     */
+    std::shared_ptr< aspose::words::cloud::models::JobInfo > SplitDocumentOnlineJobResponse::getModel() const
+    {
+        return m_Model;
+    }
+
+    void SplitDocumentOnlineJobResponse::deserialize(const std::string& contentType, const std::string_view& response)
+    {
+        m_Model = createModelInstance< aspose::words::cloud::models::JobInfo >(L"JobInfo, _", response);
     }
 
     /*

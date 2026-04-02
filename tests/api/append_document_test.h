@@ -24,6 +24,7 @@
 -------------------------------------------------------------------------------------------------------------------- **/
 
 #pragma once
+#include <chrono>
 #include "../test_base.h"
 
 /// <summary>
@@ -75,6 +76,45 @@ TEST_F(AppendDocumentTests, TestAppendDocument) {
 }
 
 /// <summary>
+/// Test for appending document job.
+/// </summary>
+TEST_F(AppendDocumentTests, TestAppendDocumentJob) {
+    std::wstring remoteFileName = L"TestAppendDocument.docx";
+
+    uploadFileToStorage(
+        localTestDataFolder + L"/" + localFile,
+        remoteDataFolder + L"/" + remoteFileName
+    );
+
+    auto requestDocumentListDocumentEntries0FileReference = std::make_shared< aspose::words::cloud::models::FileReference >(std::make_shared< std::wstring >(remoteDataFolder + L"/" + remoteFileName));
+    auto requestDocumentListDocumentEntries0 = std::make_shared< aspose::words::cloud::models::DocumentEntry >();
+    requestDocumentListDocumentEntries0->setFileReference(requestDocumentListDocumentEntries0FileReference);
+    requestDocumentListDocumentEntries0->setImportFormatMode(std::make_shared< aspose::words::cloud::models::DocumentEntry::ImportFormatMode >(aspose::words::cloud::models::DocumentEntry::ImportFormatMode::KEEP_SOURCE_FORMATTING));
+    auto requestDocumentListDocumentEntries = std::make_shared< std::vector<std::shared_ptr<aspose::words::cloud::models::DocumentEntry>> >();
+    requestDocumentListDocumentEntries->push_back(requestDocumentListDocumentEntries0);
+    auto requestDocumentList = std::make_shared< aspose::words::cloud::models::DocumentEntryList >();
+    requestDocumentList->setDocumentEntries(requestDocumentListDocumentEntries);
+    std::shared_ptr<requests::AppendDocumentJobRequest> request(new requests::AppendDocumentJobRequest(
+        std::make_shared< std::wstring >(remoteFileName),
+        requestDocumentList,
+        std::make_shared< std::wstring >(remoteDataFolder),
+        nullptr,
+        nullptr,
+        nullptr,
+        nullptr,
+        nullptr,
+        std::make_shared< std::wstring >(baseTestOutPath + L"/" + remoteFileName),
+        nullptr,
+        nullptr
+    ));
+
+    auto jobHandler = getApi()->appendDocumentJob(request);
+    auto actual = jobHandler->waitResult(std::chrono::milliseconds(3000));
+    ASSERT_TRUE(actual->getDocument() != nullptr);
+    ASSERT_TRUE(actual->getDocument()->getFileName()->compare(L"TestAppendDocument.docx") == 0);
+}
+
+/// <summary>
 /// Test for appending document online.
 /// </summary>
 TEST_F(AppendDocumentTests, TestAppendDocumentOnline) {
@@ -101,4 +141,34 @@ TEST_F(AppendDocumentTests, TestAppendDocumentOnline) {
     ));
 
     auto actual = getApi()->appendDocumentOnline(request);
+}
+
+/// <summary>
+/// Test for appending document online job.
+/// </summary>
+TEST_F(AppendDocumentTests, TestAppendDocumentOnlineJob) {
+    auto requestDocument = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(localFile)), std::istream::binary));
+    auto requestDocumentListDocumentEntries0FileReferenceStream = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(localFile)), std::istream::binary));
+    auto requestDocumentListDocumentEntries0FileReference = std::make_shared< aspose::words::cloud::models::FileReference >(requestDocumentListDocumentEntries0FileReferenceStream);
+    auto requestDocumentListDocumentEntries0 = std::make_shared< aspose::words::cloud::models::DocumentEntry >();
+    requestDocumentListDocumentEntries0->setFileReference(requestDocumentListDocumentEntries0FileReference);
+    requestDocumentListDocumentEntries0->setImportFormatMode(std::make_shared< aspose::words::cloud::models::DocumentEntry::ImportFormatMode >(aspose::words::cloud::models::DocumentEntry::ImportFormatMode::KEEP_SOURCE_FORMATTING));
+    auto requestDocumentListDocumentEntries = std::make_shared< std::vector<std::shared_ptr<aspose::words::cloud::models::DocumentEntry>> >();
+    requestDocumentListDocumentEntries->push_back(requestDocumentListDocumentEntries0);
+    auto requestDocumentList = std::make_shared< aspose::words::cloud::models::DocumentEntryList >();
+    requestDocumentList->setDocumentEntries(requestDocumentListDocumentEntries);
+    std::shared_ptr<requests::AppendDocumentOnlineJobRequest> request(new requests::AppendDocumentOnlineJobRequest(
+        requestDocument,
+        requestDocumentList,
+        nullptr,
+        nullptr,
+        nullptr,
+        nullptr,
+        nullptr,
+        nullptr,
+        nullptr
+    ));
+
+    auto jobHandler = getApi()->appendDocumentOnlineJob(request);
+    jobHandler->waitResult(std::chrono::milliseconds(3000));
 }

@@ -151,6 +151,7 @@ namespace aspose::words::cloud::models {
         { L"ImageEntryList, _", [] () { return dynamic_cast< ModelBase* >(new ImageEntryList()); }},
         { L"InfoAdditionalItem, _", [] () { return dynamic_cast< ModelBase* >(new InfoAdditionalItem()); }},
         { L"InfoResponse, _", [] () { return dynamic_cast< ModelBase* >(new InfoResponse()); }},
+        { L"JobInfo, _", [] () { return dynamic_cast< ModelBase* >(new JobInfo()); }},
         { L"JpegSaveOptionsData, _", [] () { return dynamic_cast< ModelBase* >(new JpegSaveOptionsData()); }},
         { L"JsonDataLoadOptions, _", [] () { return dynamic_cast< ModelBase* >(new JsonDataLoadOptions()); }},
         { L"Link, _", [] () { return dynamic_cast< ModelBase* >(new Link()); }},
@@ -13278,6 +13279,109 @@ namespace aspose::words::cloud::models {
     void InfoResponse::setVersion(std::shared_ptr< std::wstring > value)
     {
         this->m_Version = value;
+    }
+
+
+
+    /*
+     * JobInfo implementation
+     */
+    inline std::string jobInfoStatusToString(aspose::words::cloud::models::JobInfo::Status value)
+    {
+        if (value == aspose::words::cloud::models::JobInfo::Status::UNKNOWN) return "Unknown";
+        if (value == aspose::words::cloud::models::JobInfo::Status::QUEUED) return "Queued";
+        if (value == aspose::words::cloud::models::JobInfo::Status::PROCESSING) return "Processing";
+        if (value == aspose::words::cloud::models::JobInfo::Status::SUCCEDED) return "Succeded";
+        if (value == aspose::words::cloud::models::JobInfo::Status::FAILED) return "Failed";
+        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
+    }
+
+    inline aspose::words::cloud::models::JobInfo::Status jobInfoStatusFromString(const std::string& value)
+    {
+        if (value == "Unknown") return aspose::words::cloud::models::JobInfo::Status::UNKNOWN;
+        if (value == "Queued") return aspose::words::cloud::models::JobInfo::Status::QUEUED;
+        if (value == "Processing") return aspose::words::cloud::models::JobInfo::Status::PROCESSING;
+        if (value == "Succeded") return aspose::words::cloud::models::JobInfo::Status::SUCCEDED;
+        if (value == "Failed") return aspose::words::cloud::models::JobInfo::Status::FAILED;
+        throw aspose::words::cloud::ApiException(400, L"Invalid enum value");
+    }
+    void JobInfo::toJson(void* jsonIfc) const
+    {
+        ::nlohmann::json& json = *((::nlohmann::json*)jsonIfc);
+        if (this->m_JobId) {
+            json["JobId"] = convertUtf16(*(this->m_JobId));
+        }
+        if (this->m_Message) {
+            json["Message"] = convertUtf16(*(this->m_Message));
+        }
+        if (this->m_Status) {
+            json["Status"] = jobInfoStatusToString(*(this->m_Status));
+        }
+    }
+
+    void JobInfo::fromJson(const void* jsonIfc)
+    {
+        ::nlohmann::json& json = *((::nlohmann::json*)jsonIfc);
+        if (json.contains("JobId") && !json["JobId"].is_null()) {
+            this->m_JobId = std::make_shared< std::wstring >(
+                convertUtf8( json["JobId"].get< std::string >() )
+            );
+        }
+        if (json.contains("Message") && !json["Message"].is_null()) {
+            this->m_Message = std::make_shared< std::wstring >(
+                convertUtf8( json["Message"].get< std::string >() )
+            );
+        }
+        if (json.contains("Status") && !json["Status"].is_null()) {
+            this->m_Status = std::make_shared< aspose::words::cloud::models::JobInfo::Status >(
+                jobInfoStatusFromString(json["Status"].get< std::string >())
+            );
+        }
+    }
+
+    void JobInfo::getFileReferences(std::vector< FileReference* >& result)
+    {
+    }
+
+    void JobInfo::validate()
+    {
+        if (this->m_Status == nullptr)
+        {
+            throw aspose::words::cloud::ApiException(400, L"Property Status in JobInfo is required.");
+        }
+
+    }
+
+    std::shared_ptr< std::wstring > JobInfo::getJobId() const
+    {
+        return this->m_JobId;
+    }
+
+    void JobInfo::setJobId(std::shared_ptr< std::wstring > value)
+    {
+        this->m_JobId = value;
+    }
+
+
+    std::shared_ptr< std::wstring > JobInfo::getMessage() const
+    {
+        return this->m_Message;
+    }
+
+    void JobInfo::setMessage(std::shared_ptr< std::wstring > value)
+    {
+        this->m_Message = value;
+    }
+
+
+    std::shared_ptr< aspose::words::cloud::models::JobInfo::Status > JobInfo::getStatus() const
+    {
+        return this->m_Status;
+    }
+
+    void JobInfo::setStatus(std::shared_ptr< aspose::words::cloud::models::JobInfo::Status > value)
+    {
+        this->m_Status = value;
     }
 
 
