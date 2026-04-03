@@ -1,17 +1,30 @@
-FROM debian:buster
-ENV  DEBIAN_FRONTEND=noninteractive 
+FROM debian:bookworm
 
-RUN apt-get update
-RUN apt-get install dialog  apt-utils  -y --no-install-recommends
-RUN apt-get install git-core python-dev libxml2-dev libxslt-dev -y
-RUN apt-get install tree zip wget gcc-8 g++-8 make libssl-dev -y
-RUN update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-8 40
-RUN update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-8 40
+ENV DEBIAN_FRONTEND=noninteractive
 
-RUN wget https://github.com/Kitware/CMake/releases/download/v3.20.0/cmake-3.20.0-linux-x86_64.sh -O cmake.sh \
-      && chmod u+x cmake.sh \
-      && mkdir /usr/bin/cmake \
-      && ./cmake.sh --skip-license --prefix=/usr/bin/cmake \
-      && rm cmake.sh
+RUN set -eux; \
+    apt-get update; \
+    apt-get install -y --no-install-recommends \
+      dialog \
+      apt-utils \
+      git \
+      python3-dev \
+      libxml2-dev \
+      libxslt1-dev \
+      tree \
+      zip \
+      wget \
+      gcc \
+      g++ \
+      make \
+      libssl-dev \
+      ca-certificates; \
+    wget -O /tmp/cmake.sh https://github.com/Kitware/CMake/releases/download/v3.20.0/cmake-3.20.0-linux-x86_64.sh; \
+    chmod +x /tmp/cmake.sh; \
+    mkdir -p /opt/cmake; \
+    /tmp/cmake.sh --skip-license --prefix=/opt/cmake; \
+    rm -f /tmp/cmake.sh; \
+    apt-get clean; \
+    rm -rf /var/lib/apt/lists/*
 
-ENV PATH="/usr/bin/cmake/bin:${PATH}"
+ENV PATH="/opt/cmake/bin:${PATH}"
