@@ -80,7 +80,7 @@ namespace aspose::words::cloud {
             if (parts.size() >= 1) {
                 m_Info = m_ApiClient->deserializeJobInfoPart(parts[0]);
 
-                if (parts.size() == 2 && getStatus() == aspose::words::cloud::models::JobInfo::Status::SUCCEDED) {
+                if (parts.size() >= 2 && getStatus() == aspose::words::cloud::models::JobInfo::Status::SUCCEDED) {
                     auto response = m_ApiClient->deserializeHttpResponsePart(m_Request, parts[1]);
                     m_Result = std::any_cast<T>(m_Request->getResponseResult(response));
                 }
@@ -100,13 +100,31 @@ namespace aspose::words::cloud {
             }
 
             if (getStatus() != aspose::words::cloud::models::JobInfo::Status::SUCCEDED) {
-                throw ApiException(400, L"Job failed with status \"" + getMessage() + L"\".");
+                throw ApiException(400, L"Job failed with status \"" + statusToString(getStatus()) + L"\" - \"" + getMessage() + L"\".");
             }
 
             return m_Result;
         }
 
     private:
+        static std::wstring statusToString(aspose::words::cloud::models::JobInfo::Status status)
+        {
+            switch (status) {
+            case aspose::words::cloud::models::JobInfo::Status::UNKNOWN:
+                return L"Unknown";
+            case aspose::words::cloud::models::JobInfo::Status::QUEUED:
+                return L"Queued";
+            case aspose::words::cloud::models::JobInfo::Status::PROCESSING:
+                return L"Processing";
+            case aspose::words::cloud::models::JobInfo::Status::SUCCEDED:
+                return L"Succeded";
+            case aspose::words::cloud::models::JobInfo::Status::FAILED:
+                return L"Failed";
+            default:
+                return L"Unknown";
+            }
+        }
+
         std::shared_ptr<ApiClient> m_ApiClient;
         std::shared_ptr< aspose::words::cloud::requests::RequestModelBase > m_Request;
         std::shared_ptr< aspose::words::cloud::models::JobInfo > m_Info;

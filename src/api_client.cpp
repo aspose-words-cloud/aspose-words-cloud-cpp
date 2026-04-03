@@ -153,20 +153,41 @@ namespace aspose::words::cloud {
     inline std::vector<std::string_view> parseMultipartParts(const std::string_view& data)
     {
         std::vector<std::string_view> result;
-        auto boundaryIndex = data.find("\r\n");
-        if (boundaryIndex == std::string_view::npos)
+        auto boundaryStart = data.find("--");
+        if (boundaryStart == std::string_view::npos) {
             throw ApiException(400, L"Failed to parse multipart data.");
+        }
 
-        auto boundary = data.substr(0, boundaryIndex);
-        while (true) {
-            auto lastBoundaryIndex = boundaryIndex;
-            boundaryIndex = data.find(boundary, boundaryIndex + 2);
-            if (boundaryIndex == std::string_view::npos)
+        auto boundaryEnd = data.find("\r\n", boundaryStart);
+        if (boundaryEnd == std::string_view::npos) {
+            throw ApiException(400, L"Failed to parse multipart data.");
+        }
+
+        auto boundary = data.substr(boundaryStart, boundaryEnd - boundaryStart);
+        auto currentPartIndex = boundaryEnd + 2;
+        std::string boundaryDelimiter = "\r\n";
+        boundaryDelimiter.append(boundary.begin(), boundary.end());
+
+        while (currentPartIndex < data.size()) {
+            auto nextBoundaryIndex = data.find(boundaryDelimiter, currentPartIndex);
+            if (nextBoundaryIndex == std::string_view::npos) {
                 break;
+            }
 
-            auto part = data.substr(lastBoundaryIndex + 2, boundaryIndex - lastBoundaryIndex - 4);
-            result.push_back(part);
-            boundaryIndex = boundaryIndex + boundary.size();
+            if (nextBoundaryIndex > currentPartIndex) {
+                result.push_back(data.substr(currentPartIndex, nextBoundaryIndex - currentPartIndex));
+            }
+
+            currentPartIndex = nextBoundaryIndex + boundaryDelimiter.size();
+            if (data.compare(currentPartIndex, 2, "--") == 0) {
+                break;
+            }
+
+            if (data.compare(currentPartIndex, 2, "\r\n") != 0) {
+                throw ApiException(400, L"Failed to parse multipart data.");
+            }
+
+            currentPartIndex += 2;
         }
 
         return result;
@@ -326,6 +347,18 @@ namespace aspose::words::cloud {
             throw ApiException(httpResponse->status, convertUtf8ToWide(httpResponse->body));
         }
 
+        if (m_Configuration->isDebugMode()) {
+            std::cout << "==================== JOB RESULT START ====================" << std::endl;
+            std::cout << "REQUEST:" << std::endl;
+            std::cout << "\tURL: " << path << std::endl;
+            std::cout << "RESPONSE:" << std::endl;
+            std::cout << "\tSTATUS CODE: " << httpResponse->status << std::endl;
+            std::cout << "\tRESULT: ";
+            PrintDebugData(httpResponse->body);
+            std::cout << std::endl;
+            std::cout << "==================== JOB RESULT END ====================" << std::endl;
+        }
+
         std::vector<std::string> result;
         for (const auto& part : parseMultipartParts(httpResponse->body)) {
             result.emplace_back(part);
@@ -348,13 +381,25 @@ namespace aspose::words::cloud {
         std::shared_ptr< aspose::words::cloud::requests::RequestModelBase > request,
         const std::string_view& partData)
     {
-        auto statusLineEndIndex = partData.find("\r\n");
+        auto normalizedPartData = partData;
+        auto multipartHeadersEndIndex = normalizedPartData.find("\r\n\r\n");
+        auto firstLineEndIndex = normalizedPartData.find("\r\n");
+        auto firstLine = firstLineEndIndex == std::string_view::npos
+            ? normalizedPartData
+            : normalizedPartData.substr(0, firstLineEndIndex);
+        if (multipartHeadersEndIndex != std::string_view::npos &&
+            !(firstLine.find("HTTP/") == 0 || (!firstLine.empty() && firstLine[0] >= '0' && firstLine[0] <= '9')))
+        {
+            normalizedPartData = normalizedPartData.substr(multipartHeadersEndIndex + 4);
+        }
+
+        auto statusLineEndIndex = normalizedPartData.find("\r\n");
         if (statusLineEndIndex == std::string_view::npos) {
             throw ApiException(400, L"Failed to parse HTTP response part.");
         }
 
-        auto statusLine = partData.substr(0, statusLineEndIndex);
-        auto headersEndIndex = partData.find("\r\n\r\n");
+        auto statusLine = normalizedPartData.substr(0, statusLineEndIndex);
+        auto headersEndIndex = normalizedPartData.find("\r\n\r\n");
         if (headersEndIndex == std::string_view::npos) {
             throw ApiException(400, L"Failed to parse HTTP response part.");
         }
@@ -382,11 +427,11 @@ namespace aspose::words::cloud {
                 }
             }
 
-            headersData = partData.substr(statusLineEndIndex + 2, headersEndIndex - statusLineEndIndex - 2);
+            headersData = normalizedPartData.substr(statusLineEndIndex + 2, headersEndIndex - statusLineEndIndex - 2);
         }
         else {
             statusCode = 200;
-            headersData = partData.substr(0, headersEndIndex);
+            headersData = normalizedPartData.substr(0, headersEndIndex);
         }
 
         size_t lastHeaderIndex = 0;
@@ -412,7 +457,7 @@ namespace aspose::words::cloud {
         }
 
         auto response = request->createResponse();
-        auto bodyData = partData.substr(headersEndIndex + 4);
+        auto bodyData = normalizedPartData.substr(headersEndIndex + 4);
         response->setStatusCode(statusCode);
         if (statusCode >= 200 && statusCode < 300) {
             response->deserialize(contentType, bodyData);

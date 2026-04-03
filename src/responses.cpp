@@ -76,20 +76,37 @@ namespace aspose::words::cloud::responses {
     }
 
     void parseMultipart(const std::string_view& data, std::vector<std::string_view>& result) {
-        auto boundaryIndex = data.find("\r\n");
-        if (boundaryIndex == std::string_view::npos)
+        auto boundaryStart = data.find("--");
+        if (boundaryStart == std::string_view::npos)
             throw ApiException(400, L"Failed to parse multipart data.");
 
-        auto boundary = data.substr(0, boundaryIndex);
-        while (true) {
-            auto lastBoundaryIndex = boundaryIndex;
-            boundaryIndex = data.find(boundary, boundaryIndex + 2);
-            if (boundaryIndex == std::string_view::npos)
+        auto boundaryEnd = data.find("\r\n", boundaryStart);
+        if (boundaryEnd == std::string_view::npos)
+            throw ApiException(400, L"Failed to parse multipart data.");
+
+        auto boundary = data.substr(boundaryStart, boundaryEnd - boundaryStart);
+        auto currentPartIndex = boundaryEnd + 2;
+        std::string boundaryDelimiter = "\r\n";
+        boundaryDelimiter.append(boundary.begin(), boundary.end());
+
+        while (currentPartIndex < data.size()) {
+            auto nextBoundaryIndex = data.find(boundaryDelimiter, currentPartIndex);
+            if (nextBoundaryIndex == std::string_view::npos)
                 break;
 
-            auto part = data.substr(lastBoundaryIndex + 2, boundaryIndex - lastBoundaryIndex - 4);
-            result.push_back(part);
-            boundaryIndex = boundaryIndex + boundary.size();
+            if (nextBoundaryIndex > currentPartIndex) {
+                result.push_back(data.substr(currentPartIndex, nextBoundaryIndex - currentPartIndex));
+            }
+
+            currentPartIndex = nextBoundaryIndex + boundaryDelimiter.size();
+            if (data.compare(currentPartIndex, 2, "--") == 0) {
+                break;
+            }
+
+            if (data.compare(currentPartIndex, 2, "\r\n") != 0)
+                throw ApiException(400, L"Failed to parse multipart data.");
+
+            currentPartIndex += 2;
         }
     }
 
