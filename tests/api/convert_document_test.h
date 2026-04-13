@@ -24,6 +24,7 @@
 -------------------------------------------------------------------------------------------------------------------- **/
 
 #pragma once
+#include <chrono>
 #include "../test_base.h"
 
 /// <summary>
@@ -250,4 +251,26 @@ TEST_F(ConvertDocumentTests, TestConvertDocument) {
     ));
 
     auto actual = getApi()->convertDocument(request);
+}
+
+/// <summary>
+/// A test for ConvertDocument as a job.
+/// </summary>
+TEST_F(ConvertDocumentTests, TestConvertDocumentJob) {
+    auto requestDocument = std::shared_ptr<std::istream>(new std::ifstream(std::filesystem::path(getDataDir(localFolder + L"/test_uploadfile.docx")), std::istream::binary));
+    std::shared_ptr<requests::ConvertDocumentJobRequest> request(new requests::ConvertDocumentJobRequest(
+        requestDocument,
+        std::make_shared< std::wstring >(L"pdf"),
+        nullptr,
+        nullptr,
+        nullptr,
+        nullptr,
+        nullptr,
+        nullptr,
+        nullptr,
+        nullptr
+    ));
+
+    auto jobHandler = getApi()->convertDocumentJob(request);
+    jobHandler->waitResult(std::chrono::milliseconds(3000));
 }

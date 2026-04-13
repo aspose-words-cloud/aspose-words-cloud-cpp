@@ -24,6 +24,7 @@
 -------------------------------------------------------------------------------------------------------------------- **/
 
 #pragma once
+#include <chrono>
 #include "../test_base.h"
 
 /// <summary>
@@ -290,7 +291,7 @@ TEST_F(MathObjectTests, TestDeleteOfficeMathObject) {
         nullptr
     ));
 
-getApi()->deleteOfficeMathObject(request);
+    getApi()->deleteOfficeMathObject(request);
 }
 
 /// <summary>
@@ -340,7 +341,7 @@ TEST_F(MathObjectTests, TestDeleteOfficeMathObjectWithoutNodePath) {
         nullptr
     ));
 
-getApi()->deleteOfficeMathObject(request);
+    getApi()->deleteOfficeMathObject(request);
 }
 
 /// <summary>
@@ -367,7 +368,7 @@ TEST_F(MathObjectTests, TestDeleteOfficeMathObjects) {
         nullptr
     ));
 
-getApi()->deleteOfficeMathObjects(request);
+    getApi()->deleteOfficeMathObjects(request);
 }
 
 /// <summary>

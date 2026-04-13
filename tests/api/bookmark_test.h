@@ -24,6 +24,7 @@
 -------------------------------------------------------------------------------------------------------------------- **/
 
 #pragma once
+#include <chrono>
 #include "../test_base.h"
 
 /// <summary>
@@ -203,7 +204,7 @@ TEST_F(BookmarkTests, TestDeleteBookmark) {
         nullptr
     ));
 
-getApi()->deleteBookmark(request);
+    getApi()->deleteBookmark(request);
 }
 
 /// <summary>
@@ -250,7 +251,7 @@ TEST_F(BookmarkTests, TestDeleteBookmarks) {
         nullptr
     ));
 
-getApi()->deleteBookmarks(request);
+    getApi()->deleteBookmarks(request);
 }
 
 /// <summary>

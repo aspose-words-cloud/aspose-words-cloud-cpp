@@ -24,6 +24,7 @@
 -------------------------------------------------------------------------------------------------------------------- **/
 
 #pragma once
+#include <chrono>
 #include "../test_base.h"
 
 /// <summary>
@@ -207,7 +208,7 @@ TEST_F(HeaderFooterTests, TestDeleteHeaderFooter) {
         nullptr
     ));
 
-getApi()->deleteHeaderFooter(request);
+    getApi()->deleteHeaderFooter(request);
 }
 
 /// <summary>
@@ -257,7 +258,7 @@ TEST_F(HeaderFooterTests, TestDeleteHeadersFooters) {
         nullptr
     ));
 
-getApi()->deleteHeadersFooters(request);
+    getApi()->deleteHeadersFooters(request);
 }
 
 /// <summary>

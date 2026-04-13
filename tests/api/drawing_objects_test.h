@@ -24,6 +24,7 @@
 -------------------------------------------------------------------------------------------------------------------- **/
 
 #pragma once
+#include <chrono>
 #include "../test_base.h"
 
 /// <summary>
@@ -528,7 +529,7 @@ TEST_F(DrawingObjectsTests, TestDeleteDrawingObject) {
         nullptr
     ));
 
-getApi()->deleteDrawingObject(request);
+    getApi()->deleteDrawingObject(request);
 }
 
 /// <summary>
@@ -578,7 +579,7 @@ TEST_F(DrawingObjectsTests, TestDeleteDrawingObjectWithoutNodePath) {
         nullptr
     ));
 
-getApi()->deleteDrawingObject(request);
+    getApi()->deleteDrawingObject(request);
 }
 
 /// <summary>

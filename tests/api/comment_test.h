@@ -24,6 +24,7 @@
 -------------------------------------------------------------------------------------------------------------------- **/
 
 #pragma once
+#include <chrono>
 #include "../test_base.h"
 
 /// <summary>
@@ -305,7 +306,7 @@ TEST_F(CommentTests, TestDeleteComment) {
         nullptr
     ));
 
-getApi()->deleteComment(request);
+    getApi()->deleteComment(request);
 }
 
 /// <summary>
@@ -352,7 +353,7 @@ TEST_F(CommentTests, TestDeleteComments) {
         nullptr
     ));
 
-getApi()->deleteComments(request);
+    getApi()->deleteComments(request);
 }
 
 /// <summary>

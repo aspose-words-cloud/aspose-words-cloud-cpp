@@ -24,6 +24,7 @@
 -------------------------------------------------------------------------------------------------------------------- **/
 
 #pragma once
+#include <chrono>
 #include "../test_base.h"
 
 /// <summary>
@@ -279,7 +280,7 @@ TEST_F(CustomXmlPartsTests, TestDeleteCustomXmlPart) {
         nullptr
     ));
 
-getApi()->deleteCustomXmlPart(request);
+    getApi()->deleteCustomXmlPart(request);
 }
 
 /// <summary>
@@ -326,7 +327,7 @@ TEST_F(CustomXmlPartsTests, TestDeleteCustomXmlParts) {
         nullptr
     ));
 
-getApi()->deleteCustomXmlParts(request);
+    getApi()->deleteCustomXmlParts(request);
 }
 
 /// <summary>

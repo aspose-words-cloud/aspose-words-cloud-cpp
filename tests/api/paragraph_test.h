@@ -24,6 +24,7 @@
 -------------------------------------------------------------------------------------------------------------------- **/
 
 #pragma once
+#include <chrono>
 #include "../test_base.h"
 
 /// <summary>
@@ -709,7 +710,7 @@ TEST_F(ParagraphTests, TestDeleteParagraph) {
         nullptr
     ));
 
-getApi()->deleteParagraph(request);
+    getApi()->deleteParagraph(request);
 }
 
 /// <summary>
@@ -759,7 +760,7 @@ TEST_F(ParagraphTests, TestDeleteParagraphWithoutNodePath) {
         nullptr
     ));
 
-getApi()->deleteParagraph(request);
+    getApi()->deleteParagraph(request);
 }
 
 /// <summary>
