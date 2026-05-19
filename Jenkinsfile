@@ -59,5 +59,6 @@ node('words-linux') {
         }
     } finally {
         deleteDir()
+		cleanWs()
     }
 }
